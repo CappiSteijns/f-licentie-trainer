@@ -1,0 +1,31 @@
+# F-licentie oefenapp: website + database + accounts in één container.
+# Bedoeld voor Portainer (Stacks → Add stack → Repository) op bijv. Unraid. Zie README.
+
+services:
+  f-licentie:
+    build: .
+    image: f-licentie:latest
+    container_name: f-licentie
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-8090}:8090"
+    environment:
+      TZ: ${TZ:-Europe/Amsterdam}
+      PB_ADMIN_EMAIL: ${PB_ADMIN_EMAIL:-}          # beheerder (alleen voor jou), stel in via Portainer
+      PB_ADMIN_PASSWORD: ${PB_ADMIN_PASSWORD:-}    # minimaal 10 tekens
+    volumes:
+      # Hier staat de database. Neem deze map mee in je back-ups.
+      - ${DATA_DIR:-/mnt/user/appdata/f-licentie}:/pb/pb_data
+
+  # OPTIONEEL: Cloudflare Tunnel, zodat je geen poorten op je router hoeft te openen.
+  # Aanzetten: voeg de variabele COMPOSE_PROFILES=tunnel en CF_TUNNEL_TOKEN toe in Portainer.
+  tunnel:
+    profiles: ["tunnel"]
+    image: cloudflare/cloudflared:latest
+    container_name: f-licentie-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CF_TUNNEL_TOKEN:-}
+    depends_on:
+      - f-licentie

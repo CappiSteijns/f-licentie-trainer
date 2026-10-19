@@ -1,0 +1,4 @@
+# Bron-PDF's van de VRZA niet in git zetten (auteursrecht); zet ze lokaal in bronnen/
+bronnen/*.pdf
+__pycache__/
+*.pyc
