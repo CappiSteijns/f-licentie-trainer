@@ -4,7 +4,7 @@ Interactieve oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Ama
 examentraining van de [VRZA-cursus](https://cursus.vrza.nl/wp/2017/12/04/vrza-cursus-zendamateur-2017-2019/).
 Pure HTML/CSS/JavaScript, geen build-stap, geen server: draait gratis op GitHub Pages.
 
-**Nu aanwezig:** Hoofdstuk 3 (91 vragen, bundel A + B), Hoofdstuk 4 (32), Hoofdstuk 5 (164, bundel A t/m D) en Hoofdstuk 9 (25). Andere hoofdstukken voeg je toe met het script hieronder.
+**Nu aanwezig (1.244 vragen):** Hoofdstuk 3 (91), 4 (32), 5 (164), 6 (50), 7 (53), 8 (64), 9 (25), 10 (57), 11 (40), 12 (182), 13 (192), 14 (244) en 15 (50). Nog niet: Hoofdstuk 1, 2, 16, 17 en 18 (en bundel B van Hoofdstuk 15). Meer hoofdstukken voeg je toe met het script hieronder.
 
 ## Functies
 - **Onderdelen filteren** met selectievakjes; alleen de gekozen hoofdstukken worden geladen.
@@ -164,7 +164,7 @@ De VRZA biedt per hoofdstuk een *Examentraining*-PDF aan (bijv. `HS4_exa_2026010
 4. **Controleer de antwoorden.** Het goede antwoord wordt uit de tekst van de uitwerking gehaald; dat gaat bijna altijd goed, maar niet altijd. `check_answers.py` toont per vraag het gedetecteerde antwoord naast de slotzin. Wijkt iets af of meldt het script "zonder gedetecteerd antwoord", zet het juiste antwoord dan in `tools/answer_overrides.json` (`"hs4-12": "C"`) en draai stap 3 opnieuw.
 5. `git add . && git commit -m "Hoofdstuk 4" && git push`.
 
-Voor Hoofdstuk 3, 4, 5 en 9 zijn alle antwoorden handmatig nagelopen. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
+Alle antwoorden zijn gecontroleerd tegen drie bronnen: de vetgedrukte letter in de uitwerking (`tools/bold_answers.py` en `tools/ink_answers.py`), de uitlegtekst en handmatig lezen. Die bronnen spreken elkaar soms tegen, doordat de uitlegtekst zelf een tikfout in de letter heeft (bijv. 5-77, 5-156, 11-1, 12-126); het vetgedrukte antwoord is dan gevolgd. Vraag 13-45 is weggelaten omdat die twee goede antwoorden heeft. Bij 5-6 is het "officiële" antwoord B aangehouden, ook al is C inhoudelijk verdedigbaar. Afbeeldingen worden als WebP opgeslagen om de repo klein te houden. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
 
 ## Bekende beperkingen
 - Machten en breuken (I², U²/R) gaan in de uit de PDF gehaalde tekst soms verloren ("I2"). Elke vraag heeft daarom een knop **Toon origineel**; bij twijfel altijd even kijken.

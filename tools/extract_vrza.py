@@ -85,6 +85,10 @@ def classify(lines):
         return 's', int(m.group(1))
     if re.match(r'^\s*\d+\.\d+\s+(Opgaven|Uitwerkingen)\s*$', lines[0]):
         return 'x', None  # scheidingspagina tussen opgaven en uitwerkingen
+    for ln in lines[:10]:  # kop door figuurtekst verstoord (bv. 12-49)
+        m = re.search(r'Uitwerking van Opgave\s+(\d+)-(\d+)', ln)
+        if m:
+            return 's', int(m.group(2))
     return 'c', None  # vervolgpagina
 
 
@@ -198,7 +202,7 @@ def render_page(pdf, pageno, out_png, plumb, bbox=None):
          '-singlefile', str(pdf), str(tmp)])
     src = Path(str(tmp) + '.png')
     img = crop_white(Image.open(src).convert('RGB'))
-    img.save(out_png, optimize=True)
+    img.save(out_png, 'WEBP', quality=82, method=6)
     src.unlink()
     return img.size
 
@@ -278,12 +282,12 @@ def process(pdf, chap, img_dir, store):
         if need_fig:
             entry['qFigure'] = True
             for k, p in enumerate(qpages[n]):
-                fn = f'{qid}-q{k}.png'
+                fn = f'{qid}-q{k}.webp'
                 bb = figure_bbox(plumb.pages[p - 1])
                 render_page(pdf, p, img_dir / fn, plumb, bb)
                 entry['qImages'].append(f'img/hs{chap}/{fn}')
         # volledige originele vraagpagina (voor als machten/formules in de tekst verloren gaan)
-        fn = f'{qid}-qf.png'
+        fn = f'{qid}-qf.webp'
         render_page(pdf, qpages[n][0], img_dir / fn, plumb)
         entry['qFull'] = f'img/hs{chap}/{fn}'
         if n in slines:
@@ -303,7 +307,7 @@ def process(pdf, chap, img_dir, store):
             entry['explanation'] = '\n\n'.join(paras)
             entry['sFigure'] = any(has_graphics(plumb.pages[p - 1], 3) for p in spages[n])
             for k, p in enumerate(spages[n]):
-                fn = f'{qid}-s{k}.png'
+                fn = f'{qid}-s{k}.webp'
                 render_page(pdf, p, img_dir / fn, plumb)
                 entry['sImages'].append(f'img/hs{chap}/{fn}')
         store[qid] = entry
@@ -331,11 +335,16 @@ def main(paths):
         ov = json.loads(ov_path.read_text(encoding='utf-8')) if ov_path.exists() else {}
         qo_path = ROOT / 'tools' / 'question_overrides.json'
         qo = json.loads(qo_path.read_text(encoding='utf-8')) if qo_path.exists() else {}
+        items = [e for e in items if ov.get(e['id']) != 'SKIP']
         for e in items:
             if e['id'] in ov:
                 e['answer'] = ov[e['id']]
             if e['id'] in qo:
-                e['question'] = qo[e['id']]
+                v = qo[e['id']]
+                if isinstance(v, dict):
+                    e.update(v)
+                else:
+                    e['question'] = v
             e.pop('_pat', None)
         out = ROOT / 'data' / f'hoofdstuk-{chap}.json'
         out.write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding='utf-8')
