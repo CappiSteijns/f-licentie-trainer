@@ -2,5 +2,11 @@
  "_comment": "Handmatige correcties op de vraagtekst (figuurtekst die in de vraag is terechtgekomen). Sleutel = vraag-id.",
  "hs9-2": "De collectorstroom is",
  "hs9-4": "De hoogfrequent versterkertrap (schema X) is ingesteld in klasse C. De ingangsspanning Ui verloopt volgens schema Y. De collectorstroom verloopt zoals in",
- "hs9-21": "De eindtrap van de zender is ingesteld in:"
+ "hs9-21": "De eindtrap van de zender is ingesteld in:",
+ "hs5-2": "De spanning is in fase met de stroom in",
+ "hs5-4": "De duur van een periode is",
+ "hs5-25": "De stroom door de condensator is",
+ "hs5-64": "Een sinusvormig signaal is opgeteld bij een gelijkspanning. De gelijkspanning bedraagt:",
+ "hs5-66": "Een symmetrisch blokvormig signaal heeft een grondfrequentie van 1500 Hz. Het signaal bevat de volgende frequenties:",
+ "hs5-148": "Welke karakteristiek behoort bij een hoogdoorlaatfilter?"
 }

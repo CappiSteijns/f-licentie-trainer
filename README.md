@@ -4,7 +4,7 @@ Interactieve oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Ama
 examentraining van de [VRZA-cursus](https://cursus.vrza.nl/wp/2017/12/04/vrza-cursus-zendamateur-2017-2019/).
 Pure HTML/CSS/JavaScript, geen build-stap, geen server: draait gratis op GitHub Pages.
 
-**Nu aanwezig:** Hoofdstuk 3 (91 vragen, bundel A + B) en Hoofdstuk 9 (25 vragen). Andere hoofdstukken voeg je toe met het script hieronder.
+**Nu aanwezig:** Hoofdstuk 3 (91 vragen, bundel A + B), Hoofdstuk 4 (32), Hoofdstuk 5 (164, bundel A t/m D) en Hoofdstuk 9 (25). Andere hoofdstukken voeg je toe met het script hieronder.
 
 ## Functies
 - **Onderdelen filteren** met selectievakjes; alleen de gekozen hoofdstukken worden geladen.
@@ -155,7 +155,7 @@ Als je op twee apparaten tegelijk offline dezelfde vraag beantwoordt, telt allee
 De VRZA biedt per hoofdstuk een *Examentraining*-PDF aan (bijv. `HS4_exa_20260103.pdf`).
 1. Zet de PDF('s) in `bronnen/` (de bestandsnaam moet met `HS<nummer>_exa` beginnen).
 2. Installeer eenmalig: [Poppler voor Windows](https://github.com/oschwartz10612/poppler-windows/releases) (zorg dat `pdftotext` en `pdftoppm` in je PATH staan) en `pip install -r tools/requirements.txt`.
-3. Draai:
+3. Draai (bij een hoofdstuk met meerdere bundels, zoals Hoofdstuk 5, geef je alle PDF's in één keer mee):
    ```powershell
    python tools/extract_vrza.py bronnen/HS4_exa_20260103.pdf
    python tools/build_index.py
@@ -164,7 +164,7 @@ De VRZA biedt per hoofdstuk een *Examentraining*-PDF aan (bijv. `HS4_exa_2026010
 4. **Controleer de antwoorden.** Het goede antwoord wordt uit de tekst van de uitwerking gehaald; dat gaat bijna altijd goed, maar niet altijd. `check_answers.py` toont per vraag het gedetecteerde antwoord naast de slotzin. Wijkt iets af of meldt het script "zonder gedetecteerd antwoord", zet het juiste antwoord dan in `tools/answer_overrides.json` (`"hs4-12": "C"`) en draai stap 3 opnieuw.
 5. `git add . && git commit -m "Hoofdstuk 4" && git push`.
 
-Voor Hoofdstuk 3 (91) en Hoofdstuk 9 (25) zijn alle antwoorden handmatig nagelopen. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
+Voor Hoofdstuk 3, 4, 5 en 9 zijn alle antwoorden handmatig nagelopen. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
 
 ## Bekende beperkingen
 - Machten en breuken (I², U²/R) gaan in de uit de PDF gehaalde tekst soms verloren ("I2"). Elke vraag heeft daarom een knop **Toon origineel**; bij twijfel altijd even kijken.

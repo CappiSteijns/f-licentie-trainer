@@ -19,6 +19,8 @@ DPI = 110
 
 HEAD_RE = re.compile(r'^\s*(?:\d+\.\d+\.\d+\s+)?Opgave\s+(\d+)-(\d+)\s*$')
 SOL_RE = re.compile(r'^\s*(?:\d+\.\d+\.\d+\s+)?Uitwerking van Opgave\s+(\d+)-(\d+)\s*$')
+# tikfout in sommige PDF's: "5.5.141 Uitwerking van Opgave 5-" (nummer ontbreekt) -> nummer uit het kopnummer
+SOL_RE_NONUM = re.compile(r'^\s*\d+\.\d+\.(\d+)\s+Uitwerking van Opgave\s+\d+-\s*$')
 OPT_RE = re.compile(r'^\s*([A-Da-d])\.\s*(.*)$')
 INLINE_OPT_RE = re.compile(r'^\s*a\.\s.*\sb\.\s.*\sc\.\s.*\sd\.\s', re.I)
 FOOT_RE = re.compile(r'^\s*(©|\d+-\d+\s*$)')
@@ -78,6 +80,9 @@ def classify(lines):
     m = SOL_RE.match(lines[0])
     if m:
         return 's', int(m.group(2))
+    m = SOL_RE_NONUM.match(lines[0])
+    if m:
+        return 's', int(m.group(1))
     if re.match(r'^\s*\d+\.\d+\s+(Opgaven|Uitwerkingen)\s*$', lines[0]):
         return 'x', None  # scheidingspagina tussen opgaven en uitwerkingen
     return 'c', None  # vervolgpagina
