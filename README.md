@@ -4,7 +4,7 @@ Interactieve oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Ama
 examentraining van de [VRZA-cursus](https://cursus.vrza.nl/wp/2017/12/04/vrza-cursus-zendamateur-2017-2019/).
 Pure HTML/CSS/JavaScript, geen build-stap, geen server: draait gratis op GitHub Pages.
 
-**Nu aanwezig:** Hoofdstuk 3 (91 vragen, bundel A + B). Andere hoofdstukken voeg je toe met het script hieronder.
+**Nu aanwezig:** Hoofdstuk 3 (91 vragen, bundel A + B) en Hoofdstuk 9 (25 vragen). Andere hoofdstukken voeg je toe met het script hieronder.
 
 ## Functies
 - **Onderdelen filteren** met selectievakjes; alleen de gekozen hoofdstukken worden geladen.
@@ -85,6 +85,37 @@ Bekijk de logs van de container in Portainer. Veel voorkomend: een niet-bestaand
 ### Site op GitHub Pages, alleen de database zelf hosten
 Dat kan ook: laat de container draaien (bereikbaar via https) en zet in `js/config.js` `PB_URL = 'https://jouw-adres'`. Dan serveert GitHub Pages de site en jouw server de accounts en de database.
 
+## Werkwijze: wijzigen, naar GitHub pushen en in Portainer bijwerken
+
+Dit is de vaste routine, telkens als er iets verandert (nieuw hoofdstuk, aangepaste tekst, enz.).
+
+### 1. Naar GitHub pushen (op je pc)
+Open PowerShell in `C:\Users\Cappi\Documents\f-licentie`:
+```powershell
+git pull                      # eerst ophalen wat er online staat (voorkomt conflicten)
+git status                    # laat zien wat er gewijzigd is
+git add .
+git commit -m "Hoofdstuk 9 toegevoegd"
+git push
+```
+Controleer daarna op github.com/CappiSteijns/f-licentie-trainer of de commit er staat. De bron-PDF's in `bronnen/` worden bewust niet meegepusht (`.gitignore`).
+
+### 2. In Portainer de nieuwste versie ophalen
+1. Portainer → **Stacks** → kies de stack `f-licentie`.
+2. Open het tabblad **Editor** en scroll naar *Git repository*.
+3. Klik op **Pull and redeploy** en zet **Re-pull image and redeploy** / **Force redeployment** aan (de naam verschilt per Portainer-versie). Dit is nodig, want de website zit in de image en die moet opnieuw gebouwd worden.
+4. Bevestig. De build duurt even; volg de voortgang bij **Containers → f-licentie → Logs**.
+5. Open de site en ververs hard (Ctrl+F5). Staat er een oude versie? Dan heeft je browser nog de oude bestanden in het geheugen.
+
+Je gebruikersgegevens staan in de map `DATA_DIR` op je Unraid, buiten de container, en blijven bij elke update behouden.
+
+**Automatisch bijwerken (optioneel):** in Portainer kun je bij de stack *Automatic updates* aanzetten (polling, bijvoorbeeld elke 5 minuten). Elke push naar `main` wordt dan vanzelf uitgerold.
+
+### Gaat er iets mis?
+- *"Pull and redeploy" toont geen wijziging*: kijk of de push echt op GitHub staat en of de *Repository reference* in de stack `refs/heads/main` is.
+- *Build mislukt*: bekijk de foutmelding in Portainer; meestal is dat de `PB_VERSION` in de `Dockerfile` of een typefout in een bestand.
+- *Site is oud na een geslaagde update*: harde verversing (Ctrl+F5) of een privévenster.
+
 ## Alternatief: accounts via Supabase
 
 Zet hiervoor in `js/config.js` `BACKEND = 'supabase'`.
@@ -133,7 +164,7 @@ De VRZA biedt per hoofdstuk een *Examentraining*-PDF aan (bijv. `HS4_exa_2026010
 4. **Controleer de antwoorden.** Het goede antwoord wordt uit de tekst van de uitwerking gehaald; dat gaat bijna altijd goed, maar niet altijd. `check_answers.py` toont per vraag het gedetecteerde antwoord naast de slotzin. Wijkt iets af of meldt het script "zonder gedetecteerd antwoord", zet het juiste antwoord dan in `tools/answer_overrides.json` (`"hs4-12": "C"`) en draai stap 3 opnieuw.
 5. `git add . && git commit -m "Hoofdstuk 4" && git push`.
 
-Voor Hoofdstuk 3 zijn alle 91 antwoorden handmatig nagelopen. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
+Voor Hoofdstuk 3 (91) en Hoofdstuk 9 (25) zijn alle antwoorden handmatig nagelopen. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
 
 ## Bekende beperkingen
 - Machten en breuken (I², U²/R) gaan in de uit de PDF gehaalde tekst soms verloren ("I2"). Elke vraag heeft daarom een knop **Toon origineel**; bij twijfel altijd even kijken.

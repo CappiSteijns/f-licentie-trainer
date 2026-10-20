@@ -78,6 +78,8 @@ def classify(lines):
     m = SOL_RE.match(lines[0])
     if m:
         return 's', int(m.group(2))
+    if re.match(r'^\s*\d+\.\d+\s+(Opgaven|Uitwerkingen)\s*$', lines[0]):
+        return 'x', None  # scheidingspagina tussen opgaven en uitwerkingen
     return 'c', None  # vervolgpagina
 
 
@@ -92,12 +94,16 @@ def parse_question(lines):
     cur = None
     for ln in body:
         if SRC_RE.match(ln):
-            src = ln.strip().strip('()')
-            cur = 'src'
+            src = ln.strip()
+            cur = 'src' if src.count('(') > src.count(')') else 'done'
             continue
         if cur == 'src':
             if ln.strip():
-                src += ' ' + ln.strip().strip('()')
+                src += ' ' + ln.strip()
+                if src.count('(') <= src.count(')'):
+                    cur = 'done'
+            continue
+        if cur == 'done':
             continue
         if INLINE_OPT_RE.match(ln) and not opts:
             parts = re.split(r'\s(?=[b-dB-D]\.\s)', ln.strip())
@@ -117,6 +123,9 @@ def parse_question(lines):
             stem.append(ln)
             cur = 'stem'
     stem = join_wrapped(stem) if stem else ''
+    src = re.sub(r'\s+', ' ', src).strip()
+    if src.startswith('(') and src.endswith(')'):
+        src = src[1:-1]
     return stem, [{'id': k, 'text': re.sub(r'\s+', ' ', v).strip()} for k, v in opts], src
 
 
@@ -210,7 +219,17 @@ def figure_bbox(pg):
             if (i['bottom'] - i['top']) >= 40 and (i['x1'] - i['x0']) >= 30
             and i['top'] > 95 and i['top'] < limit - 5]
     if not figs:
-        return None
+        vec = [c for c in list(pg.curves) + list(pg.lines) + list(pg.rects)
+               if c['top'] > 95 and c['bottom'] < limit - 5 and (c['x1'] - c['x0']) < float(pg.width) * 0.9]
+        if len(vec) < 3:
+            return None
+        x0, x1 = min(c['x0'] for c in vec), max(c['x1'] for c in vec)
+        top, bottom = min(c['top'] for c in vec), max(c['bottom'] for c in vec)
+        for wd in pg.extract_words():   # labels rond het schema meenemen
+            if x0 - 45 <= wd['x0'] and wd['x1'] <= x1 + 45 and top - 14 <= wd['top'] and wd['bottom'] <= bottom + 14:
+                x0, x1 = min(x0, wd['x0']), max(x1, wd['x1'])
+                top, bottom = min(top, wd['top']), max(bottom, wd['bottom'])
+        return (x0, top, x1, bottom)
     return (min(i['x0'] for i in figs), min(i['top'] for i in figs),
             max(i['x1'] for i in figs), max(i['bottom'] for i in figs))
 
@@ -229,6 +248,8 @@ def process(pdf, chap, img_dir, store):
             cur_kind, cur_n = 'q', n
             qpages.setdefault(n, []).append(pno)
             qlines[n] = list(lines)
+        elif kind == 'x':
+            cur_kind, cur_n = None, None
         elif kind == 's':
             cur_kind, cur_n = 's', n
             spages.setdefault(n, []).append(pno)
@@ -303,9 +324,13 @@ def main(paths):
         items = [store[k] for k in sorted(store, key=lambda k: store[k]['number'])]
         ov_path = ROOT / 'tools' / 'answer_overrides.json'
         ov = json.loads(ov_path.read_text(encoding='utf-8')) if ov_path.exists() else {}
+        qo_path = ROOT / 'tools' / 'question_overrides.json'
+        qo = json.loads(qo_path.read_text(encoding='utf-8')) if qo_path.exists() else {}
         for e in items:
             if e['id'] in ov:
                 e['answer'] = ov[e['id']]
+            if e['id'] in qo:
+                e['question'] = qo[e['id']]
             e.pop('_pat', None)
         out = ROOT / 'data' / f'hoofdstuk-{chap}.json'
         out.write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding='utf-8')
