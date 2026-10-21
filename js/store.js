@@ -32,8 +32,8 @@ function safeSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); retur
 
 function loadState() {
   const s = safeGet(KEY);
-  if (s && s.v === 1 && s.q) return { v: 1, q: s.q, exams: s.exams || [], resetAt: s.resetAt || 0 };
-  return { v: 1, q: {}, exams: [], resetAt: 0 };
+  if (s && s.v === 1 && s.q) return { v: 1, q: s.q, exams: s.exams || [], rd: s.rd || {}, resetAt: s.resetAt || 0 };
+  return { v: 1, q: {}, exams: [], rd: {}, resetAt: 0 };
 }
 function loadPrefs() { return { ...DEFAULT_PREFS, ...(safeGet(PKEY) || {}) }; }
 
@@ -80,10 +80,10 @@ export function recordAnswer(id, correct, mode) {
   return r;
 }
 export const record = id => state.q[id] || null;
-export const hasLocalData = () => Object.keys(state.q).length > 0 || state.exams.length > 0;
+export const hasLocalData = () => Object.keys(state.q).length > 0 || state.exams.length > 0 || Object.keys(state.rd).length > 0;
 /** Wist alleen de lokale kopie (bijv. bij uitloggen). Geen reset-tijdstempel, dus niets wordt elders gewist. */
 export function clearLocal() {
-  state = { v: 1, q: {}, exams: [], resetAt: 0 };
+  state = { v: 1, q: {}, exams: [], rd: {}, resetAt: 0 };
   persist(true);
 }
 export const allRecords = () => state.q;
@@ -94,10 +94,16 @@ export function addExam(e) {
   state.exams.push({ id: uid(), t: Date.now(), ...e });
   persist();
 }
+// ---- gelezen theorie-paragrafen: rd['hs3:s5'] = { t: tijdstip, r: 1|0 } --------
+export const isRead = key => !!(state.rd[key] && state.rd[key].r);
+export function setRead(key, read) {
+  state.rd[key] = { t: Math.max(Date.now(), ((state.rd[key] || {}).t || 0) + 1), r: read ? 1 : 0 };
+  persist();
+}
 export const getExams = () => state.exams.slice().sort((a, b) => b.t - a.t);
 
 export function resetAll() {
-  state = { v: 1, q: {}, exams: [], resetAt: Date.now() };
+  state = { v: 1, q: {}, exams: [], rd: {}, resetAt: Date.now() };
   persist();
 }
 
@@ -127,7 +133,7 @@ export const clearSession = () => { try { localStorage.removeItem(SKEY); } catch
 
 // ---- export / samenvoegen --------------------------------------------------
 export function exportData() {
-  return { v: 1, app: 'f-licentie-oefenen', exportedAt: Date.now(), resetAt: state.resetAt, q: state.q, exams: state.exams };
+  return { v: 1, app: 'f-licentie-oefenen', exportedAt: Date.now(), resetAt: state.resetAt, q: state.q, exams: state.exams, rd: state.rd };
 }
 
 export function mergeData(a, b) {
@@ -141,7 +147,14 @@ export function mergeData(a, b) {
   }
   const ex = new Map();
   for (const e of [...(a.exams || []), ...(b.exams || [])]) if (e && e.id && e.t > resetAt) ex.set(e.id, e);
-  return { v: 1, resetAt, q, exams: [...ex.values()].sort((x, y) => x.t - y.t) };
+  const rd = {};
+  for (const src of [a.rd || {}, b.rd || {}]) {
+    for (const [k, v] of Object.entries(src)) {
+      if (!v || (v.t || 0) <= resetAt) continue;
+      if (!rd[k] || v.t > rd[k].t) rd[k] = { t: v.t, r: v.r ? 1 : 0 };
+    }
+  }
+  return { v: 1, resetAt, q, rd, exams: [...ex.values()].sort((x, y) => x.t - y.t) };
 }
 
 /** Voegt externe data samen met de lokale data. Geeft een samenvatting terug. */
@@ -167,12 +180,14 @@ function pack(d) {
     v: 1, r: d.resetAt || 0,
     q: Object.fromEntries(Object.entries(d.q).map(([id, r]) => [id, [r.a, r.ok, r.t, r.l, r.p, r.b ?? null, r.d ?? null]])),
     e: (d.exams || []).map(e => [e.id, e.t, e.score, e.total, e.pass ? 1 : 0, e.secs || 0]),
+    g: Object.entries(d.rd || {}).map(([k, v]) => [k, v.t, v.r]),
   };
 }
 function unpack(p) {
   return {
     v: 1, resetAt: p.r || 0,
     q: Object.fromEntries(Object.entries(p.q || {}).map(([id, a]) => [id, { a: a[0], ok: a[1], t: a[2], l: a[3], p: a[4], ...(a[5] != null ? { b: a[5], d: a[6] || 0 } : {}) }])),
+    rd: Object.fromEntries((p.g || []).map(a => [a[0], { t: a[1], r: a[2] }])),
     exams: (p.e || []).map(a => ({ id: a[0], t: a[1], score: a[2], total: a[3], pass: !!a[4], secs: a[5] })),
   };
 }

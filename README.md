@@ -13,6 +13,7 @@ Pure HTML/CSS/JavaScript, geen build-stap, geen server: draait gratis op GitHub 
 - **Foutenvijver**: foute vragen komen in de vijver; filter "Alleen eerder foute vragen oefenen"; goed beantwoord in de oefenmodus = uit de vijver. De "slimme volgorde" toont eerst de vijver, dan vragen die herhaald moeten worden, dan nieuwe vragen, dan de rest.
 - **Slim herhalen** (Leitner-boxen): elke beantwoorde vraag komt na 1, 3, 7, 14 en 30 dagen terug zolang je hem goed blijft hebben; een fout zet hem terug naar het begin. Bovenaan staat "Vandaag te herhalen" met één knop, en er is een filter "Alleen vragen die nu herhaald moeten worden". Een vraag schuift pas op als hij aan de beurt was, dus vaker oefenen krikt hem niet kunstmatig op. De herhaalgegevens synchroniseren mee met je account.
 - **Voortgang**: totaal beantwoord, slagingspercentage, voortgangsbalk en percentage per onderdeel, zwakste plek, examenhistorie, reset met bevestiging.
+- **Leren met theorie** (waar de theorie is toegevoegd, nu Hoofdstuk 3): de cursustekst per paragraaf als leesbare pagina's; bij elke examenvraag een link naar de bijbehorende paragraaf(en) (benadrukt bij een fout antwoord); voortgang per paragraaf; een leerroute per hoofdstuk (lezen → paragraaf oefenen → hoofdstukexamen, "beheerst" bij ≥ 80% laatste poging goed); en een formuleblad per hoofdstuk. Gelezen-markeringen synchroniseren mee met je account.
 - **Accounts** (zelf hosten met PocketBase in Docker, of Supabase): inloggen en je voortgang op elk apparaat behouden, ook voor medecursisten. Zie *Zelf hosten op Unraid*.
 - **Synchroniseren zonder account** via een eigen Gist, link of back-upbestand.
 
@@ -117,6 +118,28 @@ Je gebruikersgegevens staan in de map `DATA_DIR` op je Unraid, buiten de contain
 - *Build mislukt*: bekijk de foutmelding in Portainer; meestal is dat de `PB_VERSION` in de `Dockerfile` of een typefout in een bestand.
 - *Site is oud na een geslaagde update*: harde verversing (Ctrl+F5) of een privévenster.
 
+## Een nieuwe versie eerst testen (testbranch + aparte teststack)
+
+Grotere wijzigingen komen eerst op een eigen branch (bijv. `theorie`) en pas na jouw akkoord op `main`.
+
+**Veilig testen op je Unraid, naast de echte site** (eigen database, eigen poort; je echte accounts en voortgang blijven onaangeraakt):
+1. Portainer → **Stacks → Add stack → Repository**, naam `f-licentie-test`.
+2. Repository URL: dezelfde als bij de echte stack. **Repository reference: `refs/heads/theorie`** (de naam van de testbranch).
+3. Compose path: `docker-compose.yml`. Environment variables:
+   `HOST_PORT=8091`, `CONTAINER_NAME=f-licentie-test`, `IMAGE_NAME=f-licentie:test`, `DATA_DIR=/mnt/user/appdata/f-licentie-test`, plus `PB_ADMIN_EMAIL` en `PB_ADMIN_PASSWORD`.
+4. Deploy en open `http://<unraid-ip>:8091`. Maak daar desnoods een testaccount aan.
+5. Wijzigt er iets op de testbranch? **Pull and redeploy** in de teststack.
+6. Tevreden? Zet de branch via een pull request op GitHub in `main` (**Merge**) en doe **Pull and redeploy** in de echte stack. Daarna kun je de teststack verwijderen.
+
+**Alleen op je pc** (zonder accounts, voortgang blijft in je browser):
+```powershell
+cd C:\Users\Cappi\Documents\f-licentie
+git fetch
+git switch theorie
+python -m http.server 8000
+```
+Terug naar de gewone versie: `git switch main`.
+
 ## Alternatief: accounts via Supabase
 
 Zet hiervoor in `js/config.js` `BACKEND = 'supabase'`.
@@ -166,6 +189,12 @@ De VRZA biedt per hoofdstuk een *Examentraining*-PDF aan (bijv. `HS4_exa_2026010
 5. `git add . && git commit -m "Hoofdstuk 4" && git push`.
 
 Alle antwoorden zijn gecontroleerd tegen drie bronnen: de vetgedrukte letter in de uitwerking (`tools/bold_answers.py` en `tools/ink_answers.py`), de uitlegtekst en handmatig lezen. Die bronnen spreken elkaar soms tegen, doordat de uitlegtekst zelf een tikfout in de letter heeft (bijv. 5-77, 5-156, 11-1, 12-126); het vetgedrukte antwoord is dan gevolgd. Vraag 13-45 is weggelaten omdat die twee goede antwoorden heeft. Bij 5-6 is het "officiële" antwoord B aangehouden, ook al is C inhoudelijk verdedigbaar. Afbeeldingen worden als WebP opgeslagen om de repo klein te houden. Let op vraag 3-1: het officiële antwoord is C, hoewel de toelichting eerst B beredeneert (de toelichting legt dat uit).
+
+## Theorie toevoegen voor een hoofdstuk
+1. Zet de PDF "Volledige tekst" van het hoofdstuk in `bronnen/` als `THEORIE_HS<N>_<datum>.pdf`.
+2. `python tools/build_theory.py bronnen/THEORIE_HS<N>_....pdf` maakt de paragraafindeling (uit de inhoudsopgave) en een pagina-afbeelding per pagina.
+3. `python tools/map_questions.py <N> bronnen/THEORIE_HS<N>_....pdf --show` koppelt vragen aan paragrafen op woordovereenkomst en toont het resultaat. Controleer dat en corrigeer in `tools/theory_overrides.json` (`{"hs3-12": ["s32"]}`); draai het script daarna opnieuw.
+4. Vul `formulas` in `data/theorie/hoofdstuk-<N>.json` (formuleblad) en draai `python tools/build_index.py`.
 
 ## Bekende beperkingen
 - Machten en breuken (I², U²/R) gaan in de uit de PDF gehaalde tekst soms verloren ("I2"). Elke vraag heeft daarom een knop **Toon origineel**; bij twijfel altijd even kijken.

@@ -162,3 +162,25 @@ textarea { width: 100%; font: .8rem/1.4 ui-monospace, monospace; background: var
 .seg button { flex: 1; }
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
 @media (max-width: 420px) { #nav button { padding: .45rem .55rem; font-size: .92rem; } }
+
+/* theorie & leren */
+.tlinks { margin-top: .8rem; font-size: .92rem; display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: center; color: var(--muted); }
+.tlinks.em { padding: .55rem .8rem; border-radius: 10px; background: rgba(77, 163, 255, .1); border: 1px solid rgba(77, 163, 255, .35); color: var(--text); }
+.secs { margin-top: .8rem; }
+.secs summary { cursor: pointer; font-weight: 600; padding: .3rem 0; }
+.sec { display: flex; align-items: center; gap: .6rem; padding: .35rem .2rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.sec.group { background: var(--surface-2); border-radius: 8px; margin-top: .5rem; border-top: 0; padding: .4rem .6rem; }
+.sec.lvl2 { padding-left: 1rem; }
+.sec .ic { width: 1.5rem; text-align: center; flex: none; }
+.sec .tt { flex: 1; min-width: 10rem; }
+.sec .btns { display: flex; gap: .4rem; flex-wrap: wrap; }
+.tpages { margin: 1rem 0; display: grid; gap: .6rem; }
+.tpage { width: 100%; height: auto; border-radius: 8px; background: #fff; }
+.dark-figs .tpage { filter: invert(1) hue-rotate(180deg); }
+.tbar { margin: .6rem 0; gap: .6rem; flex-wrap: wrap; }
+.formulas { max-width: 40rem; }
+.formulas h3 { margin: 1rem 0 .3rem; font-size: 1rem; }
+.formulas td { padding: .3rem .5rem .3rem 0; vertical-align: top; border-top: 1px solid var(--border); }
+.formulas td.f { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .formulas td.f { white-space: normal; } }
+dialog:has(.formulas) { max-width: min(94vw, 640px); max-height: 88vh; overflow: auto; }

@@ -2,6 +2,7 @@ import * as store from './store.js';
 import * as quiz from './quiz.js';
 import * as sync from './sync.js';
 import * as account from './account.js';
+import * as theory from './theory.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -63,6 +64,7 @@ let view = 'setup';         // setup | session | result | stats | sync
 let S = null;               // actieve sessie
 let RESULT = null;          // laatste uitslag
 let timerInt = null;
+let T = null;               // geopende theorie: { chapter, secId, back }
 
 const chapterTitle = n => (chapters.find(c => c.n === n) || {}).title || '';
 const saveSession = () => S && store.saveSession(S);
@@ -75,8 +77,8 @@ function setView(v) {
 }
 
 function renderNav() {
-  const items = [['setup', 'Oefenen'], ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : view;
+  const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
+  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : view === 'theory' ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S ? 'session' : k) }, label)));
 }
@@ -84,7 +86,7 @@ function renderNav() {
 function render() {
   applyPrefs();
   renderNav();
-  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
 }
@@ -239,6 +241,7 @@ async function startSession() {
   const p = store.getPrefs();
   const nums = [...(p.sel || chapters.filter(c => c.count).map(c => c.n))].filter(n => chapters.find(c => c.n === n && c.count)).sort((a, b) => a - b);
   try {
+    await ensureTheory(nums);
     let pool = await quiz.loadChapters(nums);
     if (p.mode === 'practice' && p.onlyPond) pool = pool.filter(q => store.isPond(q.id));
     else if (p.mode === 'practice' && p.onlyDue) { const due = new Set(store.dueIds()); pool = pool.filter(q => due.has(q.id)); }
@@ -279,7 +282,8 @@ function viewPractice() {
 
   return h('div', {},
     h('div', { class: 'qhead' },
-      h('span', { class: 'qmeta' }, `Vraag ${S.idx + 1} van ${S.ids.length} · H${q.chapter} · opgave ${q.chapter}-${q.number}`),
+      h('span', { class: 'qmeta' }, `${S.label ? S.label + ' · ' : ''}Vraag ${S.idx + 1} van ${S.ids.length} · H${q.chapter} · opgave ${q.chapter}-${q.number}`),
+      formulaBtn(q.chapter),
       store.isPond(id) && !answered && h('span', { class: 'badge red' }, 'Uit foutenvijver'),
       h('button', { class: 'ghost small', onclick: stopPractice }, 'Stoppen')),
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': S.ids.length, 'aria-valuenow': S.idx + (answered ? 1 : 0) },
@@ -294,6 +298,7 @@ function viewPractice() {
         S.wasPond && S.wasPond[id] && correct ? ' Deze vraag is uit de foutenvijver gehaald 🎉' : '',
         !correct ? ' Toegevoegd aan de foutenvijver.' : ''),
       answered && explanation(q, !correct),
+      answered && theoryLinks(q, !correct),
       answered && q.source && h('p', { class: 'muted small', style: 'margin:.8rem 0 0' }, 'Eerder voorgekomen: ' + q.source),
       h('div', { class: 'actions' }, answered && next)));
 }
@@ -466,7 +471,8 @@ function viewResult() {
         original(q),
         h('p', {}, h('span', { class: 'yours' }, 'Jouw antwoord: ' + (d.picked ? optText(q, d.picked) : 'niet beantwoord')), h('br'),
           h('span', { class: 'correct' }, 'Goed antwoord: ' + optText(q, q.answer))),
-        explanation(q, false));
+        explanation(q, false),
+        theoryLinks(q, true));
     }));
 }
 
@@ -520,6 +526,7 @@ function viewStats() {
           h('div', { class: 'bar', role: 'img', 'aria-label': `${s.mastered} van ${c.count} vragen beheerst` },
             h('i', { class: 'seen', style: `width:${pct(s.seen, c.count)}%` }),
             h('i', { class: 'mast', style: `width:${pct(s.mastered, c.count)}%` })),
+          c.theory && theory.getTheory(c.n) && h('details', { class: 'secs' }, h('summary', {}, 'Per paragraaf'), sectionRows(theory.getTheory(c.n), 'stats')),
           h('div', { class: 'row between small muted' },
             h('span', {}, `Beheerst ${s.mastered}/${c.count} · gezien ${s.seen}/${c.count} · ${s.ok}/${s.a} goed`),
             s.pond > 0 && h('button', { class: 'linklike small', onclick: () => {
@@ -892,12 +899,142 @@ document.addEventListener('keydown', e => {
   else if (S.mode === 'exam' && k === 'arrowleft' && S.idx > 0) { S.idx--; saveSession(); render(); }
 });
 
+
+// ---------------------------------------------------------------- THEORIE & LEREN
+const ensureTheory = nums => Promise.all(nums.filter(n => chapters.find(c => c.n === n && c.theory)).map(theory.loadTheory));
+const STATUS = { new: ['○', 'nog niet gelezen'], read: ['📖', 'gelezen'], busy: ['🟡', 'bezig'], done: ['✅', 'beheerst'] };
+
+async function openTheory(chapter, secId, back) {
+  const th = await theory.loadTheory(chapter);
+  if (!th) { toast('Voor dit hoofdstuk is nog geen theorie toegevoegd.'); return; }
+  T = { chapter, secId: secId || th.sections[0].id, back: back || (view === 'theory' ? (T && T.back) || 'learn' : view) };
+  setView('theory');
+}
+
+function theoryLinks(q, emphasize) {
+  const secs = theory.sectionsOfQuestion(q.id);
+  if (!secs.length) return null;
+  return h('div', { class: 'tlinks' + (emphasize ? ' em' : '') },
+    h('span', {}, emphasize ? '📖 Lees hierover: ' : '📖 Theorie: '),
+    secs.map(s => h('button', { class: 'linklike', onclick: () => openTheory(q.chapter, s.id, view) }, s.title)));
+}
+
+function formulaBtn(chapter) {
+  const th = theory.getTheory(chapter);
+  if (!th || !(th.formulas || []).length) return null;
+  return h('button', { class: 'ghost small', onclick: () => showFormulas(chapter) }, 'Formules');
+}
+
+function showFormulas(chapter) {
+  const th = theory.getTheory(chapter);
+  if (!th) return;
+  $dlg.replaceChildren(
+    h('div', { class: 'formulas' },
+      h('h2', {}, `Formules · H${chapter}`),
+      th.formulas.map(g => h('div', { class: 'fgroup' }, h('h3', {}, g.title),
+        h('table', {}, h('tbody', {}, g.items.map(i => h('tr', {}, h('td', { class: 'f' }, i.f), h('td', { class: 'muted small' }, i.t))))))),
+      h('div', { class: 'row', style: 'justify-content:flex-end;margin-top:1rem' }, h('button', { class: 'primary', onclick: () => $dlg.close() }, 'Sluiten'))));
+  $dlg.showModal();
+}
+
+async function startSectionPractice(chapter, secId) {
+  const th = theory.getTheory(chapter);
+  const ids = (th && th.qBySec.get(secId)) || [];
+  if (!ids.length) { toast('Er zijn geen vragen aan deze paragraaf gekoppeld.'); return; }
+  await quiz.loadChapter(chapter);
+  const pool = ids.map(id => quiz.QMAP.get(id)).filter(Boolean);
+  S = { mode: 'practice', ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title };
+  saveSession();
+  setView('session');
+}
+
+function startChapterExam(chapter) {
+  store.setPrefs({ sel: [chapter], mode: 'exam' });
+  startSession();
+}
+
+/** Lijst met paragrafen + status + knoppen Lees/Oefen. */
+function sectionRows(th, back) {
+  return th.sections.map(s => {
+    if (th.groups.has(s.id)) return h('div', { class: 'sec group' }, h('b', {}, s.title));
+    const st = theory.sectionStats(th, s.id);
+    const [icon, label] = STATUS[st.status];
+    return h('div', { class: 'sec lvl' + s.lvl },
+      h('span', { class: 'ic', title: label, 'aria-label': label }, icon),
+      h('span', { class: 'tt' }, s.title,
+        st.total ? h('span', { class: 'muted small' }, ` · ${st.mastered}/${st.total} beheerst`) : null),
+      h('span', { class: 'btns' },
+        h('button', { class: 'ghost small', onclick: () => openTheory(th.chapter, s.id, back) }, 'Lees'),
+        st.total > 0 && h('button', { class: 'small', onclick: () => startSectionPractice(th.chapter, s.id) }, `Oefen ${st.total}`)));
+  });
+}
+
+function viewLearn() {
+  const withT = chapters.filter(c => c.theory && theory.getTheory(c.n));
+  const without = chapters.filter(c => c.count > 0 && !withT.includes(c));
+  return h('div', {},
+    h('h1', {}, 'Leren'),
+    h('p', { class: 'muted' }, 'Per hoofdstuk een vaste route: lees een paragraaf, oefen de bijbehorende vragen, en doe daarna het hoofdstukexamen. Een paragraaf is “beheerst” als je minstens 80% van de gekoppelde vragen bij je laatste poging goed had.'),
+    withT.map(c => {
+      const th = theory.getTheory(c.n);
+      const pr = theory.chapterProgress(th);
+      const step = theory.nextStep(th);
+      const stepEl = step.type === 'read'
+        ? h('button', { class: 'primary', onclick: () => openTheory(c.n, step.sec.id, 'learn') }, `Lees: ${step.sec.title}`)
+        : step.type === 'practice'
+          ? h('button', { class: 'primary', onclick: () => startSectionPractice(c.n, step.sec.id) }, `Oefen: ${step.sec.title} (${step.st.total} vragen)`)
+          : h('button', { class: 'primary', onclick: () => startChapterExam(c.n) }, 'Alles beheerst – doe het hoofdstukexamen');
+      return h('section', { class: 'card' },
+        h('div', { class: 'row between' }, h('h2', { style: 'margin:0' }, `H${c.n} · ${c.title}`),
+          h('span', { class: 'badge' }, `${pr.done}/${pr.total} paragrafen beheerst`)),
+        h('div', { class: 'bar', style: 'margin:.6rem 0' }, h('i', { class: 'mast', style: `width:${pct(pr.done, pr.total)}%` })),
+        h('div', { class: 'row' }, stepEl,
+          formulaBtn(c.n),
+          step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
+        h('details', { class: 'secs', open: true }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
+    }),
+    without.length > 0 && h('p', { class: 'muted small' }, 'Nog geen theorie toegevoegd voor: ' + without.map(c => 'H' + c.n).join(', ') + '. Je kunt deze hoofdstukken wel gewoon oefenen. De theorie voeg je toe met tools/build_theory.py (zie README).'));
+}
+
+function viewTheory() {
+  if (!T) return viewLearn();
+  const th = theory.getTheory(T.chapter);
+  if (!th) return viewLearn();
+  const sec = th.bySec.get(T.secId) || th.sections[0];
+  const key = theory.readKey(T.chapter, sec.id);
+  const read = store.isRead(key);
+  const st = theory.sectionStats(th, sec.id);
+  const prev = th.sections[sec.i - 1], next = th.sections[sec.i + 1];
+  const go = id => { T.secId = id; render(); window.scrollTo(0, 0); };
+  const toggle = () => { store.setRead(key, !read); render(); };
+  const bar = pos => h('div', { class: 'row between tbar' },
+    h('div', { class: 'row' },
+      prev && h('button', { class: 'ghost', onclick: () => go(prev.id) }, '← Vorige'),
+      next && h('button', { class: 'ghost', onclick: () => go(next.id) }, 'Volgende →')),
+    h('div', { class: 'row' },
+      h('button', { class: read ? '' : 'primary', onclick: toggle }, read ? '✓ Gelezen (klik om te wissen)' : 'Markeer als gelezen'),
+      st.total > 0 && h('button', { onclick: () => startSectionPractice(T.chapter, sec.id) }, `Oefen deze paragraaf (${st.total})`),
+      pos === 'top' && formulaBtn(T.chapter)));
+  return h('div', {},
+    h('div', { class: 'row between', style: 'margin-bottom:.4rem' },
+      h('button', { class: 'ghost small', onclick: () => setView(T.back === 'theory' ? 'learn' : T.back) }, '← Terug'),
+      h('span', { class: 'qmeta' }, `H${T.chapter} · ${chapterTitle(T.chapter)}`)),
+    h('h1', { style: 'margin-top:.2rem' }, sec.title),
+    st.total > 0 && h('p', { class: 'muted small' }, `${STATUS[st.status][0]} ${st.mastered} van ${st.total} bijbehorende vragen beheerst`),
+    bar('top'),
+    h('div', { class: 'tpages' }, sec.pages.map(p => h('img', { class: 'tpage', src: `${th.dir}/${p}.webp`, alt: `Theorie: ${sec.title}`, loading: 'lazy' }))),
+    bar('bottom'),
+    h('p', { class: 'muted small' }, 'Bron: VRZA-cursus radiozendamateur (hoofdstuktekst).'));
+}
+
 // ---------------------------------------------------------------- opstarten
 async function restoreSession() {
   const s = store.loadSession();
   if (!s || !Array.isArray(s.ids) || !s.ids.length) return;
   try {
-    await quiz.loadChapters([...new Set(s.ids.map(quiz.chapterOf))]);
+    const cn = [...new Set(s.ids.map(quiz.chapterOf))];
+    await quiz.loadChapters(cn);
+    await ensureTheory(cn);
     if (s.ids.every(id => quiz.QMAP.has(id))) S = s; else store.clearSession();
   } catch { /* sessie blijft dan gewoon weg */ }
 }
@@ -920,6 +1057,7 @@ async function init() {
       h('p', { class: 'muted small' }, String(e.message))));
     return;
   }
+  await ensureTheory(chapters.filter(c => c.theory).map(c => c.n));
   await restoreSession();
   const hp = new URLSearchParams(location.hash.slice(1));
   if (hp.get('type') === 'recovery' && hp.get('access_token')) {
