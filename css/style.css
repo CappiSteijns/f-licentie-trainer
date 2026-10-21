@@ -64,6 +64,9 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .check input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
 .check .t { flex: 1; min-width: 0; }
 .badge { font-size: .78rem; padding: .12rem .55rem; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--muted); white-space: nowrap; }
+.badge.blue { color: var(--accent); border-color: rgba(77, 163, 255, .45); }
+.notice.review { display: flex; align-items: center; justify-content: space-between; gap: .8rem; flex-wrap: wrap; }
+.notice.review p { margin: 0; }
 .badge.red { color: var(--red); border-color: rgba(248, 81, 73, .4); }
 input[type="number"], input[type="password"], input[type="text"], input[type="email"] { font: inherit; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: .55rem .7rem; min-height: 44px; }
 input[type="number"] { width: 6rem; }

@@ -1,7 +1,8 @@
 // Lokale opslag (localStorage), foutenvijver, statistieken en samenvoeg-logica voor synchronisatie.
 //
 // Per vraag bewaren we één compact record:  { a: pogingen, ok: goed, t: tijdstip laatste poging,
-//                                             l: laatste poging goed (1/0), p: in foutenvijver (1/0) }
+//                                             l: laatste poging goed (1/0), p: in foutenvijver (1/0),
+//                                             b: Leitner-box 0-5 (slim herhalen), d: moment waarop herhaling aan de beurt is }
 // Samenvoegen tussen apparaten gebeurt per vraag: het record met de nieuwste tijdstempel wint.
 // 'resetAt' zorgt dat een reset op het ene apparaat ook op de andere apparaten doorwerkt.
 
@@ -17,6 +18,8 @@ export const DEFAULT_PREFS = {
   darkFigs: true,    // figuren donker weergeven
   sel: null,         // geselecteerde hoofdstukken
   onlyPond: false,
+  onlyDue: false,    // alleen vragen die nu herhaald moeten worden
+  examSpread: true,  // examen gespreid over de gekozen onderdelen
   mode: 'practice',
 };
 
@@ -46,8 +49,26 @@ export function setPrefs(patch) { prefs = { ...prefs, ...patch }; safeSet(PKEY, 
 export const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
 // ---- antwoorden vastleggen -------------------------------------------------
+// ---- slim herhalen (Leitner) -----------------------------------------------
+// Goed antwoord op een vraag die aan de beurt is: een box hoger, volgende herhaling na 1, 3, 7, 14, 30 dagen.
+// Fout: terug naar box 0 en over 10 minuten weer aan de beurt. Een vraag die nog niet aan de beurt was
+// (bijv. bij 'alles oefenen') schuift niet op, zodat je een vraag niet kunt 'opkrikken' door hem vaak te zien.
+const DAY = 86400000;
+export const INTERVAL_DAYS = [1, 3, 7, 14, 30];
+export const boxOf = r => (r.b != null ? r.b : (r.l ? 1 : 0));
+export const dueAt = r => (r.d != null ? r.d : (r.l ? (r.t || 0) + DAY : (r.t || 0)));
+export const isDue = (r, now = Date.now()) => !!r && dueAt(r) <= now;
+export const dueIds = (now = Date.now()) => Object.entries(state.q).filter(([, r]) => isDue(r, now)).map(([id]) => id);
+
 export function recordAnswer(id, correct, mode) {
   const r = state.q[id] || { a: 0, ok: 0, t: 0, l: 0, p: 0 };
+  const now = Date.now();
+  const fresh = r.a === 0;
+  const wasDue = fresh || isDue(r, now);
+  const oldBox = fresh ? 0 : boxOf(r);
+  if (!correct) { r.b = 0; r.d = now + 600000; }
+  else if (wasDue) { r.b = Math.min(oldBox + 1, 5); r.d = now + INTERVAL_DAYS[Math.min(r.b, 5) - 1] * DAY; }
+  else { r.b = oldBox; r.d = dueAt(r); }
   r.a += 1;
   if (correct) r.ok += 1;
   r.l = correct ? 1 : 0;
@@ -95,7 +116,8 @@ export function statsFor(questions) {
 export function totals() {
   let a = 0, ok = 0, pond = 0;
   for (const r of Object.values(state.q)) { a += r.a; ok += r.ok; if (r.p) pond++; }
-  return { a, ok, pond, exams: state.exams.length, passed: state.exams.filter(e => e.pass).length };
+  const due = dueIds().length;
+  return { a, ok, pond, due, exams: state.exams.length, passed: state.exams.filter(e => e.pass).length };
 }
 
 // ---- sessie (lopend examen / oefenrondje) ----------------------------------
@@ -114,7 +136,7 @@ export function mergeData(a, b) {
   for (const src of [a.q || {}, b.q || {}]) {
     for (const [id, r] of Object.entries(src)) {
       if (!r || (r.t || 0) <= resetAt) continue;
-      if (!q[id] || r.t > q[id].t) q[id] = { a: r.a | 0, ok: r.ok | 0, t: r.t, l: r.l ? 1 : 0, p: r.p ? 1 : 0 };
+      if (!q[id] || r.t > q[id].t) q[id] = { a: r.a | 0, ok: r.ok | 0, t: r.t, l: r.l ? 1 : 0, p: r.p ? 1 : 0, ...(r.b != null ? { b: r.b | 0, d: r.d || 0 } : {}) };
     }
   }
   const ex = new Map();
@@ -143,14 +165,14 @@ const unb64u = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/')
 function pack(d) {
   return {
     v: 1, r: d.resetAt || 0,
-    q: Object.fromEntries(Object.entries(d.q).map(([id, r]) => [id, [r.a, r.ok, r.t, r.l, r.p]])),
+    q: Object.fromEntries(Object.entries(d.q).map(([id, r]) => [id, [r.a, r.ok, r.t, r.l, r.p, r.b ?? null, r.d ?? null]])),
     e: (d.exams || []).map(e => [e.id, e.t, e.score, e.total, e.pass ? 1 : 0, e.secs || 0]),
   };
 }
 function unpack(p) {
   return {
     v: 1, resetAt: p.r || 0,
-    q: Object.fromEntries(Object.entries(p.q || {}).map(([id, a]) => [id, { a: a[0], ok: a[1], t: a[2], l: a[3], p: a[4] }])),
+    q: Object.fromEntries(Object.entries(p.q || {}).map(([id, a]) => [id, { a: a[0], ok: a[1], t: a[2], l: a[3], p: a[4], ...(a[5] != null ? { b: a[5], d: a[6] || 0 } : {}) }])),
     exams: (p.e || []).map(a => ({ id: a[0], t: a[1], score: a[2], total: a[3], pass: !!a[4], secs: a[5] })),
   };
 }

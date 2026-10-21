@@ -127,17 +127,31 @@ function pondByChapter() {
   return m;
 }
 
+function dueByChapter() {
+  const m = {};
+  for (const id of store.dueIds()) { const c = quiz.chapterOf(id); m[c] = (m[c] || 0) + 1; }
+  return m;
+}
+
+function startReview() {
+  store.setPrefs({ sel: chapters.filter(c => c.count > 0).map(c => c.n), mode: 'practice', onlyDue: true, onlyPond: false, smart: true });
+  startSession();
+}
+
 function viewSetup() {
   const p = store.getPrefs();
   const avail = chapters.filter(c => c.count > 0);
   const sel = new Set((p.sel || avail.map(c => c.n)).filter(n => avail.some(c => c.n === n)));
   const pond = pondByChapter();
+  const due = dueByChapter();
+  const dueTotal = store.dueIds().length;
   const saveSel = () => { store.setPrefs({ sel: [...sel] }); render(); };
 
   const selCount = [...sel].reduce((s, n) => s + (chapters.find(c => c.n === n)?.count || 0), 0);
   const selPond = [...sel].reduce((s, n) => s + (pond[n] || 0), 0);
+  const selDue = [...sel].reduce((s, n) => s + (due[n] || 0), 0);
   const exam = p.mode === 'exam';
-  const poolSize = (!exam && p.onlyPond) ? selPond : selCount;
+  const poolSize = exam ? selCount : p.onlyPond ? selPond : p.onlyDue ? selDue : selCount;
   const examN = Math.min(p.examCount, selCount);
 
   const resume = S && h('div', { class: 'notice' },
@@ -157,11 +171,16 @@ function viewSetup() {
       h('input', { type: 'checkbox', checked: !disabled && sel.has(c.n), disabled, onchange: e => { e.target.checked ? sel.add(c.n) : sel.delete(c.n); saveSel(); } }),
       h('span', { class: 't' }, h('b', {}, `H${c.n}`), ' · ', c.title),
       disabled ? h('span', { class: 'badge' }, 'nog geen vragen')
-        : [pc > 0 && h('span', { class: 'badge red', title: 'In de foutenvijver' }, `${pc} fout`), h('span', { class: 'badge' }, `${c.count} vragen`)]);
+        : [(due[c.n] || 0) > 0 && h('span', { class: 'badge blue', title: 'Nu te herhalen' }, `${due[c.n]} herhalen`),
+          pc > 0 && h('span', { class: 'badge red', title: 'In de foutenvijver' }, `${pc} fout`), h('span', { class: 'badge' }, `${c.count} vragen`)]);
   });
 
   return h('div', {},
     resume,
+    dueTotal > 0 && h('div', { class: 'notice review' },
+      h('p', {}, h('b', {}, `Vandaag te herhalen: ${dueTotal} ${dueTotal === 1 ? 'vraag' : 'vragen'}`),
+        h('span', { class: 'muted small' }, ' – vragen die je eerder beantwoordde en die nu weer aan de beurt zijn, zodat je ze blijft onthouden.')),
+      h('button', { class: 'primary', onclick: startReview }, `Herhaling starten (${dueTotal})`)),
     h('h1', {}, 'Oefenen voor het F-examen'),
     h('p', { class: 'muted' }, 'Kies de onderdelen, de modus en start. Je voortgang wordt in deze browser bewaard; via “Synchroniseren” neem je hem mee naar een ander apparaat.'),
 
@@ -180,20 +199,28 @@ function viewSetup() {
           h('b', {}, '📖 Oefenmodus'), h('span', { class: 'muted small' }, 'Direct feedback en uitleg per vraag.')),
         h('label', { class: 'mode' },
           h('input', { type: 'radio', name: 'mode', checked: exam, onchange: () => { store.setPrefs({ mode: 'exam' }); render(); } }),
-          h('b', {}, '📝 Examenmodus'), h('span', { class: 'muted small' }, `${p.examCount} willekeurige vragen, timer, uitslag aan het eind.`))),
+          h('b', {}, '📝 Examenmodus'), h('span', { class: 'muted small' }, `${p.examCount} vragen${p.examSpread ? ', gespreid over de onderdelen' : ' (willekeurig)'}, timer, uitslag aan het eind.`))),
       exam
         ? h('div', { class: 'row', style: 'margin-top:1rem' },
           h('label', { for: 'mins' }, 'Tijdslimiet (minuten):'),
           h('input', { id: 'mins', type: 'number', min: 1, max: 300, value: p.examMinutes, onchange: e => store.setPrefs({ examMinutes: Math.min(300, Math.max(1, parseInt(e.target.value, 10) || 90)) }) }),
-          selCount > 0 && selCount < p.examCount && h('span', { class: 'status err' }, `Let op: de selectie bevat maar ${selCount} vragen; het examen wordt korter (slagen = 70%).`))
+          selCount > 0 && selCount < p.examCount && h('span', { class: 'status err' }, `Let op: de selectie bevat maar ${selCount} vragen; het examen wordt korter (slagen = 70%).`),
+          h('label', { class: 'check', style: 'width:100%' },
+            h('input', { type: 'checkbox', checked: p.examSpread, onchange: e => { store.setPrefs({ examSpread: e.target.checked }); render(); } }),
+            h('span', { class: 't' }, 'Vragen gespreid over de gekozen onderdelen ',
+              h('span', { class: 'muted small' }, '(naar rato van het aantal vragen per hoofdstuk, zoals een echt examen alle stof raakt; de officiële verdeling is niet bekend, dit is een benadering)'))))
         : h('div', { style: 'margin-top:1rem' },
           h('label', { class: 'check' },
-            h('input', { type: 'checkbox', checked: p.onlyPond, onchange: e => { store.setPrefs({ onlyPond: e.target.checked }); render(); } }),
+            h('input', { type: 'checkbox', checked: p.onlyPond, onchange: e => { store.setPrefs({ onlyPond: e.target.checked, ...(e.target.checked ? { onlyDue: false } : {}) }); render(); } }),
             h('span', { class: 't' }, 'Alleen eerder foute vragen oefenen'),
             h('span', { class: `badge${selPond ? ' red' : ''}` }, `${selPond} in foutenvijver`)),
           h('label', { class: 'check' },
+            h('input', { type: 'checkbox', checked: p.onlyDue, onchange: e => { store.setPrefs({ onlyDue: e.target.checked, ...(e.target.checked ? { onlyPond: false } : {}) }); render(); } }),
+            h('span', { class: 't' }, 'Alleen vragen die nu herhaald moeten worden'),
+            h('span', { class: `badge${selDue ? ' blue' : ''}` }, `${selDue} aan de beurt`)),
+          h('label', { class: 'check' },
             h('input', { type: 'checkbox', checked: p.smart, onchange: e => { store.setPrefs({ smart: e.target.checked }); render(); } }),
-            h('span', { class: 't' }, 'Slimme volgorde ', h('span', { class: 'muted small' }, '(eerst foutenvijver, dan nieuwe vragen, dan de rest)'))))),
+            h('span', { class: 't' }, 'Slimme volgorde ', h('span', { class: 'muted small' }, '(eerst foutenvijver, dan herhaling, dan nieuwe vragen, dan de rest)'))))),
 
     h('section', { class: 'card' },
       h('h2', {}, '3. Weergave'),
@@ -205,7 +232,7 @@ function viewSetup() {
       h('button', { class: 'primary', style: 'min-width:12rem', disabled: poolSize === 0, onclick: startSession },
         exam ? `Examen starten (${examN} vragen)` : `Oefenen starten (${poolSize} vragen)`),
       poolSize === 0 && h('span', { class: 'muted small' },
-        sel.size === 0 ? 'Kies minstens één onderdeel.' : 'Geen vragen in deze selectie – de foutenvijver is leeg.')));
+        sel.size === 0 ? 'Kies minstens één onderdeel.' : p.onlyDue ? 'Niets te herhalen in deze selectie. Goed bezig! 🎉' : 'Geen vragen in deze selectie – de foutenvijver is leeg.')));
 }
 
 async function startSession() {
@@ -214,8 +241,9 @@ async function startSession() {
   try {
     let pool = await quiz.loadChapters(nums);
     if (p.mode === 'practice' && p.onlyPond) pool = pool.filter(q => store.isPond(q.id));
+    else if (p.mode === 'practice' && p.onlyDue) { const due = new Set(store.dueIds()); pool = pool.filter(q => due.has(q.id)); }
     if (!pool.length) { toast('Geen vragen in deze selectie.'); return; }
-    const ids = p.mode === 'exam' ? quiz.examQuestions(pool, p.examCount) : quiz.practiceOrder(pool, p.smart);
+    const ids = p.mode === 'exam' ? quiz.examQuestions(pool, p.examCount, p.examSpread) : quiz.practiceOrder(pool, p.smart);
     S = { mode: p.mode, ids, idx: 0, answers: {}, start: Date.now(), dur: p.examMinutes * 60000, chapters: nums };
     saveSession();
     setView('session');
@@ -391,7 +419,7 @@ function viewResult() {
   if (!r) return viewSetup();
   const back = h('button', { onclick: () => setView('setup') }, 'Terug naar start');
   const practiceWrong = () => {
-    store.setPrefs({ onlyPond: true, mode: 'practice' });
+    store.setPrefs({ onlyPond: true, onlyDue: false, mode: 'practice' });
     startSession();
   };
 
@@ -471,6 +499,7 @@ function viewStats() {
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.a)), h('div', { class: 'k' }, 'vragen beantwoord')),
       h('div', { class: 'stat' }, h('div', { class: 'n pct ' + (t.a ? pctClass(pct(t.ok, t.a)) : '') }, t.a ? pct(t.ok, t.a) + '%' : '–'), h('div', { class: 'k' }, 'goed (algemeen)')),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.pond)), h('div', { class: 'k' }, 'in foutenvijver')),
+      h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.due)), h('div', { class: 'k' }, 'nu te herhalen')),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, `${t.passed}/${t.exams}`), h('div', { class: 'k' }, 'examens geslaagd'))),
 
     weak && pct(weak.s.ok, weak.s.a) < 70 && h('div', { class: 'notice' },
@@ -494,7 +523,7 @@ function viewStats() {
           h('div', { class: 'row between small muted' },
             h('span', {}, `Beheerst ${s.mastered}/${c.count} · gezien ${s.seen}/${c.count} · ${s.ok}/${s.a} goed`),
             s.pond > 0 && h('button', { class: 'linklike small', onclick: () => {
-              store.setPrefs({ sel: [c.n], onlyPond: true, mode: 'practice' }); startSession();
+              store.setPrefs({ sel: [c.n], onlyPond: true, onlyDue: false, mode: 'practice' }); startSession();
             } }, `Oefen ${s.pond} foute`)));
       }),
       chapters.some(c => c.count === 0) && h('p', { class: 'muted small', style: 'margin:.8rem 0 0' },
