@@ -20,7 +20,6 @@ export const DEFAULT_PREFS = {
   onlyPond: false,
   onlyDue: false,    // alleen vragen die nu herhaald moeten worden
   examSpread: true,  // examen gespreid over de gekozen onderdelen
-  dailyGoal: 20,     // dagdoel: aantal vragen + kaarten per dag
   mode: 'practice',
 };
 
@@ -103,14 +102,14 @@ export function setRead(key, read) {
   persist();
 }
 
-// ---- dagdoel en reeks ------------------------------------------------------
+// ---- reeks en oefenkalender ------------------------------------------------------
 // days['2026-10-22'] = aantal beantwoorde vragen + beoordeelde kaarten op die dag (lokale tijd).
 export const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 function bumpDay() { const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1; }
 export const todayCount = () => state.days[dayKey()] || 0;
 export const dayCounts = () => state.days;
-/** Reeks = aantal opeenvolgende dagen waarop het dagdoel is gehaald. Is vandaag nog niet gehaald, dan breekt de reeks pas morgen. */
-export function streak(goal = prefs.dailyGoal) {
+/** Reeks (zoals Anki) = aantal opeenvolgende dagen met minstens één beantwoorde vraag of kaart. Is vandaag nog niets gedaan, dan breekt de reeks pas morgen. */
+export function streak(goal = 1) {
   const g = Math.max(1, goal | 0);
   const d = new Date(); d.setHours(12, 0, 0, 0);
   let n = 0, first = true;
@@ -121,7 +120,7 @@ export function streak(goal = prefs.dailyGoal) {
   }
   return n;
 }
-export function bestStreak(goal = prefs.dailyGoal) {
+export function bestStreak(goal = 1) {
   const g = Math.max(1, goal | 0);
   const keys = Object.keys(state.days).filter(k => state.days[k] >= g).sort();
   let best = 0, run = 0, prev = null;

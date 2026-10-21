@@ -974,21 +974,33 @@ function sectionRows(th, back) {
 
 
 // ---------------------------------------------------------------- dagdoel, reeks en flashcards
+let calOff = 0;   // maanden terug t.o.v. nu
+const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 function goalCard() {
-  const p = store.getPrefs();
-  const goal = p.dailyGoal, n = store.todayCount();
-  const st = store.streak(), best = store.bestStreak();
-  const met = n >= goal;
+  const counts = store.dayCounts();
+  const st = store.streak(), best = store.bestStreak(), n = store.todayCount();
+  const now = new Date(); const m = new Date(now.getFullYear(), now.getMonth() - calOff, 1);
+  const first = (m.getDay() + 6) % 7;                       // maandag = 0
+  const dim = new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate();
+  const max = Math.max(1, ...Object.values(counts));
+  const cells = [];
+  for (let i = 0; i < first; i++) cells.push(h('span', { class: 'cd empty' }));
+  for (let d = 1; d <= dim; d++) {
+    const k = store.dayKey(new Date(m.getFullYear(), m.getMonth(), d, 12).getTime());
+    const c = counts[k] || 0;
+    const lvl = c ? 1 + Math.min(3, Math.floor((c / max) * 3.999)) : 0;
+    cells.push(h('span', { class: `cd l${lvl}` + (k === store.dayKey() ? ' today' : ''), title: `${d} ${MAANDEN[m.getMonth()]}: ${c} geoefend` }, String(d)));
+  }
   return h('section', { class: 'card goal' },
     h('div', { class: 'row between' },
-      h('b', {}, met ? 'Dagdoel gehaald ✓' : 'Dagdoel'),
-      h('span', { class: 'badge' + (st > 0 ? ' blue' : '') }, st > 0 ? `🔥 ${st} ${st === 1 ? 'dag' : 'dagen'} op rij` : 'Nog geen reeks')),
-    h('div', { class: 'bar', style: 'margin:.5rem 0' }, h('i', { class: met ? 'mast' : 'seen', style: `width:${Math.min(100, pct(n, goal))}%` })),
-    h('div', { class: 'row between small muted' },
-      h('span', {}, `${n} van ${goal} vandaag (vragen en kaarten)` + (best > st ? ` · beste reeks: ${best}` : '')),
-      h('label', { class: 'small' }, 'Doel ',
-        h('select', { 'aria-label': 'Dagdoel', onchange: e => { store.setPrefs({ dailyGoal: +e.target.value }); render(); } },
-          [10, 20, 30, 50, 100].map(v => h('option', { value: v, selected: v === goal }, String(v)))))));
+      h('b', {}, st > 0 ? `🔥 ${st} ${st === 1 ? 'dag' : 'dagen'} op rij` : 'Nog geen reeks'),
+      h('span', { class: 'small muted' }, n ? `Vandaag: ${n} geoefend ✓` : 'Vandaag nog niet geoefend')),
+    h('div', { class: 'row between cal-head' },
+      h('button', { class: 'ghost small', 'aria-label': 'Vorige maand', onclick: () => { calOff++; render(); } }, '‹'),
+      h('span', { class: 'small' }, `${MAANDEN[m.getMonth()]} ${m.getFullYear()}`),
+      h('button', { class: 'ghost small', 'aria-label': 'Volgende maand', disabled: calOff === 0, onclick: () => { calOff--; render(); } }, '›')),
+    h('div', { class: 'cal' }, ...['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'].map(x => h('span', { class: 'cd hd' }, x)), ...cells),
+    h('div', { class: 'small muted' }, `Beste reeks: ${best} ${best === 1 ? 'dag' : 'dagen'} · een dag telt zodra je minstens één vraag of kaart doet`));
 }
 
 const cardKey = (ch, c) => `hs${ch}:${c.id}`;
@@ -1059,9 +1071,8 @@ function viewCards() {
       h('button', { class: 'danger', onclick: () => rateCard(false) }, 'Nog niet'),
       h('button', { class: 'primary', onclick: () => rateCard(true) }, 'Weet ik')),
     K.flip && sec && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(K.chapter, sec.id, 'cards') }, 'Lees de theorie hierover')),
-    h('div', { class: 'small muted' }, goalSummary()));
+    h('div', { class: 'small muted' }, `Vandaag: ${store.todayCount()} geoefend`));
 }
-const goalSummary = () => `Dagdoel: ${store.todayCount()} van ${store.getPrefs().dailyGoal}`;
 
 function viewLearn() {
   const withT = chapters.filter(c => c.theory && theory.getTheory(c.n));
