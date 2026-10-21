@@ -1,7 +1,7 @@
 """Leest het vetgedrukte antwoord (de VRZA zet het goede antwoord vet in de uitwerking)."""
 import re, sys, json, pdfplumber
 from pathlib import Path
-SOL = re.compile(r'Uitwerking van Opgave\s+(\d+)-(\d+)')
+SOL = re.compile(r'(?:Uitwerking van|Antwoord bij) Opgave\s+(\d+)-(\d+)')
 OPT = re.compile(r'^\s*([A-D])\.\s')
 def run(pdf):
     out = {}

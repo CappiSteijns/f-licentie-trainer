@@ -4,7 +4,7 @@ Interactieve oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Ama
 examentraining van de [VRZA-cursus](https://cursus.vrza.nl/wp/2017/12/04/vrza-cursus-zendamateur-2017-2019/).
 Pure HTML/CSS/JavaScript, geen build-stap, geen server: draait gratis op GitHub Pages.
 
-**Nu aanwezig (1.244 vragen):** Hoofdstuk 3 (91), 4 (32), 5 (164), 6 (50), 7 (53), 8 (64), 9 (25), 10 (57), 11 (40), 12 (182), 13 (192), 14 (244) en 15 (50). Nog niet: Hoofdstuk 1, 2, 16, 17 en 18 (en bundel B van Hoofdstuk 15). Meer hoofdstukken voeg je toe met het script hieronder.
+**Nu aanwezig (1.413 vragen):** Hoofdstuk 3 (91), 4 (32), 5 (164), 6 (50), 7 (53), 8 (64), 9 (25), 10 (57), 11 (40), 12 (182), 13 (192), 14 (244), 15 (50), 16 (50), 17 (20) en 18 (99). Nog niet: Hoofdstuk 1 en 2 (en bundel B van Hoofdstuk 15, als die bestaat). Meer hoofdstukken voeg je toe met het script hieronder.
 
 ## Functies
 - **Onderdelen filteren** met selectievakjes; alleen de gekozen hoofdstukken worden geladen.

@@ -1,7 +1,7 @@
 """Tweede controle: het goede antwoord staat vet in de uitwerking. Meet inkt-dichtheid per optieregel."""
 import re, sys, json
 import numpy as np, pdfplumber, pypdfium2 as pdfium
-SOL = re.compile(r'Uitwerking van Opgave\s+(\d+)-(\d+)')
+SOL = re.compile(r'(?:Uitwerking van|Antwoord bij) Opgave\s+(\d+)-(\d+)')
 OPT = re.compile(r'^\s*([A-D])\.')
 SC = 3.0  # 216 dpi
 def run(pdf):

@@ -18,9 +18,9 @@ ROOT = Path(__file__).resolve().parent.parent
 DPI = 110
 
 HEAD_RE = re.compile(r'^\s*(?:\d+\.\d+\.\d+\s+)?Opgave\s+(\d+)-(\d+)\s*$')
-SOL_RE = re.compile(r'^\s*(?:\d+\.\d+\.\d+\s+)?Uitwerking van Opgave\s+(\d+)-(\d+)\s*$')
-# tikfout in sommige PDF's: "5.5.141 Uitwerking van Opgave 5-" (nummer ontbreekt) -> nummer uit het kopnummer
-SOL_RE_NONUM = re.compile(r'^\s*\d+\.\d+\.(\d+)\s+Uitwerking van Opgave\s+\d+-\s*$')
+SOL_RE = re.compile(r'^\s*(?:\d+\.\d+\.\d+\s+)?(?:Uitwerking van|Antwoord bij) Opgave\s+(\d+)-(\d+)\s*$')
+# tikfout in sommige PDF's: "5.5.141 (?:Uitwerking van|Antwoord bij) Opgave 5-" (nummer ontbreekt) -> nummer uit het kopnummer
+SOL_RE_NONUM = re.compile(r'^\s*\d+\.\d+\.(\d+)\s+(?:Uitwerking van|Antwoord bij)\s*Opgave\s+\d+-\d*\s*$')
 OPT_RE = re.compile(r'^\s*([A-Da-d])\.\s*(.*)$')
 INLINE_OPT_RE = re.compile(r'^\s*a\.\s.*\sb\.\s.*\sc\.\s.*\sd\.\s', re.I)
 FOOT_RE = re.compile(r'^\s*(©|\d+-\d+\s*$)')
@@ -77,16 +77,16 @@ def classify(lines):
     m = HEAD_RE.match(lines[0])
     if m:
         return 'q', int(m.group(2))
+    m = SOL_RE_NONUM.match(lines[0])  # kopnummer (bv. 18.12.89) is leidend; 'Opgave'-nummer bevat soms tikfouten
+    if m:
+        return 's', int(m.group(1))
     m = SOL_RE.match(lines[0])
     if m:
         return 's', int(m.group(2))
-    m = SOL_RE_NONUM.match(lines[0])
-    if m:
-        return 's', int(m.group(1))
     if re.match(r'^\s*\d+\.\d+\s+(Opgaven|Uitwerkingen)\s*$', lines[0]):
         return 'x', None  # scheidingspagina tussen opgaven en uitwerkingen
     for ln in lines[:10]:  # kop door figuurtekst verstoord (bv. 12-49)
-        m = re.search(r'Uitwerking van Opgave\s+(\d+)-(\d+)', ln)
+        m = re.search(r'(?:Uitwerking van|Antwoord bij) Opgave\s+(\d+)-(\d+)', ln)
         if m:
             return 's', int(m.group(2))
     return 'c', None  # vervolgpagina
@@ -345,6 +345,9 @@ def main(paths):
                     e.update(v)
                 else:
                     e['question'] = v
+            e['explanation'] = re.split(r'\s*\d+\.\d+\.\d+ (?:Uitwerking van|Antwoord bij)\s*Opgave', e['explanation'])[0].strip()
+            for o in e['options']:
+                o['text'] = re.split(r'\s*(?:Opmerking|Let op)\b', o['text'])[0].strip()
             e.pop('_pat', None)
         out = ROOT / 'data' / f'hoofdstuk-{chap}.json'
         out.write_text(json.dumps(items, ensure_ascii=False, indent=1), encoding='utf-8')
