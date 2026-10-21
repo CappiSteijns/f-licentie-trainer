@@ -3,6 +3,7 @@ import * as quiz from './quiz.js';
 import * as sync from './sync.js';
 import * as account from './account.js';
 import * as theory from './theory.js';
+import * as tools from './tools.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -86,6 +87,7 @@ function renderNav() {
 
 function render() {
   applyPrefs();
+  tools.setToolsVisible(view === 'session');
   renderNav();
   const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
@@ -886,6 +888,7 @@ function viewPrivacy() {
 
 // ---------------------------------------------------------------- toetsenbord
 document.addEventListener('keydown', e => {
+  if (document.body.classList.contains('tool-open') || e.target.closest?.('.tpanel')) return;
   if (view !== 'session' || !S || $dlg.open) return;
   if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)) return;
   if (e.ctrlKey || e.metaKey || e.altKey) return;
