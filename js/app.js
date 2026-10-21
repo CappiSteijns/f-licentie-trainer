@@ -974,6 +974,7 @@ function sectionRows(th, back) {
 
 
 // ---------------------------------------------------------------- dagdoel, reeks en flashcards
+let calOpen = false;
 let calOff = 0;   // maanden terug t.o.v. nu
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
 function goalCard() {
@@ -991,16 +992,24 @@ function goalCard() {
     const lvl = c ? 1 + Math.min(3, Math.floor((c / max) * 3.999)) : 0;
     cells.push(h('span', { class: `cd l${lvl}` + (k === store.dayKey() ? ' today' : ''), title: `${d} ${MAANDEN[m.getMonth()]}: ${c} geoefend` }, String(d)));
   }
-  return h('section', { class: 'card goal' },
-    h('div', { class: 'row between' },
-      h('b', {}, st > 0 ? `🔥 ${st} ${st === 1 ? 'dag' : 'dagen'} op rij` : 'Nog geen reeks'),
-      h('span', { class: 'small muted' }, n ? `Vandaag: ${n} geoefend ✓` : 'Vandaag nog niet geoefend')),
+  const strip = [];
+  for (let i = 13; i >= 0; i--) {
+    const k = store.dayKey(Date.now() - i * 86400000);
+    const c = counts[k] || 0;
+    strip.push(h('i', { class: 'dot' + (c ? ' on' : '') + (i === 0 ? ' today' : ''), title: `${k}: ${c} geoefend` }));
+  }
+  const head = h('div', { class: 'row between goal-line' },
+    h('b', {}, st > 0 ? `🔥 ${st}` : '–', h('span', { class: 'small muted', style: 'font-weight:400' }, st > 0 ? (st === 1 ? ' dag' : ' dagen') + ' op rij' : ' geen reeks')),
+    h('span', { class: 'dots' }, ...strip),
+    h('button', { class: 'ghost small', 'aria-expanded': String(calOpen), 'aria-label': 'Kalender', onclick: () => { calOpen = !calOpen; render(); } }, calOpen ? '▴' : '▾'));
+  if (!calOpen) return h('section', { class: 'goal compact' }, head);
+  return h('section', { class: 'card goal' }, head,
     h('div', { class: 'row between cal-head' },
       h('button', { class: 'ghost small', 'aria-label': 'Vorige maand', onclick: () => { calOff++; render(); } }, '‹'),
       h('span', { class: 'small' }, `${MAANDEN[m.getMonth()]} ${m.getFullYear()}`),
       h('button', { class: 'ghost small', 'aria-label': 'Volgende maand', disabled: calOff === 0, onclick: () => { calOff--; render(); } }, '›')),
     h('div', { class: 'cal' }, ...['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'].map(x => h('span', { class: 'cd hd' }, x)), ...cells),
-    h('div', { class: 'small muted' }, `Beste reeks: ${best} ${best === 1 ? 'dag' : 'dagen'} · een dag telt zodra je minstens één vraag of kaart doet`));
+    h('div', { class: 'small muted' }, `Vandaag: ${n} geoefend · beste reeks: ${best} ${best === 1 ? 'dag' : 'dagen'} · een dag telt zodra je minstens één vraag of kaart doet`));
 }
 
 const cardKey = (ch, c) => `hs${ch}:${c.id}`;

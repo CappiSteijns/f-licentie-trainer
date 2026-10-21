@@ -202,3 +202,10 @@ dialog:has(.formulas) { max-width: min(94vw, 640px); max-height: 88vh; overflow:
 .flash.flipped { border-color: var(--accent); }
 .rate { justify-content: center; gap: .8rem; }
 .rate button { flex: 1; max-width: 14rem; padding: .8rem 1rem; font-size: 1.05rem; }
+.goal.compact { margin: 0 0 .8rem; padding: .1rem 0; }
+.goal-line { gap: .6rem; flex-wrap: nowrap; }
+.dots { display: flex; gap: 3px; flex: 1; justify-content: center; }
+.dot { width: 9px; height: 9px; border-radius: 3px; background: var(--surface-2); }
+.dot.on { background: var(--green); }
+.dot.today { outline: 1.5px solid var(--accent); outline-offset: 1px; }
+.goal-line button { min-height: 0; padding: .1rem .5rem; }
