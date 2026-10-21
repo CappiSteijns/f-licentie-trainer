@@ -184,3 +184,13 @@ textarea { width: 100%; font: .8rem/1.4 ui-monospace, monospace; background: var
 .formulas td.f { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
 @media (max-width: 560px) { .formulas td.f { white-space: normal; } }
 dialog:has(.formulas) { max-width: min(94vw, 640px); max-height: 88vh; overflow: auto; }
+
+/* dagdoel en flashcards */
+.goal select { font: inherit; padding: .1rem .3rem; }
+.flash { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; min-height: 14rem; padding: 1.4rem 1.2rem; margin: .8rem 0; display: flex; flex-direction: column; justify-content: center; gap: 1rem; cursor: pointer; text-align: center; box-shadow: none; }
+.flash:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.flash .fq { font-size: 1.2rem; font-weight: 600; }
+.flash .fa { font-size: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
+.flash.flipped { border-color: var(--accent); }
+.rate { justify-content: center; gap: .8rem; }
+.rate button { flex: 1; max-width: 14rem; padding: .8rem 1rem; font-size: 1.05rem; }

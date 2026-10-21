@@ -867,5 +867,301 @@
     }
    ]
   }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s3",
+   "q": "Welke drie deeltjes vormen een atoom, en welke lading hebben ze?",
+   "a": "Proton (+, in de kern), neutron (neutraal, in de kern) en elektron (−, in schillen rond de kern)."
+  },
+  {
+   "id": "c2",
+   "sec": "s3",
+   "q": "Hoeveel elektronen passen maximaal in de eerste drie schillen?",
+   "a": "2, 8 en 18."
+  },
+  {
+   "id": "c3",
+   "sec": "s4",
+   "q": "Wat is een geleider?",
+   "a": "Een stof met vrije elektronen, waardoor lading gemakkelijk kan verplaatsen (bijv. koper, zilver)."
+  },
+  {
+   "id": "c4",
+   "sec": "s4",
+   "q": "Wat is een isolator?",
+   "a": "Een stof zonder (of vrijwel zonder) vrije elektronen, die stroom niet doorlaat (bijv. glas, kunststof)."
+  },
+  {
+   "id": "c5",
+   "sec": "s5",
+   "q": "Wanneer is een atoom elektrisch neutraal?",
+   "a": "Als het evenveel protonen (+) als elektronen (−) heeft."
+  },
+  {
+   "id": "c6",
+   "sec": "s5",
+   "q": "Wat is een ion?",
+   "a": "Een atoom of molecuul met een tekort of overschot aan elektronen, dus met een netto lading."
+  },
+  {
+   "id": "c7",
+   "sec": "s9",
+   "q": "Wat is elektrische stroom?",
+   "a": "Het verplaatsen van elektrische lading."
+  },
+  {
+   "id": "c8",
+   "sec": "s9",
+   "q": "Wat is de technische stroomrichting?",
+   "a": "Van + naar −. De elektronen bewegen in werkelijkheid juist van − naar +."
+  },
+  {
+   "id": "c9",
+   "sec": "s9",
+   "q": "Formule voor lading, stroom en tijd?",
+   "a": "Q = I · t (lading in coulomb = stroom in ampère × tijd in seconden)."
+  },
+  {
+   "id": "c10",
+   "sec": "s9",
+   "q": "Hoe is 1 ampère gedefinieerd in coulomb?",
+   "a": "1 A = 1 C/s."
+  },
+  {
+   "id": "c11",
+   "sec": "s10",
+   "q": "Wat is elektrische spanning?",
+   "a": "Het potentiaalverschil tussen twee punten, in volt (V)."
+  },
+  {
+   "id": "c12",
+   "sec": "s11",
+   "q": "Wat zegt de wet van Ohm?",
+   "a": "U = I · R. Ook I = U/R en R = U/I."
+  },
+  {
+   "id": "c13",
+   "sec": "s11",
+   "q": "Door een weerstand van 100 Ω loopt 100 mA. Welke spanning staat erover?",
+   "a": "U = 0,1 A × 100 Ω = 10 V."
+  },
+  {
+   "id": "c14",
+   "sec": "s13",
+   "q": "Formule voor de weerstand van een draad?",
+   "a": "R = ρ · l / A (ρ soortelijke weerstand in Ω·m, l lengte in m, A doorsnede in m²)."
+  },
+  {
+   "id": "c15",
+   "sec": "s13",
+   "q": "Hoe verandert de weerstand van een draad als de lengte verdubbelt?",
+   "a": "Hij verdubbelt (evenredig met de lengte)."
+  },
+  {
+   "id": "c16",
+   "sec": "s13",
+   "q": "Hoe verandert de weerstand van een draad als de doorsnede verdubbelt?",
+   "a": "Hij halveert (omgekeerd evenredig met de doorsnede)."
+  },
+  {
+   "id": "c17",
+   "sec": "s13",
+   "q": "Hoe bereken je de doorsnede van een ronde draad met diameter D?",
+   "a": "A = π · D² / 4."
+  },
+  {
+   "id": "c18",
+   "sec": "s16",
+   "q": "Wat betekent 1k0 of 1K0 op een schema?",
+   "a": "1,0 kΩ = 1000 Ω."
+  },
+  {
+   "id": "c19",
+   "sec": "s16",
+   "q": "Wat betekent 4E7 of 4R7 op een schema?",
+   "a": "4,7 Ω (de letter E/R vervangt de komma)."
+  },
+  {
+   "id": "c20",
+   "sec": "s17",
+   "q": "Hoe sluit je een voltmeter aan?",
+   "a": "Parallel, over de schakeling of het onderdeel."
+  },
+  {
+   "id": "c21",
+   "sec": "s17",
+   "q": "Wat is de inwendige weerstand van een ideale voltmeter?",
+   "a": "Oneindig. Een echte voltmeter heeft een zeer hoge weerstand."
+  },
+  {
+   "id": "c22",
+   "sec": "s18",
+   "q": "Hoe sluit je een ampèremeter aan?",
+   "a": "In serie: de leiding wordt onderbroken en de meter erin geplaatst."
+  },
+  {
+   "id": "c23",
+   "sec": "s18",
+   "q": "Wat is de inwendige weerstand van een ideale ampèremeter?",
+   "a": "Nul. Een echte ampèremeter heeft een zeer lage weerstand."
+  },
+  {
+   "id": "c24",
+   "sec": "s19",
+   "q": "Hoe meet je een weerstand die in een schakeling zit?",
+   "a": "Haal de weerstand uit de schakeling en meet hem los, anders meet je de vervangingsweerstand."
+  },
+  {
+   "id": "c25",
+   "sec": "s21",
+   "q": "Wat is de eenheid van energie/arbeid en welk symbool heeft die grootheid?",
+   "a": "Joule (J), symbool W."
+  },
+  {
+   "id": "c26",
+   "sec": "s21",
+   "q": "Wat is vermogen en in welke eenheid wordt het uitgedrukt?",
+   "a": "Energie per tijd, P = W/t, in watt (W). 1 W = 1 J/s."
+  },
+  {
+   "id": "c27",
+   "sec": "s21",
+   "q": "Welke formules gelden voor het vermogen in een weerstand?",
+   "a": "P = U·I = I²·R = U²/R."
+  },
+  {
+   "id": "c28",
+   "sec": "s21",
+   "q": "Hoeveel joule is 1 kWh?",
+   "a": "3,6 MJ (1000 W × 3600 s)."
+  },
+  {
+   "id": "c29",
+   "sec": "s21",
+   "q": "Wat is dissipatie?",
+   "a": "Het omzetten van elektrische energie in warmte, bijvoorbeeld in een weerstand. Dissiperen = verbruiken."
+  },
+  {
+   "id": "c30",
+   "sec": "s22",
+   "q": "Kleurcode: noem de kleuren voor de cijfers 0 t/m 9.",
+   "a": "Zwart 0, bruin 1, rood 2, oranje 3, geel 4, groen 5, blauw 6, paars 7, grijs 8, wit 9."
+  },
+  {
+   "id": "c31",
+   "sec": "s22",
+   "q": "Kleurcode: wat betekenen goud en zilver als laatste ring?",
+   "a": "Goud ±5 %, zilver ±10 %. Geen ring: ±20 %."
+  },
+  {
+   "id": "c32",
+   "sec": "s22",
+   "q": "Wat is de waarde van bruin-grijs-rood-zilver?",
+   "a": "1 8 × 10² = 1800 Ω (1,8 kΩ) met ±10 % tolerantie."
+  },
+  {
+   "id": "c33",
+   "sec": "s23",
+   "q": "Wat is een PTC?",
+   "a": "Een weerstand waarvan de waarde stijgt bij hogere temperatuur (positieve temperatuurcoëfficiënt)."
+  },
+  {
+   "id": "c34",
+   "sec": "s23",
+   "q": "Wat is een NTC?",
+   "a": "Een weerstand waarvan de waarde daalt bij hogere temperatuur (negatieve temperatuurcoëfficiënt)."
+  },
+  {
+   "id": "c35",
+   "sec": "s24",
+   "q": "Wat is een potentiometer?",
+   "a": "Een weerstand met drie aansluitingen: twee uiteinden en een schuifcontact; o.a. voor het instellen van een spanning."
+  },
+  {
+   "id": "c36",
+   "sec": "s27",
+   "q": "Wat zegt de stroomwet van Kirchhoff?",
+   "a": "De som van de stromen die een knooppunt in gaan is gelijk aan de som van de stromen die eruit gaan."
+  },
+  {
+   "id": "c37",
+   "sec": "s27",
+   "q": "Wat zegt de spanningswet van Kirchhoff?",
+   "a": "In een gesloten kring is de som van alle spanningen nul (bronspanning = som van de spanningsvallen)."
+  },
+  {
+   "id": "c38",
+   "sec": "s28",
+   "q": "Vervangingsweerstand van weerstanden in serie?",
+   "a": "Rv = R1 + R2 + R3 + … De stroom is overal gelijk."
+  },
+  {
+   "id": "c39",
+   "sec": "s29",
+   "q": "Formule voor een onbelaste spanningsdeler?",
+   "a": "Uuit = Uin · R2 / (R1 + R2)."
+  },
+  {
+   "id": "c40",
+   "sec": "s30",
+   "q": "Vervangingsweerstand van twee weerstanden parallel?",
+   "a": "Rv = R1·R2 / (R1+R2). Algemeen: 1/Rv = 1/R1 + 1/R2 + …"
+  },
+  {
+   "id": "c41",
+   "sec": "s30",
+   "q": "Twee gelijke weerstanden R parallel: wat is de vervangingsweerstand?",
+   "a": "R/2. De vervangingsweerstand is altijd kleiner dan de kleinste."
+  },
+  {
+   "id": "c42",
+   "sec": "s30",
+   "q": "Wat is gelijk bij een parallelschakeling: spanning of stroom?",
+   "a": "De spanning is over alle takken gelijk; de stroom verdeelt zich."
+  },
+  {
+   "id": "c43",
+   "sec": "s31",
+   "q": "Wanneer is een brug van Wheatstone in evenwicht?",
+   "a": "Als de spanning tussen de twee middelpunten nul is: R1/R2 = R3/R4."
+  },
+  {
+   "id": "c44",
+   "sec": "s35",
+   "q": "Wat is EMK?",
+   "a": "De elektromotorische kracht: de spanning van een bron zonder belasting (onbelaste klemspanning)."
+  },
+  {
+   "id": "c45",
+   "sec": "s36",
+   "q": "Wanneer levert een bron maximaal vermogen aan de belasting?",
+   "a": "Bij aanpassing: belastingweerstand gelijk aan de inwendige weerstand van de bron."
+  },
+  {
+   "id": "c46",
+   "sec": "s37",
+   "q": "Wat gebeurt er met de spanning als je spanningsbronnen in serie schakelt?",
+   "a": "De spanningen tellen op (bij gelijke polariteit); de stroomcapaciteit blijft gelijk."
+  },
+  {
+   "id": "c47",
+   "sec": "s37",
+   "q": "Wat gebeurt er als je gelijke spanningsbronnen parallel schakelt?",
+   "a": "De spanning blijft gelijk, de capaciteit/maximale stroom tellen op."
+  },
+  {
+   "id": "c48",
+   "sec": "s40",
+   "q": "In welke eenheid wordt de capaciteit van een batterij uitgedrukt?",
+   "a": "Ampère-uur (Ah) of milli-ampère-uur (mAh)."
+  },
+  {
+   "id": "c49",
+   "sec": "s40",
+   "q": "Hoelang kan een accu van 60 Ah een stroom van 3 A leveren?",
+   "a": "60 / 3 = 20 uur."
+  }
  ]
 }

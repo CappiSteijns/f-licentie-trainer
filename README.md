@@ -14,6 +14,8 @@ Pure HTML/CSS/JavaScript, geen build-stap, geen server: draait gratis op GitHub 
 - **Slim herhalen** (Leitner-boxen): elke beantwoorde vraag komt na 1, 3, 7, 14 en 30 dagen terug zolang je hem goed blijft hebben; een fout zet hem terug naar het begin. Bovenaan staat "Vandaag te herhalen" met één knop, en er is een filter "Alleen vragen die nu herhaald moeten worden". Een vraag schuift pas op als hij aan de beurt was, dus vaker oefenen krikt hem niet kunstmatig op. De herhaalgegevens synchroniseren mee met je account.
 - **Voortgang**: totaal beantwoord, slagingspercentage, voortgangsbalk en percentage per onderdeel, zwakste plek, examenhistorie, reset met bevestiging.
 - **Leren met theorie** (waar de theorie is toegevoegd, nu Hoofdstuk 3): de cursustekst per paragraaf als leesbare pagina's; bij elke examenvraag een link naar de bijbehorende paragraaf(en) (benadrukt bij een fout antwoord); voortgang per paragraaf; een leerroute per hoofdstuk (lezen → paragraaf oefenen → hoofdstukexamen, "beheerst" bij ≥ 80% laatste poging goed); en een formuleblad per hoofdstuk. Gelezen-markeringen synchroniseren mee met je account.
+- **Dagdoel en reeks**: stel een dagdoel in (10–100, standaard 20). Elke beantwoorde vraag en elke beoordeelde flashcard telt mee. De reeks is het aantal dagen op rij waarop je het doel haalde (haal je vandaag nog niet, dan breekt de reeks pas morgen). Synchroniseert mee; het doel zelf is een instelling per apparaat.
+- **Flashcards** (waar de theorie is toegevoegd, nu H3 met 49 kaarten): in *Leren* → *Flashcards*. Tik/spatie om het antwoord te zien, daarna *Weet ik* (pijl rechts / 2) of *Nog niet* (pijl links / 1). Eigen herhaalschema (1, 3, 7, 14, 30 dagen), los van de vragen; een gemiste kaart komt in dezelfde ronde nog één keer terug. Voortgang synchroniseert mee.
 - **Accounts** (zelf hosten met PocketBase in Docker, of Supabase): inloggen en je voortgang op elk apparaat behouden, ook voor medecursisten. Zie *Zelf hosten op Unraid*.
 - **Synchroniseren zonder account** via een eigen Gist, link of back-upbestand.
 
@@ -195,6 +197,8 @@ Alle antwoorden zijn gecontroleerd tegen drie bronnen: de vetgedrukte letter in 
 2. `python tools/build_theory.py bronnen/THEORIE_HS<N>_....pdf` maakt de paragraafindeling (uit de inhoudsopgave) en een pagina-afbeelding per pagina.
 3. `python tools/map_questions.py <N> bronnen/THEORIE_HS<N>_....pdf --show` koppelt vragen aan paragrafen op woordovereenkomst en toont het resultaat. Controleer dat en corrigeer in `tools/theory_overrides.json` (`{"hs3-12": ["s32"]}`); draai het script daarna opnieuw.
 4. Vul `formulas` in `data/theorie/hoofdstuk-<N>.json` (formuleblad) en draai `python tools/build_index.py`.
+
+Flashcards zet je in `data/theorie/hoofdstuk-N.json` onder `"cards": [{"id":"c1","sec":"s9","q":"vraag","a":"antwoord"}]` (`sec` = id van de paragraaf). `build_theory.py` laat bestaande kaarten, vraagkoppelingen en formules staan. De kaarten van H3 staan in `tools/cards_h3.py` als voorbeeld.
 
 ## Bekende beperkingen
 - Machten en breuken (I², U²/R) gaan in de uit de PDF gehaalde tekst soms verloren ("I2"). Elke vraag heeft daarom een knop **Toon origineel**; bij twijfel altijd even kijken.

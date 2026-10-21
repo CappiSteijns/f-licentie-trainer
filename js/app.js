@@ -65,6 +65,7 @@ let S = null;               // actieve sessie
 let RESULT = null;          // laatste uitslag
 let timerInt = null;
 let T = null;               // geopende theorie: { chapter, secId, back }
+let K = null;               // flashcardronde: { chapter, queue, idx, flip, knew, missed }
 
 const chapterTitle = n => (chapters.find(c => c.n === n) || {}).title || '';
 const saveSession = () => S && store.saveSession(S);
@@ -78,7 +79,7 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : view === 'theory' ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'theory' || view === 'cards') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S ? 'session' : k) }, label)));
 }
@@ -86,7 +87,7 @@ function renderNav() {
 function render() {
   applyPrefs();
   renderNav();
-  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
 }
@@ -184,6 +185,7 @@ function viewSetup() {
         h('span', { class: 'muted small' }, ' – vragen die je eerder beantwoordde en die nu weer aan de beurt zijn, zodat je ze blijft onthouden.')),
       h('button', { class: 'primary', onclick: startReview }, `Herhaling starten (${dueTotal})`)),
     h('h1', {}, 'Oefenen voor het F-examen'),
+    goalCard(),
     h('p', { class: 'muted' }, 'Kies de onderdelen, de modus en start. Je voortgang wordt in deze browser bewaard; via “Synchroniseren” neem je hem mee naar een ander apparaat.'),
 
     h('section', { class: 'card' },
@@ -501,6 +503,7 @@ function viewStats() {
 
   return h('div', {},
     h('h1', {}, 'Voortgang'),
+    goalCard(),
     h('div', { class: 'cards' },
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.a)), h('div', { class: 'k' }, 'vragen beantwoord')),
       h('div', { class: 'stat' }, h('div', { class: 'n pct ' + (t.a ? pctClass(pct(t.ok, t.a)) : '') }, t.a ? pct(t.ok, t.a) + '%' : '–'), h('div', { class: 'k' }, 'goed (algemeen)')),
@@ -969,11 +972,103 @@ function sectionRows(th, back) {
   });
 }
 
+
+// ---------------------------------------------------------------- dagdoel, reeks en flashcards
+function goalCard() {
+  const p = store.getPrefs();
+  const goal = p.dailyGoal, n = store.todayCount();
+  const st = store.streak(), best = store.bestStreak();
+  const met = n >= goal;
+  return h('section', { class: 'card goal' },
+    h('div', { class: 'row between' },
+      h('b', {}, met ? 'Dagdoel gehaald ✓' : 'Dagdoel'),
+      h('span', { class: 'badge' + (st > 0 ? ' blue' : '') }, st > 0 ? `🔥 ${st} ${st === 1 ? 'dag' : 'dagen'} op rij` : 'Nog geen reeks')),
+    h('div', { class: 'bar', style: 'margin:.5rem 0' }, h('i', { class: met ? 'mast' : 'seen', style: `width:${Math.min(100, pct(n, goal))}%` })),
+    h('div', { class: 'row between small muted' },
+      h('span', {}, `${n} van ${goal} vandaag (vragen en kaarten)` + (best > st ? ` · beste reeks: ${best}` : '')),
+      h('label', { class: 'small' }, 'Doel ',
+        h('select', { 'aria-label': 'Dagdoel', onchange: e => { store.setPrefs({ dailyGoal: +e.target.value }); render(); } },
+          [10, 20, 30, 50, 100].map(v => h('option', { value: v, selected: v === goal }, String(v)))))));
+}
+
+const cardKey = (ch, c) => `hs${ch}:${c.id}`;
+function cardStats(ch) {
+  const th = theory.getTheory(ch); const cards = (th && th.cards) || [];
+  let due = 0, fresh = 0, known = 0;
+  for (const c of cards) {
+    const r = store.cardRec(cardKey(ch, c));
+    if (!r) { fresh++; due++; } else if (store.cardDue(cardKey(ch, c))) due++;
+    if (r && r.b >= 3) known++;
+  }
+  return { total: cards.length, due, fresh, known };
+}
+function startCards(ch, all) {
+  const th = theory.getTheory(ch);
+  let list = (th.cards || []).filter(c => all || store.cardDue(cardKey(ch, c)));
+  list = list.map(c => ({ c, r: Math.random() })).sort((x, y) => {
+    const fx = store.cardRec(cardKey(ch, x.c)) ? 1 : 0, fy = store.cardRec(cardKey(ch, y.c)) ? 1 : 0;
+    return fx - fy || x.r - y.r;     // eerst nieuwe, dan de rest door elkaar
+  }).map(x => x.c);
+  if (!list.length) return toast('Geen kaarten aan de beurt.');
+  K = { chapter: ch, queue: list.slice(), idx: 0, flip: false, knew: 0, missed: 0, retried: new Set() };
+  setView('cards');
+}
+function rateCard(knew) {
+  const c = K.queue[K.idx], key = cardKey(K.chapter, c);
+  store.recordCard(key, knew);
+  if (knew) K.knew++; else { K.missed++; if (!K.retried.has(c.id)) { K.retried.add(c.id); K.queue.push(c); } }
+  K.idx++; K.flip = false;
+  render();
+}
+let cardKeysBound = false;
+function bindCardKeys() {
+  if (cardKeysBound) return; cardKeysBound = true;
+  document.addEventListener('keydown', e => {
+    if (view !== 'cards' || !K || K.idx >= K.queue.length || e.target.closest('input,select,textarea,dialog')) return;
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!K.flip) { K.flip = true; render(); } }
+    else if (K.flip && (e.key === 'ArrowRight' || e.key === '2')) rateCard(true);
+    else if (K.flip && (e.key === 'ArrowLeft' || e.key === '1')) rateCard(false);
+  });
+}
+function viewCards() {
+  bindCardKeys();
+  if (!K) return viewLearn();
+  const th = theory.getTheory(K.chapter);
+  const back = h('button', { class: 'ghost', onclick: () => { K = null; setView('learn'); } }, '← Leren');
+  if (K.idx >= K.queue.length) {
+    const cs = cardStats(K.chapter);
+    return h('div', {}, back, h('h1', {}, 'Kaarten klaar'),
+      h('section', { class: 'card' },
+        h('p', {}, `${K.knew}× “weet ik”, ${K.missed}× “nog niet”.`),
+        h('p', { class: 'muted' }, cs.due ? `Nog ${cs.due} kaarten aan de beurt.` : 'Alle kaarten zijn voor nu gedaan. Kaarten die je kent komen vanzelf terug (na 1, 3, 7, 14, 30 dagen).'),
+        goalCard(),
+        h('div', { class: 'row' }, cs.due > 0 && h('button', { class: 'primary', onclick: () => startCards(K.chapter, false) }, 'Verder met kaarten'),
+          h('button', { onclick: () => startCards(K.chapter, true) }, 'Alle kaarten oefenen'),
+          h('button', { class: 'ghost', onclick: () => { K = null; setView('learn'); } }, 'Terug'))));
+  }
+  const c = K.queue[K.idx];
+  const sec = th.sections.find(x => x.id === c.sec);
+  return h('div', {}, back,
+    h('div', { class: 'row between' }, h('b', {}, `Kaart ${K.idx + 1} van ${K.queue.length}`), sec && h('span', { class: 'badge' }, sec.title)),
+    h('div', { class: 'bar', style: 'margin:.5rem 0' }, h('i', { class: 'seen', style: `width:${pct(K.idx, K.queue.length)}%` })),
+    h('div', { class: 'flash' + (K.flip ? ' flipped' : ''), role: 'button', tabindex: '0', 'aria-label': K.flip ? 'Antwoord' : 'Toon antwoord',
+      onclick: () => { if (!K.flip) { K.flip = true; render(); } } },
+      h('div', { class: 'fq' }, c.q),
+      K.flip ? h('div', { class: 'fa' }, c.a) : h('div', { class: 'hint muted small' }, 'Tik om het antwoord te tonen (spatie)')),
+    K.flip && h('div', { class: 'row rate' },
+      h('button', { class: 'danger', onclick: () => rateCard(false) }, 'Nog niet'),
+      h('button', { class: 'primary', onclick: () => rateCard(true) }, 'Weet ik')),
+    K.flip && sec && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(K.chapter, sec.id, 'cards') }, 'Lees de theorie hierover')),
+    h('div', { class: 'small muted' }, goalSummary()));
+}
+const goalSummary = () => `Dagdoel: ${store.todayCount()} van ${store.getPrefs().dailyGoal}`;
+
 function viewLearn() {
   const withT = chapters.filter(c => c.theory && theory.getTheory(c.n));
   const without = chapters.filter(c => c.count > 0 && !withT.includes(c));
   return h('div', {},
     h('h1', {}, 'Leren'),
+    goalCard(),
     h('p', { class: 'muted' }, 'Per hoofdstuk een vaste route: lees een paragraaf, oefen de bijbehorende vragen, en doe daarna het hoofdstukexamen. Een paragraaf is “beheerst” als je minstens 80% van de gekoppelde vragen bij je laatste poging goed had.'),
     withT.map(c => {
       const th = theory.getTheory(c.n);
@@ -989,6 +1084,7 @@ function viewLearn() {
           h('span', { class: 'badge' }, `${pr.done}/${pr.total} paragrafen beheerst`)),
         h('div', { class: 'bar', style: 'margin:.6rem 0' }, h('i', { class: 'mast', style: `width:${pct(pr.done, pr.total)}%` })),
         h('div', { class: 'row' }, stepEl,
+          (() => { const cs = cardStats(c.n); return cs.total > 0 && h('button', { onclick: () => cs.due ? startCards(c.n, false) : startCards(c.n, true) }, cs.due ? `Flashcards (${cs.due})` : 'Flashcards herhalen'); })(),
           formulaBtn(c.n),
           step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
         h('details', { class: 'secs', open: true }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
