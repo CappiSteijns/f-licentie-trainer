@@ -92,6 +92,20 @@ export function fmtEng(v, shift = 0) {
   return comma(`${m}×10${sup(e)}`) + (pre !== undefined && pre !== '' ? `  (${pre})` : '');
 }
 
+// ---------------------------------------------------------------- formaat (voor tablets)
+const SIZES = [1, 1.25, 1.5, 1.75, 2, 2.5];
+let sizeIdx = (() => { try { const v = localStorage.getItem('flic.toolsize'); if (v != null) return Math.min(SIZES.length - 1, Math.max(0, +v)); } catch { /* negeren */ } return window.innerWidth >= 768 ? 2 : 0; })();
+const panels = [];
+function applySize() {
+  for (const el of panels) el.style.setProperty('--ts', SIZES[sizeIdx]);
+  try { localStorage.setItem('flic.toolsize', String(sizeIdx)); } catch { /* negeren */ }
+  requestAnimationFrame(() => { const o = panels.find(x => !x.hidden); document.body.style.setProperty('--tsn', SIZES[sizeIdx]); document.body.style.setProperty('--tph', o ? o.offsetHeight + 'px' : '0px'); if (o && o.fit) o.fit(); });
+}
+const sizeBtns = () => [
+  $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Kleiner', onclick: () => { sizeIdx = Math.max(0, sizeIdx - 1); applySize(); } }, 'A−'),
+  $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Groter', onclick: () => { sizeIdx = Math.min(SIZES.length - 1, sizeIdx + 1); applySize(); } }, 'A+'),
+];
+
 // ---------------------------------------------------------------- rekenmachine
 function buildCalc(onClose) {
   let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false;
@@ -143,7 +157,7 @@ function buildCalc(onClose) {
   }));
   render(); draw();
   const panel = $('div', { class: 'tpanel calc', role: 'dialog', 'aria-label': 'Rekenmachine', tabindex: '-1' },
-    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
+    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, ...sizeBtns(), $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     $('div', { class: 'cdisp' }, disp, out), keys);
   panel.addEventListener('keydown', e => {
     const m = { Enter: '=', '=': '=', Backspace: 'DEL', Delete: 'AC', '*': '×', '/': '÷', '.': ',', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')', '^': 'xʸ', e: 'EXP', E: 'EXP' };
@@ -188,6 +202,7 @@ function buildPad(onClose) {
     $('div', { class: 'thead' }, $('b', {}, 'Kladblok'),
       $('span', { class: 'tools' }, bPen, sw('auto', 'Wit/zwart'), sw('#4da3ff', 'Blauw'), sw('#f85149', 'Rood'), sw('#3fb950', 'Groen'), bEr,
         tool('↶', () => { strokes.pop(); draw(); }, 'Ongedaan maken'), tool('Wis', () => { strokes.length = 0; draw(); }, 'Alles wissen')),
+      $('span', { class: 'tools' }, ...sizeBtns()),
       $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     cv);
   panel.fit = fit; panel.redraw = draw;
@@ -200,7 +215,8 @@ function show(which) {
   open = open === which ? null : which;
   for (const [k, el] of [['calc', calc], ['pad', pad]]) el.hidden = open !== k;
   document.body.classList.toggle('tool-open', !!open);
-  if (open === 'pad') { pad.fit(); } if (open === 'calc') calc.focus();
+  applySize();
+  if (open === 'calc') calc.focus();
   fab.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === open));
 }
 export function initTools() {
@@ -210,7 +226,9 @@ export function initTools() {
   fab = $('div', { class: 'tfab', hidden: true },
     $('button', { type: 'button', 'data-k': 'calc', 'aria-label': 'Rekenmachine', title: 'Rekenmachine', onclick: () => show('calc') }, '🧮'),
     $('button', { type: 'button', 'data-k': 'pad', 'aria-label': 'Kladblok', title: 'Kladblok', onclick: () => show('pad') }, '✏️'));
+  panels.push(calc, pad);
   document.body.append(fab, calc, pad);
+  applySize();
 }
 /** Knoppen tonen/verbergen; bij verbergen sluiten de panelen ook (de tekening blijft bewaard). */
 export function setToolsVisible(on) {

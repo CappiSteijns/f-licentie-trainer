@@ -216,7 +216,7 @@ dialog:has(.formulas) { max-width: min(94vw, 640px); max-height: 88vh; overflow:
 .tfab button.on { border-color: var(--accent); }
 body.has-tools #app { padding-bottom: 7rem; }
 body.tool-open .tfab { display: none; }
-body.tool-open #app { padding-bottom: 62vh; }
+body.tool-open #app { padding-bottom: calc(var(--tph, 60vh) + 1rem); }
 .pad .thead { flex-wrap: wrap; }
 .pad .thead .tools { order: 3; width: 100%; }
 .tpanel { position: fixed; left: 0; right: 0; bottom: 0; margin: 0 auto; width: min(100%, 460px); z-index: 50; background: var(--surface); border: 1px solid var(--border); border-bottom: 0; border-radius: 14px 14px 0 0; box-shadow: 0 -4px 20px rgba(0,0,0,.5); padding: .5rem .6rem .7rem; outline: none; }
@@ -238,3 +238,21 @@ body.tool-open #app { padding-bottom: 62vh; }
 .pad .tools .ghost { min-height: 0; padding: .2rem .45rem; }
 .sw { width: 22px; height: 22px; min-height: 0; padding: 0; border-radius: 50%; border: 2px solid var(--border); }
 .pad-cv { flex: 1; width: 100%; min-height: 0; touch-action: none; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: crosshair; }
+
+.tpanel { --ts: 1; width: min(100%, calc(460px * var(--ts))); }
+.calc { font-size: calc(1rem * var(--ts)); }
+.calc .cx { font-size: calc(1rem * var(--ts)); }
+.calc .cr { font-size: calc(1.6rem * var(--ts)); }
+.calc .ck { gap: calc(6px * var(--ts)); }
+.calc .ck button { min-height: calc(40px * var(--ts)); font-size: calc(1rem * var(--ts)); }
+.calc .cm { font-size: calc(.72rem * var(--ts)); }
+.tpanel .thead .ghost { font-size: calc(.9rem * min(var(--ts), 1.6)); }
+.pad { height: min(88vh, calc(55vh * min(var(--ts), 1.6))); }
+.pad .sw { width: calc(22px * min(var(--ts), 1.8)); height: calc(22px * min(var(--ts), 1.8)); }
+.calc { max-height: 92vh; overflow: auto; }
+@media (min-width: 768px) {
+  /* tablet/desktop: paneel rechtsonder naast de vraag, niet eroverheen */
+  .tpanel { left: auto; right: 12px; bottom: 12px; margin: 0; border-bottom: 1px solid var(--border); border-radius: 14px; width: min(calc(100% - 24px), calc(400px * var(--ts))); }
+  body.tool-open #app { padding-bottom: 2rem; padding-right: min(calc(400px * var(--tsn, 1.5) + 40px), 55vw); }
+  .pad { height: min(80vh, calc(50vh * min(var(--ts), 1.6))); }
+}
