@@ -216,7 +216,6 @@ dialog:has(.formulas) { max-width: min(94vw, 640px); max-height: 88vh; overflow:
 .tfab button.on { border-color: var(--accent); }
 body.has-tools #app { padding-bottom: 7rem; }
 body.tool-open .tfab { display: none; }
-body.tool-open #app { padding-bottom: calc(var(--tph, 60vh) + 1rem); }
 .pad .thead { flex-wrap: wrap; }
 .pad .thead .tools { order: 3; width: 100%; }
 .tpanel { position: fixed; left: 0; right: 0; bottom: 0; margin: 0 auto; width: min(100%, 460px); z-index: 50; background: var(--surface); border: 1px solid var(--border); border-bottom: 0; border-radius: 14px 14px 0 0; box-shadow: 0 -4px 20px rgba(0,0,0,.5); padding: .5rem .6rem .7rem; outline: none; }
@@ -239,7 +238,7 @@ body.tool-open #app { padding-bottom: calc(var(--tph, 60vh) + 1rem); }
 .sw { width: 22px; height: 22px; min-height: 0; padding: 0; border-radius: 50%; border: 2px solid var(--border); }
 .pad-cv { flex: 1; width: 100%; min-height: 0; touch-action: none; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; cursor: crosshair; }
 
-.tpanel { --ts: 1; width: min(100%, calc(460px * var(--ts))); }
+.tpanel { --ts: 1; --tw: 400px; left: auto; right: 12px; bottom: 12px; margin: 0; width: var(--tw); max-width: calc(100vw - 24px); border-bottom: 1px solid var(--border); border-radius: 14px; }
 .calc { font-size: calc(1rem * var(--ts)); }
 .calc .cx { font-size: calc(1rem * var(--ts)); }
 .calc .cr { font-size: calc(1.6rem * var(--ts)); }
@@ -247,12 +246,15 @@ body.tool-open #app { padding-bottom: calc(var(--tph, 60vh) + 1rem); }
 .calc .ck button { min-height: calc(40px * var(--ts)); font-size: calc(1rem * var(--ts)); }
 .calc .cm { font-size: calc(.72rem * var(--ts)); }
 .tpanel .thead .ghost { font-size: calc(.9rem * min(var(--ts), 1.6)); }
-.pad { height: min(88vh, calc(55vh * min(var(--ts), 1.6))); }
+
+.pad { height: var(--th, 50vh); max-height: calc(100vh - 24px); }
 .pad .sw { width: calc(22px * min(var(--ts), 1.8)); height: calc(22px * min(var(--ts), 1.8)); }
 .calc { max-height: 92vh; overflow: auto; }
-@media (min-width: 768px) {
-  /* tablet/desktop: paneel rechtsonder naast de vraag, niet eroverheen */
-  .tpanel { left: auto; right: 12px; bottom: 12px; margin: 0; border-bottom: 1px solid var(--border); border-radius: 14px; width: min(calc(100% - 24px), calc(400px * var(--ts))); }
-  body.tool-open #app { padding-bottom: 2rem; padding-right: min(calc(400px * var(--tsn, 1.5) + 40px), 55vw); }
-  .pad { height: min(80vh, calc(50vh * min(var(--ts), 1.6))); }
-}
+.rz { position: absolute; z-index: 2; touch-action: none; }
+.rz-l { left: 0; top: 26px; bottom: 26px; width: 16px; cursor: ew-resize; }
+.rz-t { top: 0; left: 26px; right: 26px; height: 16px; cursor: ns-resize; }
+.rz-tl { top: 0; left: 0; width: 26px; height: 26px; cursor: nwse-resize; }
+.rz-l::after, .rz-t::after, .rz-tl::after { content: ''; position: absolute; background: var(--muted); opacity: .55; border-radius: 3px; }
+.rz-l::after { left: 5px; top: 50%; width: 4px; height: 36px; margin-top: -18px; }
+.rz-t::after { top: 5px; left: 50%; height: 4px; width: 36px; margin-left: -18px; }
+.rz-tl::after { left: 5px; top: 5px; width: 10px; height: 10px; border-radius: 3px 0 0 0; background: none; border-left: 4px solid var(--muted); border-top: 4px solid var(--muted); }

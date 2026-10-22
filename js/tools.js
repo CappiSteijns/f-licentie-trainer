@@ -92,19 +92,44 @@ export function fmtEng(v, shift = 0) {
   return comma(`${m}×10${sup(e)}`) + (pre !== undefined && pre !== '' ? `  (${pre})` : '');
 }
 
-// ---------------------------------------------------------------- formaat (voor tablets)
-const SIZES = [1, 1.25, 1.5, 1.75, 2, 2.5];
-let sizeIdx = (() => { try { const v = localStorage.getItem('flic.toolsize'); if (v != null) return Math.min(SIZES.length - 1, Math.max(0, +v)); } catch { /* negeren */ } return window.innerWidth >= 768 ? 2 : 0; })();
+// ---------------------------------------------------------------- formaat: paneel zelf groter slepen
+// Het paneel zweeft rechtsonder; pak de linkerkant, de bovenkant of de hoek vast om het formaat te bepalen.
+// De rest van de pagina verandert niet mee.
+const SKEY = 'flic.toolbox';
+const sizes = (() => { try { return JSON.parse(localStorage.getItem(SKEY)) || {}; } catch { return {}; } })();
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const panels = [];
-function applySize() {
-  for (const el of panels) el.style.setProperty('--ts', SIZES[sizeIdx]);
-  try { localStorage.setItem('flic.toolsize', String(sizeIdx)); } catch { /* negeren */ }
-  requestAnimationFrame(() => { const o = panels.find(x => !x.hidden); document.body.style.setProperty('--tsn', SIZES[sizeIdx]); document.body.style.setProperty('--tph', o ? o.offsetHeight + 'px' : '0px'); if (o && o.fit) o.fit(); });
+function applyBox(el) {
+  const m = el.dataset.m, vw = innerWidth - 24, vh = innerHeight - 24;
+  const d = sizes[m] || {};
+  const w = clamp(d.w || (m === 'calc' ? (innerWidth >= 768 ? 460 : 400) : (innerWidth >= 768 ? 560 : 400)), 260, vw);
+  el.style.setProperty('--tw', w + 'px');
+  el.style.setProperty('--ts', clamp(w / 400, 0.7, 3));
+  if (m === 'pad') el.style.setProperty('--th', clamp(d.h || Math.round(innerHeight * (innerWidth >= 768 ? 0.6 : 0.5)), 220, vh) + 'px');
+  if (el.fit) requestAnimationFrame(el.fit);
 }
-const sizeBtns = () => [
-  $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Kleiner', onclick: () => { sizeIdx = Math.max(0, sizeIdx - 1); applySize(); } }, 'A−'),
-  $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Groter', onclick: () => { sizeIdx = Math.min(SIZES.length - 1, sizeIdx + 1); applySize(); } }, 'A+'),
-];
+function makeResizable(el, m) {
+  el.dataset.m = m; panels.push(el);
+  for (const [cls, dx, dy] of [['rz-l', 1, 0], ['rz-t', 0, 1], ['rz-tl', 1, 1]]) {
+    if (m === 'calc' && !dx) continue;                  // rekenmachine: hoogte volgt uit de breedte
+    const hnd = $('div', { class: 'rz ' + cls, 'aria-hidden': 'true' });
+    hnd.addEventListener('pointerdown', e => {
+      e.preventDefault(); hnd.setPointerCapture(e.pointerId);
+      const r = el.getBoundingClientRect(), x0 = e.clientX, y0 = e.clientY;
+      const move = ev => {
+        const o = sizes[m] = { ...(sizes[m] || {}) };
+        if (dx) o.w = Math.round(r.width + (x0 - ev.clientX));
+        if (dy && m === 'pad') o.h = Math.round(r.height + (y0 - ev.clientY));
+        applyBox(el);
+      };
+      const up = () => { hnd.removeEventListener('pointermove', move); hnd.removeEventListener('pointerup', up); hnd.removeEventListener('pointercancel', up); try { localStorage.setItem(SKEY, JSON.stringify(sizes)); } catch { /* negeren */ } };
+      hnd.addEventListener('pointermove', move); hnd.addEventListener('pointerup', up); hnd.addEventListener('pointercancel', up);
+    });
+    el.append(hnd);
+  }
+  applyBox(el);
+}
+addEventListener('resize', () => panels.forEach(applyBox));
 
 // ---------------------------------------------------------------- rekenmachine
 function buildCalc(onClose) {
@@ -157,7 +182,7 @@ function buildCalc(onClose) {
   }));
   render(); draw();
   const panel = $('div', { class: 'tpanel calc', role: 'dialog', 'aria-label': 'Rekenmachine', tabindex: '-1' },
-    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, ...sizeBtns(), $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
+    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     $('div', { class: 'cdisp' }, disp, out), keys);
   panel.addEventListener('keydown', e => {
     const m = { Enter: '=', '=': '=', Backspace: 'DEL', Delete: 'AC', '*': '×', '/': '÷', '.': ',', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')', '^': 'xʸ', e: 'EXP', E: 'EXP' };
@@ -202,7 +227,6 @@ function buildPad(onClose) {
     $('div', { class: 'thead' }, $('b', {}, 'Kladblok'),
       $('span', { class: 'tools' }, bPen, sw('auto', 'Wit/zwart'), sw('#4da3ff', 'Blauw'), sw('#f85149', 'Rood'), sw('#3fb950', 'Groen'), bEr,
         tool('↶', () => { strokes.pop(); draw(); }, 'Ongedaan maken'), tool('Wis', () => { strokes.length = 0; draw(); }, 'Alles wissen')),
-      $('span', { class: 'tools' }, ...sizeBtns()),
       $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     cv);
   panel.fit = fit; panel.redraw = draw;
@@ -215,7 +239,7 @@ function show(which) {
   open = open === which ? null : which;
   for (const [k, el] of [['calc', calc], ['pad', pad]]) el.hidden = open !== k;
   document.body.classList.toggle('tool-open', !!open);
-  applySize();
+  if (open === 'pad') pad.fit();
   if (open === 'calc') calc.focus();
   fab.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === open));
 }
@@ -226,9 +250,8 @@ export function initTools() {
   fab = $('div', { class: 'tfab', hidden: true },
     $('button', { type: 'button', 'data-k': 'calc', 'aria-label': 'Rekenmachine', title: 'Rekenmachine', onclick: () => show('calc') }, '🧮'),
     $('button', { type: 'button', 'data-k': 'pad', 'aria-label': 'Kladblok', title: 'Kladblok', onclick: () => show('pad') }, '✏️'));
-  panels.push(calc, pad);
   document.body.append(fab, calc, pad);
-  applySize();
+  makeResizable(calc, 'calc'); makeResizable(pad, 'pad');
 }
 /** Knoppen tonen/verbergen; bij verbergen sluiten de panelen ook (de tekening blijft bewaard). */
 export function setToolsVisible(on) {
