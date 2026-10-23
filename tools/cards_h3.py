@@ -97,5 +97,23 @@ DR=[
   [("Een ampèremeter sluit je aan ___","in serie",["parallel","over de bron","zonder bron"]),("Een goede ampèremeter heeft een ___ inwendige weerstand","lage",["hoge","oneindige","negatieve"])],None),
 ]
 d['drill']=[{"id":i,"sec":sec,"name":n,"where":w,"f":f,"cloze":[{"q":q,"a":a,"w":w2} for q,a,w2 in cl],"gen":g} for i,sec,n,w,f,cl,g in DR]
+
+# Omwerken: (formule, gevraagde grootheid, juiste vorm, [veelgemaakte fouten])
+RW={
+"ohm":[("U = I · R","R","R = U / I",["R = I / U","R = U · I","R = I − U"]),("U = I · R","I","I = U / R",["I = R / U","I = U · R","I = U − R"])],
+"pui":[("P = U · I","I","I = P / U",["I = U / P","I = P · U","I = P − U"]),("P = U · I","U","U = P / I",["U = I / P","U = P · I","U = P − I"])],
+"pir":[("P = I² · R","R","R = P / I²",["R = P · I²","R = I² / P","R = P / I"]),("P = I² · R","I","I = √(P / R)",["I = P / R","I = √(P · R)","I = (P / R)²"])],
+"pur":[("P = U² / R","R","R = U² / P",["R = P / U²","R = U² · P","R = √(U · P)"]),("P = U² / R","U","U = √(P · R)",["U = P · R","U = √(P / R)","U = (P · R)²"])],
+"charge":[("Q = I · t","I","I = Q / t",["I = t / Q","I = Q · t","I = Q − t"]),("Q = I · t","t","t = Q / I",["t = I / Q","t = Q · I","t = Q − I"])],
+"energy":[("W = P · t","P","P = W / t",["P = t / W","P = W · t","P = W − t"]),("W = P · t","t","t = W / P",["t = P / W","t = W · P","t = W − P"])],
+"wire":[("R = ρ · l / A","l","l = R · A / ρ",["l = R · ρ / A","l = ρ / (R · A)","l = R / (ρ · A)"]),("R = ρ · l / A","A","A = ρ · l / R",["A = R · ρ / l","A = R · l / ρ","A = R / (ρ · l)"]),("R = ρ · l / A","ρ","ρ = R · A / l",["ρ = R · l / A","ρ = l / (R · A)","ρ = R / (A · l)"])],
+"klem":[("U = E − I · Rᵢ","Rᵢ","Rᵢ = (E − U) / I",["Rᵢ = (U − E) / I","Rᵢ = (E + U) / I","Rᵢ = E − U · I"]),("U = E − I · Rᵢ","E","E = U + I · Rᵢ",["E = U − I · Rᵢ","E = U / (I · Rᵢ)","E = I · Rᵢ − U"])],
+"bel":[("I = E / (Rᵢ + R_b)","R_b","R_b = E / I − Rᵢ",["R_b = E / I + Rᵢ","R_b = I / E − Rᵢ","R_b = E · I − Rᵢ"])],
+"accu":[("t = C / I","C","C = I · t",["C = t / I","C = I / t","C = t − I"]),("t = C / I","I","I = C / t",["I = t / C","I = C · t","I = C − t"])],
+"rend":[("η = P_nuttig / P_opgenomen · 100%","P_nuttig","P_nuttig = η · P_opgenomen / 100%",["P_nuttig = P_opgenomen / η · 100%","P_nuttig = η · P_opgenomen · 100%","P_nuttig = P_opgenomen − η"])],
+"div":[("U₂ = U · R₂ / (R₁ + R₂)","U","U = U₂ · (R₁ + R₂) / R₂",["U = U₂ · R₂ / (R₁ + R₂)","U = U₂ · (R₁ + R₂)","U = U₂ / (R₁ + R₂) · R₂"])],
+}
+for it in d['drill']:
+    if it['id'] in RW: it['rewrite']=[{"base":b,"ask":a,"a":r,"w":w} for b,a,r,w in RW[it['id']]]
 json.dump(d,open('data/theorie/hoofdstuk-3.json','w'),ensure_ascii=False,indent=1)
 print(len(C))

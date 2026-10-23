@@ -85,6 +85,7 @@ export function makeQuestion(item, all, forceType) {
   const types = ['name', 'where'].filter(() => item.f);
   if (item.cloze && item.cloze.length) types.push('cloze', 'cloze');
   if (item.gen && GEN[item.gen]) types.push('calc', 'calc', 'calc');
+  if (item.rewrite && item.rewrite.length) types.push('rewrite', 'rewrite', 'rewrite');
   const type = forceType && types.includes(forceType) ? forceType : pick(types);
   const others = shuffle(all.filter(x => x.id !== item.id && x.f));
   const mk = (right, wrongs) => {
@@ -102,7 +103,30 @@ export function makeQuestion(item, all, forceType) {
     const c = pick(item.cloze);
     return { type, item, prompt: c.q.replace('___', '＿＿＿'), mono: !!item.f && /[=/·²]/.test(c.q), sub: item.name, options: mk(c.a, c.w), explain: `${c.q.replace('___', c.a)}${item.f ? ' — ' + item.name + ': ' + item.f : ''}` };
   }
+  if (type === 'rewrite') {
+    const r = pick(item.rewrite);
+    return { type, item, prompt: `Werk de formule om naar ${r.ask}:`, formula: r.base, mono: true, sub: item.name, options: mk(r.a, r.w), explain: `${r.base}  →  ${r.a}` };
+  }
   const g = GEN[item.gen]();
   const right = val(g.a, g.unit);
   return { type: 'calc', item, prompt: g.q, sub: item.name, options: mk(right, g.wrong.map(w => val(w, g.unit))), explain: `${g.how} = ${right}`, calc: true };
+}
+
+// ---- eenheden omrekenen (voorvoegsels) --------------------------------------------
+const PX = { G: 1e9, M: 1e6, k: 1e3, '': 1, m: 1e-3, 'µ': 1e-6, n: 1e-9, p: 1e-12 };
+const plain = x => { const v = +x.toPrecision(7); return String(v).includes('e') ? v.toFixed(12).replace(/0+$/, '').replace(/\.$/, '').replace('.', ',') : String(v).replace('.', ','); };
+const UNITS = ['V', 'A', 'Ω', 'W'];
+const CONV = [['k', ''], ['', 'k'], ['', 'm'], ['m', ''], ['m', 'µ'], ['µ', 'm'], ['M', 'k'], ['M', ''], ['', 'M'], ['m', 'k'], ['k', 'm']];
+export const UNIT_ITEM = { id: 'conv', sec: 's21', name: 'Eenheden omrekenen', where: 'omrekenen tussen voorvoegsels' };
+export function unitQuestion() {
+  const OK = { M: ['Ω', 'W'], k: ['V', 'Ω', 'W'], m: ['V', 'A', 'W'], 'µ': ['A', 'V'], '': UNITS };   // alleen voorvoegsels die in de praktijk voorkomen
+  const [from, to] = pick(CONV), u = pick(OK[from].filter(x => OK[to].includes(x)));
+  const v = pick([0.47, 1.5, 2.2, 4.7, 10, 22, 47, 100, 220, 470, 3.3, 0.68]);
+  const r = v * PX[from] / PX[to];
+  const wrong = [r * 10, r / 10, r * 1000, r / 1000, r * 100, r / 100].filter(x => plain(x) !== plain(r));
+  const ws = shuffle(wrong).slice(0, 3);
+  const opts = shuffle([{ text: `${plain(r)} ${to}${u}`, ok: true }, ...ws.map(x => ({ text: `${plain(x)} ${to}${u}`, ok: false }))]);
+  const name = p => ({ G: 'giga (10⁹)', M: 'mega (10⁶)', k: 'kilo (10³)', '': 'zonder voorvoegsel', m: 'milli (10⁻³)', 'µ': 'micro (10⁻⁶)', n: 'nano (10⁻⁹)' }[p]);
+  return { type: 'units', item: UNIT_ITEM, sub: 'Omrekenen', prompt: `Reken om: ${plain(v)} ${from}${u} = ? ${to}${u}`, options: opts,
+    explain: `${plain(v)} ${from}${u} = ${plain(r)} ${to}${u}. (${from || '—'}: ${name(from)}; ${to || '—'}: ${name(to)})` };
 }

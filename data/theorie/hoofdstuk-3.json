@@ -1200,7 +1200,29 @@
      ]
     }
    ],
-   "gen": "ohm"
+   "gen": "ohm",
+   "rewrite": [
+    {
+     "base": "U = I · R",
+     "ask": "R",
+     "a": "R = U / I",
+     "w": [
+      "R = I / U",
+      "R = U · I",
+      "R = I − U"
+     ]
+    },
+    {
+     "base": "U = I · R",
+     "ask": "I",
+     "a": "I = U / R",
+     "w": [
+      "I = R / U",
+      "I = U · R",
+      "I = U − R"
+     ]
+    }
+   ]
   },
   {
    "id": "charge",
@@ -1228,7 +1250,29 @@
      ]
     }
    ],
-   "gen": "charge"
+   "gen": "charge",
+   "rewrite": [
+    {
+     "base": "Q = I · t",
+     "ask": "I",
+     "a": "I = Q / t",
+     "w": [
+      "I = t / Q",
+      "I = Q · t",
+      "I = Q − t"
+     ]
+    },
+    {
+     "base": "Q = I · t",
+     "ask": "t",
+     "a": "t = Q / I",
+     "w": [
+      "t = I / Q",
+      "t = Q · I",
+      "t = Q − I"
+     ]
+    }
+   ]
   },
   {
    "id": "pui",
@@ -1247,7 +1291,29 @@
      ]
     }
    ],
-   "gen": "pui"
+   "gen": "pui",
+   "rewrite": [
+    {
+     "base": "P = U · I",
+     "ask": "I",
+     "a": "I = P / U",
+     "w": [
+      "I = U / P",
+      "I = P · U",
+      "I = P − U"
+     ]
+    },
+    {
+     "base": "P = U · I",
+     "ask": "U",
+     "a": "U = P / I",
+     "w": [
+      "U = I / P",
+      "U = P · I",
+      "U = P − I"
+     ]
+    }
+   ]
   },
   {
    "id": "pir",
@@ -1275,7 +1341,29 @@
      ]
     }
    ],
-   "gen": "pir"
+   "gen": "pir",
+   "rewrite": [
+    {
+     "base": "P = I² · R",
+     "ask": "R",
+     "a": "R = P / I²",
+     "w": [
+      "R = P · I²",
+      "R = I² / P",
+      "R = P / I"
+     ]
+    },
+    {
+     "base": "P = I² · R",
+     "ask": "I",
+     "a": "I = √(P / R)",
+     "w": [
+      "I = P / R",
+      "I = √(P · R)",
+      "I = (P / R)²"
+     ]
+    }
+   ]
   },
   {
    "id": "pur",
@@ -1294,7 +1382,29 @@
      ]
     }
    ],
-   "gen": "pur"
+   "gen": "pur",
+   "rewrite": [
+    {
+     "base": "P = U² / R",
+     "ask": "R",
+     "a": "R = U² / P",
+     "w": [
+      "R = P / U²",
+      "R = U² · P",
+      "R = √(U · P)"
+     ]
+    },
+    {
+     "base": "P = U² / R",
+     "ask": "U",
+     "a": "U = √(P · R)",
+     "w": [
+      "U = P · R",
+      "U = √(P / R)",
+      "U = (P · R)²"
+     ]
+    }
+   ]
   },
   {
    "id": "energy",
@@ -1322,7 +1432,29 @@
      ]
     }
    ],
-   "gen": "energy"
+   "gen": "energy",
+   "rewrite": [
+    {
+     "base": "W = P · t",
+     "ask": "P",
+     "a": "P = W / t",
+     "w": [
+      "P = t / W",
+      "P = W · t",
+      "P = W − t"
+     ]
+    },
+    {
+     "base": "W = P · t",
+     "ask": "t",
+     "a": "t = W / P",
+     "w": [
+      "t = P / W",
+      "t = W · P",
+      "t = W − P"
+     ]
+    }
+   ]
   },
   {
    "id": "units",
@@ -1471,7 +1603,19 @@
      ]
     }
    ],
-   "gen": "div"
+   "gen": "div",
+   "rewrite": [
+    {
+     "base": "U₂ = U · R₂ / (R₁ + R₂)",
+     "ask": "U",
+     "a": "U = U₂ · (R₁ + R₂) / R₂",
+     "w": [
+      "U = U₂ · R₂ / (R₁ + R₂)",
+      "U = U₂ · (R₁ + R₂)",
+      "U = U₂ / (R₁ + R₂) · R₂"
+     ]
+    }
+   ]
   },
   {
    "id": "kirI",
@@ -1517,7 +1661,39 @@
      ]
     }
    ],
-   "gen": "wire"
+   "gen": "wire",
+   "rewrite": [
+    {
+     "base": "R = ρ · l / A",
+     "ask": "l",
+     "a": "l = R · A / ρ",
+     "w": [
+      "l = R · ρ / A",
+      "l = ρ / (R · A)",
+      "l = R / (ρ · A)"
+     ]
+    },
+    {
+     "base": "R = ρ · l / A",
+     "ask": "A",
+     "a": "A = ρ · l / R",
+     "w": [
+      "A = R · ρ / l",
+      "A = R · l / ρ",
+      "A = R / (ρ · l)"
+     ]
+    },
+    {
+     "base": "R = ρ · l / A",
+     "ask": "ρ",
+     "a": "ρ = R · A / l",
+     "w": [
+      "ρ = R · l / A",
+      "ρ = l / (R · A)",
+      "ρ = R / (A · l)"
+     ]
+    }
+   ]
   },
   {
    "id": "area",
@@ -1555,7 +1731,29 @@
      ]
     }
    ],
-   "gen": "klem"
+   "gen": "klem",
+   "rewrite": [
+    {
+     "base": "U = E − I · Rᵢ",
+     "ask": "Rᵢ",
+     "a": "Rᵢ = (E − U) / I",
+     "w": [
+      "Rᵢ = (U − E) / I",
+      "Rᵢ = (E + U) / I",
+      "Rᵢ = E − U · I"
+     ]
+    },
+    {
+     "base": "U = E − I · Rᵢ",
+     "ask": "E",
+     "a": "E = U + I · Rᵢ",
+     "w": [
+      "E = U − I · Rᵢ",
+      "E = U / (I · Rᵢ)",
+      "E = I · Rᵢ − U"
+     ]
+    }
+   ]
   },
   {
    "id": "bel",
@@ -1564,7 +1762,19 @@
    "where": "de stroom die een niet-ideale bron door een belasting stuurt",
    "f": "I = E / (Rᵢ + R_b)",
    "cloze": [],
-   "gen": "bel"
+   "gen": "bel",
+   "rewrite": [
+    {
+     "base": "I = E / (Rᵢ + R_b)",
+     "ask": "R_b",
+     "a": "R_b = E / I − Rᵢ",
+     "w": [
+      "R_b = E / I + Rᵢ",
+      "R_b = I / E − Rᵢ",
+      "R_b = E · I − Rᵢ"
+     ]
+    }
+   ]
   },
   {
    "id": "aanp",
@@ -1592,7 +1802,29 @@
      ]
     }
    ],
-   "gen": "accu"
+   "gen": "accu",
+   "rewrite": [
+    {
+     "base": "t = C / I",
+     "ask": "C",
+     "a": "C = I · t",
+     "w": [
+      "C = t / I",
+      "C = I / t",
+      "C = t − I"
+     ]
+    },
+    {
+     "base": "t = C / I",
+     "ask": "I",
+     "a": "I = C / t",
+     "w": [
+      "I = t / C",
+      "I = C · t",
+      "I = C − t"
+     ]
+    }
+   ]
   },
   {
    "id": "rend",
@@ -1601,7 +1833,19 @@
    "where": "de verhouding tussen nuttig en opgenomen vermogen",
    "f": "η = P_nuttig / P_opgenomen · 100%",
    "cloze": [],
-   "gen": null
+   "gen": null,
+   "rewrite": [
+    {
+     "base": "η = P_nuttig / P_opgenomen · 100%",
+     "ask": "P_nuttig",
+     "a": "P_nuttig = η · P_opgenomen / 100%",
+     "w": [
+      "P_nuttig = P_opgenomen / η · 100%",
+      "P_nuttig = η · P_opgenomen · 100%",
+      "P_nuttig = P_opgenomen − η"
+     ]
+    }
+   ]
   },
   {
    "id": "volt",

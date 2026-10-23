@@ -1099,7 +1099,7 @@ function fgBest(ch) { try { return (JSON.parse(localStorage.getItem('flic.fbest'
 function fgSaveBest(ch, score) { try { const b = JSON.parse(localStorage.getItem('flic.fbest')) || {}; if (score > (b[ch] || 0)) { b[ch] = score; localStorage.setItem('flic.fbest', JSON.stringify(b)); return true; } } catch { /* negeren */ } return false; }
 function openFormulaGame(ch) {
   const un = fgUnlocked(ch);
-  FG = { chapter: ch, stage: 'start', onlyRead: un.length >= 3, lives: true };
+  FG = { chapter: ch, stage: 'start', onlyRead: un.length >= 3, lives: true, mode: 'mix' };
   setView('fgame');
 }
 function fgStart() {
@@ -1110,6 +1110,7 @@ function fgStart() {
   fgNext();
   render();
 }
+const pickOf = arr => arr[Math.floor(Math.random() * arr.length)];
 function fgNext() {
   const now = Date.now();
   const w = FG.pool.map(it => { const r = store.cardRec(fgKey(FG.chapter, it)); return !r ? 4 : r.d <= now ? 3 : 1; });
@@ -1118,7 +1119,11 @@ function fgNext() {
   let r = Math.random() * sum, item = cand[cand.length - 1];
   for (let i = 0; i < cand.length; i++) { r -= ws[i]; if (r <= 0) { item = cand[i]; break; } }
   FG.recent = [item.id, ...FG.recent].slice(0, 2);
-  FG.cur = drill.makeQuestion(item, FG.all);
+  if (FG.mode === 'units' || (FG.mode === 'mix' && Math.random() < 0.15)) FG.cur = drill.unitQuestion();
+  else if (FG.mode === 'rewrite') {
+    const rp = FG.pool.filter(it => it.rewrite && it.rewrite.length), rs = rp.length ? rp : FG.all.filter(it => it.rewrite && it.rewrite.length);
+    FG.cur = drill.makeQuestion(pickOf(rs.filter(it => !FG.recent.includes(it.id)).concat(rs.length < 3 ? rs : [])) || rs[0], FG.all, 'rewrite');
+  } else FG.cur = drill.makeQuestion(item, FG.all);
   FG.picked = null;
 }
 function fgAnswer(i) {
@@ -1156,7 +1161,10 @@ function viewFGame() {
       h('section', { class: 'card' },
         h('p', {}, `${FG_LEN} vragen over de formules van dit hoofdstuk: welke formule hoort waarbij, waar hoort een formule bij, invullen wat ontbreekt en rekenen met echte getallen. Je rekenmachine en kladblok mag je gebruiken.`),
         h('p', { class: 'muted small' }, 'Punten: 10 per goed antwoord, plus een bonus voor een reeks goede antwoorden achter elkaar. Formules die je vaak fout hebt komen vaker terug.'),
-        h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.onlyRead, onchange: e => { FG.onlyRead = e.target.checked; render(); } }),
+        h('div', { class: 'field' }, h('label', { for: 'fgmode' }, 'Soort vragen'),
+          h('select', { id: 'fgmode', onchange: e => { FG.mode = e.target.value; render(); } },
+            [['mix', 'Alles door elkaar'], ['rewrite', 'Alleen formules omwerken'], ['units', 'Alleen eenheden omrekenen (mA, kΩ, µ…)']].map(([v, t]) => h('option', { value: v, selected: FG.mode === v }, t)))),
+        FG.mode !== 'units' && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.onlyRead, onchange: e => { FG.onlyRead = e.target.checked; render(); } }),
           h('span', { class: 't' }, 'Alleen formules uit paragrafen die ik heb gelezen of geoefend')),
         FG.onlyRead && un.length === 0 && h('p', { class: 'notice' }, 'Je hebt in dit hoofdstuk nog geen paragraaf gelezen of geoefend, dus je krijgt alle formules.'),
         h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.lives, onchange: e => { FG.lives = e.target.checked; render(); } }),
