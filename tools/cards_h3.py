@@ -52,5 +52,50 @@ C=[
 ]
 d=json.load(open('data/theorie/hoofdstuk-3.json'))
 d['cards']=[{"id":f"c{i+1}","sec":s,"q":q,"a":a} for i,(s,q,a) in enumerate(C)]
+
+# Formule-spel: formules met naam, waar ze bij horen, en invuloefeningen. 'gen' = rekenopgave-generator in js/drill.js.
+# cloze = (zin met ___, juist antwoord, [foute antwoorden])
+DR=[
+("ohm","s11","Wet van Ohm","het verband tussen spanning, stroom en weerstand","U = I · R",
+  [("U = I · ___","R",["U","P","t"]),("I = U / ___","R",["P","t","I"]),("R = ___ / I","U",["P","t","R"])],"ohm"),
+("charge","s9","Lading","de hoeveelheid lading die door een draad stroomt","Q = I · t",
+  [("Q = I · ___","t",["U","R","P"]),("1 ampère is 1 ___ per seconde","coulomb",["joule","watt","volt"])],"charge"),
+("pui","s21","Vermogen uit spanning en stroom","het vermogen van een onderdeel waar U en I van bekend zijn","P = U · I",
+  [("P = U · ___","I",["R","t","P"])],"pui"),
+("pir","s21","Vermogen uit stroom en weerstand","het gedissipeerde vermogen in een weerstand als je de stroom kent","P = I² · R",
+  [("P = ___ · R","I²",["I","U","U²"]),("P = I² · ___","R",["U","t","I"])],"pir"),
+("pur","s21","Vermogen uit spanning en weerstand","het gedissipeerde vermogen in een weerstand als je de spanning kent","P = U² / R",
+  [("P = U² / ___","R",["I","P","t"])],"pur"),
+("energy","s21","Energie (arbeid)","de energie die in een bepaalde tijd wordt omgezet","W = P · t",
+  [("W = P · ___","t",["U","I","R"]),("1 kWh is ___","3,6 MJ",["3,6 kJ","360 kJ","36 MJ"])],"energy"),
+("units","s21","Eenheden","de eenheden van de grootheden",None,
+  [("De eenheid van spanning is de ___","volt",["ampère","ohm","watt"]),("De eenheid van weerstand is de ___","ohm",["volt","watt","joule"]),("De eenheid van vermogen is de ___","watt",["joule","volt","coulomb"]),("De eenheid van energie is de ___","joule",["watt","volt","coulomb"]),("De eenheid van lading is de ___","coulomb",["ampère","joule","volt"])],None),
+("serie","s28","Weerstanden in serie","weerstanden die achter elkaar staan","R = R₁ + R₂ + …",
+  [("In een serieschakeling is de ___ overal gelijk","stroom",["spanning","weerstand","vermogen"]),("In een serieschakeling tellen de ___ op","spanningen",["stromen","geleidingen","frequenties"])],"serie"),
+("par","s30","Weerstanden parallel","weerstanden die naast elkaar staan","1/R = 1/R₁ + 1/R₂ + …",
+  [("Parallel is de ___ over alle takken gelijk","spanning",["stroom","weerstand","vermogen"]),("Twee gelijke weerstanden R parallel geven ___","R / 2",["2R","R","R²"])],None),
+("par2","s30","Twee weerstanden parallel","twee weerstanden naast elkaar","R = R₁ · R₂ / (R₁ + R₂)",
+  [("R = R₁ · R₂ / (R₁ ___ R₂)","+",["−","·","/"])],"par2"),
+("div","s29","Spanningsdeler","twee weerstanden in serie waarvan je de spanning over één meet","U₂ = U · R₂ / (R₁ + R₂)",
+  [("U₂ = U · R₂ / (R₁ + ___)","R₂",["U","I","R₁"])],"div"),
+("kirI","s27","Stroomwet van Kirchhoff","een knooppunt","ΣI(in) = ΣI(uit)",[],None),
+("kirU","s27","Spanningswet van Kirchhoff","een gesloten kring","ΣU(lus) = 0",[],None),
+("wire","s13","Weerstand van een draad","de weerstand van een draad met bekende afmetingen en materiaal","R = ρ · l / A",
+  [("R = ρ · l / ___","A",["l","ρ","R"]),("Een draad die 2× zo lang is heeft ___ weerstand","2× zo veel",["2× zo weinig","4× zo veel","evenveel"])],"wire"),
+("area","s13","Doorsnede van een ronde draad","de doorsnede van een draad met diameter d","A = π · d² / 4",
+  [("Een draad met 2× zo grote diameter heeft ___ weerstand","4× zo weinig",["2× zo weinig","2× zo veel","evenveel"])],None),
+("klem","s35","Klemspanning van een bron","de spanning over de klemmen van een bron die stroom levert","U = E − I · Rᵢ",
+  [("U = E − I · ___","Rᵢ",["R_b","E","U"])],"klem"),
+("bel","s35","Stroom door een belasting","de stroom die een niet-ideale bron door een belasting stuurt","I = E / (Rᵢ + R_b)",[],"bel"),
+("aanp","s36","Aanpassing","maximaal vermogen in de belasting","R_b = Rᵢ",[],None),
+("accu","s40","Accuduur","hoelang een accu een bepaalde stroom kan leveren","t = C / I",
+  [("De capaciteit C van een accu wordt uitgedrukt in ___","ampère-uur (Ah)",["volt","watt","ohm"])],"accu"),
+("rend","s21","Rendement","de verhouding tussen nuttig en opgenomen vermogen","η = P_nuttig / P_opgenomen · 100%",[],None),
+("volt","s17","Inwendige weerstand van een voltmeter","de belasting die een voltmeter op de schakeling is","R = gevoeligheid (Ω/V) · meetbereik (V)",
+  [("Een voltmeter sluit je aan ___","parallel",["in serie","kortgesloten","zonder bron"]),("Een goede voltmeter heeft een ___ inwendige weerstand","hoge",["lage","nul","negatieve"])],None),
+("shunt","s18","Shunt bij een ampèremeter","het vergroten van het meetbereik van een ampèremeter","R_p = R_m / (n − 1)",
+  [("Een ampèremeter sluit je aan ___","in serie",["parallel","over de bron","zonder bron"]),("Een goede ampèremeter heeft een ___ inwendige weerstand","lage",["hoge","oneindige","negatieve"])],None),
+]
+d['drill']=[{"id":i,"sec":sec,"name":n,"where":w,"f":f,"cloze":[{"q":q,"a":a,"w":w2} for q,a,w2 in cl],"gen":g} for i,sec,n,w,f,cl,g in DR]
 json.dump(d,open('data/theorie/hoofdstuk-3.json','w'),ensure_ascii=False,indent=1)
 print(len(C))

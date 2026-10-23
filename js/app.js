@@ -4,6 +4,7 @@ import * as sync from './sync.js';
 import * as account from './account.js';
 import * as theory from './theory.js';
 import * as tools from './tools.js';
+import * as drill from './drill.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -66,6 +67,7 @@ let S = null;               // actieve sessie
 let RESULT = null;          // laatste uitslag
 let timerInt = null;
 let T = null;               // geopende theorie: { chapter, secId, back }
+let FG = null;              // formule-spel
 let K = null;               // flashcardronde: { chapter, queue, idx, flip, knew, missed }
 
 const chapterTitle = n => (chapters.find(c => c.n === n) || {}).title || '';
@@ -80,16 +82,16 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'theory' || view === 'cards') ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S ? 'session' : k) }, label)));
 }
 
 function render() {
   applyPrefs();
-  tools.setToolsVisible(view === 'session');
+  tools.setToolsVisible(view === 'session' || view === 'fgame');
   renderNav();
-  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
 }
@@ -1086,6 +1088,125 @@ function viewCards() {
     h('div', { class: 'small muted' }, `Vandaag: ${store.todayCount()} geoefend`));
 }
 
+// ---------------------------------------------------------------- formule-spel
+const FG_LEN = 10;
+const fgKey = (ch, it) => `hs${ch}:f:${it.id}`;
+function fgUnlocked(ch) {
+  const th = theory.getTheory(ch);
+  return (th.drill || []).filter(it => { const st = theory.sectionStats(th, it.sec); return st.read || st.seen > 0; });
+}
+function fgBest(ch) { try { return (JSON.parse(localStorage.getItem('flic.fbest')) || {})[ch] || 0; } catch { return 0; } }
+function fgSaveBest(ch, score) { try { const b = JSON.parse(localStorage.getItem('flic.fbest')) || {}; if (score > (b[ch] || 0)) { b[ch] = score; localStorage.setItem('flic.fbest', JSON.stringify(b)); return true; } } catch { /* negeren */ } return false; }
+function openFormulaGame(ch) {
+  const un = fgUnlocked(ch);
+  FG = { chapter: ch, stage: 'start', onlyRead: un.length >= 3, lives: true };
+  setView('fgame');
+}
+function fgStart() {
+  const th = theory.getTheory(FG.chapter);
+  const un = fgUnlocked(FG.chapter);
+  const pool = FG.onlyRead && un.length >= 1 ? un : th.drill;
+  Object.assign(FG, { stage: 'play', pool, all: th.drill, n: 0, hearts: FG.lives ? 3 : null, score: 0, combo: 0, bestCombo: 0, ok: 0, missed: new Map(), recent: [], cur: null, picked: null });
+  fgNext();
+  render();
+}
+function fgNext() {
+  const now = Date.now();
+  const w = FG.pool.map(it => { const r = store.cardRec(fgKey(FG.chapter, it)); return !r ? 4 : r.d <= now ? 3 : 1; });
+  const cand = FG.pool.filter(it => FG.pool.length < 4 || !FG.recent.includes(it.id));
+  let sum = 0; const ws = cand.map(it => { const x = w[FG.pool.indexOf(it)]; sum += x; return x; });
+  let r = Math.random() * sum, item = cand[cand.length - 1];
+  for (let i = 0; i < cand.length; i++) { r -= ws[i]; if (r <= 0) { item = cand[i]; break; } }
+  FG.recent = [item.id, ...FG.recent].slice(0, 2);
+  FG.cur = drill.makeQuestion(item, FG.all);
+  FG.picked = null;
+}
+function fgAnswer(i) {
+  if (FG.picked != null) return;
+  const q = FG.cur, o = q.options[i]; FG.picked = i;
+  store.recordCard(fgKey(FG.chapter, q.item), o.ok);
+  if (o.ok) { FG.ok++; FG.combo++; FG.bestCombo = Math.max(FG.bestCombo, FG.combo); FG.score += 10 + 2 * Math.min(FG.combo, 10); }
+  else { FG.combo = 0; if (FG.hearts != null) FG.hearts--; FG.missed.set(q.item.id, q.item); }
+  render();
+}
+function fgAfter() {
+  FG.n++;
+  if (FG.n >= FG_LEN || (FG.hearts != null && FG.hearts <= 0)) { FG.stage = 'end'; FG.record = fgSaveBest(FG.chapter, FG.score); }
+  else fgNext();
+  render();
+}
+let fgKeysBound = false;
+function bindFgKeys() {
+  if (fgKeysBound) return; fgKeysBound = true;
+  document.addEventListener('keydown', e => {
+    if (view !== 'fgame' || !FG || FG.stage !== 'play' || e.target.closest('input,select,textarea,dialog,.tpanel') || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (FG.picked == null && /^[1-4]$/.test(e.key) && FG.cur.options[+e.key - 1]) fgAnswer(+e.key - 1);
+    else if (FG.picked != null && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) { e.preventDefault(); fgAfter(); }
+  });
+}
+function viewFGame() {
+  bindFgKeys();
+  if (!FG) return viewLearn();
+  const ch = FG.chapter, th = theory.getTheory(ch);
+  const back = h('button', { class: 'ghost', onclick: () => { FG = null; setView('learn'); } }, '← Leren');
+  if (FG.stage === 'start') {
+    const un = fgUnlocked(ch), total = th.drill.length;
+    const avail = FG.onlyRead && un.length >= 1 ? un.length : total;
+    return h('div', {}, back, h('h1', {}, `Formule-spel · H${ch}`),
+      h('section', { class: 'card' },
+        h('p', {}, `${FG_LEN} vragen over de formules van dit hoofdstuk: welke formule hoort waarbij, waar hoort een formule bij, invullen wat ontbreekt en rekenen met echte getallen. Je rekenmachine en kladblok mag je gebruiken.`),
+        h('p', { class: 'muted small' }, 'Punten: 10 per goed antwoord, plus een bonus voor een reeks goede antwoorden achter elkaar. Formules die je vaak fout hebt komen vaker terug.'),
+        h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.onlyRead, onchange: e => { FG.onlyRead = e.target.checked; render(); } }),
+          h('span', { class: 't' }, 'Alleen formules uit paragrafen die ik heb gelezen of geoefend')),
+        FG.onlyRead && un.length === 0 && h('p', { class: 'notice' }, 'Je hebt in dit hoofdstuk nog geen paragraaf gelezen of geoefend, dus je krijgt alle formules.'),
+        h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.lives, onchange: e => { FG.lives = e.target.checked; render(); } }),
+          h('span', { class: 't' }, 'Met 3 levens (uit = rustig oefenen)')),
+        h('p', { class: 'muted small' }, `${avail} van ${total} formules beschikbaar` + (fgBest(ch) ? ` · jouw record: ${fgBest(ch)} punten` : '')),
+        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: fgStart }, '🎮 Start'))));
+  }
+  if (FG.stage === 'end') {
+    const missed = [...FG.missed.values()];
+    return h('div', {}, back, h('h1', {}, FG.hearts != null && FG.hearts <= 0 ? 'Geen levens meer' : 'Ronde klaar'),
+      h('section', { class: 'card' },
+        h('div', { class: 'cards' },
+          h('div', { class: 'stat' }, h('div', { class: 'n' }, String(FG.score)), h('div', { class: 'k' }, 'punten')),
+          h('div', { class: 'stat' }, h('div', { class: 'n' }, `${FG.ok}/${FG.n}`), h('div', { class: 'k' }, 'goed')),
+          h('div', { class: 'stat' }, h('div', { class: 'n' }, String(FG.bestCombo)), h('div', { class: 'k' }, 'beste reeks'))),
+        FG.record && h('p', {}, '🏆 Nieuw record!'),
+        !FG.record && fgBest(ch) > 0 && h('p', { class: 'muted' }, `Jouw record: ${fgBest(ch)} punten.`),
+        missed.length > 0 && h('div', {}, h('h3', {}, 'Nog even herhalen'),
+          h('table', {}, h('tbody', {}, missed.map(it => h('tr', {}, h('td', {}, it.name), h('td', { class: 'f' }, it.f || ''),
+            h('td', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, it.sec, 'fgame') }, 'Theorie'))))))),
+        missed.length === 0 && h('p', {}, 'Foutloos! 🎉'),
+        h('div', { class: 'row', style: 'margin-top:1rem' }, h('button', { class: 'primary', onclick: fgStart }, 'Nog een ronde'),
+          h('button', { class: 'ghost', onclick: () => { FG.stage = 'start'; render(); } }, 'Opties'))));
+  }
+  const q = FG.cur, answered = FG.picked != null, ok = answered && q.options[FG.picked].ok;
+  const opts = q.options.map((o, i) => {
+    let cls = 'opt';
+    if (answered) cls += o.ok ? ' right' : (i === FG.picked ? ' wrong' : ' dim');
+    return h('button', { class: cls, disabled: answered, onclick: () => fgAnswer(i) },
+      h('span', { class: 'l' }, String(i + 1)), h('span', { class: 'tx' + (q.mono ? ' f' : '') }, o.text));
+  });
+  const last = FG.n + 1 >= FG_LEN || (FG.hearts != null && FG.hearts <= 1 && answered && !ok);
+  const next = h('button', { class: 'primary', onclick: fgAfter }, last ? 'Afronden' : 'Volgende →');
+  if (answered) queueMicrotask(() => next.focus({ preventScroll: true }));
+  return h('div', {}, back,
+    h('div', { class: 'row between', style: 'margin:.4rem 0' },
+      h('b', {}, `Vraag ${FG.n + 1} van ${FG_LEN}`),
+      h('span', {}, FG.hearts != null ? '❤️'.repeat(Math.max(0, FG.hearts)) + '🖤'.repeat(Math.max(0, 3 - FG.hearts)) : ''),
+      h('span', { class: 'badge' + (FG.combo >= 3 ? ' blue' : '') }, FG.combo >= 2 ? `🔥 ${FG.combo}× · ${FG.score}` : `${FG.score} punten`)),
+    h('div', { class: 'progress' }, h('i', { style: `width:${pct(FG.n + (answered ? 1 : 0), FG_LEN)}%` })),
+    h('div', { class: 'card', style: 'margin-top:1rem' },
+      q.sub && h('p', { class: 'muted small', style: 'margin:0 0 .4rem' }, q.calc ? `🧮 Rekenen · ${q.sub}` : q.sub),
+      h('p', { class: 'stem' }, q.prompt),
+      q.formula && h('div', { class: 'bigf' }, q.formula),
+      h('div', { class: 'opts', role: 'group', 'aria-label': 'Antwoordopties' }, opts),
+      answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : '❌ Niet goed.', ' ', q.explain),
+      answered && !ok && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, q.item.sec, 'fgame') }, 'Lees de theorie hierover')),
+      h('div', { class: 'actions' }, answered && next)));
+}
+
 function viewLearn() {
   const withT = chapters.filter(c => c.theory && theory.getTheory(c.n));
   const without = chapters.filter(c => c.count > 0 && !withT.includes(c));
@@ -1109,6 +1230,7 @@ function viewLearn() {
         h('div', { class: 'row' }, stepEl,
           (() => { const cs = cardStats(c.n); return cs.total > 0 && h('button', { onclick: () => cs.due ? startCards(c.n, false) : startCards(c.n, true) }, cs.due ? `Flashcards (${cs.due})` : 'Flashcards herhalen'); })(),
           formulaBtn(c.n),
+          (th.drill && th.drill.length > 0) && h('button', { onclick: () => openFormulaGame(c.n) }, '🎮 Formule-spel'),
           step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
         h('details', { class: 'secs', open: true }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
     }),

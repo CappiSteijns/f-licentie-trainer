@@ -1163,5 +1163,501 @@
    "q": "Hoelang kan een accu van 60 Ah een stroom van 3 A leveren?",
    "a": "60 / 3 = 20 uur."
   }
+ ],
+ "drill": [
+  {
+   "id": "ohm",
+   "sec": "s11",
+   "name": "Wet van Ohm",
+   "where": "het verband tussen spanning, stroom en weerstand",
+   "f": "U = I · R",
+   "cloze": [
+    {
+     "q": "U = I · ___",
+     "a": "R",
+     "w": [
+      "U",
+      "P",
+      "t"
+     ]
+    },
+    {
+     "q": "I = U / ___",
+     "a": "R",
+     "w": [
+      "P",
+      "t",
+      "I"
+     ]
+    },
+    {
+     "q": "R = ___ / I",
+     "a": "U",
+     "w": [
+      "P",
+      "t",
+      "R"
+     ]
+    }
+   ],
+   "gen": "ohm"
+  },
+  {
+   "id": "charge",
+   "sec": "s9",
+   "name": "Lading",
+   "where": "de hoeveelheid lading die door een draad stroomt",
+   "f": "Q = I · t",
+   "cloze": [
+    {
+     "q": "Q = I · ___",
+     "a": "t",
+     "w": [
+      "U",
+      "R",
+      "P"
+     ]
+    },
+    {
+     "q": "1 ampère is 1 ___ per seconde",
+     "a": "coulomb",
+     "w": [
+      "joule",
+      "watt",
+      "volt"
+     ]
+    }
+   ],
+   "gen": "charge"
+  },
+  {
+   "id": "pui",
+   "sec": "s21",
+   "name": "Vermogen uit spanning en stroom",
+   "where": "het vermogen van een onderdeel waar U en I van bekend zijn",
+   "f": "P = U · I",
+   "cloze": [
+    {
+     "q": "P = U · ___",
+     "a": "I",
+     "w": [
+      "R",
+      "t",
+      "P"
+     ]
+    }
+   ],
+   "gen": "pui"
+  },
+  {
+   "id": "pir",
+   "sec": "s21",
+   "name": "Vermogen uit stroom en weerstand",
+   "where": "het gedissipeerde vermogen in een weerstand als je de stroom kent",
+   "f": "P = I² · R",
+   "cloze": [
+    {
+     "q": "P = ___ · R",
+     "a": "I²",
+     "w": [
+      "I",
+      "U",
+      "U²"
+     ]
+    },
+    {
+     "q": "P = I² · ___",
+     "a": "R",
+     "w": [
+      "U",
+      "t",
+      "I"
+     ]
+    }
+   ],
+   "gen": "pir"
+  },
+  {
+   "id": "pur",
+   "sec": "s21",
+   "name": "Vermogen uit spanning en weerstand",
+   "where": "het gedissipeerde vermogen in een weerstand als je de spanning kent",
+   "f": "P = U² / R",
+   "cloze": [
+    {
+     "q": "P = U² / ___",
+     "a": "R",
+     "w": [
+      "I",
+      "P",
+      "t"
+     ]
+    }
+   ],
+   "gen": "pur"
+  },
+  {
+   "id": "energy",
+   "sec": "s21",
+   "name": "Energie (arbeid)",
+   "where": "de energie die in een bepaalde tijd wordt omgezet",
+   "f": "W = P · t",
+   "cloze": [
+    {
+     "q": "W = P · ___",
+     "a": "t",
+     "w": [
+      "U",
+      "I",
+      "R"
+     ]
+    },
+    {
+     "q": "1 kWh is ___",
+     "a": "3,6 MJ",
+     "w": [
+      "3,6 kJ",
+      "360 kJ",
+      "36 MJ"
+     ]
+    }
+   ],
+   "gen": "energy"
+  },
+  {
+   "id": "units",
+   "sec": "s21",
+   "name": "Eenheden",
+   "where": "de eenheden van de grootheden",
+   "f": null,
+   "cloze": [
+    {
+     "q": "De eenheid van spanning is de ___",
+     "a": "volt",
+     "w": [
+      "ampère",
+      "ohm",
+      "watt"
+     ]
+    },
+    {
+     "q": "De eenheid van weerstand is de ___",
+     "a": "ohm",
+     "w": [
+      "volt",
+      "watt",
+      "joule"
+     ]
+    },
+    {
+     "q": "De eenheid van vermogen is de ___",
+     "a": "watt",
+     "w": [
+      "joule",
+      "volt",
+      "coulomb"
+     ]
+    },
+    {
+     "q": "De eenheid van energie is de ___",
+     "a": "joule",
+     "w": [
+      "watt",
+      "volt",
+      "coulomb"
+     ]
+    },
+    {
+     "q": "De eenheid van lading is de ___",
+     "a": "coulomb",
+     "w": [
+      "ampère",
+      "joule",
+      "volt"
+     ]
+    }
+   ],
+   "gen": null
+  },
+  {
+   "id": "serie",
+   "sec": "s28",
+   "name": "Weerstanden in serie",
+   "where": "weerstanden die achter elkaar staan",
+   "f": "R = R₁ + R₂ + …",
+   "cloze": [
+    {
+     "q": "In een serieschakeling is de ___ overal gelijk",
+     "a": "stroom",
+     "w": [
+      "spanning",
+      "weerstand",
+      "vermogen"
+     ]
+    },
+    {
+     "q": "In een serieschakeling tellen de ___ op",
+     "a": "spanningen",
+     "w": [
+      "stromen",
+      "geleidingen",
+      "frequenties"
+     ]
+    }
+   ],
+   "gen": "serie"
+  },
+  {
+   "id": "par",
+   "sec": "s30",
+   "name": "Weerstanden parallel",
+   "where": "weerstanden die naast elkaar staan",
+   "f": "1/R = 1/R₁ + 1/R₂ + …",
+   "cloze": [
+    {
+     "q": "Parallel is de ___ over alle takken gelijk",
+     "a": "spanning",
+     "w": [
+      "stroom",
+      "weerstand",
+      "vermogen"
+     ]
+    },
+    {
+     "q": "Twee gelijke weerstanden R parallel geven ___",
+     "a": "R / 2",
+     "w": [
+      "2R",
+      "R",
+      "R²"
+     ]
+    }
+   ],
+   "gen": null
+  },
+  {
+   "id": "par2",
+   "sec": "s30",
+   "name": "Twee weerstanden parallel",
+   "where": "twee weerstanden naast elkaar",
+   "f": "R = R₁ · R₂ / (R₁ + R₂)",
+   "cloze": [
+    {
+     "q": "R = R₁ · R₂ / (R₁ ___ R₂)",
+     "a": "+",
+     "w": [
+      "−",
+      "·",
+      "/"
+     ]
+    }
+   ],
+   "gen": "par2"
+  },
+  {
+   "id": "div",
+   "sec": "s29",
+   "name": "Spanningsdeler",
+   "where": "twee weerstanden in serie waarvan je de spanning over één meet",
+   "f": "U₂ = U · R₂ / (R₁ + R₂)",
+   "cloze": [
+    {
+     "q": "U₂ = U · R₂ / (R₁ + ___)",
+     "a": "R₂",
+     "w": [
+      "U",
+      "I",
+      "R₁"
+     ]
+    }
+   ],
+   "gen": "div"
+  },
+  {
+   "id": "kirI",
+   "sec": "s27",
+   "name": "Stroomwet van Kirchhoff",
+   "where": "een knooppunt",
+   "f": "ΣI(in) = ΣI(uit)",
+   "cloze": [],
+   "gen": null
+  },
+  {
+   "id": "kirU",
+   "sec": "s27",
+   "name": "Spanningswet van Kirchhoff",
+   "where": "een gesloten kring",
+   "f": "ΣU(lus) = 0",
+   "cloze": [],
+   "gen": null
+  },
+  {
+   "id": "wire",
+   "sec": "s13",
+   "name": "Weerstand van een draad",
+   "where": "de weerstand van een draad met bekende afmetingen en materiaal",
+   "f": "R = ρ · l / A",
+   "cloze": [
+    {
+     "q": "R = ρ · l / ___",
+     "a": "A",
+     "w": [
+      "l",
+      "ρ",
+      "R"
+     ]
+    },
+    {
+     "q": "Een draad die 2× zo lang is heeft ___ weerstand",
+     "a": "2× zo veel",
+     "w": [
+      "2× zo weinig",
+      "4× zo veel",
+      "evenveel"
+     ]
+    }
+   ],
+   "gen": "wire"
+  },
+  {
+   "id": "area",
+   "sec": "s13",
+   "name": "Doorsnede van een ronde draad",
+   "where": "de doorsnede van een draad met diameter d",
+   "f": "A = π · d² / 4",
+   "cloze": [
+    {
+     "q": "Een draad met 2× zo grote diameter heeft ___ weerstand",
+     "a": "4× zo weinig",
+     "w": [
+      "2× zo weinig",
+      "2× zo veel",
+      "evenveel"
+     ]
+    }
+   ],
+   "gen": null
+  },
+  {
+   "id": "klem",
+   "sec": "s35",
+   "name": "Klemspanning van een bron",
+   "where": "de spanning over de klemmen van een bron die stroom levert",
+   "f": "U = E − I · Rᵢ",
+   "cloze": [
+    {
+     "q": "U = E − I · ___",
+     "a": "Rᵢ",
+     "w": [
+      "R_b",
+      "E",
+      "U"
+     ]
+    }
+   ],
+   "gen": "klem"
+  },
+  {
+   "id": "bel",
+   "sec": "s35",
+   "name": "Stroom door een belasting",
+   "where": "de stroom die een niet-ideale bron door een belasting stuurt",
+   "f": "I = E / (Rᵢ + R_b)",
+   "cloze": [],
+   "gen": "bel"
+  },
+  {
+   "id": "aanp",
+   "sec": "s36",
+   "name": "Aanpassing",
+   "where": "maximaal vermogen in de belasting",
+   "f": "R_b = Rᵢ",
+   "cloze": [],
+   "gen": null
+  },
+  {
+   "id": "accu",
+   "sec": "s40",
+   "name": "Accuduur",
+   "where": "hoelang een accu een bepaalde stroom kan leveren",
+   "f": "t = C / I",
+   "cloze": [
+    {
+     "q": "De capaciteit C van een accu wordt uitgedrukt in ___",
+     "a": "ampère-uur (Ah)",
+     "w": [
+      "volt",
+      "watt",
+      "ohm"
+     ]
+    }
+   ],
+   "gen": "accu"
+  },
+  {
+   "id": "rend",
+   "sec": "s21",
+   "name": "Rendement",
+   "where": "de verhouding tussen nuttig en opgenomen vermogen",
+   "f": "η = P_nuttig / P_opgenomen · 100%",
+   "cloze": [],
+   "gen": null
+  },
+  {
+   "id": "volt",
+   "sec": "s17",
+   "name": "Inwendige weerstand van een voltmeter",
+   "where": "de belasting die een voltmeter op de schakeling is",
+   "f": "R = gevoeligheid (Ω/V) · meetbereik (V)",
+   "cloze": [
+    {
+     "q": "Een voltmeter sluit je aan ___",
+     "a": "parallel",
+     "w": [
+      "in serie",
+      "kortgesloten",
+      "zonder bron"
+     ]
+    },
+    {
+     "q": "Een goede voltmeter heeft een ___ inwendige weerstand",
+     "a": "hoge",
+     "w": [
+      "lage",
+      "nul",
+      "negatieve"
+     ]
+    }
+   ],
+   "gen": null
+  },
+  {
+   "id": "shunt",
+   "sec": "s18",
+   "name": "Shunt bij een ampèremeter",
+   "where": "het vergroten van het meetbereik van een ampèremeter",
+   "f": "R_p = R_m / (n − 1)",
+   "cloze": [
+    {
+     "q": "Een ampèremeter sluit je aan ___",
+     "a": "in serie",
+     "w": [
+      "parallel",
+      "over de bron",
+      "zonder bron"
+     ]
+    },
+    {
+     "q": "Een goede ampèremeter heeft een ___ inwendige weerstand",
+     "a": "lage",
+     "w": [
+      "hoge",
+      "oneindige",
+      "negatieve"
+     ]
+    }
+   ],
+   "gen": null
+  }
  ]
 }
