@@ -106,8 +106,6 @@ export function setRead(key, read) {
 // days['2026-10-22'] = aantal beantwoorde vragen + beoordeelde kaarten op die dag (lokale tijd).
 export const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 function bumpDay() { const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1; }
-/** Telt als oefendag (voor de reeks), bijv. bij een spelletje. */
-export function markActive() { bumpDay(); persist(); }
 export const todayCount = () => state.days[dayKey()] || 0;
 export const dayCounts = () => state.days;
 /** Reeks (zoals Anki) = aantal opeenvolgende dagen met minstens één beantwoorde vraag of kaart. Is vandaag nog niets gedaan, dan breekt de reeks pas morgen. */

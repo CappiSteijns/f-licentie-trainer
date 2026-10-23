@@ -8,7 +8,6 @@ Oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Amateur), gebase
 - **Oefenen** per hoofdstuk, met directe feedback, een foutenvijver en slim herhalen (Leitner: terugkeer na 1, 3, 7, 14, 30 dagen).
 - **Examen** van 50 vragen met timer en slagingsnorm, gespreid over de gekozen hoofdstukken.
 - **Leren met theorie** (nu hoofdstuk 3): cursustekst per paragraaf, link van elke vraag naar de theorie, een leerroute, formuleblad en **flashcards**.
-- **Formule-memory** (nu H3, 28 paren): draai kaartjes om en koppel elke formule aan zijn naam, met 6, 8 of 10 paren. Telt beurten en tijd, bewaart je record en telt mee voor je reeks. Paren staan in `data/theorie/hoofdstuk-N.json` onder `memory` (`{"id","a","b"}`).
 - **Reeks en oefenkalender** zoals Anki: hoeveel dagen op rij je hebt geoefend.
 - **Rekenmachine** (Casio fx-82NL-stijl) en **kladblok** tijdens oefenen en examen: tegelijk te gebruiken (het tweede paneel zet ze automatisch naast elkaar, op een staande telefoon onder elkaar; knop ◫ doet dat opnieuw), vrij te verplaatsen (slepen aan de kop) en in grootte aan te passen (rand of hoek vastpakken); positie en formaat worden onthouden.
 - **Voortgang** per hoofdstuk, zwakste plek en examenhistorie.

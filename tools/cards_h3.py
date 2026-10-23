@@ -52,38 +52,5 @@ C=[
 ]
 d=json.load(open('data/theorie/hoofdstuk-3.json'))
 d['cards']=[{"id":f"c{i+1}","sec":s,"q":q,"a":a} for i,(s,q,a) in enumerate(C)]
-
-# Formule-memory: paren (naam of omschrijving <-> formule/waarde). Houd de teksten kort.
-M=[
-("Wet van Ohm","U = I · R"),
-("Stroom uit U en R","I = U / R"),
-("Weerstand uit U en I","R = U / I"),
-("Vermogen (U en I)","P = U · I"),
-("Vermogen (I en R)","P = I² · R"),
-("Vermogen (U en R)","P = U² / R"),
-("Energie (arbeid)","W = P · t"),
-("Lading","Q = I · t"),
-("1 ampère","1 C/s"),
-("1 kWh","3,6 MJ"),
-("Weerstand in serie","R = R₁ + R₂ + …"),
-("Weerstand parallel","1/R = 1/R₁ + 1/R₂"),
-("Twee weerstanden parallel","R₁·R₂ / (R₁ + R₂)"),
-("Twee gelijke R parallel","R / 2"),
-("Spanningsdeler","U₂ = U · R₂ / (R₁ + R₂)"),
-("Weerstand van een draad","R = ρ · l / A"),
-("Doorsnede ronde draad","A = π · d² / 4"),
-("Klemspanning van een bron","U = E − I · Rᵢ"),
-("Stroom door belasting","I = E / (Rᵢ + R_b)"),
-("Maximaal vermogen (aanpassing)","R_b = Rᵢ"),
-("Accuduur","t = C / I"),
-("Rendement","η = P_nuttig / P_op · 100%"),
-("Stroomwet van Kirchhoff","ΣI(in) = ΣI(uit)"),
-("Spanningswet van Kirchhoff","ΣU(lus) = 0"),
-("Shunt voor ampèremeter","R_p = R_m / (n − 1)"),
-("Eenheid van lading","coulomb (C)"),
-("Eenheid van vermogen","watt (W)"),
-("Kleurcode bruin-zwart-rood","1 kΩ"),
-]
-d['memory']=[{"id":f"m{i+1}","a":a,"b":b} for i,(a,b) in enumerate(M)]
 json.dump(d,open('data/theorie/hoofdstuk-3.json','w'),ensure_ascii=False,indent=1)
 print(len(C))

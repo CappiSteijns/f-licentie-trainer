@@ -271,17 +271,3 @@ body.has-tools #app { padding-bottom: 7rem; }
 .rz-t::after { top: 4px; left: 50%; height: 4px; width: 36px; margin-left: -18px; }
 .rz-b::after { bottom: 5px; left: 50%; height: 4px; width: 36px; margin-left: -18px; }
 .rz-br::after { content: ''; position: absolute; right: 5px; bottom: 5px; width: 10px; height: 10px; border-right: 4px solid var(--muted); border-bottom: 4px solid var(--muted); border-radius: 0 0 3px 0; opacity: .6; }
-
-/* formule-memory */
-.memgrid { display: grid; gap: 8px; margin: .8rem 0; grid-template-columns: repeat(3, 1fr); }
-.memgrid.c4 { grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 520px) { .memgrid.c4 { grid-template-columns: repeat(3, 1fr); } }
-.memcard { position: relative; aspect-ratio: 4 / 3; padding: 0; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); cursor: pointer; perspective: 600px; min-height: 0; }
-.memcard .mf { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: .25rem; border-radius: 9px; backface-visibility: hidden; transition: transform .35s; font-size: clamp(.76rem, 3vw, 1rem); line-height: 1.2; overflow-wrap: anywhere; }
-.memcard .back { font-size: 1.5rem; background: var(--surface-2); }
-.memcard .front { transform: rotateY(180deg); background: var(--surface); color: var(--text); }
-.memcard .front.b { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--accent); }
-.memcard.open .back, .memcard.matched .back { transform: rotateY(180deg); }
-.memcard.open .front, .memcard.matched .front { transform: rotateY(0); }
-.memcard.matched { border-color: var(--green); cursor: default; }
-.memcard.matched .front { background: var(--green-bg); }
