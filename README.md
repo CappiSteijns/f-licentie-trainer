@@ -11,7 +11,7 @@ Oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Amateur), gebase
 - **Reeks en oefenkalender** zoals Anki: hoeveel dagen op rij je hebt geoefend.
 - **Rekenmachine** (Casio fx-82NL-stijl) en **kladblok** tijdens oefenen en examen, zelf groter te slepen.
 - **Voortgang** per hoofdstuk, zwakste plek en examenhistorie.
-- **Accounts**: inloggen en je voortgang op elk apparaat houden (ook voor medecursisten). Zonder account kan het ook, via een privé GitHub Gist, een overdraag-link of een back-upbestand (tabblad *Meer*).
+- **Accounts**: inloggen en je voortgang op elk apparaat houden (ook voor medecursisten). Alles wordt automatisch opgeslagen: binnen ~1 seconde na elke vraag, kaart of gelezen paragraaf, en nogmaals als je de pagina sluit. Rechtsboven laat ✓ zien dat alles is opgeslagen (⏳ bezig, ⚠ mislukt; je voortgang staat dan nog wel op dit apparaat). Zonder account kan het ook, via een privé GitHub Gist, een overdraag-link of een back-upbestand (tabblad *Meer*).
 
 ## Installeren (Docker)
 Vereist Docker; hieronder met Portainer (bijv. op Unraid). Met alleen `docker compose` werkt het net zo.

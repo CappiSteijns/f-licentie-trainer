@@ -570,7 +570,7 @@ async function resetAll() {
 let statusEl = null;
 function statusText(s) {
   if (!s || s.state === 'off') return ['', ''];
-  if (s.state === 'busy') return ['Bezig met synchroniseren…', ''];
+  if (s.state === 'busy' || s.state === 'pending') return ['Bezig met synchroniseren…', ''];
   if (s.state === 'error') return ['Synchroniseren mislukt: ' + s.message, 'err'];
   return [(s.kind === 'account' ? 'Opgeslagen in je account om ' : 'Gesynchroniseerd om ') + new Date(s.last).toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' }), 'ok'];
 }
@@ -1184,8 +1184,18 @@ async function init() {
     history.replaceState(null, '', location.pathname + location.search);
     view = 'recovery';
   }
+  const dot = document.getElementById('syncdot');
+  const paintDot = s => {
+    if (!dot) return;
+    if (!sync.isActive()) { dot.hidden = true; return; }
+    const m = { pending: ['⏳', 'Wijzigingen worden opgeslagen…'], busy: ['⏳', 'Synchroniseren…'], ok: ['✓', 'Alles is opgeslagen en gesynchroniseerd'], error: ['⚠', 'Synchroniseren mislukt, je voortgang staat wel op dit apparaat: ' + (s.message || '')] }[s.state];
+    if (!m) return;
+    dot.hidden = false; dot.textContent = m[0]; dot.title = m[1]; dot.setAttribute('aria-label', m[1]); dot.dataset.s = s.state;
+  };
+  if (sync.isActive()) paintDot({ state: 'ok' });
   sync.onSyncStatus(s => {
     paintStatus(s);
+    paintDot(s);
     if (s.state === 'ok' && s.changed && (view === 'stats' || view === 'setup')) render();
     if (s.state === 'error' && view === 'account' && account.enabled() && !account.loggedIn()) render();
   });

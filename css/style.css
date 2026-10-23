@@ -258,3 +258,7 @@ body.tool-open .tfab { display: none; }
 .rz-l::after { left: 5px; top: 50%; width: 4px; height: 36px; margin-top: -18px; }
 .rz-t::after { top: 5px; left: 50%; height: 4px; width: 36px; margin-left: -18px; }
 .rz-tl::after { left: 5px; top: 5px; width: 10px; height: 10px; border-radius: 3px 0 0 0; background: none; border-left: 4px solid var(--muted); border-top: 4px solid var(--muted); }
+
+.syncdot { font-size: .95rem; margin-left: auto; cursor: default; color: var(--muted); }
+.syncdot[data-s=ok] { color: var(--green); }
+.syncdot[data-s=error] { color: var(--amber); }
