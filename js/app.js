@@ -1119,11 +1119,13 @@ function fgNext() {
   let r = Math.random() * sum, item = cand[cand.length - 1];
   for (let i = 0; i < cand.length; i++) { r -= ws[i]; if (r <= 0) { item = cand[i]; break; } }
   FG.recent = [item.id, ...FG.recent].slice(0, 2);
-  if (FG.mode === 'units' || (FG.mode === 'mix' && Math.random() < 0.15)) FG.cur = drill.unitQuestion();
-  else if (FG.mode === 'rewrite') {
-    const rp = FG.pool.filter(it => it.rewrite && it.rewrite.length), rs = rp.length ? rp : FG.all.filter(it => it.rewrite && it.rewrite.length);
-    FG.cur = drill.makeQuestion(pickOf(rs.filter(it => !FG.recent.includes(it.id)).concat(rs.length < 3 ? rs : [])) || rs[0], FG.all, 'rewrite');
-  } else FG.cur = drill.makeQuestion(item, FG.all);
+  const has = k => FG.pool.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length)), hasAll = k => FG.all.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length));
+  const choose = list => pickOf(list.filter(it => !FG.recent.includes(it.id)).concat(list.length < 3 ? list : [])) || list[0];
+  if (FG.mode === 'units' || (FG.mode === 'mix' && Math.random() < 0.12)) FG.cur = drill.unitQuestion();
+  else if (FG.mode === 'rewrite') { const l = has('rewrite'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('rewrite')), FG.all, 'rewrite'); }
+  else if (FG.mode === 'calc') { const l = has('gen'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('gen')), FG.all, 'calc'); }
+  else if (FG.mode === 'know') FG.cur = drill.makeQuestion(item, FG.all, ['name', 'where', 'cloze']);
+  else FG.cur = drill.makeQuestion(item, FG.all);
   FG.picked = null;
 }
 function fgAnswer(i) {
@@ -1156,20 +1158,37 @@ function viewFGame() {
   const back = h('button', { class: 'ghost', onclick: () => { FG = null; setView('learn'); } }, '← Leren');
   if (FG.stage === 'start') {
     const un = fgUnlocked(ch), total = th.drill.length;
-    const avail = FG.onlyRead && un.length >= 1 ? un.length : total;
+    const useRead = FG.onlyRead && un.length >= 1 && FG.mode !== 'units';
+    const avail = useRead ? un.length : total;
+    const modes = [
+      ['mix', '🎲 Alles door elkaar', 'Van alles wat: formules herkennen, invullen, omwerken en rekenen. Het meest afwisselend; dit is de standaard.', 'Welke formule hoort bij “Wet van Ohm”?'],
+      ['know', '🧠 Formules kennen', 'Alleen herkennen en invullen, zonder rekenen. Goed om de formules en waar ze bij horen te leren.', 'P = I² · ___  →  R'],
+      ['calc', '🧮 Rekenen', 'Alleen rekenopgaven met willekeurige getallen. Gebruik je rekenmachine, net als op het examen.', '12 V over 470 Ω, hoe groot is de stroom?'],
+      ['rewrite', '🔁 Omwerken', 'Een formule omschrijven naar een andere grootheid. Hier lopen veel cursisten op vast.', 'P = U² / R  →  U = ?'],
+      ['units', '📏 Eenheden omrekenen', 'Omrekenen tussen mA, A, µA, kΩ, MΩ enzovoort. Dit gaat niet over een bepaald hoofdstuk.', '4,7 kΩ = ? Ω'],
+    ];
+    const cur = modes.find(m => m[0] === FG.mode);
     return h('div', {}, back, h('h1', {}, `Formule-spel · H${ch}`),
       h('section', { class: 'card' },
-        h('p', {}, `${FG_LEN} vragen over de formules van dit hoofdstuk: welke formule hoort waarbij, waar hoort een formule bij, invullen wat ontbreekt en rekenen met echte getallen. Je rekenmachine en kladblok mag je gebruiken.`),
-        h('p', { class: 'muted small' }, 'Punten: 10 per goed antwoord, plus een bonus voor een reeks goede antwoorden achter elkaar. Formules die je vaak fout hebt komen vaker terug.'),
-        h('div', { class: 'field' }, h('label', { for: 'fgmode' }, 'Soort vragen'),
-          h('select', { id: 'fgmode', onchange: e => { FG.mode = e.target.value; render(); } },
-            [['mix', 'Alles door elkaar'], ['rewrite', 'Alleen formules omwerken'], ['units', 'Alleen eenheden omrekenen (mA, kΩ, µ…)']].map(([v, t]) => h('option', { value: v, selected: FG.mode === v }, t)))),
+        h('h2', {}, 'Wat is dit?'),
+        h('p', {}, 'Een spel van 10 vragen om de formules van dit hoofdstuk echt te onthouden, en te weten waar ze bij horen en hoe je ze gebruikt. Per goed antwoord krijg je punten, met een bonus als je meerdere goede antwoorden achter elkaar hebt.'),
+        h('p', { class: 'muted small' }, 'Je rekenmachine en kladblok (rechtsonder) mag je altijd gebruiken. Formules die je vaak fout hebt komen vaker terug, en elke ronde telt mee voor je reeks.')),
+      h('section', { class: 'card' },
+        h('h2', {}, '1. Wat wil je oefenen?'),
+        h('div', { class: 'fmodes', role: 'radiogroup' }, modes.map(([v, t, d, ex]) =>
+          h('label', { class: 'mode' },
+            h('input', { type: 'radio', name: 'fgmode', value: v, checked: FG.mode === v, onchange: () => { FG.mode = v; render(); } }),
+            h('b', {}, t), h('span', { class: 'muted small' }, d), h('span', { class: 'ex' }, 'Voorbeeld: ' + ex))))),
+      h('section', { class: 'card' },
+        h('h2', {}, '2. Opties'),
         FG.mode !== 'units' && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.onlyRead, onchange: e => { FG.onlyRead = e.target.checked; render(); } }),
-          h('span', { class: 't' }, 'Alleen formules uit paragrafen die ik heb gelezen of geoefend')),
-        FG.onlyRead && un.length === 0 && h('p', { class: 'notice' }, 'Je hebt in dit hoofdstuk nog geen paragraaf gelezen of geoefend, dus je krijgt alle formules.'),
+          h('span', { class: 't' }, h('b', {}, 'Alleen wat ik al heb behandeld'), h('br'), h('span', { class: 'muted small' }, 'Formules uit paragrafen die je hebt gelezen of geoefend. Uit = alle formules van het hoofdstuk.'))),
+        FG.mode !== 'units' && FG.onlyRead && un.length === 0 && h('p', { class: 'notice' }, 'Je hebt in dit hoofdstuk nog geen paragraaf gelezen of geoefend, dus je krijgt voorlopig alle formules.'),
         h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.lives, onchange: e => { FG.lives = e.target.checked; render(); } }),
-          h('span', { class: 't' }, 'Met 3 levens (uit = rustig oefenen)')),
-        h('p', { class: 'muted small' }, `${avail} van ${total} formules beschikbaar` + (fgBest(ch) ? ` · jouw record: ${fgBest(ch)} punten` : '')),
+          h('span', { class: 't' }, h('b', {}, 'Spelen met 3 levens'), h('br'), h('span', { class: 'muted small' }, 'Bij drie fouten is de ronde afgelopen. Uit = rustig oefenen, altijd 10 vragen.')))),
+      h('section', { class: 'card' },
+        h('p', {}, h('b', {}, cur[1]), ` · 10 vragen · ${FG.mode === 'units' ? 'alle voorvoegsels' : `${avail} van ${total} formules`} · ${FG.lives ? '3 levens' : 'zonder levens'}`,
+          fgBest(ch) ? ` · jouw record: ${fgBest(ch)} punten` : ''),
         h('div', { class: 'row' }, h('button', { class: 'primary', onclick: fgStart }, '🎮 Start'))));
   }
   if (FG.stage === 'end') {
@@ -1201,7 +1220,7 @@ function viewFGame() {
   if (answered) queueMicrotask(() => next.focus({ preventScroll: true }));
   return h('div', {}, back,
     h('div', { class: 'row between', style: 'margin:.4rem 0' },
-      h('b', {}, `Vraag ${FG.n + 1} van ${FG_LEN}`),
+      h('b', {}, `Vraag ${FG.n + 1} van ${FG_LEN}`, h('span', { class: 'muted small' }, ' · ' + ({ mix: 'door elkaar', know: 'formules kennen', calc: 'rekenen', rewrite: 'omwerken', units: 'eenheden' }[FG.mode]))),
       h('span', {}, FG.hearts != null ? '❤️'.repeat(Math.max(0, FG.hearts)) + '🖤'.repeat(Math.max(0, 3 - FG.hearts)) : ''),
       h('span', { class: 'badge' + (FG.combo >= 3 ? ' blue' : '') }, FG.combo >= 2 ? `🔥 ${FG.combo}× · ${FG.score}` : `${FG.score} punten`)),
     h('div', { class: 'progress' }, h('i', { style: `width:${pct(FG.n + (answered ? 1 : 0), FG_LEN)}%` })),

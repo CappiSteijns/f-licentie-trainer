@@ -81,12 +81,13 @@ const GEN = {
 
 // ---- vragen samenstellen --------------------------------------------------------
 /** @returns {{type,kind,item,prompt,options:[{text,ok}],explain}} */
-export function makeQuestion(item, all, forceType) {
+export function makeQuestion(item, all, forceType) {   // forceType: één soort of een lijst met toegestane soorten
   const types = ['name', 'where'].filter(() => item.f);
   if (item.cloze && item.cloze.length) types.push('cloze', 'cloze');
   if (item.gen && GEN[item.gen]) types.push('calc', 'calc', 'calc');
   if (item.rewrite && item.rewrite.length) types.push('rewrite', 'rewrite', 'rewrite');
-  const type = forceType && types.includes(forceType) ? forceType : pick(types);
+  const allowed = forceType ? types.filter(t => [].concat(forceType).includes(t)) : types;
+  const type = pick(allowed.length ? allowed : types);
   const others = shuffle(all.filter(x => x.id !== item.id && x.f));
   const mk = (right, wrongs) => {
     const seen = new Set([right]); const ws = [];
