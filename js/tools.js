@@ -107,10 +107,10 @@ function applyBox(el) {
   const vw = innerWidth, vh = innerHeight, wide = vw >= 768;
   const w = clamp(d.w || (m === 'calc' ? (wide ? 460 : 400) : (wide ? 560 : 400)), MINW, Math.max(MINW, vw - 8));
   el.style.setProperty('--tw', w + 'px');
-  el.style.setProperty('--ts', clamp(w / 400, 0.7, 3));
+  el.style.setProperty('--ts', m === 'calc' ? clamp(Math.min(w / 400, d.h ? d.h / 520 : 9), 0.45, 3) : clamp(w / 400, 0.7, 3));
   let h;
   if (m === 'pad') { h = clamp(d.h || Math.round(vh * (wide ? 0.6 : 0.5)), MINH, Math.max(MINH, vh - 8)); el.style.setProperty('--th', h + 'px'); }
-  else h = el.offsetHeight || 420;
+  else h = d.h ? Math.min(d.h, el.offsetHeight || d.h) : (el.offsetHeight || 420);
   const c = +el.dataset.casc || 0;
   const x = clamp(d.x ?? (vw - w - 12 - c), 0, Math.max(0, vw - w));
   const y = clamp(d.y ?? (vh - h - 12 - c), 0, Math.max(0, vh - Math.min(h, vh)));
@@ -147,6 +147,7 @@ function makeMovable(el, m) {
         h = clamp(h, MINH, innerHeight - 8); if (dir.includes('t')) y = r.bottom - h;
         d.h = Math.round(h);
       }
+      if (m === 'calc') delete d.h;
       d.w = Math.round(w); d.x = Math.round(x); d.y = Math.round(y); applyBox(el);
     }));
     el.append(hnd);
@@ -156,6 +157,7 @@ function makeMovable(el, m) {
 addEventListener('resize', () => panels.forEach(applyBox));
 
 // ---------------------------------------------------------------- rekenmachine
+const tileBtn = () => $('button', { type: 'button', class: 'ghost small tilebtn', hidden: true, 'aria-label': 'Naast elkaar zetten', title: 'Naast elkaar zetten', onclick: () => tile() }, '◫');
 function buildCalc(onClose, other) {
   let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false;
   const disp = $('div', { class: 'cx' }), out = $('div', { class: 'cr' }), mode = $('div', { class: 'cm' });
@@ -206,7 +208,7 @@ function buildCalc(onClose, other) {
   }));
   render(); draw();
   const panel = $('div', { class: 'tpanel calc', role: 'dialog', 'aria-label': 'Rekenmachine', tabindex: '-1' },
-    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, other('✏️', 'Kladblok'), $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
+    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, tileBtn(), other('✏️', 'Kladblok'), $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     $('div', { class: 'cdisp' }, disp, out), keys);
   panel.addEventListener('keydown', e => {
     const m = { Enter: '=', '=': '=', Backspace: 'DEL', Delete: 'AC', '*': '×', '/': '÷', '.': ',', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')', '^': 'xʸ', e: 'EXP', E: 'EXP' };
@@ -251,7 +253,7 @@ function buildPad(onClose, other) {
     $('div', { class: 'thead' }, $('b', {}, 'Kladblok'),
       $('span', { class: 'tools' }, bPen, sw('auto', 'Wit/zwart'), sw('#4da3ff', 'Blauw'), sw('#f85149', 'Rood'), sw('#3fb950', 'Groen'), bEr,
         tool('↶', () => { strokes.pop(); draw(); }, 'Ongedaan maken'), tool('Wis', () => { strokes.length = 0; draw(); }, 'Alles wissen')),
-      other('🧮', 'Rekenmachine'),
+      tileBtn(), other('🧮', 'Rekenmachine'),
       $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     cv);
   panel.fit = fit; panel.redraw = draw;
@@ -268,12 +270,23 @@ function toggle(k) {
   if (opened[k]) {
     e.dataset.casc = opened[k === 'calc' ? 'pad' : 'calc'] ? '30' : '0';
     applyBox(e); front(e);
+    if (opened.calc && opened.pad) tile();            // tweede paneel erbij: meteen netjes naast/onder elkaar
     if (k === 'pad') pad.fit(); else calc.focus();
   }
   refresh();
 }
+/** Zet beide panelen naast elkaar (breed scherm of liggend) of onder elkaar (staand), zodat je ze tegelijk ziet. */
+function tile() {
+  const vw = innerWidth, vh = innerHeight, g = 4, side = vw >= vh * 1.1;
+  const cw = side ? Math.round((vw - 3 * g) / 2) : vw - 2 * g, ch = side ? vh - 2 * g : Math.round((vh - 3 * g) / 2);
+  const put = (k, x, y) => { const d = boxes[k] || (boxes[k] = {}); Object.assign(d, { x, y, w: cw, h: ch }); el(k).dataset.casc = '0'; applyBox(el(k)); front(el(k)); };
+  put('pad', g, g);
+  put('calc', side ? 2 * g + cw : g, side ? g : 2 * g + ch);
+  saveBoxes();
+}
 function refresh() {
   fab.hidden = !visible || opened.calc || opened.pad;
+  document.querySelectorAll('.tpanel .tilebtn').forEach(b => { b.hidden = !(opened.calc && opened.pad); });
   document.querySelectorAll('.tpanel .swbtn').forEach(b => b.classList.toggle('on', opened[b.dataset.k]));
 }
 export function initTools() {
