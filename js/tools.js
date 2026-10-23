@@ -92,39 +92,63 @@ export function fmtEng(v, shift = 0) {
   return comma(`${m}×10${sup(e)}`) + (pre !== undefined && pre !== '' ? `  (${pre})` : '');
 }
 
-// ---------------------------------------------------------------- formaat: paneel zelf groter slepen
-// Het paneel zweeft rechtsonder; pak de linkerkant, de bovenkant of de hoek vast om het formaat te bepalen.
-// De rest van de pagina verandert niet mee.
+// ---------------------------------------------------------------- positie en formaat
+// Beide panelen zweven vrij: versleep ze aan de kop, en pak een rand of hoek vast om het formaat te bepalen.
+// Positie en formaat worden onthouden. De rest van de pagina verandert niet mee.
 const SKEY = 'flic.toolbox';
-const sizes = (() => { try { return JSON.parse(localStorage.getItem(SKEY)) || {}; } catch { return {}; } })();
+const boxes = (() => { try { return JSON.parse(localStorage.getItem(SKEY)) || {}; } catch { return {}; } })();
+const saveBoxes = () => { try { localStorage.setItem(SKEY, JSON.stringify(boxes)); } catch { /* negeren */ } };
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const panels = [];
+let zTop = 50;
+const MINW = 260, MINH = 220;
 function applyBox(el) {
-  const m = el.dataset.m, vw = innerWidth - 24, vh = innerHeight - 24;
-  const d = sizes[m] || {};
-  const w = clamp(d.w || (m === 'calc' ? (innerWidth >= 768 ? 460 : 400) : (innerWidth >= 768 ? 560 : 400)), 260, vw);
+  const m = el.dataset.m, d = boxes[m] || (boxes[m] = {});
+  const vw = innerWidth, vh = innerHeight, wide = vw >= 768;
+  const w = clamp(d.w || (m === 'calc' ? (wide ? 460 : 400) : (wide ? 560 : 400)), MINW, Math.max(MINW, vw - 8));
   el.style.setProperty('--tw', w + 'px');
   el.style.setProperty('--ts', clamp(w / 400, 0.7, 3));
-  if (m === 'pad') el.style.setProperty('--th', clamp(d.h || Math.round(innerHeight * (innerWidth >= 768 ? 0.6 : 0.5)), 220, vh) + 'px');
+  let h;
+  if (m === 'pad') { h = clamp(d.h || Math.round(vh * (wide ? 0.6 : 0.5)), MINH, Math.max(MINH, vh - 8)); el.style.setProperty('--th', h + 'px'); }
+  else h = el.offsetHeight || 420;
+  const c = +el.dataset.casc || 0;
+  const x = clamp(d.x ?? (vw - w - 12 - c), 0, Math.max(0, vw - w));
+  const y = clamp(d.y ?? (vh - h - 12 - c), 0, Math.max(0, vh - Math.min(h, vh)));
+  el.style.left = x + 'px'; el.style.top = y + 'px';
   if (el.fit) requestAnimationFrame(el.fit);
 }
-function makeResizable(el, m) {
+const front = el => { el.style.zIndex = ++zTop; };
+const startDrag = (hnd, e, el, fn) => {
+  e.preventDefault(); hnd.setPointerCapture(e.pointerId);
+  const r = el.getBoundingClientRect(), x0 = e.clientX, y0 = e.clientY;
+  const move = ev => fn(r, ev.clientX - x0, ev.clientY - y0);
+  const up = () => { hnd.removeEventListener('pointermove', move); hnd.removeEventListener('pointerup', up); hnd.removeEventListener('pointercancel', up); saveBoxes(); };
+  hnd.addEventListener('pointermove', move); hnd.addEventListener('pointerup', up); hnd.addEventListener('pointercancel', up);
+};
+function makeMovable(el, m) {
   el.dataset.m = m; panels.push(el);
-  for (const [cls, dx, dy] of [['rz-l', 1, 0], ['rz-t', 0, 1], ['rz-tl', 1, 1]]) {
-    if (m === 'calc' && !dx) continue;                  // rekenmachine: hoogte volgt uit de breedte
-    const hnd = $('div', { class: 'rz ' + cls, 'aria-hidden': 'true' });
-    hnd.addEventListener('pointerdown', e => {
-      e.preventDefault(); hnd.setPointerCapture(e.pointerId);
-      const r = el.getBoundingClientRect(), x0 = e.clientX, y0 = e.clientY;
-      const move = ev => {
-        const o = sizes[m] = { ...(sizes[m] || {}) };
-        if (dx) o.w = Math.round(r.width + (x0 - ev.clientX));
-        if (dy && m === 'pad') o.h = Math.round(r.height + (y0 - ev.clientY));
-        applyBox(el);
-      };
-      const up = () => { hnd.removeEventListener('pointermove', move); hnd.removeEventListener('pointerup', up); hnd.removeEventListener('pointercancel', up); try { localStorage.setItem(SKEY, JSON.stringify(sizes)); } catch { /* negeren */ } };
-      hnd.addEventListener('pointermove', move); hnd.addEventListener('pointerup', up); hnd.addEventListener('pointercancel', up);
-    });
+  el.addEventListener('pointerdown', () => front(el), true);
+  const head = el.querySelector('.thead');
+  head.addEventListener('pointerdown', e => {
+    if (e.target.closest('button, input, select')) return;
+    startDrag(head, e, el, (r, dx, dy) => { const d = boxes[m]; d.w = Math.round(r.width); d.x = Math.round(r.left + dx); d.y = Math.round(r.top + dy); if (m === 'pad') d.h = Math.round(r.height); applyBox(el); });
+  });
+  const dirs = m === 'calc' ? ['l', 'r'] : ['l', 'r', 't', 'b', 'tl', 'tr', 'bl', 'br'];
+  for (const dir of dirs) {
+    const hnd = $('div', { class: 'rz rz-' + dir, 'aria-hidden': 'true' });
+    hnd.addEventListener('pointerdown', e => startDrag(hnd, e, el, (r, dx, dy) => {
+      const d = boxes[m]; let x = r.left, y = r.top, w = r.width, h = r.height;
+      if (dir.includes('r')) w = r.width + dx;
+      if (dir.includes('l')) { w = r.width - dx; }
+      w = clamp(w, MINW, innerWidth - 8); if (dir.includes('l')) x = r.right - w;
+      if (m === 'pad') {
+        if (dir.includes('b')) h = r.height + dy;
+        if (dir.includes('t')) h = r.height - dy;
+        h = clamp(h, MINH, innerHeight - 8); if (dir.includes('t')) y = r.bottom - h;
+        d.h = Math.round(h);
+      }
+      d.w = Math.round(w); d.x = Math.round(x); d.y = Math.round(y); applyBox(el);
+    }));
     el.append(hnd);
   }
   applyBox(el);
@@ -132,7 +156,7 @@ function makeResizable(el, m) {
 addEventListener('resize', () => panels.forEach(applyBox));
 
 // ---------------------------------------------------------------- rekenmachine
-function buildCalc(onClose) {
+function buildCalc(onClose, other) {
   let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false;
   const disp = $('div', { class: 'cx' }), out = $('div', { class: 'cr' }), mode = $('div', { class: 'cm' });
   const draw = () => {
@@ -182,7 +206,7 @@ function buildCalc(onClose) {
   }));
   render(); draw();
   const panel = $('div', { class: 'tpanel calc', role: 'dialog', 'aria-label': 'Rekenmachine', tabindex: '-1' },
-    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
+    $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, other('✏️', 'Kladblok'), $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     $('div', { class: 'cdisp' }, disp, out), keys);
   panel.addEventListener('keydown', e => {
     const m = { Enter: '=', '=': '=', Backspace: 'DEL', Delete: 'AC', '*': '×', '/': '÷', '.': ',', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')', '^': 'xʸ', e: 'EXP', E: 'EXP' };
@@ -194,7 +218,7 @@ function buildCalc(onClose) {
 }
 
 // ---------------------------------------------------------------- kladblok
-function buildPad(onClose) {
+function buildPad(onClose, other) {
   const strokes = []; let cur = null, color = 'auto', size = 3, eraser = false;
   const cv = $('canvas', { class: 'pad-cv', 'aria-label': 'Kladblok: teken met je vinger of muis' });
   const ink = () => (color === 'auto' ? getComputedStyle(document.body).color : color);
@@ -227,6 +251,7 @@ function buildPad(onClose) {
     $('div', { class: 'thead' }, $('b', {}, 'Kladblok'),
       $('span', { class: 'tools' }, bPen, sw('auto', 'Wit/zwart'), sw('#4da3ff', 'Blauw'), sw('#f85149', 'Rood'), sw('#3fb950', 'Groen'), bEr,
         tool('↶', () => { strokes.pop(); draw(); }, 'Ongedaan maken'), tool('Wis', () => { strokes.length = 0; draw(); }, 'Alles wissen')),
+      other('🧮', 'Rekenmachine'),
       $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     cv);
   panel.fit = fit; panel.redraw = draw;
@@ -234,28 +259,39 @@ function buildPad(onClose) {
 }
 
 // ---------------------------------------------------------------- aanzetten
-let calc, pad, fab, open = null;
-function show(which) {
-  open = open === which ? null : which;
-  for (const [k, el] of [['calc', calc], ['pad', pad]]) el.hidden = open !== k;
-  document.body.classList.toggle('tool-open', !!open);
-  if (open === 'pad') pad.fit();
-  if (open === 'calc') calc.focus();
-  fab.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.k === open));
+let calc, pad, fab, visible = false;
+const opened = { calc: false, pad: false };
+const el = k => (k === 'calc' ? calc : pad);
+function toggle(k) {
+  opened[k] = !opened[k];
+  const e = el(k); e.hidden = !opened[k];
+  if (opened[k]) {
+    e.dataset.casc = opened[k === 'calc' ? 'pad' : 'calc'] ? '30' : '0';
+    applyBox(e); front(e);
+    if (k === 'pad') pad.fit(); else calc.focus();
+  }
+  refresh();
+}
+function refresh() {
+  fab.hidden = !visible || opened.calc || opened.pad;
+  document.querySelectorAll('.tpanel .swbtn').forEach(b => b.classList.toggle('on', opened[b.dataset.k]));
 }
 export function initTools() {
   if (fab) return;
-  calc = buildCalc(() => show('calc')); pad = buildPad(() => show('pad'));
+  const other = k => (icon, label) => $('button', { type: 'button', class: 'ghost small swbtn', 'data-k': k, 'aria-label': label + ' openen/sluiten', title: label, onclick: () => toggle(k) }, icon);
+  calc = buildCalc(() => toggle('calc'), (i, l) => other('pad')(i, l));
+  pad = buildPad(() => toggle('pad'), (i, l) => other('calc')(i, l));
   calc.hidden = pad.hidden = true;
   fab = $('div', { class: 'tfab', hidden: true },
-    $('button', { type: 'button', 'data-k': 'calc', 'aria-label': 'Rekenmachine', title: 'Rekenmachine', onclick: () => show('calc') }, '🧮'),
-    $('button', { type: 'button', 'data-k': 'pad', 'aria-label': 'Kladblok', title: 'Kladblok', onclick: () => show('pad') }, '✏️'));
+    $('button', { type: 'button', 'aria-label': 'Rekenmachine', title: 'Rekenmachine', onclick: () => toggle('calc') }, '🧮'),
+    $('button', { type: 'button', 'aria-label': 'Kladblok', title: 'Kladblok', onclick: () => toggle('pad') }, '✏️'));
   document.body.append(fab, calc, pad);
-  makeResizable(calc, 'calc'); makeResizable(pad, 'pad');
+  makeMovable(calc, 'calc'); makeMovable(pad, 'pad');
 }
 /** Knoppen tonen/verbergen; bij verbergen sluiten de panelen ook (de tekening blijft bewaard). */
 export function setToolsVisible(on) {
-  initTools(); fab.hidden = !on;
-  if (!on && open) show(open);
+  initTools(); visible = on;
+  if (!on) for (const k of ['calc', 'pad']) if (opened[k]) { opened[k] = false; el(k).hidden = true; }
   document.body.classList.toggle('has-tools', on);
+  refresh();
 }

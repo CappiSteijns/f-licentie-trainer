@@ -888,7 +888,7 @@ function viewPrivacy() {
 
 // ---------------------------------------------------------------- toetsenbord
 document.addEventListener('keydown', e => {
-  if (document.body.classList.contains('tool-open') || e.target.closest?.('.tpanel')) return;
+  if (e.target.closest?.('.tpanel')) return;
   if (view !== 'session' || !S || $dlg.open) return;
   if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName)) return;
   if (e.ctrlKey || e.metaKey || e.altKey) return;
