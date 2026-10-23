@@ -66,6 +66,7 @@ let S = null;               // actieve sessie
 let RESULT = null;          // laatste uitslag
 let timerInt = null;
 let T = null;               // geopende theorie: { chapter, secId, back }
+let M = null;               // formule-memory: { chapter, n, cards, open, matched, moves, t0, lock, done }
 let K = null;               // flashcardronde: { chapter, queue, idx, flip, knew, missed }
 
 const chapterTitle = n => (chapters.find(c => c.n === n) || {}).title || '';
@@ -80,7 +81,7 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'theory' || view === 'cards') ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'theory' || view === 'cards' || view === 'memory') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S ? 'session' : k) }, label)));
 }
@@ -89,7 +90,7 @@ function render() {
   applyPrefs();
   tools.setToolsVisible(view === 'session');
   renderNav();
-  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, memory: viewMemory, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
 }
@@ -1086,6 +1087,81 @@ function viewCards() {
     h('div', { class: 'small muted' }, `Vandaag: ${store.todayCount()} geoefend`));
 }
 
+// ---------------------------------------------------------------- formule-memory
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function startMemory(ch, n) {
+  const th = theory.getTheory(ch);
+  const pairs = shuffle(th.memory || []).slice(0, n);
+  const cards = shuffle(pairs.flatMap(p => [{ pair: p.id, side: 'a', text: p.a }, { pair: p.id, side: 'b', text: p.b }])).map((c, i) => ({ ...c, i }));
+  M = { chapter: ch, n: pairs.length, cards, open: [], matched: new Set(), moves: 0, t0: 0, lock: false, done: false, secs: 0 };
+  setView('memory');
+}
+function memBest(n) { try { return (JSON.parse(localStorage.getItem('flic.membest')) || {})[n] || null; } catch { return null; } }
+function memSave(n, moves, secs) {
+  try { const b = JSON.parse(localStorage.getItem('flic.membest')) || {}; const o = b[n];
+    if (!o || moves < o.moves || (moves === o.moves && secs < o.secs)) { b[n] = { moves, secs }; localStorage.setItem('flic.membest', JSON.stringify(b)); return true; } } catch { /* negeren */ }
+  return false;
+}
+function viewMemory() {
+  if (!M) return viewLearn();
+  const th = theory.getTheory(M.chapter);
+  const total = (th.memory || []).length;
+  const back = h('button', { class: 'ghost', onclick: () => { M = null; setView('learn'); } }, '← Leren');
+  if (!M.chapter || M.n === 0) return h('div', {}, back);
+  const info = h('div', { class: 'row between' }, h('b', { id: 'memMoves' }, `Beurten: ${M.moves}`), h('span', { id: 'memTime', class: 'muted' }, fmtMemTime(M.secs)));
+  const grid = h('div', { class: 'memgrid c' + (M.n <= 6 ? 3 : 4), role: 'group', 'aria-label': 'Memory' });
+  const els = M.cards.map(c => {
+    const e = h('button', { class: 'memcard' + (M.matched.has(c.pair) ? ' matched' : ''), type: 'button', 'aria-label': 'Kaart omdraaien', onclick: () => flipMem(c, e, els) },
+      h('span', { class: 'mf back' }, '📡'), h('span', { class: 'mf front ' + c.side }, c.text));
+    return e;
+  });
+  grid.append(...els);
+  const done = h('section', { class: 'card', id: 'memDone', hidden: true });
+  const wrap = h('div', {}, back, h('h1', {}, 'Formule-memory'),
+    h('p', { class: 'muted small' }, 'Zoek de paren: een naam of omschrijving en de bijbehorende formule of waarde.'),
+    info, grid, done);
+  wrap.memEls = els; wrap.memDone = done;
+  M.dom = { els, done };
+  clearInterval(timerInt);
+  timerInt = setInterval(() => { if (M && M.t0 && !M.done) { M.secs = Math.floor((Date.now() - M.t0) / 1000); const t = document.getElementById('memTime'); if (t) t.textContent = fmtMemTime(M.secs); } }, 500);
+  return wrap;
+}
+const fmtMemTime = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+function flipMem(c, e, els) {
+  if (M.lock || M.done || M.matched.has(c.pair) || M.open.includes(c.i)) return;
+  if (!M.t0) { M.t0 = Date.now(); }
+  e.classList.add('open'); M.open.push(c.i);
+  if (M.open.length < 2) return;
+  M.moves++; document.getElementById('memMoves').textContent = `Beurten: ${M.moves}`;
+  const [x, y] = M.open.map(i => M.cards[i]);
+  if (x.pair === y.pair && x.side !== y.side) {
+    M.matched.add(x.pair); if (M.matched.size === 1) store.markActive();
+    M.open.forEach(i => els[i].classList.replace('open', 'matched')); M.open = [];
+    if (M.matched.size === M.n) finishMem();
+  } else {
+    M.lock = true;
+    setTimeout(() => { M.open.forEach(i => els[i].classList.remove('open')); M.open = []; M.lock = false; }, 1100);
+  }
+}
+function finishMem() {
+  M.done = true; M.secs = Math.floor((Date.now() - M.t0) / 1000);
+  const rec = memSave(M.n, M.moves, M.secs), best = memBest(M.n);
+  const d = M.dom.done; d.hidden = false;
+  d.replaceChildren(h('h2', {}, rec ? 'Nieuw record! 🎉' : 'Gelukt! 🎉'),
+    h('p', {}, `${M.n} paren in ${M.moves} beurten en ${fmtMemTime(M.secs)}. Beste met ${M.n} paren: ${best.moves} beurten (${fmtMemTime(best.secs)}).`),
+    h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => startMemory(M.chapter, M.n) }, 'Nog een keer'),
+      h('button', { class: 'ghost', onclick: () => { M = null; setView('learn'); } }, 'Terug')));
+  d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function memoryPicker(ch) {
+  const th = theory.getTheory(ch), total = (th.memory || []).length;
+  if (!total) return null;
+  const sizes = [6, 8, 10].filter(n => n <= total);
+  return h('details', { class: 'secs' }, h('summary', {}, `Formule-memory (${total} paren)`),
+    h('p', { class: 'muted small' }, 'Draai kaartjes om en koppel elke formule aan zijn naam. Kies het aantal paren:'),
+    h('div', { class: 'row' }, sizes.map(n => h('button', { onclick: () => startMemory(ch, n) }, `${n} paren${memBest(n) ? ` · beste ${memBest(n).moves}` : ''}`))));
+}
+
 function viewLearn() {
   const withT = chapters.filter(c => c.theory && theory.getTheory(c.n));
   const without = chapters.filter(c => c.count > 0 && !withT.includes(c));
@@ -1110,6 +1186,7 @@ function viewLearn() {
           (() => { const cs = cardStats(c.n); return cs.total > 0 && h('button', { onclick: () => cs.due ? startCards(c.n, false) : startCards(c.n, true) }, cs.due ? `Flashcards (${cs.due})` : 'Flashcards herhalen'); })(),
           formulaBtn(c.n),
           step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
+        memoryPicker(c.n),
         h('details', { class: 'secs', open: true }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
     }),
     without.length > 0 && h('p', { class: 'muted small' }, 'Nog geen theorie toegevoegd voor: ' + without.map(c => 'H' + c.n).join(', ') + '. Je kunt deze hoofdstukken wel gewoon oefenen. De theorie voeg je toe met tools/build_theory.py (zie README).'));

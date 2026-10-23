@@ -146,7 +146,7 @@ def main(pdf):
     f.parent.mkdir(parents=True, exist_ok=True)
     old = json.loads(f.read_text(encoding='utf-8')) if f.exists() else {}
     data = {'chapter': chap, 'dir': f'img/theorie/hs{chap}', 'sections': secs,
-            'qmap': old.get('qmap', {}), 'formulas': old.get('formulas', []), 'cards': old.get('cards', [])}
+            'qmap': old.get('qmap', {}), 'formulas': old.get('formulas', []), 'cards': old.get('cards', []), 'memory': old.get('memory', [])}
     f.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f'Hoofdstuk {chap}: {len(secs)} paragrafen, {len(used)} pagina\'s')
     for s in secs:
