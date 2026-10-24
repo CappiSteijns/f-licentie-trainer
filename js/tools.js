@@ -1,6 +1,5 @@
 // Hulpmiddelen tijdens oefenen en examen: rekenmachine (naar het voorbeeld van de Casio fx-82NL) en kladblok.
 // Geen eval: de invoer wordt door een eigen kleine parser berekend.
-import * as hw from './hw.js';
 
 const $ = (tag, props = {}, ...kids) => {
   const e = document.createElement(tag);
@@ -313,10 +312,10 @@ export function setToolsVisible(on) {
 // ---------------------------------------------------------------- pen over het hele scherm
 // Schrijf met je pen (of muis) waar je wilt, ook over de vraag heen. Met "alleen pen" scrolt en tikt je vinger gewoon door.
 // De tekening hoort bij de pagina (scrolt mee) en verdwijnt bij de volgende vraag of weergave.
-const ink = { on: false, strokes: [], cur: null, key: '', color: 'auto', size: 3, eraser: false, penOnly: true, lastPen: 0, touch: null, calc: true, seq: 0, labels: [], timer: 0, tap: null };
+const ink = { on: false, strokes: [], cur: null, key: '', color: 'auto', size: 3, eraser: false, penOnly: true, lastPen: 0, touch: null };
 try { Object.assign(ink, JSON.parse(localStorage.getItem('flic.ink')) || {}, { on: false }); } catch { /* negeren */ }
 let inkCv, inkBar, inkBtn;
-const inkSave = () => { try { localStorage.setItem('flic.ink', JSON.stringify({ color: ink.color, size: ink.size, penOnly: ink.penOnly, calc: ink.calc })); } catch { /* negeren */ } };
+const inkSave = () => { try { localStorage.setItem('flic.ink', JSON.stringify({ color: ink.color, size: ink.size, penOnly: ink.penOnly })); } catch { /* negeren */ } };
 function inkDraw() {
   if (!inkCv) return;
   const ctx = inkCv.getContext('2d'), r = devicePixelRatio || 1, sx = scrollX, sy = scrollY;
@@ -330,21 +329,6 @@ function inkDraw() {
     }
   }
   ctx.globalCompositeOperation = 'source-over';
-  ink.labels = ink.labels.filter(l => ink.strokes.some(s => s.n === l.key));
-  const cs = getComputedStyle(document.documentElement), accent = cs.getPropertyValue('--accent').trim() || '#4da3ff', bg = cs.getPropertyValue('--surface').trim() || '#161b22';
-  for (const l of ink.labels) {
-    const fs = Math.max(15, Math.min(l.h * 0.8, 44)), sf = Math.max(10, fs * 0.5);
-    ctx.font = `600 ${fs}px system-ui, sans-serif`; const w1 = ctx.measureText(l.text).width;
-    ctx.font = `${sf}px system-ui, sans-serif`; const w2 = ctx.measureText(l.sub).width;
-    const w = Math.max(w1, w2) + 14, hh = fs + sf + 12;
-    let x = l.x, y = l.y - fs * 0.75;
-    if (x + w > innerWidth + sx - 6) x = Math.max(sx + 6, innerWidth + sx - 6 - w);
-    l.box = { x, y: y - 4, w, h: hh };
-    ctx.fillStyle = bg; ctx.globalAlpha = .88; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x - sx, y - 4 - sy, w, hh, 8) : ctx.rect(x - sx, y - 4 - sy, w, hh); ctx.fill(); ctx.globalAlpha = 1;
-    ctx.strokeStyle = accent; ctx.lineWidth = 1; ctx.stroke();
-    ctx.textBaseline = 'top'; ctx.fillStyle = accent; ctx.font = `600 ${fs}px system-ui, sans-serif`; ctx.fillText(l.text, x + 7 - sx, y - sy);
-    ctx.fillStyle = '#8b949e'; ctx.font = `${sf}px system-ui, sans-serif`; ctx.fillText(l.sub, x + 7 - sx, y + fs + 2 - sy);
-  }
 }
 let inkRaf = 0; const inkSoon = () => { if (!inkRaf) inkRaf = requestAnimationFrame(() => { inkRaf = 0; inkDraw(); }); };
 function inkFit() { const r = devicePixelRatio || 1; inkCv.width = Math.round(innerWidth * r); inkCv.height = Math.round(innerHeight * r); inkDraw(); }
@@ -354,13 +338,8 @@ function inkPoint(e) {
   const w = (ink.eraser ? ink.size * 6 : ink.size) * p;
   return [e.clientX + scrollX, e.clientY + scrollY, w];
 }
-const labelAt = (px, py) => ink.labels.find(l => l.box && px >= l.box.x && px <= l.box.x + l.box.w && py >= l.box.y && py <= l.box.y + l.box.h);
 function inkPointerDown(e) {
   if (e.pointerType === 'pen') ink.lastPen = performance.now();
-  const hit = ink.calc && !ink.eraser && labelAt(e.clientX + scrollX, e.clientY + scrollY);
-  if (hit && !(e.pointerType === 'touch' && performance.now() - ink.lastPen < 700)) {
-    ink.tap = { lab: hit, x: e.clientX, y: e.clientY, id: e.pointerId }; inkCv.setPointerCapture(e.pointerId); e.preventDefault(); return;
-  }
   const touch = e.pointerType === 'touch';
   if (touch && (ink.penOnly || performance.now() - ink.lastPen < 700)) {
     if (performance.now() - ink.lastPen < 700) return;             // handpalm tijdens het schrijven negeren
@@ -368,11 +347,10 @@ function inkPointerDown(e) {
   }
   if (e.pointerType === 'mouse' && e.button !== 0) return;
   e.preventDefault(); inkCv.setPointerCapture(e.pointerId);
-  ink.cur = { c: inkColor(), er: ink.eraser, p: [inkPoint(e)], id: e.pointerId, t: performance.now(), n: ++ink.seq }; clearTimeout(ink.timer); ink.strokes.push(ink.cur); inkDraw();
+  ink.cur = { c: inkColor(), er: ink.eraser, p: [inkPoint(e)], id: e.pointerId }; ink.strokes.push(ink.cur); inkDraw();
 }
 function inkPointerMove(e) {
   if (e.pointerType === 'pen') ink.lastPen = performance.now();
-  if (ink.tap) return;
   if (ink.touch && ink.touch.id === e.pointerId) {
     const dx = e.clientX - ink.touch.x, dy = e.clientY - ink.touch.y;
     if (Math.abs(dx) + Math.abs(dy) > 8) ink.touch.moved = true;
@@ -385,11 +363,6 @@ function inkPointerMove(e) {
   inkSoon();
 }
 function inkPointerUp(e) {
-  if (ink.tap && ink.tap.id === e.pointerId) {
-    const t = ink.tap; ink.tap = null;
-    if (e.type === 'pointerup' && Math.hypot(e.clientX - t.x, e.clientY - t.y) < 12) inkFix(t.lab);
-    return;
-  }
   if (ink.touch && ink.touch.id === e.pointerId) {
     const t = ink.touch; ink.touch = null;
     if (!t.moved && performance.now() - t.t < 450 && e.type === 'pointerup') {          // tik: doorgeven aan wat eronder zit
@@ -400,95 +373,7 @@ function inkPointerUp(e) {
     }
     return;
   }
-  if (ink.cur && ink.cur.id === e.pointerId) {
-    const s = ink.cur; ink.cur = null;
-    if (s.er) inkErase(s);
-    else if (ink.calc) { clearTimeout(ink.timer); ink.timer = setTimeout(inkRead, 700); }
-  }
-}
-/** Gum haalt hele streken weg die hij raakt (dan klopt wat de herkenning leest met wat je ziet). */
-function inkErase(es) {
-  const rad = (es.p[0] ? es.p[0][2] : 12) / 2 + 4;
-  const touches = s => s.p.some(a => es.p.some(b => Math.hypot(a[0] - b[0], a[1] - b[1]) < rad));
-  ink.strokes = ink.strokes.filter(s => s !== es && (s.er || !touches(s)));
-  inkDraw();
-}
-// ---- som herkennen: schrijf "12÷470=" en het antwoord verschijnt ----------------------
-function inkNumber(v) {
-  if (!isFinite(v)) return 'fout';
-  const a = Math.abs(v);
-  if (v === 0 || (a >= 1e-3 && a < 1e6)) return comma(String(+v.toPrecision(5)));
-  return fmtEng(v);
-}
-function inkRead() {
-  if (!ink.calc || !inkCv) return;
-  const pens = ink.strokes.filter(s => !s.er && s.p.length);
-  const r = hw.readLine(pens.map(s => ({ p: s.p, t: s.t, i: s.n })), evaluate);
-  if (!r) return;
-  const key = Math.max(...r.last.idx);
-  ink.labels = ink.labels.filter(l => l.key !== key);
-  ink.labels.push(inkLabel(key, r));
-  inkDraw();
-}
-function inkLabel(key, r) {
-  const ok = r.value != null && isFinite(r.value);
-  return { key, r, x: r.anchor.x, y: r.anchor.y, h: r.anchor.h, text: ok ? '= ' + inkNumber(r.value) : '= ?', sub: 'gelezen als ' + r.shown };
-}
-function inkRelabel(lab) {
-  const c = hw.compose(lab.r.symbols); lab.r.expr = c.expr; lab.r.shown = c.shown;
-  try { lab.r.value = evaluate(c.expr); } catch { lab.r.value = null; }
-  Object.assign(lab, inkLabel(lab.key, lab.r));
-}
-/** Tik op een antwoord: kijk wat er gelezen is en verbeter een teken. Elke verbetering leert je handschrift aan. */
-function inkFix(lab) {
-  const dlg = $('dialog', { class: 'hwdlg' });
-  let sel = 0;
-  const body = $('div');
-  const ALL = hw.TRAIN_LABELS;
-  const draw = () => {
-    const syms = lab.r.symbols;
-    body.replaceChildren(
-      $('p', { class: 'muted small' }, 'Zo heb ik je som gelezen. Tik op een teken dat niet klopt en kies het juiste. Zo leer ik je handschrift.'),
-      $('div', { class: 'hwchips' }, syms.map((c, i) => $('button', { type: 'button', class: 'ghost hwchip' + (i === sel ? ' on' : ''), onclick: () => { sel = i; draw(); } }, (c.sup ? '↑' : '') + c.ch))),
-      $('div', { class: 'hwchips' }, ALL.map(ch => $('button', { type: 'button', class: 'ghost hwchip', onclick: () => {
-        const c = syms[sel]; c.ch = ch; hw.addSample(ch, c.s.strokes); inkRelabel(lab); inkDraw(); draw();
-      } }, ch))),
-      $('div', { class: 'actions' },
-        $('button', { type: 'button', class: 'ghost', onclick: () => { const c = syms[sel]; c.sup = !c.sup; inkRelabel(lab); inkDraw(); draw(); } }, 'Macht aan/uit'),
-        $('button', { type: 'button', class: 'ghost', onclick: () => { for (const c of syms) hw.addSample(c.ch, c.s.strokes); dlg.close(); } }, 'Klopt, onthoud dit'),
-        $('button', { type: 'button', onclick: () => dlg.close() }, 'Sluiten')),
-      $('p', { class: 'hwres' }, lab.text + '   ', $('span', { class: 'muted small' }, lab.sub)));
-  };
-  dlg.append($('h3', {}, 'Herkende som'), body);
-  dlg.addEventListener('close', () => dlg.remove());
-  document.body.append(dlg); draw(); dlg.showModal();
-}
-/** Train op je eigen handschrift: elk teken twee keer schrijven. */
-function inkTrain() {
-  const dlg = $('dialog', { class: 'hwdlg' });
-  const seq = hw.TRAIN_LABELS.flatMap(ch => [ch, ch]);
-  let i = 0, strokes = [], cur = null, idle = 0;
-  const cv = $('canvas', { class: 'hwpad', width: 520, height: 320 }), ctx = cv.getContext('2d');
-  const head = $('div', { class: 'hwbig' }), prog = $('p', { class: 'muted small' });
-  const show = () => {
-    ctx.clearRect(0, 0, 520, 320); strokes = [];
-    if (i >= seq.length) { head.textContent = '✓'; prog.textContent = `Klaar. ${hw.personalCount()} voorbeelden van jouw handschrift opgeslagen.`; cv.hidden = true; return; }
-    head.textContent = 'Schrijf: ' + seq[i]; prog.textContent = `${i + 1} van ${seq.length}. Schrijf het teken ruim in het vak. Het gaat vanzelf door.`;
-  };
-  const pt = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * 520 / r.width, (e.clientY - r.top) * 320 / r.height]; };
-  const redraw = () => { ctx.clearRect(0, 0, 520, 320); ctx.lineWidth = 5; ctx.lineCap = ctx.lineJoin = 'round'; ctx.strokeStyle = getComputedStyle(document.body).color; for (const s of strokes) { ctx.beginPath(); s.forEach(([x, y], k) => (k ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); if (s.length === 1) ctx.lineTo(s[0][0] + .1, s[0][1]); ctx.stroke(); } };
-  cv.addEventListener('pointerdown', e => { clearTimeout(idle); cv.setPointerCapture(e.pointerId); cur = [pt(e)]; strokes.push(cur); redraw(); e.preventDefault(); });
-  cv.addEventListener('pointermove', e => { if (!cur) return; for (const ev of (e.getCoalescedEvents ? e.getCoalescedEvents() : [e])) cur.push(pt(ev)); redraw(); });
-  const up = () => { if (!cur) return; cur = null; clearTimeout(idle); idle = setTimeout(() => { if (strokes.length) { hw.addSample(seq[i], strokes); i++; show(); } }, 900); };
-  cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
-  dlg.append($('h3', {}, 'Leer mijn handschrift'), head, cv, prog,
-    $('div', { class: 'actions' },
-      $('button', { type: 'button', class: 'ghost', onclick: () => { if (confirm('Alle opgeslagen voorbeelden van jouw handschrift wissen?')) { hw.resetPersonal(); i = 0; cv.hidden = false; show(); } } }, 'Wis training'),
-      $('button', { type: 'button', class: 'ghost', onclick: () => { clearTimeout(idle); ctx.clearRect(0, 0, 520, 320); strokes = []; } }, 'Opnieuw'),
-      $('button', { type: 'button', class: 'ghost', onclick: () => { clearTimeout(idle); if (i < seq.length) { i++; show(); } } }, 'Overslaan'),
-      $('button', { type: 'button', onclick: () => dlg.close() }, 'Sluiten')));
-  dlg.addEventListener('close', () => { clearTimeout(idle); dlg.remove(); });
-  document.body.append(dlg); show(); dlg.showModal();
+  if (ink.cur && ink.cur.id === e.pointerId) ink.cur = null;
 }
 function inkSet(on) {
   ink.on = on; inkCv.hidden = !on; inkBar.hidden = !on; inkBtn.hidden = on;
@@ -506,10 +391,7 @@ function buildInk() {
   const bEr = $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Gum', onclick: () => { ink.eraser = true; sync(); } }, 'Gum');
   const bTh = $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Dikte', onclick: () => { ink.size = ink.size >= 7 ? 2 : ink.size + 2; inkSave(); sync(); } }, '');
   const bPo = $('button', { type: 'button', class: 'ghost small', title: 'Alleen pen: je vinger scrolt en tikt gewoon door', onclick: () => { ink.penOnly = !ink.penOnly; inkSave(); sync(); } }, '');
-  const bCalc = $('button', { type: 'button', class: 'ghost small', title: 'Schrijf een som met =, dan verschijnt het antwoord', onclick: () => { ink.calc = !ink.calc; if (!ink.calc) { ink.labels = []; inkDraw(); } inkSave(); sync(); } }, '');
-  const bTr = $('button', { type: 'button', class: 'ghost small', title: 'Leer de herkenning jouw handschrift', onclick: () => inkTrain() }, '✍ Train');
   const sync = () => {
-    bCalc.textContent = ink.calc ? '= aan' : '= uit'; bCalc.classList.toggle('on', ink.calc); bTr.hidden = !ink.calc;
     bPen.classList.toggle('on', !ink.eraser); bEr.classList.toggle('on', ink.eraser);
     bTh.textContent = '●'.repeat(1) + ' ' + ink.size; bTh.style.fontSize = '.85rem';
     bPo.textContent = ink.penOnly ? '🖊 alleen pen' : '🖊 ook vinger'; bPo.classList.toggle('on', ink.penOnly);
@@ -519,7 +401,7 @@ function buildInk() {
     bPen, sw('auto', 'Wit/zwart'), sw('#4da3ff', 'Blauw'), sw('#f85149', 'Rood'), sw('#3fb950', 'Groen'), bEr, bTh,
     $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Ongedaan maken', onclick: () => { ink.strokes.pop(); inkDraw(); } }, '↶'),
     $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Alles wissen', onclick: () => { ink.strokes.length = 0; inkDraw(); } }, 'Wis'),
-    bPo, bCalc, bTr,
+    bPo,
     $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Schrijven stoppen', onclick: () => inkSet(false) }, '✕'));
   inkBtn = $('button', { type: 'button', class: 'inkbtn', title: 'Schrijven over het scherm', 'aria-label': 'Schrijven over het scherm', onclick: () => inkSet(true) }, '🖊️');
   document.body.append(inkCv, inkBtn, inkBar);

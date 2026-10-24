@@ -288,13 +288,3 @@ body.has-tools #app { padding-bottom: 7rem; }
 .inkbar .ghost { min-height: 0; padding: .25rem .5rem; }
 .inkbar .ghost.on { border-color: var(--accent); background: rgba(77, 163, 255, .2); }
 .inkbar .sw.sel { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-/* handschrift-herkenning */
-.hwdlg { max-width: min(94vw, 560px); }
-.hwchips { display: flex; flex-wrap: wrap; gap: .3rem; margin: .5rem 0; }
-.hwchip { min-width: 2.4rem; min-height: 0; padding: .35rem .5rem; font-size: 1.15rem; }
-.hwchip.on { border-color: var(--accent); background: rgba(77, 163, 255, .22); }
-.hwres { font-size: 1.2rem; font-weight: 600; color: var(--accent); margin: .6rem 0 0; }
-.hwpad { width: 100%; max-width: 520px; aspect-ratio: 520 / 320; touch-action: none; background: var(--surface-2); border: 1px dashed var(--border); border-radius: 10px; display: block; }
-.hwpad[hidden] { display: none; }
-.hwbig { font-size: 1.6rem; font-weight: 700; margin: .2rem 0 .5rem; }
