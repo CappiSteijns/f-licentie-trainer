@@ -3,6 +3,24 @@
 Oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Amateur), gebaseerd op de examentraining en theorie van de
 [VRZA-cursus](https://cursus.vrza.nl/wp/2017/12/04/vrza-cursus-zendamateur-2017-2019/). Eén Docker-container met website, database en accounts.
 
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/1-start.png" alt="Startscherm met reeks en herhaling"><br><sub><b>Oefenen</b>: reeks, kalender en dagelijkse herhaling</sub></td>
+    <td width="50%"><img src="docs/screenshots/2-vraag.png" alt="Vraag met feedback en toelichting"><br><sub><b>Vraag</b> met directe feedback, toelichting en link naar de theorie</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/3-rekenmachine-kladblok.png" alt="Rekenmachine en kladblok naast elkaar"><br><sub><b>Rekenmachine en kladblok</b> tegelijk, vrij te verplaatsen</sub></td>
+    <td><img src="docs/screenshots/4-theorie.png" alt="Theoriepagina"><br><sub><b>Leren</b>: cursustekst per paragraaf</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/5-flashcards.png" alt="Flashcard"><br><sub><b>Flashcards</b> met slim herhalen</sub></td>
+    <td><img src="docs/screenshots/6-formulespel.png" alt="Formule-spel"><br><sub><b>Formule-spel</b>: formules oefenen met levens en punten</sub></td>
+  </tr>
+  <tr>
+    <td colspan="2"><img src="docs/screenshots/7-voortgang.png" alt="Voortgang per hoofdstuk"><br><sub><b>Voortgang</b> per hoofdstuk en paragraaf</sub></td>
+  </tr>
+</table>
+
 ## Wat kan het?
 - **1.413 examenvragen** uit hoofdstuk 3 t/m 18, met controle van elk antwoord, uitleg en de originele uitwerking met figuren en formules.
 - **Oefenen** per hoofdstuk, met directe feedback, een foutenvijver en slim herhalen (Leitner: terugkeer na 1, 3, 7, 14, 30 dagen).
