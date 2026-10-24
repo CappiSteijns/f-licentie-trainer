@@ -90,6 +90,7 @@ function renderNav() {
 function render() {
   applyPrefs();
   tools.setToolsVisible(view === 'session' || view === 'fgame');
+  tools.setInkKey([view, S && S.idx, FG && FG.n, FG && FG.stage, K && K.idx, T && T.secId].join('|'));
   renderNav();
   const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());

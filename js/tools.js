@@ -303,8 +303,113 @@ export function initTools() {
 }
 /** Knoppen tonen/verbergen; bij verbergen sluiten de panelen ook (de tekening blijft bewaard). */
 export function setToolsVisible(on) {
-  initTools(); visible = on;
+  initTools(); if (!inkCv) buildInk(); visible = on;
   if (!on) for (const k of ['calc', 'pad']) if (opened[k]) { opened[k] = false; el(k).hidden = true; }
   document.body.classList.toggle('has-tools', on);
   refresh();
+}
+
+// ---------------------------------------------------------------- pen over het hele scherm
+// Schrijf met je pen (of muis) waar je wilt, ook over de vraag heen. Met "alleen pen" scrolt en tikt je vinger gewoon door.
+// De tekening hoort bij de pagina (scrolt mee) en verdwijnt bij de volgende vraag of weergave.
+const ink = { on: false, strokes: [], cur: null, key: '', color: 'auto', size: 3, eraser: false, penOnly: true, lastPen: 0, touch: null };
+try { Object.assign(ink, JSON.parse(localStorage.getItem('flic.ink')) || {}, { on: false }); } catch { /* negeren */ }
+let inkCv, inkBar, inkBtn;
+const inkSave = () => { try { localStorage.setItem('flic.ink', JSON.stringify({ color: ink.color, size: ink.size, penOnly: ink.penOnly })); } catch { /* negeren */ } };
+function inkDraw() {
+  if (!inkCv) return;
+  const ctx = inkCv.getContext('2d'), r = devicePixelRatio || 1, sx = scrollX, sy = scrollY;
+  ctx.setTransform(r, 0, 0, r, 0, 0); ctx.clearRect(0, 0, inkCv.width, inkCv.height); ctx.lineCap = ctx.lineJoin = 'round';
+  for (const s of ink.strokes) {
+    ctx.globalCompositeOperation = s.er ? 'destination-out' : 'source-over'; ctx.strokeStyle = ctx.fillStyle = s.c;
+    if (s.p.length === 1) { const [x, y, w] = s.p[0]; ctx.beginPath(); ctx.arc(x - sx, y - sy, w / 2, 0, 7); ctx.fill(); continue; }
+    for (let i = 1; i < s.p.length; i++) {
+      const a = s.p[i - 1], b = s.p[i]; ctx.lineWidth = b[2];
+      ctx.beginPath(); ctx.moveTo(a[0] - sx, a[1] - sy); ctx.lineTo(b[0] - sx, b[1] - sy); ctx.stroke();
+    }
+  }
+  ctx.globalCompositeOperation = 'source-over';
+}
+let inkRaf = 0; const inkSoon = () => { if (!inkRaf) inkRaf = requestAnimationFrame(() => { inkRaf = 0; inkDraw(); }); };
+function inkFit() { const r = devicePixelRatio || 1; inkCv.width = Math.round(innerWidth * r); inkCv.height = Math.round(innerHeight * r); inkDraw(); }
+const inkColor = () => (ink.color === 'auto' ? getComputedStyle(document.body).color : ink.color);
+function inkPoint(e) {
+  const p = e.pointerType === 'pen' && e.pressure > 0 ? 0.5 + e.pressure : 1;
+  const w = (ink.eraser ? ink.size * 6 : ink.size) * p;
+  return [e.clientX + scrollX, e.clientY + scrollY, w];
+}
+function inkPointerDown(e) {
+  if (e.pointerType === 'pen') ink.lastPen = performance.now();
+  const touch = e.pointerType === 'touch';
+  if (touch && (ink.penOnly || performance.now() - ink.lastPen < 700)) {
+    if (performance.now() - ink.lastPen < 700) return;             // handpalm tijdens het schrijven negeren
+    ink.touch = { x: e.clientX, y: e.clientY, t: performance.now(), moved: false, id: e.pointerId }; inkCv.setPointerCapture(e.pointerId); return;
+  }
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
+  e.preventDefault(); inkCv.setPointerCapture(e.pointerId);
+  ink.cur = { c: inkColor(), er: ink.eraser, p: [inkPoint(e)], id: e.pointerId }; ink.strokes.push(ink.cur); inkDraw();
+}
+function inkPointerMove(e) {
+  if (e.pointerType === 'pen') ink.lastPen = performance.now();
+  if (ink.touch && ink.touch.id === e.pointerId) {
+    const dx = e.clientX - ink.touch.x, dy = e.clientY - ink.touch.y;
+    if (Math.abs(dx) + Math.abs(dy) > 8) ink.touch.moved = true;
+    if (ink.touch.moved) { scrollBy(-dx, -dy); ink.touch.x = e.clientX; ink.touch.y = e.clientY; }
+    return;
+  }
+  if (!ink.cur || ink.cur.id !== e.pointerId) return;
+  const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+  for (const ev of (evs.length ? evs : [e])) ink.cur.p.push(inkPoint(ev));
+  inkSoon();
+}
+function inkPointerUp(e) {
+  if (ink.touch && ink.touch.id === e.pointerId) {
+    const t = ink.touch; ink.touch = null;
+    if (!t.moved && performance.now() - t.t < 450 && e.type === 'pointerup') {          // tik: doorgeven aan wat eronder zit
+      inkCv.style.pointerEvents = 'none';
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      inkCv.style.pointerEvents = '';
+      if (el && typeof el.click === 'function') { el.click(); if (el.focus) try { el.focus({ preventScroll: true }); } catch { /* negeren */ } }
+    }
+    return;
+  }
+  if (ink.cur && ink.cur.id === e.pointerId) ink.cur = null;
+}
+function inkSet(on) {
+  ink.on = on; inkCv.hidden = !on; inkBar.hidden = !on; inkBtn.hidden = on;
+  document.body.classList.toggle('ink-on', on);
+  if (on) inkFit();
+}
+function buildInk() {
+  inkCv = $('canvas', { class: 'inkcv', hidden: true, 'aria-label': 'Schrijflaag over het scherm' });
+  inkCv.addEventListener('pointerdown', inkPointerDown); inkCv.addEventListener('pointermove', inkPointerMove);
+  inkCv.addEventListener('pointerup', inkPointerUp); inkCv.addEventListener('pointercancel', inkPointerUp);
+  inkCv.addEventListener('contextmenu', e => e.preventDefault());
+  addEventListener('resize', () => ink.on && inkFit()); addEventListener('scroll', inkSoon, { passive: true });
+  const sw = (c, label) => $('button', { type: 'button', class: 'sw', 'data-c': c, style: `background:${c === 'auto' ? 'var(--text)' : c}`, 'aria-label': label, onclick: () => { ink.color = c; ink.eraser = false; inkSave(); sync(); } });
+  const bPen = $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Pen', onclick: () => { ink.eraser = false; sync(); } }, '✏️');
+  const bEr = $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Gum', onclick: () => { ink.eraser = true; sync(); } }, 'Gum');
+  const bTh = $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Dikte', onclick: () => { ink.size = ink.size >= 7 ? 2 : ink.size + 2; inkSave(); sync(); } }, '');
+  const bPo = $('button', { type: 'button', class: 'ghost small', title: 'Alleen pen: je vinger scrolt en tikt gewoon door', onclick: () => { ink.penOnly = !ink.penOnly; inkSave(); sync(); } }, '');
+  const sync = () => {
+    bPen.classList.toggle('on', !ink.eraser); bEr.classList.toggle('on', ink.eraser);
+    bTh.textContent = '●'.repeat(1) + ' ' + ink.size; bTh.style.fontSize = '.85rem';
+    bPo.textContent = ink.penOnly ? '🖊 alleen pen' : '🖊 ook vinger'; bPo.classList.toggle('on', ink.penOnly);
+    inkBar.querySelectorAll('.sw').forEach(b => b.classList.toggle('sel', !ink.eraser && b.dataset.c === ink.color));
+  };
+  inkBar = $('div', { class: 'inkbar', hidden: true, role: 'toolbar', 'aria-label': 'Schrijven over het scherm' },
+    bPen, sw('auto', 'Wit/zwart'), sw('#4da3ff', 'Blauw'), sw('#f85149', 'Rood'), sw('#3fb950', 'Groen'), bEr, bTh,
+    $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Ongedaan maken', onclick: () => { ink.strokes.pop(); inkDraw(); } }, '↶'),
+    $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Alles wissen', onclick: () => { ink.strokes.length = 0; inkDraw(); } }, 'Wis'),
+    bPo,
+    $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Schrijven stoppen', onclick: () => inkSet(false) }, '✕'));
+  inkBtn = $('button', { type: 'button', class: 'inkbtn', title: 'Schrijven over het scherm', 'aria-label': 'Schrijven over het scherm', onclick: () => inkSet(true) }, '🖊️');
+  document.body.append(inkCv, inkBtn, inkBar);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && ink.on && !e.target.closest('.tpanel')) inkSet(false); });
+  sync();
+}
+/** Bij een andere vraag of weergave verdwijnt de tekening (de laag blijft aan als je 'm aan had). */
+export function setInkKey(k) {
+  if (!inkCv) buildInk();
+  if (k !== ink.key) { ink.key = k; if (ink.strokes.length) { ink.strokes.length = 0; inkDraw(); } }
 }
