@@ -1107,7 +1107,7 @@ function fgStart() {
   const th = theory.getTheory(FG.chapter);
   const un = fgUnlocked(FG.chapter);
   const pool = FG.onlyRead && un.length >= 1 ? un : th.drill;
-  Object.assign(FG, { stage: 'play', pool, all: th.drill, n: 0, hearts: FG.lives ? 3 : null, score: 0, combo: 0, bestCombo: 0, ok: 0, missed: new Map(), recent: [], cur: null, picked: null });
+  Object.assign(FG, { stage: 'play', pool, all: th.drill, n: 0, hearts: FG.lives ? 3 : null, score: 0, combo: 0, bestCombo: 0, ok: 0, helped: 0, missed: new Map(), recent: [], cur: null, picked: null });
   fgNext();
   render();
 }
@@ -1129,12 +1129,28 @@ function fgNext() {
   else FG.cur = drill.makeQuestion(item, FG.all);
   FG.picked = null;
 }
+function fgPeek() {
+  if (FG.picked != null) return showFormulaOrPrefix();
+  if (!FG.cur.peeked) { FG.cur.peeked = true; render(); }
+  showFormulaOrPrefix();
+}
+function showFormulaOrPrefix() {
+  if (FG.cur.type !== 'units') return showFormulas(FG.chapter);
+  $dlg.replaceChildren(h('div', { class: 'formulas' }, h('h2', {}, 'Voorvoegsels'),
+    h('table', {}, h('tbody', {}, [['G', 'giga', '10⁹ (× 1.000.000.000)'], ['M', 'mega', '10⁶ (× 1.000.000)'], ['k', 'kilo', '10³ (× 1000)'], ['', '(geen)', '1'], ['m', 'milli', '10⁻³ (÷ 1000)'], ['µ', 'micro', '10⁻⁶ (÷ 1.000.000)'], ['n', 'nano', '10⁻⁹ (÷ 1.000.000.000)'], ['p', 'pico', '10⁻¹²']].map(r => h('tr', {}, h('td', { class: 'f' }, r[0] || '—'), h('td', {}, r[1]), h('td', { class: 'muted small' }, r[2]))))),
+    h('div', { class: 'row', style: 'justify-content:flex-end;margin-top:1rem' }, h('button', { class: 'primary', onclick: () => $dlg.close() }, 'Sluiten'))));
+  $dlg.showModal();
+}
 function fgAnswer(i) {
   if (FG.picked != null) return;
   const q = FG.cur, o = q.options[i]; FG.picked = i;
-  store.recordCard(fgKey(FG.chapter, q.item), o.ok);
-  if (o.ok) { FG.ok++; FG.combo++; FG.bestCombo = Math.max(FG.bestCombo, FG.combo); FG.score += 10 + 2 * Math.min(FG.combo, 10); }
-  else { FG.combo = 0; if (FG.hearts != null) FG.hearts--; FG.missed.set(q.item.id, q.item); }
+  const helped = !!q.peeked;
+  // Met hulp (formulelijst) goed: maar 5 punten, geen bonus, reeks blijft staan; telt voor het herhaalschema als "nog niet gekend".
+  store.recordCard(fgKey(FG.chapter, q.item), o.ok && !helped);
+  q.points = 0;
+  if (o.ok && helped) { FG.ok++; FG.helped = (FG.helped || 0) + 1; q.points = 5; FG.score += 5; }
+  else if (o.ok) { FG.ok++; FG.combo++; FG.bestCombo = Math.max(FG.bestCombo, FG.combo); q.points = 10 + 2 * Math.min(FG.combo, 10); FG.score += q.points; }
+  else { FG.combo = 0; if (FG.hearts != null) FG.hearts--; FG.missed.set(q.item.id, q.item); if (helped) FG.helped = (FG.helped || 0) + 1; }
   render();
 }
 function fgAfter() {
@@ -1172,8 +1188,8 @@ function viewFGame() {
     return h('div', {}, back, h('h1', {}, `Formule-spel · H${ch}`),
       h('section', { class: 'card' },
         h('h2', {}, 'Wat is dit?'),
-        h('p', {}, 'Een spel van 10 vragen om de formules van dit hoofdstuk echt te onthouden, en te weten waar ze bij horen en hoe je ze gebruikt. Per goed antwoord krijg je punten, met een bonus als je meerdere goede antwoorden achter elkaar hebt.'),
-        h('p', { class: 'muted small' }, 'Je rekenmachine en kladblok (rechtsonder) mag je altijd gebruiken. Formules die je vaak fout hebt komen vaker terug, en elke ronde telt mee voor je reeks.')),
+        h('p', {}, 'Een spel van 10 vragen om de formules van dit hoofdstuk echt te onthouden, en te weten waar ze bij horen en hoe je ze gebruikt. Per goed antwoord krijg je 10 punten, met een bonus als je meerdere goede antwoorden achter elkaar hebt.'),
+        h('p', { class: 'muted small' }, '📋 Even twijfelen? Je kunt tijdens een vraag de formulelijst bekijken, maar dan levert een goed antwoord maar 5 punten op, zonder bonus. Je rekenmachine en kladblok (rechtsonder) mag je altijd gebruiken. Formules die je vaak fout hebt komen vaker terug, en elke ronde telt mee voor je reeks.')),
       h('section', { class: 'card' },
         h('h2', {}, '1. Wat wil je oefenen?'),
         h('div', { class: 'fmodes', role: 'radiogroup' }, modes.map(([v, t, d, ex]) =>
@@ -1200,6 +1216,7 @@ function viewFGame() {
           h('div', { class: 'stat' }, h('div', { class: 'n' }, String(FG.score)), h('div', { class: 'k' }, 'punten')),
           h('div', { class: 'stat' }, h('div', { class: 'n' }, `${FG.ok}/${FG.n}`), h('div', { class: 'k' }, 'goed')),
           h('div', { class: 'stat' }, h('div', { class: 'n' }, String(FG.bestCombo)), h('div', { class: 'k' }, 'beste reeks'))),
+        FG.helped > 0 && h('p', { class: 'muted small' }, `Formulelijst gebruikt bij ${FG.helped} vraag${FG.helped === 1 ? '' : 'en'} (halve punten).`),
         FG.record && h('p', {}, '🏆 Nieuw record!'),
         !FG.record && fgBest(ch) > 0 && h('p', { class: 'muted' }, `Jouw record: ${fgBest(ch)} punten.`),
         missed.length > 0 && h('div', {}, h('h3', {}, 'Nog even herhalen'),
@@ -1230,7 +1247,12 @@ function viewFGame() {
       h('p', { class: 'stem' }, q.prompt),
       q.formula && h('div', { class: 'bigf' }, q.formula),
       h('div', { class: 'opts', role: 'group', 'aria-label': 'Antwoordopties' }, opts),
-      answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : '❌ Niet goed.', ' ', q.explain),
+      !answered && h('p', { style: 'margin:.8rem 0 0' }, h('button', { class: 'ghost small', onclick: fgPeek },
+        q.type === 'units' ? '📋 Voorvoegsels bekijken (halve punten)' : '📋 Formulelijst bekijken (halve punten)'),
+        q.peeked && h('span', { class: 'muted small' }, '  Hulp gebruikt: dit antwoord levert maximaal 5 punten op.')),
+      answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : '❌ Niet goed.', ' ', q.explain,
+        ok ? ` (+${q.points} punten${q.peeked ? ', met hulp' : ''})` : ''),
+      answered && h('p', { style: 'margin:.5rem 0 0' }, h('button', { class: 'ghost small', onclick: showFormulaOrPrefix }, q.type === 'units' ? '📋 Voorvoegsels' : '📋 Formulelijst')),
       answered && !ok && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, q.item.sec, 'fgame') }, 'Lees de theorie hierover')),
       h('div', { class: 'actions' }, answered && next)));
 }
