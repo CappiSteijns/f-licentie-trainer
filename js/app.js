@@ -1096,17 +1096,34 @@ function fgUnlocked(ch) {
   const th = theory.getTheory(ch);
   return (th.drill || []).filter(it => { const st = theory.sectionStats(th, it.sec); return st.read || st.seen > 0; });
 }
+/** Formules uit paragrafen waar minstens één echte examenvraag (met bron) bij hoort. */
+function fgExamItems(ch) {
+  const th = theory.getTheory(ch);
+  const ex = new Set();
+  for (const [qid, secs] of Object.entries(th.qmap || {})) {
+    const q = quiz.QMAP.get(qid);
+    if (q && (q.source || '').trim()) secs.forEach(x => ex.add(x));
+  }
+  return (th.drill || []).filter(it => ex.has(it.sec));
+}
+function fgPool(ch) {
+  const th = theory.getTheory(ch);
+  let pool = th.drill;
+  if (FG.exam) { const e = fgExamItems(ch); if (e.length) pool = e; }
+  if (FG.onlyRead) { const ids = new Set(fgUnlocked(ch).map(i => i.id)); const r = pool.filter(i => ids.has(i.id)); if (r.length) pool = r; }
+  return pool;
+}
 function fgBest(ch) { try { return (JSON.parse(localStorage.getItem('flic.fbest')) || {})[ch] || 0; } catch { return 0; } }
 function fgSaveBest(ch, score) { try { const b = JSON.parse(localStorage.getItem('flic.fbest')) || {}; if (score > (b[ch] || 0)) { b[ch] = score; localStorage.setItem('flic.fbest', JSON.stringify(b)); return true; } } catch { /* negeren */ } return false; }
-function openFormulaGame(ch) {
+async function openFormulaGame(ch) {
+  try { await quiz.loadChapter(ch); } catch { /* zonder vragen: geen examenfilter */ }
   const un = fgUnlocked(ch);
-  FG = { chapter: ch, stage: 'start', onlyRead: un.length >= 3, lives: true, mode: 'mix' };
+  FG = { chapter: ch, stage: 'start', onlyRead: un.length >= 3, lives: true, mode: 'mix', exam: false };
   setView('fgame');
 }
 function fgStart() {
   const th = theory.getTheory(FG.chapter);
-  const un = fgUnlocked(FG.chapter);
-  const pool = FG.onlyRead && un.length >= 1 ? un : th.drill;
+  const pool = fgPool(FG.chapter);
   Object.assign(FG, { stage: 'play', pool, all: th.drill, n: 0, hearts: FG.lives ? 3 : null, score: 0, combo: 0, bestCombo: 0, ok: 0, helped: 0, missed: new Map(), recent: [], cur: null, picked: null });
   fgNext();
   render();
@@ -1174,9 +1191,8 @@ function viewFGame() {
   const ch = FG.chapter, th = theory.getTheory(ch);
   const back = h('button', { class: 'ghost', onclick: () => { FG = null; setView('learn'); } }, '← Leren');
   if (FG.stage === 'start') {
-    const un = fgUnlocked(ch), total = th.drill.length;
-    const useRead = FG.onlyRead && un.length >= 1 && FG.mode !== 'units';
-    const avail = useRead ? un.length : total;
+    const un = fgUnlocked(ch), total = th.drill.length, exN = fgExamItems(ch).length;
+    const avail = fgPool(ch).length;
     const modes = [
       ['mix', '🎲 Alles door elkaar', 'Van alles wat: formules herkennen, invullen, omwerken en rekenen. Het meest afwisselend; dit is de standaard.', 'Welke formule hoort bij “Wet van Ohm”?'],
       ['know', '🧠 Formules kennen', 'Alleen herkennen en invullen, zonder rekenen. Goed om de formules en waar ze bij horen te leren.', 'P = I² · ___  →  R'],
@@ -1198,6 +1214,8 @@ function viewFGame() {
             h('b', {}, t), h('span', { class: 'muted small' }, d), h('span', { class: 'ex' }, 'Voorbeeld: ' + ex))))),
       h('section', { class: 'card' },
         h('h2', {}, '2. Opties'),
+        FG.mode !== 'units' && exN > 0 && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.exam, onchange: e => { FG.exam = e.target.checked; render(); } }),
+          h('span', { class: 't' }, h('b', {}, '🎯 Alleen examenstof'), h('br'), h('span', { class: 'muted small' }, `Alleen formules uit paragrafen waar echte examenvragen bij horen (${exN} van ${total}). Stof die nooit in het examen terugkomt, slaan we over.`))),
         FG.mode !== 'units' && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.onlyRead, onchange: e => { FG.onlyRead = e.target.checked; render(); } }),
           h('span', { class: 't' }, h('b', {}, 'Alleen wat ik al heb behandeld'), h('br'), h('span', { class: 'muted small' }, 'Formules uit paragrafen die je hebt gelezen of geoefend. Uit = alle formules van het hoofdstuk.'))),
         FG.mode !== 'units' && FG.onlyRead && un.length === 0 && h('p', { class: 'notice' }, 'Je hebt in dit hoofdstuk nog geen paragraaf gelezen of geoefend, dus je krijgt voorlopig alle formules.'),
