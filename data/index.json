@@ -22,13 +22,13 @@
    "n": 4,
    "title": "Condensatoren en spoelen",
    "count": 32,
-   "theory": false
+   "theory": true
   },
   {
    "n": 5,
    "title": "Wisselstroom en wisselspanning",
    "count": 164,
-   "theory": false
+   "theory": true
   },
   {
    "n": 6,

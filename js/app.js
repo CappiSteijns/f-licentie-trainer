@@ -1253,7 +1253,7 @@ function viewFGame() {
       answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : '❌ Niet goed.', ' ', q.explain,
         ok ? ` (+${q.points} punten${q.peeked ? ', met hulp' : ''})` : ''),
       answered && h('p', { style: 'margin:.5rem 0 0' }, h('button', { class: 'ghost small', onclick: showFormulaOrPrefix }, q.type === 'units' ? '📋 Voorvoegsels' : '📋 Formulelijst')),
-      answered && !ok && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, q.item.sec, 'fgame') }, 'Lees de theorie hierover')),
+      answered && !ok && q.type !== 'units' && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, q.item.sec, 'fgame') }, 'Lees de theorie hierover')),
       h('div', { class: 'actions' }, answered && next)));
 }
 
