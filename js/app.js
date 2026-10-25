@@ -1096,15 +1096,10 @@ function fgUnlocked(ch) {
   const th = theory.getTheory(ch);
   return (th.drill || []).filter(it => { const st = theory.sectionStats(th, it.sec); return st.read || st.seen > 0; });
 }
-/** Formules uit paragrafen waar minstens één echte examenvraag (met bron) bij hoort. */
+/** Formules waar minstens één vraag uit de vragenbank (de examenpool) over gaat; zie tools/map_drill.py. */
 function fgExamItems(ch) {
   const th = theory.getTheory(ch);
-  const ex = new Set();
-  for (const [qid, secs] of Object.entries(th.qmap || {})) {
-    const q = quiz.QMAP.get(qid);
-    if (q && (q.source || '').trim()) secs.forEach(x => ex.add(x));
-  }
-  return (th.drill || []).filter(it => ex.has(it.sec));
+  return (th.drill || []).filter(it => it.exam && it.exam.length);
 }
 function fgPool(ch) {
   const th = theory.getTheory(ch);
@@ -1215,7 +1210,7 @@ function viewFGame() {
       h('section', { class: 'card' },
         h('h2', {}, '2. Opties'),
         FG.mode !== 'units' && exN > 0 && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.exam, onchange: e => { FG.exam = e.target.checked; render(); } }),
-          h('span', { class: 't' }, h('b', {}, '🎯 Alleen examenstof'), h('br'), h('span', { class: 'muted small' }, `Alleen formules uit paragrafen waar echte examenvragen bij horen (${exN} van ${total}). Stof die nooit in het examen terugkomt, slaan we over.`))),
+          h('span', { class: 't' }, h('b', {}, '🎯 Alleen examenstof'), h('br'), h('span', { class: 'muted small' }, `Alleen formules waar vragen uit de examenpool over gaan (${exN} van ${total}). Formules die in geen enkele vraag voorkomen, slaan we over.`))),
         FG.mode !== 'units' && h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.onlyRead, onchange: e => { FG.onlyRead = e.target.checked; render(); } }),
           h('span', { class: 't' }, h('b', {}, 'Alleen wat ik al heb behandeld'), h('br'), h('span', { class: 'muted small' }, 'Formules uit paragrafen die je hebt gelezen of geoefend. Uit = alle formules van het hoofdstuk.'))),
         FG.mode !== 'units' && FG.onlyRead && un.length === 0 && h('p', { class: 'notice' }, 'Je hebt in dit hoofdstuk nog geen paragraaf gelezen of geoefend, dus je krijgt voorlopig alle formules.'),
