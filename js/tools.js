@@ -192,7 +192,7 @@ function buildCalc(onClose, other) {
   let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false, rmode = 'dec', hadFrac = false;
   const disp = $('div', { class: 'cx' }), out = $('div', { class: 'cr' }), mode = $('div', { class: 'cm' });
   const draw = () => {
-    disp.textContent = ex.replace(/(\d+)⌟(\d+)⌟(\d+)/g, '$1 $2⁄$3').replace(/(\d+)⌟(\d+)/g, '$1⁄$2').replace(/\./g, ',') || '0'; out.textContent = err ? 'Fout' : res; mode.textContent = `${deg ? 'DEG' : 'RAD'}${second ? ' · 2nd' : ''}`;
+    disp.textContent = ex.replace(/\^(-?\d+)(?![\d.])/g, (_, e) => sup(e)).replace(/(\d+)⌟(\d+)⌟(\d+)/g, '$1 $2⁄$3').replace(/(\d+)⌟(\d+)/g, '$1⁄$2').replace(/\./g, ',') || '0'; out.textContent = err ? 'Fout' : res; mode.textContent = `${deg ? 'DEG' : 'RAD'}${second ? ' · 2nd' : ''}`;
     disp.scrollLeft = disp.scrollWidth;
   };
   const ins = s => {
