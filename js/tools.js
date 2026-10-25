@@ -35,7 +35,7 @@ export function tokenize(src) {
     if (c === 'π') { t.push({ n: Math.PI }); i++; continue; }
     if (c === 'e' && src[i + 1] === '^') { t.push({ n: Math.E }); i++; continue; }
     if (src.startsWith('⁻¹', i)) { t.push({ op: 'inv' }); i += 2; continue; }
-    if ('+-×÷^()²'.includes(c)) { t.push({ op: c }); i++; continue; }
+    if ('+-×÷^()²⌟'.includes(c)) { t.push({ op: c }); i++; continue; }
     throw new Error('syntax');
   }
   return t;
@@ -61,7 +61,14 @@ export function evaluate(src, { deg = true, ans = 0 } = {}) {
   }
   function primary() {
     const x = t[p++]; if (!x) throw new Error('syntax');
-    if (x.n !== undefined) return x.n;
+    if (x.n !== undefined) {
+      if (!isOp('⌟')) return x.n;
+      const num = () => { const y = t[p++]; if (!y || y.n === undefined) throw new Error('syntax'); return y.n; };
+      p++; const b = num();
+      if (isOp('⌟')) { p++; const c = num(); if (c === 0) throw new Error('math'); return x.n + b / c; }   // 2⌟3⌟4 = 2 3/4
+      if (b === 0) throw new Error('math');
+      return x.n / b;                                                                                   // 3⌟4 = 3/4
+    }
     if (x.ans) return ans;
     if (x.op === '(') { const v = expr(); if (isOp(')')) p++; return v; }
     if (x.f) { const v = expr(); if (isOp(')')) p++; const r = FUNCS[x.f](v, deg); if (!Number.isFinite(r)) throw new Error('math'); return r; }
@@ -70,6 +77,29 @@ export function evaluate(src, { deg = true, ans = 0 } = {}) {
   const v = expr(); if (p < t.length) throw new Error('syntax');
   if (!Number.isFinite(v)) throw new Error('math');
   return v;
+}
+
+/** Breuk bij een getal (kettingbreuk), noemer maximaal 9999 zoals op de Casio; null als het geen nette breuk is. */
+export function toFraction(v) {
+  if (!Number.isFinite(v) || Number.isInteger(v)) return null;
+  const neg = v < 0, x = Math.abs(v);
+  let h1 = 1, h0 = 0, k1 = 0, k0 = 1, r = x;
+  for (let i = 0; i < 20; i++) {
+    const a = Math.floor(r);
+    [h1, h0] = [a * h1 + h0, h1]; [k1, k0] = [a * k1 + k0, k1];
+    if (k1 > 9999) return null;
+    if (Math.abs(x - h1 / k1) <= 1e-10 * Math.max(1, x)) return { n: neg ? -h1 : h1, d: k1 };
+    const f = r - a; if (f < 1e-12) return null;
+    r = 1 / f;
+  }
+  return null;
+}
+/** 'imp' = 11/4, 'mix' = 2 3/4 (alleen bij een breuk groter dan 1). */
+export function fmtFrac(v, kind = 'imp') {
+  const f = toFraction(v); if (!f) return null;
+  const sign = f.n < 0 ? '−' : '', n = Math.abs(f.n);
+  if (kind === 'mix' && n > f.d) return `${sign}${Math.floor(n / f.d)} ${n % f.d}/${f.d}`;
+  return `${sign}${n}/${f.d}`;
 }
 
 const PREFIX = { '-12': 'p', '-9': 'n', '-6': 'µ', '-3': 'm', 0: '', 3: 'k', 6: 'M', 9: 'G', 12: 'T' };
@@ -159,10 +189,10 @@ addEventListener('resize', () => panels.forEach(applyBox));
 // ---------------------------------------------------------------- rekenmachine
 const tileBtn = () => $('button', { type: 'button', class: 'ghost small tilebtn', hidden: true, 'aria-label': 'Naast elkaar zetten', title: 'Naast elkaar zetten', onclick: () => tile() }, '◫');
 function buildCalc(onClose, other) {
-  let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false;
+  let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false, rmode = 'dec', hadFrac = false;
   const disp = $('div', { class: 'cx' }), out = $('div', { class: 'cr' }), mode = $('div', { class: 'cm' });
   const draw = () => {
-    disp.textContent = ex.replace(/\./g, ',') || '0'; out.textContent = err ? 'Fout' : res; mode.textContent = `${deg ? 'DEG' : 'RAD'}${second ? ' · 2nd' : ''}`;
+    disp.textContent = ex.replace(/(\d+)⌟(\d+)⌟(\d+)/g, '$1 $2⁄$3').replace(/(\d+)⌟(\d+)/g, '$1⁄$2').replace(/\./g, ',') || '0'; out.textContent = err ? 'Fout' : res; mode.textContent = `${deg ? 'DEG' : 'RAD'}${second ? ' · 2nd' : ''}`;
     disp.scrollLeft = disp.scrollWidth;
   };
   const ins = s => {
@@ -170,9 +200,14 @@ function buildCalc(onClose, other) {
     if (fresh) { ex = /^[+\-×÷^²]|^⁻¹/.test(s) ? 'Ans' : ''; res = ''; fresh = false; }
     ex += s; draw();
   };
+  const showRes = () => (rmode !== 'dec' && fmtFrac(lastV, rmode)) || fmt(lastV);
   const equals = () => {
     if (!ex) return;
-    try { lastV = evaluate(ex, { deg, ans }); ans = lastV; res = fmt(lastV); err = false; engShift = -1; } catch { err = true; lastV = null; }
+    try {
+      lastV = evaluate(ex, { deg, ans }); ans = lastV; err = false; engShift = -1;
+      hadFrac = ex.includes('⌟'); rmode = hadFrac && toFraction(lastV) ? (/⌟\d+⌟/.test(ex) ? 'mix' : 'imp') : 'dec';
+      res = showRes();
+    } catch { err = true; lastV = null; }
     fresh = true; draw();
   };
   const press = k => {
@@ -183,7 +218,14 @@ function buildCalc(onClose, other) {
       case '=': equals(); return;
       case '2nd': second = !second; draw(); render(); return;
       case 'DEG': deg = !deg; draw(); render(); return;
-      case 'ENG': if (lastV != null) { engShift++; res = fmtEng(lastV, engShift - 0); fresh = true; draw(); } return;
+      case 'a b/c': ins('⌟'); return;
+      case 'S⇔D': {   // decimaal → breuk → gemengd getal → decimaal
+        if (lastV == null || err) return;
+        if (!toFraction(lastV)) { rmode = 'dec'; res = fmt(lastV); draw(); return; }
+        rmode = rmode === 'dec' ? 'imp' : rmode === 'imp' && Math.abs(lastV) > 1 ? 'mix' : 'dec';
+        res = showRes(); fresh = true; draw(); return;
+      }
+      case 'ENG': if (lastV != null) { rmode = 'dec'; engShift++; res = fmtEng(lastV, engShift - 0); fresh = true; draw(); } return;
       case 'sin': case 'cos': case 'tan': ins((second ? f2[k] : k) + '('); break;
       case 'log': ins(second ? '10^(' : 'log('); break;
       case 'ln': ins(second ? 'e^(' : 'ln('); break;
@@ -198,12 +240,12 @@ function buildCalc(onClose, other) {
     }
     if (second && ['sin', 'cos', 'tan', 'log', 'ln'].includes(k)) { second = false; draw(); render(); }
   };
-  const rows = [['2nd', 'DEG', 'ENG', 'DEL', 'AC'], ['sin', 'cos', 'tan', 'log', 'ln'], ['x²', 'xʸ', '√', 'x⁻¹', 'π'], ['7', '8', '9', '(', ')'], ['4', '5', '6', '×', '÷'], ['1', '2', '3', '+', '-'], ['0', ',', 'EXP', 'Ans', '=']];
+  const rows = [['2nd', 'DEG', 'ENG', 'DEL', 'AC'], ['sin', 'cos', 'tan', 'log', 'ln'], ['x²', 'xʸ', '√', 'x⁻¹', 'π'], ['7', '8', '9', '(', ')'], ['4', '5', '6', '×', '÷'], ['1', '2', '3', '+', '-'], ['0', ',', 'EXP', 'Ans', '='], ['a b/c', 'S⇔D']];
   const lbl = { '-': '−', sin: () => (second ? 'sin⁻¹' : 'sin'), cos: () => (second ? 'cos⁻¹' : 'cos'), tan: () => (second ? 'tan⁻¹' : 'tan'), log: () => (second ? '10ˣ' : 'log'), ln: () => (second ? 'eˣ' : 'ln') };
   const keys = $('div', { class: 'ck' });
   const render = () => keys.replaceChildren(...rows.flat().map(k => {
     const l = lbl[k]; const txt = typeof l === 'function' ? l() : (l || k);
-    const cls = k === '=' ? 'eq' : /^[0-9,]$/.test(k) ? 'num' : ['AC', 'DEL'].includes(k) ? 'clr' : '';
+    const cls = k === 'a b/c' ? 'wide3' : k === 'S⇔D' ? 'wide2' : k === '=' ? 'eq' : /^[0-9,]$/.test(k) ? 'num' : ['AC', 'DEL'].includes(k) ? 'clr' : '';
     return $('button', { type: 'button', class: cls + (k === '2nd' && second ? ' on' : ''), onclick: () => press(k) }, txt);
   }));
   render(); draw();
@@ -211,7 +253,7 @@ function buildCalc(onClose, other) {
     $('div', { class: 'thead' }, $('b', {}, 'Rekenmachine'), mode, tileBtn(), other('✏️', 'Kladblok'), $('button', { type: 'button', class: 'ghost small', 'aria-label': 'Sluiten', onclick: onClose }, '✕')),
     $('div', { class: 'cdisp' }, disp, out), keys);
   panel.addEventListener('keydown', e => {
-    const m = { Enter: '=', '=': '=', Backspace: 'DEL', Delete: 'AC', '*': '×', '/': '÷', '.': ',', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')', '^': 'xʸ', e: 'EXP', E: 'EXP' };
+    const m = { Enter: '=', '=': '=', Backspace: 'DEL', Delete: 'AC', '*': '×', '/': '÷', '.': ',', ',': ',', '-': '-', '+': '+', '(': '(', ')': ')', '^': 'xʸ', e: 'EXP', E: 'EXP', _: 'a b/c', f: 'a b/c', s: 'S⇔D' };
     if (e.key === 'Escape') return onClose();
     const k = /^[0-9]$/.test(e.key) ? e.key : m[e.key];
     if (k) { e.preventDefault(); press(k); }

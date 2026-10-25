@@ -230,6 +230,8 @@ body.has-tools #app { padding-bottom: 7rem; }
 .ck .num { background: var(--surface-2); font-weight: 600; }
 .ck .eq { background: var(--accent); color: var(--accent-ink); font-weight: 700; }
 .ck .clr { color: var(--red); }
+.ck .wide3 { grid-column: span 3; }
+.ck .wide2 { grid-column: span 2; }
 .ck .on, .tools .on { border-color: var(--accent); background: rgba(77, 163, 255, .2); }
 .pad { height: 55vh; display: flex; flex-direction: column; }
 .pad .tools { display: flex; align-items: center; gap: .25rem; flex-wrap: wrap; }
