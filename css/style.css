@@ -314,3 +314,15 @@ body.has-tools #app { padding-bottom: 7rem; }
 .wd-c { display: flex; flex-direction: column; align-items: center; gap: 2px; }
 .wd-b { display: flex; align-items: flex-end; width: 100%; height: 64px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
 .wd-b i { display: block; width: 100%; background: var(--green); border-radius: 6px 6px 0 0; }
+
+/* formule-spel: bouwen en tips */
+.built { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; min-height: 3.4rem; padding: .6rem; border: 2px dashed var(--border); border-radius: var(--radius); margin: .6rem 0; background: var(--bg); }
+.tiles { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0; }
+.tile { min-width: 2.6rem; min-height: 2.6rem; padding: .3rem .7rem; font-size: 1.15rem; font-family: ui-monospace, Menlo, Consolas, monospace; border-radius: 10px; background: var(--surface-2); border: 2px solid var(--border); }
+.tile:not(:disabled):hover { border-color: var(--accent); }
+.tile.placed { border-color: var(--accent); background: rgba(77, 163, 255, .15); }
+.tile.lock { border-style: dotted; opacity: .85; }
+.tile.good { border-color: var(--green); background: var(--green-bg); }
+.tile.bad { border-color: var(--red); }
+.tips { margin: .8rem 0 0; }
+.tip { margin: .3rem 0; padding: .5rem .7rem; border-left: 3px solid var(--accent); background: rgba(77, 163, 255, .08); border-radius: 6px; }

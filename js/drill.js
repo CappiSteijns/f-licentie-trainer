@@ -173,7 +173,8 @@ export function makeQuestion(item, all, forceType) {   // forceType: één soort
   if (item.cloze && item.cloze.length) types.push('cloze', 'cloze');
   if (item.gen && GEN[item.gen]) types.push('calc', 'calc', 'calc');
   if (item.rewrite && item.rewrite.length) types.push('rewrite', 'rewrite', 'rewrite');
-  const allowed = forceType ? types.filter(t => [].concat(forceType).includes(t)) : types;
+  if (item.gen && GEN[item.gen] && item.f) types.push('pick');   // alleen op verzoek (forceType): komt niet in 'alles door elkaar'
+  const allowed = forceType ? types.filter(t => [].concat(forceType).includes(t)) : types.filter(t => t !== 'pick');
   const type = pick(allowed.length ? allowed : types);
   const others = shuffle(all.filter(x => x.id !== item.id && x.f));
   const mk = (right, wrongs) => {
@@ -195,10 +196,91 @@ export function makeQuestion(item, all, forceType) {   // forceType: één soort
     const r = pick(item.rewrite);
     return { type, item, prompt: `Werk de formule om naar ${r.ask}:`, formula: r.base, mono: true, sub: item.name, options: mk(r.a, r.w), explain: `${r.base}  →  ${r.a}` };
   }
+  if (type === 'pick') {   // welke formule heb je nodig? De formules staan wel bij de antwoorden, maar de opgave zegt niet welke.
+    const g = GEN[item.gen](), SAME = [['par', 'par2']];
+    const ok = x => x.id !== item.id && x.f && x.f !== item.f && !SAME.some(pr => pr.includes(x.id) && pr.includes(item.id));
+    const wrongs = shuffle(all.filter(ok)).map(x => x.f);
+    const options = mk(item.f, wrongs);
+    const drop = shuffle(options.filter(o => !o.ok)).slice(0, 2).map(o => o.text);
+    return { type: 'pick', item, prompt: g.q, ask: 'Welke formule heb je nodig om dit uit te rekenen?', tag: '🧭 Welke formule?', sub: '', mono: true, options, elim: drop,
+      hints: ['Schrijf op wat er gegeven is en wat je zoekt. Welke formule verbindt precies die grootheden?', `Waar gaat het over: ${item.where}.`, `Het onderwerp is: ${item.name}.`, 'Twee foute antwoorden zijn weggehaald.'],
+      explain: `${item.name}: ${item.f}. Uitwerking: ${g.how} = ${val(g.a, g.unit)}` };
+  }
   const g = GEN[item.gen]();
   const right = val(g.a, g.unit);
   const pad = [g.a * 2, g.a / 2, g.a * 10, g.a * 1.5, g.a / 10];
   return { type: 'calc', item, prompt: g.q, sub: item.name, options: mk(right, g.wrong.concat(pad).filter(Number.isFinite).map(w => val(w, g.unit))), explain: `${g.how} = ${right}`, calc: true };
+}
+
+// ---- formule bouwen ----------------------------------------------------------------
+const SYM = /^[A-Za-zΑ-Ωα-ωµ]/;
+/** 'P = U² / R' -> ['P','=','U','²','/','R']. Een getal direct voor letters ('2π') blijft één blokje. */
+export function formulaTokens(f) {
+  const re = /\s*(=|·|\/|\+|−|\(|\)|²|√|…|\d+(?:,\d+)?%?[A-Za-zΑ-Ωα-ωµ]*|[A-Za-zΑ-Ωα-ωµ][A-Za-zΑ-Ωα-ωµ₀-₉ᵢₐₑₒₓ]*(?:_[A-Za-z0-9]+)?)/y;
+  const out = []; let m; re.lastIndex = 0;
+  while (re.lastIndex < f.length && (m = re.exec(f))) out.push(m[1]);
+  return re.lastIndex >= f.length ? out : null;
+}
+export const buildable = it => !!it.f && !/Σ|gevoeligheid/.test(it.f) && it.f.includes('=') && (formulaTokens(it.f) || []).length >= 3 && formulaTokens(it.f).length <= 16;
+
+/** Gelijkwaardige schrijfwijzen tellen mee: a·b = b·a, termen in andere volgorde, a = b als b = a. */
+function canonSide(t) {
+  let p = 0;
+  const isOp = o => t[p] === o;
+  function expr() {
+    const terms = []; let sign = '+';
+    if (isOp('−')) { p++; sign = '−'; } else if (isOp('+')) p++;
+    for (;;) {
+      terms.push(sign + term());
+      if (isOp('+')) { p++; sign = '+'; } else if (isOp('−')) { p++; sign = '−'; } else break;
+    }
+    return terms.sort().join('');
+  }
+  function term() {
+    const nums = [factor()], dens = [];
+    for (;;) {
+      if (isOp('·')) { p++; nums.push(factor()); }
+      else if (isOp('/')) { p++; dens.push(factor()); }
+      else if (p < t.length && !['=', ')', '+', '−', '²', '·', '/'].includes(t[p])) nums.push(factor());   // impliciet vermenigvuldigen
+      else break;
+    }
+    nums.sort(); dens.sort();
+    return nums.join('·') + (dens.length ? '/' + dens.join('·') : '');
+  }
+  function factor() {
+    let a;
+    if (p >= t.length) throw new Error('syntax');
+    if (isOp('(')) { p++; a = '(' + expr() + ')'; if (!isOp(')')) throw new Error('syntax'); p++; }
+    else if (isOp('√')) { p++; a = '√' + factor(); }
+    else if (['=', ')', '·', '/', '+', '−', '²'].includes(t[p])) throw new Error('syntax');
+    else a = t[p++];
+    while (isOp('²')) { p++; a += '²'; }
+    return a;
+  }
+  const v = expr();
+  if (p !== t.length) throw new Error('syntax');
+  return v;
+}
+export function canonFormula(t) {
+  const i = t.indexOf('=');
+  if (i < 1 || i === t.length - 1 || t.indexOf('=', i + 1) !== -1) throw new Error('syntax');
+  return [canonSide(t.slice(0, i)), canonSide(t.slice(i + 1))].sort().join('=');   // a = b en b = a zijn hetzelfde
+}
+export function sameFormula(a, b) {
+  try { return canonFormula(a.slice()) === canonFormula(b.slice()); } catch { return a.join(' ') === b.join(' '); }
+}
+
+/** Een bouwopgave: losse blokjes (de juiste plus een paar afleiders) waar de formule van gemaakt moet worden. */
+export function makeBuild(item, all) {
+  const tokens = formulaTokens(item.f);
+  const has = new Set(tokens);
+  const pool = all.filter(x => x.id !== item.id && x.f).flatMap(x => formulaTokens(x.f) || []).filter(x => /^[A-Za-zΑ-Ωα-ωµ][₀-₉ᵢ]?$/.test(x) && x !== 'Σ' && !has.has(x));
+  const extra = shuffle([...new Set(pool)]).slice(0, 2);
+  const opx = has.has('+') ? '−' : '+';
+  const tiles = shuffle([...tokens, ...extra, ...(has.has(opx) ? [] : [opx])]).map((t, i) => ({ id: i, t }));
+  return { type: 'build', item, prompt: 'Bouw de formule', sub: '', build: { tokens, tiles, placed: [], locked: 0, tips: 0, wrong: 0 }, options: null,
+    hints: [`Waar gaat het over: ${item.where}.`, 'Het eerste deel van de formule staat er nu voor je.', 'De uitwerking: de formule staat er nu.'],
+    explain: `${item.name}: ${item.f}` };
 }
 
 // ---- eenheden omrekenen (voorvoegsels) --------------------------------------------

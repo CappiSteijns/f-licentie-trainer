@@ -1187,10 +1187,12 @@ function fgNext() {
   for (let i = 0; i < cand.length; i++) { r -= ws[i]; if (r <= 0) { item = cand[i]; break; } }
   FG.recent = [item.id, ...FG.recent].slice(0, 2);
   const has = k => FG.pool.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length)), hasAll = k => FG.all.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length));
-  const choose = list => pickOf(list.filter(it => !FG.recent.includes(it.id)).concat(list.length < 3 ? list : [])) || list[0];
+  const choose = list => { const r = pickOf(list.filter(it => !FG.recent.includes(it.id)).concat(list.length < 3 ? list : [])) || list[0]; FG.recent = [r.id, ...FG.recent].slice(0, 3); return r; };
   if (FG.mode === 'units' || (FG.mode === 'mix' && Math.random() < 0.12)) FG.cur = drill.unitQuestion();
   else if (FG.mode === 'rewrite') { const l = has('rewrite'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('rewrite')), FG.all, 'rewrite'); }
   else if (FG.mode === 'calc') { const l = has('gen'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('gen')), FG.all, 'calc'); }
+  else if (FG.mode === 'pick') { const l = has('gen').filter(it => it.f); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('gen').filter(it => it.f)), FG.all, 'pick'); }
+  else if (FG.mode === 'build') { const l = FG.pool.filter(drill.buildable); FG.cur = drill.makeBuild(choose(l.length ? l : FG.all.filter(drill.buildable)), FG.all); }
   else if (FG.mode === 'know') FG.cur = drill.makeQuestion(item, FG.all, ['name', 'where', 'cloze']);
   else FG.cur = drill.makeQuestion(item, FG.all);
   FG.picked = null;
@@ -1210,14 +1212,56 @@ function showFormulaOrPrefix() {
 function fgAnswer(i) {
   if (FG.picked != null) return;
   const q = FG.cur, o = q.options[i]; FG.picked = i;
-  const helped = !!q.peeked;
+  const tp = q.tips || 0, helped = !!q.peeked || tp > 0;
   // Met hulp (formulelijst) goed: maar 5 punten, geen bonus, reeks blijft staan; telt voor het herhaalschema als "nog niet gekend".
   store.recordCard(fgKey(FG.chapter, q.item), o.ok && !helped);
   q.points = 0;
-  if (o.ok && helped) { FG.ok++; FG.helped = (FG.helped || 0) + 1; q.points = 5; FG.score += 5; }
+  if (o.ok && helped) { FG.ok++; FG.helped = (FG.helped || 0) + 1; q.points = q.hints ? [10, 8, 6, 4, 3][tp] : 5; FG.score += q.points; }
   else if (o.ok) { FG.ok++; FG.combo++; FG.bestCombo = Math.max(FG.bestCombo, FG.combo); q.points = 10 + 2 * Math.min(FG.combo, 10); FG.score += q.points; }
   else { FG.combo = 0; if (FG.hearts != null) FG.hearts--; FG.missed.set(q.item.id, q.item); if (helped) FG.helped = (FG.helped || 0) + 1; }
   render();
+}
+// ---- formule bouwen
+const fgAccepted = q => [q.item.f, ...(q.item.rewrite || []).map(r => r.a)].map(drill.formulaTokens).filter(Boolean);
+function fgBuildFinish(ok, giveUp) {
+  const q = FG.cur, b = q.build; FG.picked = 0; q.ok = ok; q.points = 0;
+  store.recordCard(fgKey(FG.chapter, q.item), ok && b.tips === 0 && b.wrong === 0);
+  if (ok) {
+    FG.ok++;
+    if (b.tips === 0 && b.wrong === 0) { FG.combo++; FG.bestCombo = Math.max(FG.bestCombo, FG.combo); q.points = 10 + 2 * Math.min(FG.combo, 10); }
+    else { FG.helped = (FG.helped || 0) + 1; q.points = Math.max(2, [10, 7, 4][Math.min(2, b.tips)] - 2 * b.wrong); }
+    FG.score += q.points;
+  } else {
+    FG.combo = 0; FG.missed.set(q.item.id, q.item);
+    if (!giveUp && FG.hearts != null) FG.hearts--;   // de uitwerking vragen kost geen leven, drie keer fout wel
+  }
+  render();
+}
+function fgBuildCheck() {
+  const q = FG.cur, b = q.build, mine = b.placed.map(i => b.tiles[i].t);
+  if (fgAccepted(q).some(a => drill.sameFormula(a, mine))) return fgBuildFinish(true);
+  b.wrong++; b.msg = 'Nog niet helemaal. Kijk nog eens naar de volgorde en de blokjes.';
+  if (b.wrong >= 3) { b.placed = fgBuildSolution(q); return fgBuildFinish(false); }
+  render();
+}
+function fgBuildSolution(q) {   // de blokjes in de goede volgorde
+  const b = q.build, used = new Set(), ids = [];
+  for (const t of b.tokens) { const k = b.tiles.find(x => x.t === t && !used.has(x.id)); used.add(k.id); ids.push(k.id); }
+  return ids;
+}
+function fgBuildTip() {
+  const q = FG.cur, b = q.build; if (FG.picked != null || b.tips >= q.hints.length) return;
+  b.tips++; b.msg = '';
+  if (b.tips === 2) {   // het eerste deel van de formule alvast neerleggen
+    const sol = fgBuildSolution(q), k = Math.ceil(sol.length / 2);
+    b.placed = sol.slice(0, k); b.locked = k;
+  }
+  if (b.tips === 3) { b.placed = fgBuildSolution(q); return fgBuildFinish(false, true); }
+  render();
+}
+function fgTip() {
+  const q = FG.cur; if (FG.picked != null || (q.tips || 0) >= q.hints.length) return;
+  q.tips = (q.tips || 0) + 1; render();
 }
 function fgAfter() {
   FG.n++;
@@ -1230,7 +1274,7 @@ function bindFgKeys() {
   if (fgKeysBound) return; fgKeysBound = true;
   document.addEventListener('keydown', e => {
     if (view !== 'fgame' || !FG || FG.stage !== 'play' || e.target.closest('input,select,textarea,dialog,.tpanel') || e.ctrlKey || e.metaKey || e.altKey) return;
-    if (FG.picked == null && /^[1-4]$/.test(e.key) && FG.cur.options[+e.key - 1]) fgAnswer(+e.key - 1);
+    if (FG.picked == null && FG.cur.options && /^[1-4]$/.test(e.key) && FG.cur.options[+e.key - 1] && !(FG.cur.tips >= 4 && FG.cur.elim && FG.cur.elim.includes(FG.cur.options[+e.key - 1].text))) fgAnswer(+e.key - 1);
     else if (FG.picked != null && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) { e.preventDefault(); fgAfter(); }
   });
 }
@@ -1245,6 +1289,8 @@ function viewFGame() {
     const modes = [
       ['mix', '🎲 Alles door elkaar', 'Van alles wat: formules herkennen, invullen, omwerken en rekenen. Het meest afwisselend; dit is de standaard.', 'Welke formule hoort bij “Wet van Ohm”?'],
       ['know', '🧠 Formules kennen', 'Alleen herkennen en invullen, zonder rekenen. Goed om de formules en waar ze bij horen te leren.', 'P = I² · ___  →  R'],
+      ['pick', '🧭 Welke formule?', 'Je krijgt een opgave en moet zelf bedenken welke formule erbij hoort, zonder dat de formule er al staat. Met tips die je stap voor stap krijgt als je vastloopt.', '12 V over 470 Ω: welke formule los je dit mee op?'],
+      ['build', '🧩 Formule bouwen', 'Je krijgt alleen de naam en bouwt de formule zelf uit losse blokjes, met een paar blokjes te veel. Tips: waar het over gaat, het begin, en als laatste de uitwerking.', 'Bouw: Wet van Ohm  →  U = I · R'],
       ['calc', '🧮 Rekenen', 'Alleen rekenopgaven met willekeurige getallen. Gebruik je rekenmachine, net als op het examen.', '12 V over 470 Ω, hoe groot is de stroom?'],
       ['rewrite', '🔁 Omwerken', 'Een formule omschrijven naar een andere grootheid. Hier lopen veel cursisten op vast.', 'P = U² / R  →  U = ?'],
       ['units', '📏 Eenheden omrekenen', 'Omrekenen tussen mA, A, µA, kΩ, MΩ enzovoort. Dit gaat niet over een bepaald hoofdstuk.', '4,7 kΩ = ? Ω'],
@@ -1293,32 +1339,57 @@ function viewFGame() {
         h('div', { class: 'row', style: 'margin-top:1rem' }, h('button', { class: 'primary', onclick: fgStart }, 'Nog een ronde'),
           h('button', { class: 'ghost', onclick: () => { FG.stage = 'start'; render(); } }, 'Opties'))));
   }
-  const q = FG.cur, answered = FG.picked != null, ok = answered && q.options[FG.picked].ok;
-  const opts = q.options.map((o, i) => {
+  const q = FG.cur, answered = FG.picked != null, ok = answered && (q.build ? q.ok : q.options[FG.picked].ok);
+  const elim = t => !answered && q.elim && (q.tips || 0) >= 4 && q.elim.includes(t);
+  const opts = (q.options || []).map((o, i) => {
     let cls = 'opt';
     if (answered) cls += o.ok ? ' right' : (i === FG.picked ? ' wrong' : ' dim');
-    return h('button', { class: cls, disabled: answered, onclick: () => fgAnswer(i) },
+    else if (elim(o.text)) cls += ' dim';
+    return h('button', { class: cls, disabled: answered || elim(o.text), onclick: () => fgAnswer(i) },
       h('span', { class: 'l' }, String(i + 1)), h('span', { class: 'tx' + (q.mono ? ' f' : '') }, o.text));
   });
+  const b = q.build, hinted = q.hints && !answered;
+  const tipsLeft = q.hints ? q.hints.length - (b ? b.tips : (q.tips || 0)) : 0;
+  const shown = q.hints ? q.hints.slice(0, b ? Math.min(b.tips, 2) : (q.tips || 0)) : [];
+  const tipBox = q.hints && (shown.length > 0 || hinted) && h('div', { class: 'tips' },
+    shown.map(t => h('p', { class: 'tip' }, '💡 ' + t)),
+    hinted && tipsLeft > 0 && h('button', { class: 'ghost small', onclick: b ? fgBuildTip : fgTip },
+      b && b.tips === 2 ? '🏳️ Toon de uitwerking (0 punten)' : `💡 Geef me een tip (${shown.length === 0 ? 'eerste' : 'volgende'})`),
+    hinted && h('span', { class: 'muted small' }, shown.length ? '  Met tips levert een goed antwoord minder punten op.' : '  Lukt het niet? Een tip kost een paar punten.'));
+  const tileUI = b && h('div', {},
+    h('div', { class: 'built', 'aria-label': 'Jouw formule' },
+      b.placed.length ? b.placed.map((id, i) => h('button', { class: 'tile placed' + (i < b.locked ? ' lock' : '') + (answered ? (ok ? ' good' : ' bad') : ''), disabled: answered || i < b.locked, 'aria-label': `${b.tiles[id].t} verwijderen`,
+        onclick: () => { b.placed.splice(i, 1); b.msg = ''; render(); } }, b.tiles[id].t))
+        : h('span', { class: 'muted small' }, 'Tik op de blokjes hieronder om de formule op te bouwen.')),
+    !answered && h('div', { class: 'tiles', role: 'group', 'aria-label': 'Blokjes' },
+      b.tiles.filter(t => !b.placed.includes(t.id)).map(t => h('button', { class: 'tile', onclick: () => { b.placed.push(t.id); b.msg = ''; render(); } }, t.t))),
+    !answered && b.msg && h('p', { class: 'notice', role: 'status' }, b.msg),
+    !answered && h('div', { class: 'row', style: 'margin-top:.6rem' },
+      h('button', { class: 'primary', disabled: b.placed.length < 3, onclick: fgBuildCheck }, 'Controleer'),
+      h('button', { class: 'ghost', disabled: b.placed.length <= b.locked, onclick: () => { b.placed.length = b.locked; b.msg = ''; render(); } }, 'Wis'),
+      b.wrong > 0 && h('span', { class: 'muted small' }, `Poging ${b.wrong + 1} van 3`)));
   const last = FG.n + 1 >= FG_LEN || (FG.hearts != null && FG.hearts <= 1 && answered && !ok);
   const next = h('button', { class: 'primary', onclick: fgAfter }, last ? 'Afronden' : 'Volgende →');
   if (answered) queueMicrotask(() => next.focus({ preventScroll: true }));
   return h('div', {}, back,
     h('div', { class: 'row between', style: 'margin:.4rem 0' },
-      h('b', {}, `Vraag ${FG.n + 1} van ${FG_LEN}`, h('span', { class: 'muted small' }, ' · ' + ({ mix: 'door elkaar', know: 'formules kennen', calc: 'rekenen', rewrite: 'omwerken', units: 'eenheden' }[FG.mode]))),
+      h('b', {}, `Vraag ${FG.n + 1} van ${FG_LEN}`, h('span', { class: 'muted small' }, ' · ' + ({ mix: 'door elkaar', know: 'formules kennen', pick: 'welke formule', build: 'formule bouwen', calc: 'rekenen', rewrite: 'omwerken', units: 'eenheden' }[FG.mode]))),
       h('span', {}, FG.hearts != null ? '❤️'.repeat(Math.max(0, FG.hearts)) + '🖤'.repeat(Math.max(0, 3 - FG.hearts)) : ''),
       h('span', { class: 'badge' + (FG.combo >= 3 ? ' blue' : '') }, FG.combo >= 2 ? `🔥 ${FG.combo}× · ${FG.score}` : `${FG.score} punten`)),
     h('div', { class: 'progress' }, h('i', { style: `width:${pct(FG.n + (answered ? 1 : 0), FG_LEN)}%` })),
     h('div', { class: 'card', style: 'margin-top:1rem' },
+      q.tag && h('p', { class: 'muted small', style: 'margin:0 0 .4rem' }, q.tag),
       q.sub && h('p', { class: 'muted small', style: 'margin:0 0 .4rem' }, q.calc ? `🧮 Rekenen · ${q.sub}` : q.sub),
-      h('p', { class: 'stem' }, q.prompt),
+      h('p', { class: 'stem' }, q.prompt, b && h('b', {}, ' ' + `“${q.item.name}”`)),
+      q.ask && h('p', { class: 'stem', style: 'font-weight:600' }, q.ask),
       q.formula && h('div', { class: 'bigf' }, q.formula),
-      h('div', { class: 'opts', role: 'group', 'aria-label': 'Antwoordopties' }, opts),
-      !answered && h('p', { style: 'margin:.8rem 0 0' }, h('button', { class: 'ghost small', onclick: fgPeek },
+      b ? tileUI : h('div', { class: 'opts', role: 'group', 'aria-label': 'Antwoordopties' }, opts),
+      tipBox,
+      !answered && !q.hints && h('p', { style: 'margin:.8rem 0 0' }, h('button', { class: 'ghost small', onclick: fgPeek },
         q.type === 'units' ? '📋 Voorvoegsels bekijken (halve punten)' : '📋 Formulelijst bekijken (halve punten)'),
         q.peeked && h('span', { class: 'muted small' }, '  Hulp gebruikt: dit antwoord levert maximaal 5 punten op.')),
-      answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : '❌ Niet goed.', ' ', q.explain,
-        ok ? ` (+${q.points} punten${q.peeked ? ', met hulp' : ''})` : ''),
+      answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : (b && b.tips >= 3 ? '🏳️ Dit is de uitwerking.' : '❌ Niet goed.'), ' ', q.explain,
+        ok ? ` (+${q.points} punten${q.peeked || q.tips || (b && (b.tips || b.wrong)) ? ', met hulp' : ''})` : ''),
       answered && h('p', { style: 'margin:.5rem 0 0' }, h('button', { class: 'ghost small', onclick: showFormulaOrPrefix }, q.type === 'units' ? '📋 Voorvoegsels' : '📋 Formulelijst')),
       answered && !ok && q.type !== 'units' && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, q.item.sec, 'fgame') }, 'Lees de theorie hierover')),
       h('div', { class: 'actions' }, answered && next)));
