@@ -509,6 +509,7 @@ function viewStats() {
   return h('div', {},
     h('h1', {}, 'Voortgang'),
     goalCard(),
+    heatmapCard(),
     h('div', { class: 'cards' },
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.a)), h('div', { class: 'k' }, 'vragen beantwoord')),
       h('div', { class: 'stat' }, h('div', { class: 'n pct ' + (t.a ? pctClass(pct(t.ok, t.a)) : '') }, t.a ? pct(t.ok, t.a) + '%' : '–'), h('div', { class: 'k' }, 'goed (algemeen)')),
@@ -980,6 +981,59 @@ function sectionRows(th, back) {
 
 
 // ---------------------------------------------------------------- dagdoel, reeks en flashcards
+// ---------------------------------------------------------------- heatmap (activiteit per dag)
+let hmWeeks = 26;   // 13 | 26 | 52
+const DAGEN = ['maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag', 'zondag'];
+const MND_KORT = ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+function heatmapCard() {
+  const counts = store.dayCounts();
+  const today = new Date(); today.setHours(12, 0, 0, 0);
+  const start = new Date(today); start.setDate(today.getDate() - (today.getDay() + 6) % 7 - (hmWeeks - 1) * 7);   // maandag van de eerste week
+  const days = [];   // {d, k, c} van start t/m vandaag
+  for (let i = 0; ; i++) { const d = new Date(start); d.setDate(start.getDate() + i); if (d > today) break; const k = store.dayKey(d.getTime()); days.push({ d, k, c: counts[k] || 0 }); }
+  const total = days.reduce((a, x) => a + x.c, 0), active = days.filter(x => x.c > 0);
+  const best = active.reduce((m, x) => (x.c > (m ? m.c : 0) ? x : m), null);
+  const max = Math.max(1, best ? best.c : 1);
+  const lvl = c => (c ? 1 + Math.min(3, Math.floor((c / max) * 3.999)) : 0);
+  const label = x => `${DAGEN[(x.d.getDay() + 6) % 7]} ${x.d.getDate()} ${MND_KORT[x.d.getMonth()]} ${x.d.getFullYear()}: ${x.c ? x.c + ' geoefend' : 'niets gedaan'}`;
+  const det = h('p', { class: 'small muted hm-det', 'aria-live': 'polite' }, best ? `Drukste dag: ${label(best)}. Tik op een vakje voor de details.` : 'Nog geen activiteit in deze periode.');
+  let selEl = null;
+  const cells = [], months = [];
+  days.forEach((x, i) => {
+    const col = Math.floor((i + (start.getDay() === 1 ? 0 : 0)) / 7);   // start is altijd een maandag
+    const el = h('span', { class: 'hc l' + lvl(x.c) + (x.k === store.dayKey() ? ' today' : ''), title: label(x),
+      onclick: () => { if (selEl) selEl.classList.remove('sel'); selEl = el; el.classList.add('sel'); det.textContent = label(x); } });
+    cells.push(el);
+    if (x.d.getDate() <= 7 && (x.d.getDay() + 6) % 7 === 0 || (i === 0)) months.push(h('span', { class: 'hm-m', style: `grid-column:${col + 1}` }, MND_KORT[x.d.getMonth()]));
+  });
+  // gemiddelde per weekdag over de getoonde periode (dagen zonder activiteit tellen mee)
+  const wd = Array.from({ length: 7 }, () => ({ sum: 0, n: 0 }));
+  days.forEach(x => { const w = wd[(x.d.getDay() + 6) % 7]; w.sum += x.c; w.n++; });
+  const avg = wd.map(w => (w.n ? w.sum / w.n : 0)), amax = Math.max(0.0001, ...avg);
+  const wrap = h('div', { class: 'hm-wrap' },
+    h('div', { class: 'hm', style: `--wk:${hmWeeks}` },
+      h('div', { class: 'hm-months' }, ...months),
+      h('div', { class: 'hm-grid' }, ...cells)));
+  requestAnimationFrame(() => { wrap.scrollLeft = wrap.scrollWidth; });
+  return h('section', { class: 'card' },
+    h('div', { class: 'row between' }, h('h2', {}, 'Activiteit'),
+      h('div', { class: 'row hm-range', role: 'group', 'aria-label': 'Periode' },
+        [[13, '3 mnd'], [26, '6 mnd'], [52, '12 mnd']].map(([w, t]) => h('button', { class: 'ghost small' + (hmWeeks === w ? ' on' : ''), 'aria-pressed': String(hmWeeks === w), onclick: () => { hmWeeks = w; render(); } }, t)))),
+    h('p', { class: 'small muted', style: 'margin:.2rem 0 .6rem' }, 'Elke dag is een vakje: hoe donkerder groen, hoe meer vragen en kaarten je die dag deed.'),
+    wrap,
+    h('div', { class: 'hm-legend small muted' }, 'minder', ...[0, 1, 2, 3, 4].map(l => h('i', { class: 'hc l' + l })), 'meer'),
+    det,
+    h('div', { class: 'cards' },
+      h('div', { class: 'stat' }, h('div', { class: 'n' }, String(active.length)), h('div', { class: 'k' }, `actieve dagen van ${days.length}`)),
+      h('div', { class: 'stat' }, h('div', { class: 'n' }, String(total)), h('div', { class: 'k' }, 'geoefend in totaal')),
+      h('div', { class: 'stat' }, h('div', { class: 'n' }, active.length ? String(Math.round(total / active.length)) : '–'), h('div', { class: 'k' }, 'gemiddeld per actieve dag'))),
+    h('h3', { style: 'margin:1rem 0 .4rem' }, 'Gemiddeld per weekdag'),
+    h('div', { class: 'wd' }, avg.map((a, i) => h('div', { class: 'wd-c', title: `${DAGEN[i]}: gemiddeld ${a.toFixed(1).replace('.', ',')} per dag` },
+      h('span', { class: 'wd-n small muted' }, a < 10 ? a.toFixed(1).replace('.', ',') : String(Math.round(a))),
+      h('span', { class: 'wd-b' }, h('i', { style: `height:${Math.max(2, Math.round(a / amax * 100))}%` })),
+      h('span', { class: 'small muted' }, DAGEN[i].slice(0, 2))))));
+}
+
 let calOpen = false;
 let calOff = 0;   // maanden terug t.o.v. nu
 const MAANDEN = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'];
