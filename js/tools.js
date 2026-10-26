@@ -192,12 +192,13 @@ function buildCalc(onClose, other) {
   let ex = '', res = '', ans = 0, deg = true, second = false, fresh = false, lastV = null, engShift = 0, err = false, rmode = 'dec', hadFrac = false;
   const disp = $('div', { class: 'cx' }), out = $('div', { class: 'cr' }), mode = $('div', { class: 'cm' });
   const draw = () => {
-    disp.textContent = ex.replace(/\^(-?\d+)(?![\d.])/g, (_, e) => sup(e)).replace(/(\d+)⌟(\d+)⌟(\d+)/g, '$1 $2⁄$3').replace(/(\d+)⌟(\d+)/g, '$1⁄$2').replace(/\./g, ',') || '0'; out.textContent = err ? 'Fout' : res; mode.textContent = `${deg ? 'DEG' : 'RAD'}${second ? ' · 2nd' : ''}`;
+    disp.textContent = ex.replace(/\^\((-?\d+)\)/g, (_, e) => sup(e)).replace(/\^(-?\d+)(?![\d.])/g, (_, e) => sup(e)).replace(/(\d+)⌟(\d+)⌟(\d+)/g, '$1 $2⁄$3').replace(/(\d+)⌟(\d+)/g, '$1⁄$2').replace(/\./g, ',') || '0'; out.textContent = err ? 'Fout' : res; mode.textContent = `${deg ? 'DEG' : 'RAD'}${second ? ' · 2nd' : ''}`;
     disp.scrollLeft = disp.scrollWidth;
   };
   const ins = s => {
     if (err) { ex = ''; err = false; res = ''; }
     if (fresh) { ex = /^[+\-×÷^²]|^⁻¹/.test(s) ? 'Ans' : ''; res = ''; fresh = false; }
+    if (!ex && s.startsWith('×')) s = s.slice(1);   // '×10³' aan het begin van een som: gewoon 10³
     ex += s; draw();
   };
   const showRes = () => (rmode !== 'dec' && fmtFrac(lastV, rmode)) || fmt(lastV);
@@ -219,6 +220,12 @@ function buildCalc(onClose, other) {
       case '2nd': second = !second; draw(); render(); return;
       case 'DEG': deg = !deg; draw(); render(); return;
       case 'a b/c': ins('⌟'); return;
+      case 'x³': ins('^(3)'); break;
+      case 'x⁻²': ins('^(-2)'); break;
+      case 'x⁻³': ins('^(-3)'); break;
+      case '10ˣ': ins(!fresh && /[\d.)π²]$/.test(ex) ? '×10^(' : '10^('); break;   // 5 10ˣ 3) = 5×10³
+      case 'eˣ': ins('e^('); break;
+      case '×10³': case '×10⁶': case '×10⁻³': case '×10⁻⁶': case '×10⁻⁹': ins(`×10^(${PW[k]})`); break;
       case 'S⇔D': {   // decimaal → breuk → gemengd getal → decimaal
         if (lastV == null || err) return;
         if (!toFraction(lastV)) { rmode = 'dec'; res = fmt(lastV); draw(); return; }
@@ -240,7 +247,8 @@ function buildCalc(onClose, other) {
     }
     if (second && ['sin', 'cos', 'tan', 'log', 'ln'].includes(k)) { second = false; draw(); render(); }
   };
-  const rows = [['2nd', 'DEG', 'ENG', 'DEL', 'AC'], ['sin', 'cos', 'tan', 'log', 'ln'], ['x²', 'xʸ', '√', 'x⁻¹', 'π'], ['7', '8', '9', '(', ')'], ['4', '5', '6', '×', '÷'], ['1', '2', '3', '+', '-'], ['0', ',', 'EXP', 'Ans', '='], ['a b/c', 'S⇔D']];
+  const PW = { '×10³': 3, '×10⁶': 6, '×10⁻³': -3, '×10⁻⁶': -6, '×10⁻⁹': -9 };
+  const rows = [['2nd', 'DEG', 'ENG', 'DEL', 'AC'], ['sin', 'cos', 'tan', 'log', 'ln'], ['x²', 'xʸ', '√', 'x⁻¹', 'π'], ['x³', 'x⁻²', 'x⁻³', '10ˣ', 'eˣ'], ['×10³', '×10⁶', '×10⁻³', '×10⁻⁶', '×10⁻⁹'], ['7', '8', '9', '(', ')'], ['4', '5', '6', '×', '÷'], ['1', '2', '3', '+', '-'], ['0', ',', 'EXP', 'Ans', '='], ['a b/c', 'S⇔D']];
   const lbl = { '-': '−', sin: () => (second ? 'sin⁻¹' : 'sin'), cos: () => (second ? 'cos⁻¹' : 'cos'), tan: () => (second ? 'tan⁻¹' : 'tan'), log: () => (second ? '10ˣ' : 'log'), ln: () => (second ? 'eˣ' : 'ln') };
   const keys = $('div', { class: 'ck' });
   const render = () => keys.replaceChildren(...rows.flat().map(k => {
