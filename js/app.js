@@ -161,7 +161,7 @@ async function startIds(ids) {
   try {
     const nums = [...new Set(ids.map(quiz.chapterOf))].sort((a, b) => a - b);
     await ensureTheory(nums); await quiz.loadChapters(nums);
-    S = { mode: 'practice', ids, idx: 0, answers: {}, start: Date.now(), dur: p.examMinutes * 60000, chapters: nums };
+    S = { mode: 'practice', sid: store.uid(), ids, idx: 0, answers: {}, start: Date.now(), dur: p.examMinutes * 60000, chapters: nums };
     saveSession(); setView('session');
   } catch (e) { toast('Laden mislukt: ' + e.message); }
 }
@@ -312,7 +312,7 @@ async function startSession() {
     else if (p.mode === 'practice' && p.onlyDue) { const due = new Set(store.dueIds()); pool = pool.filter(q => due.has(q.id)); }
     if (!pool.length) { toast('Geen vragen in deze selectie.'); return; }
     const ids = p.mode === 'exam' ? quiz.examQuestions(pool, p.examCount, p.examSpread) : quiz.practiceOrder(pool, p.smart);
-    S = { mode: p.mode, ids, idx: 0, answers: {}, start: Date.now(), dur: p.examMinutes * 60000, chapters: nums };
+    S = { mode: p.mode, sid: store.uid(), ids, idx: 0, answers: {}, start: Date.now(), dur: p.examMinutes * 60000, chapters: nums };
     saveSession();
     setView('session');
   } catch (e) {
@@ -374,7 +374,8 @@ function answerPractice(q, optId) {
   S.wasPond = S.wasPond || {};
   S.wasPond[q.id] = store.isPond(q.id);
   S.answers[q.id] = optId;
-  store.recordAnswer(q.id, ok, 'practice');
+  if (!S.sid) S.sid = store.uid();
+  store.recordAnswer(q.id, ok, 'practice', S.sid);
   saveSession();
   render();
 }
@@ -477,13 +478,14 @@ function finishExam() {
     const picked = S.answers[id] || null;
     const ok = picked === q.answer;
     if (ok) score++;
-    if (picked) store.recordAnswer(id, ok, 'exam');   // onbeantwoord telt wel als fout in de score, maar niet in je statistieken
+    if (picked) store.recordAnswer(id, ok, 'exam', S.sid);   // onbeantwoord telt wel als fout in de score, maar niet in je statistieken
     return { id, picked, ok };
   });
   const need = quiz.passThreshold(total, store.getPrefs().passMark, 50);
   const secs = Math.min(Math.round((Date.now() - S.start) / 1000), Math.round(S.dur / 1000));
   const pass = score >= need;
-  store.addExam({ score, total, pass, secs, chapters: S.chapters });
+  const examId = store.addExam({ score, total, pass, secs, chapters: S.chapters });
+  if (S.sid) store.linkExam(S.sid, examId);
   RESULT = { mode: 'exam', total, score, need, pass, secs, details };
   S = null; store.clearSession();
   setView('result');
@@ -547,11 +549,31 @@ function viewResult() {
     }));
 }
 
-async function undoExamUI(e) {
-  if (!await confirmDlg({ title: 'Dit examen terugdraaien?', body: `Het examen van ${fmtDate(e.t)} (${e.score}/${e.total}) verdwijnt uit je lijst en de vragen die erbij hoorden tellen niet meer mee in je percentages en je foutenvijver. Vragen die je eerder al had geoefend krijgen een nette schatting van hun oude stand. Dit kan niet ongedaan worden gemaakt.`, ok: 'Terugdraaien', danger: true })) return;
-  const n = store.undoExam(e.id);
-  toast(`Examen teruggedraaid (${n} ${n === 1 ? 'vraag' : 'vragen'} aangepast).`);
+let histAll = false;
+async function deleteHistoryUI(it) {
+  const wat = it.mode === 'exam' ? 'examen' : 'oefenronde';
+  const body = it.legacy
+    ? `Dit examen (${fmtDate(it.t)}, ${it.ok}/${it.n}) komt uit de tijd vóór de geschiedenis. Het verdwijnt uit je lijst en de vragen die erbij hoorden tellen niet meer mee. Omdat precies bijhouden toen nog niet kon, wordt het ingeschat: vragen die je daarna opnieuw hebt geoefend kunnen een antwoord te veel houden. Dit kan niet ongedaan worden gemaakt.`
+    : `Deze ${wat} van ${fmtDate(it.t)} (${it.ok} van ${it.n} goed) verdwijnt uit je geschiedenis. De ${it.n} antwoorden tellen niet meer mee in je percentages, je foutenvijver en je herhaalschema. Dit kan niet ongedaan worden gemaakt.`;
+  if (!await confirmDlg({ title: `${it.mode === 'exam' ? 'Dit' : 'Deze'} ${wat} verwijderen?`, body, ok: 'Verwijderen', danger: true })) return;
+  const n = it.legacy ? store.undoExam(it.id) : store.deleteSession(it.id);
+  toast(`Verwijderd (${n} ${n === 1 ? 'vraag' : 'vragen'} aangepast).`);
   render();
+}
+function historyCard() {
+  const all = store.getHistory();
+  if (!all.length) return null;
+  const list = histAll ? all : all.slice(0, 8);
+  return h('section', { class: 'card' },
+    h('h2', {}, 'Geschiedenis'),
+    h('p', { class: 'muted small', style: 'margin:.2rem 0 .6rem' }, 'Elke oefenronde en elk examen. Per ongeluk iets gedaan? Verwijder het hier, dan telt het niet meer mee in je voortgang.'),
+    h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Wanneer'), h('th', {}, 'Soort'), h('th', {}, 'Goed'), h('th', {}, ''))),
+      h('tbody', {}, list.map(it => h('tr', {},
+        h('td', {}, fmtDate(it.t)),
+        h('td', {}, it.mode === 'exam' ? (it.exam ? `📝 Examen · ${it.exam.pass ? 'geslaagd' : 'gezakt'}` : '📝 Examen') : '📖 Oefenen'),
+        h('td', {}, `${it.ok}/${it.n}` + (it.n ? ` (${pct(it.ok, it.n)}%)` : '')),
+        h('td', {}, h('button', { class: 'ghost small', 'aria-label': `Verwijder de ${it.mode === 'exam' ? 'examen' : 'oefenronde'} van ${fmtDate(it.t)}`, onclick: () => deleteHistoryUI(it) }, 'Verwijderen')))))),
+    all.length > 8 && h('p', { style: 'margin:.6rem 0 0' }, h('button', { class: 'ghost small', onclick: () => { histAll = !histAll; render(); } }, histAll ? 'Minder tonen' : `Alles tonen (${all.length})`)));
 }
 
 // ---------------------------------------------------------------- VOORTGANG
@@ -619,11 +641,11 @@ function viewStats() {
     h('section', { class: 'card' },
       h('h2', {}, 'Laatste examens'),
       exams.length === 0 ? h('p', { class: 'muted' }, 'Nog geen examens gemaakt.') :
-        h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Datum'), h('th', {}, 'Score'), h('th', {}, 'Uitslag'), h('th', {}, 'Tijd'), h('th', {}, ''))),
+        h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Datum'), h('th', {}, 'Score'), h('th', {}, 'Uitslag'), h('th', {}, 'Tijd'))),
           h('tbody', {}, exams.map(e => h('tr', {}, h('td', {}, fmtDate(e.t)), h('td', {}, `${e.score}/${e.total}`),
-            h('td', { class: e.pass ? 'correct' : 'yours' }, e.pass ? 'Geslaagd' : 'Gezakt'), h('td', {}, quiz.fmtTime(e.secs || 0)),
-            h('td', {}, h('button', { class: 'ghost small', title: 'Verwijder dit examen en haal de vragen eruit je statistieken', onclick: () => undoExamUI(e) }, 'Terugdraaien')))))),
-      exams.length > 0 && h('p', { class: 'muted small', style: 'margin:.6rem 0 0' }, 'Per ongeluk een examen gedaan? Met “Terugdraaien” verdwijnt het examen en tellen de vragen ervan niet meer mee in je percentages.')),
+            h('td', { class: e.pass ? 'correct' : 'yours' }, e.pass ? 'Geslaagd' : 'Gezakt'), h('td', {}, quiz.fmtTime(e.secs || 0))))))),
+
+    historyCard(),
 
     h('section', { class: 'card' },
       h('h2', {}, 'Gegevens'),
@@ -1026,7 +1048,7 @@ async function startSectionPractice(chapter, secId) {
   if (!ids.length) { toast('Er zijn geen vragen aan deze paragraaf gekoppeld.'); return; }
   await quiz.loadChapter(chapter);
   const pool = ids.map(id => quiz.QMAP.get(id)).filter(Boolean);
-  S = { mode: 'practice', ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title };
+  S = { mode: 'practice', sid: store.uid(), ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title };
   saveSession();
   setView('session');
 }
