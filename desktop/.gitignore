@@ -1,0 +1,5 @@
+.cache/
+launcher/site/
+launcher/assets/
+dist/F-licentie-linux
+dist/*.exe

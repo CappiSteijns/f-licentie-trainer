@@ -1,0 +1,43 @@
+# Bouwt F-licentie.exe (Windows) en zet hem via Git LFS in de map desktop/dist van deze branch.
+# Start vanzelf bij een push naar de branch 'desktop', of handmatig via Actions -> "Bouw F-licentie.exe" -> Run workflow.
+# Wil je de nieuwste site in het .exe-bestand? Voeg main samen in desktop (git merge main) en push.
+name: Bouw F-licentie.exe
+
+on:
+  push:
+    branches: [desktop]
+    paths-ignore: ['desktop/dist/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+          cache: false
+      - name: Bouwen
+        run: ./desktop/build.sh windows
+      - name: Als download bij deze run bewaren
+        uses: actions/upload-artifact@v4
+        with:
+          name: F-licentie-exe
+          path: desktop/dist/F-licentie.exe
+          compression-level: 0
+          retention-days: 30
+      - name: In de branch zetten (Git LFS)
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -f desktop/dist/F-licentie.exe
+          if git diff --cached --quiet; then echo "Geen wijziging"; else
+            git commit -m "Bouw F-licentie.exe [skip ci]"
+            git push
+          fi
