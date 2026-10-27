@@ -595,8 +595,13 @@ function viewStats() {
   const t = store.totals();
   const cs = chapterStats();
   const withQ = chapters.filter(c => c.count > 0);
-  const weak = withQ.map(c => ({ c, s: cs[c.n] })).filter(x => x.s && x.s.a >= 5)
-    .sort((x, y) => pct(x.s.ok, x.s.a) - pct(y.s.ok, y.s.a))[0];
+  // Kopgetal = 'laatst goed': van de vragen die je gezien hebt, bij hoeveel was je laatste antwoord goed. Dat kan wél naar 100%;
+  // het percentage over álle pogingen (ook de fouten uit de leerfase) blijft als kleinere regel staan.
+  const known = (s) => (s && s.seen ? pct(s.mastered, s.seen) : 0);
+  const recs = Object.values(store.allRecords()).filter(r => r.a > 0);
+  const seenAll = recs.length, mastAll = recs.filter(r => r.l).length;
+  const weak = withQ.map(c => ({ c, s: cs[c.n] })).filter(x => x.s && x.s.seen >= 5)
+    .sort((x, y) => known(x.s) - known(y.s))[0];
   const exams = store.getExams().slice(0, 10);
 
   return h('div', {},
@@ -605,13 +610,13 @@ function viewStats() {
     heatmapCard(),
     h('div', { class: 'cards' },
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.a)), h('div', { class: 'k' }, 'vragen beantwoord')),
-      h('div', { class: 'stat' }, h('div', { class: 'n pct ' + (t.a ? pctClass(pct(t.ok, t.a)) : '') }, t.a ? pct(t.ok, t.a) + '%' : '–'), h('div', { class: 'k' }, 'goed (algemeen)')),
+      h('div', { class: 'stat', title: 'Van de vragen die je gezien hebt: bij hoeveel was je laatste antwoord goed.' }, h('div', { class: 'n pct ' + (seenAll ? pctClass(pct(mastAll, seenAll)) : '') }, seenAll ? pct(mastAll, seenAll) + '%' : '–'), h('div', { class: 'k' }, 'laatst goed'), t.a > 0 && h('div', { class: 'k small' }, `alle pogingen: ${pct(t.ok, t.a)}%`)),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.pond)), h('div', { class: 'k' }, 'in foutenvijver')),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.due)), h('div', { class: 'k' }, 'nu te herhalen')),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, `${t.passed}/${t.exams}`), h('div', { class: 'k' }, 'examens geslaagd'))),
 
-    weak && pct(weak.s.ok, weak.s.a) < 70 && h('div', { class: 'notice' },
-      `Zwakste plek: H${weak.c.n} · ${weak.c.title} (${pct(weak.s.ok, weak.s.a)}% goed). Daar kun je het meest winnen.`),
+    weak && known(weak.s) < 80 && h('div', { class: 'notice' },
+      `Zwakste plek: H${weak.c.n} · ${weak.c.title} (${known(weak.s)}% laatst goed). Daar kun je het meest winnen.`),
 
     h('section', { class: 'card' },
       h('div', { class: 'row between' }, h('h2', {}, 'Per onderdeel'),
@@ -620,17 +625,17 @@ function viewStats() {
           h('span', {}, h('i', { style: 'background:rgba(77,163,255,.5)' }), 'gezien'))),
       withQ.map(c => {
         const s = cs[c.n] || { a: 0, ok: 0, seen: 0, mastered: 0, pond: 0 };
-        const sp = pct(s.ok, s.a);
+        const sp = known(s);
         return h('div', { class: 'chap' },
           h('div', { class: 'row between' },
             h('b', {}, `H${c.n} · ${c.title}`),
-            s.a ? h('span', { class: 'pct ' + pctClass(sp) }, `${sp}% goed`) : h('span', { class: 'muted small' }, 'nog niet geoefend')),
+            s.seen ? h('span', { class: 'pct ' + pctClass(sp), title: 'Van de vragen die je gezien hebt: laatste antwoord goed' }, `${sp}% laatst goed`) : h('span', { class: 'muted small' }, 'nog niet geoefend')),
           h('div', { class: 'bar', role: 'img', 'aria-label': `${s.mastered} van ${c.count} vragen beheerst` },
             h('i', { class: 'seen', style: `width:${pct(s.seen, c.count)}%` }),
             h('i', { class: 'mast', style: `width:${pct(s.mastered, c.count)}%` })),
           c.theory && theory.getTheory(c.n) && h('details', { class: 'secs' }, h('summary', {}, 'Per paragraaf'), sectionRows(theory.getTheory(c.n), 'stats')),
           h('div', { class: 'row between small muted' },
-            h('span', {}, `Beheerst ${s.mastered}/${c.count} · gezien ${s.seen}/${c.count} · ${s.ok}/${s.a} goed`),
+            h('span', {}, `Beheerst ${s.mastered}/${c.count} · gezien ${s.seen}/${c.count} · alle pogingen ${s.ok}/${s.a} goed`),
             s.pond > 0 && h('button', { class: 'linklike small', onclick: () => {
               store.setPrefs({ sel: [c.n], onlyPond: true, onlyDue: false, mode: 'practice' }); startSession();
             } }, `Oefen ${s.pond} foute`)));
