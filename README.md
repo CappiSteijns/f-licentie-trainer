@@ -23,6 +23,7 @@ Oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Amateur), gebase
 
 ## Wat kan het?
 - **1.413 examenvragen** uit hoofdstuk 3 t/m 18, met controle van elk antwoord, uitleg en de originele uitwerking met figuren en formules.
+- **Een specifieke vraag oefenen** (op het tabblad *Oefenen*, 🔎): zoek op nummer (`3-45`, `h5 100`), op een stukje tekst uit de vraag of antwoorden, of op een examen (`mei 2011`). Je oefent één vraag, of alle gevonden vragen in één keer.
 - **Oefenen** per hoofdstuk, met directe feedback, een foutenvijver en slim herhalen (Leitner: terugkeer na 1, 3, 7, 14, 30 dagen).
 - **Examen** van 50 vragen met timer en slagingsnorm, gespreid over de gekozen hoofdstukken.
 - **Leren met theorie** (nu hoofdstuk 3, 4 en 5): cursustekst per paragraaf, link van elke vraag naar de theorie, een leerroute, formuleblad en **flashcards**.

@@ -326,3 +326,12 @@ body.has-tools #app { padding-bottom: 7rem; }
 .tile.bad { border-color: var(--red); }
 .tips { margin: .8rem 0 0; }
 .tip { margin: .3rem 0; padding: .5rem .7rem; border-left: 3px solid var(--accent); background: rgba(77, 163, 255, .08); border-radius: 6px; }
+
+/* specifieke vraag zoeken */
+.find summary { cursor: pointer; }
+.find-in { width: 100%; padding: .65rem .8rem; font: inherit; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.find-res { margin-top: .7rem; display: grid; gap: .5rem; }
+.find-row { display: flex; gap: .8rem; align-items: center; justify-content: space-between; padding: .6rem .7rem; border: 1px solid var(--border); border-radius: 10px; background: var(--surface-2); }
+.find-t { min-width: 0; }
+.find-row button { flex: none; min-height: 38px; }
+.badge.green { background: var(--green-bg); color: var(--green); }
