@@ -453,9 +453,15 @@ function viewExam() {
 
 async function submitExam() {
   const open = S.ids.filter(i => !S.answers[i]).length;
+  if (open === S.ids.length) {   // niets beantwoord: geen uitslag, niets opslaan
+    if (await confirmDlg({ title: 'Examen afbreken?', body: 'Je hebt nog geen vraag beantwoord. Als je afbreekt, wordt er niets opgeslagen: geen uitslag en geen invloed op je statistieken.', ok: 'Afbreken', cancel: 'Verder gaan', danger: true })) {
+      clearInterval(timerInt); S = null; store.clearSession(); toast('Examen afgebroken, er is niets opgeslagen.'); setView('setup');
+    }
+    return;
+  }
   const ok = await confirmDlg({
     title: 'Examen inleveren?',
-    body: open ? `Je hebt nog ${open} onbeantwoorde ${open === 1 ? 'vraag' : 'vragen'}. Die tellen als fout.` : 'Alle vragen zijn beantwoord.',
+    body: open ? `Je hebt nog ${open} onbeantwoorde ${open === 1 ? 'vraag' : 'vragen'}. Die tellen als fout in je examenscore, maar niet in je statistieken per vraag.` : 'Alle vragen zijn beantwoord.',
     ok: 'Inleveren', cancel: 'Verder gaan',
   });
   if (ok) finishExam(false);
@@ -471,7 +477,7 @@ function finishExam() {
     const picked = S.answers[id] || null;
     const ok = picked === q.answer;
     if (ok) score++;
-    store.recordAnswer(id, ok, 'exam');
+    if (picked) store.recordAnswer(id, ok, 'exam');   // onbeantwoord telt wel als fout in de score, maar niet in je statistieken
     return { id, picked, ok };
   });
   const need = quiz.passThreshold(total, store.getPrefs().passMark, 50);
@@ -541,6 +547,13 @@ function viewResult() {
     }));
 }
 
+async function undoExamUI(e) {
+  if (!await confirmDlg({ title: 'Dit examen terugdraaien?', body: `Het examen van ${fmtDate(e.t)} (${e.score}/${e.total}) verdwijnt uit je lijst en de vragen die erbij hoorden tellen niet meer mee in je percentages en je foutenvijver. Vragen die je eerder al had geoefend krijgen een nette schatting van hun oude stand. Dit kan niet ongedaan worden gemaakt.`, ok: 'Terugdraaien', danger: true })) return;
+  const n = store.undoExam(e.id);
+  toast(`Examen teruggedraaid (${n} ${n === 1 ? 'vraag' : 'vragen'} aangepast).`);
+  render();
+}
+
 // ---------------------------------------------------------------- VOORTGANG
 function chapterStats() {
   const recs = store.allRecords();
@@ -606,9 +619,11 @@ function viewStats() {
     h('section', { class: 'card' },
       h('h2', {}, 'Laatste examens'),
       exams.length === 0 ? h('p', { class: 'muted' }, 'Nog geen examens gemaakt.') :
-        h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Datum'), h('th', {}, 'Score'), h('th', {}, 'Uitslag'), h('th', {}, 'Tijd'))),
+        h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Datum'), h('th', {}, 'Score'), h('th', {}, 'Uitslag'), h('th', {}, 'Tijd'), h('th', {}, ''))),
           h('tbody', {}, exams.map(e => h('tr', {}, h('td', {}, fmtDate(e.t)), h('td', {}, `${e.score}/${e.total}`),
-            h('td', { class: e.pass ? 'correct' : 'yours' }, e.pass ? 'Geslaagd' : 'Gezakt'), h('td', {}, quiz.fmtTime(e.secs || 0))))))),
+            h('td', { class: e.pass ? 'correct' : 'yours' }, e.pass ? 'Geslaagd' : 'Gezakt'), h('td', {}, quiz.fmtTime(e.secs || 0)),
+            h('td', {}, h('button', { class: 'ghost small', title: 'Verwijder dit examen en haal de vragen eruit je statistieken', onclick: () => undoExamUI(e) }, 'Terugdraaien')))))),
+      exams.length > 0 && h('p', { class: 'muted small', style: 'margin:.6rem 0 0' }, 'Per ongeluk een examen gedaan? Met “Terugdraaien” verdwijnt het examen en tellen de vragen ervan niet meer mee in je percentages.')),
 
     h('section', { class: 'card' },
       h('h2', {}, 'Gegevens'),
