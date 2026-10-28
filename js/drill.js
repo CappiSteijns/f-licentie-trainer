@@ -136,6 +136,26 @@ const GEN = {
     const f = pick([100, 1e3, 10e3, 1e6, 7e6]), C = pick([100e-9, 1e-6, 10e-9, 100e-12, 1e-9]), X = 1 / (2 * Math.PI * f * C);
     return { q: `Een condensator van ${val(C, 'F')} staat aan ${val(f, 'Hz')}. Hoe groot is de reactantie?`, a: X, unit: 'Ω', wrong: [1 / (f * C), X * 10, X / 10, X * 2], how: `X_C = 1 / (2π·f·C) = 1 / (2π · ${num(f)} · ${num(C)})` };
   },
+  trafoU() {
+    const [n1, n2] = pick([[900, 300], [1000, 250], [500, 100], [200, 50], [100, 1000], [1000, 5000], [20, 100]]), U1 = pick([12, 24, 100, 230, 240]), U2 = U1 * n2 / n1;
+    return { q: `Een ideale transformator heeft ${n1} primaire en ${n2} secundaire windingen. Op de primaire staat ${val(U1, 'V')}. Hoeveel is de secundaire spanning?`, a: U2, unit: 'V', wrong: [U1 * n1 / n2, U1 * n2 / n1 * 3, U1 * (n1 - n2) / n1 || U1 / 2, U2 * 10], how: `U₂ = U₁ · N₂ / N₁ = ${num(U1)} · ${n2} / ${n1}` };
+  },
+  trafoI() {
+    const [n1, n2] = pick([[900, 300], [1000, 250], [500, 100], [200, 50], [100, 1000], [20, 100]]), I2 = pick([0.1, 0.5, 0.9, 2, 4]), I1 = I2 * n2 / n1;
+    return { q: `Een ideale transformator heeft ${n1} primaire en ${n2} secundaire windingen. De secundaire levert ${val(I2, 'A')}. Hoeveel stroom loopt er primair?`, a: I1, unit: 'A', wrong: [I2 * n1 / n2, I2 * n2 / n1 * 3, I2 * 10, I1 * 10], how: `I₁ = I₂ · N₂ / N₁ = ${num(I2)} · ${n2} / ${n1}` };
+  },
+  trafoZ() {
+    const [n1, n2] = pick([[900, 300], [1000, 250], [20, 100], [10, 1], [3, 1], [1, 4]]), Z2 = pick([8, 50, 100, 400, 4, 6]), Z1 = Z2 * (n1 / n2) ** 2;
+    return { q: `Een ideale transformator heeft ${n1} primaire en ${n2} secundaire windingen. De secundaire is belast met ${val(Z2, 'Ω')}. Welke impedantie ziet de primaire?`, a: Z1, unit: 'Ω', wrong: [Z2 * n1 / n2, Z2 * (n2 / n1) ** 2, Z2 * n2 / n1, Z1 * 10], how: `Z₁ = Z₂ · (N₁/N₂)² = ${num(Z2)} · (${n1}/${n2})²` };
+  },
+  trafoN() {
+    const [Z1, Z2] = pick([[800, 8], [3200, 8], [1000, 10], [450, 50], [200, 50], [200, 2]]), r = Math.sqrt(Z1 / Z2);
+    return { q: `Een aanpassingstrafo moet ${val(Z2, 'Ω')} aan de secundaire laten lijken op ${val(Z1, 'Ω')} aan de primaire. Hoeveel is de wikkelverhouding N₁ : N₂ (als getal N₁/N₂)?`, a: r, unit: '', wrong: [Z1 / Z2, r * 2, r + 1, r * 10], how: `N₁/N₂ = √(Z₁/Z₂) = √(${num(Z1)}/${num(Z2)})` };
+  },
+  rend() {
+    const Pin = pick([50, 100, 200, 500]), eta = pick([0.8, 0.9, 0.75, 0.6, 0.96]), Pu = Pin * eta;
+    return { q: `Een trafo neemt ${val(Pin, 'W')} op en levert ${val(Pu, 'W')} af. Hoeveel is het rendement (in procenten)?`, a: eta * 100, unit: '%', wrong: [Pu / Pin * 10, Pin / Pu * 100, (1 - eta) * 100, Pu], how: `η = P_uit / P_in · 100% = ${num(Pu)} / ${num(Pin)}` };
+  },
   xl() {
     const f = pick([50, 1e3, 10e3, 1e6, 7e6]), L = pick([1e-3, 10e-3, 100e-6, 1e-6, 10e-6]), X = 2 * Math.PI * f * L;
     return { q: `Een spoel van ${val(L, 'H')} staat aan ${val(f, 'Hz')}. Hoe groot is de reactantie?`, a: X, unit: 'Ω', wrong: [f * L, X * 10, X / 10, X / (2 * Math.PI)], how: `X_L = 2π·f·L = 2π · ${num(f)} · ${num(L)}` };

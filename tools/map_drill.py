@@ -49,12 +49,23 @@ KW = {
   'lpar': r'parallel',
   'lser': r'serie',
  },
+ 6: {
+  'tU': r'windingen.*spanning|spanning.*windingen|wikkeling.*\bv\b|transformator.*\bv\b',
+  'tI': r'windingen.*stroom|stroom.*windingen|\bi1\b|\bi2\b|primaire stroom|ampèremeter',
+  'tP': r'dissip|vermogen|watt|ideale transformator',
+  'tZ': r'impedantie|luidspreker|aanpassing|capaciteit',
+  'tN': r'impedantie|luidspreker|aanpassing',
+  'eta': r'rendement|opgenomen',
+  'auto': r'variac|autotransformator|autotrafo',
+  'verl': r'lamellen|kernverlies|verlies|wervel|hysterese',
+  'hf': r'huid|skin|hf|poederijzer|afschermbus|aluminium|ferriet',
+ },
 }
 
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5):
+    for ch in (3, 4, 5, 6):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))
