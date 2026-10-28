@@ -143,7 +143,7 @@ function dueByChapter() {
 }
 
 // ---- een specifieke vraag opzoeken en oefenen
-const FIND = { q: '', ready: false, loading: false };
+const FIND = { q: '', ch: 0, type: 'all', ready: false, loading: false };
 const flat = x => String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const toks = s => flat(s).replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
 /** Alle woorden aanwezig: score 1. Anders mag ook een deel (minstens 90% van minstens 5 woorden) – dan staan de beste eerst. */
@@ -201,11 +201,17 @@ function findCard() {
   const box = h('div', { class: 'find-res', 'aria-live': 'polite' });
   const draw = () => {
     const q = FIND.q.trim();
-    if (!q) { box.replaceChildren(h('p', { class: 'muted small' }, 'Typ een nummer (bijvoorbeeld 3-45), een stukje van de vraag of een examen (bijvoorbeeld mei 2011). Ook cursusopgaven (bijvoorbeeld opgave 6-8) en theoriekaarten worden doorzocht.')); return; }
+    if (!q && !FIND.ch) { box.replaceChildren(h('p', { class: 'muted small' }, 'Typ een nummer (bijvoorbeeld 3-45), een stukje van de vraag of een examen (bijvoorbeeld mei 2011). Ook cursusopgaven (bijvoorbeeld opgave 6-8) en theoriekaarten worden doorzocht.')); return; }
     if (!FIND.ready) { box.replaceChildren(h('p', { class: 'muted small' }, 'Vragen laden…')); return; }
-    const res = findQuestions(q), cards = findCards(q), exs = findExercises(q);
+    const brow = !q && FIND.ch;   // geen zoekterm maar wel een hoofdstuk: toon alles van dat hoofdstuk
+    const thC = FIND.ch ? theory.getTheory(FIND.ch) : null;
+    let res = brow ? (quiz.cachedChapter(FIND.ch) || []).slice().sort((a, b) => a.number - b.number) : findQuestions(q);
+    let cards = brow ? (thC ? (thC.cards || []).map(c => ({ c, ch: FIND.ch })) : []) : findCards(q);
+    let exs = brow ? (thC ? (thC.exercises || []).map(e => ({ e, ch: FIND.ch })) : []) : findExercises(q);
+    if (FIND.ch) { res = res.filter(x => x.chapter === FIND.ch); cards = cards.filter(x => x.ch === FIND.ch); exs = exs.filter(x => x.ch === FIND.ch); }
+    if (FIND.type !== 'all') { if (FIND.type !== 'exam') res = []; if (FIND.type !== 'opg') exs = []; if (FIND.type !== 'card') cards = []; }
     if (!res.length && !cards.length && !exs.length) { box.replaceChildren(h('p', { class: 'muted' }, 'Niets gevonden. Probeer een ander woord of een nummer als 3-45.')); return; }
-    const shown = res.slice(0, 40), cshown = cards.slice(0, 20);
+    const cap = FIND.ch ? 1000 : 40, shown = res.slice(0, cap), cshown = cards.slice(0, FIND.ch ? 1000 : 20);
     const cardRows = cards.length ? [
       h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `📖 ${cards.length} ${cards.length === 1 ? 'theoriekaart' : 'theoriekaarten'} gevonden (uit de theorie, niet uit het examen)`),
         cards.length > 1 && h('button', { class: 'ghost small', onclick: () => startFoundCards(cards.slice(0, 100)) }, `Oefen alle ${Math.min(cards.length, 100)}`)),
@@ -219,7 +225,7 @@ function findCard() {
       cards.length > cshown.length && h('p', { class: 'muted small' }, `De eerste ${cshown.length} staan hierboven. Maak je zoekopdracht specifieker.`)] : [];
     const exRows = exs.length ? [
       h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `📚 ${exs.length} ${exs.length === 1 ? 'cursusopgave' : 'cursusopgaven'} gevonden (uit de theorie-pdf, niet uit het examen)`)),
-      ...exs.slice(0, 20).map(x => h('div', { class: 'find-row' },
+      ...exs.slice(0, FIND.ch ? 1000 : 20).map(x => h('div', { class: 'find-row' },
         h('div', { class: 'find-t' }, h('b', {}, `H${x.ch} · cursusopgave ${x.ch}-${x.e.n}`),
           h('div', { class: 'small' }, x.e.q.length > 140 ? x.e.q.slice(0, 140) + '…' : x.e.q)),
         h('button', { class: 'primary small', onclick: () => startExercise(x) }, 'Oefen')))] : [];
@@ -241,12 +247,19 @@ function findCard() {
   };
   const input = h('input', { type: 'search', class: 'find-in', placeholder: 'Zoek op nummer, tekst of examen…', 'aria-label': 'Zoek een vraag', value: FIND.q, autocomplete: 'off',
     oninput: e => { FIND.q = e.target.value; draw(); } });
+  const avail = chapters.filter(c => c.count > 0 || c.theory);
+  const chSel = h('select', { 'aria-label': 'Hoofdstuk', onchange: e => { FIND.ch = +e.target.value; draw(); } },
+    h('option', { value: 0 }, 'Alle hoofdstukken'), avail.map(c => h('option', { value: c.n, selected: FIND.ch === c.n }, `Hoofdstuk ${c.n}`)));
+  const tySel = h('select', { 'aria-label': 'Soort', onchange: e => { FIND.type = e.target.value; draw(); } },
+    [['all', 'Alles'], ['exam', '📝 Examenvragen'], ['opg', '📚 Cursusopgaven'], ['card', '📖 Theoriekaarten']].map(([v, t]) => h('option', { value: v, selected: FIND.type === v }, t)));
+  const filters = h('div', { class: 'row', style: 'margin:.5rem 0;gap:.5rem;flex-wrap:wrap' }, chSel, tySel,
+    h('span', { class: 'muted small' }, 'Kies een hoofdstuk zonder zoekterm voor de volledige lijst; typ erbij om daarin te zoeken.'));
   if (!FIND.ready && !FIND.loading) {
     FIND.loading = true;
     Promise.all([quiz.loadChapters(chapters.filter(c => c.count > 0).map(c => c.n)), ensureTheory(chapters.filter(c => c.theory).map(c => c.n))]).then(() => { FIND.ready = true; FIND.loading = false; draw(); }).catch(() => { FIND.loading = false; });
   }
   draw();
-  return h('details', { class: 'card find', open: !!FIND.q.trim() }, h('summary', {}, h('b', {}, '🔎 Een specifieke vraag oefenen')), h('div', { style: 'margin-top:.7rem' }, input, box));
+  return h('details', { class: 'card find', open: !!(FIND.q.trim() || FIND.ch) }, h('summary', {}, h('b', {}, '🔎 Een specifieke vraag oefenen of alles bekijken')), h('div', { style: 'margin-top:.7rem' }, input, filters, box));
 }
 
 function startReview() {
