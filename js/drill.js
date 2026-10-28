@@ -180,6 +180,14 @@ const GEN = {
     const [X, R] = pick([[1000, 10], [500, 5], [200, 4], [1200, 20], [90, 3]]), Q = X / R;
     return { q: `Een seriekring heeft bij resonantie X_L = ${val(X, 'Ω')} en een verliesweerstand van ${val(R, 'Ω')}. Hoe groot is Q?`, a: Q, unit: '', wrong: [X * R, X + R, Q * 10, Q / 10], how: `Q = X_L / R_verlies = ${num(X)} / ${num(R)}` };
   },
+  lek() {
+    const C = pick([2.2e-9, 4.7e-9, 10e-9, 22e-9]), U = 230, f = 50, I = U * 2 * Math.PI * f * 2 * C;
+    return { q: `Een netfilter heeft twee Y-condensatoren van ${val(C, 'F')} (fase en nul naar aarde). De aarde is onderbroken en je raakt het chassis aan bij 230 V / 50 Hz. Hoe groot is de lekstroom?`, a: I, unit: 'A', wrong: [I / 2, I * 2, I * 1000, U * f * C * 2], how: `I = U · 2π · f · C_totaal = 230 · 2π · 50 · 2 · ${num(C)}` };
+  },
+  veilig() {
+    const [P, g, E] = pick([[100, 6, 27.7], [400, 10, 27.7], [50, 3, 27.7], [100, 6, 61], [25, 3, 27.7]]), EIRP = P * Math.pow(10, g / 10), d = Math.sqrt(30 * EIRP) / E;
+    return { q: `Een zender geeft ${val(P, 'W')} aan een antenne met ${g} dB winst t.o.v. een isotrope antenne (EIRP = P · ${num(Math.pow(10, g / 10))}). De limiet is ${E} V/m. Hoe groot is de veilige afstand?`, a: d, unit: 'm', wrong: [d * d, d / 2, Math.sqrt(EIRP) / E, 30 * EIRP / E], how: `d = √(30 · EIRP) / E = √(30 · ${num(EIRP)}) / ${E}` };
+  },
   bw() {
     const [f, Q] = pick([[7e6, 70], [455e3, 100], [10.7e6, 50], [145e6, 100], [3.5e6, 35], [1e6, 20]]), B = f / Q;
     return { q: `Een kring heeft f_res = ${val(f, 'Hz')} en Q = ${Q}. Hoe groot is de bandbreedte?`, a: B, unit: 'Hz', wrong: [f * Q, f / (2 * Q), B * 10, B / 10], how: `B = f_res / Q = ${num(f)} / ${Q}` };
@@ -189,8 +197,9 @@ const GEN = {
 // ---- vragen samenstellen --------------------------------------------------------
 /** @returns {{type,kind,item,prompt,options:[{text,ok}],explain}} */
 export function makeQuestion(item, all, forceType) {   // forceType: één soort of een lijst met toegestane soorten
-  const types = ['name', 'where'].filter(() => item.f);
+  const types = ['name', 'where'].filter(() => item.f && all.filter(x => x.f).length >= 4);
   if (item.cloze && item.cloze.length) types.push('cloze', 'cloze');
+  if (item.pairs && item.pairs.length >= 2) types.push('fact', 'fact', 'fact');
   if (item.gen && GEN[item.gen]) types.push('calc', 'calc', 'calc');
   if (item.rewrite && item.rewrite.length) types.push('rewrite', 'rewrite', 'rewrite');
   if (item.gen && GEN[item.gen] && item.f) types.push('pick');   // alleen op verzoek (forceType): komt niet in 'alles door elkaar'
@@ -202,6 +211,13 @@ export function makeQuestion(item, all, forceType) {   // forceType: één soort
     for (const w of wrongs) if (!seen.has(w)) { seen.add(w); ws.push(w); }
     return shuffle([{ text: right, ok: true }, ...ws.slice(0, 3).map(text => ({ text, ok: false }))]);
   };
+  if (type === 'fact') {   // feiten: [vraag, antwoord]-paren; fout = andere paren van hetzelfde item, daarna van andere items
+    const pr = pick(item.pairs), rev = !!item.askRev && Math.random() < 0.5;
+    const same = shuffle(item.pairs.filter(x => x !== pr)), other = shuffle(all.filter(x => x.id !== item.id).flatMap(x => x.pairs || []));
+    const side = rev ? 'q' : 'a', pool = same.concat(other).map(x => x[side]).filter(t => t !== pr[side]);
+    const prompt = rev ? item.askRev.replace('{x}', pr.a) : item.ask.replace('{x}', pr.q);
+    return { type, item, prompt, sub: item.name, options: mk(rev ? pr.q : pr.a, pool), explain: `${pr.q}: ${pr.a}` };
+  }
   if (type === 'name') {
     return { type, item, prompt: `Welke formule hoort bij “${item.name}”?`, mono: true, options: mk(item.f, others.map(o => o.f)), explain: `${item.name}: ${item.f}` };
   }

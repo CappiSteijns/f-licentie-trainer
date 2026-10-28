@@ -1086,7 +1086,7 @@ function theoryLinks(q, emphasize) {
 function formulaBtn(chapter) {
   const th = theory.getTheory(chapter);
   if (!th || !(th.formulas || []).length) return null;
-  return h('button', { class: 'ghost small', onclick: () => showFormulas(chapter) }, 'Formules');
+  return h('button', { class: 'ghost small', onclick: () => showFormulas(chapter) }, chapter === 18 ? 'Naslag' : 'Formules');
 }
 
 function showFormulas(chapter) {
@@ -1349,7 +1349,7 @@ async function openFormulaGame(ch) {
 function fgStart() {
   const th = theory.getTheory(FG.chapter);
   const pool = fgPool(FG.chapter);
-  Object.assign(FG, { stage: 'play', pool, all: th.drill, n: 0, hearts: FG.lives ? 3 : null, score: 0, combo: 0, bestCombo: 0, ok: 0, helped: 0, missed: new Map(), recent: [], cur: null, picked: null });
+  Object.assign(FG, { hasF: th.drill.some(it => it.f), stage: 'play', pool, all: th.drill, n: 0, hearts: FG.lives ? 3 : null, score: 0, combo: 0, bestCombo: 0, ok: 0, helped: 0, missed: new Map(), recent: [], cur: null, picked: null });
   fgNext();
   render();
 }
@@ -1364,12 +1364,14 @@ function fgNext() {
   FG.recent = [item.id, ...FG.recent].slice(0, 2);
   const has = k => FG.pool.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length)), hasAll = k => FG.all.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length));
   const choose = list => { const r = pickOf(list.filter(it => !FG.recent.includes(it.id)).concat(list.length < 3 ? list : [])) || list[0]; FG.recent = [r.id, ...FG.recent].slice(0, 3); return r; };
-  if (FG.mode === 'units' || (FG.mode === 'mix' && Math.random() < 0.12)) FG.cur = drill.unitQuestion();
+  const has0 = { rewrite: hasAll('rewrite'), calc: hasAll('gen'), pick: hasAll('gen').filter(it => it.f), build: FG.all.filter(drill.buildable) };
+  if (has0[FG.mode] && !has0[FG.mode].length) FG.mode = 'mix';
+  if (FG.mode === 'units' || (FG.mode === 'mix' && FG.hasF && Math.random() < 0.12)) FG.cur = drill.unitQuestion();
   else if (FG.mode === 'rewrite') { const l = has('rewrite'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('rewrite')), FG.all, 'rewrite'); }
   else if (FG.mode === 'calc') { const l = has('gen'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('gen')), FG.all, 'calc'); }
   else if (FG.mode === 'pick') { const l = has('gen').filter(it => it.f); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('gen').filter(it => it.f)), FG.all, 'pick'); }
   else if (FG.mode === 'build') { const l = FG.pool.filter(drill.buildable); FG.cur = drill.makeBuild(choose(l.length ? l : FG.all.filter(drill.buildable)), FG.all); }
-  else if (FG.mode === 'know') FG.cur = drill.makeQuestion(item, FG.all, ['name', 'where', 'cloze']);
+  else if (FG.mode === 'know') FG.cur = drill.makeQuestion(item, FG.all, ['name', 'where', 'cloze', 'fact']);
   else FG.cur = drill.makeQuestion(item, FG.all);
   FG.picked = null;
 }
@@ -1471,11 +1473,17 @@ function viewFGame() {
       ['rewrite', '🔁 Omwerken', 'Een formule omschrijven naar een andere grootheid. Hier lopen veel cursisten op vast.', 'P = U² / R  →  U = ?'],
       ['units', '📏 Eenheden omrekenen', 'Omrekenen tussen mA, A, µA, kΩ, MΩ enzovoort. Dit gaat niet over een bepaald hoofdstuk.', '4,7 kΩ = ? Ω'],
     ];
+    const hasF = th.drill.some(it => it.f), has = k => th.drill.some(it => it[k] && (!Array.isArray(it[k]) || it[k].length));
+    const okMode = { pick: () => has('gen') && th.drill.some(it => it.gen && it.f), build: () => th.drill.some(drill.buildable), calc: () => has('gen'), rewrite: () => has('rewrite'), units: () => hasF };
+    for (let i = modes.length - 1; i >= 0; i--) if (okMode[modes[i][0]] && !okMode[modes[i][0]]()) modes.splice(i, 1);
+    const hasFacts = has('pairs');
+    if (hasFacts) { const k = modes.find(m => m[0] === 'know'); if (k) { k[2] = 'Alleen herkennen, invullen en feiten: zonder rekenen. Goed om de stof en waar ze bij hoort te leren.'; } }
+    if (!modes.some(m => m[0] === FG.mode)) FG.mode = 'mix';
     const cur = modes.find(m => m[0] === FG.mode);
-    return h('div', {}, back, h('h1', {}, `Formule-spel · H${ch}`),
+    return h('div', {}, back, h('h1', {}, `${hasF ? 'Formule-spel' : 'Feitenspel'} · H${ch}`),
       h('section', { class: 'card' },
         h('h2', {}, 'Wat is dit?'),
-        h('p', {}, 'Een spel van 10 vragen om de formules van dit hoofdstuk echt te onthouden, en te weten waar ze bij horen en hoe je ze gebruikt. Per goed antwoord krijg je 10 punten, met een bonus als je meerdere goede antwoorden achter elkaar hebt.'),
+        h('p', {}, 'Een spel van 10 vragen om de stof van dit hoofdstuk echt te onthouden, en te weten waar ze bij hoort. Per goed antwoord krijg je 10 punten, met een bonus als je meerdere goede antwoorden achter elkaar hebt.'),
         h('p', { class: 'muted small' }, '📋 Even twijfelen? Je kunt tijdens een vraag de formulelijst bekijken, maar dan levert een goed antwoord maar 5 punten op, zonder bonus. Je rekenmachine en kladblok (rechtsonder) mag je altijd gebruiken. Formules die je vaak fout hebt komen vaker terug, en elke ronde telt mee voor je reeks.')),
       h('section', { class: 'card' },
         h('h2', {}, '1. Wat wil je oefenen?'),
@@ -1493,7 +1501,7 @@ function viewFGame() {
         h('label', { class: 'check' }, h('input', { type: 'checkbox', checked: FG.lives, onchange: e => { FG.lives = e.target.checked; render(); } }),
           h('span', { class: 't' }, h('b', {}, 'Spelen met 3 levens'), h('br'), h('span', { class: 'muted small' }, 'Bij drie fouten is de ronde afgelopen. Uit = rustig oefenen, altijd 10 vragen.')))),
       h('section', { class: 'card' },
-        h('p', {}, h('b', {}, cur[1]), ` · 10 vragen · ${FG.mode === 'units' ? 'alle voorvoegsels' : `${avail} van ${total} formules`} · ${FG.lives ? '3 levens' : 'zonder levens'}`,
+        h('p', {}, h('b', {}, cur[1]), ` · 10 vragen · ${FG.mode === 'units' ? 'alle voorvoegsels' : `${avail} van ${total} onderdelen`} · ${FG.lives ? '3 levens' : 'zonder levens'}`,
           fgBest(ch) ? ` · jouw record: ${fgBest(ch)} punten` : ''),
         h('div', { class: 'row' }, h('button', { class: 'primary', onclick: fgStart }, '🎮 Start'))));
   }
@@ -1562,11 +1570,11 @@ function viewFGame() {
       b ? tileUI : h('div', { class: 'opts', role: 'group', 'aria-label': 'Antwoordopties' }, opts),
       tipBox,
       !answered && !q.hints && h('p', { style: 'margin:.8rem 0 0' }, h('button', { class: 'ghost small', onclick: fgPeek },
-        q.type === 'units' ? '📋 Voorvoegsels bekijken (halve punten)' : '📋 Formulelijst bekijken (halve punten)'),
+        q.type === 'units' ? '📋 Voorvoegsels bekijken (halve punten)' : (FG.hasF ? '📋 Formulelijst bekijken (halve punten)' : '📋 Naslag bekijken (halve punten)')),
         q.peeked && h('span', { class: 'muted small' }, '  Hulp gebruikt: dit antwoord levert maximaal 5 punten op.')),
       answered && h('div', { class: 'banner ' + (ok ? 'ok' : 'no'), role: 'status' }, ok ? '✅ Goed!' : (b && b.tips >= 3 ? '🏳️ Dit is de uitwerking.' : '❌ Niet goed.'), ' ', q.explain,
         ok ? ` (+${q.points} punten${q.peeked || q.tips || (b && (b.tips || b.wrong)) ? ', met hulp' : ''})` : ''),
-      answered && h('p', { style: 'margin:.5rem 0 0' }, h('button', { class: 'ghost small', onclick: showFormulaOrPrefix }, q.type === 'units' ? '📋 Voorvoegsels' : '📋 Formulelijst')),
+      answered && h('p', { style: 'margin:.5rem 0 0' }, h('button', { class: 'ghost small', onclick: showFormulaOrPrefix }, q.type === 'units' ? '📋 Voorvoegsels' : (FG.hasF ? '📋 Formulelijst' : '📋 Naslag'))),
       answered && !ok && q.type !== 'units' && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(ch, q.item.sec, 'fgame') }, 'Lees de theorie hierover')),
       h('div', { class: 'actions' }, answered && next)));
 }
@@ -1594,7 +1602,7 @@ function viewLearn() {
         h('div', { class: 'row' }, stepEl,
           (() => { const cs = cardStats(c.n); return cs.total > 0 && h('button', { onclick: () => cs.due ? startCards(c.n, false) : startCards(c.n, true) }, cs.due ? `Flashcards (${cs.due})` : 'Flashcards herhalen'); })(),
           formulaBtn(c.n),
-          (th.drill && th.drill.length > 0) && h('button', { onclick: () => openFormulaGame(c.n) }, '🎮 Formule-spel'),
+          (th.drill && th.drill.length > 0) && h('button', { onclick: () => openFormulaGame(c.n) }, th.drill.some(it => it.f) ? '🎮 Formule-spel' : '🎮 Feitenspel'),
           step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
         h('details', { class: 'secs', open: true }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
     }),

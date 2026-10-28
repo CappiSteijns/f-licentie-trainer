@@ -100,13 +100,13 @@
    "n": 17,
    "title": "Veiligheid",
    "count": 20,
-   "theory": false
+   "theory": true
   },
   {
    "n": 18,
    "title": "Nationale en internationale regelgeving",
    "count": 99,
-   "theory": false
+   "theory": true
   }
  ]
 }

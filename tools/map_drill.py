@@ -60,12 +60,38 @@ KW = {
   'verl': r'lamellen|kernverlies|verlies|wervel|hysterese',
   'hf': r'huid|skin|hf|poederijzer|afschermbus|aluminium|ferriet',
  },
+ 17: {
+  'stroom': r'\bma\b|milliamp|hartstilstand|fibrill|spierverstijving',
+  'kleur': r'geel|blauw|bruin|kleur',
+  'klasse': r'klasse (i|ii|iii)\b|dubbele isolatie|selv',
+  'zeker': r'zekering|ptc|tco|varistor|gasarrestor|bleeder',
+  'lek': r'lekstroom|y-condensator|y-cond',
+  'veilig': r'veilige afstand|veldsterkte|eirp|v/m',
+  'veld': r'sar\b|w/kg|icnirp|opwarming',
+  'hoogte': r'ladder|harnas|windkracht',
+  'bliksem': r'bliksem|onweer|overspanning',
+ },
+ 18: {
+  'qcode': r'\bq[rst][a-z]\b',
+  'afk': r'\bcq\b|\bsk\b|\bpse\b|afkorting',
+  'kvu1': r'klasse van uitzending|\b[a-z][0-9][a-z]\b',
+  'kvu2': r'klasse van uitzending|\b[a-z][0-9][a-z]\b',
+  'kvu3': r'klasse van uitzending|\b[a-z][0-9][a-z]\b',
+  'kvu': r'klasse van uitzending|\b[a-z][0-9][a-z]\b',
+  'abca': r'spellingsalfabet',
+  'abcb': r'spellingsalfabet',
+  'calls': r'roepletters|prefix|\bpd\b|\bpa\b',
+  'vermogen': r'\bpep\b|zendvermogen|maximaal vermogen',
+  'rst': r'\brst\b|ontvangstrapport',
+  'status': r'primair|secundair|\bnib\b',
+  'orgs': r'\bitu\b|cept|iaru|harec',
+ },
 }
 
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6):
+    for ch in (3, 4, 5, 6, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))
