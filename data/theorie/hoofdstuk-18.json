@@ -3300,7 +3300,10 @@
    ],
    "answer": "C",
    "explain": "Antwoord C is goed",
-   "pages": [],
+   "pages": [
+    "p058",
+    "p059"
+   ],
    "spages": [
     "p078"
    ]

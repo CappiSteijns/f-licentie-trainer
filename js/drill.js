@@ -202,7 +202,7 @@ export function makeQuestion(item, all, forceType) {   // forceType: één soort
   if (item.pairs && item.pairs.length >= 2) types.push('fact', 'fact', 'fact');
   if (item.gen && GEN[item.gen]) types.push('calc', 'calc', 'calc');
   if (item.rewrite && item.rewrite.length) types.push('rewrite', 'rewrite', 'rewrite');
-  if (item.gen && GEN[item.gen] && item.f) types.push('pick');   // alleen op verzoek (forceType): komt niet in 'alles door elkaar'
+  if (item.gen && GEN[item.gen] && item.f && all.filter(x => x.f).length >= 4) types.push('pick');   // alleen op verzoek (forceType): komt niet in 'alles door elkaar'
   const allowed = forceType ? types.filter(t => [].concat(forceType).includes(t)) : types.filter(t => t !== 'pick');
   const type = pick(allowed.length ? allowed : types);
   const others = shuffle(all.filter(x => x.id !== item.id && x.f));

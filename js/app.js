@@ -1364,7 +1364,7 @@ function fgNext() {
   FG.recent = [item.id, ...FG.recent].slice(0, 2);
   const has = k => FG.pool.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length)), hasAll = k => FG.all.filter(it => it[k] && (!Array.isArray(it[k]) || it[k].length));
   const choose = list => { const r = pickOf(list.filter(it => !FG.recent.includes(it.id)).concat(list.length < 3 ? list : [])) || list[0]; FG.recent = [r.id, ...FG.recent].slice(0, 3); return r; };
-  const has0 = { rewrite: hasAll('rewrite'), calc: hasAll('gen'), pick: hasAll('gen').filter(it => it.f), build: FG.all.filter(drill.buildable) };
+  const has0 = { rewrite: hasAll('rewrite'), calc: hasAll('gen'), pick: FG.all.filter(it => it.f).length >= 4 ? hasAll('gen').filter(it => it.f) : [], build: FG.all.filter(drill.buildable) };
   if (has0[FG.mode] && !has0[FG.mode].length) FG.mode = 'mix';
   if (FG.mode === 'units' || (FG.mode === 'mix' && FG.hasF && Math.random() < 0.12)) FG.cur = drill.unitQuestion();
   else if (FG.mode === 'rewrite') { const l = has('rewrite'); FG.cur = drill.makeQuestion(choose(l.length ? l : hasAll('rewrite')), FG.all, 'rewrite'); }
@@ -1474,7 +1474,7 @@ function viewFGame() {
       ['units', '📏 Eenheden omrekenen', 'Omrekenen tussen mA, A, µA, kΩ, MΩ enzovoort. Dit gaat niet over een bepaald hoofdstuk.', '4,7 kΩ = ? Ω'],
     ];
     const hasF = th.drill.some(it => it.f), has = k => th.drill.some(it => it[k] && (!Array.isArray(it[k]) || it[k].length));
-    const okMode = { pick: () => has('gen') && th.drill.some(it => it.gen && it.f), build: () => th.drill.some(drill.buildable), calc: () => has('gen'), rewrite: () => has('rewrite'), units: () => hasF };
+    const okMode = { pick: () => th.drill.filter(it => it.f).length >= 4 && th.drill.some(it => it.gen && it.f), build: () => th.drill.some(drill.buildable), calc: () => has('gen'), rewrite: () => has('rewrite'), units: () => hasF };
     for (let i = modes.length - 1; i >= 0; i--) if (okMode[modes[i][0]] && !okMode[modes[i][0]]()) modes.splice(i, 1);
     const hasFacts = has('pairs');
     if (hasFacts) { const k = modes.find(m => m[0] === 'know'); if (k) { k[2] = 'Alleen herkennen, invullen en feiten: zonder rekenen. Goed om de stof en waar ze bij hoort te leren.'; } }

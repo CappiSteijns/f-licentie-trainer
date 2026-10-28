@@ -1673,12 +1673,14 @@
     },
     {
      "id": "D",
-     "text": "120 pF Bij parallel geschakelde condensatoren worden de capaciteiten bij elkaar opgeteld om de vervangingswaarde te vinden. De optelling levert 1100 pF. Antwoord A. Opmerking Hoewel de berekening eenvoudiger is dan bij in serie geschakelde condensatoren, kan het soms nog eenvoudiger: als er, zoals hier, maar één antwoord een capaciteit is die groter is dan de grootste waarde in het schema, dan is dat het goede antwoord. Zijn het er meer dan één, dan moet er toch worden gerekend."
+     "text": "120 pF"
     }
    ],
    "answer": "A",
-   "explain": "",
-   "pages": [],
+   "explain": "Bij parallel geschakelde condensatoren worden de capaciteiten bij elkaar opgeteld om de vervangingswaarde te vinden. De optelling levert 1100 pF. Antwoord A. Opmerking Hoewel de berekening eenvoudiger is dan bij in serie geschakelde condensatoren, kan het soms nog eenvoudiger: als er, zoals hier, maar één antwoord een capaciteit is die groter is dan de grootste waarde in het schema, dan is dat het goede antwoord. Zijn het er meer dan één, dan moet er toch worden gerekend.",
+   "pages": [
+    "p049"
+   ],
    "spages": [
     "p063"
    ]
@@ -1862,7 +1864,10 @@
    ],
    "answer": "C",
    "explain": "De (coëfficiënt van) zelfinductie van een enkellaags spoel wordt benaderd met 𝜇0 𝜇 𝑟 𝑛 2 𝐴 𝐿= 𝑙 Daarin is 𝜇0 𝜇𝑟 de permeabiliteit, n het aantal windingen, A de doorsnede (niet te verwarren met de diameter!) en l de lengte van de spoel. Als de diameter 2x zo groot wordt, wordt de doorsnede A 4x zo groot. Volgens de vergelijking wordt L dan ook 4x zo groot als er verder niets verandert. Antwoord C is daarom het juiste antwoord. Opmerking Dit is een opgave uit een werkelijk examen. Wat hier ontbreekt, is informatie over de spoel. De gebruikte vergelijking geldt alleen voor een spoel die veel langer is dan dik. Zie de kanttekeningen in subparagraaf 4.4.5. In werkelijkheid zal de nieuwe zelfinductie, afhankelijk van de afmetingen van de spoel, 3-4 keer zo groot woerden. Mocht je op een examen een opgave als deze zonder informatie over de spoel tegenkomen: doen of je gek bent en de vergelijking in de uitwerking consequent uitvoeren. Meer opgaven vind je in de examentraining bij dit hoofdstuk",
-   "pages": [],
+   "pages": [
+    "p055",
+    "p056"
+   ],
    "spages": [
     "p069"
    ]

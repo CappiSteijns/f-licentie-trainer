@@ -1295,12 +1295,14 @@
     },
     {
      "id": "D",
-     "text": "15 V De spanning van 60 V wordt door de linker trafo met een factor 30 omlaag getransformeerd. Dat rekenen we niet verder uit, want de volgende trafo transformeert met een factor 15 omhoog. De totale transformatieverhouding is dan 30:15 en dat is 2:1. Daaruit volgt dat U2 gelijk is aan 60 V⁄2 = 30 V. Antwoord C"
+     "text": "15 V"
     }
    ],
    "answer": "C",
-   "explain": "",
-   "pages": [],
+   "explain": "De spanning van 60 V wordt door de linker trafo met een factor 30 omlaag getransformeerd. Dat rekenen we niet verder uit, want de volgende trafo transformeert met een factor 15 omhoog. De totale transformatieverhouding is dan 30:15 en dat is 2:1. Daaruit volgt dat U2 gelijk is aan 60 V⁄2 = 30 V. Antwoord C",
+   "pages": [
+    "p030"
+   ],
    "spages": [
     "p039"
    ]
@@ -1422,7 +1424,10 @@
    ],
    "answer": "D",
    "explain": "De wikkelverhouding van linker- naar rechterwikkeling is 1:2. Als parallel aan de linker wikkeling 200 Ω staat, moet rechts een weerstand (impedantie) worden “gezien” van 2 2=4 maal 200 Ω is 800 Ω. Antwoord D.",
-   "pages": [],
+   "pages": [
+    "p034",
+    "p035"
+   ],
    "spages": [
     "p043"
    ]

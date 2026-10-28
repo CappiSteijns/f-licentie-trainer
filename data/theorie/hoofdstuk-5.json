@@ -2669,12 +2669,14 @@
     },
     {
      "id": "D",
-     "text": "1910 Ω Dit is Opgave 5-9, maar met een andere vraagstelling. Het gaat nu niet om de impedantie Z maar om de reactantie van de spoel. Nu is de spanning overbodig. Kom dus niet in de verleiding om een circus met een vectoranalyse op te tuigen. De reactantie XL volgt uit zelfinductie L en frequentie f volgens 𝑋𝐿 = 2𝜋𝑓𝐿 = 2𝜋. 50.0,382 Ω = 120 Ω"
+     "text": "1910 Ω"
     }
    ],
    "answer": "C",
    "explain": "Antwoord C is het juiste antwoord.",
-   "pages": [],
+   "pages": [
+    "p065"
+   ],
    "spages": [
     "p083"
    ]
@@ -2920,7 +2922,10 @@
    ],
    "answer": "C",
    "explain": "Deze opgave kan verleiden tot een heleboel rekenwerk. Maar met wat inzicht ben je zo bij het antwoord. Een ideale seriekring heeft bij resonantie 0 reactantie, want de reactanties van spoel en condensator heffen elkaar op. Dan houd je bij een niet-ideale kring, zoals hier het geval is, alleen de verliesweerstand over en die is gegeven: 50 Ω, antwoord C Meer opgaven vind je in de examentraining bij dit hoofdstuk",
-   "pages": [],
+   "pages": [
+    "p073",
+    "p074"
+   ],
    "spages": [
     "p091"
    ]

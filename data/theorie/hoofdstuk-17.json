@@ -1810,7 +1810,10 @@
    ],
    "answer": "A",
    "explain": "Antenne en aarde elektrisch scheiden door aarding van het chassis van de zender of transceiver is onzin (antwoord B) en de kansen op storing (C en D) veranderen er ook niet wezenlijk door. Blijft over antwoord A en inderdaad, veiligheidsaarde brengt de kast van de installatie op aardpotentiaal, waardoor er geen risico meer is van elektrische schok door aanraking.",
-   "pages": [],
+   "pages": [
+    "p040",
+    "p041"
+   ],
    "spages": [
     "p051"
    ]

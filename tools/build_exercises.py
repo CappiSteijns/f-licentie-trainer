@@ -40,7 +40,8 @@ def parse(ch, pdf):
                     if re.match(r'^\s*(Uitwerking|Antwoord)\b', l): break
                     m = re.match(r'^\s*([A-D])\.\s*(.*)$', l)
                     if m: opts.append({'id': m.group(1), 'text': m.group(2).strip()})
-                    elif opts: opts[-1]['text'] += ' ' + l.strip()
+                    elif opts and l[:1] in ' \t': opts[-1]['text'] += ' ' + l.strip()   # doorlopende optie is ingesprongen
+                    elif opts and l.strip(): break                                         # tekst op kolom 0: de uitleg begint
             return q, opts
         q0, opts0 = qopts([l.rstrip() for _, l in body])
         sbody, spgs = sols.get(n, ([], []))
@@ -51,6 +52,12 @@ def parse(ch, pdf):
         if not opts: q, opts = q0, opts0
         u = next((i for i, l in enumerate(stxt) if l.strip().startswith('Uitwerking')), None)
         expl = ' '.join(l.strip() for l in stxt[u + 1:]) if u is not None else ' '.join(l.strip() for l in stxt[next((i for i, l in enumerate(stxt) if re.match(r'^\s*Antwoord', l)), len(stxt)):])
+        if len(expl) < 25 and opts:   # uitleg direct onder de antwoorden, zonder kopje
+            last = max((i for i, l in enumerate(stxt) if re.match(r'^\s*[A-D]\.\s', l)), default=None)
+            if last is not None:
+                j = last + 1
+                while j < len(stxt) and stxt[j][:1] in ' \t' and stxt[j].strip(): j += 1
+                expl = ' '.join(l.strip() for l in stxt[j:]).strip() or expl
         full = ' '.join(stxt).split('Opmerking')[0]
         full = full.split('Meer opgaven')[0]
         L = r'([A-D])'
