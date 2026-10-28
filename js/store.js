@@ -15,6 +15,7 @@ export const DEFAULT_PREFS = {
   examCount: 50,
   passMark: 35,      // geslaagd bij >= 35 van 50 (70%)
   smart: true,       // slimme volgorde in oefenmodus
+  chrono: false,     // oefenen in vaste volgorde van de vragenbank (zoals in de pdf)
   darkFigs: true,    // figuren donker weergeven
   sel: null,         // geselecteerde hoofdstukken
   onlyPond: false,

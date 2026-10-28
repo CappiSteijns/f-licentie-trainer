@@ -199,7 +199,7 @@ function findCard() {
 }
 
 function startReview() {
-  store.setPrefs({ sel: chapters.filter(c => c.count > 0).map(c => c.n), mode: 'practice', onlyDue: true, onlyPond: false, smart: true });
+  store.setPrefs({ sel: chapters.filter(c => c.count > 0).map(c => c.n), mode: 'practice', onlyDue: true, onlyPond: false, smart: true, chrono: false });
   startSession();
 }
 
@@ -286,8 +286,11 @@ function viewSetup() {
             h('span', { class: 't' }, 'Alleen vragen die nu herhaald moeten worden'),
             h('span', { class: `badge${selDue ? ' blue' : ''}` }, `${selDue} aan de beurt`)),
           h('label', { class: 'check' },
-            h('input', { type: 'checkbox', checked: p.smart, onchange: e => { store.setPrefs({ smart: e.target.checked }); render(); } }),
-            h('span', { class: 't' }, 'Slimme volgorde ', h('span', { class: 'muted small' }, '(eerst foutenvijver, dan herhaling, dan nieuwe vragen, dan de rest)'))))),
+            h('input', { type: 'checkbox', checked: p.smart && !p.chrono, onchange: e => { store.setPrefs({ smart: e.target.checked, ...(e.target.checked ? { chrono: false } : {}) }); render(); } }),
+            h('span', { class: 't' }, 'Slimme volgorde ', h('span', { class: 'muted small' }, '(eerst foutenvijver, dan herhaling, dan nieuwe vragen, dan de rest)'))),
+          h('label', { class: 'check' },
+            h('input', { type: 'checkbox', checked: !!p.chrono, onchange: e => { store.setPrefs({ chrono: e.target.checked, ...(e.target.checked ? { smart: false } : {}) }); render(); } }),
+            h('span', { class: 't' }, 'Op volgorde van de vragenbank ', h('span', { class: 'muted small' }, '(hoofdstuk voor hoofdstuk, vraag 1, 2, 3… zoals in de pdf)'))))),
 
     h('section', { class: 'card' },
       h('h2', {}, '3. Weergave'),
@@ -311,7 +314,7 @@ async function startSession() {
     if (p.mode === 'practice' && p.onlyPond) pool = pool.filter(q => store.isPond(q.id));
     else if (p.mode === 'practice' && p.onlyDue) { const due = new Set(store.dueIds()); pool = pool.filter(q => due.has(q.id)); }
     if (!pool.length) { toast('Geen vragen in deze selectie.'); return; }
-    const ids = p.mode === 'exam' ? quiz.examQuestions(pool, p.examCount, p.examSpread) : quiz.practiceOrder(pool, p.smart);
+    const ids = p.mode === 'exam' ? quiz.examQuestions(pool, p.examCount, p.examSpread) : quiz.practiceOrder(pool, p.smart && !p.chrono, p.chrono);
     S = { mode: p.mode, sid: store.uid(), ids, idx: 0, answers: {}, start: Date.now(), dur: p.examMinutes * 60000, chapters: nums };
     saveSession();
     setView('session');
