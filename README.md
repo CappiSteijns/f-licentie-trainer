@@ -23,7 +23,7 @@ Oefenapp voor het Nederlandse F-licentie zendexamen (Full Radio Amateur), gebase
 
 ## Wat kan het?
 - **1.413 examenvragen** uit hoofdstuk 3 t/m 18, met controle van elk antwoord, uitleg en de originele uitwerking met figuren en formules.
-- **Een specifieke vraag oefenen** (op het tabblad *Oefenen*, 🔎): zoek (ook in de theoriekaarten van de flashcards) op nummer (`3-45`, `h5 100`), op een stukje tekst uit de vraag of antwoorden, of op een examen (`mei 2011`). Je oefent één vraag, of alle gevonden vragen in één keer.
+- **Een specifieke vraag oefenen** (op het tabblad *Oefenen*, 🔎): zoek (ook in de theoriekaarten en de cursusopgaven uit de theorie-pdf’s, zoals “opgave 6-8”) op nummer (`3-45`, `h5 100`), op een stukje tekst uit de vraag of antwoorden, of op een examen (`mei 2011`). Je oefent één vraag, of alle gevonden vragen in één keer.
 - **Oefenen** per hoofdstuk, met directe feedback, een foutenvijver en slim herhalen (Leitner: terugkeer na 1, 3, 7, 14, 30 dagen).
 - **Examen** van 50 vragen met timer en slagingsnorm, gespreid over de gekozen hoofdstukken. Onbeantwoorde vragen tellen mee als fout in de examenscore, maar niet in je statistieken; een examen zonder één antwoord kun je afbreken zonder dat er iets wordt opgeslagen. Alles wat je doet komt in de **Geschiedenis** (*Voortgang*): elke oefenronde en elk examen. Per ongeluk iets gedaan? Verwijder die ene ronde of dat examen, dan worden de antwoorden exact uit je percentages, foutenvijver en herhaalschema gehaald (ook op je andere apparaten). Examens uit de tijd vóór de geschiedenis worden bij het verwijderen ingeschat. De geschiedenis bewaart de laatste ± 1500 antwoorden.
 - **Leren met theorie** (nu hoofdstuk 3 t/m 6): cursustekst per paragraaf, link van elke vraag naar de theorie, een leerroute, formuleblad en **flashcards**.
@@ -71,3 +71,5 @@ Daarna committen, pushen en in Portainer *Pull and redeploy*.
 - Er is geen e-mailverificatie: wie de site kent, kan een account maken. Sluit registratie desgewenst af (zie Beheer).
 - Vul `CONTACT_EMAIL` in `js/config.js` in; die staat in de privacyverklaring. Lees die verklaring na.
 - De VRZA-teksten en -figuren zijn auteursrechtelijk beschermd. Deel de app dus niet openbaar zonder toestemming van de VRZA (webteam@vrza.nl).
+
+Cursusopgaven (meerkeuzeopgaven uit de theorie-pdf's, H4–H6) staan onder `exercises` in `data/theorie/hoofdstuk-N.json`; ze worden gemaakt door `tools/build_exercises.py` (vraag, antwoorden, juiste antwoord en de pagina's met figuur en uitwerking). Ze zijn te vinden via het zoeken, tellen niet mee voor de voortgang en zijn geen examenvragen.

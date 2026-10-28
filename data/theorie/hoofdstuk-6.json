@@ -1150,5 +1150,287 @@
     "hs6-46"
    ]
   }
+ ],
+ "exercises": [
+  {
+   "id": "o6-1",
+   "n": 1,
+   "q": "Een ideale transformator heeft een primaire wikkeling van 900 windingen en een secundaire van 300 windingen. Op de primaire wikkeling wordt een spanning aangesloten van 240 V. De spanning over de secundaire wikkeling bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "720 V"
+    },
+    {
+     "id": "B",
+     "text": "80 V"
+    },
+    {
+     "id": "C",
+     "text": "26,7 V"
+    },
+    {
+     "id": "D",
+     "text": "30 V"
+    }
+   ],
+   "answer": "B",
+   "explain": "De spanningsverhouding primair/secundair is gelijk aan de wikkelverhouding. Dat komt tot uitdrukking in vergelijking ( 6.4-1) in de tekst. Deze luidt: 𝑈1 𝑈2           𝑁2 =   → 𝑈2 = 𝑈1 𝑁1 𝑁2           𝑁1 De gegevens leveren 𝑁2 300 1 =   =                en    𝑈1 = 240 V 𝑁1 900 3 Invullen in de oorspronkelijke vergelijking ( 6.4-1) levert 𝑈2 = 240 ∗     V = 80 V Dat is antwoord B.",
+   "pages": [
+    "p026"
+   ],
+   "spages": [
+    "p035"
+   ]
+  },
+  {
+   "id": "o6-2",
+   "n": 2,
+   "q": "Een ideale transformator heeft een primaire wikkeling van 900 windingen en een secundaire van 300 windingen. De secundaire wikkeling levert 900 mA aan de aangesloten schakeling. Door de primaire wikkeling loopt",
+   "options": [
+    {
+     "id": "A",
+     "text": "300 mA"
+    },
+    {
+     "id": "B",
+     "text": "2,7 A"
+    },
+    {
+     "id": "C",
+     "text": "100 mA"
+    },
+    {
+     "id": "D",
+     "text": "8,1 A"
+    }
+   ],
+   "answer": "A",
+   "explain": "De primaire en secundaire spanningen verhouden zich als de wikkelverhouding, zagen we in vergelijking ( 6.4-1). Op grond van de wet van energiebehoud (hoofdstuk 2) moeten de primaire en secundaire stromen zich dan verhouden als het omgekeerde van de wikkelverhouding. Voor 𝑈1 𝑈2 = 𝑁1 𝑁2 Stroom I komt in plaats van spanning U en N1 en N2 wisselen van plaats: 𝐼1   𝐼2        𝐼2 𝑁2 =    → 𝐼1 = 𝑁2 𝑁1           𝑁1 Dat lijkt op vergelijking ( 6.4-2), maar aangepast aan het berekenen van I1 uit I2 in plaats van I2 uit I1. De gegevens leveren 𝐼2 𝑁2 900 mA ∗ 300 𝐼1 =        =             = 300 mA 𝑁1       900 Antwoord A is juist. Het kan ook met Aw (ampèrewindingen): De secundaire levert 900 mA uit 300 windingen, dat is 0,9A*300w = 270 Aw. In de primaire wikkeling zijn 900 windingen. Die moeten ook 270 Aw leveren. Deel de 270 Aw door 900 en je hebt de stroom: 0,3 A is 300 mA. Hetzelfde antwoord, A.",
+   "pages": [
+    "p027"
+   ],
+   "spages": [
+    "p036"
+   ]
+  },
+  {
+   "id": "o6-3",
+   "n": 3,
+   "q": "Een ideale transformator heeft een primaire wikkeling van 900 windingen en een secundaire van 300 windingen. Op de secundaire wikkeling wordt een condensator van 90 pF aangesloten. Op de primaire wikkeling wordt een capaciteit gemeten van",
+   "options": [
+    {
+     "id": "A",
+     "text": "10 pF"
+    },
+    {
+     "id": "B",
+     "text": "30 pF"
+    },
+    {
+     "id": "C",
+     "text": "270 pF"
+    },
+    {
+     "id": "D",
+     "text": "810 pF"
+    }
+   ],
+   "answer": "A",
+   "explain": "Omdat de wikkelverhouding primair : secundair 3:1 is, is de impedantieverhouding het kwadraat daarvan, 9:1. Een op de primaire aangesloten apparaat “ziet” daarom een 9x zo hoge impedantie. Omdat capaciteit omgekeerd evenredig is met reactantie, betekent dat een 9x zo kleine capaciteit, dat is 90 pF:9 = 10 pF. Antwoord A. Het kan ook met vergelijking ( 6.5-3): 𝑍1 𝑁12   𝑁1 2 =    =( ) 𝑍2 𝑁22   𝑁2 Voor de impedanties Z mag ook weerstand R worden gelezen als de belasting van de secundaire een weerstand is of een reactantie X als er sprake is van een belasting met een spoel of condensator zoals hier het geval is. Dan is 𝑋1   𝑁1 2                         𝑁1 2 =( )               𝑒𝑛    𝑋1 = ( ) 𝑋2 𝑋2   𝑁2                           𝑁2 Dan is 𝑋1 = 9𝑋2 en de capaciteit die je via de primaire “ziet” is dan 9x zo klein is 10 pF. Zelfde goede antwoord: A.",
+   "pages": [
+    "p028"
+   ],
+   "spages": [
+    "p037"
+   ]
+  },
+  {
+   "id": "o6-4",
+   "n": 4,
+   "q": "Een ideale transformator heeft een primaire wikkeling van 900 windingen en een secundaire van 300 windingen. Op de secundaire wikkeling wordt een zelfinductie van 9 mH aangesloten Op de primaire wikkeling wordt een zelfinductie gemeten van",
+   "options": [
+    {
+     "id": "A",
+     "text": "10 mH"
+    },
+    {
+     "id": "B",
+     "text": "27 mH"
+    },
+    {
+     "id": "C",
+     "text": "30 mH"
+    },
+    {
+     "id": "D",
+     "text": "81 mH"
+    }
+   ],
+   "answer": "D",
+   "explain": "De uitwerking is in het begin dezelfde als die van Opgave 6-3. De impedantieverhouding primair : secundair bedraagt 9:1. Omdat zelfinductie evenredig is met reactantie, “ziet” een op de primaire aangesloten apparaat een 9x zo hoge zelfinductie. Dat komt neer op 9 ∗ 9 mH = 81 mH. Antwoord D. Met vergelijking ( 6.5-3) werkt het net als in de vorige opgave ook. Op de aansluitingen van de primaire “zie” je een 9x zo grote reactantie als in werkelijkheid over de secundaire staat. Bij een spoel is de reactantie evenredig met de frequentie en dus lijkt de spoel via de aansluitingen van de primaire 9x zo groot is 81 mH. Ook hier antwoord D",
+   "pages": [
+    "p029"
+   ],
+   "spages": [
+    "p038"
+   ]
+  },
+  {
+   "id": "o6-5",
+   "n": 5,
+   "q": "Twee transformatoren worden geschakeld volgens het schema hieronder. De wikkelverhoudingen zijn in het schema aangegeven. De spanning U2 bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "240 V"
+    },
+    {
+     "id": "B",
+     "text": "120 V"
+    },
+    {
+     "id": "C",
+     "text": "30 V"
+    },
+    {
+     "id": "D",
+     "text": "15 V"
+    }
+   ],
+   "answer": "C",
+   "explain": "",
+   "pages": [
+    "p030"
+   ],
+   "spages": [
+    "p039"
+   ]
+  },
+  {
+   "id": "o6-6",
+   "n": 6,
+   "q": "In de weerstand wordt een vermogen van 1 W gedissipeerd (=verbruikt). I1 bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "25 mA"
+    },
+    {
+     "id": "B",
+     "text": "50 mA"
+    },
+    {
+     "id": "C",
+     "text": "100 mA"
+    },
+    {
+     "id": "D",
+     "text": "200 mA"
+    }
+   ],
+   "answer": "C",
+   "explain": "We rekenen terug vanaf de weerstand van 400 ohm. De weerstand dissipeert 1 W. Daarmee kunnen we de secundaire stroom uitrekenen. 𝑃 = 𝐼 2 𝑅 → 𝐼 2 𝑅 = 1 W. Dan is 𝐼 2 = 1W⁄𝑅 → 𝐼 2 = 1W⁄400 Ω → 𝐼 = √1W⁄400 Ω = 1⁄20 A = 50 mA De wikkelverhouding is 1:2. Dan is de stroomverhouding 2:1, dus de primaire stroom is 2*50 mA=100 mA. Antwoord C. Het kan ook zo: De weerstandsverhouding tussen primair en secundair is het kwadraat van de wikkelverhouding, dat is 1:4. Op de aansluitingen van de primaire “zien” we een weerstand van 400 ohm/4 is 100 ohm. De stroom I1 in de primaire is te berekenen uit 𝑃 = 𝐼12 𝑅, ofwel 𝐼12 = 𝑃⁄𝑅 en 𝐼1 = √𝑃⁄𝑅. Invullen levert 𝐼1 = √1W⁄100 Ω = √0,01 A= 0,1A = 100 mA. Zelfde uitkomst, antwoord C.",
+   "pages": [
+    "p031"
+   ],
+   "spages": [
+    "p040"
+   ]
+  },
+  {
+   "id": "o6-7",
+   "n": 7,
+   "q": "Een op een ringkern gewikkelde HF-trafo",
+   "options": [
+    {
+     "id": "A",
+     "text": "Hoeft meestal niet te worden afgeschermd"
+    },
+    {
+     "id": "B",
+     "text": "Heeft grote spreidingsverliezen"
+    },
+    {
+     "id": "C",
+     "text": "Moet bij voorkeur worden afgeschermd met een aluminium of koperen bus"
+    },
+    {
+     "id": "D",
+     "text": "Moet worden afgeschermd met een ferrietomhulling."
+    }
+   ],
+   "answer": "A",
+   "explain": "Een ringkerntrafo voor HF hoeft vrijwel nooit te worden afgeschermd, omdat het magnetisch veld bijna helemaal opgesloten zit in de ringkern. Antwoord A.",
+   "pages": [
+    "p032"
+   ],
+   "spages": [
+    "p041"
+   ]
+  },
+  {
+   "id": "o6-8",
+   "n": 8,
+   "q": "Het aantal windingen tussen de punten 1 en 2 bedraagt 200, tussen 2 en 3 zitten 100 windingen. Tussen de punten 1 en 3 wordt een spanning van 300 V 50 Hz aangesloten. De spanning tussen de punten 2 en 3 bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "100 V"
+    },
+    {
+     "id": "B",
+     "text": "200 V"
+    },
+    {
+     "id": "C",
+     "text": "150 V"
+    },
+    {
+     "id": "D",
+     "text": "300 V"
+    }
+   ],
+   "answer": "A",
+   "explain": "De totale wisselspanning over deze autotrafo (tussen punten 1 en 3) is 300 V bij in totaal 300 windingen. Dat is dus 1 V per winding. Tussen de punten 2 en 3 zitten 100 windingen. Bij 1 V per winding wordt dat 100*1V=100V over 100 windingen. Antwoord A.",
+   "pages": [
+    "p033"
+   ],
+   "spages": [
+    "p042"
+   ]
+  },
+  {
+   "id": "o6-9",
+   "n": 9,
+   "q": "De impedantie Z bedraagt bij de aangegeven wikkelverhouding",
+   "options": [
+    {
+     "id": "A",
+     "text": "50 Ω"
+    },
+    {
+     "id": "B",
+     "text": "100 Ω"
+    },
+    {
+     "id": "C",
+     "text": "400 Ω"
+    },
+    {
+     "id": "D",
+     "text": "800 Ω 6.13 Antwoorden bij de opgaven"
+    }
+   ],
+   "answer": "D",
+   "explain": "De wikkelverhouding van linker- naar rechterwikkeling is 1:2. Als parallel aan de linker wikkeling 200 Ω staat, moet rechts een weerstand (impedantie) worden “gezien” van 2 2=4 maal 200 Ω is 800 Ω. Antwoord D.",
+   "pages": [
+    "p034",
+    "p035"
+   ],
+   "spages": [
+    "p043"
+   ]
+  }
  ]
 }

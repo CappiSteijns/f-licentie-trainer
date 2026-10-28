@@ -2369,5 +2369,566 @@
     "hs5-123"
    ]
   }
+ ],
+ "exercises": [
+  {
+   "id": "o5-1",
+   "n": 1,
+   "q": "De gemiddelde waarde van de stroom is",
+   "options": [
+    {
+     "id": "A",
+     "text": "3 A"
+    },
+    {
+     "id": "B",
+     "text": "1,167 A"
+    },
+    {
+     "id": "C",
+     "text": "0,5 A"
+    },
+    {
+     "id": "D",
+     "text": "0,333 A"
+    }
+   ],
+   "answer": "D",
+   "explain": "Begin met het vinden van een volledige periode. Die begint bijvoorbeeld bij het punt 60 ms op de horizontale as (ook op 0 ms). Van 60 tot 80 ms, dus 20 ms lang is de stroom 5 A. Van 80 tot 120 ms, 40 ms lang, is de stroom tegengesteld, -2 A. Daarna begint de volgende periode, waarna de stroom weer + 5 A wordt: het begin van de volgende periode. Het gemiddelde voor de periode is 20 ms ∗ 5A − 40 ms ∗ 2A 20 =    A = 0,333A 60 ms           60 Dat betekent antwoord D.",
+   "pages": [
+    "p056"
+   ],
+   "spages": [
+    "p074"
+   ]
+  },
+  {
+   "id": "o5-2",
+   "n": 2,
+   "q": "De tweepuntige pijlen in de afbeelding geven elk aan",
+   "options": [
+    {
+     "id": "A",
+     "text": "De amplitude"
+    },
+    {
+     "id": "B",
+     "text": "De effectieve waarde"
+    },
+    {
+     "id": "C",
+     "text": "De gemiddelde waarde"
+    },
+    {
+     "id": "D",
+     "text": "De halve amplitude"
+    }
+   ],
+   "answer": "A",
+   "explain": "De zwarte pijlen geven de amplitude aan. De effectieve waarde is amplitude gedeeld door √2, de gemiddelde waarde is 0 en de halve amplitude is een halve pijllengte. Antwoord A dus.",
+   "pages": [
+    "p057"
+   ],
+   "spages": [
+    "p075"
+   ]
+  },
+  {
+   "id": "o5-3",
+   "n": 3,
+   "q": "Een sinusvormige spanning met Umax = 10 V wordt aangesloten op een weerstand van 10 Ω. De effectieve stroom door de weerstand is ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 A"
+    },
+    {
+     "id": "B",
+     "text": "0,7 A"
+    },
+    {
+     "id": "C",
+     "text": "1,4 A"
+    },
+    {
+     "id": "D",
+     "text": "10 A"
+    }
+   ],
+   "answer": "B",
+   "explain": "Als Umax 10 V is, is 𝑈𝑒𝑓𝑓 = 10 V⁄ ≈ 7,07 V . Die spanning over een weestand van 10 Ω √2 leidt tot een effectieve stroom van 0,707 A is ongeveer 0,7 A. Antwoord B.",
+   "pages": [
+    "p058"
+   ],
+   "spages": [
+    "p076"
+   ]
+  },
+  {
+   "id": "o5-4",
+   "n": 4,
+   "q": "Een sinusvormige spanning met Umax = 10 V wordt aangesloten op een weerstand van 10 Ω. Het opgenomen vermogen is",
+   "options": [
+    {
+     "id": "A",
+     "text": "5 W"
+    },
+    {
+     "id": "B",
+     "text": "7,07 W"
+    },
+    {
+     "id": "C",
+     "text": "10 W"
+    },
+    {
+     "id": "D",
+     "text": "100 W"
+    }
+   ],
+   "answer": "A",
+   "explain": "Als Umax 10 V is, is 𝑈𝑒𝑓𝑓 = 10 V⁄ . Vermogen P volgt uit effectieve spanning en √2 𝑈𝑒𝑓𝑓⁄ = 50⁄ W = 5 W. Dat is antwoord A. weerstand volgens 𝑃 =         𝑅      10",
+   "pages": [
+    "p059"
+   ],
+   "spages": [
+    "p077"
+   ]
+  },
+  {
+   "id": "o5-5",
+   "n": 5,
+   "q": "Welk schemasymbool hoort bij deze schakeling?",
+   "options": [
+    {
+     "id": "A",
+     "text": "Symbool A"
+    },
+    {
+     "id": "B",
+     "text": "Symbool B"
+    },
+    {
+     "id": "C",
+     "text": "Symbool C"
+    },
+    {
+     "id": "D",
+     "text": "Symbool D"
+    }
+   ],
+   "answer": "B",
+   "explain": "De schakeling is door de zelfinductie een verzwakker voor lage frequenties. Naarmate de frequentie hoger is, wordt de reactantie van de spoel hoger en worden de verliezen langs dit zijpad kleiner, De schakeling is daarom een hoogdoorlaatfilter: symbool B en antwoord B.",
+   "pages": [
+    "p060"
+   ],
+   "spages": [
+    "p078"
+   ]
+  },
+  {
+   "id": "o5-6",
+   "n": 6,
+   "q": "Welk schemasymbool hoort bij deze schakeling?",
+   "options": [
+    {
+     "id": "A",
+     "text": "Symbool A"
+    },
+    {
+     "id": "B",
+     "text": "Symbool B"
+    },
+    {
+     "id": "C",
+     "text": "Symbool C"
+    },
+    {
+     "id": "D",
+     "text": "Symbool D"
+    }
+   ],
+   "answer": "A",
+   "explain": "De waarden van de componenten doen hier niet ter zake, wel dat het om een weerstand en een condensator gaat. Naarmate de frequentie hoger wordt, wordt de reactantie van de condensator kleiner en lekt steeds meer signaal via de condensator weg. Daarom gaat het hier om een laagdoorlaatfilter: symbool A en antwoord A.",
+   "pages": [
+    "p061"
+   ],
+   "spages": [
+    "p079"
+   ]
+  },
+  {
+   "id": "o5-7",
+   "n": 7,
+   "q": "De frequentie van een wisselspanning bedraagt 100 Hz. Het aantal perioden gedurende 1 minuut bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "600"
+    },
+    {
+     "id": "B",
+     "text": "100"
+    },
+    {
+     "id": "C",
+     "text": "60"
+    },
+    {
+     "id": "D",
+     "text": "6000"
+    }
+   ],
+   "answer": "D",
+   "explain": "100 Hz betekent 100 perioden per seconde. In een minuut gaan 60 seconden, dus dat wordt 60*100 perioden = 6000 perioden in 1 minuut: antwoord D.",
+   "pages": [
+    "p062"
+   ],
+   "spages": [
+    "p080"
+   ]
+  },
+  {
+   "id": "o5-8",
+   "n": 8,
+   "q": "De periodeduur van een wisselspanning van 100 Hz bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "100 ms"
+    },
+    {
+     "id": "B",
+     "text": "0,1 s"
+    },
+    {
+     "id": "C",
+     "text": "10 ms"
+    },
+    {
+     "id": "D",
+     "text": "6000 s"
+    }
+   ],
+   "answer": "C",
+   "explain": "100 Hz betekent 100 perioden per seconde. Per periode betekent dat een duur van 0,01 s is 10 ms. Antwoord C.",
+   "pages": [
+    "p063"
+   ],
+   "spages": [
+    "p081"
+   ]
+  },
+  {
+   "id": "o5-9",
+   "n": 9,
+   "q": "Een spoel met een coëfficiënt van zelfinductie van 382 mH is aangesloten op een sinusvormige wisselspanning van 260 V en een frequentie van 50 Hz. De spoel neemt daarbij een stroom op van 2 A. De spoel heeft een onbekende verliesweerstand. De impedantie bedraagt ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "720 Ω"
+    },
+    {
+     "id": "B",
+     "text": "120 Ω"
+    },
+    {
+     "id": "C",
+     "text": "1910 Ω"
+    },
+    {
+     "id": "D",
+     "text": "130 Ω"
+    }
+   ],
+   "answer": "D",
+   "explain": "We berekenen de impedantie Z uit stroom I = 2 A en spanning U = 260 V volgens 𝑈 260 V 𝑍=        =     = 130Ω 𝐼   2A De waarde van de zelfinductie is hier nutteloos. Op het zendexamen komen zulke dingen voor, dus wen er maar aan. Het is een test om te zien of je stevig genoeg in je schoenen staat. Het goede antwoord is D",
+   "pages": [
+    "p064"
+   ],
+   "spages": [
+    "p082"
+   ]
+  },
+  {
+   "id": "o5-10",
+   "n": 10,
+   "q": "Een spoel met een coëfficiënt van zelfinductie van 382 mH is aangesloten op een sinusvormige wisselspanning van 260 V en een frequentie van 50 Hz. De spoel neemt daarbij een stroom op van 2 A. De reactantie van de spoel is ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "8,3 mΩ"
+    },
+    {
+     "id": "B",
+     "text": "720 Ω"
+    },
+    {
+     "id": "C",
+     "text": "120 Ω"
+    },
+    {
+     "id": "D",
+     "text": "1910 Ω"
+    }
+   ],
+   "answer": "C",
+   "explain": "",
+   "pages": [
+    "p065"
+   ],
+   "spages": [
+    "p083"
+   ]
+  },
+  {
+   "id": "o5-11",
+   "n": 11,
+   "q": "Een spoel met een coëfficiënt van zelfinductie van 382 mH is aangesloten op een sinusvormige wisselspanning van 260 V en een frequentie van 50 Hz. De spoel neemt daarbij een stroom op van 2 A. De ohmse weerstand (verliesweerstand) van de spoel bedraagt ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "10 Ω"
+    },
+    {
+     "id": "B",
+     "text": "50 Ω"
+    },
+    {
+     "id": "C",
+     "text": "120 Ω"
+    },
+    {
+     "id": "D",
+     "text": "130 Ω"
+    }
+   ],
+   "answer": "B",
+   "explain": "En hier komt de aap uit de mouw: de vorige twee opgaven waren inleidingen tot deze opgave. Nu hebben we een vectordiagram nodig. Een spoel met een verliesweerstand is te beschouwen als een serieschakeling van de spoel en zijn verliesweerstand: L          R UL                U Door beide loopt dezelfde stroom I. De spanning UR over de weerstand is in fase met I. De spanning UL over de spoel loopt 90 graden in fase voor op I. Het vectordiagram ziet er dan uit als in de tekening. Uit het vectordiagram volgt:                                                             UR I 𝑈 = √𝑈𝑅2 + 𝑈𝐿2 Omdat weerstand en reactantie evenredig zijn met spanning, geldt ook 𝑍 = √𝑅 2 + 𝑋𝐿2 Wat hetzelfde is als 𝑅 = √𝑍 2 − 𝑋𝐿2 Voor Z vonden we eerder 130 Ω, voor XL 120 Ω. Invullen in de laatste vergelijking leidt tot 𝑅 = 50 Ω, antwoord B.",
+   "pages": [
+    "p066"
+   ],
+   "spages": [
+    "p084"
+   ]
+  },
+  {
+   "id": "o5-12",
+   "n": 12,
+   "q": "Bij de schakeling hoort",
+   "options": [
+    {
+     "id": "A",
+     "text": "Een kantelfrequentie van ongeveer 8000 Hz"
+    },
+    {
+     "id": "B",
+     "text": "Een resonantiefrequentie van ongeveer 8000 Hz"
+    },
+    {
+     "id": "C",
+     "text": "Een kantelfrequentie van ongeveer 50000 Hz"
+    },
+    {
+     "id": "D",
+     "text": "Een resonantiefrequentie van ongeveer 50000 Hz"
+    }
+   ],
+   "answer": "A",
+   "explain": "Bij een RC-filter hoort geen resonantiefrequentie omdat het filter niet resoneert. Dat doet een LC-filter. Daarmee vervallen de antwoorden B en D. Een RC-filter heeft een kantelfrequentie. Voor de kantelfrequentie fk van dit filter geldt 𝑓𝑘 = 2𝜋𝑅𝐶 Invullen van 2000 Ω voor R en 10 nF = 10-8 F voor C leidt tot fk=7958 Hz  8000 Hz. Dat betekent dat antwoord A het juiste is.",
+   "pages": [
+    "p067"
+   ],
+   "spages": [
+    "p085"
+   ]
+  },
+  {
+   "id": "o5-13",
+   "n": 13,
+   "q": "In de parallelkring wordt C vervangen door een 2x zo kleine capaciteit. Daardoor wordt de resonantiefrequentie ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "2x zo groot"
+    },
+    {
+     "id": "B",
+     "text": "2x zo klein"
+    },
+    {
+     "id": "C",
+     "text": "1,4 x zo groot"
+    },
+    {
+     "id": "D",
+     "text": "1,4 x zo klein"
+    }
+   ],
+   "answer": "C",
+   "explain": "We zien een parallelkring van L en C met een parallelweerstand R. De vergelijking voor de resonantiefrequentie f luidt 𝑓= 2𝜋√𝐿𝐶 De resonantiefrequentie is dus omgekeerd evenredig met (onder meer) √𝐶. Wordt C 2 keer zo klein, dan wordt f √2 keer zo groot. √2 is bij benadering gelijk aan 1,4. Dan is antwoord C goed.",
+   "pages": [
+    "p068"
+   ],
+   "spages": [
+    "p086"
+   ]
+  },
+  {
+   "id": "o5-14",
+   "n": 14,
+   "q": "In de parallelkring wordt R vervangen door een 2x zo grote weerstand. Daardoor wordt de kwaliteitsfactor Q ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "2x zo groot"
+    },
+    {
+     "id": "B",
+     "text": "2x zo klein"
+    },
+    {
+     "id": "C",
+     "text": "1,4 x zo groot"
+    },
+    {
+     "id": "D",
+     "text": "1,4 x zo klein"
+    }
+   ],
+   "answer": "A",
+   "explain": "Bij een parallelle LC-kring is de kwaliteitsfactor Q evenredig met de parallel geschakelde weerstand. Wordt die weerstand 2 maal zo groot, dan gebeurt hetzelfde met Q. Daaruit volgt dat antwoord A goed is.",
+   "pages": [
+    "p069"
+   ],
+   "spages": [
+    "p087"
+   ]
+  },
+  {
+   "id": "o5-15",
+   "n": 15,
+   "q": "In de parallelkring wordt L vervangen door een spoel met 2x zo hoge zelfinductie. Daardoor wordt de resonantiefrequentie ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "2x zo groot"
+    },
+    {
+     "id": "B",
+     "text": "2x zo klein"
+    },
+    {
+     "id": "C",
+     "text": "1,4 x zo groot"
+    },
+    {
+     "id": "D",
+     "text": "1,4 x zo klein"
+    }
+   ],
+   "answer": "D",
+   "explain": "Hier geldt hetzelfde verhaal als bij de condensator in de uitwerking van Opgave 5-13. We beginnen met de vergelijking voor de resonantiefrequentie f: 𝑓= 2𝜋√𝐿𝐶 Uit de vergelijking blijkt dat als L 2x zo groot wordt, de frequentie √2  1,4 maal zo klein wordt, want L staat in de noemer en onder een wortelteken. Dat betekent antwoord D.",
+   "pages": [
+    "p070"
+   ],
+   "spages": [
+    "p088"
+   ]
+  },
+  {
+   "id": "o5-16",
+   "n": 16,
+   "q": "Een parallelkring met L en C resoneert op 10 MHz. Q bedraagt 100. De bandbreedte B is",
+   "options": [
+    {
+     "id": "A",
+     "text": "100 kHz"
+    },
+    {
+     "id": "B",
+     "text": "10 kHz"
+    },
+    {
+     "id": "C",
+     "text": "1 MHz"
+    },
+    {
+     "id": "D",
+     "text": "140 kHz"
+    }
+   ],
+   "answer": "A",
+   "explain": "De bandbreedte B is gelijk aan de resonantiefrequentie f gedeeld door Q, dus 𝑓 𝐵= 𝑄 We moeten dus 10 MHz delen door 100 om B te vinden. Daar komt 0,1 MHz = 100 kHz uit. Antwoord A is daarom goed.",
+   "pages": [
+    "p071"
+   ],
+   "spages": [
+    "p089"
+   ]
+  },
+  {
+   "id": "o5-17",
+   "n": 17,
+   "q": "In een seriekring is XL = 20 kΩ. De verliesweerstand bedraagt ongeveer 200 Ω. Q bedraagt ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "100 Ω"
+    },
+    {
+     "id": "B",
+     "text": "100"
+    },
+    {
+     "id": "C",
+     "text": "100 V"
+    },
+    {
+     "id": "D",
+     "text": "100 A"
+    }
+   ],
+   "answer": "B",
+   "explain": "In een seriekring in resonantie geldt voor Q bij een verliesweerstand R 𝑋𝐿 𝑄= 𝑅 Dat is dus precies andersom als bij de parallelkring van Opgave 5-14. Dat houdt in dat Q gelijk is aan 20 kΩ gedeeld door 200 Ω is 100. Daarmee zijn we er nog niet, want bij de antwoorden kun je kiezen uit een weerstand, een getal, een spanning of een stroom. De grootheden XL en R worden beide uitgedrukt in ohm (Ω) Als je ze op elkaar deelt is de eenheid ohm een 1 geworden en blijft alleen het bijbehorende getal, in dit geval 100, over. 100 keer 1 is 100. Antwoord B is het juiste antwoord.",
+   "pages": [
+    "p072"
+   ],
+   "spages": [
+    "p090"
+   ]
+  },
+  {
+   "id": "o5-18",
+   "n": 18,
+   "q": "Een seriekring met L= 20 mH en C=1 nF is in resonantie De verliesweerstand bedraagt ongeveer 50 Ω. De impedantie van de kring bedraagt ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "71 Ω"
+    },
+    {
+     "id": "B",
+     "text": "29 Ω"
+    },
+    {
+     "id": "C",
+     "text": "50 Ω"
+    },
+    {
+     "id": "D",
+     "text": "55 Ω 5.11 Uitwerkingen"
+    }
+   ],
+   "answer": "C",
+   "explain": "Deze opgave kan verleiden tot een heleboel rekenwerk. Maar met wat inzicht ben je zo bij het antwoord. Een ideale seriekring heeft bij resonantie 0 reactantie, want de reactanties van spoel en condensator heffen elkaar op. Dan houd je bij een niet-ideale kring, zoals hier het geval is, alleen de verliesweerstand over en die is gegeven: 50 Ω, antwoord C Meer opgaven vind je in de examentraining bij dit hoofdstuk",
+   "pages": [
+    "p073",
+    "p074"
+   ],
+   "spages": [
+    "p091"
+   ]
+  }
  ]
 }

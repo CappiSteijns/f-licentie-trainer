@@ -68,6 +68,7 @@ let RESULT = null;          // laatste uitslag
 let timerInt = null;
 let T = null;               // geopende theorie: { chapter, secId, back }
 let FG = null;              // formule-spel
+let X = null;               // cursusopgave: { ex, ch, picked }
 let K = null;               // flashcardronde: { chapter, queue, idx, flip, knew, missed }
 
 const chapterTitle = n => (chapters.find(c => c.n === n) || {}).title || '';
@@ -82,7 +83,7 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S ? 'session' : k) }, label)));
 }
@@ -90,9 +91,9 @@ function renderNav() {
 function render() {
   applyPrefs();
   tools.setToolsVisible(view === 'session' || view === 'fgame');
-  tools.setInkKey([view, S && S.idx, FG && FG.n, FG && FG.stage, K && K.idx, T && T.secId].join('|'));
+  tools.setInkKey([view, S && S.idx, FG && FG.n, FG && FG.stage, K && K.idx, T && T.secId, X && X.ex.id, X && X.picked].join('|'));
   renderNav();
-  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
 }
@@ -144,24 +145,44 @@ function dueByChapter() {
 // ---- een specifieke vraag opzoeken en oefenen
 const FIND = { q: '', ready: false, loading: false };
 const flat = x => String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const toks = s => flat(s).replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
+/** Alle woorden aanwezig: score 1. Anders mag ook een deel (minstens 90% van minstens 5 woorden) – dan staan de beste eerst. */
+function wordScore(hay, words) {
+  if (!words.length) return 0;
+  const h = ' ' + hay.replace(/[^a-z0-9]+/g, ' ') + ' ';
+  const n = words.filter(w => h.includes(w.length > 3 ? w : ' ' + w + ' ')).length;
+  return n === words.length ? 1 : (words.length >= 5 && n / words.length >= 0.9 ? n / words.length : 0);
+}
+const bestOnly = (list, score) => { const s = list.map(x => [x, score(x)]).filter(p => p[1] > 0); if (s.some(p => p[1] === 1)) return s.filter(p => p[1] === 1).map(p => p[0]); return s.sort((x, y) => y[1] - x[1]).map(p => p[0]); };
 /** 'hs3-45', '3-45', 'h3 45' = één vraag; een los getal = dat nummer in elk hoofdstuk; anders alle woorden in vraag, antwoorden en bron ("mei 2011"). */
 function findQuestions(text) {
   const t = flat(text).trim(); if (!t) return [];
+  if (/opgave\s*\d+\s*[-.:]\s*\d+/.test(t) || /^\d+\.\d+\.\d+\b/.test(t)) return [];   // dat is een nummer uit de theorie-pdf, geen examenvraag
   const all = chapters.filter(c => c.count > 0).flatMap(c => quiz.cachedChapter(c.n));
   let m = t.match(/^(?:hs|h|hoofdstuk)\s*(\d+)\s*(?:[-.:\/#]|vraag|v|nr\.?)?\s*(\d+)$/) || t.match(/^(\d+)\s*(?:[-.:\/#]|vraag|v|nr\.?)\s*(\d+)$/);
   if (m) return all.filter(q => q.chapter === +m[1] && q.number === +m[2]);
   if (/^\d{1,3}$/.test(t)) return all.filter(q => q.number === +t);
   const inSource = all.filter(q => flat(q.source).includes(t));   // "mei 2011" = die examendatum, niet 'mei' en '2011' los
   if (inSource.length) return inSource;
-  const words = t.split(/\s+/);
-  return all.filter(q => { const hay = flat([q.question, ...q.options.map(o => o.text), q.source].join(' ')); return words.every(w => hay.includes(w)); });
+  const words = toks(t);
+  return bestOnly(all, q => wordScore(flat([q.question, ...q.options.map(o => o.text), q.source, q.explanation].join(' ')), words));
 }
+/** Cursusopgaven uit de theorie-pdf's (H4–H6): op nummer ("opgave 6-8", "6.12.8") of op tekst. Geeft [{e, ch}]. */
+function findExercises(text) {
+  const t = flat(text).trim(); if (!t) return [];
+  const all = chapters.filter(c => c.theory).flatMap(c => { const th = theory.getTheory(c.n); return th ? (th.exercises || []).map(e => ({ e, ch: c.n })) : []; });
+  const m = t.match(/opgave\s*(\d+)\s*[-.:]\s*(\d+)/) || t.match(/^(\d+)\.\d+\.(\d+)\b/) || t.match(/^o(\d+)-(\d+)$/);
+  if (m) return all.filter(x => x.ch === +m[1] && x.e.n === +m[2]);
+  const words = toks(t.replace(/^\d+\.\d+\.\d+\s*/, '').replace(/^opgave\s*\d+\s*[-.]\s*\d+\s*/, ''));
+  return bestOnly(all, x => wordScore(flat([x.e.q, ...x.e.options.map(o => o.text), x.e.explain].join(' ')), words));
+}
+function startExercise(x) { X = { ex: x.e, ch: x.ch, picked: null }; setView('exercise'); }
 /** Zoekt in de flashcards van de theorie (vraag en antwoord). Geeft [{c, ch}] terug. */
 function findCards(text) {
   const t = flat(text).trim(); if (!t || /^[\d\s\-.:\/#]+$/.test(t) || /^(?:hs|h|hoofdstuk)\s*\d+\s*[-.:\/#]?\s*\d*$/.test(t)) return [];
-  const words = t.split(/\s+/);
-  return chapters.filter(c => c.theory).flatMap(c => { const th = theory.getTheory(c.n); return th ? (th.cards || []).map(cd => ({ c: cd, ch: c.n })) : []; })
-    .filter(x => { const hay = flat(x.c.q + ' ' + x.c.a); return words.every(w => hay.includes(w)); });
+  const words = toks(t);
+  return bestOnly(chapters.filter(c => c.theory).flatMap(c => { const th = theory.getTheory(c.n); return th ? (th.cards || []).map(cd => ({ c: cd, ch: c.n })) : []; }),
+    x => wordScore(flat(x.c.q + ' ' + x.c.a), words));
 }
 function startFoundCards(list) {
   K = { chapter: list[0].ch, queue: list.map(x => Object.assign({}, x.c, { _ch: x.ch })), idx: 0, flip: false, knew: 0, missed: 0, retried: new Set(), found: true };
@@ -180,10 +201,10 @@ function findCard() {
   const box = h('div', { class: 'find-res', 'aria-live': 'polite' });
   const draw = () => {
     const q = FIND.q.trim();
-    if (!q) { box.replaceChildren(h('p', { class: 'muted small' }, 'Typ een nummer (bijvoorbeeld 3-45), een stukje van de vraag of een examen (bijvoorbeeld mei 2011). Ook de theoriekaarten worden doorzocht.')); return; }
+    if (!q) { box.replaceChildren(h('p', { class: 'muted small' }, 'Typ een nummer (bijvoorbeeld 3-45), een stukje van de vraag of een examen (bijvoorbeeld mei 2011). Ook cursusopgaven (bijvoorbeeld opgave 6-8) en theoriekaarten worden doorzocht.')); return; }
     if (!FIND.ready) { box.replaceChildren(h('p', { class: 'muted small' }, 'Vragen laden…')); return; }
-    const res = findQuestions(q), cards = findCards(q);
-    if (!res.length && !cards.length) { box.replaceChildren(h('p', { class: 'muted' }, 'Niets gevonden. Probeer een ander woord of een nummer als 3-45.')); return; }
+    const res = findQuestions(q), cards = findCards(q), exs = findExercises(q);
+    if (!res.length && !cards.length && !exs.length) { box.replaceChildren(h('p', { class: 'muted' }, 'Niets gevonden. Probeer een ander woord of een nummer als 3-45.')); return; }
     const shown = res.slice(0, 40), cshown = cards.slice(0, 20);
     const cardRows = cards.length ? [
       h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `📖 ${cards.length} ${cards.length === 1 ? 'theoriekaart' : 'theoriekaarten'} gevonden (uit de theorie, niet uit het examen)`),
@@ -196,6 +217,12 @@ function findCard() {
           h('button', { class: 'primary small', onclick: () => startFoundCards([x]) }, 'Oefen'));
       }),
       cards.length > cshown.length && h('p', { class: 'muted small' }, `De eerste ${cshown.length} staan hierboven. Maak je zoekopdracht specifieker.`)] : [];
+    const exRows = exs.length ? [
+      h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `📚 ${exs.length} ${exs.length === 1 ? 'cursusopgave' : 'cursusopgaven'} gevonden (uit de theorie-pdf, niet uit het examen)`)),
+      ...exs.slice(0, 20).map(x => h('div', { class: 'find-row' },
+        h('div', { class: 'find-t' }, h('b', {}, `H${x.ch} · cursusopgave ${x.ch}-${x.e.n}`),
+          h('div', { class: 'small' }, x.e.q.length > 140 ? x.e.q.slice(0, 140) + '…' : x.e.q)),
+        h('button', { class: 'primary small', onclick: () => startExercise(x) }, 'Oefen')))] : [];
     box.replaceChildren(...[
       ...(res.length ? [
       h('div', { class: 'row between' }, h('b', {}, `📝 ${res.length} ${res.length === 1 ? 'examenvraag' : 'examenvragen'} gevonden`),
@@ -210,7 +237,7 @@ function findCard() {
           h('button', { class: 'primary small', onclick: () => startIds([x.id]) }, 'Oefen'));
       }),
       res.length > shown.length && h('p', { class: 'muted small' }, `De eerste ${shown.length} staan hierboven. Maak je zoekopdracht specifieker, of oefen ze allemaal.`)] : []),
-      ...cardRows].filter(Boolean));
+      ...exRows, ...cardRows].filter(Boolean));
   };
   const input = h('input', { type: 'search', class: 'find-in', placeholder: 'Zoek op nummer, tekst of examen…', 'aria-label': 'Zoek een vraag', value: FIND.q, autocomplete: 'off',
     oninput: e => { FIND.q = e.target.value; draw(); } });
@@ -1269,6 +1296,27 @@ function viewCards() {
       h('button', { class: 'primary', onclick: () => rateCard(true) }, 'Weet ik')),
     K.flip && sec && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(cch, sec.id, 'cards') }, 'Lees de theorie hierover')),
     h('div', { class: 'small muted' }, `Vandaag: ${store.todayCount()} geoefend`));
+}
+
+// ---------------------------------------------------------------- cursusopgave (uit de theorie-pdf)
+function viewExercise() {
+  if (!X) return viewSetup();
+  const { ex, ch } = X, th = theory.getTheory(ch), img = p => h('img', { class: 'tpage', src: `${th.dir}/${p}.webp`, alt: `Opgave ${ch}-${ex.n}` });
+  const done = !!X.picked, ok = X.picked === ex.answer;
+  return h('div', {},
+    h('button', { class: 'ghost', onclick: () => { X = null; setView('setup'); } }, '← Zoeken'),
+    h('div', { class: 'row between' }, h('b', {}, `Cursusopgave ${ch}-${ex.n}`), h('span', { class: 'badge' }, 'uit de theorie-pdf, geen examenvraag')),
+    h('section', { class: 'card' },
+      h('div', { class: 'q' }, ex.q),
+      h('div', { class: 'tpages' }, (ex.pages || []).map(img)),
+      h('div', { class: 'opts' }, ex.options.map(o => {
+        let cls = 'opt';
+        if (done) cls += o.id === ex.answer ? ' right' : (o.id === X.picked ? ' wrong' : ' dim');
+        return h('button', { class: cls, disabled: done, onclick: () => { X.picked = o.id; render(); } }, h('span', { class: 'l' }, o.id), h('span', { class: 'tx' }, o.text));
+      })),
+      done && h('p', { class: ok ? 'status ok' : 'status err' }, ok ? 'Goed!' : `Fout. Het juiste antwoord is ${ex.answer}.`),
+      done && h('div', {}, h('h3', {}, 'Uitwerking'), h('div', { class: 'tpages' }, (ex.spages || []).map(img))),
+      h('p', { class: 'muted small' }, 'Deze opgave telt niet mee voor je voortgang.')));
 }
 
 // ---------------------------------------------------------------- formule-spel
