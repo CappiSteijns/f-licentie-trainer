@@ -156,6 +156,17 @@ function findQuestions(text) {
   const words = t.split(/\s+/);
   return all.filter(q => { const hay = flat([q.question, ...q.options.map(o => o.text), q.source].join(' ')); return words.every(w => hay.includes(w)); });
 }
+/** Zoekt in de flashcards van de theorie (vraag en antwoord). Geeft [{c, ch}] terug. */
+function findCards(text) {
+  const t = flat(text).trim(); if (!t || /^[\d\s\-.:\/#]+$/.test(t) || /^(?:hs|h|hoofdstuk)\s*\d+\s*[-.:\/#]?\s*\d*$/.test(t)) return [];
+  const words = t.split(/\s+/);
+  return chapters.filter(c => c.theory).flatMap(c => { const th = theory.getTheory(c.n); return th ? (th.cards || []).map(cd => ({ c: cd, ch: c.n })) : []; })
+    .filter(x => { const hay = flat(x.c.q + ' ' + x.c.a); return words.every(w => hay.includes(w)); });
+}
+function startFoundCards(list) {
+  K = { chapter: list[0].ch, queue: list.map(x => Object.assign({}, x.c, { _ch: x.ch })), idx: 0, flip: false, knew: 0, missed: 0, retried: new Set(), found: true };
+  setView('cards');
+}
 async function startIds(ids) {
   const p = store.getPrefs();
   try {
@@ -169,12 +180,24 @@ function findCard() {
   const box = h('div', { class: 'find-res', 'aria-live': 'polite' });
   const draw = () => {
     const q = FIND.q.trim();
-    if (!q) { box.replaceChildren(h('p', { class: 'muted small' }, 'Typ een nummer (bijvoorbeeld 3-45), een stukje van de vraag of een examen (bijvoorbeeld mei 2011).')); return; }
+    if (!q) { box.replaceChildren(h('p', { class: 'muted small' }, 'Typ een nummer (bijvoorbeeld 3-45), een stukje van de vraag of een examen (bijvoorbeeld mei 2011). Ook de theoriekaarten worden doorzocht.')); return; }
     if (!FIND.ready) { box.replaceChildren(h('p', { class: 'muted small' }, 'Vragen laden…')); return; }
-    const res = findQuestions(q);
-    if (!res.length) { box.replaceChildren(h('p', { class: 'muted' }, 'Geen vraag gevonden. Probeer een ander woord of een nummer als 3-45.')); return; }
-    const shown = res.slice(0, 40);
+    const res = findQuestions(q), cards = findCards(q);
+    if (!res.length && !cards.length) { box.replaceChildren(h('p', { class: 'muted' }, 'Niets gevonden. Probeer een ander woord of een nummer als 3-45.')); return; }
+    const shown = res.slice(0, 40), cshown = cards.slice(0, 20);
+    const cardRows = cards.length ? [
+      h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `${cards.length} ${cards.length === 1 ? 'theoriekaart' : 'theoriekaarten'} gevonden`),
+        cards.length > 1 && h('button', { class: 'ghost small', onclick: () => startFoundCards(cards.slice(0, 100)) }, `Oefen alle ${Math.min(cards.length, 100)}`)),
+      ...cshown.map(x => {
+        const th = theory.getTheory(x.ch), sec = th.sections.find(s => s.id === x.c.sec);
+        return h('div', { class: 'find-row' },
+          h('div', { class: 'find-t' }, h('b', {}, `H${x.ch} · theorie`), ' ', sec && h('span', { class: 'badge' }, sec.title),
+            h('div', { class: 'small' }, x.c.q)),
+          h('button', { class: 'primary small', onclick: () => startFoundCards([x]) }, 'Oefen'));
+      }),
+      cards.length > cshown.length && h('p', { class: 'muted small' }, `De eerste ${cshown.length} staan hierboven. Maak je zoekopdracht specifieker.`)] : [];
     box.replaceChildren(...[
+      ...(res.length ? [
       h('div', { class: 'row between' }, h('b', {}, `${res.length} ${res.length === 1 ? 'vraag' : 'vragen'} gevonden`),
         res.length > 1 && h('button', { class: 'ghost small', onclick: () => startIds(quiz.practiceOrder(res, false).map(x => x.id).slice(0, 200)) }, `Oefen alle ${Math.min(res.length, 200)}`)),
       ...shown.map(x => {
@@ -186,13 +209,14 @@ function findCard() {
             x.source && h('div', { class: 'small muted' }, x.source)),
           h('button', { class: 'primary small', onclick: () => startIds([x.id]) }, 'Oefen'));
       }),
-      res.length > shown.length && h('p', { class: 'muted small' }, `De eerste ${shown.length} staan hierboven. Maak je zoekopdracht specifieker, of oefen ze allemaal.`)].filter(Boolean));
+      res.length > shown.length && h('p', { class: 'muted small' }, `De eerste ${shown.length} staan hierboven. Maak je zoekopdracht specifieker, of oefen ze allemaal.`)] : []),
+      ...cardRows].filter(Boolean));
   };
   const input = h('input', { type: 'search', class: 'find-in', placeholder: 'Zoek op nummer, tekst of examen…', 'aria-label': 'Zoek een vraag', value: FIND.q, autocomplete: 'off',
     oninput: e => { FIND.q = e.target.value; draw(); } });
   if (!FIND.ready && !FIND.loading) {
     FIND.loading = true;
-    quiz.loadChapters(chapters.filter(c => c.count > 0).map(c => c.n)).then(() => { FIND.ready = true; FIND.loading = false; draw(); }).catch(() => { FIND.loading = false; });
+    Promise.all([quiz.loadChapters(chapters.filter(c => c.count > 0).map(c => c.n)), ensureTheory(chapters.filter(c => c.theory).map(c => c.n))]).then(() => { FIND.ready = true; FIND.loading = false; draw(); }).catch(() => { FIND.loading = false; });
   }
   draw();
   return h('details', { class: 'card find', open: !!FIND.q.trim() }, h('summary', {}, h('b', {}, '🔎 Een specifieke vraag oefenen')), h('div', { style: 'margin-top:.7rem' }, input, box));
@@ -1198,7 +1222,7 @@ function startCards(ch, all) {
   setView('cards');
 }
 function rateCard(knew) {
-  const c = K.queue[K.idx], key = cardKey(K.chapter, c);
+  const c = K.queue[K.idx], key = cardKey(c._ch || K.chapter, c);
   store.recordCard(key, knew);
   if (knew) K.knew++; else { K.missed++; if (!K.retried.has(c.id)) { K.retried.add(c.id); K.queue.push(c); } }
   K.idx++; K.flip = false;
@@ -1217,8 +1241,9 @@ function bindCardKeys() {
 function viewCards() {
   bindCardKeys();
   if (!K) return viewLearn();
-  const th = theory.getTheory(K.chapter);
-  const back = h('button', { class: 'ghost', onclick: () => { K = null; setView('learn'); } }, '← Leren');
+  const back = h('button', { class: 'ghost', onclick: () => { const f = K.found; K = null; setView(f ? 'setup' : 'learn'); } }, K.found ? '← Zoeken' : '← Leren');
+  if (K.found && K.idx >= K.queue.length)
+    return h('div', {}, back, h('h1', {}, 'Kaarten klaar'), h('section', { class: 'card' }, h('p', {}, `${K.knew}× “weet ik”, ${K.missed}× “nog niet”.`), h('div', { class: 'row' }, h('button', { class: 'primary', onclick: () => { K = null; setView('setup'); } }, 'Terug naar zoeken'))));
   if (K.idx >= K.queue.length) {
     const cs = cardStats(K.chapter);
     return h('div', {}, back, h('h1', {}, 'Kaarten klaar'),
@@ -1230,8 +1255,8 @@ function viewCards() {
           h('button', { onclick: () => startCards(K.chapter, true) }, 'Alle kaarten oefenen'),
           h('button', { class: 'ghost', onclick: () => { K = null; setView('learn'); } }, 'Terug'))));
   }
-  const c = K.queue[K.idx];
-  const sec = th.sections.find(x => x.id === c.sec);
+  const c = K.queue[K.idx], cch = c._ch || K.chapter;
+  const sec = theory.getTheory(cch).sections.find(x => x.id === c.sec);
   return h('div', {}, back,
     h('div', { class: 'row between' }, h('b', {}, `Kaart ${K.idx + 1} van ${K.queue.length}`), sec && h('span', { class: 'badge' }, sec.title)),
     h('div', { class: 'bar', style: 'margin:.5rem 0' }, h('i', { class: 'seen', style: `width:${pct(K.idx, K.queue.length)}%` })),
@@ -1242,7 +1267,7 @@ function viewCards() {
     K.flip && h('div', { class: 'row rate' },
       h('button', { class: 'danger', onclick: () => rateCard(false) }, 'Nog niet'),
       h('button', { class: 'primary', onclick: () => rateCard(true) }, 'Weet ik')),
-    K.flip && sec && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(K.chapter, sec.id, 'cards') }, 'Lees de theorie hierover')),
+    K.flip && sec && h('p', {}, h('button', { class: 'ghost small', onclick: () => openTheory(cch, sec.id, 'cards') }, 'Lees de theorie hierover')),
     h('div', { class: 'small muted' }, `Vandaag: ${store.todayCount()} geoefend`));
 }
 
