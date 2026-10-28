@@ -186,25 +186,25 @@ function findCard() {
     if (!res.length && !cards.length) { box.replaceChildren(h('p', { class: 'muted' }, 'Niets gevonden. Probeer een ander woord of een nummer als 3-45.')); return; }
     const shown = res.slice(0, 40), cshown = cards.slice(0, 20);
     const cardRows = cards.length ? [
-      h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `${cards.length} ${cards.length === 1 ? 'theoriekaart' : 'theoriekaarten'} gevonden`),
+      h('div', { class: 'row between', style: 'margin-top:.8rem' }, h('b', {}, `📖 ${cards.length} ${cards.length === 1 ? 'theoriekaart' : 'theoriekaarten'} gevonden (uit de theorie, niet uit het examen)`),
         cards.length > 1 && h('button', { class: 'ghost small', onclick: () => startFoundCards(cards.slice(0, 100)) }, `Oefen alle ${Math.min(cards.length, 100)}`)),
       ...cshown.map(x => {
         const th = theory.getTheory(x.ch), sec = th.sections.find(s => s.id === x.c.sec);
         return h('div', { class: 'find-row' },
-          h('div', { class: 'find-t' }, h('b', {}, `H${x.ch} · theorie`), ' ', sec && h('span', { class: 'badge' }, sec.title),
+          h('div', { class: 'find-t' }, h('b', {}, `H${x.ch} · theoriekaart`), ' ', sec && h('span', { class: 'badge' }, sec.title),
             h('div', { class: 'small' }, x.c.q)),
           h('button', { class: 'primary small', onclick: () => startFoundCards([x]) }, 'Oefen'));
       }),
       cards.length > cshown.length && h('p', { class: 'muted small' }, `De eerste ${cshown.length} staan hierboven. Maak je zoekopdracht specifieker.`)] : [];
     box.replaceChildren(...[
       ...(res.length ? [
-      h('div', { class: 'row between' }, h('b', {}, `${res.length} ${res.length === 1 ? 'vraag' : 'vragen'} gevonden`),
+      h('div', { class: 'row between' }, h('b', {}, `📝 ${res.length} ${res.length === 1 ? 'examenvraag' : 'examenvragen'} gevonden`),
         res.length > 1 && h('button', { class: 'ghost small', onclick: () => startIds(quiz.practiceOrder(res, false).map(x => x.id).slice(0, 200)) }, `Oefen alle ${Math.min(res.length, 200)}`)),
       ...shown.map(x => {
         const r = store.record(x.id);
         const st = !r ? h('span', { class: 'badge' }, 'nieuw') : r.l ? h('span', { class: 'badge green' }, 'laatst goed') : h('span', { class: 'badge red' }, 'laatst fout');
         return h('div', { class: 'find-row' },
-          h('div', { class: 'find-t' }, h('b', {}, `H${x.chapter} · vraag ${x.number}`), ' ', st,
+          h('div', { class: 'find-t' }, h('b', {}, `H${x.chapter} · examenvraag ${x.number}`), ' ', st,
             h('div', { class: 'small' }, x.question.length > 140 ? x.question.slice(0, 140) + '…' : x.question),
             x.source && h('div', { class: 'small muted' }, x.source)),
           h('button', { class: 'primary small', onclick: () => startIds([x.id]) }, 'Oefen'));
