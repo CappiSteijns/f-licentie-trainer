@@ -5,6 +5,7 @@ import * as account from './account.js';
 import * as theory from './theory.js';
 import * as tools from './tools.js';
 import * as drill from './drill.js';
+import * as progress from './progress.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -658,7 +659,68 @@ function chapterStats() {
   return out;
 }
 
+
+// ---------------------------------------------------------------- voortgang: verwachte examenscore
+let snapT = 0;
+function estimateNow() {
+  const p = store.getPrefs();
+  return progress.estimate(chapters.filter(c => c.count > 0).map(c => ({ n: c.n, count: c.count })), store.allRecords(), quiz.chapterOf, { n: p.examCount, need: p.passMark });
+}
+/** Legt (hooguit eens per dag per waarde) de verwachte score vast voor de trendgrafiek. */
+function snapTrend() {
+  if (!chapters.length) return;
+  const e = estimateNow();
+  if (e.seen > 0) store.recordTrend(e.p * 1000);
+}
+const fmtPassP = x => (x < 0.01 ? '< 1%' : x > 0.99 ? '> 99%' : Math.round(x * 100) + '%');
+function estimateCard(e) {
+  const exams = store.getExams().filter(x => x.total > 0 && Number.isFinite(x.score)).slice(0, 3);
+  const avgExam = exams.length ? Math.round(exams.reduce((a, x) => a + x.score / x.total * e.n, 0) / exams.length * 10) / 10 : null;
+  const ok = e.expected >= e.need;
+  return h('section', { class: 'card est' },
+    h('div', { class: 'row between' }, h('h2', { style: 'margin:0' }, 'Verwachte examenscore'), h('span', { class: 'badge' }, 'indicatie')),
+    e.seen === 0
+      ? h('p', { class: 'muted' }, `Je hebt nog geen vragen beantwoord. Zonder kennis zou je door te gokken ongeveer ${Math.round(e.n * progress.GUESS)} van ${e.n} halen. Zodra je gaat oefenen verschijnt hier je verwachte score.`)
+      : [
+        h('div', { class: 'est-main' },
+          h('div', {}, h('span', { class: 'est-n pct ' + (ok ? 'good' : e.expected >= e.need - 5 ? 'mid' : 'bad') }, `≈ ${Math.round(e.expected)}`), h('span', { class: 'muted' }, ` van ${e.n}`),
+            h('div', { class: 'small muted' }, `waarschijnlijk tussen ${e.lo} en ${e.hi} (slagen vanaf ${e.need})`)),
+          h('div', {}, h('span', { class: 'est-n pct ' + pctClass(e.passP * 100) }, fmtPassP(e.passP)), h('div', { class: 'small muted' }, 'kans op slagen als je nu examen doet'))),
+        e.seen < 60 && h('p', { class: 'small notice', style: 'margin:.6rem 0 0' }, `Je hebt pas ${e.seen} verschillende vragen gezien (van ${e.total}). Dit is dus een grove schatting; hij wordt betrouwbaarder naarmate je meer vragen doet.`),
+        avgExam != null && h('p', { class: 'small muted', style: 'margin:.6rem 0 0' }, `Echte proefexamens (laatste ${exams.length}): gemiddeld ${avgExam} van ${e.n}. Dat is de eerlijkste meting; wijkt die sterk af van de schatting, vertrouw dan het proefexamen.`)],
+    h('details', { class: 'small', style: 'margin-top:.6rem' }, h('summary', {}, 'Hoe wordt dit berekend?'),
+      h('p', { class: 'muted' }, `Voor elke vraag uit de vragenbank schatten we de kans dat je hem nu goed hebt. Een vraag die je nog nooit hebt gezien telt als gokken (${Math.round(progress.GUESS * 100)}%). Eén keer goed geeft maar ${Math.round(progress.P_BOX[1] * 100)}%, want dat kan toeval of kortetermijngeheugen zijn. Pas als je een vraag over meerdere dagen steeds goed hebt (hogere box in het slimme herhaalschema) loopt de kans op naar ${Math.round(progress.P_BOX[5] * 100)}%. Is een herhaling te laat, dan zakt de kans weer een stukje terug. Het gemiddelde over alle ${e.total} vragen × ${e.n} examenvragen is de verwachte score; de bandbreedte (80%) en de slagingskans volgen uit de kans op toeval bij ${e.n} willekeurige vragen. De percentages per box zijn een inschatting, geen meting.`)));
+}
+/** Lijn: verwachte score per dag (vanaf nu bijgehouden). Stippen: echte proefexamens. Streeplijn: slaagdrempel. */
+function trendCard() {
+  const tr = Object.entries(store.trend()).map(([k, v]) => ({ k, t: new Date(k + 'T12:00:00').getTime(), y: v[0] / 10 })).filter(x => !isNaN(x.t)).sort((a, b) => a.t - b.t);
+  const exs = store.getExams().filter(e => e.total > 0 && Number.isFinite(e.score)).map(e => ({ t: e.t, y: e.score / e.total * 100, pass: e.pass, label: `${fmtDate(e.t)}: ${e.score}/${e.total}` })).sort((a, b) => a.t - b.t);
+  const need = store.getPrefs().passMark / store.getPrefs().examCount * 100;
+  const card = body => h('section', { class: 'card' }, h('h2', {}, 'Verloop'), body);
+  if (!tr.length && !exs.length) return card(h('p', { class: 'muted' }, 'Zodra je gaat oefenen zie je hier hoe je verwachte examenscore zich ontwikkelt. De lijn wordt vanaf nu elke dag bijgehouden.'));
+  const day = 86400000, now = Date.now();
+  const t0 = Math.min(...[...tr, ...exs].map(x => x.t), now - 13 * day), t1 = now;
+  const W = 640, H = 220, L = 38, R = 12, T = 12, B = 26, pw = W - L - R, ph = H - T - B;
+  const X = t => L + (t1 === t0 ? pw : (t - t0) / (t1 - t0) * pw), Y = v => T + ph - Math.max(0, Math.min(100, v)) / 100 * ph;
+  const grid = [0, 25, 50, 75, 100].map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" style="stroke:var(--border)"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted);font-size:11px">${v}%</text>`).join('');
+  const pass = `<line x1="${L}" x2="${W - R}" y1="${Y(need)}" y2="${Y(need)}" style="stroke:var(--amber)" stroke-dasharray="5 4"/><text x="${W - R}" y="${Y(need) - 4}" text-anchor="end" style="fill:var(--amber);font-size:11px">slagen ${Math.round(need)}%</text>`;
+  const ticks = 4, xl = Array.from({ length: ticks + 1 }, (_, i) => { const t = t0 + (t1 - t0) * i / ticks, d = new Date(t); return `<text x="${X(t)}" y="${H - 8}" text-anchor="${i === 0 ? 'start' : i === ticks ? 'end' : 'middle'}" style="fill:var(--muted);font-size:11px">${d.getDate()}/${d.getMonth() + 1}</text>`; }).join('');
+  const line = tr.length > 1 ? `<polyline fill="none" style="stroke:var(--accent)" stroke-width="2.5" stroke-linejoin="round" points="${tr.map(x => `${X(x.t).toFixed(1)},${Y(x.y).toFixed(1)}`).join(' ')}"/>` : '';
+  const dots = tr.map(x => `<circle cx="${X(x.t).toFixed(1)}" cy="${Y(x.y).toFixed(1)}" r="3.5" style="fill:var(--accent)"><title>${fmtDate(x.t)}: verwacht ${Math.round(x.y)}%</title></circle>`).join('');
+  const ex = exs.map(x => `<rect x="${(X(x.t) - 5).toFixed(1)}" y="${(Y(x.y) - 5).toFixed(1)}" width="10" height="10" transform="rotate(45 ${X(x.t).toFixed(1)} ${Y(x.y).toFixed(1)})" style="fill:var(${x.pass ? '--green' : '--red'});stroke:var(--bg)" stroke-width="1.5"><title>Proefexamen ${x.label}</title></rect>`).join('');
+  const box = h('div', { class: 'trend' });
+  box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Verloop van je verwachte examenscore en proefexamens" style="width:100%;height:auto;display:block">${grid}${pass}${xl}${line}${dots}${ex}</svg>`;
+  return card([box,
+    h('div', { class: 'legend', style: 'margin-top:.4rem' },
+      h('span', {}, h('i', { style: 'background:var(--accent)' }), 'verwachte score (per dag)'),
+      h('span', {}, h('i', { style: 'background:var(--green);transform:rotate(45deg)' }), 'geslaagd proefexamen'),
+      h('span', {}, h('i', { style: 'background:var(--red);transform:rotate(45deg)' }), 'gezakt proefexamen')),
+    tr.length < 3 && h('p', { class: 'small muted', style: 'margin:.5rem 0 0' }, 'De lijn wordt vanaf nu bijgehouden (één meting per dag); over een paar dagen zie je het verloop.')]);
+}
+
 function viewStats() {
+  snapTrend();
+  const est = estimateNow();
   const t = store.totals();
   const cs = chapterStats();
   const withQ = chapters.filter(c => c.count > 0);
@@ -670,39 +732,42 @@ function viewStats() {
   const weak = withQ.map(c => ({ c, s: cs[c.n] })).filter(x => x.s && x.s.seen >= 5)
     .sort((x, y) => known(x.s) - known(y.s))[0];
   const exams = store.getExams().slice(0, 10);
+  const gain = withQ.map(c => { const ec = est.byCh[c.n]; return ec && est.total ? { c, pts: est.n * (c.count / est.total) * Math.max(0, progress.P_BOX[5] - ec.p) } : null; }).filter(Boolean).sort((a, b) => b.pts - a.pts)[0];
 
   return h('div', {},
     h('h1', {}, 'Voortgang'),
+    estimateCard(est),
+    trendCard(),
     goalCard(),
     heatmapCard(),
     h('div', { class: 'cards' },
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.a)), h('div', { class: 'k' }, 'vragen beantwoord')),
-      h('div', { class: 'stat', title: 'Van de vragen die je gezien hebt: bij hoeveel was je laatste antwoord goed.' }, h('div', { class: 'n pct ' + (seenAll ? pctClass(pct(mastAll, seenAll)) : '') }, seenAll ? pct(mastAll, seenAll) + '%' : '–'), h('div', { class: 'k' }, 'laatst goed'), t.a > 0 && h('div', { class: 'k small' }, `alle pogingen: ${pct(t.ok, t.a)}%`)),
+      h('div', { class: 'stat', title: 'Van de vragen die je gezien hebt: bij hoeveel was je laatste antwoord goed.' }, h('div', { class: 'n pct ' + (seenAll ? pctClass(pct(mastAll, seenAll)) : '') }, seenAll ? pct(mastAll, seenAll) + '%' : '–'), h('div', { class: 'k' }, 'laatst goed (van gezien)'), t.a > 0 && h('div', { class: 'k small' }, `alle pogingen: ${pct(t.ok, t.a)}%`)),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.pond)), h('div', { class: 'k' }, 'in foutenvijver')),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, String(t.due)), h('div', { class: 'k' }, 'nu te herhalen')),
       h('div', { class: 'stat' }, h('div', { class: 'n' }, `${t.passed}/${t.exams}`), h('div', { class: 'k' }, 'examens geslaagd'))),
 
-    weak && known(weak.s) < 80 && h('div', { class: 'notice' },
-      `Zwakste plek: H${weak.c.n} · ${weak.c.title} (${known(weak.s)}% laatst goed). Daar kun je het meest winnen.`),
+    gain && gain.pts >= 0.5 && h('div', { class: 'notice' },
+      `Meeste winst: H${gain.c.n} · ${gain.c.title}. Daar zit nu het meeste te halen: ongeveer ${gain.pts.toFixed(1)} extra punt${gain.pts >= 1.5 ? 'en' : ''} op een examen als je dat hoofdstuk beheerst.`),
 
     h('section', { class: 'card' },
       h('div', { class: 'row between' }, h('h2', {}, 'Per onderdeel'),
         h('div', { class: 'legend' },
-          h('span', {}, h('i', { style: 'background:var(--green)' }), 'beheerst (laatste antwoord goed)'),
+          h('span', {}, h('i', { style: 'background:var(--green)' }), 'stevig (meerdere keren goed, over dagen)'),
           h('span', {}, h('i', { style: 'background:rgba(77,163,255,.5)' }), 'gezien'))),
       withQ.map(c => {
         const s = cs[c.n] || { a: 0, ok: 0, seen: 0, mastered: 0, pond: 0 };
-        const sp = known(s);
+        const ec = est.byCh[c.n], ep = ec ? Math.round(ec.p * 100) : 0, st = ec ? ec.stable : 0;
         return h('div', { class: 'chap' },
           h('div', { class: 'row between' },
             h('b', {}, `H${c.n} · ${c.title}`),
-            s.seen ? h('span', { class: 'pct ' + pctClass(sp), title: 'Van de vragen die je gezien hebt: laatste antwoord goed' }, `${sp}% laatst goed`) : h('span', { class: 'muted small' }, 'nog niet geoefend')),
-          h('div', { class: 'bar', role: 'img', 'aria-label': `${s.mastered} van ${c.count} vragen beheerst` },
+            s.seen ? h('span', { class: 'pct ' + pctClass(ep), title: 'Geschatte kans dat je een willekeurige vraag uit dit hoofdstuk nu goed hebt (ongeziene vragen tellen als gokken)' }, `${ep}% verwacht`) : h('span', { class: 'muted small' }, 'nog niet geoefend')),
+          h('div', { class: 'bar', role: 'img', 'aria-label': `${st} van ${c.count} vragen stevig, ${s.seen} gezien` },
             h('i', { class: 'seen', style: `width:${pct(s.seen, c.count)}%` }),
-            h('i', { class: 'mast', style: `width:${pct(s.mastered, c.count)}%` })),
+            h('i', { class: 'mast', style: `width:${pct(st, c.count)}%` })),
           c.theory && theory.getTheory(c.n) && h('details', { class: 'secs' }, h('summary', {}, 'Per paragraaf'), sectionRows(theory.getTheory(c.n), 'stats')),
           h('div', { class: 'row between small muted' },
-            h('span', {}, `Beheerst ${s.mastered}/${c.count} · gezien ${s.seen}/${c.count} · alle pogingen ${s.ok}/${s.a} goed`),
+            h('span', {}, `Stevig ${st}/${c.count} · gezien ${s.seen}/${c.count} · laatst goed ${s.mastered} · alle pogingen ${s.ok}/${s.a} goed`),
             s.pond > 0 && h('button', { class: 'linklike small', onclick: () => {
               store.setPrefs({ sel: [c.n], onlyPond: true, onlyDue: false, mode: 'practice' }); startSession();
             } }, `Oefen ${s.pond} foute`)));
@@ -1677,6 +1742,7 @@ async function init() {
   $app.replaceChildren(h('p', { class: 'muted' }, 'Laden…'));
   try {
     chapters = await quiz.loadIndex();
+    store.onChange(() => { clearTimeout(snapT); snapT = setTimeout(snapTrend, 2000); });
   } catch (e) {
     $app.replaceChildren(h('div', { class: 'card' }, h('h2', {}, 'Vragen niet gevonden'),
       h('p', {}, 'Het bestand data/index.json kon niet worden geladen. Draai je de app via een webserver (of GitHub Pages) en niet via file://?'),

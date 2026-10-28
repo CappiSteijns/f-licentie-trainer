@@ -33,8 +33,8 @@ function safeSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); retur
 
 function loadState() {
   const s = safeGet(KEY);
-  if (s && s.v === 1 && s.q) return { v: 1, q: s.q, exams: s.exams || [], rd: s.rd || {}, c: s.c || {}, days: s.days || {}, hist: s.hist || [], resetAt: s.resetAt || 0 };
-  return { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], resetAt: 0 };
+  if (s && s.v === 1 && s.q) return { v: 1, q: s.q, exams: s.exams || [], rd: s.rd || {}, c: s.c || {}, days: s.days || {}, hist: s.hist || [], tr: s.tr || {}, resetAt: s.resetAt || 0 };
+  return { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, resetAt: 0 };
 }
 function loadPrefs() { return { ...DEFAULT_PREFS, ...(safeGet(PKEY) || {}) }; }
 
@@ -113,6 +113,16 @@ export const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.g
 function bumpDay() { const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1; }
 export const todayCount = () => state.days[dayKey()] || 0;
 export const dayCounts = () => state.days;
+// ---- trend van de verwachte examenscore: één meting per dag (de laatste van die dag) ----
+export const trend = () => state.tr;
+export function recordTrend(value) {
+  const k = dayKey(), v = Math.round(value);
+  if (state.tr[k] && state.tr[k][0] === v) return;
+  state.tr[k] = [v, Date.now()];
+  const keys = Object.keys(state.tr).sort();
+  while (keys.length > 400) delete state.tr[keys.shift()];
+  persist(true);
+}
 /** Reeks (zoals Anki) = aantal opeenvolgende dagen met minstens één beantwoorde vraag of kaart. Is vandaag nog niets gedaan, dan breekt de reeks pas morgen. */
 export function streak(goal = 1) {
   const g = Math.max(1, goal | 0);
@@ -230,7 +240,7 @@ export function undoExam(id) {
 }
 
 export function resetAll() {
-  state = { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], resetAt: Date.now() };
+  state = { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, resetAt: Date.now() };
   persist();
 }
 
@@ -261,7 +271,7 @@ export const clearSession = () => { try { localStorage.removeItem(SKEY); } catch
 
 // ---- export / samenvoegen --------------------------------------------------
 export function exportData() {
-  return { v: 1, app: 'f-licentie-oefenen', exportedAt: Date.now(), resetAt: state.resetAt, q: state.q, exams: state.exams, rd: state.rd, c: state.c, days: state.days, hist: state.hist };
+  return { v: 1, app: 'f-licentie-oefenen', exportedAt: Date.now(), resetAt: state.resetAt, q: state.q, exams: state.exams, rd: state.rd, c: state.c, days: state.days, hist: state.hist, tr: state.tr };
 }
 
 export function mergeData(a, b) {
@@ -305,7 +315,14 @@ export function mergeData(a, b) {
   }
   let hist = [...hm.values()].sort((x, y) => x.t - y.t), tot = hist.reduce((n, x) => n + x.a.length, 0);
   while (tot > HIST_MAX_EVENTS && hist.length > 1) tot -= hist.shift().a.length;
-  return { v: 1, resetAt, q, rd, c, days, hist, exams: [...ex.values()].sort((x, y) => x.t - y.t) };
+  const tr = {};   // trend: per dag de verwachte examenscore (in tienden van procenten) met tijdstip; de nieuwste meting wint
+  for (const src of [a.tr || {}, b.tr || {}]) {
+    for (const [k, v] of Object.entries(src)) {
+      if (!Array.isArray(v) || (resetAt && k < cut)) continue;
+      if (!tr[k] || (v[1] || 0) > tr[k][1]) tr[k] = [v[0] | 0, v[1] || 0];
+    }
+  }
+  return { v: 1, resetAt, q, rd, c, days, hist, tr, exams: [...ex.values()].sort((x, y) => x.t - y.t) };
 }
 
 /** Voegt externe data samen met de lokale data. Geeft een samenvatting terug. */
@@ -334,6 +351,7 @@ function pack(d) {
     g: Object.entries(d.rd || {}).map(([k, v]) => [k, v.t, v.r]),
     k: Object.entries(d.c || {}).map(([k, r]) => [k, r.a, r.ok, r.t, r.b, r.d]),
     n: d.days || {},
+    s: Object.entries(d.tr || {}).map(([k, v]) => [k, v[0], v[1]]),
   };
 }
 function unpack(p) {
@@ -343,6 +361,7 @@ function unpack(p) {
     rd: Object.fromEntries((p.g || []).map(a => [a[0], { t: a[1], r: a[2] }])),
     c: Object.fromEntries((p.k || []).map(a => [a[0], { a: a[1], ok: a[2], t: a[3], b: a[4], d: a[5] }])),
     days: p.n || {},
+    tr: Object.fromEntries((p.s || []).map(a => [a[0], [a[1], a[2]]])),
     exams: (p.e || []).map(a => ({ id: a[0], t: a[1], score: a[2], total: a[3], pass: !!a[4], secs: a[5], ...(a[6] ? { del: 1 } : {}) })),
   };
 }
