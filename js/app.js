@@ -128,6 +128,9 @@ function explanation(q, open) {
     h('div', { class: 'expl-body' }, paras, (q.sImages || []).length ? [btn, imgs] : null));
 }
 
+/** Herkomst van een vraag: alle vragen in oefenen, herhalen en foutenvijver komen uit de examens-pdf's. */
+const originLine = q => h('div', { class: 'origin small muted' }, h('span', { class: 'badge', title: 'Deze vraag komt uit de examenvragen-pdf (vragenbank), niet uit de theorie-pdf.' }, '📝 Examenvraag'), q.source ? ` ${q.source}` : '');
+
 const optText = (q, id) => { const o = q.options.find(x => x.id === id); return o ? `${id}. ${o.text}` : '—'; };
 
 // ---------------------------------------------------------------- SETUP
@@ -423,6 +426,7 @@ function viewPractice() {
       store.isPond(id) && !answered && h('span', { class: 'badge red' }, 'Uit foutenvijver'),
       h('button', { class: 'ghost small', title: 'De ronde blijft bewaard; je gaat later verder waar je bent gebleven', onclick: pausePractice }, '⏸ Pauzeren'),
       h('button', { class: 'ghost small', title: 'De ronde afsluiten en het resultaat zien', onclick: stopPractice }, 'Afronden')),
+    originLine(q),
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': S.ids.length, 'aria-valuenow': S.idx + (answered ? 1 : 0) },
       h('i', { style: `width:${pct(S.idx + (answered ? 1 : 0), S.ids.length)}%` })),
     h('div', { class: 'card', style: 'margin-top:1rem' },
@@ -622,7 +626,7 @@ function viewResult() {
     wrong.map(d => {
       const q = quiz.QMAP.get(d.id);
       return h('div', { class: 'card mistake' },
-        h('div', { class: 'qmeta' }, `H${q.chapter} · opgave ${q.chapter}-${q.number}`),
+        h('div', { class: 'qmeta' }, `📝 Examenvraag · H${q.chapter} · opgave ${q.chapter}-${q.number}`),
         h('p', { class: 'stem' }, q.question),
         figures(q),
         original(q),
