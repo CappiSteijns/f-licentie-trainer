@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Versienummer = het nummer van de bouwrun op GitHub, zodat elke nieuwe apk de oude kan vervangen.
+def runNumber = (System.getenv('GITHUB_RUN_NUMBER') ?: '1').toInteger()
+def keystoreFile = rootProject.file('release.jks')
+
+android {
+    namespace 'nl.flicentie.trainer'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'nl.flicentie.trainer'
+        minSdk 24
+        targetSdk 34
+        versionCode runNumber
+        versionName "1.${runNumber}"
+    }
+
+    signingConfigs {
+        release {
+            if (keystoreFile.exists()) {
+                storeFile keystoreFile
+                storePassword System.getenv('KEYSTORE_PASSWORD')
+                keyAlias System.getenv('KEY_ALIAS')
+                keyPassword System.getenv('KEY_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            // Zonder eigen sleutel (bijv. lokaal) tekenen we met de debug-sleutel, zodat de apk wel installeerbaar is.
+            signingConfig keystoreFile.exists() ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

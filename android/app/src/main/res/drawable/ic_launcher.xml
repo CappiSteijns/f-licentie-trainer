@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#0F1419" android:pathData="M0,0h108v108h-108z" />
+    <path android:fillColor="#171D26" android:pathData="M18,18h72a8,8 0 0 1 8,8v56a8,8 0 0 1 -8,8h-72a8,8 0 0 1 -8,-8v-56a8,8 0 0 1 8,-8z" />
+    <!-- antennemast -->
+    <path android:strokeColor="#4DA3FF" android:strokeWidth="5" android:strokeLineCap="round" android:pathData="M54,44 L54,84" />
+    <path android:strokeColor="#4DA3FF" android:strokeWidth="5" android:strokeLineCap="round" android:pathData="M40,84 L68,84" />
+    <path android:fillColor="#4DA3FF" android:pathData="M54,38m-6,0a6,6 0 1 1 12,0a6,6 0 1 1 -12,0" />
+    <!-- radiogolven -->
+    <path android:strokeColor="#3FB950" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M42,28 A17,17 0 0 0 42,48" />
+    <path android:strokeColor="#3FB950" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M66,28 A17,17 0 0 1 66,48" />
+    <path android:strokeColor="#3FB950" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M34,22 A27,27 0 0 0 34,54" />
+    <path android:strokeColor="#3FB950" android:strokeWidth="4" android:strokeLineCap="round" android:pathData="M74,22 A27,27 0 0 1 74,54" />
+</vector>

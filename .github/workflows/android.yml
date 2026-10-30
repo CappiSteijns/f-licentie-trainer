@@ -1,0 +1,42 @@
+name: Android-apk
+
+# Bouwt de apk van de map android/ en zet hem onder "Releases" (tag android-latest), zodat je hem op je telefoon kunt downloaden.
+on:
+  push:
+    branches: [theorie, main]
+    paths: ['android/**', '.github/workflows/android.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+        with: { gradle-version: '8.7' }
+      - name: Sleutel klaarzetten
+        env:
+          KS: ${{ secrets.ANDROID_KEYSTORE_B64 }}
+        run: |
+          if [ -n "$KS" ]; then echo "$KS" | base64 -d > android/release.jks; echo "Sleutel uit de secrets gebruikt"; else cp android/sideload.jks android/release.jks; echo "Vaste sideload-sleutel uit de repo gebruikt"; fi
+      - name: Apk bouwen
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD || 'flic-sideload' }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS || 'flic' }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD || 'flic-sideload' }}
+        run: gradle -p android assembleRelease --no-daemon
+      - name: Apk hernoemen
+        run: cp android/app/build/outputs/apk/release/app-release.apk F-licentie.apk
+      - uses: actions/upload-artifact@v4
+        with: { name: F-licentie-apk, path: F-licentie.apk }
+      - name: Publiceren onder Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete android-latest --yes --cleanup-tag || true
+          gh release create android-latest F-licentie.apk --target "$GITHUB_SHA" --title "F-licentie apk (build ${{ github.run_number }})" --notes "Download F-licentie.apk op je Android-toestel en open het bestand om te installeren. Build ${{ github.run_number }}, commit ${GITHUB_SHA::7}." --latest=false

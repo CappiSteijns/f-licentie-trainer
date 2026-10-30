@@ -871,6 +871,9 @@ function viewSync() {
 
   return h('div', {},
     h('h1', {}, 'Meer manieren om voortgang mee te nemen'),
+    window.FlicApp && h('section', { class: 'card' }, h('h2', {}, 'Android-app'),
+      h('p', { class: 'muted small' }, `Je gebruikt de Android-app met de server ${window.FlicApp.server()}. Let op: de voortgang in de app staat los van die in je browser; log in met je account (tabblad Account) om ze samen te voegen.`),
+      h('button', { onclick: () => window.FlicApp.changeServer() }, 'Serveradres van de app wijzigen')),
     account.enabled() && !account.loggedIn() && h('div', { class: 'notice' }, 'Het makkelijkst: ', h('button', { class: 'linklike', onclick: () => setView('account') }, 'maak een account'), ' en log overal in met hetzelfde e-mailadres. Onderstaande opties werken ook zonder account.'),
     h('p', { class: 'muted' }, 'Kies wat het beste past. Gegevens worden altijd ', h('i', {}, 'samengevoegd'), ' (per vraag wint de nieuwste poging), dus je raakt niets kwijt als je op meerdere apparaten oefent.'),
 
