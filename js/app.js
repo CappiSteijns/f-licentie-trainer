@@ -86,7 +86,7 @@ function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
   const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
-    h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S ? 'session' : k) }, label)));
+    h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S && view !== 'setup' ? 'session' : k) }, label)));
 }
 
 function render() {
@@ -285,7 +285,10 @@ function viewSetup() {
   const examN = Math.min(p.examCount, selCount);
 
   const resume = S && h('div', { class: 'notice' },
-    h('p', {}, S.mode === 'exam' ? `Je hebt een examen bezig (vraag ${S.idx + 1} van ${S.ids.length}).` : `Je hebt een oefenronde bezig (vraag ${S.idx + 1} van ${S.ids.length}).`),
+    h('p', {}, S.mode === 'exam' ? `Je hebt een examen bezig (vraag ${S.idx + 1} van ${S.ids.length}).` : (() => {
+      const done = S.ids.filter(i => S.answers[i]), known = done.every(i => quiz.QMAP.get(i)), good = done.filter(i => S.answers[i] === quiz.QMAP.get(i)?.answer).length;
+      return `Je hebt een oefenronde gepauzeerd: ${done.length} van ${S.ids.length} vragen gedaan${done.length && known ? `, ${good} goed` : ''}. Hervatten gaat verder bij vraag ${S.idx + 1}.`;
+    })()),
     h('div', { class: 'row' },
       h('button', { class: 'primary', onclick: () => setView('session') }, 'Hervatten'),
       h('button', { class: 'danger', onclick: async () => {
@@ -418,7 +421,8 @@ function viewPractice() {
       h('span', { class: 'qmeta' }, `${S.label ? S.label + ' · ' : ''}Vraag ${S.idx + 1} van ${S.ids.length} · H${q.chapter} · opgave ${q.chapter}-${q.number}`),
       formulaBtn(q.chapter),
       store.isPond(id) && !answered && h('span', { class: 'badge red' }, 'Uit foutenvijver'),
-      h('button', { class: 'ghost small', onclick: stopPractice }, 'Stoppen')),
+      h('button', { class: 'ghost small', title: 'De ronde blijft bewaard; je gaat later verder waar je bent gebleven', onclick: pausePractice }, '⏸ Pauzeren'),
+      h('button', { class: 'ghost small', title: 'De ronde afsluiten en het resultaat zien', onclick: stopPractice }, 'Afronden')),
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': S.ids.length, 'aria-valuenow': S.idx + (answered ? 1 : 0) },
       h('i', { style: `width:${pct(S.idx + (answered ? 1 : 0), S.ids.length)}%` })),
     h('div', { class: 'card', style: 'margin-top:1rem' },
@@ -456,9 +460,21 @@ function nextPractice() {
   window.scrollTo(0, 0);
 }
 
+/** Pauzeren: de ronde (en je plek erin) blijft bewaard; onder Oefenen kun je hervatten. Antwoorden zijn al opgeslagen. */
+function pausePractice() {
+  saveSession();
+  toast('Ronde gepauzeerd. Je kunt hem onder Oefenen hervatten.');
+  setView('setup');
+}
+
 async function stopPractice() {
-  const n = Object.keys(S.answers).length;
+  const n = Object.keys(S.answers).length, left = S.ids.length - n;
   if (n === 0) { S = null; store.clearSession(); setView('setup'); return; }
+  if (left > 0 && !await confirmDlg({
+    title: 'Ronde afronden?',
+    body: h('div', {}, h('p', {}, `Je hebt ${n} van de ${S.ids.length} vragen beantwoord. Die zijn al opgeslagen in je voortgang.`),
+      h('p', {}, `De overige ${left} vragen van deze ronde vervallen. Wil je er later mee verder? Kies dan ‘Pauzeren’.`)),
+    ok: 'Afronden' })) return;
   finishPractice();
 }
 
