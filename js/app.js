@@ -129,7 +129,13 @@ function explanation(q, open) {
 }
 
 /** Herkomst van een vraag: alle vragen in oefenen, herhalen en foutenvijver komen uit de examens-pdf's. */
-const originLine = q => h('div', { class: 'origin small muted' }, h('span', { class: 'badge', title: 'Deze vraag komt uit de examenvragen-pdf (vragenbank), niet uit de theorie-pdf.' }, '📝 Examenvraag'), q.source ? ` ${q.source}` : '');
+const originLine = q => h('div', { class: 'origin small muted' }, h('span', { class: 'badge', title: 'Deze vraag komt uit de examenvragen-pdf (vragenbank), niet uit de theorie-pdf.' }, '📝 Examenvraag'), q.source ? ` ${q.source}` : '', ' ', flagBtn(q.id));
+/** Markeer-knop (🔖): zet de vraag in de lijst 'Gemarkeerde vragen' onder Oefenen. Sneltoets: M. */
+const flagBtn = id => {
+  const on = store.isFlagged(id);
+  return h('button', { class: 'flag' + (on ? ' on' : ''), 'aria-pressed': on ? 'true' : 'false', title: on ? 'Markering weghalen (M)' : 'Markeer deze vraag om hem later terug te vinden (M)',
+    onclick: () => { const now = store.toggleFlag(id); toast(now ? 'Vraag gemarkeerd. Je vindt hem onder Oefenen → Gemarkeerde vragen.' : 'Markering weggehaald.'); render(); } }, on ? '🔖 Gemarkeerd' : '🔖 Markeren');
+};
 
 const optText = (q, id) => { const o = q.options.find(x => x.id === id); return o ? `${id}. ${o.text}` : '—'; };
 
@@ -241,7 +247,7 @@ function findCard() {
         const r = store.record(x.id);
         const st = !r ? h('span', { class: 'badge' }, 'nieuw') : r.l ? h('span', { class: 'badge green' }, 'laatst goed') : h('span', { class: 'badge red' }, 'laatst fout');
         return h('div', { class: 'find-row' },
-          h('div', { class: 'find-t' }, h('b', {}, `H${x.chapter} · examenvraag ${x.number}`), ' ', st,
+          h('div', { class: 'find-t' }, h('b', {}, `H${x.chapter} · examenvraag ${x.number}`), ' ', st, store.isFlagged(x.id) && h('span', { class: 'badge', title: 'Gemarkeerd' }, '🔖'),
             h('div', { class: 'small' }, x.question.length > 140 ? x.question.slice(0, 140) + '…' : x.question),
             x.source && h('div', { class: 'small muted' }, x.source)),
           h('button', { class: 'primary small', onclick: () => startIds([x.id]) }, 'Oefen'));
@@ -264,6 +270,30 @@ function findCard() {
   }
   draw();
   return h('details', { class: 'card find', open: !!(FIND.q.trim() || FIND.ch) }, h('summary', {}, h('b', {}, '🔎 Een specifieke vraag oefenen of alles bekijken')), h('div', { style: 'margin-top:.7rem' }, input, filters, box));
+}
+
+// ---- gemarkeerde vragen
+const FLAGS = { loaded: false, loading: false };
+function flaggedCard() {
+  const ids = store.flaggedIds();
+  if (!ids.length) return null;
+  const need = [...new Set(ids.map(quiz.chapterOf))];
+  if (!need.every(n => quiz.cachedChapter(n).length) && !FLAGS.loading) {
+    FLAGS.loading = true;
+    quiz.loadChapters(need).then(() => { FLAGS.loading = false; render(); }).catch(() => { FLAGS.loading = false; });
+  }
+  const qs = ids.map(id => quiz.QMAP.get(id)).filter(Boolean);
+  return h('details', { class: 'card find flagged', open: ids.length <= 12 },
+    h('summary', {}, h('b', {}, `🔖 Gemarkeerde vragen (${ids.length})`)),
+    h('div', { style: 'margin-top:.7rem' },
+      qs.length < ids.length ? h('p', { class: 'muted small' }, 'Vragen laden…') : null,
+      qs.length > 1 && h('div', { class: 'row', style: 'margin-bottom:.5rem' }, h('button', { class: 'primary small', onclick: () => startIds(qs.map(q => q.id)) }, `Oefen alle ${qs.length}`)),
+      qs.map(q => h('div', { class: 'find-row' },
+        h('div', { class: 'find-t' }, h('b', {}, `H${q.chapter} · examenvraag ${q.number}`),
+          h('div', { class: 'small' }, q.question.length > 140 ? q.question.slice(0, 140) + '…' : q.question)),
+        h('div', { class: 'row', style: 'gap:.4rem' },
+          h('button', { class: 'primary small', onclick: () => startIds([q.id]) }, 'Oefen'),
+          h('button', { class: 'ghost small', title: 'Markering weghalen', onclick: () => { store.toggleFlag(q.id); render(); } }, '✕'))))));
 }
 
 function startReview() {
@@ -320,6 +350,7 @@ function viewSetup() {
     h('h1', {}, 'Oefenen voor het F-examen'),
     goalCard(),
     findCard(),
+    flaggedCard(),
     h('p', { class: 'muted' }, 'Kies de onderdelen, de modus en start. Je voortgang wordt in deze browser bewaard; via “Synchroniseren” neem je hem mee naar een ander apparaat.'),
 
     h('section', { class: 'card' },
@@ -522,6 +553,7 @@ function viewExam() {
   return h('div', {},
     h('div', { class: 'qhead' },
       h('span', { class: 'qmeta' }, `Examen · vraag ${S.idx + 1} van ${n} · ${answeredCount} beantwoord`),
+      flagBtn(id),
       h('div', { class: 'row' }, timer,
         h('button', { class: 'primary', onclick: submitExam }, 'Inleveren'))),
     h('div', { class: 'progress' }, h('i', { style: `width:${pct(answeredCount, n)}%` })),
@@ -626,7 +658,7 @@ function viewResult() {
     wrong.map(d => {
       const q = quiz.QMAP.get(d.id);
       return h('div', { class: 'card mistake' },
-        h('div', { class: 'qmeta' }, `📝 Examenvraag · H${q.chapter} · opgave ${q.chapter}-${q.number}`),
+        h('div', { class: 'qmeta' }, `📝 Examenvraag · H${q.chapter} · opgave ${q.chapter}-${q.number}`, ' ', flagBtn(q.id)),
         h('p', { class: 'stem' }, q.question),
         figures(q),
         original(q),
@@ -1154,7 +1186,8 @@ document.addEventListener('keydown', e => {
   const id = S.ids[S.idx], q = quiz.QMAP.get(id);
   const k = e.key.toLowerCase();
   const letter = { '1': 'A', '2': 'B', '3': 'C', '4': 'D', a: 'A', b: 'B', c: 'C', d: 'D' }[k];
-  if (letter && q.options.some(o => o.id === letter)) {
+  if (k === 'm') { store.toggleFlag(id); render(); e.preventDefault(); }
+  else if (letter && q.options.some(o => o.id === letter)) {
     if (S.mode === 'practice') answerPractice(q, letter);
     else { if (S.answers[id] === letter) delete S.answers[id]; else S.answers[id] = letter; saveSession(); render(); }
     e.preventDefault();

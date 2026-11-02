@@ -342,3 +342,7 @@ body.has-tools #app { padding-bottom: 7rem; }
 .trend svg { max-height: 260px; }
 
 .origin { margin: .35rem 0 .1rem; }
+
+/* markeren */
+.flag { background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 99px; padding: .15rem .6rem; font-size: .8rem; cursor: pointer; }
+.flag.on { border-color: var(--amber); color: var(--amber); background: rgba(210, 153, 34, .14); font-weight: 600; }
