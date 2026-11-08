@@ -161,7 +161,7 @@ textarea { width: 100%; font: .8rem/1.4 ui-monospace, monospace; background: var
 .seg { display: flex; gap: .4rem; margin-bottom: 1rem; }
 .seg button { flex: 1; }
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
-@media (max-width: 420px) { #nav button { padding: .45rem .55rem; font-size: .92rem; } }
+@media (max-width: 420px) { #nav { gap: 0; } #nav button { padding: .4rem .42rem; font-size: .84rem; } }
 
 /* theorie & leren */
 .tlinks { margin-top: .8rem; font-size: .92rem; display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: center; color: var(--muted); }
@@ -352,3 +352,21 @@ body.has-tools #app { padding-bottom: 7rem; }
 .studychip.run { color: var(--text); border-color: var(--accent); }
 .studychip.pause { opacity: .75; }
 .studychip.done { color: var(--green); border-color: var(--green); }
+
+/* prestaties */
+.ach-banner { position: fixed; z-index: 100; top: 4.5rem; left: 50%; transform: translate(-50%, -140%); display: flex; gap: .8rem; align-items: center; max-width: min(92vw, 26rem); background: var(--surface-2); border: 1px solid var(--amber); box-shadow: 0 8px 30px rgba(0,0,0,.45); border-radius: 14px; padding: .7rem 1rem; cursor: pointer; transition: transform .35s cubic-bezier(.2,.9,.3,1.2); }
+.ach-banner.in { transform: translate(-50%, 0); }
+.ach-banner .ach-ic { font-size: 2rem; }
+.ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: .6rem; }
+.ach-card { display: flex; gap: .7rem; align-items: flex-start; border: 1px solid var(--border); border-radius: 12px; padding: .6rem .75rem; background: var(--surface); }
+.ach-card .ach-ic { font-size: 1.8rem; line-height: 1; }
+.ach-card.locked { opacity: .78; }
+.ach-card.locked .ach-ic { filter: grayscale(1); opacity: .6; }
+.ach-card.done.tier0 { border-color: #b87333; }
+.ach-card.done.tier1 { border-color: #aab4c0; }
+.ach-card.done.tier2 { border-color: var(--amber); background: rgba(210, 153, 34, .08); }
+.ach-when { color: var(--green); }
+.ach-prog { display: flex; gap: .5rem; align-items: center; margin-top: .25rem; }
+.ach-prog .bar { flex: 1; }
+.chip { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); border-radius: 99px; padding: .25rem .8rem; font: inherit; font-size: .85rem; cursor: pointer; }
+.chip.on { color: var(--text); border-color: var(--accent); }

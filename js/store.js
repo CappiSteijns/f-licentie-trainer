@@ -35,8 +35,8 @@ function safeSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); retur
 
 function loadState() {
   const s = safeGet(KEY);
-  if (s && s.v === 1 && s.q) return { v: 1, q: s.q, exams: s.exams || [], rd: s.rd || {}, c: s.c || {}, days: s.days || {}, hist: s.hist || [], tr: s.tr || {}, fl: s.fl || {}, resetAt: s.resetAt || 0 };
-  return { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, fl: {}, resetAt: 0 };
+  if (s && s.v === 1 && s.q) return { v: 1, q: s.q, exams: s.exams || [], rd: s.rd || {}, c: s.c || {}, days: s.days || {}, hist: s.hist || [], tr: s.tr || {}, fl: s.fl || {}, ac: s.ac || {}, resetAt: s.resetAt || 0 };
+  return { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, fl: {}, ac: {}, resetAt: 0 };
 }
 function loadPrefs() { return { ...DEFAULT_PREFS, ...(safeGet(PKEY) || {}) }; }
 
@@ -89,7 +89,7 @@ export const record = id => (state.q[id] && state.q[id].a > 0 ? state.q[id] : nu
 export const hasLocalData = () => Object.keys(state.q).length > 0 || state.exams.length > 0 || Object.keys(state.rd).length > 0 || Object.keys(state.c).length > 0;
 /** Wist alleen de lokale kopie (bijv. bij uitloggen). Geen reset-tijdstempel, dus niets wordt elders gewist. */
 export function clearLocal() {
-  state = { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, fl: {}, resetAt: 0 };
+  state = { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, fl: {}, ac: {}, resetAt: 0 };
   persist(true);
 }
 export const allRecords = () => state.q;
@@ -123,6 +123,14 @@ export function toggleFlag(id) {
   state.fl[id] = [on ? 1 : 0, Math.max(Date.now(), ((state.fl[id] || [0, 0])[1] || 0) + 1)];
   persist();
   return on;
+}
+// ---- prestaties: id -> tijdstip van behalen (0 = al behaald vóórdat prestaties bestonden); '_' markeert de eerste controle ----
+export const achievements = () => state.ac;
+export function grantAchievements(ids, t = Date.now()) {
+  let n = 0;
+  for (const id of ids) if (state.ac[id] === undefined) { state.ac[id] = t; n++; }
+  if (n) persist();
+  return n;
 }
 // ---- trend van de verwachte examenscore: één meting per dag (de laatste van die dag) ----
 export const trend = () => state.tr;
@@ -160,6 +168,7 @@ export function bestStreak(goal = 1) {
 
 // ---- flashcards (eigen Leitner-schema, los van de vragen) ---------------------
 // c['hs3:c5'] = { a, ok, t, b, d }. 'weet ik' = goed, 'nog niet' = fout (zelfde intervallen als vragen).
+export const allCards = () => state.c;
 export const cardRec = key => state.c[key] || null;
 export const cardDue = (key, now = Date.now()) => { const r = state.c[key]; return !r || r.d <= now; };
 export function recordCard(key, knew) {
@@ -251,7 +260,7 @@ export function undoExam(id) {
 }
 
 export function resetAll() {
-  state = { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, fl: {}, resetAt: Date.now() };
+  state = { v: 1, q: {}, exams: [], rd: {}, c: {}, days: {}, hist: [], tr: {}, fl: {}, ac: {}, resetAt: Date.now() };
   persist();
 }
 
@@ -282,7 +291,7 @@ export const clearSession = () => { try { localStorage.removeItem(SKEY); } catch
 
 // ---- export / samenvoegen --------------------------------------------------
 export function exportData() {
-  return { v: 1, app: 'f-licentie-oefenen', exportedAt: Date.now(), resetAt: state.resetAt, q: state.q, exams: state.exams, rd: state.rd, c: state.c, days: state.days, hist: state.hist, tr: state.tr, fl: state.fl };
+  return { v: 1, app: 'f-licentie-oefenen', exportedAt: Date.now(), resetAt: state.resetAt, q: state.q, exams: state.exams, rd: state.rd, c: state.c, days: state.days, hist: state.hist, tr: state.tr, fl: state.fl, ac: state.ac };
 }
 
 export function mergeData(a, b) {
@@ -340,7 +349,14 @@ export function mergeData(a, b) {
       if (!fl[id] || v[1] > fl[id][1]) fl[id] = [v[0] ? 1 : 0, v[1]];
     }
   }
-  return { v: 1, resetAt, q, rd, c, days, hist, tr, fl, exams: [...ex.values()].sort((x, y) => x.t - y.t) };
+  const ac = {};   // prestaties: id -> tijdstip van behalen (0 = al eerder behaald); het vroegste tijdstip wint
+  for (const src of [a.ac || {}, b.ac || {}]) {
+    for (const [id, t] of Object.entries(src)) {
+      if (typeof t !== 'number' || (id !== '_' && t > 0 && t <= resetAt)) continue;
+      ac[id] = ac[id] === undefined ? t : Math.min(ac[id], t);
+    }
+  }
+  return { v: 1, resetAt, q, rd, c, days, hist, tr, fl, ac, exams: [...ex.values()].sort((x, y) => x.t - y.t) };
 }
 
 /** Voegt externe data samen met de lokale data. Geeft een samenvatting terug. */
@@ -371,6 +387,7 @@ function pack(d) {
     n: d.days || {},
     s: Object.entries(d.tr || {}).map(([k, v]) => [k, v[0], v[1]]),
     m: Object.entries(d.fl || {}).map(([k, v]) => [k, v[0], v[1]]),
+    z: Object.entries(d.ac || {}),
   };
 }
 function unpack(p) {
@@ -382,6 +399,7 @@ function unpack(p) {
     days: p.n || {},
     tr: Object.fromEntries((p.s || []).map(a => [a[0], [a[1], a[2]]])),
     fl: Object.fromEntries((p.m || []).map(a => [a[0], [a[1], a[2]]])),
+    ac: Object.fromEntries(p.z || []),
     exams: (p.e || []).map(a => ({ id: a[0], t: a[1], score: a[2], total: a[3], pass: !!a[4], secs: a[5], ...(a[6] ? { del: 1 } : {}) })),
   };
 }

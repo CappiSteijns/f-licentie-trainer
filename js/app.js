@@ -8,6 +8,7 @@ import * as drill from './drill.js';
 import * as progress from './progress.js';
 import * as study from './study.js';
 import { confetti } from './confetti.js';
+import * as ach from './achievements.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -85,10 +86,10 @@ function setView(v) {
 }
 
 function renderNav() {
-  const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
+  const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['ach', '🏆'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
   const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
-    h('button', { 'aria-current': active === k ? 'page' : null, onclick: () => setView(k === 'setup' && S && view !== 'setup' ? 'session' : k) }, label)));
+    h('button', { 'aria-current': active === k ? 'page' : null, ...(k === 'ach' ? { 'aria-label': 'Prestaties', title: 'Prestaties' } : {}), onclick: () => setView(k === 'setup' && S && view !== 'setup' ? 'session' : k) }, label)));
 }
 
 function render() {
@@ -96,9 +97,10 @@ function render() {
   tools.setToolsVisible(view === 'session' || view === 'fgame');
   tools.setInkKey([view, S && S.idx, FG && FG.n, FG && FG.stage, K && K.idx, T && T.secId, X && X.ex.id, X && X.picked].join('|'));
   renderNav();
-  const fn = { setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { ach: viewAch, setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
+  scheduleAch();
 }
 
 // ---------------------------------------------------------------- kleine bouwstenen
@@ -1795,6 +1797,82 @@ async function handleHashImport() {
   await importShare(m[1]);
 }
 
+// ---------------------------------------------------------------- prestaties
+let achT = 0, achBusy = false;
+const achQueue = [];
+function achCtx() {
+  return ach.buildCtx({ chapters, chapterOf: quiz.chapterOf, theoryOf: theory.getTheory, expected: chapters.length ? estimateNow().expected : 0 });
+}
+function scheduleAch() { clearTimeout(achT); achT = setTimeout(checkAch, 900); }
+/** Controleert of er nieuwe prestaties zijn behaald. De eerste keer worden bestaande prestaties stilletjes vastgelegd. */
+function checkAch() {
+  if (!chapters.length) return;
+  if (view === 'session' && S && S.mode === 'exam') return;   // niet storen tijdens een examen
+  const list = ach.evaluate(achCtx());
+  const ac = store.achievements();
+  const fresh = list.filter(a => a.sat && ac[a.id] === undefined);
+  if (ac._ === undefined) {   // eerste keer: alles wat je al hebt gedaan telt mee, zonder feestje
+    store.grantAchievements(['_', ...fresh.map(a => a.id)], 0);
+    return;
+  }
+  if (!fresh.length) return;
+  store.grantAchievements(fresh.map(a => a.id));
+  announce(fresh);
+}
+/** Geeft een prestatie door (bijv. een gebeurtenis die niet uit je voortgang valt af te leiden). */
+function grantEvent(id) {
+  if (store.achievements()[id] !== undefined) return;
+  const a = ach.evaluate(achCtx()).find(x => x.id === id);
+  store.grantAchievements([id]);
+  if (a) announce([a]);
+}
+function announce(list) {
+  if (list.length > 3) achQueue.push({ many: list.length });
+  else list.forEach(a => achQueue.push(a));
+  showNextAch();
+}
+function showNextAch() {
+  if (achBusy || !achQueue.length) return;
+  achBusy = true;
+  const a = achQueue.shift();
+  const el = h('div', { class: 'ach-banner', role: 'status', onclick: () => { el.remove(); setView('ach'); } },
+    a.many
+      ? [h('span', { class: 'ach-ic' }, '🏆'), h('div', {}, h('b', {}, `${a.many} nieuwe prestaties!`), h('div', { class: 'small' }, 'Tik om ze te bekijken'))]
+      : [h('span', { class: 'ach-ic' }, a.icon), h('div', {}, h('div', { class: 'small' }, 'Prestatie behaald'), h('b', {}, a.name), h('div', { class: 'small' }, a.desc))]);
+  document.body.append(el);
+  requestAnimationFrame(() => el.classList.add('in'));
+  confetti(a.many || (a.tier || 0) >= 2 ? 3200 : 2000);
+  setTimeout(() => { el.classList.remove('in'); setTimeout(() => { el.remove(); achBusy = false; showNextAch(); }, 400); }, 4200);
+}
+
+let achFilter = 'all';
+function viewAch() {
+  const list = ach.evaluate(achCtx());
+  const done = list.filter(a => a.done).length, frac = done / list.length;
+  const rank = ach.rankFor(frac), nextRank = ach.RANKS.find(r => r[0] > frac);
+  const seg = (k, label) => h('button', { class: 'chip' + (achFilter === k ? ' on' : ''), onclick: () => { achFilter = k; render(); } }, label);
+  const fmtAt = t => (t ? new Date(t).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' }) : 'eerder behaald');
+  const card = a => h('div', { class: `ach-card tier${a.tier}` + (a.done ? ' done' : ' locked') },
+    h('span', { class: 'ach-ic' }, a.done ? a.icon : '🔒'),
+    h('div', { class: 'ach-t' }, h('b', {}, a.name), h('div', { class: 'small muted' }, a.desc),
+      a.done ? h('div', { class: 'small ach-when' }, '✓ ' + fmtAt(a.at))
+        : h('div', { class: 'ach-prog' }, h('div', { class: 'bar' }, h('i', { class: 'seen', style: `width:${Math.round(a.cur / a.target * 100)}%` })), h('span', { class: 'small muted' }, `${Math.floor(a.cur)} / ${a.target >= 99 && /hoofdstuk/.test(a.desc) ? 'alle' : a.target}`))));
+  return h('div', {},
+    h('h1', {}, 'Prestaties'),
+    h('section', { class: 'card ach-head' },
+      h('div', { class: 'row between' }, h('div', {}, h('div', { class: 'est-n' }, `🏆 ${done} / ${list.length}`), h('div', { class: 'muted' }, `Niveau: ${rank}`)),
+        nextRank && h('div', { class: 'small muted', style: 'text-align:right' }, `Volgend niveau (${nextRank[1]}) bij ${Math.ceil(nextRank[0] * list.length)} prestaties`)),
+      h('div', { class: 'bar', style: 'margin-top:.6rem' }, h('i', { class: 'mast', style: `width:${Math.round(frac * 100)}%` }))),
+    h('div', { class: 'row', style: 'gap:.4rem;margin:.6rem 0;flex-wrap:wrap' }, seg('all', 'Alles'), seg('done', 'Behaald'), seg('todo', 'Nog te behalen')),
+    ach.GROUPS.map(g => {
+      const items = list.filter(a => a.group === g && (achFilter === 'all' || (achFilter === 'done' ? a.done : !a.done)));
+      if (!items.length) return null;
+      const dn = list.filter(a => a.group === g && a.done).length, tot = list.filter(a => a.group === g).length;
+      return h('section', { class: 'card' }, h('h2', {}, `${g} `, h('span', { class: 'muted small' }, `${dn}/${tot}`)), h('div', { class: 'ach-grid' }, items.map(card)));
+    }),
+    h('p', { class: 'muted small' }, 'Prestaties worden berekend uit wat je al hebt gedaan, dus alles wat je eerder deed telt direct mee. Een behaalde prestatie blijft behaald.'));
+}
+
 // ---------------------------------------------------------------- leertimer
 const NO_STUDY_VIEWS = ['stats', 'account', 'sync', 'privacy', 'recovery'];
 const $study = document.getElementById('study');
@@ -1871,6 +1949,7 @@ async function studyEnded() {
     ok: 'Nog 10 minuten', cancel: 'Klaar voor nu' });
   confetti();   // het venster is al open, dus de confetti komt erboven
   const more = await ask;
+  grantEvent('timer1');
   if (more) study.extend(10);
   else {
     study.stop();
@@ -1895,7 +1974,7 @@ async function init() {
   $app.replaceChildren(h('p', { class: 'muted' }, 'Laden…'));
   try {
     chapters = await quiz.loadIndex();
-    store.onChange(() => { clearTimeout(snapT); snapT = setTimeout(snapTrend, 2000); });
+    store.onChange(() => { clearTimeout(snapT); snapT = setTimeout(snapTrend, 2000); scheduleAch(); });
   } catch (e) {
     $app.replaceChildren(h('div', { class: 'card' }, h('h2', {}, 'Vragen niet gevonden'),
       h('p', {}, 'Het bestand data/index.json kon niet worden geladen. Draai je de app via een webserver (of GitHub Pages) en niet via file://?'),
