@@ -7,6 +7,7 @@ import * as tools from './tools.js';
 import * as drill from './drill.js';
 import * as progress from './progress.js';
 import * as study from './study.js';
+import { confetti } from './confetti.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -1863,11 +1864,13 @@ async function studyOptions() {
 async function studyEnded() {
   if (!studyMoment()) { const st = study.current(); if (st) st.ended = false; return; }   // probeer het straks opnieuw
   const st = study.current(), n = store.todayCount() - (st.q0 || 0);
-  const more = await confirmDlg({
-    title: '⏱ Tijd is om!',
+  const ask = confirmDlg({
+    title: '🎉 Tijd is om!',
     body: h('div', {}, h('p', {}, `Je hebt ${st.active < 60 ? 'minder dan een minuut' : Math.round(st.active / 60) + ' minuten'} actief geleerd${n > 0 ? ` en ${n} ${n === 1 ? 'vraag' : 'vragen'} beantwoord` : ''}. Goed gedaan.`),
       h('p', { class: 'muted small' }, 'Neem nu 5 tot 10 minuten pauze: even bewegen en weg van het scherm. Pauzes helpen je om het geleerde vast te zetten.')),
     ok: 'Nog 10 minuten', cancel: 'Klaar voor nu' });
+  confetti();   // het venster is al open, dus de confetti komt erboven
+  const more = await ask;
   if (more) study.extend(10);
   else {
     study.stop();
