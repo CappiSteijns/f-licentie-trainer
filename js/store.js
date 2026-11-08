@@ -22,6 +22,8 @@ export const DEFAULT_PREFS = {
   onlyDue: false,    // alleen vragen die nu herhaald moeten worden
   examSpread: true,  // examen gespreid over de gekozen onderdelen
   mode: 'practice',
+  askStudy: true,    // bij het openen vragen hoe lang je wilt leren
+  studyMin: 25,      // laatst gekozen leerduur (minuten)
 };
 
 const listeners = new Set();

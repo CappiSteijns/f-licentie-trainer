@@ -346,3 +346,9 @@ body.has-tools #app { padding-bottom: 7rem; }
 /* markeren */
 .flag { background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 99px; padding: .15rem .6rem; font-size: .8rem; cursor: pointer; }
 .flag.on { border-color: var(--amber); color: var(--amber); background: rgba(210, 153, 34, .14); font-weight: 600; }
+
+/* leertimer */
+.studychip { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); border-radius: 99px; padding: .2rem .65rem; font: inherit; font-size: .85rem; font-variant-numeric: tabular-nums; cursor: pointer; }
+.studychip.run { color: var(--text); border-color: var(--accent); }
+.studychip.pause { opacity: .75; }
+.studychip.done { color: var(--green); border-color: var(--green); }

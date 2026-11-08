@@ -6,6 +6,7 @@ import * as theory from './theory.js';
 import * as tools from './tools.js';
 import * as drill from './drill.js';
 import * as progress from './progress.js';
+import * as study from './study.js';
 import { CONTACT_EMAIL } from './config.js';
 
 const $app = document.getElementById('app');
@@ -1793,6 +1794,99 @@ async function handleHashImport() {
   await importShare(m[1]);
 }
 
+// ---------------------------------------------------------------- leertimer
+const NO_STUDY_VIEWS = ['stats', 'account', 'sync', 'privacy', 'recovery'];
+const $study = document.getElementById('study');
+function paintStudy() {
+  if (!$study) return;
+  const st = study.current();
+  if (!st) { $study.textContent = '⏱'; $study.title = 'Leertimer starten'; $study.className = 'studychip idle'; return; }
+  const left = study.remaining();
+  $study.className = 'studychip' + (st.ended || left === 0 ? ' done' : study.isActiveNow() ? ' run' : ' pause');
+  $study.textContent = `${st.ended || left === 0 ? '✓' : study.isActiveNow() ? '⏱' : '⏸'} ${study.fmt(left)}`;
+  $study.title = study.isActiveNow() ? 'Leertimer loopt: tik voor opties' : 'Leertimer staat even stil (geen activiteit of niet in een leeronderdeel): tik voor opties';
+}
+function studyMoment() {   // mag de timer nu een scherm tonen zonder je te onderbreken?
+  if (view === 'session' && S) {
+    if (S.mode === 'exam') return false;
+    const id = S.ids[S.idx];
+    if (S.mode === 'practice' && id && !S.answers[id]) return false;
+  }
+  return !$dlg.open;
+}
+async function chooseStudy(first = false) {
+  const p = store.getPrefs();
+  return new Promise(resolve => {
+    let ask = p.askStudy;
+    const done = (min) => {
+      store.setPrefs({ askStudy: ask, ...(min ? { studyMin: min } : {}) });
+      if (min) { study.start(min, store.todayCount()); toast(`Timer gestart: ${min} minuten. Succes!`); }
+      paintStudy(); $dlg.close(); resolve(min);
+    };
+    const num = h('input', { type: 'number', min: 5, max: 180, step: 5, value: p.studyMin, 'aria-label': 'Aantal minuten', style: 'width:5rem' });
+    const box = h('input', { type: 'checkbox', checked: p.askStudy, onchange: e => { ask = e.target.checked; } });
+    $dlg.replaceChildren(
+      h('h2', {}, first ? 'Hoe lang wil je nu leren?' : 'Leertimer'),
+      h('p', { class: 'muted small' }, 'Kort en geconcentreerd leren werkt beter dan een lange sessie: na zo’n 20 à 30 minuten zakt je aandacht merkbaar, en vaker kort leren onthoud je beter dan één keer lang. De timer telt alleen de tijd dat je echt bezig bent.'),
+      h('div', { class: 'row', style: 'flex-wrap:wrap;gap:.5rem;margin:.6rem 0' },
+        study.PRESETS.map(m => h('button', { class: m === 25 ? 'primary' : '', onclick: () => done(m) }, m === 25 ? `${m} min (aanbevolen)` : `${m} min`)),
+        h('span', { class: 'row', style: 'gap:.3rem' }, num, 'min', h('button', { onclick: () => done(Math.max(5, Math.min(180, +num.value || 25))) }, 'Start'))),
+      h('label', { class: 'check small' }, box, ' Bij het openen van de app vragen'),
+      h('div', { class: 'actions' }, h('button', { onclick: () => done(0) }, first ? 'Zonder timer' : 'Sluiten')));
+    $dlg.addEventListener('close', () => resolve(0), { once: true });
+    $dlg.showModal();
+  });
+}
+async function studyOptions() {
+  const st = study.current();
+  if (!st) return chooseStudy(false);
+  const left = study.remaining();
+  const n = store.todayCount() - (st.q0 || 0);
+  const act = await new Promise(resolve => {
+    $dlg.replaceChildren(
+      h('h2', {}, 'Leertimer'),
+      h('p', {}, left > 0 ? `Nog ${study.fmt(left)} van ${Math.round(st.goal / 60)} minuten.` : 'Je doel is bereikt.'),
+      h('p', { class: 'muted small' }, `Actief geleerd: ${study.fmt(st.active)} · vragen beantwoord sinds de start: ${n}.`),
+      h('div', { class: 'actions', style: 'flex-wrap:wrap' },
+        h('button', { onclick: () => { resolve('more'); $dlg.close(); } }, '+ 10 min'),
+        h('button', { onclick: () => { resolve('new'); $dlg.close(); } }, 'Nieuwe timer'),
+        h('button', { class: 'danger', onclick: () => { resolve('stop'); $dlg.close(); } }, 'Stoppen'),
+        h('button', { class: 'primary', onclick: () => { resolve(''); $dlg.close(); } }, 'Verder')));
+    $dlg.addEventListener('close', () => resolve(''), { once: true });
+    $dlg.showModal();
+  });
+  if (act === 'more') study.extend(10);
+  else if (act === 'stop') study.stop();
+  else if (act === 'new') { study.stop(); await chooseStudy(true); }
+  paintStudy();
+}
+async function studyEnded() {
+  if (!studyMoment()) { const st = study.current(); if (st) st.ended = false; return; }   // probeer het straks opnieuw
+  const st = study.current(), n = store.todayCount() - (st.q0 || 0);
+  const more = await confirmDlg({
+    title: '⏱ Tijd is om!',
+    body: h('div', {}, h('p', {}, `Je hebt ${st.active < 60 ? 'minder dan een minuut' : Math.round(st.active / 60) + ' minuten'} actief geleerd${n > 0 ? ` en ${n} ${n === 1 ? 'vraag' : 'vragen'} beantwoord` : ''}. Goed gedaan.`),
+      h('p', { class: 'muted small' }, 'Neem nu 5 tot 10 minuten pauze: even bewegen en weg van het scherm. Pauzes helpen je om het geleerde vast te zetten.')),
+    ok: 'Nog 10 minuten', cancel: 'Klaar voor nu' });
+  if (more) study.extend(10);
+  else {
+    study.stop();
+    if (view === 'session' && S && S.mode === 'practice') pausePractice();
+  }
+  paintStudy();
+}
+function initStudy() {
+  study.init({
+    inLearning: () => !NO_STUDY_VIEWS.includes(view),
+    canInterrupt: studyMoment,
+    onEnd: studyEnded,
+    onTick: paintStudy,
+  });
+  if ($study) $study.addEventListener('click', studyOptions);
+  paintStudy();
+  if (!study.current() && store.getPrefs().askStudy && !(S && S.mode === 'exam')) setTimeout(() => { if (!$dlg.open) chooseStudy(true); }, 400);
+}
+
 async function init() {
   applyPrefs();
   $app.replaceChildren(h('p', { class: 'muted' }, 'Laden…'));
@@ -1831,6 +1925,7 @@ async function init() {
   sync.startAutoSync();
   render();
   handleHashImport();
+  initStudy();
 }
 
 init();
