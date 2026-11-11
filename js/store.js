@@ -195,6 +195,12 @@ function logEvent(sid, mode, id, correct) {
   let total = state.hist.reduce((n, x) => n + x.a.length, 0);
   while (total > HIST_MAX_EVENTS && state.hist.length > 1 && state.hist[0].id !== sid) total -= state.hist.shift().a.length;
 }
+/** Bewaart bij een examen welke antwoorden je gaf (rv = [[vraag-id, gekozen letter of '']]), zodat je het later kunt nakijken. */
+export function setReview(sid, rv) { const h = state.hist.find(x => x.id === sid); if (h) { h.rv = rv; persist(); } }
+export function getSession(sid) {
+  const h = state.hist.find(x => x.id === sid && !x.del);
+  return h ? { id: h.id, t: h.t, mode: h.mode, a: h.a, rv: h.rv || null, exam: h.ex ? state.exams.find(e => e.id === h.ex && !e.del) || null : null } : null;
+}
 export function linkExam(sid, examId) { const h = state.hist.find(x => x.id === sid); if (h) { h.ex = examId; persist(); } }
 /** Alles wat je gedaan hebt, nieuwste eerst. Oude examens uit de tijd vóór de geschiedenis staan er ook in (legacy: true). */
 export function getHistory() {

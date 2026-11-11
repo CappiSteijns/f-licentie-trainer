@@ -87,7 +87,7 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['ach', '🏆'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : view === 'review' ? 'stats' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, ...(k === 'ach' ? { 'aria-label': 'Prestaties', title: 'Prestaties' } : {}), onclick: () => setView(k === 'setup' && S && view !== 'setup' ? 'session' : k) }, label)));
 }
@@ -97,7 +97,7 @@ function render() {
   tools.setToolsVisible(view === 'session' || view === 'fgame');
   tools.setInkKey([view, S && S.idx, FG && FG.n, FG && FG.stage, K && K.idx, T && T.secId, X && X.ex.id, X && X.picked].join('|'));
   renderNav();
-  const fn = { ach: viewAch, setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { review: viewReview, ach: viewAch, setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
   scheduleAch();
@@ -609,7 +609,7 @@ function finishExam() {
   const secs = Math.min(Math.round((Date.now() - S.start) / 1000), Math.round(S.dur / 1000));
   const pass = score >= need;
   const examId = store.addExam({ score, total, pass, secs, chapters: S.chapters });
-  if (S.sid) store.linkExam(S.sid, examId);
+  if (S.sid) { store.linkExam(S.sid, examId); store.setReview(S.sid, details.map(d => [d.id, d.picked || ''])); }
   RESULT = { mode: 'exam', total, score, need, pass, secs, details };
   S = null; store.clearSession();
   setView('result');
@@ -673,6 +673,38 @@ function viewResult() {
     }));
 }
 
+let REVIEW = null;
+/** Nakijken van een eerder examen of oefenronde: alle vragen met jouw antwoord en het goede antwoord. */
+function viewReview() {
+  const ses = REVIEW && store.getSession(REVIEW.sid);
+  if (!ses) return viewStats();
+  const known = !!ses.rv;   // bij oudere rondes is niet bewaard welk antwoord je koos, alleen of het goed of fout was
+  const items = (known ? ses.rv.map(([id, picked]) => ({ id, picked, ok: !!quiz.QMAP.get(id) && picked === quiz.QMAP.get(id).answer }))
+    : ses.a.map(([id, c]) => ({ id, ok: !!c }))).filter(d => quiz.QMAP.get(d.id));
+  const nOk = items.filter(d => d.ok).length;
+  const f = REVIEW.f;
+  const seg = (k, label) => h('button', { class: 'chip' + (f === k ? ' on' : ''), onclick: () => { REVIEW.f = k; render(); } }, label);
+  const shown = items.filter(d => f === 'all' || (f === 'bad' ? !d.ok : d.ok));
+  return h('div', {},
+    h('div', { class: 'row', style: 'margin-bottom:.6rem' }, h('button', { onclick: () => setView('stats') }, '← Terug')),
+    h('h1', {}, ses.mode === 'exam' ? 'Examen nakijken' : 'Oefenronde nakijken'),
+    h('p', { class: 'muted' }, `${fmtDate(ses.t)} · ${nOk} van ${items.length} goed (${pct(nOk, items.length)}%)` + (ses.exam ? ` · ${ses.exam.pass ? 'geslaagd' : 'gezakt'}` : '')),
+    !known && h('p', { class: 'muted small' }, 'Van deze ronde is alleen bewaard of je antwoord goed of fout was, niet welk antwoord je koos. Bij nieuwe examens zie je ook je gekozen antwoord.'),
+    h('div', { class: 'row', style: 'gap:.4rem;margin:.6rem 0;flex-wrap:wrap' }, seg('all', `Alles (${items.length})`), seg('bad', `Fout (${items.length - nOk})`), seg('good', `Goed (${nOk})`)),
+    shown.map((d, i) => {
+      const q = quiz.QMAP.get(d.id);
+      return h('div', { class: 'card reviewq ' + (d.ok ? 'ok' : 'bad') },
+        h('div', { class: 'qmeta' }, `${d.ok ? '✅' : '❌'} ${i + 1}. H${q.chapter} · opgave ${q.chapter}-${q.number}`, ' ', flagBtn(q.id)),
+        h('p', { class: 'stem' }, q.question),
+        figures(q),
+        h('div', {}, q.options.map(o => h('div', { class: 'ropt' + (o.id === q.answer ? ' right' : o.id === d.picked ? ' wrong' : '') },
+          `${o.id}. ${o.text}`, o.id === q.answer ? ' ✓' : o.id === d.picked ? ' ✗ (jouw antwoord)' : ''))),
+        known && !d.picked && h('p', { class: 'yours small' }, 'Niet beantwoord'),
+        !d.ok && explanation(q, false),
+        theoryLinks(q, !d.ok));
+    }));
+}
+
 let histAll = false;
 async function deleteHistoryUI(it) {
   const wat = it.mode === 'exam' ? 'examen' : 'oefenronde';
@@ -696,7 +728,7 @@ function historyCard() {
         h('td', {}, fmtDate(it.t)),
         h('td', {}, it.mode === 'exam' ? (it.exam ? `📝 Examen · ${it.exam.pass ? 'geslaagd' : 'gezakt'}` : '📝 Examen') : '📖 Oefenen'),
         h('td', {}, `${it.ok}/${it.n}` + (it.n ? ` (${pct(it.ok, it.n)}%)` : '')),
-        h('td', {}, h('button', { class: 'ghost small', 'aria-label': `Verwijder de ${it.mode === 'exam' ? 'examen' : 'oefenronde'} van ${fmtDate(it.t)}`, onclick: () => deleteHistoryUI(it) }, 'Verwijderen')))))),
+        h('td', {}, it.kind === 'session' && h('button', { class: 'ghost small', onclick: () => { REVIEW = { sid: it.id, f: 'all' }; setView('review'); } }, 'Bekijken'), ' ', h('button', { class: 'ghost small', 'aria-label': `Verwijder de ${it.mode === 'exam' ? 'examen' : 'oefenronde'} van ${fmtDate(it.t)}`, onclick: () => deleteHistoryUI(it) }, 'Verwijderen')))))),
     all.length > 8 && h('p', { style: 'margin:.6rem 0 0' }, h('button', { class: 'ghost small', onclick: () => { histAll = !histAll; render(); } }, histAll ? 'Minder tonen' : `Alles tonen (${all.length})`)));
 }
 

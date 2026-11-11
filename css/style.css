@@ -370,3 +370,9 @@ body.has-tools #app { padding-bottom: 7rem; }
 .ach-prog .bar { flex: 1; }
 .chip { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); border-radius: 99px; padding: .25rem .8rem; font: inherit; font-size: .85rem; cursor: pointer; }
 .chip.on { color: var(--text); border-color: var(--accent); }
+
+.reviewq.ok { border-left: 4px solid var(--green); }
+.reviewq.bad { border-left: 4px solid var(--red); }
+.ropt { padding: .3rem .6rem; border-radius: 8px; margin: .2rem 0; }
+.ropt.right { background: var(--green-bg); }
+.ropt.wrong { background: var(--red-bg); }
