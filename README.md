@@ -73,9 +73,9 @@ Daarna committen, pushen en in Portainer *Pull and redeploy*.
 
 ## Goed om te weten
 - Machten en breuken in de uit de PDF gehaalde tekst gaan soms verloren (“I2”). Elke vraag heeft daarom een knop **Toon origineel**.
-- Hoofdstuk 1 en 2 hebben bij de VRZA geen examentraining. Theorie, flashcards en formule-spel zijn er nu voor hoofdstuk 3 t/m 6, 17 en 18; ze komen uit de ‘Volledige tekst’-PDF's van de VRZA (zie `tools/build_theory.py`, `tools/map_questions.py`, `tools/cards_h45.py`, `tools/cards_h6.py`, `tools/cards_h1718.py`).
+- Hoofdstuk 1 en 2 hebben bij de VRZA geen examentraining. Theorie, flashcards en formule-spel zijn er nu voor hoofdstuk 3 t/m 7, 17 en 18; ze komen uit de ‘Volledige tekst’-PDF's van de VRZA (zie `tools/build_theory.py`, `tools/map_questions.py`, `tools/cards_h45.py`, `tools/cards_h6.py`, `tools/cards_h1718.py`).
 - Er is geen e-mailverificatie: wie de site kent, kan een account maken. Sluit registratie desgewenst af (zie Beheer).
 - Vul `CONTACT_EMAIL` in `js/config.js` in; die staat in de privacyverklaring. Lees die verklaring na.
 - De VRZA-teksten en -figuren zijn auteursrechtelijk beschermd. Deel de app dus niet openbaar zonder toestemming van de VRZA (webteam@vrza.nl).
 
-Cursusopgaven (meerkeuzeopgaven uit de theorie-pdf's, H4–H6) staan onder `exercises` in `data/theorie/hoofdstuk-N.json`; ze worden gemaakt door `tools/build_exercises.py` (vraag, antwoorden, juiste antwoord en de pagina's met figuur en uitwerking). Ze zijn te vinden via het zoeken, tellen niet mee voor de voortgang en zijn geen examenvragen.
+Cursusopgaven (meerkeuzeopgaven uit de theorie-pdf's, H4–H7, H17 en H18) staan onder `exercises` in `data/theorie/hoofdstuk-N.json`; ze worden gemaakt door `tools/build_exercises.py` (vraag, antwoorden, juiste antwoord en de pagina's met figuur en uitwerking). Ze zijn te vinden via het zoeken, tellen niet mee voor de voortgang en zijn geen examenvragen.

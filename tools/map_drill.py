@@ -60,6 +60,22 @@ KW = {
   'verl': r'lamellen|kernverlies|verlies|wervel|hysterese',
   'hf': r'huid|skin|hf|poederijzer|afschermbus|aluminium|ferriet',
  },
+ 7: {
+  'diss': r'dissipatie|vermogen|doorlaatstroom|oververhit',
+  'umax': r'onbelaste|topwaarde|gelijkspanning|effectieve',
+  'sper': r'sperspanning|belastbaarheid',
+  'zi': r'zenerdiode|zener',
+  'zr': r'zenerdiode|zener|gestabiliseerd',
+  'zp': r'zenerdiode|zener|gedissipeerd',
+  'ledr': r'\bled\b',
+  'vari': r'varicap|capaciteitsdiode|resonantiefrequentie',
+  'drempel': r'drempelspanning|doorlaat|\bled\b|sperspanning',
+  'temp': r'temperatuur|lekstroom',
+  'dotering': r'germanium|silicium|\bp-\b|\bn-\b|dotering',
+  'aansl': r'anode|kathode|gesperd|doorlaatrichting',
+  'soorten': r'zenerdiode|varicap|\bled\b|capaciteitsdiode',
+  'schakelingen': r'dubbelzijdig|enkelzijdig|bruggelijkricht|afvlak|gelijkricht',
+ },
  17: {
   'stroom': r'\bma\b|milliamp|hartstilstand|fibrill|spierverstijving',
   'kleur': r'geel|blauw|bruin|kleur',
@@ -91,7 +107,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

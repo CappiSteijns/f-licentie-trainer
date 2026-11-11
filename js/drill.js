@@ -188,6 +188,38 @@ const GEN = {
     const [P, g, E] = pick([[100, 6, 27.7], [400, 10, 27.7], [50, 3, 27.7], [100, 6, 61], [25, 3, 27.7]]), EIRP = P * Math.pow(10, g / 10), d = Math.sqrt(30 * EIRP) / E;
     return { q: `Een zender geeft ${val(P, 'W')} aan een antenne met ${g} dB winst t.o.v. een isotrope antenne (EIRP = P · ${num(Math.pow(10, g / 10))}). De limiet is ${E} V/m. Hoe groot is de veilige afstand?`, a: d, unit: 'm', wrong: [d * d, d / 2, Math.sqrt(EIRP) / E, 30 * EIRP / E], how: `d = √(30 · EIRP) / E = √(30 · ${num(EIRP)}) / ${E}` };
   },
+  diss() {
+    const [mat, Ud] = pick([['siliciumdiode', 0.6], ['germaniumdiode', 0.2]]), I = pick([0.5, 1, 2, 5, 10]), P = I * Ud;
+    return { q: `Door een ${mat} loopt in doorlaatrichting ${val(I, 'A')} (spanning over de diode ≈ ${val(Ud, 'V')}). Hoeveel vermogen dissipeert de diode?`, a: P, unit: 'W', wrong: [I / Ud, I * (Ud === 0.6 ? 0.2 : 0.6), P * 10, P / 10], how: `P = I_F · U_D = ${num(I)} · ${num(Ud)}` };
+  },
+  umax() {
+    const Ue = pick([5, 10, 12, 18, 24, 100, 230]), U = Ue * Math.SQRT2;
+    return { q: `Een gelijkrichter met afvlakcondensator krijgt ${val(Ue, 'V')} effectief van de trafo. Hoe groot is de onbelaste gelijkspanning?`, a: U, unit: 'V', wrong: [Ue, Ue / Math.SQRT2, Ue * 2, Ue * 2 * Math.SQRT2], how: `U_max = U_eff · √2 = ${num(Ue)} · 1,414` };
+  },
+  sper() {
+    const Ue = pick([10, 12, 24, 50, 100, 230]), U = 2 * Ue * Math.SQRT2;
+    return { q: `Een enkelzijdige gelijkrichter met afvlakcondensator wordt gevoed met ${val(Ue, 'V')} effectief. Waartegen moet de diode minstens kunnen sperren?`, a: U, unit: 'V', wrong: [Ue * Math.SQRT2, Ue * 2, Ue, Ue * 4 * Math.SQRT2], how: `U_sper ≥ 2 · U_max = 2 · U_eff · √2 = 2 · ${num(Ue)} · 1,414` };
+  },
+  zi() {
+    const [Ub, Uz] = pick([[10, 6.8], [12, 5.1], [9, 5.6], [24, 12], [15, 9.1]]), R = pick([100, 220, 470, 1000]), I = (Ub - Uz) / R;
+    return { q: `Een zenerdiode van ${val(Uz, 'V')} staat in sperrichting in serie met een weerstand van ${val(R, 'Ω')} op een bron van ${val(Ub, 'V')}. Hoeveel stroom loopt er?`, a: I, unit: 'A', wrong: [Ub / R, Uz / R, (Ub + Uz) / R, I * 10], how: `I = (U_bron − U_Z) / R = (${num(Ub)} − ${num(Uz)}) / ${num(R)}` };
+  },
+  zr() {
+    const [Ub, Uz, Ib, Iz] = pick([[7.4, 5, 0.1, 0.02], [12, 5.6, 0.05, 0.01], [15, 9.1, 0.1, 0.02], [9, 5.1, 0.04, 0.01], [24, 12, 0.2, 0.05]]), R = (Ub - Uz) / (Ib + Iz);
+    return { q: `Een zenerdiode moet ${val(Uz, 'V')} stabiliseren uit een bron van ${val(Ub, 'V')}. De belasting neemt ${val(Ib, 'A')} op en door de zener loopt ${val(Iz, 'A')}. Hoe groot moet de voorschakelweerstand zijn?`, a: R, unit: 'Ω', wrong: [(Ub - Uz) / Ib, (Ub - Uz) / Iz, Ub / (Ib + Iz), R * 2], how: `R_s = (U_bron − U_Z) / (I_Z + I_bel) = (${num(Ub)} − ${num(Uz)}) / (${num(Iz)} + ${num(Ib)})` };
+  },
+  zp() {
+    const [Uz, I] = pick([[5.1, 0.02], [6.8, 0.05], [10, 0.3], [12, 0.1], [9.1, 0.04]]), P = Uz * I;
+    return { q: `Door een zenerdiode van ${val(Uz, 'V')} loopt ${val(I, 'A')}. Hoeveel vermogen dissipeert de diode?`, a: P, unit: 'W', wrong: [I / Uz, Uz / I, P * 10, P / 10], how: `P_Z = U_Z · I_Z = ${num(Uz)} · ${num(I)}` };
+  },
+  ledr() {
+    const [Ub, Ul, I] = pick([[5, 1.7, 0.02], [12, 2.0, 0.02], [9, 2.1, 0.01], [5, 3.2, 0.02], [12, 1.7, 0.01]]), R = (Ub - Ul) / I;
+    return { q: `Een LED (${val(Ul, 'V')}, ${val(I, 'A')}) wordt gevoed uit ${val(Ub, 'V')}. Hoe groot is de serieweerstand?`, a: R, unit: 'Ω', wrong: [Ub / I, Ul / I, (Ub + Ul) / I, R * 10], how: `R = (U_bron − U_LED) / I = (${num(Ub)} − ${num(Ul)}) / ${num(I)}` };
+  },
+  vari() {
+    const n = pick([2, 3, 4]), a = 1 / (n * n);
+    return { q: `De resonantiefrequentie van een LC-kring met varicap moet een factor ${n} hoger worden. Met welke factor moet de capaciteit worden vermenigvuldigd?`, a, unit: '', wrong: [1 / n, n, n * n, 1 / (n * n * n)], how: `f ∝ 1/√C, dus C ∝ 1/f². Factor ${n} in f betekent factor 1/${n * n} in C` };
+  },
   bw() {
     const [f, Q] = pick([[7e6, 70], [455e3, 100], [10.7e6, 50], [145e6, 100], [3.5e6, 35], [1e6, 20]]), B = f / Q;
     return { q: `Een kring heeft f_res = ${val(f, 'Hz')} en Q = ${Q}. Hoe groot is de bandbreedte?`, a: B, unit: 'Hz', wrong: [f * Q, f / (2 * Q), B * 10, B / 10], how: `B = f_res / Q = ${num(f)} / ${Q}` };

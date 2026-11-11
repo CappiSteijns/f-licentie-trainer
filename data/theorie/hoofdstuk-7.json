@@ -1,0 +1,1789 @@
+{
+ "chapter": 7,
+ "dir": "img/theorie/hs7",
+ "sections": [
+  {
+   "id": "s1",
+   "title": "Wat leer je in dit hoofdstuk?",
+   "lvl": 1,
+   "pages": [
+    "p003"
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Halfgeleidermateriaal",
+   "lvl": 1,
+   "pages": [
+    "p003"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Halfgeleidermateriaal: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p003",
+    "p004"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Kristalstructuur",
+   "lvl": 2,
+   "pages": [
+    "p004",
+    "p005"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Verplaatsing van lading in de kristalstructuur",
+   "lvl": 2,
+   "pages": [
+    "p005",
+    "p006"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "P- en N-materiaal; PN-overgang",
+   "lvl": 2,
+   "pages": [
+    "p006",
+    "p007",
+    "p008",
+    "p009"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "De halfgeleiderdiode",
+   "lvl": 2,
+   "pages": [
+    "p009"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Enkele eigenschappen en toepassingen van dioden.",
+   "lvl": 1,
+   "pages": [
+    "p009"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Enkele eigenschappen en toepassingen van dioden.: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p009",
+    "p010"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Lekstroom en werktemperatuur",
+   "lvl": 2,
+   "pages": [
+    "p010"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Gelijkrichting en dissipatie",
+   "lvl": 2,
+   "pages": [
+    "p010",
+    "p011"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Diodecapaciteit",
+   "lvl": 2,
+   "pages": [
+    "p011"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Zenerdioden",
+   "lvl": 2,
+   "pages": [
+    "p011"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Licht emitterende dioden (LED’s)",
+   "lvl": 2,
+   "pages": [
+    "p011",
+    "p012"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "Schemasymbolen",
+   "lvl": 2,
+   "pages": [
+    "p012",
+    "p013"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "Gelijkrichting met dioden",
+   "lvl": 1,
+   "pages": [
+    "p013"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "Van wisselstroom/-spanning naar gelijkstroom/-spanning",
+   "lvl": 2,
+   "pages": [
+    "p013",
+    "p014"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Enkelzijdige gelijkrichting",
+   "lvl": 2,
+   "pages": [
+    "p014",
+    "p015",
+    "p016"
+   ]
+  },
+  {
+   "id": "s19",
+   "title": "De minimale sperspanning van de gelijkrichtdiode",
+   "lvl": 2,
+   "pages": [
+    "p016",
+    "p017"
+   ]
+  },
+  {
+   "id": "s20",
+   "title": "Tweezijdige (dubbelzijdige, dubbelfasige) gelijkrichting",
+   "lvl": 2,
+   "pages": [
+    "p017",
+    "p018",
+    "p019"
+   ]
+  },
+  {
+   "id": "s21",
+   "title": "Afvlakfilters",
+   "lvl": 2,
+   "pages": [
+    "p019"
+   ]
+  },
+  {
+   "id": "s22",
+   "title": "Capaciteitsdioden",
+   "lvl": 1,
+   "pages": [
+    "p019",
+    "p020",
+    "p021"
+   ]
+  },
+  {
+   "id": "s23",
+   "title": "Zenerdioden",
+   "lvl": 1,
+   "pages": [
+    "p021",
+    "p022",
+    "p023",
+    "p024",
+    "p025"
+   ]
+  },
+  {
+   "id": "s24",
+   "title": "Verschillende soorten dioden op een plaatje",
+   "lvl": 1,
+   "pages": [
+    "p025",
+    "p026",
+    "p027"
+   ]
+  },
+  {
+   "id": "s25",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
+    "p027",
+    "p028",
+    "p029",
+    "p030",
+    "p031",
+    "p032",
+    "p033",
+    "p034",
+    "p035",
+    "p036",
+    "p037",
+    "p038",
+    "p039",
+    "p040"
+   ]
+  }
+ ],
+ "qmap": {
+  "hs7-1": [
+   "s14",
+   "s7"
+  ],
+  "hs7-2": [
+   "s19",
+   "s7"
+  ],
+  "hs7-3": [
+   "s7",
+   "s19"
+  ],
+  "hs7-4": [
+   "s20",
+   "s18"
+  ],
+  "hs7-5": [
+   "s19",
+   "s7"
+  ],
+  "hs7-6": [
+   "s23"
+  ],
+  "hs7-7": [
+   "s18",
+   "s17"
+  ],
+  "hs7-8": [
+   "s19",
+   "s18"
+  ],
+  "hs7-9": [
+   "s23"
+  ],
+  "hs7-10": [
+   "s19",
+   "s7"
+  ],
+  "hs7-11": [
+   "s18",
+   "s17"
+  ],
+  "hs7-12": [
+   "s18",
+   "s17"
+  ],
+  "hs7-13": [
+   "s7"
+  ],
+  "hs7-14": [
+   "s20",
+   "s18"
+  ],
+  "hs7-15": [
+   "s18",
+   "s20"
+  ],
+  "hs7-16": [
+   "s21"
+  ],
+  "hs7-17": [
+   "s18",
+   "s19"
+  ],
+  "hs7-18": [
+   "s19",
+   "s18"
+  ],
+  "hs7-19": [
+   "s19"
+  ],
+  "hs7-20": [
+   "s10",
+   "s11"
+  ],
+  "hs7-21": [
+   "s7"
+  ],
+  "hs7-22": [
+   "s10"
+  ],
+  "hs7-23": [
+   "s7"
+  ],
+  "hs7-24": [
+   "s7"
+  ],
+  "hs7-25": [
+   "s7"
+  ],
+  "hs7-26": [
+   "s21"
+  ],
+  "hs7-27": [
+   "s7"
+  ],
+  "hs7-28": [
+   "s7"
+  ],
+  "hs7-29": [
+   "s18",
+   "s7"
+  ],
+  "hs7-30": [
+   "s20"
+  ],
+  "hs7-31": [
+   "s20",
+   "s18"
+  ],
+  "hs7-32": [
+   "s20"
+  ],
+  "hs7-33": [
+   "s20"
+  ],
+  "hs7-34": [
+   "s20"
+  ],
+  "hs7-35": [
+   "s20",
+   "s21"
+  ],
+  "hs7-36": [
+   "s18",
+   "s21"
+  ],
+  "hs7-37": [
+   "s20",
+   "s17"
+  ],
+  "hs7-38": [
+   "s14",
+   "s7"
+  ],
+  "hs7-39": [
+   "s14"
+  ],
+  "hs7-40": [
+   "s14"
+  ],
+  "hs7-41": [
+   "s13",
+   "s23"
+  ],
+  "hs7-42": [
+   "s23",
+   "s13"
+  ],
+  "hs7-43": [
+   "s23"
+  ],
+  "hs7-44": [
+   "s19",
+   "s7"
+  ],
+  "hs7-45": [
+   "s23"
+  ],
+  "hs7-46": [
+   "s23",
+   "s13"
+  ],
+  "hs7-47": [
+   "s18",
+   "s17"
+  ],
+  "hs7-48": [
+   "s19",
+   "s7"
+  ],
+  "hs7-49": [
+   "s13",
+   "s23"
+  ],
+  "hs7-50": [
+   "s23"
+  ],
+  "hs7-51": [
+   "s19",
+   "s7"
+  ],
+  "hs7-52": [
+   "s22",
+   "s12"
+  ],
+  "hs7-53": [
+   "s7",
+   "s13"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Diode",
+   "items": [
+    {
+     "f": "P = I_F · U_D",
+     "t": "dissipatie: voorwaartse stroom × spanning over de diode"
+    },
+    {
+     "f": "P ≈ I_F · 0,6 V  (Si)   ·   P ≈ I_F · 0,2 V  (Ge)",
+     "t": "met de drempelspanning als U_D"
+    },
+    {
+     "f": "Drempelspanning: Si 0,6 à 0,7 V · Ge 0,2 V · LED 1,7 V (rood) tot 4,6 V (blauw)",
+     "t": "spanning in doorlaatrichting waarbij een diode gaat geleiden"
+    }
+   ]
+  },
+  {
+   "title": "Gelijkrichting",
+   "items": [
+    {
+     "f": "U_max = U_eff · √2",
+     "t": "onbelaste gelijkspanning met afvlakcondensator (√2 ≈ 1,414)"
+    },
+    {
+     "f": "U_sper ≥ 2 · U_max = 2 · √2 · U_eff",
+     "t": "minimale sperspanning van de gelijkrichtdiode (in de praktijk ruim 1,5× meer)"
+    },
+    {
+     "f": "Zonder afvlakcondensator: meter wijst de gemiddelde waarde aan",
+     "t": "de wijzer volgt 50 Hz niet"
+    }
+   ]
+  },
+  {
+   "title": "Zenerdiode en LED",
+   "items": [
+    {
+     "f": "U_bron = U_R + U_Z",
+     "t": "tweede wet van Kirchhoff"
+    },
+    {
+     "f": "I = (U_bron − U_Z) / R",
+     "t": "stroom door de voorschakelweerstand (en door de zener zonder belasting)"
+    },
+    {
+     "f": "R_s = (U_bron − U_Z) / (I_Z + I_belasting)",
+     "t": "voorschakelweerstand als er ook een belasting is"
+    },
+    {
+     "f": "P_Z = U_Z · I_Z",
+     "t": "dissipatie in de zenerdiode"
+    },
+    {
+     "f": "R = (U_bron − U_LED) / I_LED",
+     "t": "serieweerstand van een LED"
+    }
+   ]
+  },
+  {
+   "title": "Varicap",
+   "items": [
+    {
+     "f": "f_res = 1 / (2π · √(L · C))",
+     "t": "f omgekeerd evenredig met √C; f × 2 betekent C ÷ 4"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s3",
+   "q": "Welke elementen met vier elektronen in de buitenste schil zijn voor halfgeleiders belangrijk?",
+   "a": "Koolstof (C), silicium (Si) en germanium (Ge). Zuiver silicium en germanium zijn isolatoren; germanium isoleert minder goed."
+  },
+  {
+   "id": "c2",
+   "sec": "s4",
+   "q": "Hoe zijn de atomen in een siliciumkristal verbonden?",
+   "a": "Ze delen hun vier buitenste elektronen met hun buren en vormen zo een gezamenlijke buitenste schil van 8 elektronen. Dat is een stabiele toestand: er is geen aanleiding voor elektronen om te verplaatsen."
+  },
+  {
+   "id": "c3",
+   "sec": "s5",
+   "q": "Wat gebeurt er met de weerstand van een halfgeleider bij hogere temperatuur?",
+   "a": "Die wordt kleiner (NTC). Bij metalen neemt de weerstand juist toe (PTC)."
+  },
+  {
+   "id": "c4",
+   "sec": "s5",
+   "q": "Hoe maak je van zuiver silicium een geleider?",
+   "a": "Door een heel klein beetje (circa 1 op 100 miljoen atomen) van een stof met 3 of 5 elektronen in de buitenste schil toe te voegen. Dat heet doteren."
+  },
+  {
+   "id": "c5",
+   "sec": "s5",
+   "q": "Wat is een gat?",
+   "a": "Een plaats in het kristalrooster waar een elektron ontbreekt, ontstaan door een element met 3 elektronen in de buitenste schil. Gaten kunnen zich net zo gemakkelijk verplaatsen als elektronen."
+  },
+  {
+   "id": "c6",
+   "sec": "s5",
+   "q": "Is een gedoteerd halfgeleiderkristal elektrisch geladen?",
+   "a": "Nee, het blijft elektrisch neutraal, want de toegevoegde atomen zijn zelf ook neutraal."
+  },
+  {
+   "id": "c7",
+   "sec": "s6",
+   "q": "Wat is P-materiaal en wat is N-materiaal?",
+   "a": "P-materiaal is gedoteerd met een element met 3 buitenelektronen (bijvoorbeeld borium): er zijn gaten. N-materiaal is gedoteerd met een element met 5 buitenelektronen (bijvoorbeeld fosfor): er zijn vrije elektronen."
+  },
+  {
+   "id": "c8",
+   "sec": "s6",
+   "q": "Wat is een PN-overgang (PN-junctie)?",
+   "a": "De grens tussen P-materiaal en N-materiaal in één kristal."
+  },
+  {
+   "id": "c9",
+   "sec": "s6",
+   "q": "Wat is de uitputtingszone?",
+   "a": "De zone langs de junctie zonder vrije ladingdragers. Elektronen en gaten hebben elkaar daar geneutraliseerd (recombinatie). De zone blokkeert de stroom."
+  },
+  {
+   "id": "c10",
+   "sec": "s6",
+   "q": "Wat gebeurt er met de uitputtingszone als je + op de N-kant en − op de P-kant aansluit?",
+   "a": "De zone wordt breder: de ladingdragers trekken weg van de junctie. Er loopt geen stroom (sperrichting)."
+  },
+  {
+   "id": "c11",
+   "sec": "s6",
+   "q": "Wat gebeurt er als je + op de P-kant en − op de N-kant aansluit?",
+   "a": "Elektronen en gaten worden naar de junctie getrokken, de uitputtingszone verdwijnt en er loopt stroom (doorlaatrichting)."
+  },
+  {
+   "id": "c12",
+   "sec": "s7",
+   "q": "Welke aansluiting van een diode is de anode en welke de kathode?",
+   "a": "De P-aansluiting is de anode, de N-aansluiting de kathode. De doorlaatrichting (technische stroomrichting) is van anode naar kathode."
+  },
+  {
+   "id": "c13",
+   "sec": "s7",
+   "q": "Wat is het ezelsbruggetje voor de aansluitingen van een diode?",
+   "a": "KNAP: Kathode Negatief, Anode Positief (in doorlaatrichting)."
+  },
+  {
+   "id": "c14",
+   "sec": "s7",
+   "q": "Wat is de drempelspanning van een siliciumdiode en van een germaniumdiode?",
+   "a": "Silicium ongeveer 0,6 à 0,7 V, germanium ongeveer 0,2 V. Pas daarboven geleidt de diode in doorlaatrichting."
+  },
+  {
+   "id": "c15",
+   "sec": "s7",
+   "q": "Wat is de sperspanning van een normale siliciumdiode?",
+   "a": "Enkele tientallen volt of meer (diodes voor honderden volt bestaan ook). Dat is dus groter dan 10 V."
+  },
+  {
+   "id": "c16",
+   "sec": "s7",
+   "q": "In welke situatie is een diode gesperd?",
+   "a": "Als de kathode positiever is dan de anode (spanning in sperrichting)."
+  },
+  {
+   "id": "c17",
+   "sec": "s7",
+   "q": "Welke spanning heb je nodig om een diode in doorlaatrichting stroom te laten geleiden?",
+   "a": "Minstens de drempelspanning. Als de anode een lagere spanning heeft dan de kathode + drempelspanning, geleidt hij niet."
+  },
+  {
+   "id": "c18",
+   "sec": "s10",
+   "q": "Wat is lekstroom?",
+   "a": "Het kleine stroompje dat in sperrichting toch nog loopt."
+  },
+  {
+   "id": "c19",
+   "sec": "s10",
+   "q": "Waarvan hangt de lekstroom vooral af?",
+   "a": "Sterk van de temperatuur: hij neemt sterk toe bij hogere temperatuur. Verder van de uitvoering van de diode en de aangelegde spanning."
+  },
+  {
+   "id": "c20",
+   "sec": "s10",
+   "q": "Wat is het verschil in lekstroom tussen silicium en germanium?",
+   "a": "Bij silicium is de lekstroom ruwweg 100 keer zo klein als bij een vergelijkbare germaniumdiode."
+  },
+  {
+   "id": "c21",
+   "sec": "s10",
+   "q": "Wat is de maximale werktemperatuur van silicium- en germaniumdioden?",
+   "a": "Silicium ongeveer 150 °C, germanium ongeveer 70 à 80 °C."
+  },
+  {
+   "id": "c22",
+   "sec": "s10",
+   "q": "Wat bepaalt de maximale doorlaatstroom van een halfgeleiderdiode?",
+   "a": "De maximale temperatuur van het kristal (de warmte die het kristal aankan)."
+  },
+  {
+   "id": "c23",
+   "sec": "s11",
+   "q": "Formule voor de dissipatie in een diode?",
+   "a": "P = I_F · U_D (voorwaartse stroom × spanning over de diode). Benaderd: Si P ≈ I_F · 0,6 V, Ge P ≈ I_F · 0,2 V."
+  },
+  {
+   "id": "c24",
+   "sec": "s11",
+   "q": "Een siliciumdiode voert 2 A in doorlaatrichting. Hoeveel dissipeert hij ongeveer?",
+   "a": "P ≈ 2 A × 0,6 V = 1,2 W."
+  },
+  {
+   "id": "c25",
+   "sec": "s12",
+   "q": "Waarom gedraagt een diode in sperrichting zich als een kleine condensator?",
+   "a": "De uitputtingszone isoleert en is het diëlektricum; de dikte ervan is de ‘plaatafstand’."
+  },
+  {
+   "id": "c26",
+   "sec": "s12",
+   "q": "Hoe stuur je de capaciteit van zo’n diode?",
+   "a": "Met de sperspanning: een hogere sperspanning maakt de uitputtingszone dikker, dus de capaciteit kleiner."
+  },
+  {
+   "id": "c27",
+   "sec": "s13",
+   "q": "Wat is een zenerdiode?",
+   "a": "Een diode die in sperrichting geleidt zodra de zenerspanning wordt bereikt. Als de stroom beperkt blijft, blijft de diode heel en staat de zenerspanning over hem."
+  },
+  {
+   "id": "c28",
+   "sec": "s13",
+   "q": "Waarvoor gebruik je een zenerdiode meestal?",
+   "a": "Om een (vrijwel) constante spanning te maken, bijvoorbeeld een referentiespanning in een gestabiliseerde voeding."
+  },
+  {
+   "id": "c29",
+   "sec": "s14",
+   "q": "Hoe werkt een LED?",
+   "a": "Bij de PN-overgang ontstaat bij recombinatie van een elektron en een gat een foton (licht). Een LED werkt in doorlaatrichting."
+  },
+  {
+   "id": "c30",
+   "sec": "s14",
+   "q": "Wat is de drempelspanning van een LED?",
+   "a": "Afhankelijk van de kleur ongeveer 1,7 V (rood) tot 2,8 à 4,6 V (blauw). Altijd hoger dan 0,7 V van een siliciumdiode."
+  },
+  {
+   "id": "c31",
+   "sec": "s14",
+   "q": "Waarom heeft een LED meestal een serieweerstand nodig?",
+   "a": "Om de stroom te beperken. Zonder weerstand op bijvoorbeeld 12 V brandt hij direct door."
+  },
+  {
+   "id": "c32",
+   "sec": "s14",
+   "q": "Welke stroom heeft een LED gewoonlijk?",
+   "a": "Ongeveer 20 mA bij oudere typen; moderne typen lichten al duidelijk op bij 5 tot 10 mA."
+  },
+  {
+   "id": "c33",
+   "sec": "s14",
+   "q": "Uit welk materiaal bestaat een LED?",
+   "a": "Meestal uit kristallen met gallium, arseen en andere elementen, niet uit silicium of germanium."
+  },
+  {
+   "id": "c34",
+   "sec": "s15",
+   "q": "Welke dioden-symbolen moet je herkennen?",
+   "a": "Gelijkrichtdiode, capaciteitsdiode (varicap), zenerdiode en LED. De doorlaatrichting is de richting van de pijl, van anode naar kathode."
+  },
+  {
+   "id": "c35",
+   "sec": "s17",
+   "q": "Waarom heb je gelijkrichting nodig?",
+   "a": "Het lichtnet levert wisselspanning (230 V, 50 Hz), maar bijna alle elektronica, ook zenders en ontvangers, werkt op gelijkspanning."
+  },
+  {
+   "id": "c36",
+   "sec": "s18",
+   "q": "Hoe werkt enkelzijdige gelijkrichting?",
+   "a": "Eén diode laat één halve periode van de wisselspanning door en houdt de andere tegen."
+  },
+  {
+   "id": "c37",
+   "sec": "s18",
+   "q": "Wat gebeurt er als je de diode in een enkelzijdige gelijkrichter omdraait?",
+   "a": "Dan worden de negatieve halve perioden doorgelaten: de uitgangsspanning is negatief."
+  },
+  {
+   "id": "c38",
+   "sec": "s18",
+   "q": "Wat doet een afvlakcondensator?",
+   "a": "Hij laadt op tijdens de doorgelaten halve periode en levert stroom tussen de halve perioden, zodat de spanning vlakker wordt."
+  },
+  {
+   "id": "c39",
+   "sec": "s18",
+   "q": "Wanneer werkt een afvlakcondensator het best?",
+   "a": "Hoe groter de condensator en hoe kleiner het stroomverbruik, des te vlakker de gelijkspanning."
+  },
+  {
+   "id": "c40",
+   "sec": "s18",
+   "q": "Wat is de onbelaste uitgangsspanning van een gelijkrichter met afvlakcondensator?",
+   "a": "U_max = U_eff · √2 (de topwaarde van de wisselspanning)."
+  },
+  {
+   "id": "c41",
+   "sec": "s18",
+   "q": "Wat geeft een DC-voltmeter aan via een gelijkrichter zonder afvlakcondensator?",
+   "a": "De gemiddelde waarde van de gelijkgerichte spanning (de oppervlakte onder de curve), want de wijzer kan 50 Hz niet volgen."
+  },
+  {
+   "id": "c42",
+   "sec": "s19",
+   "q": "Hoe groot moet de sperspanning van een gelijkrichtdiode minstens zijn?",
+   "a": "Minstens 2 × U_max = 2 · √2 · U_eff, want de condensator staat op U_max terwijl de anode de negatieve piek −U_max bereikt."
+  },
+  {
+   "id": "c43",
+   "sec": "s19",
+   "q": "Welke sperspanning heeft een diode nodig voor 100 V eff en voor 230 V eff?",
+   "a": "Voor 100 V eff minstens 300 V, voor 230 V eff minstens ongeveer 700 V (met veiligheidsmarge)."
+  },
+  {
+   "id": "c44",
+   "sec": "s19",
+   "q": "Waarvan hangt de diodekeuze in een gelijkrichter af?",
+   "a": "Zowel van de maximale sperspanning als van de maximale stroom."
+  },
+  {
+   "id": "c45",
+   "sec": "s19",
+   "q": "Twee dioden in serie, met verschillende maximale sperspanningen. Waar let je op?",
+   "a": "De hoogste toelaatbare spanning wordt begrensd door de diode met de laagste maximumspanning (zonder spanningsverdeling door weerstanden)."
+  },
+  {
+   "id": "c46",
+   "sec": "s20",
+   "q": "Hoe werkt tweezijdige gelijkrichting?",
+   "a": "Beide halve perioden worden benut: de negatieve halve periode wordt omgekeerd (op de kop gezet) in plaats van tegengehouden."
+  },
+  {
+   "id": "c47",
+   "sec": "s20",
+   "q": "Uit hoeveel dioden bestaat een bruggelijkrichter, en welke twee geleiden tegelijk?",
+   "a": "Vier dioden. Per halve periode geleiden twee tegenover elkaar liggende dioden (D2/D3 en D4/D1), de andere twee sperren."
+  },
+  {
+   "id": "c48",
+   "sec": "s20",
+   "q": "Hoe kan tweezijdige gelijkrichting met slechts twee dioden?",
+   "a": "Met een trafo met middenaftakking (0 V). De uiteinden zijn om beurten positief; zo voert steeds één diode stroom."
+  },
+  {
+   "id": "c49",
+   "sec": "s20",
+   "q": "Wat levert een tweezijdige gelijkrichter op die een enkelzijdige niet levert?",
+   "a": "Een hogere frequentie van de rimpel (100 Hz i.p.v. 50 Hz) en dus makkelijker afvlakken."
+  },
+  {
+   "id": "c50",
+   "sec": "s20",
+   "q": "Een trafo met middenaftakking en twee dubbelzijdige gelijkrichters. Wat levert dat op?",
+   "a": "Een positieve én een negatieve gelijkspanning ten opzichte van de middenaftakking (0 V)."
+  },
+  {
+   "id": "c51",
+   "sec": "s21",
+   "q": "Waaruit bestaat een klassiek afvlakfilter?",
+   "a": "Uit twee elektrolytische condensatoren (elco’s) en een smoorspoel met ijzerkern."
+  },
+  {
+   "id": "c52",
+   "sec": "s21",
+   "q": "Waarom gebruik je elco’s en een smoorspoel met ijzerkern in een voedingsfilter?",
+   "a": "Voor 50 Hz geven elco’s een hoge capaciteit en de ijzerkern een hoge zelfinductie. Beide zijn niet geschikt voor HF."
+  },
+  {
+   "id": "c53",
+   "sec": "s21",
+   "q": "Wat doet de smoorspoel in een afvlakfilter?",
+   "a": "Hij werkt veranderingen in de stroom tegen, zodat de tweede condensator een bijna constante stroom krijgt en de rimpel grotendeels verdwijnt."
+  },
+  {
+   "id": "c54",
+   "sec": "s21",
+   "q": "Welke waarde hebben afvlakcondensatoren in een netvoeding ongeveer?",
+   "a": "Enkele honderden tot duizenden microfarad (µF)."
+  },
+  {
+   "id": "c55",
+   "sec": "s22",
+   "q": "Wat is een capaciteitsdiode (varicap)?",
+   "a": "Een diode die in sperrichting als regelbare condensator werkt. De sperspanning bepaalt de capaciteit."
+  },
+  {
+   "id": "c56",
+   "sec": "s22",
+   "q": "Hoe verandert de capaciteit van een varicap als de sperspanning toeneemt?",
+   "a": "De capaciteit wordt kleiner."
+  },
+  {
+   "id": "c57",
+   "sec": "s22",
+   "q": "Waarvoor gebruik je een varicap?",
+   "a": "Om de resonantiefrequentie van een LC-kring te veranderen (verstemmen)."
+  },
+  {
+   "id": "c58",
+   "sec": "s22",
+   "q": "Hoe groot is de capaciteit van een varicap ongeveer?",
+   "a": "Maximaal in de buurt van 50 pF."
+  },
+  {
+   "id": "c59",
+   "sec": "s22",
+   "q": "Hoe verander je de resonantiefrequentie van een kring met een factor 2?",
+   "a": "f_res is omgekeerd evenredig met √C. Een factor 2 hoger vraagt een 4 keer kleinere capaciteit."
+  },
+  {
+   "id": "c60",
+   "sec": "s22",
+   "q": "Waarom staat in een varicapschakeling een hoge weerstand tussen regelspanning en kring?",
+   "a": "Een lage weerstand zou de Q van de kring bederven."
+  },
+  {
+   "id": "c61",
+   "sec": "s23",
+   "q": "Hoe sluit je een zenerdiode aan en waarom met een voorschakelweerstand?",
+   "a": "In sperrichting. De weerstand begrenst de stroom, zodat de diode niet overbelast raakt."
+  },
+  {
+   "id": "c62",
+   "sec": "s23",
+   "q": "Formule voor de stroom door een zenerdiode met voorschakelweerstand?",
+   "a": "I = (U_bron − U_Z) / R (tweede wet van Kirchhoff: U_bron = U_R + U_Z)."
+  },
+  {
+   "id": "c63",
+   "sec": "s23",
+   "q": "Bron 10 V, zenerspanning 6,8 V, R = 1 kΩ. Hoe groot is de stroom en de dissipatie?",
+   "a": "I = (10 − 6,8) / 1000 = 3,2 mA. P = 6,8 V × 3,2 mA ≈ 22 mW."
+  },
+  {
+   "id": "c64",
+   "sec": "s23",
+   "q": "Hoe bereken je de voorschakelweerstand als er ook een belasting is?",
+   "a": "R_s = (U_bron − U_Z) / (I_Z + I_belasting). De stroom door R_s is de som van de stroom door de zener en de belasting."
+  },
+  {
+   "id": "c65",
+   "sec": "s23",
+   "q": "Wat verandert er aan de zenerspanning als de stroom door de zener varieert?",
+   "a": "Heel weinig: dat is juist de bedoeling. Een kleine spanningsverandering bij een grote stroomverandering geeft een stabiele spanning."
+  },
+  {
+   "id": "c66",
+   "sec": "s23",
+   "q": "Wat gebeurt er met een zenerdiode als de stroom te groot wordt?",
+   "a": "Hij raakt oververhit en gaat kapot. Houd de dissipatie P = U_Z · I_Z binnen de maximale waarde."
+  },
+  {
+   "id": "c67",
+   "sec": "s23",
+   "q": "Kun je een zenerdiode ook gebruiken om een spanning te verlagen?",
+   "a": "Ja: in serie met de voedingsleiding. De spanning daalt dan met de zenerspanning."
+  },
+  {
+   "id": "c68",
+   "sec": "s24",
+   "q": "Welke aanduidingen hebben Europese en Amerikaanse diodetypen?",
+   "a": "Amerikaanse typen beginnen met 1N. Europese typen beginnen vrijwel altijd met een letter (A voor germanium, B voor silicium)."
+  },
+  {
+   "id": "c69",
+   "sec": "s24",
+   "q": "Hoe herken je de anode van een LED?",
+   "a": "Het langste pootje is de anode."
+  },
+  {
+   "id": "c70",
+   "sec": "s24",
+   "q": "Hoeveel aansluitingen heeft een brugschakeling en welke zijn de wisselspanningsaansluitingen?",
+   "a": "Vier. De wisselstroomaansluitingen zijn gemarkeerd met een golfje (~) of AC."
+  }
+ ],
+ "drill": [
+  {
+   "id": "diss",
+   "sec": "s11",
+   "name": "Dissipatie in een diode",
+   "where": "het vermogen dat een diode in doorlaatrichting dissipeert",
+   "f": "P = I_F · U_D",
+   "cloze": [
+    {
+     "q": "P = I_F · ___",
+     "a": "U_D",
+     "w": [
+      "U_sper",
+      "U_max",
+      "R"
+     ]
+    },
+    {
+     "q": "Voor een siliciumdiode is U_D ongeveer ___",
+     "a": "0,6 V",
+     "w": [
+      "0,2 V",
+      "6 V",
+      "1,7 V"
+     ]
+    }
+   ],
+   "gen": "diss",
+   "rewrite": [
+    {
+     "base": "P = I_F · U_D",
+     "ask": "I_F",
+     "a": "I_F = P / U_D",
+     "w": [
+      "I_F = P · U_D",
+      "I_F = U_D / P",
+      "I_F = P − U_D"
+     ]
+    },
+    {
+     "base": "P = I_F · U_D",
+     "ask": "U_D",
+     "a": "U_D = P / I_F",
+     "w": [
+      "U_D = P · I_F",
+      "U_D = I_F / P",
+      "U_D = P − I_F"
+     ]
+    }
+   ],
+   "exam": [
+    "hs7-6",
+    "hs7-9",
+    "hs7-16",
+    "hs7-20",
+    "hs7-37",
+    "hs7-49"
+   ]
+  },
+  {
+   "id": "umax",
+   "sec": "s19",
+   "name": "Topwaarde en onbelaste gelijkspanning",
+   "where": "de onbelaste gelijkspanning na een gelijkrichter met afvlakcondensator",
+   "f": "U_max = U_eff · √2",
+   "cloze": [
+    {
+     "q": "U_max = U_eff · ___",
+     "a": "√2",
+     "w": [
+      "2",
+      "π",
+      "1/√2"
+     ]
+    },
+    {
+     "q": "Onbelast staat over de afvlakcondensator de ___ van de wisselspanning",
+     "a": "topwaarde",
+     "w": [
+      "effectieve waarde",
+      "gemiddelde waarde",
+      "dubbele effectieve waarde"
+     ]
+    }
+   ],
+   "gen": "umax",
+   "rewrite": [
+    {
+     "base": "U_max = U_eff · √2",
+     "ask": "U_eff",
+     "a": "U_eff = U_max / √2",
+     "w": [
+      "U_eff = U_max · √2",
+      "U_eff = U_max / 2",
+      "U_eff = U_max² / 2"
+     ]
+    }
+   ],
+   "exam": [
+    "hs7-2",
+    "hs7-3",
+    "hs7-4",
+    "hs7-5",
+    "hs7-7",
+    "hs7-8",
+    "hs7-10",
+    "hs7-11",
+    "hs7-12",
+    "hs7-14",
+    "hs7-15",
+    "hs7-17",
+    "hs7-18",
+    "hs7-19",
+    "hs7-32",
+    "hs7-33",
+    "hs7-35",
+    "hs7-37",
+    "hs7-44",
+    "hs7-47",
+    "hs7-48",
+    "hs7-51"
+   ]
+  },
+  {
+   "id": "sper",
+   "sec": "s19",
+   "name": "Minimale sperspanning van de diode",
+   "where": "de sperspanning waartegen een gelijkrichtdiode bestand moet zijn",
+   "f": "U_sper ≥ 2 · U_max",
+   "cloze": [
+    {
+     "q": "Een gelijkrichtdiode met condensator moet minstens ___ × U_max kunnen sperren",
+     "a": "2",
+     "w": [
+      "1",
+      "√2",
+      "4"
+     ]
+    },
+    {
+     "q": "Een diode voor 230 V eff moet ongeveer ___ V kunnen sperren",
+     "a": "700",
+     "w": [
+      "230",
+      "325",
+      "350"
+     ]
+    }
+   ],
+   "gen": "sper",
+   "rewrite": [
+    {
+     "base": "U_sper = 2 · U_max",
+     "ask": "U_max",
+     "a": "U_max = U_sper / 2",
+     "w": [
+      "U_max = U_sper · 2",
+      "U_max = 2 / U_sper",
+      "U_max = U_sper / √2"
+     ]
+    }
+   ],
+   "exam": [
+    "hs7-2",
+    "hs7-3",
+    "hs7-5",
+    "hs7-8",
+    "hs7-10",
+    "hs7-17",
+    "hs7-18",
+    "hs7-19",
+    "hs7-20",
+    "hs7-44",
+    "hs7-48",
+    "hs7-51"
+   ]
+  },
+  {
+   "id": "zi",
+   "sec": "s23",
+   "name": "Stroom door de zenerschakeling",
+   "where": "de stroom door een voorschakelweerstand met zenerdiode",
+   "f": "I = (U_bron − U_Z) / R",
+   "cloze": [
+    {
+     "q": "De spanning over de weerstand is U_bron − ___",
+     "a": "U_Z",
+     "w": [
+      "U_D",
+      "U_max",
+      "U_eff"
+     ]
+    },
+    {
+     "q": "Een zenerdiode staat in ___",
+     "a": "sperrichting",
+     "w": [
+      "doorlaatrichting",
+      "beide richtingen",
+      "serie met de bron zonder weerstand"
+     ]
+    }
+   ],
+   "gen": "zi",
+   "rewrite": [
+    {
+     "base": "I = (U_bron − U_Z) / R",
+     "ask": "R",
+     "a": "R = (U_bron − U_Z) / I",
+     "w": [
+      "R = I · (U_bron − U_Z)",
+      "R = (U_bron + U_Z) / I",
+      "R = I / (U_bron − U_Z)"
+     ]
+    },
+    {
+     "base": "I = (U_bron − U_Z) / R",
+     "ask": "U_bron",
+     "a": "U_bron = U_Z + I · R",
+     "w": [
+      "U_bron = U_Z − I · R",
+      "U_bron = I · R / U_Z",
+      "U_bron = U_Z · I · R"
+     ]
+    }
+   ],
+   "exam": [
+    "hs7-3",
+    "hs7-6",
+    "hs7-9",
+    "hs7-41",
+    "hs7-42",
+    "hs7-43",
+    "hs7-45",
+    "hs7-46",
+    "hs7-49",
+    "hs7-50",
+    "hs7-53"
+   ]
+  },
+  {
+   "id": "zr",
+   "sec": "s23",
+   "name": "Voorschakelweerstand bij een belaste zener",
+   "where": "de waarde van de weerstand voor een gestabiliseerde spanning",
+   "f": "R_s = (U_bron − U_Z) / (I_Z + I_bel)",
+   "cloze": [
+    {
+     "q": "De stroom door R_s is de stroom door de zener ___ de belastingsstroom",
+     "a": "plus",
+     "w": [
+      "min",
+      "maal",
+      "gedeeld door"
+     ]
+    }
+   ],
+   "gen": "zr",
+   "exam": [
+    "hs7-3",
+    "hs7-6",
+    "hs7-9",
+    "hs7-41",
+    "hs7-42",
+    "hs7-43",
+    "hs7-45",
+    "hs7-46",
+    "hs7-49",
+    "hs7-50",
+    "hs7-53"
+   ]
+  },
+  {
+   "id": "zp",
+   "sec": "s23",
+   "name": "Dissipatie in de zenerdiode",
+   "where": "het vermogen in de zenerdiode",
+   "f": "P_Z = U_Z · I_Z",
+   "cloze": [
+    {
+     "q": "De zenerdiode heeft de hoogste dissipatie als de belastingsstroom ___ is",
+     "a": "laagst",
+     "w": [
+      "hoogst",
+      "gelijk aan de zenerstroom",
+      "nul gedeeld"
+     ]
+    }
+   ],
+   "gen": "zp",
+   "rewrite": [
+    {
+     "base": "P_Z = U_Z · I_Z",
+     "ask": "I_Z",
+     "a": "I_Z = P_Z / U_Z",
+     "w": [
+      "I_Z = P_Z · U_Z",
+      "I_Z = U_Z / P_Z",
+      "I_Z = P_Z − U_Z"
+     ]
+    }
+   ],
+   "exam": [
+    "hs7-3",
+    "hs7-6",
+    "hs7-9",
+    "hs7-41",
+    "hs7-42",
+    "hs7-43",
+    "hs7-45",
+    "hs7-46",
+    "hs7-49",
+    "hs7-50",
+    "hs7-53"
+   ]
+  },
+  {
+   "id": "ledr",
+   "sec": "s14",
+   "name": "Serieweerstand van een LED",
+   "where": "de weerstand die de stroom door een LED beperkt",
+   "f": "R = (U_bron − U_LED) / I",
+   "cloze": [
+    {
+     "q": "Een LED werkt in ___",
+     "a": "doorlaatrichting",
+     "w": [
+      "sperrichting",
+      "beide richtingen",
+      "wisselspanning zonder diode"
+     ]
+    }
+   ],
+   "gen": "ledr",
+   "exam": [
+    "hs7-1",
+    "hs7-38",
+    "hs7-39",
+    "hs7-40"
+   ]
+  },
+  {
+   "id": "vari",
+   "sec": "s22",
+   "name": "Verstemmen met een varicap",
+   "where": "de verandering van de capaciteit voor een andere resonantiefrequentie",
+   "f": "f_res = 1 / (2π · √(L · C))",
+   "cloze": [
+    {
+     "q": "Een grotere sperspanning geeft een ___ capaciteit",
+     "a": "kleinere",
+     "w": [
+      "grotere",
+      "even grote",
+      "wisselende"
+     ]
+    },
+    {
+     "q": "f_res is omgekeerd evenredig met ___ uit C",
+     "a": "de wortel",
+     "w": [
+      "het kwadraat",
+      "het getal zelf",
+      "de derde macht"
+     ]
+    }
+   ],
+   "gen": "vari",
+   "exam": [
+    "hs7-52"
+   ]
+  },
+  {
+   "id": "drempel",
+   "sec": "s7",
+   "name": "Drempelspanningen",
+   "where": "de spanning waarbij een diode gaat geleiden",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een siliciumdiode",
+     "a": "0,6 à 0,7 V"
+    },
+    {
+     "q": "een germaniumdiode",
+     "a": "0,2 V"
+    },
+    {
+     "q": "een rode LED",
+     "a": "ongeveer 1,7 V"
+    },
+    {
+     "q": "een blauwe LED",
+     "a": "2,8 tot 4,6 V"
+    }
+   ],
+   "ask": "Wat is de drempelspanning van {x}?",
+   "askRev": "Bij welk type hoort een drempelspanning van {x}?",
+   "exam": [
+    "hs7-1",
+    "hs7-2",
+    "hs7-3",
+    "hs7-5",
+    "hs7-10",
+    "hs7-13",
+    "hs7-17",
+    "hs7-19",
+    "hs7-20",
+    "hs7-21",
+    "hs7-23",
+    "hs7-24",
+    "hs7-25",
+    "hs7-27",
+    "hs7-28",
+    "hs7-29",
+    "hs7-38",
+    "hs7-39",
+    "hs7-40",
+    "hs7-41",
+    "hs7-44",
+    "hs7-46",
+    "hs7-48",
+    "hs7-51",
+    "hs7-53"
+   ]
+  },
+  {
+   "id": "temp",
+   "sec": "s10",
+   "name": "Temperatuur en lekstroom",
+   "where": "temperatuurgrenzen en lekstroom van dioden",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de maximale kristaltemperatuur van silicium",
+     "a": "ongeveer 150 °C"
+    },
+    {
+     "q": "de maximale kristaltemperatuur van germanium",
+     "a": "ongeveer 70 à 80 °C"
+    },
+    {
+     "q": "de lekstroom van silicium t.o.v. germanium",
+     "a": "ruwweg 100 keer zo klein"
+    },
+    {
+     "q": "de lekstroom bij hogere temperatuur",
+     "a": "neemt sterk toe"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Waar hoort dit bij: {x}?",
+   "exam": [
+    "hs7-7",
+    "hs7-20",
+    "hs7-22"
+   ]
+  },
+  {
+   "id": "dotering",
+   "sec": "s6",
+   "name": "Dotering en kristal",
+   "where": "P- en N-materiaal",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "borium (3 elektronen in de buitenste schil)",
+     "a": "P-materiaal, met gaten"
+    },
+    {
+     "q": "fosfor (5 elektronen in de buitenste schil)",
+     "a": "N-materiaal, met vrije elektronen"
+    },
+    {
+     "q": "silicium en germanium",
+     "a": "vier elektronen in de buitenste schil"
+    },
+    {
+     "q": "de uitputtingszone",
+     "a": "zone langs de PN-overgang zonder vrije ladingdragers"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Waar hoort dit bij: {x}?",
+   "exam": [
+    "hs7-3",
+    "hs7-20",
+    "hs7-22",
+    "hs7-38"
+   ]
+  },
+  {
+   "id": "aansl",
+   "sec": "s7",
+   "name": "Anode en kathode",
+   "where": "de aansluitingen van een diode",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de anode",
+     "a": "P-kant, positief in doorlaatrichting"
+    },
+    {
+     "q": "de kathode",
+     "a": "N-kant, negatief in doorlaatrichting"
+    },
+    {
+     "q": "de doorlaatrichting",
+     "a": "van anode naar kathode (KNAP)"
+    },
+    {
+     "q": "de sperrichting",
+     "a": "kathode positiever dan de anode"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke aansluiting is dit: {x}?",
+   "exam": [
+    "hs7-1",
+    "hs7-2",
+    "hs7-3",
+    "hs7-5",
+    "hs7-10",
+    "hs7-13",
+    "hs7-21",
+    "hs7-22",
+    "hs7-23",
+    "hs7-24",
+    "hs7-25",
+    "hs7-27",
+    "hs7-28",
+    "hs7-29",
+    "hs7-38",
+    "hs7-40",
+    "hs7-41",
+    "hs7-44",
+    "hs7-46",
+    "hs7-48",
+    "hs7-51",
+    "hs7-53"
+   ]
+  },
+  {
+   "id": "soorten",
+   "sec": "s15",
+   "name": "Soorten dioden",
+   "where": "de toepassing van verschillende dioden",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een gelijkrichtdiode",
+     "a": "wisselspanning omzetten in gelijkspanning"
+    },
+    {
+     "q": "een capaciteitsdiode (varicap)",
+     "a": "regelbare condensator in sperrichting, voor verstemmen"
+    },
+    {
+     "q": "een zenerdiode",
+     "a": "vaste spanning maken, in sperrichting"
+    },
+    {
+     "q": "een LED",
+     "a": "licht geven in doorlaatrichting, met serieweerstand"
+    }
+   ],
+   "ask": "Waarvoor dient {x}?",
+   "askRev": "Welke diode is dit: {x}?",
+   "exam": [
+    "hs7-1",
+    "hs7-3",
+    "hs7-6",
+    "hs7-9",
+    "hs7-38",
+    "hs7-39",
+    "hs7-40",
+    "hs7-41",
+    "hs7-42",
+    "hs7-43",
+    "hs7-45",
+    "hs7-46",
+    "hs7-49",
+    "hs7-50",
+    "hs7-52"
+   ]
+  },
+  {
+   "id": "schakelingen",
+   "sec": "s20",
+   "name": "Gelijkrichtschakelingen",
+   "where": "de soorten gelijkrichters",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "enkelzijdige gelijkrichting",
+     "a": "één diode, één halve periode"
+    },
+    {
+     "q": "tweezijdige gelijkrichting met brug",
+     "a": "vier dioden, beide halve perioden"
+    },
+    {
+     "q": "tweezijdige gelijkrichting met middenaftakking",
+     "a": "twee dioden en een trafo met middenaftakking"
+    },
+    {
+     "q": "een klassiek afvlakfilter",
+     "a": "twee elco’s en een smoorspoel"
+    }
+   ],
+   "ask": "Wat kenmerkt {x}?",
+   "askRev": "Welke schakeling is dit: {x}?",
+   "exam": [
+    "hs7-2",
+    "hs7-4",
+    "hs7-7",
+    "hs7-11",
+    "hs7-12",
+    "hs7-14",
+    "hs7-15",
+    "hs7-16",
+    "hs7-19",
+    "hs7-29",
+    "hs7-30",
+    "hs7-31",
+    "hs7-32",
+    "hs7-33",
+    "hs7-34",
+    "hs7-35",
+    "hs7-36",
+    "hs7-37",
+    "hs7-49",
+    "hs7-53"
+   ]
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o7-1",
+   "n": 1,
+   "q": "De dissipatie in de weerstand bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "1W"
+    },
+    {
+     "id": "B",
+     "text": "2 W"
+    },
+    {
+     "id": "C",
+     "text": "3 W"
+    },
+    {
+     "id": "D",
+     "text": "4 W"
+    }
+   ],
+   "answer": "A",
+   "explain": "Voor de dissipatie in de weerstand van 25 ohm moeten we de spanning over de weerstand kennen. Die volgt uit de bronspanning en de zenerspanning. De bron geeft 10 V; over de zenerdiode staat 5 V. Dan blijft er 10 V – 5 V = 5 V over voor de spanning U over de weerstand R van 25 ohm. De dissipatie in de weerstand is gelijk aan het opgenomen 2       2 vermogen P. Voor P geldt: 𝑃 = 𝑈 ⁄𝑅 = 5 ⁄25 W = 1W. Antwoord A dus.",
+   "pages": [
+    "p027"
+   ],
+   "spages": [
+    "p034"
+   ]
+  },
+  {
+   "id": "o7-2",
+   "n": 2,
+   "q": "De belastingsstroom Ib varieert van 100 tot 300 mA De stroom door de zenerdiode varieert tussen",
+   "options": [
+    {
+     "id": "A",
+     "text": "200 en 400 mA"
+    },
+    {
+     "id": "B",
+     "text": "500 en 700 mA"
+    },
+    {
+     "id": "C",
+     "text": "100 en 300 mA"
+    },
+    {
+     "id": "D",
+     "text": "Is steeds 800 mA"
+    }
+   ],
+   "answer": "C",
+   "explain": "We beginnen met de stroom door de weerstand. Daarvoor hebben we de spanning over de weerstand nodig. Die is gelijk aan de bronspanning van 20 V min 10 V over de zener, is 10 V. De stroom door de weerstand 𝐼 = 𝑈⁄𝑅 = 10⁄25 A = 400 mA. Als de belastingsstroom varieert van 100 tot 300 mA, blijft er bij 100 mA een stroom van 300 mA voor de zenerdiode over en bij een belastingsstroom van 300 mA resteert 100 mA voor de zener. Dat komt neer op antwoord C. Een geval van eerlijk delen.",
+   "pages": [
+    "p028"
+   ],
+   "spages": [
+    "p035"
+   ]
+  },
+  {
+   "id": "o7-3",
+   "n": 3,
+   "q": "De belastingsstroom Ib varieert van 100 tot 300 mA. Het hoogst gedissipeerde vermogen in de zenerdiode bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 W"
+    },
+    {
+     "id": "B",
+     "text": "3 W"
+    },
+    {
+     "id": "C",
+     "text": "4 W"
+    },
+    {
+     "id": "D",
+     "text": "8 W"
+    }
+   ],
+   "answer": "B",
+   "explain": "Het gedissipeerde vermogen in de zenerdiode bedraagt de stroom door de diode maal de zenerspanning. In Opgave 2 vonden we voor de grootste zenerstroom 300 mA. 300 mA maal 10 V is 3 W. Dat betekent antwoord B.",
+   "pages": [
+    "p029"
+   ],
+   "spages": [
+    "p036"
+   ]
+  },
+  {
+   "id": "o7-4",
+   "n": 4,
+   "q": "De spanning Uuit bedraagt bij onbelaste schakeling ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "200 V"
+    },
+    {
+     "id": "B",
+     "text": "390 V"
+    },
+    {
+     "id": "C",
+     "text": "280 V"
+    },
+    {
+     "id": "D",
+     "text": "600 V"
+    }
+   ],
+   "answer": "C",
+   "explain": "Als de schakeling onbelast is, is Uuit = Umax = Ueff * √21,4*Ueff. De transformatieverhouding is 1:1, zodat de gelijkspanning op der uitgang ongeveer 200*1,4=280 V bedraagt. Dat is antwoord C.",
+   "pages": [
+    "p030"
+   ],
+   "spages": [
+    "p037"
+   ]
+  },
+  {
+   "id": "o7-5",
+   "n": 5,
+   "q": "De minimaal benodigde sperspanning van de diode in de schakeling bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "200 V"
+    },
+    {
+     "id": "B",
+     "text": "300 V"
+    },
+    {
+     "id": "C",
+     "text": "400 V"
+    },
+    {
+     "id": "D",
+     "text": "600 V"
+    }
+   ],
+   "answer": "D",
+   "explain": "De minimale sperspanning van de diode bedraagt 3*200V=600V, want de diode moet 2x Umax kunnen weerstaan. In theorie is dat 2,8x de effectieve secundaire spanning en om veiligheidsredenen wordt 3x of nog meer aangehouden. Dat betekent dat antwoord D goed is.",
+   "pages": [
+    "p031"
+   ],
+   "spages": [
+    "p038"
+   ]
+  },
+  {
+   "id": "o7-6",
+   "n": 6,
+   "q": "Welke schakeling is te gebruiken voor tweezijdige gelijkrichting? A                                           B C                                           D Welke schakeling is te gebruiken voor tweezijdige gelijkrichting?",
+   "options": [
+    {
+     "id": "A",
+     "text": "Schakeling A"
+    },
+    {
+     "id": "B",
+     "text": "Schakeling B"
+    },
+    {
+     "id": "C",
+     "text": "Schakeling C"
+    },
+    {
+     "id": "D",
+     "text": "Schakeling D"
+    }
+   ],
+   "answer": "C",
+   "explain": "We lopen ze alle vier langs. Schakeling A vormt een kortsluiting over de secundaire voor de positieve halve periode. Afgekeurd. Schakeling B lijkt in orde, maar kijk eens goed naar de doorlaatrichting van de dioden. Ze maken twee pluspolen. Dat helpt dus niet. Ook afgekeurd. Schakeling C lijkt op een ordentelijke tweezijdige gelijkrichter. Die houden we erin. Schakeling D is een rare. Die richt enkelzijdig gelijk vanaf de bovenste en de middelste transformatoraansluiting. Een wat vreemde enkelzijdige gelijkrichter, maar zeker geen tweezijdige. Afgekeurd dus. Resteert antwoord C.",
+   "pages": [
+    "p032"
+   ],
+   "spages": [
+    "p039"
+   ]
+  },
+  {
+   "id": "o7-7",
+   "n": 7,
+   "q": "Een werkende capaciteitsdiode (varicap)",
+   "options": [
+    {
+     "id": "A",
+     "text": "Staat geschakeld in sperrichting en de capaciteit wordt kleiner met toenemende spanning"
+    },
+    {
+     "id": "B",
+     "text": "Staat geschakeld in sperrichting en de capaciteit wordt groter met toenemende spanning"
+    },
+    {
+     "id": "C",
+     "text": "Staat geschakeld in doorlaatrichting en de capaciteit wordt kleiner met toenemende spanning"
+    },
+    {
+     "id": "D",
+     "text": "Staat geschakeld in doorlaatrichting en de capaciteit wordt groter met toenemende spanning"
+    }
+   ],
+   "answer": "A",
+   "explain": "Een capaciteitsdiode staat in elk geval in sperrichting, anders is er geen diëlektricum. Daarmee vervallen de antwoorden C en D. Met toenemende spanning wordt de uitputtingszone dikker en daarmee ook de afstand tussen de nog geleidende delen van de P- en de N-zone. Dan neemt de capaciteit af met toenemende spanning. Antwoord A.",
+   "pages": [
+    "p033",
+    "p034"
+   ],
+   "spages": [
+    "p040"
+   ]
+  }
+ ]
+}
