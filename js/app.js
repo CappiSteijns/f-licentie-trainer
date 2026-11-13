@@ -1749,6 +1749,7 @@ function viewFGame() {
       h('div', { class: 'actions' }, answered && next)));
 }
 
+const LEARN_OPEN = new Set();   // welke hoofdstukken je hebt uitgeklapt (blijft zo tot je de app sluit)
 function viewLearn() {
   const withT = chapters.filter(c => c.theory && theory.getTheory(c.n));
   const without = chapters.filter(c => c.count > 0 && !withT.includes(c));
@@ -1774,7 +1775,7 @@ function viewLearn() {
           formulaBtn(c.n),
           (th.drill && th.drill.length > 0) && h('button', { onclick: () => openFormulaGame(c.n) }, th.drill.some(it => it.f) ? '🎮 Formule-spel' : '🎮 Feitenspel'),
           step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
-        h('details', { class: 'secs', open: true }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
+        h('details', { class: 'secs', open: LEARN_OPEN.has(c.n), ontoggle: e => { e.target.open ? LEARN_OPEN.add(c.n) : LEARN_OPEN.delete(c.n); } }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
     }),
     without.length > 0 && h('p', { class: 'muted small' }, 'Nog geen theorie toegevoegd voor: ' + without.map(c => 'H' + c.n).join(', ') + '. Je kunt deze hoofdstukken wel gewoon oefenen. De theorie voeg je toe met tools/build_theory.py (zie README).'));
 }
