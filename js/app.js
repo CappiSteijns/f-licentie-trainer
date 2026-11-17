@@ -150,6 +150,39 @@ function pondByChapter() {
   return m;
 }
 
+// ---- status van een vraag in het slimme herhaalschema ---------------------------
+const STEVIG = 3;
+function inTijd(ms) {
+  const m = Math.round(ms / 60000);
+  if (m < 1) return 'nu';
+  if (m < 60) return `${m} min`;
+  const u = Math.round(m / 60);
+  if (u < 36) return `${u} uur`;
+  const d = Math.round(ms / 86400000);
+  return `${d} ${d === 1 ? 'dag' : 'dagen'}`;
+}
+function tijdTot(r) { const left = store.dueAt(r) - Date.now(); return left <= 0 ? 'nu' : `over ${inTijd(left)}`; }
+function volgende(r) {
+  const left = store.dueAt(r) - Date.now();
+  return left <= 0 ? 'nu aan de beurt' : `aan de beurt over ${inTijd(left)}`;
+}
+function vraagStatus(id) {
+  const r = store.record(id);
+  if (!r) return `Nieuw · ${STEVIG}× goed op de herhaalmomenten (over meerdere dagen) maakt hem stevig`;
+  const b = store.boxOf(r);
+  if (b >= STEVIG) return `💪 Stevig (box ${b} van 5) · ${volgende(r)}`;
+  const nog = STEVIG - b;
+  return `Box ${b} · nog ${nog}× goed bij herhaling voor stevig · ${volgende(r)}`;
+}
+function statusAfter(id, was, ok) {
+  const r = store.record(id);
+  if (!r) return '';
+  const b = store.boxOf(r);
+  if (!ok) return 'Terug naar box 0: over 10 minuten weer aan de beurt. Je opnieuw goed antwoorden laat hem weer oplopen.';
+  if (b > was.box) return b >= STEVIG && was.box < STEVIG ? `💪 Box ${was.box} → ${b}: deze vraag is nu stevig! Volgende herhaling ${tijdTot(r)}.` : `Box ${was.box} → ${b}${b >= STEVIG ? ' · stevig 💪' : ` (nog ${STEVIG - b}× goed voor stevig)`}. Volgende herhaling ${tijdTot(r)}.`;
+  return `Dit antwoord telde niet als stap omdat de vraag nog niet aan de beurt was (box ${b}, ${volgende(r)}).`;
+}
+
 function dueByChapter() {
   const m = {};
   for (const id of store.dueIds()) { const c = quiz.chapterOf(id); m[c] = (m[c] || 0) + 1; }
@@ -334,6 +367,8 @@ function viewSetup() {
         }
       } }, 'Weggooien')));
 
+  const steady = {};
+  for (const [id, r] of Object.entries(store.allRecords())) if (r.a > 0 && store.boxOf(r) >= STEVIG) { const c = quiz.chapterOf(id); if (c != null) steady[c] = (steady[c] || 0) + 1; }
   const chapRows = chapters.map(c => {
     const disabled = c.count === 0;
     const pc = pond[c.n] || 0;
@@ -342,7 +377,8 @@ function viewSetup() {
       h('span', { class: 't' }, h('b', {}, `H${c.n}`), ' · ', c.title),
       disabled ? h('span', { class: 'badge' }, 'nog geen vragen')
         : [(due[c.n] || 0) > 0 && h('span', { class: 'badge blue', title: 'Nu te herhalen' }, `${due[c.n]} herhalen`),
-          pc > 0 && h('span', { class: 'badge red', title: 'In de foutenvijver' }, `${pc} fout`), h('span', { class: 'badge' }, `${c.count} vragen`)]);
+          pc > 0 && h('span', { class: 'badge red', title: 'In de foutenvijver' }, `${pc} fout`),
+          h('span', { class: 'badge green', title: 'Stevige vragen: box 3 of hoger in het herhaalschema' }, `${steady[c.n] || 0}/${c.count} stevig`), h('span', { class: 'badge' }, `${c.count} vragen`)]);
   });
 
   return h('div', {},
@@ -462,6 +498,7 @@ function viewPractice() {
       h('button', { class: 'ghost small', title: 'De ronde blijft bewaard; je gaat later verder waar je bent gebleven', onclick: pausePractice }, '⏸ Pauzeren'),
       h('button', { class: 'ghost small', title: 'De ronde afsluiten en het resultaat zien', onclick: stopPractice }, 'Afronden')),
     originLine(q),
+    !answered && h('p', { class: 'muted small qstatus' }, vraagStatus(id)),
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': S.ids.length, 'aria-valuenow': S.idx + (answered ? 1 : 0) },
       h('i', { style: `width:${pct(S.idx + (answered ? 1 : 0), S.ids.length)}%` })),
     h('div', { class: 'card', style: 'margin-top:1rem' },
@@ -473,6 +510,7 @@ function viewPractice() {
         correct ? '✅ Goed!' : `❌ Fout — het juiste antwoord is ${q.answer}.`,
         S.wasPond && S.wasPond[id] && correct ? ' Deze vraag is uit de foutenvijver gehaald 🎉' : '',
         !correct ? ' Toegevoegd aan de foutenvijver.' : ''),
+      answered && S.was && S.was[id] && h('p', { class: 'muted small qstatus' }, statusAfter(id, S.was[id], correct)),
       answered && explanation(q, !correct),
       answered && theoryLinks(q, !correct),
       answered && q.source && h('p', { class: 'muted small', style: 'margin:.8rem 0 0' }, 'Eerder voorgekomen: ' + q.source),
@@ -484,6 +522,8 @@ function answerPractice(q, optId) {
   const ok = optId === q.answer;
   S.wasPond = S.wasPond || {};
   S.wasPond[q.id] = store.isPond(q.id);
+  S.was = S.was || {};
+  { const r0 = store.record(q.id); S.was[q.id] = { box: r0 ? store.boxOf(r0) : 0 }; }
   S.answers[q.id] = optId;
   if (!S.sid) S.sid = store.uid();
   store.recordAnswer(q.id, ok, 'practice', S.sid);
