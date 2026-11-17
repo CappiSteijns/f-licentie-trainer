@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -18,11 +18,13 @@ def parse(ch, pdf):
     pg = pages(pdf)
     # lijst van (paginanr, regel)
     lines = [(i + 1, l) for i, p in enumerate(pg) for l in p.split('\n')]
-    H = re.compile(rf'^\s*{ch}\.\d+\.\d+\s+(Uitwerking van |Antwoord bij )?Opgave {ch}-(\d+)\s*$')
+    H = re.compile(rf'^\s*{ch}\.\d+\.\d+\s+(Uitwerking van |Antwoord bij )?Opgave {ch}-(\d+)\.?\s*$')
     heads = [(k, bool(m.group(1)), int(m.group(2))) for k, (_, l) in enumerate(lines) if (m := H.match(l))]
     def block(idx):
         k = heads[idx][0]; end = heads[idx + 1][0] if idx + 1 < len(heads) else len(lines)
-        body = [(p, l) for p, l in lines[k + 1:end] if not FOOT.match(l) and l.strip()]
+        seg = lines[k + 1:end]
+        cut = next((i for i, (_, l) in enumerate(seg) if re.match(r'^\d+\.\d+(\.\d+)?\s+[A-Z]', l)), len(seg))   # volgend kopje (bv. theorie tussen twee opgaven)
+        body = [(p, l) for p, l in seg[:cut] if not FOOT.match(l) and l.strip()]
         pgs = sorted({lines[k][0]} | {p for p, _ in body})
         return body, pgs
     ops, sols = {}, {}
@@ -73,12 +75,21 @@ def parse(ch, pdf):
                     'explain': clean(expl), 'pages': [f'p{p:03d}' for p in pgs] if same or not sbody else [], 'spages': [f'p{p:03d}' for p in spgs]})
     return out
 
+# handmatige correcties: formules die pdftotext niet goed leest, en een antwoord dat alleen in de uitleg staat
+FIX = {
+ 'o8-2': {'options': [{'id': 'A', 'text': 'R_S = U_D / I_D'}, {'id': 'B', 'text': 'R_S = U_b / I_D'}, {'id': 'C', 'text': 'R_S = U_GS / I_D'}, {'id': 'D', 'text': 'R_S = U_GS − U_D / I_D'}], 'pages': ['p028']},
+ 'o8-3': {'options': [{'id': 'A', 'text': 'U_D = U_b − I_D · R_D'}, {'id': 'B', 'text': 'U_D = U_b − R_D / I_D'}, {'id': 'C', 'text': 'U_D = U_b − U_GS'}, {'id': 'D', 'text': 'U_D = U_b − I_D · R_S'}], 'pages': ['p029']},
+ 'o8-4': {'answer': 'A'},
+ 'o8-20': {'pages': ['p076']},
+}
+
 for ch, name in PDFS.items():
     ex = parse(ch, ROOT / 'bronnen' / name)
     f = ROOT / 'data' / 'theorie' / f'hoofdstuk-{ch}.json'
     d = json.loads(f.read_text(encoding='utf-8'))
     img = ROOT / 'img' / 'theorie' / f'hs{ch}'
     for e in ex:
+        e.update(FIX.get(e['id'], {}))
         e['pages'] = [p for p in e['pages'] if (img / f'{p}.webp').exists()]
         e['spages'] = [p for p in e['spages'] if (img / f'{p}.webp').exists()]
         bad = (len(e['options']) != 4 or not e['answer'])

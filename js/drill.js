@@ -220,6 +220,62 @@ const GEN = {
     const n = pick([2, 3, 4]), a = 1 / (n * n);
     return { q: `De resonantiefrequentie van een LC-kring met varicap moet een factor ${n} hoger worden. Met welke factor moet de capaciteit worden vermenigvuldigd?`, a, unit: '', wrong: [1 / n, n, n * n, 1 / (n * n * n)], how: `f ∝ 1/√C, dus C ∝ 1/f². Factor ${n} in f betekent factor 1/${n * n} in C` };
   },
+  steil() {
+    const [dU, dI] = pick([[1, 3.9], [0.5, 2], [2, 5], [1, 6], [0.2, 1.2], [0.5, 4]]), S = dI / dU;
+    return { q: `Bij een FET verandert de gatespanning met ${val(dU, 'V')}. De drainstroom verandert daardoor met ${val(dI / 1000, 'A')}. Hoe groot is de steilheid?`, a: S / 1000, unit: 'A/V', wrong: [dU / (dI / 1000), S, S / 100, S / 10000], how: `S = ΔI_D / ΔU_GS = ${num(dI)} mA / ${num(dU)} V = ${num(S)} mA/V` };
+  },
+  ires() {
+    const S = pick([2, 4, 5, 8, 10]), R = 1000 / S;
+    return { q: `De steilheid van een FET of buis is ${S} mA/V. Hoe groot is de weerstand 1/S aan de source- (of kathode-)kant?`, a: R, unit: 'Ω', wrong: [R * 1000, S * 1000, S, R / 10], how: `1/S = 1 / ${S} mA/V = ${num(R)} Ω` };
+  },
+  aus() {
+    const S = pick([2, 4, 5, 8, 10]), RD = pick([2200, 3300, 4700, 5000, 10000]), A = RD * S / 1000;
+    return { q: `Een FET (of buis) heeft een steilheid van ${S} mA/V en een drain- of anodeweerstand van ${val(RD, 'Ω')}. Er is geen source- of kathodeweerstand. Hoe groot is de spanningsversterking?`, a: A, unit: '', wrong: [RD / S, RD * S, A * 10, A / 10], how: `Au = R_D · S = ${num(RD)} · ${num(S / 1000)} A/V` };
+  },
+  aur() {
+    const [S, RS, RD] = pick([[4, 1000, 3300], [5, 500, 5000], [10, 1000, 10000], [2, 2200, 6800], [8, 470, 4700]]), A = RD / (RS + 1000 / S);
+    return { q: `Een FET met S = ${S} mA/V heeft R_D = ${val(RD, 'Ω')} en R_S = ${val(RS, 'Ω')}. Hoe groot is de spanningsversterking (GSS)?`, a: A, unit: '', wrong: [RD / RS, RD * S / 1000, RD / (1000 / S), A * 2], how: `Au = R_D / (R_S + 1/S) = ${num(RD)} / (${num(RS)} + ${num(1000 / S)})` };
+  },
+  aure() {
+    const [Rc, Re] = pick([[3300, 1000], [4700, 1000], [2000, 500], [10000, 2200], [1500, 470], [6800, 1000]]), A = Rc / Re;
+    return { q: `Een transistor in gemeenschappelijke emitterschakeling heeft R_c = ${val(Rc, 'Ω')} en R_e = ${val(Re, 'Ω')}. Hoe groot is de spanningsversterking ongeveer?`, a: A, unit: '', wrong: [Re / Rc, Rc * Re / 1000, A * 10, Rc / (Rc + Re)], how: `Au ≈ R_c / R_e = ${num(Rc)} / ${num(Re)}` };
+  },
+  ic() {
+    const [b, Ib] = pick([[100, 50e-6], [200, 20e-6], [150, 40e-6], [300, 10e-6], [100, 200e-6], [400, 25e-6]]), I = b * Ib;
+    return { q: `Een transistor met β = ${b} heeft een basisstroom van ${val(Ib, 'A')}. Hoe groot is de collectorstroom?`, a: I, unit: 'A', wrong: [Ib / b, I * 10, I / 10, I + Ib], how: `I_c = β · I_b = ${b} · ${num(Ib)}` };
+  },
+  ib() {
+    const [b, Ic] = pick([[100, 2e-3], [200, 4e-3], [150, 3e-3], [400, 8e-3], [100, 20e-3], [50, 5e-3]]), I = Ic / b;
+    return { q: `De collectorstroom van een transistor is ${val(Ic, 'A')} en β = ${b}. Hoe groot is de basisstroom?`, a: I, unit: 'A', wrong: [Ic * b, I * 10, I / 10, Ic - b * 1e-6], how: `I_b = I_c / β = ${num(Ic)} / ${b}` };
+  },
+  ie() {
+    const [Ic, Ib] = pick([[20e-3, 200e-6], [10e-3, 100e-6], [5e-3, 50e-6], [2e-3, 10e-6], [1e-3, 20e-6]]), I = Ic + Ib;
+    return { q: `Door de collector van een transistor loopt ${val(Ic, 'A')} en door de basis ${val(Ib, 'A')}. Hoe groot is de emitterstroom?`, a: I, unit: 'A', wrong: [Ic - Ib, Ic, Ic * Ib, Ic / Ib], how: `I_e = I_c + I_b = ${num(Ic)} + ${num(Ib)}` };
+  },
+  beta() {
+    const [Ic, Ib] = pick([[20e-3, 200e-6], [10e-3, 50e-6], [5e-3, 25e-6], [2e-3, 10e-6], [8e-3, 40e-6]]), b = Ic / Ib;
+    return { q: `Een transistor heeft I_c = ${val(Ic, 'A')} en I_b = ${val(Ib, 'A')}. Hoe groot is de stroomversterking β (h_FE)?`, a: b, unit: '', wrong: [b + 1, b - 1, b * 10, Ib / Ic], how: `β = I_c / I_b = ${num(Ic)} / ${num(Ib)}` };
+  },
+  rb() {
+    const [Ub, Ic, b] = pick([[10, 4.5e-3, 100], [12, 2e-3, 200], [9, 3e-3, 150], [15, 6e-3, 100], [10, 2e-3, 100]]), Ib = Ic / b, R = (Ub - 0.6) / Ib;
+    return { q: `De basis van een Si-transistor (U_be = 0,6 V) wordt via R_b op ${val(Ub, 'V')} aangesloten. De collectorstroom moet ${val(Ic, 'A')} zijn bij β = ${b}. Hoe groot is R_b?`, a: R, unit: 'Ω', wrong: [Ub / Ib, (Ub + 0.6) / Ib, (Ub - 0.6) / Ic, R / 10], how: `I_b = I_c/β = ${num(Ib)}; R_b = (U_b − 0,6 V) / I_b = ${num(Ub - 0.6)} / ${num(Ib)}` };
+  },
+  uc() {
+    const [Ub, Ic, Rc] = pick([[10, 2e-3, 2000], [12, 3e-3, 1500], [9, 1e-3, 3300], [15, 2e-3, 4700], [10, 4.5e-3, 1000]]), U = Ub - Ic * Rc;
+    return { q: `Een transistor staat op ${val(Ub, 'V')}. Door R_c = ${val(Rc, 'Ω')} loopt ${val(Ic, 'A')}. Hoe groot is de collectorspanning t.o.v. massa?`, a: U, unit: 'V', wrong: [Ic * Rc, Ub + Ic * Rc, Ub, Ub / 2], how: `U_c = U_voeding − I_c · R_c = ${num(Ub)} − ${num(Ic * Rc)}` };
+  },
+  ubase() {
+    const [Ie, Re, mat, Ud] = pick([[2e-3, 500, 'silicium', 0.6], [1e-3, 1000, 'silicium', 0.6], [5e-3, 220, 'silicium', 0.6], [1e-3, 470, 'germanium', 0.2], [2e-3, 1000, 'silicium', 0.6]]), Ue = Ie * Re, U = Ue + Ud;
+    return { q: `Door de emitterweerstand van ${val(Re, 'Ω')} van een ${mat}transistor loopt ${val(Ie, 'A')}. Hoe groot is de basisspanning t.o.v. massa?`, a: U, unit: 'V', wrong: [Ue, Ue - Ud, Ie * Re * 2, Ue + 0.7 + Ud], how: `U_e = I_e · R_e = ${num(Ue)} V; U_b = U_e + U_be = ${num(Ue)} + ${num(Ud)}` };
+  },
+  rx() {
+    const [b, Re] = pick([[100, 1000], [200, 500], [150, 1000], [300, 470], [100, 2200]]), R = b * Re;
+    return { q: `Een transistor met β = ${b} heeft een emitterweerstand van ${val(Re, 'Ω')}. Welke weerstand ‘ziet’ de spanningsdeler vanaf de basis (ongeveer)?`, a: R, unit: 'Ω', wrong: [Re / b, Re, R * 10, b + Re], how: `R_x ≈ β · R_e = ${b} · ${num(Re)}` };
+  },
+  pce() {
+    const [U, I] = pick([[5, 0.1], [6, 0.5], [10, 0.2], [12, 0.05], [4, 1], [8, 0.25]]), P = U * I;
+    return { q: `Over een transistor staat ${val(U, 'V')} (collector-emitter) bij een collectorstroom van ${val(I, 'A')}. Hoeveel vermogen dissipeert hij ongeveer?`, a: P, unit: 'W', wrong: [U / I, I / U, P * 10, P / 10], how: `P = U_ce · I_c = ${num(U)} · ${num(I)}` };
+  },
   bw() {
     const [f, Q] = pick([[7e6, 70], [455e3, 100], [10.7e6, 50], [145e6, 100], [3.5e6, 35], [1e6, 20]]), B = f / Q;
     return { q: `Een kring heeft f_res = ${val(f, 'Hz')} en Q = ${Q}. Hoe groot is de bandbreedte?`, a: B, unit: 'Hz', wrong: [f * Q, f / (2 * Q), B * 10, B / 10], how: `B = f_res / Q = ${num(f)} / ${Q}` };

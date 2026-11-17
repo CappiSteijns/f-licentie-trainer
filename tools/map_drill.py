@@ -76,6 +76,31 @@ KW = {
   'soorten': r'zenerdiode|varicap|\bled\b|capaciteitsdiode',
   'schakelingen': r'dubbelzijdig|enkelzijdig|bruggelijkricht|afvlak|gelijkricht',
  },
+ 8: {
+  'steil': r'steilheid|mA/V',
+  'ires': r'steilheid|1/S|inwendige weerstand',
+  'aus': r'spanningsversterking|versterking',
+  'aur': r'spanningsversterking|versterking|sourceweerstand',
+  'ic': r'collectorstroom|stroomversterking|basisstroom',
+  'ib': r'basisstroom|stroomversterking',
+  'ie': r'emitterstroom',
+  'beta': r'stroomversterking|h_?fe|β',
+  'rb': r'basisweerstand|basisstroom|instel',
+  'ubase': r'basisspanning|emitterweerstand',
+  'rx': r'emitterweerstand|spanningsdeler',
+  'uc': r'collectorspanning|collectorweerstand',
+  'aure': r'spanningsversterking|emitterschakeling|collectorweerstand',
+  'pce': r'dissipatie|vermogen',
+  'fet': r'gate|source|drain|afknijp|pinch',
+  'corr': r'kathode|rooster|anode|gate|source|drain',
+  'corr2': r'emitter|basis|collector|gate|source|drain',
+  'schak': r'schakeling|gemeenschappelijk|volger',
+  'fase': r'fase|volger|tegenfase',
+  'namen': r'kathodeschakeling|roosterschakeling|anodeschakeling|kathodevolger',
+  'buis': r'rooster|penthode|triode|tetrode',
+  'tra': r'emitter|basis|collector|npn|pnp',
+  'verg': r'fet|buis|transistor|stroomversterker|spanningsversterker',
+ },
  17: {
   'stroom': r'\bma\b|milliamp|hartstilstand|fibrill|spierverstijving',
   'kleur': r'geel|blauw|bruin|kleur',
@@ -107,7 +132,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

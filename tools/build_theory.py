@@ -13,7 +13,7 @@ from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parent.parent
 DPI = 110
-SKIP = re.compile(r'^(Opgave\s+\d+-\d+|Uitwerking van Opgave.*|Aanwijzingen|Opgaven)$')
+SKIP = re.compile(r'^(Opgave\s+\d+-\d+\.?|Uitwerking van Opgave.*|Aanwijzingen|Opgaven( met .*)?)$')
 
 
 def norm(s):
@@ -148,13 +148,15 @@ def main(pdf):
             e['title'] = f'{parent}: inleiding'
     secs = []
     for i, e in enumerate(located):
+        if SKIP.match(e['title']):
+            continue          # opgaven tussen de theorie: bepalen wel het einde van het vorige onderdeel, maar zijn zelf geen paragraaf
         nxt = located[i + 1] if i + 1 < len(located) else None
         end = (nxt['page0'] - (1 if nxt['y0'] < 80 else 0)) if nxt else n_pages - 1
-        secs.append({'id': f's{i + 1}', 'title': e['title'], 'lvl': e['lvl'], 'p0': e['page0'], 'p1': max(end, e['page0'])})
+        secs.append({'id': f's{len(secs) + 1}', 'title': e['title'], 'lvl': e['lvl'], 'p0': e['page0'], 'p1': max(end, e['page0'])})
     # onderdelen die direct op 'Uitwerkingen van de opgaven' volgen (Inleiding + uitwerkingen) weglaten uit de kopjes
     out_dir = ROOT / 'img' / 'theorie' / f'hs{chap}'
     out_dir.mkdir(parents=True, exist_ok=True)
-    used = sorted({p for s in secs for p in range(s['p0'], s['p1'] + 1)})
+    used = list(range(min(s['p0'] for s in secs), max(s['p1'] for s in secs) + 1))   # ook de pagina's met alleen opgaven (voor build_exercises)
     for pi in used:
         pg = pl.pages[pi]
         h, w = float(pg.height), float(pg.width)

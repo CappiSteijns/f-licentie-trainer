@@ -1778,8 +1778,7 @@
    "answer": "A",
    "explain": "Een capaciteitsdiode staat in elk geval in sperrichting, anders is er geen diëlektricum. Daarmee vervallen de antwoorden C en D. Met toenemende spanning wordt de uitputtingszone dikker en daarmee ook de afstand tussen de nog geleidende delen van de P- en de N-zone. Dan neemt de capaciteit af met toenemende spanning. Antwoord A.",
    "pages": [
-    "p033",
-    "p034"
+    "p033"
    ],
    "spages": [
     "p040"
