@@ -376,3 +376,10 @@ body.has-tools #app { padding-bottom: 7rem; }
 .ropt { padding: .3rem .6rem; border-radius: 8px; margin: .2rem 0; }
 .ropt.right { background: var(--green-bg); }
 .ropt.wrong { background: var(--red-bg); }
+
+/* hoofdstukkeuze: badges breken netjes af op een smal scherm */
+.check .badges { display: flex; flex-wrap: wrap; gap: .35rem; justify-content: flex-end; }
+@media (max-width: 560px) {
+  .check { flex-wrap: wrap; }
+  .check .badges { flex-basis: 100%; justify-content: flex-start; padding-left: calc(20px + .7rem); }
+}

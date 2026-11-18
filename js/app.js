@@ -376,9 +376,9 @@ function viewSetup() {
       h('input', { type: 'checkbox', checked: !disabled && sel.has(c.n), disabled, onchange: e => { e.target.checked ? sel.add(c.n) : sel.delete(c.n); saveSel(); } }),
       h('span', { class: 't' }, h('b', {}, `H${c.n}`), ' · ', c.title),
       disabled ? h('span', { class: 'badge' }, 'nog geen vragen')
-        : [(due[c.n] || 0) > 0 && h('span', { class: 'badge blue', title: 'Nu te herhalen' }, `${due[c.n]} herhalen`),
+        : h('span', { class: 'badges' }, [(due[c.n] || 0) > 0 && h('span', { class: 'badge blue', title: 'Nu te herhalen' }, `${due[c.n]} herhalen`),
           pc > 0 && h('span', { class: 'badge red', title: 'In de foutenvijver' }, `${pc} fout`),
-          h('span', { class: 'badge green', title: 'Stevige vragen: box 3 of hoger in het herhaalschema' }, `${steady[c.n] || 0}/${c.count} stevig`), h('span', { class: 'badge' }, `${c.count} vragen`)]);
+          h('span', { class: 'badge green', title: 'Stevige vragen: box 3 of hoger in het herhaalschema' }, `${steady[c.n] || 0}/${c.count} stevig`), h('span', { class: 'badge' }, `${c.count} vragen`)]));
   });
 
   return h('div', {},
