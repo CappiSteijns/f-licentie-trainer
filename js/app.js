@@ -560,7 +560,7 @@ async function stopPractice() {
 function finishPractice() {
   const answered = S.ids.filter(id => S.answers[id]);
   const correct = answered.filter(id => S.answers[id] === quiz.QMAP.get(id).answer).length;
-  RESULT = { mode: 'practice', total: S.ids.length, answered: answered.length, correct };
+  RESULT = { mode: 'practice', total: S.ids.length, answered: answered.length, correct, from: S.from || null };
   S = null; store.clearSession();
   setView('result');
 }
@@ -674,7 +674,10 @@ function viewResult() {
         h('div', { class: 'big' }, `${r.correct} / ${r.answered}`),
         h('p', { class: 'score' }, r.answered ? `${p}% goed` : 'Geen vragen beantwoord'),
         h('p', { class: 'muted' }, pondN ? `Er staan nog ${pondN} vragen in je foutenvijver.` : 'Je foutenvijver is leeg. 🎉')),
-      h('div', { class: 'row' }, back,
+      h('div', { class: 'row' },
+        r.from && h('button', { class: 'primary', onclick: () => openTheory(r.from.ch, r.from.sec, r.from.back) }, '← Terug naar de paragraaf'),
+        r.from && h('button', { onclick: () => setView(r.from.back === 'theory' ? 'learn' : r.from.back) }, 'Terug naar Leren'),
+        !r.from && back,
         pondN > 0 && h('button', { class: 'primary', onclick: practiceWrong }, `Foute vragen oefenen (${pondN})`),
         h('button', { onclick: () => setView('stats') }, 'Bekijk voortgang')));
   }
@@ -1311,13 +1314,13 @@ function showFormulas(chapter) {
   $dlg.showModal();
 }
 
-async function startSectionPractice(chapter, secId) {
+async function startSectionPractice(chapter, secId, back) {
   const th = theory.getTheory(chapter);
   const ids = (th && th.qBySec.get(secId)) || [];
   if (!ids.length) { toast('Er zijn geen vragen aan deze paragraaf gekoppeld.'); return; }
   await quiz.loadChapter(chapter);
   const pool = ids.map(id => quiz.QMAP.get(id)).filter(Boolean);
-  S = { mode: 'practice', sid: store.uid(), ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title };
+  S = { mode: 'practice', sid: store.uid(), ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title, from: { ch: chapter, sec: secId, back: back || 'learn' } };
   saveSession();
   setView('session');
 }
@@ -1339,7 +1342,7 @@ function sectionRows(th, back) {
         st.total ? h('span', { class: 'muted small' }, ` · ${st.mastered}/${st.total} beheerst`) : null),
       h('span', { class: 'btns' },
         h('button', { class: 'ghost small', onclick: () => openTheory(th.chapter, s.id, back) }, 'Lees'),
-        st.total > 0 && h('button', { class: 'small', onclick: () => startSectionPractice(th.chapter, s.id) }, `Oefen ${st.total}`)));
+        st.total > 0 && h('button', { class: 'small', onclick: () => startSectionPractice(th.chapter, s.id, back) }, `Oefen ${st.total}`)));
   });
 }
 
@@ -1837,7 +1840,7 @@ function viewTheory() {
       next && h('button', { class: 'ghost', onclick: () => go(next.id) }, 'Volgende →')),
     h('div', { class: 'row' },
       h('button', { class: read ? '' : 'primary', onclick: toggle }, read ? '✓ Gelezen (klik om te wissen)' : 'Markeer als gelezen'),
-      st.total > 0 && h('button', { onclick: () => startSectionPractice(T.chapter, sec.id) }, `Oefen deze paragraaf (${st.total})`),
+      st.total > 0 && h('button', { onclick: () => startSectionPractice(T.chapter, sec.id, T.back) }, `Oefen deze paragraaf (${st.total})`),
       pos === 'top' && formulaBtn(T.chapter)));
   return h('div', {},
     h('div', { class: 'row between', style: 'margin-bottom:.4rem' },
