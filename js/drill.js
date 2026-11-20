@@ -276,6 +276,30 @@ const GEN = {
     const [U, I] = pick([[5, 0.1], [6, 0.5], [10, 0.2], [12, 0.05], [4, 1], [8, 0.25]]), P = U * I;
     return { q: `Over een transistor staat ${val(U, 'V')} (collector-emitter) bij een collectorstroom van ${val(I, 'A')}. Hoeveel vermogen dissipeert hij ongeveer?`, a: P, unit: 'W', wrong: [U / I, I / U, P * 10, P / 10], how: `P = U_ce · I_c = ${num(U)} · ${num(I)}` };
   },
+  rs() {
+    const [U, I] = pick([[3, 8e-3], [2.8, 9e-3], [2, 5e-3], [3, 4e-3], [1.5, 3e-3], [4, 10e-3]]), R = U / I;
+    return { q: `Bij een FET geldt I_D = ${val(I, 'A')} en U_GS = −${val(U, 'V')}. Hoe groot is de sourceweerstand R_S?`, a: R, unit: 'Ω', wrong: [U * I, I / U, R * 10, R / 10], how: `De spanning over R_S is −U_GS = ${num(U)} V; R_S = U / I = ${num(U)} / ${num(I)}` };
+  },
+  rdrs() {
+    const [U, I] = pick([[25, 20e-3], [30, 20e-3], [20, 10e-3], [12, 8e-3], [15, 5e-3], [24, 12e-3]]), R = U / I;
+    return { q: `Een FET is in serie met R_D en R_S op ${val(U, 'V')} aangesloten. Bij U_DS = 0 V (punt A van de belastingslijn) zou ${val(I, 'A')} lopen. Hoe groot is R_D + R_S?`, a: R, unit: 'Ω', wrong: [U * I, I / U, R * 10, R / 10], how: `R_D + R_S = U_voeding / I_A = ${num(U)} / ${num(I)}` };
+  },
+  rdd() {
+    const [U, Uds, Ugs, I] = pick([[25, 14, 3, 8e-3], [30, 15, 2.8, 9e-3], [24, 12, 2, 5e-3], [20, 10, 2, 4e-3], [15, 8, 1.5, 3e-3]]), R = (U - Uds - Ugs) / I;
+    return { q: `Een FET staat op ${val(U, 'V')} met werkpunt U_DS = ${val(Uds, 'V')}, U_GS = −${val(Ugs, 'V')} en I_D = ${val(I, 'A')}. Hoe groot is R_D?`, a: R, unit: 'Ω', wrong: [(U - Uds) / I, (U - Uds + Ugs) / I, Uds / I, R * 10], how: `Over R_D staat U − U_DS − U_RS = ${num(U)} − ${num(Uds)} − ${num(Ugs)} = ${num(U - Uds - Ugs)} V; R_D = U / I_D` };
+  },
+  pdis() {
+    const [U, I] = pick([[14, 8e-3], [10, 20e-3], [25, 10e-3], [12, 15e-3], [20, 5e-3]]), P = U * I;
+    return { q: `Over een FET staat U_DS = ${val(U, 'V')} bij een drainstroom van ${val(I, 'A')}. Hoeveel vermogen dissipeert hij?`, a: P, unit: 'W', wrong: [U / I, I / U, P * 10, P / 10], how: `P = I_D · U_DS = ${num(I)} · ${num(U)}` };
+  },
+  idp() {
+    const [P, U] = pick([[0.1, 10], [0.25, 25], [0.5, 10], [1, 20], [0.25, 5]]), I = P / U;
+    return { q: `Een element mag maximaal ${val(P, 'W')} dissiperen. Hoe groot mag de stroom hoogstens zijn bij U_DS = ${val(U, 'V')} (punt op de dissipatiehyperbool)?`, a: I, unit: 'A', wrong: [P * U, U / P, I * 10, I / 10], how: `I_D = P / U_DS = ${num(P)} / ${num(U)}` };
+  },
+  zin() {
+    const [R1, R2, b, Re] = pick([[82e3, 33e3, 100, 1e3], [100e3, 47e3, 100, 1e3], [47e3, 22e3, 200, 470], [68e3, 27e3, 150, 680]]), Rx = b * Re, Z = 1 / (1 / R1 + 1 / R2 + 1 / Rx);
+    return { q: `Een transistorversterker heeft een spanningsdeler van ${val(R1, 'Ω')} en ${val(R2, 'Ω')}, β = ${b} en R_e = ${val(Re, 'Ω')} (niet ontkoppeld). Hoe groot is de ingangsweerstand ongeveer?`, a: Z, unit: 'Ω', wrong: [R1 + R2 + Rx, 1 / (1 / R1 + 1 / R2), R2, Z * 10], how: `1/Z = 1/${num(R1)} + 1/${num(R2)} + 1/(β·R_e) = 1/${num(R1)} + 1/${num(R2)} + 1/${num(Rx)}` };
+  },
   bw() {
     const [f, Q] = pick([[7e6, 70], [455e3, 100], [10.7e6, 50], [145e6, 100], [3.5e6, 35], [1e6, 20]]), B = f / Q;
     return { q: `Een kring heeft f_res = ${val(f, 'Hz')} en Q = ${Q}. Hoe groot is de bandbreedte?`, a: B, unit: 'Hz', wrong: [f * Q, f / (2 * Q), B * 10, B / 10], how: `B = f_res / Q = ${num(f)} / ${Q}` };

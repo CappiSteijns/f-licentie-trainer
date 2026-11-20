@@ -101,6 +101,25 @@ KW = {
   'tra': r'emitter|basis|collector|npn|pnp',
   'verg': r'fet|buis|transistor|stroomversterker|spanningsversterker',
  },
+ 9: {
+  'rs': r'sourceweerstand|U_?GS|werkpunt',
+  'rdrs': r'belastingslijn|werkpunt|R_?D|R_?S',
+  'rdd': r'drainweerstand|werkpunt|belastingslijn',
+  'aus9': r'versterking|ontkoppel',
+  'aur9': r'versterking|sourceweerstand',
+  'pdis': r'dissipatie|vermogen',
+  'idp': r'dissipatie|hyperbool',
+  'zin': r'ingangsweerstand|ingangsimpedantie|koppel',
+  'ib9': r'basisstroom|basisweerstand',
+  'ic9': r'collectorstroom',
+  'uc9': r'collectorspanning|collectorweerstand',
+  'klas': r'klasse',
+  'rend': r'rendement|klasse',
+  'harm': r'harmonisch|klasse',
+  'koppel': r'koppel',
+  'cond': r'condensator|elco|koppel',
+  'bel': r'belastingslijn|werkpunt',
+ },
  17: {
   'stroom': r'\bma\b|milliamp|hartstilstand|fibrill|spierverstijving',
   'kleur': r'geel|blauw|bruin|kleur',
@@ -132,7 +151,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

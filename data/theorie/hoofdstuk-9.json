@@ -1,0 +1,1815 @@
+{
+ "chapter": 9,
+ "dir": "img/theorie/hs9",
+ "sections": [
+  {
+   "id": "s1",
+   "title": "Wat leer je in dit hoofdstuk?",
+   "lvl": 1,
+   "pages": [
+    "p003"
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Instelling van versterkende elementen; belastingslijnen",
+   "lvl": 1,
+   "pages": [
+    "p003"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Instelling van versterkende elementen; belastingslijnen: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p003",
+    "p004"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Belastingslijnen",
+   "lvl": 2,
+   "pages": [
+    "p004",
+    "p005",
+    "p006",
+    "p007",
+    "p008",
+    "p009"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Opgaven bij paragraaf 9.2",
+   "lvl": 1,
+   "pages": [
+    "p009"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Dissipatie en dissipatiehyperbolen",
+   "lvl": 1,
+   "pages": [
+    "p013",
+    "p014",
+    "p015"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Koppelen van versterkertrappen",
+   "lvl": 1,
+   "pages": [
+    "p015"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Koppelen van versterkertrappen: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p015"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Weerstandskoppeling",
+   "lvl": 2,
+   "pages": [
+    "p015",
+    "p016",
+    "p017",
+    "p018",
+    "p019",
+    "p020",
+    "p021"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Smoorspoelkoppeling",
+   "lvl": 2,
+   "pages": [
+    "p021",
+    "p022",
+    "p023",
+    "p024"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Transformatorkoppeling",
+   "lvl": 2,
+   "pages": [
+    "p024",
+    "p025",
+    "p026"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Opgaven bij paragraaf 9.5",
+   "lvl": 1,
+   "pages": [
+    "p026"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Klassen van instelling van versterkers",
+   "lvl": 1,
+   "pages": [
+    "p029"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Klassen van instelling van versterkers: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p029",
+    "p030"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "Klasse A",
+   "lvl": 2,
+   "pages": [
+    "p030",
+    "p031"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "Klasse B",
+   "lvl": 2,
+   "pages": [
+    "p031",
+    "p032",
+    "p033",
+    "p034"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "Klasse C",
+   "lvl": 2,
+   "pages": [
+    "p034",
+    "p035",
+    "p036"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Klasse AB",
+   "lvl": 2,
+   "pages": [
+    "p036",
+    "p037",
+    "p038"
+   ]
+  },
+  {
+   "id": "s19",
+   "title": "Opgaven bij paragraaf 9.7",
+   "lvl": 1,
+   "pages": [
+    "p038"
+   ]
+  },
+  {
+   "id": "s20",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
+    "p040",
+    "p041",
+    "p042",
+    "p043",
+    "p044",
+    "p045",
+    "p046",
+    "p047",
+    "p048"
+   ]
+  }
+ ],
+ "qmap": {
+  "hs9-1": [
+   "s15"
+  ],
+  "hs9-2": [
+   "s4"
+  ],
+  "hs9-3": [
+   "s15",
+   "s3"
+  ],
+  "hs9-4": [
+   "s4"
+  ],
+  "hs9-5": [
+   "s4"
+  ],
+  "hs9-6": [
+   "s17"
+  ],
+  "hs9-7": [
+   "s4"
+  ],
+  "hs9-8": [
+   "s17"
+  ],
+  "hs9-9": [
+   "s4"
+  ],
+  "hs9-10": [
+   "s15"
+  ],
+  "hs9-11": [
+   "s17"
+  ],
+  "hs9-12": [
+   "s15"
+  ],
+  "hs9-13": [
+   "s15",
+   "s17"
+  ],
+  "hs9-14": [
+   "s15",
+   "s16"
+  ],
+  "hs9-15": [
+   "s16"
+  ],
+  "hs9-16": [
+   "s17"
+  ],
+  "hs9-17": [
+   "s17"
+  ],
+  "hs9-18": [
+   "s17"
+  ],
+  "hs9-19": [
+   "s4"
+  ],
+  "hs9-20": [
+   "s8",
+   "s9"
+  ],
+  "hs9-21": [
+   "s17"
+  ],
+  "hs9-22": [
+   "s9"
+  ],
+  "hs9-23": [
+   "s9",
+   "s10"
+  ],
+  "hs9-24": [
+   "s15",
+   "s16"
+  ],
+  "hs9-25": [
+   "s17"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Belastingslijn en werkpunt",
+   "items": [
+    {
+     "f": "R_D + R_S = U_voeding / I_A",
+     "t": "I_A is de stroom bij U_DS = 0 (punt A van de belastingslijn)"
+    },
+    {
+     "f": "R_S = −U_GS / I_D",
+     "t": "sourceweerstand uit het werkpunt"
+    },
+    {
+     "f": "R_D = (U_voeding − U_DS − U_RS) / I_D",
+     "t": "drainweerstand uit het werkpunt"
+    },
+    {
+     "f": "Au = R_D / (R_S + 1/S)",
+     "t": "spanningsversterking met sourceweerstand"
+    },
+    {
+     "f": "Au = R_D / (1/S) = S · R_D",
+     "t": "als R_S met een condensator is ontkoppeld"
+    }
+   ]
+  },
+  {
+   "title": "Dissipatie",
+   "items": [
+    {
+     "f": "P = I_D · U_DS",
+     "t": "dissipatie van een FET, buis of transistor (P = I·U)"
+    },
+    {
+     "f": "I_D = P / U_DS",
+     "t": "de dissipatiehyperbool bij vaste P"
+    }
+   ]
+  },
+  {
+   "title": "Koppelen",
+   "items": [
+    {
+     "f": "1/Z_in ≈ 1/R1 + 1/R2 + 1/(β · R_e)",
+     "t": "ingangsweerstand van een transistortrap met spanningsdeler"
+    },
+    {
+     "f": "X_C ≪ R bij de laagste frequentie",
+     "t": "voorwaarde voor koppel- en ontkoppelcondensatoren"
+    }
+   ]
+  },
+  {
+   "title": "Klassen van instelling",
+   "items": [
+    {
+     "f": "Klasse A: η ≤ 25%",
+     "t": "werkpunt in het midden, geleidt de hele periode"
+    },
+    {
+     "f": "Klasse B: η ≈ 50%",
+     "t": "werkpunt in het afknijppunt, geleidt een halve periode"
+    },
+    {
+     "f": "Klasse C: η het hoogst",
+     "t": "voorbij het afknijppunt, geleidt een kort stuk van de periode"
+    },
+    {
+     "f": "Klasse AB: tussen A en B",
+     "t": "kleine rustroom"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s3",
+   "q": "Waarom stel je een versterkend element in?",
+   "a": "Zodat het een zo groot mogelijk signaal met zo min mogelijk vervorming kan verwerken."
+  },
+  {
+   "id": "c2",
+   "sec": "s3",
+   "q": "Hoe krijg je alle gelijkspanningen en -stromen meestal geregeld?",
+   "a": "Met één voedingsspanning en een goed ontworpen schakeling: onderlinge afstemming van spanningen en stromen."
+  },
+  {
+   "id": "c3",
+   "sec": "s3",
+   "q": "Hoe moet bij een N-FET de source ten opzichte van de gate zijn?",
+   "a": "Een beetje positief (de gate is dus negatief ten opzichte van de source). Bij een P-FET andersom."
+  },
+  {
+   "id": "c4",
+   "sec": "s3",
+   "q": "Hoe moet bij een NPN-transistor de basis ten opzichte van de emitter zijn?",
+   "a": "Een beetje positief, zodat de basis-emitterovergang geleidt. Bij PNP andersom."
+  },
+  {
+   "id": "c5",
+   "sec": "s4",
+   "q": "Wat is een belastingslijn?",
+   "a": "Een lijn in de karakteristiek met alle theoretisch mogelijke combinaties van spanning over het element en over de weerstand in serie, samen gelijk aan de voedingsspanning."
+  },
+  {
+   "id": "c6",
+   "sec": "s4",
+   "q": "Waarop is de belastingslijn gebaseerd?",
+   "a": "Op de tweede wet van Kirchhoff: de bronspanning is de som van de spanningen over element en weerstand."
+  },
+  {
+   "id": "c7",
+   "sec": "s4",
+   "q": "Wat is het werkpunt?",
+   "a": "Het snijpunt van de belastingslijn met de karakteristiek (bij een FET met de karakteristiek van de gekozen U_GS). Het geeft de spanningsverdeling en de stroom."
+  },
+  {
+   "id": "c8",
+   "sec": "s4",
+   "q": "Wat geeft punt A van de belastingslijn van een FET aan?",
+   "a": "U_DS = 0 V: de hele voedingsspanning staat over R_D + R_S. De stroom is dan U/(R_D+R_S)."
+  },
+  {
+   "id": "c9",
+   "sec": "s4",
+   "q": "Wat geeft punt B van de belastingslijn aan?",
+   "a": "I_D = 0: de FET is stroomloos en de volle voedingsspanning staat over de FET."
+  },
+  {
+   "id": "c10",
+   "sec": "s4",
+   "q": "Hoe bepaal je R_D + R_S uit de belastingslijn?",
+   "a": "Voedingsspanning gedeeld door de stroom bij U_DS = 0 (punt A). Bijvoorbeeld 25 V / 20 mA = 1250 Ω."
+  },
+  {
+   "id": "c11",
+   "sec": "s4",
+   "q": "Waar kies je normaal het werkpunt?",
+   "a": "Ongeveer in het midden van het bruikbare deel van de belastingslijn, zodat U_DS evenveel omhoog als omlaag kan."
+  },
+  {
+   "id": "c12",
+   "sec": "s4",
+   "q": "Waarom is niet de hele belastingslijn bruikbaar?",
+   "a": "Links van de kniepunten lopen de karakteristieken steil op. Een werkpunt daar geeft flinke vervorming. Het bruikbare deel begint bij punt A′."
+  },
+  {
+   "id": "c13",
+   "sec": "s4",
+   "q": "Hoe bepaal je R_S uit het werkpunt?",
+   "a": "R_S = −U_GS / I_D. Voorbeeld: 3 V / 8 mA = 375 Ω."
+  },
+  {
+   "id": "c14",
+   "sec": "s4",
+   "q": "Hoe bepaal je R_D uit het werkpunt?",
+   "a": "R_D = (U_voeding − U_DS − U_RS) / I_D. De drainstroom is gelijk aan de sourcestroom."
+  },
+  {
+   "id": "c15",
+   "sec": "s4",
+   "q": "Waarom is de drainstroom gelijk aan de sourcestroom?",
+   "a": "Volgens de eerste wet van Kirchhoff: wat de FET ingaat, gaat er ook weer uit."
+  },
+  {
+   "id": "c16",
+   "sec": "s4",
+   "q": "Formule voor de spanningsversterking met sourceweerstand?",
+   "a": "Au = R_D / (R_S + 1/S)."
+  },
+  {
+   "id": "c17",
+   "sec": "s4",
+   "q": "Wat gebeurt er met Au als je R_S ontkoppelt met een condensator?",
+   "a": "De invloed van R_S valt weg: Au = R_D / (1/S) = S · R_D. De versterking wordt veel groter (bijvoorbeeld van 1,6 naar 4)."
+  },
+  {
+   "id": "c18",
+   "sec": "s4",
+   "q": "Waarom moet C_S voor het te versterken gebied een verwaarloosbare reactantie hebben?",
+   "a": "Anders werkt R_S nog mee voor wisselspanning en blijft de versterking lager."
+  },
+  {
+   "id": "c19",
+   "sec": "s4",
+   "q": "Waarvoor dient een condensator parallel aan de emitterweerstand?",
+   "a": "Om de emitterweerstand voor wisselspanning te ontkoppelen, zodat de signaalversterking groter wordt."
+  },
+  {
+   "id": "c20",
+   "sec": "s4",
+   "q": "Wat bepaalt het werkpunt bij gelijkspanning, wat bij wisselspanning?",
+   "a": "Gelijkstroom: R_D + R_S. Met ontkoppeld R_S telt voor wisselstroom alleen R_D: de wisselstroombelastingslijn wordt steiler."
+  },
+  {
+   "id": "c21",
+   "sec": "s4",
+   "q": "Gelden belastingslijnen ook voor buis en transistor?",
+   "a": "Ja, op dezelfde manier. Bij een transistor moet β zo groot zijn dat de basisstroom verwaarloosbaar is ten opzichte van collector- en emitterstroom."
+  },
+  {
+   "id": "c22",
+   "sec": "s4",
+   "q": "Een Si-transistor met β = 20, R_b = 47 kΩ aan 12,5 V en R_c = 1,2 kΩ. Hoe bereken je de collectorspanning?",
+   "a": "I_b = (12,5 − 0,6) V / 47 kΩ ≈ 0,25 mA; I_c = β·I_b = 5 mA; U over R_c = 6 V; de collectorspanning is 12,5 − 6 = 6,5 V."
+  },
+  {
+   "id": "c23",
+   "sec": "s6",
+   "q": "Wat is de dissipatie van een FET?",
+   "a": "P = I_D · U_DS."
+  },
+  {
+   "id": "c24",
+   "sec": "s6",
+   "q": "Wat is een dissipatiehyperbool?",
+   "a": "De grafiek van I_D = P / U_DS bij vaste P: alle combinaties van stroom en spanning met dezelfde dissipatie."
+  },
+  {
+   "id": "c25",
+   "sec": "s6",
+   "q": "Wat gebeurt er als de dissipatie boven het maximum komt?",
+   "a": "Het element wordt te heet en gaat stuk."
+  },
+  {
+   "id": "c26",
+   "sec": "s6",
+   "q": "Waar vind je de maximale waarden van een element?",
+   "a": "In het databalad: maximale U_DS, I_D en dissipatie (op het examen niet)."
+  },
+  {
+   "id": "c27",
+   "sec": "s6",
+   "q": "Waarom combineer je een belastingslijn met dissipatiehyperbolen?",
+   "a": "Om te controleren of het werkpunt en de hele lijn binnen de toegestane dissipatie blijven."
+  },
+  {
+   "id": "c28",
+   "sec": "s6",
+   "q": "Wat zijn de ‘verboden gebieden’ in de karakteristiek?",
+   "a": "Gebieden voorbij de maximale spanning, de maximale stroom en de dissipatiehyperbool."
+  },
+  {
+   "id": "c29",
+   "sec": "s8",
+   "q": "Waarom schakel je versterkertrappen achter elkaar?",
+   "a": "Eén trap geeft meestal niet genoeg versterking."
+  },
+  {
+   "id": "c30",
+   "sec": "s8",
+   "q": "Welke drie koppelmethoden zijn er?",
+   "a": "Weerstandskoppeling, smoorspoelkoppeling en transformatorkoppeling."
+  },
+  {
+   "id": "c31",
+   "sec": "s9",
+   "q": "Wat zijn bij weerstandskoppeling de echte koppelelementen?",
+   "a": "De koppelcondensatoren (C_k). De drain- of collectorweerstanden zetten stroom om in spanning."
+  },
+  {
+   "id": "c32",
+   "sec": "s9",
+   "q": "Waarvan hangt de capaciteit van een koppelcondensator af?",
+   "a": "Van de laagste te versterken frequentie en de weerstand in het koppelcircuit (samen een RC-filter)."
+  },
+  {
+   "id": "c33",
+   "sec": "s9",
+   "q": "Wat vormen koppelcondensator en gateweerstand samen?",
+   "a": "Een hoogdoorlaatfilter. De kantelfrequentie moet onder de laagste te versterken frequentie liggen."
+  },
+  {
+   "id": "c34",
+   "sec": "s9",
+   "q": "Welke koppelcondensatoren zie je bij FET en buis in LF-versterkers?",
+   "a": "Ongeveer 10–100 nF, meestal geen elco."
+  },
+  {
+   "id": "c35",
+   "sec": "s9",
+   "q": "Waarom zijn koppelcondensatoren bij transistoren groter dan bij FET’s?",
+   "a": "De ingangsweerstand van een transistortrap is veel lager. Ze zijn ongeveer 1–10 µF, meestal elco’s."
+  },
+  {
+   "id": "c36",
+   "sec": "s9",
+   "q": "Hoe is de ingangsweerstand van een transistortrap met spanningsdeler?",
+   "a": "De parallelschakeling van R1, R2 en (h_FE · R_e): 1/Zin ≈ 1/R1 + 1/R2 + 1/(β·R_e)."
+  },
+  {
+   "id": "c37",
+   "sec": "s9",
+   "q": "Hoe groot zijn ontkoppelcondensatoren in het source- of emittercircuit ongeveer?",
+   "a": "Ongeveer 100 µF of meer (enkele honderden µF bij transistoren), vrijwel altijd elco’s."
+  },
+  {
+   "id": "c38",
+   "sec": "s9",
+   "q": "Waarom zie je bij FET en buis zelden elco’s als koppelcondensator?",
+   "a": "De ingangsimpedantie van gate en rooster is hoog, dus een kleine capaciteit volstaat. Transistoren hebben een lage ingangsimpedantie op de basis."
+  },
+  {
+   "id": "c39",
+   "sec": "s9",
+   "q": "Welk frequentiegebied heeft een goede audioversterker?",
+   "a": "Ongeveer 10 Hz tot 20 kHz. Voor spraak is 300 Hz tot 3 kHz voldoende."
+  },
+  {
+   "id": "c40",
+   "sec": "s9",
+   "q": "Wat is een frequentie-lineaire LF-versterker?",
+   "a": "Een versterker die alle frequenties tussen f1 en f2 even sterk versterkt (vlakke karakteristiek)."
+  },
+  {
+   "id": "c41",
+   "sec": "s9",
+   "q": "Wordt weerstandskoppeling in HF-versterkers toegepast?",
+   "a": "Nauwelijks. Voor HF gebruikt men koppeling via LC-kringen die een klein frequentiegebied doorlaten."
+  },
+  {
+   "id": "c42",
+   "sec": "s9",
+   "q": "Wat gebeurt er met de bandbreedte als je twee gelijke versterkers achter elkaar schakelt?",
+   "a": "De totale bandbreedte wordt iets kleiner."
+  },
+  {
+   "id": "c43",
+   "sec": "s9",
+   "q": "Welke koppeling hoort bij LF-versterkers?",
+   "a": "Weerstandskoppeling: de versterking is voor alle frequenties in het audiogebied (bij benadering) gelijk."
+  },
+  {
+   "id": "c44",
+   "sec": "s10",
+   "q": "Wat is smoorspoelkoppeling?",
+   "a": "De drain-, collector- of anodeweerstand is vervangen door een smoorspoel; het signaal gaat via een koppelcondensator naar de volgende trap."
+  },
+  {
+   "id": "c45",
+   "sec": "s10",
+   "q": "Welk voordeel heeft een smoorspoel als belasting?",
+   "a": "In theorie dissipeert hij geen vermogen. De gelijkspanning op de drain is vrijwel de voedingsspanning."
+  },
+  {
+   "id": "c46",
+   "sec": "s10",
+   "q": "Waarom kan met smoorspoelkoppeling een hogere versterking worden bereikt?",
+   "a": "Hogere spanning op de drain (lage gelijkstroomweerstand) en de uitgangsspanning kan in theorie uitslingeren tot twee keer de voedingsspanning."
+  },
+  {
+   "id": "c47",
+   "sec": "s10",
+   "q": "Waar wordt smoorspoelkoppeling toegepast?",
+   "a": "In HF-schakelingen met een klein frequentiegebied. In LF niet meer."
+  },
+  {
+   "id": "c48",
+   "sec": "s10",
+   "q": "Waarom niet smoorspoelkoppeling in LF-versterkers?",
+   "a": "Er is een grote, lompe, dure spoel nodig, en de reactantie neemt toe met de frequentie, dus de versterking is frequentie-afhankelijk."
+  },
+  {
+   "id": "c49",
+   "sec": "s11",
+   "q": "Wat is transformatorkoppeling?",
+   "a": "De primaire van een transformator staat in de uitgangskring van de ene trap; de secundaire voert het signaal naar de ingang van de volgende."
+  },
+  {
+   "id": "c50",
+   "sec": "s11",
+   "q": "Waar wordt transformatorkoppeling toegepast?",
+   "a": "In HF-versterkers (algemeen) en in LF-eindtrappen voor groot vermogen. Voor LF-voorversterkers niet meer."
+  },
+  {
+   "id": "c51",
+   "sec": "s11",
+   "q": "Wat is een koppeltransformator met afgestemde kring?",
+   "a": "Een transformator waarvan één of alle wikkelingen met een condensator een afgestemde kring vormen: inductief gekoppelde afgestemde kringen. Gebruikelijk in ontvangers."
+  },
+  {
+   "id": "c52",
+   "sec": "s11",
+   "q": "Wat doet de tweede gate van een dual-gate MOSFET in een HF-trap?",
+   "a": "Dezelfde taak als het schermrooster van een penthode: de capaciteit tussen gate 1 en drain minimaal maken, zodat de koppeling tussen de drainkring en de ingangskring zo klein mogelijk is."
+  },
+  {
+   "id": "c53",
+   "sec": "s14",
+   "q": "Waarom is klasse A geen efficiënte instelling?",
+   "a": "Er loopt altijd gelijkstroom, ook zonder signaal. Die gaat volledig op in warmte."
+  },
+  {
+   "id": "c54",
+   "sec": "s14",
+   "q": "Welke klassen van instelling zijn er?",
+   "a": "A, B, C en AB."
+  },
+  {
+   "id": "c55",
+   "sec": "s14",
+   "q": "Waarom bestaan er klassen van instelling?",
+   "a": "Om het rendement van grote-vermogenversterkers (zenders) te verhogen: minder gelijkstroomdissipatie."
+  },
+  {
+   "id": "c56",
+   "sec": "s15",
+   "q": "Hoe is een element in klasse A ingesteld?",
+   "a": "In het midden van het lineaire deel van de steilheidsgrafiek. Het geleidt altijd, voor de volle sinus."
+  },
+  {
+   "id": "c57",
+   "sec": "s15",
+   "q": "Wat zijn de kenmerken van klasse A?",
+   "a": "Gelijkstroom blijft met en zonder signaal vrijwel gelijk; HF en LF; weinig vervorming; vermogensrendement hooguit 25%."
+  },
+  {
+   "id": "c58",
+   "sec": "s15",
+   "q": "Wat is het hoogst haalbare vermogensrendement in klasse A?",
+   "a": "Ongeveer 25%. Theoretisch 33% bij volledige uitsturing met een DC-deel gelijk aan de amplitude."
+  },
+  {
+   "id": "c59",
+   "sec": "s15",
+   "q": "Wanneer ontstaan harmonischen in een klasse A LF-versterker?",
+   "a": "Bij te grote uitsturing (overbelasting): het signaal komt in het niet-lineaire gebied."
+  },
+  {
+   "id": "c60",
+   "sec": "s15",
+   "q": "Wat zijn de polariteiten van een NPN-transistor in klasse A?",
+   "a": "Collector positief ten opzichte van de emitter, basis een beetje positief ten opzichte van de emitter. Bij PNP is het omgekeerd."
+  },
+  {
+   "id": "c61",
+   "sec": "s15",
+   "q": "Hoe zijn de roosters van een penthode in klasse A ingesteld?",
+   "a": "Stuurrooster negatief, schermrooster positief ten opzichte van de kathode; remrooster is met de kathode verbonden (niet positief)."
+  },
+  {
+   "id": "c62",
+   "sec": "s16",
+   "q": "Hoe is een element in klasse B ingesteld?",
+   "a": "Precies in het afknijppunt: zonder signaal loopt er (bijna) geen stroom, met signaal alleen tijdens één halve sinus."
+  },
+  {
+   "id": "c63",
+   "sec": "s16",
+   "q": "Welk rendement haalt klasse B?",
+   "a": "Rond de 50%."
+  },
+  {
+   "id": "c64",
+   "sec": "s16",
+   "q": "Hoe voorkom je vervorming in klasse B?",
+   "a": "Met een balansversterker (twee elementen, elk één helft) of met afgestemde filters die de harmonischen wegfilteren."
+  },
+  {
+   "id": "c65",
+   "sec": "s16",
+   "q": "Wat is een balansversterker (push-pull)?",
+   "a": "Twee versterkende elementen in klasse B; het ene versterkt de positieve en het andere de negatieve halve sinus. Ze worden met transformatoren met middenaftakking gekoppeld."
+  },
+  {
+   "id": "c66",
+   "sec": "s16",
+   "q": "Waarom moeten de twee elementen van een balansversterker goed gelijk zijn?",
+   "a": "Anders zijn de twee helften niet even groot en ontstaat vervorming. Er bestaan gematchte paren."
+  },
+  {
+   "id": "c67",
+   "sec": "s16",
+   "q": "Wat is crossoververvorming?",
+   "a": "Vervorming bij de nuldoorgang van het signaal, doordat beide elementen sperren of het begin van de steilheidskarakteristiek niet lineair is."
+  },
+  {
+   "id": "c68",
+   "sec": "s16",
+   "q": "Hoe stel je een FET of buis in klasse B in?",
+   "a": "Met een negatieve gate- of roosterspanning die precies het afknijppunt bereikt, via een smoorspoel toegevoerd."
+  },
+  {
+   "id": "c69",
+   "sec": "s16",
+   "q": "Hoe stel je een transistor in klasse B in?",
+   "a": "Een in doorlaatrichting geschakelde diode (Si of Ge) levert een basisspanning waarbij net geen stroom loopt."
+  },
+  {
+   "id": "c70",
+   "sec": "s17",
+   "q": "Hoe is een element in klasse C ingesteld?",
+   "a": "Voorbij het afknijppunt: bij FET en buis een nog negatievere gate- of roosterspanning dan in klasse B; bij een transistor de basis via leiding of weerstand aan 0 V."
+  },
+  {
+   "id": "c71",
+   "sec": "s17",
+   "q": "Wat versterkt klasse C?",
+   "a": "Alleen het bovenste deel van een halve sinusperiode. Er loopt maar kort stroom."
+  },
+  {
+   "id": "c72",
+   "sec": "s17",
+   "q": "Wat is het nadeel van klasse C?",
+   "a": "Veel vervorming; kleine signalen komen niet door. Niet evenveel versterking voor alle amplituden."
+  },
+  {
+   "id": "c73",
+   "sec": "s17",
+   "q": "Welke signalen zijn geschikt voor klasse C?",
+   "a": "Alleen signalen waarbij die vervorming de informatie niet aantast (bijvoorbeeld FM, CW)."
+  },
+  {
+   "id": "c74",
+   "sec": "s17",
+   "q": "Welke instelling heeft het hoogste rendement?",
+   "a": "Klasse C: het hoogste rendement, maar ook de meeste vervorming en dus de meeste harmonischen."
+  },
+  {
+   "id": "c75",
+   "sec": "s17",
+   "q": "Bij welke klasse is de kans op harmonischen het grootst?",
+   "a": "Klasse C."
+  },
+  {
+   "id": "c76",
+   "sec": "s17",
+   "q": "Bij welke klasse is de kans op harmonischen het kleinst?",
+   "a": "Klasse A."
+  },
+  {
+   "id": "c77",
+   "sec": "s17",
+   "q": "Waarom staat een transistor met basis op 0 V in klasse C?",
+   "a": "De basis-emitterdiode heeft ongeveer 0,6 V (Si) of 0,2 V (Ge) nodig om te geleiden; daaronder loopt geen stroom."
+  },
+  {
+   "id": "c78",
+   "sec": "s17",
+   "q": "Hoe kan een schakeling zichzelf in klasse C trekken?",
+   "a": "Door gelijkrichting van een deel van het signaal: de koppelcondensator laadt op en de basis-, gate- of roosterspanning wordt negatiever, met een weerstand naar massa."
+  },
+  {
+   "id": "c79",
+   "sec": "s17",
+   "q": "Waarvoor is vervorming door klasse C gewenst?",
+   "a": "Voor frequentievermenigvuldiging: de vervorming maakt harmonischen; een kring afgestemd op de gewenste harmonische filtert die eruit."
+  },
+  {
+   "id": "c80",
+   "sec": "s17",
+   "q": "Wat gebeurt er in een frequentieverdrievoudiger met een transistor in klasse C?",
+   "a": "In de collectorstroom zitten de grondfrequentie f en de harmonische 3f (en andere); de afgestemde kring selecteert 3f."
+  },
+  {
+   "id": "c81",
+   "sec": "s17",
+   "q": "Welk element is het meest geschikt voor frequentievermenigvuldiging?",
+   "a": "Een versterker in klasse C."
+  },
+  {
+   "id": "c82",
+   "sec": "s17",
+   "q": "Welke trap volgt meestal op een klasse C-vermenigvuldiger?",
+   "a": "Een kring afgestemd op de gewenste harmonische, daarna vaak een klasse A-trap."
+  },
+  {
+   "id": "c83",
+   "sec": "s17",
+   "q": "Waarvoor gebruik je klasse C in zenders?",
+   "a": "Voor eindtrappen en vermenigvuldigers waar groot rendement nodig is en de vervorming de informatie niet aantast."
+  },
+  {
+   "id": "c84",
+   "sec": "s18",
+   "q": "Wat is klasse AB?",
+   "a": "Het midden tussen A en B: er loopt zonder signaal een kleine stroom. Voor kleine signalen klasse A, voor grote bijna klasse B."
+  },
+  {
+   "id": "c85",
+   "sec": "s18",
+   "q": "Hoe is het rendement van klasse AB?",
+   "a": "Tussen dat van A en B in; meer naar A is lager rendement, meer naar B hoger rendement maar meer vervorming."
+  },
+  {
+   "id": "c86",
+   "sec": "s18",
+   "q": "Waarom is klasse AB bij transistoren moeilijk in te stellen?",
+   "a": "De emitter-basisdiode is steil, vooral bij een zeer kleine emitterweerstand."
+  },
+  {
+   "id": "c87",
+   "sec": "s18",
+   "q": "Waarom heeft een transistor een emitterweerstand nodig?",
+   "a": "Om het gedrag van de transistor in de hand te houden bij opwarming: een warme halfgeleider trekt meer stroom."
+  }
+ ],
+ "drill": [
+  {
+   "id": "rs",
+   "sec": "s4",
+   "name": "Sourceweerstand uit het werkpunt",
+   "where": "de weerstand die de negatieve gatespanning levert",
+   "f": "R_S = −U_GS / I_D",
+   "cloze": [
+    {
+     "q": "R_S = −U_GS / ___",
+     "a": "I_D",
+     "w": [
+      "I_S·β",
+      "U_DS",
+      "S"
+     ]
+    },
+    {
+     "q": "De stroom door R_S is gelijk aan de ___",
+     "a": "drainstroom",
+     "w": [
+      "gatestroom",
+      "basisstroom",
+      "schermstroom"
+     ]
+    }
+   ],
+   "gen": "rs",
+   "rewrite": [
+    {
+     "base": "R_S = −U_GS / I_D",
+     "ask": "I_D",
+     "a": "I_D = −U_GS / R_S",
+     "w": [
+      "I_D = −U_GS · R_S",
+      "I_D = R_S / −U_GS",
+      "I_D = −U_GS − R_S"
+     ]
+    },
+    {
+     "base": "R_S = −U_GS / I_D",
+     "ask": "−U_GS",
+     "a": "−U_GS = I_D · R_S",
+     "w": [
+      "−U_GS = I_D / R_S",
+      "−U_GS = R_S / I_D",
+      "−U_GS = I_D + R_S"
+     ]
+    }
+   ],
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-15",
+    "hs9-19"
+   ]
+  },
+  {
+   "id": "rdrs",
+   "sec": "s4",
+   "name": "R_D + R_S uit de belastingslijn",
+   "where": "de totale serieweerstand uit punt A",
+   "f": "R_D + R_S = U / I_A",
+   "cloze": [
+    {
+     "q": "Bij punt A is U_DS = ___",
+     "a": "0 V",
+     "w": [
+      "U_voeding",
+      "I_D",
+      "−U_GS"
+     ]
+    },
+    {
+     "q": "Bij punt B is I_D = ___",
+     "a": "0",
+     "w": [
+      "I_A",
+      "U_voeding",
+      "S"
+     ]
+    }
+   ],
+   "gen": "rdrs",
+   "rewrite": [
+    {
+     "base": "R_D + R_S = U / I_A",
+     "ask": "I_A",
+     "a": "I_A = U / (R_D + R_S)",
+     "w": [
+      "I_A = U · (R_D + R_S)",
+      "I_A = (R_D + R_S) / U",
+      "I_A = U − (R_D + R_S)"
+     ]
+    }
+   ],
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-15",
+    "hs9-19"
+   ]
+  },
+  {
+   "id": "rdd",
+   "sec": "s4",
+   "name": "Drainweerstand uit het werkpunt",
+   "where": "R_D bij een gegeven werkpunt",
+   "f": "R_D = (U − U_DS − U_RS) / I_D",
+   "cloze": [
+    {
+     "q": "Over R_D staat U − U_DS − ___",
+     "a": "U_RS",
+     "w": [
+      "U_GS·2",
+      "I_D",
+      "U_voeding"
+     ]
+    }
+   ],
+   "gen": "rdd",
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-15",
+    "hs9-19"
+   ]
+  },
+  {
+   "id": "aus9",
+   "sec": "s4",
+   "name": "Versterking met ontkoppelde sourceweerstand",
+   "where": "de versterking als R_S is ontkoppeld",
+   "f": "Au = S · R_D",
+   "cloze": [
+    {
+     "q": "Ontkoppelen van R_S maakt de versterking ___",
+     "a": "groter",
+     "w": [
+      "kleiner",
+      "gelijk",
+      "negatief"
+     ]
+    },
+    {
+     "q": "Au = R_D / ___",
+     "a": "1/S",
+     "w": [
+      "R_S",
+      "R_i",
+      "S²"
+     ]
+    }
+   ],
+   "gen": "aus",
+   "rewrite": [
+    {
+     "base": "Au = S · R_D",
+     "ask": "R_D",
+     "a": "R_D = Au / S",
+     "w": [
+      "R_D = Au · S",
+      "R_D = S / Au",
+      "R_D = Au − S"
+     ]
+    }
+   ],
+   "exam": [
+    "hs9-1",
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-14",
+    "hs9-19",
+    "hs9-22",
+    "hs9-24"
+   ]
+  },
+  {
+   "id": "aur9",
+   "sec": "s4",
+   "name": "Versterking met sourceweerstand",
+   "where": "de versterking als R_S niet is ontkoppeld",
+   "f": "Au = R_D / (R_S + 1/S)",
+   "cloze": [
+    {
+     "q": "Au ≈ R_D / ___",
+     "a": "R_S",
+     "w": [
+      "S",
+      "R_i",
+      "1/S"
+     ]
+    }
+   ],
+   "gen": "aur",
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-14",
+    "hs9-19",
+    "hs9-22",
+    "hs9-24"
+   ]
+  },
+  {
+   "id": "pdis",
+   "sec": "s6",
+   "name": "Dissipatie van het element",
+   "where": "het vermogen dat in het element warmte wordt",
+   "f": "P = I_D · U_DS",
+   "cloze": [
+    {
+     "q": "P = I_D · ___",
+     "a": "U_DS",
+     "w": [
+      "U_GS",
+      "R_S",
+      "S"
+     ]
+    },
+    {
+     "q": "Een dissipatiehyperbool is de grafiek van ___",
+     "a": "I_D = P / U_DS",
+     "w": [
+      "I_D = P · U_DS",
+      "U_DS = P · I_D",
+      "P = I_D"
+     ]
+    }
+   ],
+   "gen": "pdis",
+   "rewrite": [
+    {
+     "base": "P = I_D · U_DS",
+     "ask": "U_DS",
+     "a": "U_DS = P / I_D",
+     "w": [
+      "U_DS = P · I_D",
+      "U_DS = I_D / P",
+      "U_DS = P − I_D"
+     ]
+    },
+    {
+     "base": "P = I_D · U_DS",
+     "ask": "I_D",
+     "a": "I_D = P / U_DS",
+     "w": [
+      "I_D = P · U_DS",
+      "I_D = U_DS / P",
+      "I_D = P − U_DS"
+     ]
+    }
+   ],
+   "exam": [
+    "hs9-8",
+    "hs9-13",
+    "hs9-21"
+   ]
+  },
+  {
+   "id": "idp",
+   "sec": "s6",
+   "name": "Maximale stroom bij een dissipatie",
+   "where": "een punt op de dissipatiehyperbool",
+   "f": "I_D = P / U_DS",
+   "cloze": [
+    {
+     "q": "Hoe hoger U_DS, hoe ___ de toegestane stroom",
+     "a": "lager",
+     "w": [
+      "hoger",
+      "gelijk",
+      "negatief"
+     ]
+    }
+   ],
+   "gen": "idp",
+   "exam": []
+  },
+  {
+   "id": "zin",
+   "sec": "s9",
+   "name": "Ingangsweerstand van een transistortrap",
+   "where": "de weerstand die de volgende trap ziet",
+   "f": "1/Z = 1/R1 + 1/R2 + 1/(β·R_e)",
+   "cloze": [
+    {
+     "q": "De delerweerstanden staan voor het signaal ___ aan elkaar",
+     "a": "parallel",
+     "w": [
+      "in serie",
+      "gekruist",
+      "niet"
+     ]
+    },
+    {
+     "q": "R_e lijkt vanaf de basis ___ keer zo groot",
+     "a": "β",
+     "w": [
+      "1/β",
+      "2",
+      "√β"
+     ]
+    }
+   ],
+   "gen": "zin",
+   "exam": [
+    "hs9-1",
+    "hs9-20",
+    "hs9-22",
+    "hs9-23"
+   ]
+  },
+  {
+   "id": "ib9",
+   "sec": "s4",
+   "name": "Basisstroom via de basisweerstand",
+   "where": "de stroom door de basisweerstand",
+   "f": "I_b = (U − U_be) / R_b",
+   "cloze": [
+    {
+     "q": "U_be van een Si-transistor is ongeveer ___",
+     "a": "0,6 V",
+     "w": [
+      "0,2 V",
+      "6 V",
+      "1,7 V"
+     ]
+    }
+   ],
+   "gen": "rb",
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-11",
+    "hs9-19"
+   ]
+  },
+  {
+   "id": "ic9",
+   "sec": "s4",
+   "name": "Collectorstroom uit de basisstroom",
+   "where": "de collectorstroom bij gegeven β",
+   "f": "I_c = β · I_b",
+   "cloze": [
+    {
+     "q": "I_c = β · ___",
+     "a": "I_b",
+     "w": [
+      "I_e",
+      "U_be",
+      "R_b"
+     ]
+    }
+   ],
+   "gen": "ic",
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-11",
+    "hs9-17",
+    "hs9-18",
+    "hs9-19"
+   ]
+  },
+  {
+   "id": "uc9",
+   "sec": "s4",
+   "name": "Collectorspanning",
+   "where": "de spanning op de collector t.o.v. massa",
+   "f": "U_c = U − I_c · R_c",
+   "cloze": [
+    {
+     "q": "Over R_c staat ___",
+     "a": "I_c · R_c",
+     "w": [
+      "U_ce",
+      "U_be",
+      "U"
+     ]
+    }
+   ],
+   "gen": "uc",
+   "exam": [
+    "hs9-2",
+    "hs9-3",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-19"
+   ]
+  },
+  {
+   "id": "klas",
+   "sec": "s14",
+   "name": "Klassen van instelling",
+   "where": "de klassen A, B, C en AB",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "klasse A",
+     "a": "werkpunt in het midden, geleidt de hele periode, rendement hooguit 25%"
+    },
+    {
+     "q": "klasse B",
+     "a": "werkpunt in het afknijppunt, geleidt een halve periode, rendement rond 50%"
+    },
+    {
+     "q": "klasse C",
+     "a": "voorbij het afknijppunt, geleidt een kort stuk, hoogste rendement, veel harmonischen"
+    },
+    {
+     "q": "klasse AB",
+     "a": "kleine rustroom, voor kleine signalen A en voor grote bijna B"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke klasse is dit: {x}?",
+   "exam": [
+    "hs9-1",
+    "hs9-3",
+    "hs9-4",
+    "hs9-5",
+    "hs9-6",
+    "hs9-8",
+    "hs9-9",
+    "hs9-10",
+    "hs9-11",
+    "hs9-12",
+    "hs9-13",
+    "hs9-14",
+    "hs9-15",
+    "hs9-16",
+    "hs9-17",
+    "hs9-18",
+    "hs9-21",
+    "hs9-25"
+   ]
+  },
+  {
+   "id": "rend",
+   "sec": "s14",
+   "name": "Rendement per klasse",
+   "where": "vermogensrendement van de klassen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "klasse A",
+     "a": "hooguit 25%"
+    },
+    {
+     "q": "klasse B",
+     "a": "rond 50%"
+    },
+    {
+     "q": "klasse C",
+     "a": "het hoogste, meer dan B"
+    }
+   ],
+   "ask": "Rendement van {x}?",
+   "askRev": "Welke klasse heeft dit rendement: {x}?",
+   "exam": [
+    "hs9-1",
+    "hs9-3",
+    "hs9-4",
+    "hs9-5",
+    "hs9-6",
+    "hs9-8",
+    "hs9-9",
+    "hs9-10",
+    "hs9-11",
+    "hs9-12",
+    "hs9-13",
+    "hs9-14",
+    "hs9-15",
+    "hs9-16",
+    "hs9-17",
+    "hs9-18",
+    "hs9-21",
+    "hs9-25"
+   ]
+  },
+  {
+   "id": "harm",
+   "sec": "s17",
+   "name": "Harmonischen en klassen",
+   "where": "kans op harmonischen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "klasse A",
+     "a": "het kleinst"
+    },
+    {
+     "q": "klasse B",
+     "a": "groter, tenzij balansschakeling of filter"
+    },
+    {
+     "q": "klasse C",
+     "a": "het grootst"
+    }
+   ],
+   "ask": "Kans op harmonischen bij {x}?",
+   "askRev": "Bij welke klasse geldt: {x}?",
+   "exam": [
+    "hs9-1",
+    "hs9-3",
+    "hs9-4",
+    "hs9-5",
+    "hs9-6",
+    "hs9-8",
+    "hs9-9",
+    "hs9-10",
+    "hs9-11",
+    "hs9-12",
+    "hs9-13",
+    "hs9-14",
+    "hs9-15",
+    "hs9-16",
+    "hs9-17",
+    "hs9-18",
+    "hs9-21",
+    "hs9-24",
+    "hs9-25"
+   ]
+  },
+  {
+   "id": "koppel",
+   "sec": "s8",
+   "name": "Koppelmethoden",
+   "where": "waar de drie koppelmethoden voor gebruikt worden",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "weerstandskoppeling",
+     "a": "LF-versterkers, alle audiofrequenties even sterk"
+    },
+    {
+     "q": "smoorspoelkoppeling",
+     "a": "HF-schakelingen met een klein frequentiegebied"
+    },
+    {
+     "q": "transformatorkoppeling",
+     "a": "HF en LF-eindtrappen met groot vermogen, afgestemde kringen in ontvangers"
+    }
+   ],
+   "ask": "Waarvoor is {x} geschikt?",
+   "askRev": "Welke koppeling hoort bij: {x}?",
+   "exam": [
+    "hs9-1",
+    "hs9-20"
+   ]
+  },
+  {
+   "id": "cond",
+   "sec": "s9",
+   "name": "Soorten condensatoren in een versterker",
+   "where": "waar welke condensator hoort",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "LF-koppeling bij transistoren",
+     "a": "elco, ongeveer 1–10 µF"
+    },
+    {
+     "q": "LF-koppeling bij FET of buis",
+     "a": "kleine capaciteit, ongeveer 10–100 nF"
+    },
+    {
+     "q": "ontkoppeling van R_S of R_e",
+     "a": "elco van honderden µF"
+    },
+    {
+     "q": "koppeling bij 145 MHz",
+     "a": "keramische condensator"
+    }
+   ],
+   "ask": "Welke condensator hoort bij {x}?",
+   "askRev": "Waarvoor is dit de gebruikelijke condensator: {x}?",
+   "exam": [
+    "hs9-1",
+    "hs9-20",
+    "hs9-22",
+    "hs9-23"
+   ]
+  },
+  {
+   "id": "bel",
+   "sec": "s4",
+   "name": "Belastingslijn",
+   "where": "de punten van de belastingslijn",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "punt A (U_DS = 0)",
+     "a": "de hele voedingsspanning staat over R_D + R_S"
+    },
+    {
+     "q": "punt B (I_D = 0)",
+     "a": "de volle voedingsspanning staat over de FET"
+    },
+    {
+     "q": "het werkpunt",
+     "a": "snijpunt van belastingslijn en karakteristiek"
+    },
+    {
+     "q": "het bruikbare deel",
+     "a": "rechts van de kniepunten, vlakke karakteristieken"
+    }
+   ],
+   "ask": "Wat geldt bij {x}?",
+   "askRev": "Welk punt is dit: {x}?",
+   "exam": [
+    "hs9-2",
+    "hs9-4",
+    "hs9-5",
+    "hs9-7",
+    "hs9-9",
+    "hs9-15",
+    "hs9-19"
+   ]
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o9-1",
+   "n": 1,
+   "q": "De transistor in het schema is een Si-type met een β van 20. De spanning op de collector bedraagt ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "-6,5 V"
+    },
+    {
+     "id": "B",
+     "text": "6,6 V"
+    },
+    {
+     "id": "C",
+     "text": "-11,9 V"
+    },
+    {
+     "id": "D",
+     "text": "-5 V"
+    }
+   ],
+   "answer": "A",
+   "explain": "Over de basisweerstand van 47 k staat ongeveer 12,5 V-0,6 V=11,9 V. Bij deze weerstand betekent dat ongeveer een basisstroomstroom 𝐼𝑏 = 11,9⁄47 mA ≈ 0,25 mA (let op het trucje: gebruik kΩ en V in de wet van Ohm en je krijgt een uitkomst in mA!). De collectorstroom is dan 20 ∗ 0,25 mA= 5 mA. Over de collectorweerstand van 1k2 staat dan 1,2 ∗ 5 mA = 6 V (gebruik kΩ en mA in de wet van Ohm en je krijgt een uitkomst in V) en voor de collectorspanning blijft -6,5 V over. Antwoord A is daarom goed.",
+   "pages": [
+    "p009"
+   ],
+   "spages": [
+    "p040"
+   ]
+  },
+  {
+   "id": "o9-2",
+   "n": 2,
+   "q": "Het schakelen van een capaciteit parallel aan een emitterweerstand dient om",
+   "options": [
+    {
+     "id": "A",
+     "text": "De stabiliteit van de schakeling te verhogen"
+    },
+    {
+     "id": "B",
+     "text": "De signaalversterking te verlagen"
+    },
+    {
+     "id": "C",
+     "text": "De signaalversterking te verhogen"
+    },
+    {
+     "id": "D",
+     "text": "De belastingslijn minder steil te maken."
+    }
+   ],
+   "answer": "C",
+   "explain": "Door de parallelschakeling met de condensator wordt de emitterweerstand ontkoppeld, waardoor de wisselspanningsversterking (signaalversterking) van de schakeling wordt vergroot. Dat betekent dat antwoord C goed is. Opmerking Voor dit soort schakelingen geldt net als voor andere RC-schakelingen dat het -3 dB-punt ligt bij de frequentie waarbij de reactantie van de condensator gelijk is aan de weerstand die parallel staat aan de condensator. Voor lagere frequenties wordt de condensator steeds minder effectief.",
+   "pages": [
+    "p010"
+   ],
+   "spages": [
+    "p041"
+   ]
+  },
+  {
+   "id": "o9-3",
+   "n": 3,
+   "q": "Dit plaatje is bijna een kopie van Figuur 9.2-2, maar de voedingsspanning is 30 V. Punt B ligt dus bij UDS = 30 V en punt A nog steeds bij ID = 20 mA. De som van RD en RS bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "667 Ω"
+    },
+    {
+     "id": "B",
+     "text": "1250 Ω"
+    },
+    {
+     "id": "C",
+     "text": "1500 Ω"
+    },
+    {
+     "id": "D",
+     "text": "3000 Ω"
+    }
+   ],
+   "answer": "C",
+   "explain": "Kijk in de grafiek waar UDS = 0 V en lees de bijbehorende stroom af. Die is 20 mA. Als UDS = 0 V, dan staat de volle 30 V over de serieschakeling van RD en RS. Dan geldt 𝑅𝐷 + 𝑅𝑆 = 𝑈⁄ = 30V⁄ 𝐼        20mA = 1,5 kΩ = 1500Ω. Dat betekent antwoord C. Opmerking Ook hier is de truc toegepast van: gebruik in de wet van Ohm volts en milliampères en je krijgt kilo-ohms.",
+   "pages": [
+    "p011"
+   ],
+   "spages": [
+    "p042"
+   ]
+  },
+  {
+   "id": "o9-4",
+   "n": 4,
+   "q": "De FET van Opgave 9-3 wordt ingesteld op werkpunt P’. Daar is UGS = -2,8 V en ID = 9 mA. RS bedraagt dan ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "300 Ω"
+    },
+    {
+     "id": "B",
+     "text": "310 Ω"
+    },
+    {
+     "id": "C",
+     "text": "330 Ω"
+    },
+    {
+     "id": "D",
+     "text": "250 Ω"
+    }
+   ],
+   "answer": "B",
+   "explain": "Als UGS = -2,8V, dan is de spanning over RS 2,8V. Als ID = 9 mA, dan is dat ook de stroom −𝑈GS door RS. Daarmee is RS te berekenen via de wet van Ohm: 𝑅S =          ⁄𝐼 = 2,8V⁄9mA = D 0,311kΩ ≈ 310Ω. Dat is antwoord B.",
+   "pages": [
+    "p012"
+   ],
+   "spages": [
+    "p043"
+   ]
+  },
+  {
+   "id": "o9-5",
+   "n": 5,
+   "q": "In LF-versterkers wordt bij voorkeur de volgende koppelmethode toegepast",
+   "options": [
+    {
+     "id": "A",
+     "text": "Transformatorkoppeling"
+    },
+    {
+     "id": "B",
+     "text": "Weerstandskoppeling"
+    },
+    {
+     "id": "C",
+     "text": "Smoorspoelkoppeling"
+    },
+    {
+     "id": "D",
+     "text": "Smoorspoel- of transformatorkoppeling"
+    }
+   ],
+   "answer": "B",
+   "explain": "Weerstandskoppeling is de gangbare manier van koppelen bij LF-versterkers. Die werken meest in het audio-gebied Dat wordt daarom ook wel aangeduid met de afkorting AF. Dat loopt van omstreeks 10 Hz tot 20 000 Hz. Het LF voor radioverbindingen valt daarbinnen: zo’n 300-3000 Hz. Daarvoor moet de versterking voor elke frequentie (bij benadering) dezelfde zijn. Het gedrag van een weerstand is binnen dat gebied (en ruim daarbuiten) frequentie-onafhankelijk. Dat laatste geldt niet voor smoorspoelen en maar beperkt voor transformatoren. Die twee worden dan ook vooral toegepast in HF-versterkers Daarin is de te versterken bandbreedte in vergelijking met AF heel klein ten opzichte van de frequentie zelf. Dat betekent dat antwoord B juist is.",
+   "pages": [
+    "p026"
+   ],
+   "spages": [
+    "p044"
+   ]
+  },
+  {
+   "id": "o9-6",
+   "n": 6,
+   "q": "In schema’s van LF-versterkers met transistoren komt men vaak elco’s als koppelcondensator tegen en bij FETs en buizen zelden. Dat komt door",
+   "options": [
+    {
+     "id": "A",
+     "text": "De lage spanning waarop transistoren meestal werken"
+    },
+    {
+     "id": "B",
+     "text": "De lage spanning tussen basis en emitter"
+    },
+    {
+     "id": "C",
+     "text": "De hoge impedantie op de collector"
+    },
+    {
+     "id": "D",
+     "text": "De lage ingangsimpedantie op de basis en de hoge op de gate en het rooster"
+    }
+   ],
+   "answer": "D",
+   "explain": "Elco’s zijn door hun traagheid niet geschikt voor hoge frequenties. Een elco heeft wel de eigenschap van een hoge capaciteit bij klein volume. Die hoge capaciteit geeft ook bij lage audiofrequenties nog een goede signaaloverdracht bij de lage ingangsimpedanties op de basis van transistoren. Daarom zie je in LF-versterkers met transistoren voornamelijk weerstandskoppeling met elco’s als koppelelement. Bij FET’s en buizen is de impedantie op gate, respectievelijk stuurrooster hoog, zodat bij deze elementen met veel kleinere capaciteiten kan worden volstaan dan bij bipolaire transistoren. Dat komt neer op antwoord D.",
+   "pages": [
+    "p027"
+   ],
+   "spages": [
+    "p045"
+   ]
+  },
+  {
+   "id": "o9-7",
+   "n": 7,
+   "q": "Neem aan dat de hFE (β) van de transistoren Q1 en Q2 in de figuur meer dan 300 bedraagt en dat het Si-typen zijn. Dan is de rustspanning (= spanning bij afwezigheid van signaal) op de beide collectoren ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "12 V"
+    },
+    {
+     "id": "B",
+     "text": "9 V"
+    },
+    {
+     "id": "C",
+     "text": "7 V"
+    },
+    {
+     "id": "D",
+     "text": "5 V"
+    }
+   ],
+   "answer": "C",
+   "explain": "De basisspanning bij beide transistoren bedraagt 12 ∗ 27V⁄(27 + 82) ≈ 3V. De emitterspanning is dan ongeveer 2,3 V en de emitterstroom ongeveer 2,3 mA. Bij 𝛽 = 300 is de basisstroom verwaarloosbaar, dus de collectorstroom is ook ongeveer 2,3 mA Over de collectorweerstand van 2k2 staat dan ongeveer 2,2*2,3 V is ongeveer 5,1 V. 12 V- 5,1 V is 6,9 V, afgerond 7 V (let op het woord “ongeveer” in de vraagstelling).. Antwoord C is daarom het juiste antwoord.",
+   "pages": [
+    "p028"
+   ],
+   "spages": [
+    "p046"
+   ]
+  },
+  {
+   "id": "o9-8",
+   "n": 8,
+   "q": "Uit de ID/UGS-karakteristiek is af te lezen dat geschikte waarden van UGS voor verschillende klassen van instelling bij deze FET ongeveer zijn:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Klasse C: -7,5 V; Klasse AB: -5 V; Klasse A: -2,5 V; Klasse B: -6,5 V"
+    },
+    {
+     "id": "B",
+     "text": "Klasse AB: -2 V; Klasse A: -5,5 V; Klasse B: -6,5 V; Klasse C: -8 V"
+    },
+    {
+     "id": "C",
+     "text": "Klasse B: -5 V; Klasse C: -6,5 V; Klasse A: -2,5 V; Klasse AB: -7 V"
+    },
+    {
+     "id": "D",
+     "text": "Klasse A: 0 V; Klasse AB: -5,5 V; Klasse B: -6,5 V; Klasse C: -8 V"
+    }
+   ],
+   "answer": "A",
+   "explain": "Het afknijppunt ligt bij 𝑈GS = −6,5V. Daar snijdt de curve de horizontale as en is 𝐼D = 0. Voor klasse C moet 𝑈GS < −6,5V zijn. Voor klasse B is de eis 𝑈GS = −6,5V. We kijken eerst, welke antwoorden hieraan voldoen. Op het examen kan zo’n werkwijze tijd schelen. Antwoord A blijft staan. Antwoord B ook. Antwoord C vervalt want -5V is te hoog voor klasse B en -6,5 V te hoog voor klasse C. Antwoord D blijft ook staan. Voor klasse A moet 𝑈GS ongeveer midden tussen 0V en -5V liggen. Daaraan voldoet antwoord A met 2,5 V. Met -5,5 V vervalt B, net als antwoord D met 0 V. Antwoord A blijft als enige over. De -5 V voor klasse AB is ook goed. Antwoord A dus.",
+   "pages": [
+    "p038"
+   ],
+   "spages": [
+    "p047"
+   ]
+  },
+  {
+   "id": "o9-9",
+   "n": 9,
+   "q": "De transistor staat in klasse",
+   "options": [
+    {
+     "id": "A",
+     "text": "A"
+    },
+    {
+     "id": "B",
+     "text": "AB"
+    },
+    {
+     "id": "C",
+     "text": "B"
+    },
+    {
+     "id": "D",
+     "text": "C"
+    }
+   ],
+   "answer": "D",
+   "explain": "Let op: de transistor is een PNP en de plus zit boven. De transistor staat dus, vergeleken met een NPN-transistor, “op de kop”. De basis ligt via de smoorspoel zonder diode aan de plus. Dat is één diode- drempelspanning voorbij het afknijppunt, dus klasse C. Antwoord D is goed.",
+   "pages": [
+    "p039"
+   ],
+   "spages": [
+    "p048"
+   ]
+  }
+ ]
+}

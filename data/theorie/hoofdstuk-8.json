@@ -1473,6 +1473,19 @@
       "ΔU_GS = ΔI_D − S"
      ]
     }
+   ],
+   "exam": [
+    "hs8-46",
+    "hs8-48",
+    "hs8-52",
+    "hs8-53",
+    "hs8-54",
+    "hs8-55",
+    "hs8-56",
+    "hs8-57",
+    "hs8-60",
+    "hs8-63",
+    "hs8-64"
    ]
   },
   {
@@ -1501,7 +1514,23 @@
      ]
     }
    ],
-   "gen": "ires"
+   "gen": "ires",
+   "exam": [
+    "hs8-18",
+    "hs8-21",
+    "hs8-29",
+    "hs8-46",
+    "hs8-48",
+    "hs8-52",
+    "hs8-53",
+    "hs8-54",
+    "hs8-55",
+    "hs8-56",
+    "hs8-57",
+    "hs8-60",
+    "hs8-63",
+    "hs8-64"
+   ]
   },
   {
    "id": "aus",
@@ -1551,6 +1580,20 @@
       "S = Au − R_D"
      ]
     }
+   ],
+   "exam": [
+    "hs8-2",
+    "hs8-6",
+    "hs8-7",
+    "hs8-12",
+    "hs8-17",
+    "hs8-40",
+    "hs8-46",
+    "hs8-47",
+    "hs8-54",
+    "hs8-60",
+    "hs8-61",
+    "hs8-63"
    ]
   },
   {
@@ -1579,7 +1622,23 @@
      ]
     }
    ],
-   "gen": "aur"
+   "gen": "aur",
+   "exam": [
+    "hs8-2",
+    "hs8-6",
+    "hs8-7",
+    "hs8-11",
+    "hs8-12",
+    "hs8-17",
+    "hs8-19",
+    "hs8-40",
+    "hs8-46",
+    "hs8-47",
+    "hs8-54",
+    "hs8-60",
+    "hs8-61",
+    "hs8-63"
+   ]
   },
   {
    "id": "ic",
@@ -1629,6 +1688,32 @@
       "I_b = I_c − β"
      ]
     }
+   ],
+   "exam": [
+    "hs8-2",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-9",
+    "hs8-10",
+    "hs8-12",
+    "hs8-13",
+    "hs8-15",
+    "hs8-20",
+    "hs8-23",
+    "hs8-24",
+    "hs8-27",
+    "hs8-28",
+    "hs8-30",
+    "hs8-32",
+    "hs8-34",
+    "hs8-36",
+    "hs8-37",
+    "hs8-38",
+    "hs8-39",
+    "hs8-40",
+    "hs8-42",
+    "hs8-46"
    ]
   },
   {
@@ -1648,7 +1733,27 @@
      ]
     }
    ],
-   "gen": "ib"
+   "gen": "ib",
+   "exam": [
+    "hs8-2",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-9",
+    "hs8-10",
+    "hs8-12",
+    "hs8-13",
+    "hs8-15",
+    "hs8-24",
+    "hs8-27",
+    "hs8-30",
+    "hs8-34",
+    "hs8-36",
+    "hs8-37",
+    "hs8-38",
+    "hs8-40",
+    "hs8-46"
+   ]
   },
   {
    "id": "ie",
@@ -1688,6 +1793,24 @@
       "I_c = I_e / I_b"
      ]
     }
+   ],
+   "exam": [
+    "hs8-2",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-13",
+    "hs8-15",
+    "hs8-24",
+    "hs8-27",
+    "hs8-30",
+    "hs8-32",
+    "hs8-34",
+    "hs8-36",
+    "hs8-37",
+    "hs8-38",
+    "hs8-39",
+    "hs8-40"
    ]
   },
   {
@@ -1707,7 +1830,28 @@
      ]
     }
    ],
-   "gen": "beta"
+   "gen": "beta",
+   "exam": [
+    "hs8-2",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-9",
+    "hs8-12",
+    "hs8-14",
+    "hs8-15",
+    "hs8-17",
+    "hs8-24",
+    "hs8-29",
+    "hs8-30",
+    "hs8-32",
+    "hs8-34",
+    "hs8-36",
+    "hs8-37",
+    "hs8-38",
+    "hs8-40",
+    "hs8-46"
+   ]
   },
   {
    "id": "rb",
@@ -1747,6 +1891,35 @@
       "I_b = (U − U_be) · R_b"
      ]
     }
+   ],
+   "exam": [
+    "hs8-3",
+    "hs8-4",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-9",
+    "hs8-10",
+    "hs8-13",
+    "hs8-15",
+    "hs8-20",
+    "hs8-21",
+    "hs8-23",
+    "hs8-24",
+    "hs8-27",
+    "hs8-28",
+    "hs8-31",
+    "hs8-33",
+    "hs8-34",
+    "hs8-36",
+    "hs8-37",
+    "hs8-39",
+    "hs8-40",
+    "hs8-41",
+    "hs8-42",
+    "hs8-45",
+    "hs8-46",
+    "hs8-61"
    ]
   },
   {
@@ -1766,7 +1939,33 @@
      ]
     }
    ],
-   "gen": "ubase"
+   "gen": "ubase",
+   "exam": [
+    "hs8-3",
+    "hs8-4",
+    "hs8-5",
+    "hs8-7",
+    "hs8-9",
+    "hs8-10",
+    "hs8-13",
+    "hs8-15",
+    "hs8-17",
+    "hs8-18",
+    "hs8-20",
+    "hs8-23",
+    "hs8-24",
+    "hs8-25",
+    "hs8-27",
+    "hs8-28",
+    "hs8-29",
+    "hs8-31",
+    "hs8-32",
+    "hs8-33",
+    "hs8-34",
+    "hs8-39",
+    "hs8-41",
+    "hs8-42"
+   ]
   },
   {
    "id": "rx",
@@ -1785,7 +1984,34 @@
      ]
     }
    ],
-   "gen": "rx"
+   "gen": "rx",
+   "exam": [
+    "hs8-3",
+    "hs8-4",
+    "hs8-5",
+    "hs8-7",
+    "hs8-9",
+    "hs8-10",
+    "hs8-13",
+    "hs8-15",
+    "hs8-17",
+    "hs8-18",
+    "hs8-20",
+    "hs8-23",
+    "hs8-24",
+    "hs8-25",
+    "hs8-27",
+    "hs8-28",
+    "hs8-29",
+    "hs8-31",
+    "hs8-32",
+    "hs8-33",
+    "hs8-34",
+    "hs8-35",
+    "hs8-39",
+    "hs8-41",
+    "hs8-42"
+   ]
   },
   {
    "id": "uc",
@@ -1816,6 +2042,31 @@
       "R_c = (U − U_c) · I_c"
      ]
     }
+   ],
+   "exam": [
+    "hs8-3",
+    "hs8-4",
+    "hs8-5",
+    "hs8-7",
+    "hs8-9",
+    "hs8-10",
+    "hs8-13",
+    "hs8-15",
+    "hs8-17",
+    "hs8-18",
+    "hs8-20",
+    "hs8-23",
+    "hs8-24",
+    "hs8-27",
+    "hs8-28",
+    "hs8-31",
+    "hs8-32",
+    "hs8-33",
+    "hs8-34",
+    "hs8-39",
+    "hs8-40",
+    "hs8-41",
+    "hs8-42"
    ]
   },
   {
@@ -1835,7 +2086,25 @@
      ]
     }
    ],
-   "gen": "aure"
+   "gen": "aure",
+   "exam": [
+    "hs8-7",
+    "hs8-9",
+    "hs8-12",
+    "hs8-13",
+    "hs8-15",
+    "hs8-16",
+    "hs8-17",
+    "hs8-18",
+    "hs8-21",
+    "hs8-23",
+    "hs8-24",
+    "hs8-26",
+    "hs8-27",
+    "hs8-32",
+    "hs8-40",
+    "hs8-42"
+   ]
   },
   {
    "id": "pce",
@@ -1866,6 +2135,22 @@
       "I_c = P − U_ce"
      ]
     }
+   ],
+   "exam": [
+    "hs8-2",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-12",
+    "hs8-15",
+    "hs8-24",
+    "hs8-30",
+    "hs8-32",
+    "hs8-34",
+    "hs8-36",
+    "hs8-37",
+    "hs8-38",
+    "hs8-40"
    ]
   },
   {
@@ -1894,7 +2179,19 @@
     }
    ],
    "ask": "Wat geldt voor {x}?",
-   "askRev": "Waar hoort dit bij: {x}?"
+   "askRev": "Waar hoort dit bij: {x}?",
+   "exam": [
+    "hs8-11",
+    "hs8-19",
+    "hs8-22",
+    "hs8-43",
+    "hs8-44",
+    "hs8-45",
+    "hs8-46",
+    "hs8-47",
+    "hs8-48",
+    "hs8-51"
+   ]
   },
   {
    "id": "corr",
@@ -1918,7 +2215,32 @@
     }
    ],
    "ask": "Wat is bij een FET de tegenhanger van de {x}?",
-   "askRev": "Welk onderdeel van een buis komt overeen met de {x} van een FET?"
+   "askRev": "Welk onderdeel van een buis komt overeen met de {x} van een FET?",
+   "exam": [
+    "hs8-11",
+    "hs8-19",
+    "hs8-22",
+    "hs8-43",
+    "hs8-45",
+    "hs8-46",
+    "hs8-47",
+    "hs8-48",
+    "hs8-49",
+    "hs8-50",
+    "hs8-51",
+    "hs8-52",
+    "hs8-53",
+    "hs8-54",
+    "hs8-55",
+    "hs8-56",
+    "hs8-57",
+    "hs8-58",
+    "hs8-59",
+    "hs8-60",
+    "hs8-61",
+    "hs8-62",
+    "hs8-63"
+   ]
   },
   {
    "id": "corr2",
@@ -1942,7 +2264,54 @@
     }
    ],
    "ask": "Wat is bij een FET de tegenhanger van de {x}?",
-   "askRev": "Welk onderdeel van een transistor komt overeen met de {x} van een FET?"
+   "askRev": "Welk onderdeel van een transistor komt overeen met de {x} van een FET?",
+   "exam": [
+    "hs8-1",
+    "hs8-2",
+    "hs8-3",
+    "hs8-4",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-8",
+    "hs8-9",
+    "hs8-10",
+    "hs8-11",
+    "hs8-12",
+    "hs8-13",
+    "hs8-14",
+    "hs8-15",
+    "hs8-16",
+    "hs8-17",
+    "hs8-18",
+    "hs8-19",
+    "hs8-20",
+    "hs8-21",
+    "hs8-22",
+    "hs8-23",
+    "hs8-24",
+    "hs8-25",
+    "hs8-26",
+    "hs8-27",
+    "hs8-28",
+    "hs8-29",
+    "hs8-32",
+    "hs8-33",
+    "hs8-34",
+    "hs8-35",
+    "hs8-36",
+    "hs8-37",
+    "hs8-39",
+    "hs8-40",
+    "hs8-41",
+    "hs8-42",
+    "hs8-43",
+    "hs8-45",
+    "hs8-46",
+    "hs8-47",
+    "hs8-48",
+    "hs8-51"
+   ]
   },
   {
    "id": "schak",
@@ -1978,7 +2347,33 @@
     }
    ],
    "ask": "Ingang en uitgang van {x}?",
-   "askRev": "Welke schakeling heeft: {x}?"
+   "askRev": "Welke schakeling heeft: {x}?",
+   "exam": [
+    "hs8-1",
+    "hs8-2",
+    "hs8-3",
+    "hs8-6",
+    "hs8-7",
+    "hs8-8",
+    "hs8-12",
+    "hs8-14",
+    "hs8-16",
+    "hs8-17",
+    "hs8-18",
+    "hs8-19",
+    "hs8-21",
+    "hs8-25",
+    "hs8-26",
+    "hs8-27",
+    "hs8-29",
+    "hs8-31",
+    "hs8-32",
+    "hs8-41",
+    "hs8-43",
+    "hs8-49",
+    "hs8-50",
+    "hs8-63"
+   ]
   },
   {
    "id": "fase",
@@ -2006,7 +2401,15 @@
     }
    ],
    "ask": "Wat geldt voor {x}?",
-   "askRev": "Welke schakeling is dit: {x}?"
+   "askRev": "Welke schakeling is dit: {x}?",
+   "exam": [
+    "hs8-12",
+    "hs8-14",
+    "hs8-17",
+    "hs8-25",
+    "hs8-29",
+    "hs8-32"
+   ]
   },
   {
    "id": "namen",
@@ -2030,7 +2433,25 @@
     }
    ],
    "ask": "Hoe heet bij een buis de {x}?",
-   "askRev": "Welke FET-schakeling is dit bij een buis: {x}?"
+   "askRev": "Welke FET-schakeling is dit bij een buis: {x}?",
+   "exam": [
+    "hs8-49",
+    "hs8-50",
+    "hs8-51",
+    "hs8-52",
+    "hs8-53",
+    "hs8-54",
+    "hs8-55",
+    "hs8-56",
+    "hs8-57",
+    "hs8-58",
+    "hs8-59",
+    "hs8-60",
+    "hs8-61",
+    "hs8-62",
+    "hs8-63",
+    "hs8-64"
+   ]
   },
   {
    "id": "buis",
@@ -2062,7 +2483,23 @@
     }
    ],
    "ask": "Wat geldt voor {x}?",
-   "askRev": "Welk rooster is dit: {x}?"
+   "askRev": "Welk rooster is dit: {x}?",
+   "exam": [
+    "hs8-50",
+    "hs8-51",
+    "hs8-52",
+    "hs8-53",
+    "hs8-54",
+    "hs8-55",
+    "hs8-56",
+    "hs8-57",
+    "hs8-58",
+    "hs8-59",
+    "hs8-60",
+    "hs8-61",
+    "hs8-62",
+    "hs8-64"
+   ]
   },
   {
    "id": "tra",
@@ -2090,7 +2527,48 @@
     }
    ],
    "ask": "Wat geldt voor {x}?",
-   "askRev": "Waar hoort dit bij: {x}?"
+   "askRev": "Waar hoort dit bij: {x}?",
+   "exam": [
+    "hs8-1",
+    "hs8-2",
+    "hs8-3",
+    "hs8-4",
+    "hs8-5",
+    "hs8-6",
+    "hs8-7",
+    "hs8-8",
+    "hs8-9",
+    "hs8-10",
+    "hs8-12",
+    "hs8-13",
+    "hs8-14",
+    "hs8-15",
+    "hs8-16",
+    "hs8-17",
+    "hs8-18",
+    "hs8-20",
+    "hs8-21",
+    "hs8-22",
+    "hs8-23",
+    "hs8-24",
+    "hs8-25",
+    "hs8-26",
+    "hs8-27",
+    "hs8-28",
+    "hs8-29",
+    "hs8-32",
+    "hs8-33",
+    "hs8-34",
+    "hs8-35",
+    "hs8-36",
+    "hs8-37",
+    "hs8-38",
+    "hs8-39",
+    "hs8-40",
+    "hs8-41",
+    "hs8-42",
+    "hs8-46"
+   ]
   },
   {
    "id": "verg",
@@ -2114,660 +2592,60 @@
     }
    ],
    "ask": "Wat geldt voor {x}?",
-   "askRev": "Welk element is dit: {x}?"
+   "askRev": "Welk element is dit: {x}?",
+   "exam": [
+    "hs8-1",
+    "hs8-2",
+    "hs8-3",
+    "hs8-4",
+    "hs8-6",
+    "hs8-7",
+    "hs8-8",
+    "hs8-11",
+    "hs8-12",
+    "hs8-13",
+    "hs8-14",
+    "hs8-15",
+    "hs8-16",
+    "hs8-17",
+    "hs8-18",
+    "hs8-19",
+    "hs8-21",
+    "hs8-22",
+    "hs8-23",
+    "hs8-24",
+    "hs8-25",
+    "hs8-26",
+    "hs8-27",
+    "hs8-29",
+    "hs8-30",
+    "hs8-31",
+    "hs8-32",
+    "hs8-34",
+    "hs8-35",
+    "hs8-38",
+    "hs8-39",
+    "hs8-40",
+    "hs8-41",
+    "hs8-43",
+    "hs8-44",
+    "hs8-45",
+    "hs8-46",
+    "hs8-48",
+    "hs8-51",
+    "hs8-52",
+    "hs8-53",
+    "hs8-54",
+    "hs8-55",
+    "hs8-56",
+    "hs8-57",
+    "hs8-58",
+    "hs8-60",
+    "hs8-61",
+    "hs8-62",
+    "hs8-63"
+   ]
   }
  ],
- "exercises": [
-  {
-   "id": "o8-1",
-   "n": 1,
-   "q": "De grafiek toont de sinusvormige spanningen aan de ingang (Uin) en aan de uitgang (Uuit) van een versterkertrap met een J-FET. De versterker staat in",
-   "options": [
-    {
-     "id": "A",
-     "text": "Gemeenschappelijke source-schakeling"
-    },
-    {
-     "id": "B",
-     "text": "Gemeenschappelijke gate-schakeling"
-    },
-    {
-     "id": "C",
-     "text": "Gemeenschappelijke drain-schakeling"
-    },
-    {
-     "id": "D",
-     "text": "Gemeenschappelijke gate- of drain-schakeling."
-    }
-   ],
-   "answer": "A",
-   "explain": "De uitgangswisselspanning is groter dan de ingangswisselspanning. Dat betekent dat antwoord C afvalt, want dan zou de uitgangsspanning iets kleiner dan de ingangsspanning moeten zijn. Verder zijn in- en uitgangsspanning in tegenfase. Dat gebeurt alleen in een GSS, gemeenschappelijke source-schakeling. Antwoord A.",
-   "pages": [
-    "p027"
-   ],
-   "spages": [
-    "p078"
-   ]
-  },
-  {
-   "id": "o8-2",
-   "n": 2,
-   "q": "In de versterkertrap is een N-FET toegepast. De beide condensatoren ontdoen het signaal van het gelijkstroomdeel. Ub is een gebruikelijke aanduiding voor voedingsspanning. Uitgangspunt is dat per vergelijking voldoende gegevens beschikbaar zijn. De sourceweerstand RS is te berekenen volgens 𝑈",
-   "options": [
-    {
-     "id": "A",
-     "text": "R_S = U_D / I_D"
-    },
-    {
-     "id": "B",
-     "text": "R_S = U_b / I_D"
-    },
-    {
-     "id": "C",
-     "text": "R_S = U_GS / I_D"
-    },
-    {
-     "id": "D",
-     "text": "R_S = U_GS − U_D / I_D"
-    }
-   ],
-   "answer": "C",
-   "explain": "Wie scherp kijkt, ziet dat antwoord D niet deugt, want daarin staat het verschil tussen twee ongelijke grootheden, een spanning en een spanning gedeeld door een stroom. De rest, A tot en met C, heeft de drainstroom ID in de noemer. Die is gelijk aan de sourcestroom. Dan moeten we nog de spanning over RS hebben. De spanning op de gate is 0 V, want de gate geleidt niet en is via RG verbonden met 0 V. Dan is de spanning tussen gate en source, UGS, gelijk aan de spanning over RS. Dat leidt tot antwoord C.",
-   "pages": [
-    "p028"
-   ],
-   "spages": [
-    "p079"
-   ]
-  },
-  {
-   "id": "o8-3",
-   "n": 3,
-   "q": "Uitgangspunt is dat per vergelijking voldoende gegevens beschikbaar zijn. De drainspanning UD in het schema van de vorige opgave is dan te berekenen volgens",
-   "options": [
-    {
-     "id": "A",
-     "text": "U_D = U_b − I_D · R_D"
-    },
-    {
-     "id": "B",
-     "text": "U_D = U_b − R_D / I_D"
-    },
-    {
-     "id": "C",
-     "text": "U_D = U_b − U_GS"
-    },
-    {
-     "id": "D",
-     "text": "U_D = U_b − I_D · R_S"
-    }
-   ],
-   "answer": "A",
-   "explain": "We geven eerst nog eens het schema weer. De drainspanning van de FET is gelijk aan de voedingsspanning Ub verminderd met de spanning over de drainweerstand RD. Die laatste spanning is gelijk aan 𝐼D 𝑅D . Dit alles komt neer op 𝑈𝑏 − 𝐼D 𝑅D en dat is antwoord A. Opmerking 𝑅D Antwoord B kan niet, want     ⁄𝐼 is geen spanning. Ongelijke grootheden kunnen niet bij D elkaar worden opgeteld of van elkaar worden afgetrokken.",
-   "pages": [
-    "p029"
-   ],
-   "spages": [
-    "p080"
-   ]
-  },
-  {
-   "id": "o8-4",
-   "n": 4,
-   "q": "Bij een triode komt het signaal binnen op het rooster. Het versterkte signaal wordt afgenomen op de kathodeaansluiting. Het gaat hier om een",
-   "options": [
-    {
-     "id": "A",
-     "text": "Gemeenschappelijke anodeschakeling (kathodevolger)"
-    },
-    {
-     "id": "B",
-     "text": "Gemeenschappelijke kathodeschakeling"
-    },
-    {
-     "id": "C",
-     "text": "Gemeenschappelijke roosterschakeling"
-    },
-    {
-     "id": "D",
-     "text": "Schakeling die niet kan werken"
-    }
-   ],
-   "answer": "A",
-   "explain": "Als een signaal binnenkomt op het rooster van een triode, zijn er voor het soort schakeling twee mogelijkheden: (1) gemeenschappelijke anodeschakeling of (2) gemeenschappelijke kathodeschakeling. Als de signaaluitgang de kathode is, kan deze niet tegelijk de gemeenschappelijke elektrode zijn. Dat is dan de anode. Conclusie: het is een gemeenschappelijke anodeschakeling, ofwel kathodevolger.",
-   "pages": [
-    "p040"
-   ],
-   "spages": [
-    "p081"
-   ]
-  },
-  {
-   "id": "o8-5",
-   "n": 5,
-   "q": "Bij een penthode met een kathodeweerstand van 1 kΩ en een anodeweerstand van 10 kΩ komt het signaal binnen op het stuurrooster. De spanningsversterking bedraagt ongeveer 0,8. De meest waarschijnlijke schakeling waarin de buis staat, is een",
-   "options": [
-    {
-     "id": "A",
-     "text": "Kathodevolger"
-    },
-    {
-     "id": "B",
-     "text": "Gemeenschappelijke stuurroosterschakeling"
-    },
-    {
-     "id": "C",
-     "text": "Gemeenschappelijke schermroosterschakeling"
-    },
-    {
-     "id": "D",
-     "text": "Gemeenschappelijke kathodeschakeling"
-    }
-   ],
-   "answer": "A",
-   "explain": "Bij deze schakeling denk je natuurlijk allereerst aan een gemeenschappelijke kathodeschakeling met een spanningsversterking die iets lager is dan 10, de verhouding van kathode- en anodeweerstand. Als de spanningsversterking minder dan 1 is, zoals hier, moet het gaan om een kathodevolger (gemeenschappelijke anodeschakeling) en doet de waarde van de anodeweerstand er (binnen grenzen; de buis moet wel blijven werken) niet toe. Antwoord A. Opmerking Een gemeenschappelijke schermroosterschakeling bestaat niet. Antwoord C is dus onzin.",
-   "pages": [
-    "p041"
-   ],
-   "spages": [
-    "p082"
-   ]
-  },
-  {
-   "id": "o8-6",
-   "n": 6,
-   "q": "De reactanties van beide condensatoren zijn verwaarloosbaar laag. De wisselspanning op de aansluiting aan Cuit van de schakeling bedraagt ongeveer",
-   "options": [
-    {
-     "id": "A",
-     "text": "0,1 Veff"
-    },
-    {
-     "id": "B",
-     "text": "0,08 Veff"
-    },
-    {
-     "id": "C",
-     "text": "180 Veff"
-    },
-    {
-     "id": "D",
-     "text": "1,8 Veff"
-    }
-   ],
-   "answer": "D",
-   "explain": "Als de reactanties van de condensatoren verwaarloosbaar klein zijn, scheiden ze alleen de signalen in een zuivere wisselspanning en een gelijkspanning en hoeven we ons niet druk te maken over reactanties en impedanties. Het schema toont een triode in gemeenschappelijke kathodeschakeling. De 𝑅 spanningsversterking is dan iets lager dan de verhouding a⁄𝑅 . Die is gelijk aan 20. De k signaalwisselspanning is 0,1 V en dan moeten we een uitkomst vinden die iets lager is dan 0,1*20 V=2,0 V. In beide gevallen gaat het om effectieve spanningen. Dan is antwoord D verreweg de meest waarschijnlijke kandidaat voor het goede antwoord.",
-   "pages": [
-    "p042"
-   ],
-   "spages": [
-    "p083"
-   ]
-  },
-  {
-   "id": "o8-7",
-   "n": 7,
-   "q": "De steilheid van een penthode bedraagt bij de ingestelde spanning tussen stuurrooster en kathode 6 mA/V. De kathodespanning wordt met 1 V verhoogd (= positiever gemaakt) en alle andere spanningen blijven gelijk. De kathodestroom wordt daardoor",
-   "options": [
-    {
-     "id": "A",
-     "text": "Ongeveer 6 mA groter"
-    },
-    {
-     "id": "B",
-     "text": "Ongeveer 6 mA kleiner"
-    },
-    {
-     "id": "C",
-     "text": "Niet veranderd"
-    },
-    {
-     "id": "D",
-     "text": "Veranderd, maar de berekening kan pas worden gedaan als de schermroosterstroom bekend is."
-    }
-   ],
-   "answer": "B",
-   "explain": "Als de kathodespanning 1 volt positiever wordt, is dat hetzelfde als de stuurroosterspanning die 1 volt negatiever wordt. Dat is de instinker van deze opgave. De anodestroom wordt dan dus 6 mA kleiner. Dat geldt bij benadering ook voor de kathodestroom, want de schermroosterstroom is maar een heel klein deel van de anodestroom. We komen dus uit op antwoord B. Daarin staat niet voor niets het woord “ongeveer”.",
-   "pages": [
-    "p043"
-   ],
-   "spages": [
-    "p084"
-   ]
-  },
-  {
-   "id": "o8-8",
-   "n": 8,
-   "q": "De steilheid van een penthode bedraagt 5 mA/V. De anodeweerstand is 5 kΩ. De buis staat in gemeenschappelijke kathodeschakeling zonder kathodeweerstand. De spanningsversterking bedraagt ongeveer",
-   "options": [
-    {
-     "id": "A",
-     "text": "5"
-    },
-    {
-     "id": "B",
-     "text": "50"
-    },
-    {
-     "id": "C",
-     "text": "10"
-    },
-    {
-     "id": "D",
-     "text": "25"
-    }
-   ],
-   "answer": "D",
-   "explain": "Een steilheid S van 5 mA/V komt overeen met een weerstand van 1⁄𝑆 = 0,2 kΩ. Omdat er geen kathodeweerstand is, is de spanningsversterking bijna gelijk aan 5kΩ⁄0,2kΩ = 25. Dat betekent antwoord D.",
-   "pages": [
-    "p044"
-   ],
-   "spages": [
-    "p085"
-   ]
-  },
-  {
-   "id": "o8-9",
-   "n": 9,
-   "q": "Voor de transistor geldt Ube =-0,6 V. De zenerspanning is 2 V. De spanning U bedraagt",
-   "options": [
-    {
-     "id": "A",
-     "text": "0 V"
-    },
-    {
-     "id": "B",
-     "text": "-1,4 V"
-    },
-    {
-     "id": "C",
-     "text": "-2,6 V"
-    },
-    {
-     "id": "D",
-     "text": "-6 V"
-    }
-   ],
-   "answer": "B",
-   "explain": "De spanning U valt te berekenen uit de zenerspanning en de basis-emitterspanning van -0,6 V. De zenerspanning is -2 V (ten opzichte van 0 V). −2 V − (−0,6 V) = -1,4 V. Dat is antwoord B. Opmerking Merk op dat het hier om een PNP-transistor gaat waardoor de voedingsspanning negatief is.",
-   "pages": [
-    "p065"
-   ],
-   "spages": [
-    "p086"
-   ]
-  },
-  {
-   "id": "o8-10",
-   "n": 10,
-   "q": "IC = 20 mA en Ib=200 µA De emitterstroom Ie bedraagt",
-   "options": [
-    {
-     "id": "A",
-     "text": "20 mA"
-    },
-    {
-     "id": "B",
-     "text": "19,8 mA"
-    },
-    {
-     "id": "C",
-     "text": "18 mA"
-    },
-    {
-     "id": "D",
-     "text": "20,2 mA"
-    }
-   ],
-   "answer": "D",
-   "explain": "De emitterstroom Ie is de som van basis- en collectorstroom: 𝐼e = 𝐼b + 𝐼c . Dat is 20 mA + 200 µA = 20,2 mA. Antwoord D.",
-   "pages": [
-    "p066"
-   ],
-   "spages": [
-    "p087"
-   ]
-  },
-  {
-   "id": "o8-11",
-   "n": 11,
-   "q": "IC = 20 mA en Ib=200 µA. De stroomversterking hFE bedraagt",
-   "options": [
-    {
-     "id": "A",
-     "text": "10"
-    },
-    {
-     "id": "B",
-     "text": "101"
-    },
-    {
-     "id": "C",
-     "text": "99"
-    },
-    {
-     "id": "D",
-     "text": "100"
-    }
-   ],
-   "answer": "D",
-   "explain": "Voor hFE die ook wel met β wordt aangeduid, geldt: 𝐼 ℎ𝐹𝐸 = 𝑐⁄𝐼 = 20 mA⁄200 μA = 20⁄0,2 = 100 𝑏 Antwoord D.",
-   "pages": [
-    "p067"
-   ],
-   "spages": [
-    "p088"
-   ]
-  },
-  {
-   "id": "o8-12",
-   "n": 12,
-   "q": "De collectorstroom Ic bedraagt",
-   "options": [
-    {
-     "id": "A",
-     "text": "1 A"
-    },
-    {
-     "id": "B",
-     "text": "100 mA"
-    },
-    {
-     "id": "C",
-     "text": "10 mA"
-    },
-    {
-     "id": "D",
-     "text": "1 mA"
-    }
-   ],
-   "answer": "C",
-   "explain": "De collectorspanning is 10 V. De voedingsspanning is 20 V. Dan staat over de collectorweerstand 20 V – 10 V = 10 V. Omdat de collectorweerstand 1 kΩ bedraagt, bedraagt de collectorstroom 10 mA. Antwoord C.",
-   "pages": [
-    "p068"
-   ],
-   "spages": [
-    "p089"
-   ]
-  },
-  {
-   "id": "o8-13",
-   "n": 13,
-   "q": "De stroomversterking (β, hFE) van de transistor in Opgave 8-12 bedraagt 100. De basisstroom Ib bedraagt",
-   "options": [
-    {
-     "id": "A",
-     "text": "100 mA"
-    },
-    {
-     "id": "B",
-     "text": "10 mA"
-    },
-    {
-     "id": "C",
-     "text": "1 mA"
-    },
-    {
-     "id": "D",
-     "text": "100 µA"
-    }
-   ],
-   "answer": "D",
-   "explain": "Eerst een kopie van de figuur bij Opgave 8-12. De collectorstroom van de transistor bedraagt 10 mA, weten we uit Opgave 8-12. Als 𝛽 = 100, dan is de collectorstroom 100x de basisstroom en is de basisstroom 1/100 van de collectorstroom. Als de collectorstroom 10 mA is, dan is 1/100 daarvan 100 µA. Dat betekent dat antwoord D goed is.",
-   "pages": [
-    "p069"
-   ],
-   "spages": [
-    "p090"
-   ]
-  },
-  {
-   "id": "o8-14",
-   "n": 14,
-   "q": "De basisweerstand Rb in het schema van in Opgave 8-12 is",
-   "options": [
-    {
-     "id": "A",
-     "text": "195 kΩ"
-    },
-    {
-     "id": "B",
-     "text": "95 kΩ"
-    },
-    {
-     "id": "C",
-     "text": "9,5 kΩ"
-    },
-    {
-     "id": "D",
-     "text": "10,5 kΩ"
-    }
-   ],
-   "answer": "A",
-   "explain": "De opgave gaat over het schema bij Opgave 8-12. We herhalen het hieronder. In Opgave 8-13 vonden we voor de basisstroom 100 µA. Over de basisweerstand Rb staat 20 V – 0,5 V = 19.5 V. Hieruit kunnen we de weerstand berekenen volgens (wet van Ohm): 𝑅 = 𝑈⁄𝐼 = 19,5 V⁄100µA = 19,5⁄10−4 Ω = 195000 Ω = 195 kΩ Dat is antwoord A.",
-   "pages": [
-    "p070"
-   ],
-   "spages": [
-    "p091"
-   ]
-  },
-  {
-   "id": "o8-15",
-   "n": 15,
-   "q": "De drainweerstand RD in de schakeling is:",
-   "options": [
-    {
-     "id": "A",
-     "text": "5 kΩ"
-    },
-    {
-     "id": "B",
-     "text": "500 Ω"
-    },
-    {
-     "id": "C",
-     "text": "15 kΩ"
-    },
-    {
-     "id": "D",
-     "text": "1,5 kΩ"
-    }
-   ],
-   "answer": "B",
-   "explain": "Door de drainweerstand RD loopt volgens het schema 10 mA. De spanning op de drain bedraagt 10 V en de voedingsspanning is 15 V. Dan staat er 15 V – 10 V = 5 V over RD. Zoals altijd als een weerstand uit stroom en spanning moet worden berekend, is de wet van Ohm van toepassing: 𝑈 = 𝐼𝑅 → 𝑅 = 𝑈⁄𝐼 = 0,5 kΩ = 500 Ω Dat is antwoord B.",
-   "pages": [
-    "p071"
-   ],
-   "spages": [
-    "p092"
-   ]
-  },
-  {
-   "id": "o8-16",
-   "n": 16,
-   "q": "De meest waarschijnlijke spanningsversterking in de schakeling van Opgave 8-15 ligt bij toepassing als gemeenschappelijke sourceschakeling tussen",
-   "options": [
-    {
-     "id": "A",
-     "text": "4 en 5 bij gelijke fase van in- en uitgangssignaal"
-    },
-    {
-     "id": "B",
-     "text": "8 en 10 bij gelijke fase van in- en uitgangssignaal"
-    },
-    {
-     "id": "C",
-     "text": "4 en 5 met in- en uitgangssignaal in tegenfase"
-    },
-    {
-     "id": "D",
-     "text": "8 en 10 met in- en uitgangssignaal in tegenfase"
-    }
-   ],
-   "answer": "C",
-   "explain": "De schakeling van Opgave 8-15 staat hieronder opnieuw. Met een drainweerstand van 500 ohm en een sourceweerstand van 100 ohm zal de spanningsversterking iets lager zijn dan de verhouding drainweerstand/sourceweerstand. Die is 500/100 is 5. Dan is A of C goed. Bij een gemeenschappelijke sourceschakeling zijn in- en uitgangssignaal in tegenfase, zodat antwoord C overblijft.",
-   "pages": [
-    "p072"
-   ],
-   "spages": [
-    "p093"
-   ]
-  },
-  {
-   "id": "o8-17",
-   "n": 17,
-   "q": "De sourcespanning US in de schakeling van Opgave 8-15 bedraagt",
-   "options": [
-    {
-     "id": "A",
-     "text": "1 V"
-    },
-    {
-     "id": "B",
-     "text": "0,1 V"
-    },
-    {
-     "id": "C",
-     "text": "-1 V"
-    },
-    {
-     "id": "D",
-     "text": "-0,1 V"
-    }
-   ],
-   "answer": "A",
-   "explain": "We beginnen hieronder met de schakeling van Opgave 8-15. De sourcestroom is gelijk aan de drainstroom, zoals het een FET als deze betaamt. Die is 10 mA (aflezen in het schema). De 10 mA loopt door de sourceweerstand van 100 ohm. 10 mA is 0,01 A. Als die door een weerstand van 100 ohm loopt, is de spanning over de weerstand 0,01*100 V = 1 V. Antwoord A. (en niet C, want in het schema liggen alle gelijkspanningen tussen 0 V en de bronspanning van +15 V).",
-   "pages": [
-    "p073"
-   ],
-   "spages": [
-    "p094"
-   ]
-  },
-  {
-   "id": "o8-18",
-   "n": 18,
-   "q": "De collectorspanning Uc bedraagt ten opzichte van massa",
-   "options": [
-    {
-     "id": "A",
-     "text": "-6 V"
-    },
-    {
-     "id": "B",
-     "text": "6 V"
-    },
-    {
-     "id": "C",
-     "text": "9 V"
-    },
-    {
-     "id": "D",
-     "text": "-9 V"
-    }
-   ],
-   "answer": "D",
-   "explain": "De collectorstroom van de PNP-transistor is 4 mA en de collectorweerstand is 1,5 kΩ. Dan is de spanning over de collectorweerstand 4 mA * 1,5 kΩ = 6 V. De totale spanning over de schakeling is de bronspanning van -15 V. Daar moet 6 V bij worden opgeteld, zodat we -9 V overhouden. Dat is antwoord D. Wen eraan dat bij een PNP-transistor alle spanningen en stroomrichtingen omgekeerd zijn ten opzichte van de NPN!",
-   "pages": [
-    "p074"
-   ],
-   "spages": [
-    "p095"
-   ]
-  },
-  {
-   "id": "o8-19",
-   "n": 19,
-   "q": "De stroomversterking β van de transistor in het schema bij Opgave 8-18 is 400. De basisstroom Ib is",
-   "options": [
-    {
-     "id": "A",
-     "text": "4 mA"
-    },
-    {
-     "id": "B",
-     "text": "0,4 mA"
-    },
-    {
-     "id": "C",
-     "text": "10 µA"
-    },
-    {
-     "id": "D",
-     "text": "40 µA"
-    }
-   ],
-   "answer": "C",
-   "explain": "We beginnen weer met het schema van Opgave 8-18. De collectorstroom is 4 mA, is in het schema af te lezen. Dan is de basisstroom 1/β maal de collectorstroom. 4 mA delen door 400 levert 0,01 mA is 10 µA. Antwoord C is daarom goed.",
-   "pages": [
-    "p075"
-   ],
-   "spages": [
-    "p096"
-   ]
-  },
-  {
-   "id": "o8-20",
-   "n": 20,
-   "q": "De basisspanning Ub van de transistor in het schema bij Opgave 8-18 bedraagt ongeveer",
-   "options": [
-    {
-     "id": "A",
-     "text": "0,5 V"
-    },
-    {
-     "id": "B",
-     "text": "1,1 V"
-    },
-    {
-     "id": "C",
-     "text": "-0,5 V"
-    },
-    {
-     "id": "D",
-     "text": "-1,1 V"
-    }
-   ],
-   "answer": "D",
-   "explain": "Om te beginnen herhalen we het schema: De basisspanning is de som van de spanning over de emitterweerstand en de 0,5 V over de basis-emitterovergang. De spanning over de emitterweerstand berekenen we als volgt. De emitterstroom bedraagt 4 mA plus de basisstroom. Die laatste is 1/400 van de collectorstroom. Omdat de spanning over de basis-emitterovergang “ongeveer” 0,5 V is, is de spanning veroorzaakt door die extra 1/400 maal 4 mA te verwaarlozen. We gaan dan ook uit van gelijkheid van emitter- en collectorstroom, beide 4 mA. De spanning over de emitterweerstand van 150 ohm is volgens de wet van Ohm 4 mA maal 150 ohm is 0,6 V. Opgeteld bij de ongeveer 0,5 V van de basis-emitterovergang wordt dat ongeveer 1,1 V. Omdat het om een PNP-transistor gaat, komt daar een minteken voor: -1,1 V en dat is antwoord D.",
-   "pages": [
-    "p076"
-   ],
-   "spages": [
-    "p097"
-   ]
-  },
-  {
-   "id": "o8-21",
-   "n": 21,
-   "q": "Om de collectorstroom van een transistor te berekenen, zijn nodig",
-   "options": [
-    {
-     "id": "A",
-     "text": "De stroomversterking β"
-    },
-    {
-     "id": "B",
-     "text": "De basisstroom en β"
-    },
-    {
-     "id": "C",
-     "text": "De basisspanning en de collectorweerstand"
-    },
-    {
-     "id": "D",
-     "text": "De voedingsspanning en de collectorweerstand"
-    }
-   ],
-   "answer": "B",
-   "explain": "Laten we de antwoorden maar eens nalopen. Uit β alleen bereken je geen collectorstroom. Daar is óf de basisstroom óf de emitterstroom bij nodig. Antwoord A vervalt dus. Zoals zonet gezegd, kun je de collectorstroom wel berekenen uit β en de basisstroom, want collectorstroom is β maal basisstroom. Antwoord B houden we erin, maar we kijken toch nog even verder. Uit de basisspanning en de collectorweerstand bereken je geen collectorstroom; wel uit voedingsspanning, collectorweerstand en collectorstroom, maar dat was het antwoord niet. Antwoord C kan dus naar de prullenbak en antwoord A gezelschap houden. Dan antwoord D: voedingsspanning en collectorweerstand. Helaas (of gelukkig!) ontbreekt hier de collectorstroom (zie antwoord C hiervoor). Hiermee is het gezelschap antwoorden in de figuurlijke prullenbak compleet en blijft antwoord B overeind.",
-   "pages": [
-    "p077"
-   ],
-   "spages": [
-    "p098"
-   ]
-  }
- ]
+ "exercises": []
 }
