@@ -661,19 +661,20 @@ function viewResult() {
   if (!r) return viewSetup();
   const back = h('button', { onclick: () => setView('setup') }, 'Terug naar start');
   const practiceWrong = () => {
+    if (r.from) { startSectionPractice(r.from.ch, r.from.sec, r.from.back, true); return; }
     store.setPrefs({ onlyPond: true, onlyDue: false, mode: 'practice' });
     startSession();
   };
 
   if (r.mode === 'practice') {
     const p = pct(r.correct, r.answered);
-    const pondN = store.pondIds().length;
+    const pondN = r.from ? (theory.getTheory(r.from.ch).qBySec.get(r.from.sec) || []).filter(id => store.isPond(id)).length : store.pondIds().length;
     return h('div', {},
       h('div', { class: 'card verdict' },
         h('div', { class: 'muted' }, 'Oefenronde afgerond'),
         h('div', { class: 'big' }, `${r.correct} / ${r.answered}`),
         h('p', { class: 'score' }, r.answered ? `${p}% goed` : 'Geen vragen beantwoord'),
-        h('p', { class: 'muted' }, pondN ? `Er staan nog ${pondN} vragen in je foutenvijver.` : 'Je foutenvijver is leeg. 🎉')),
+        h('p', { class: 'muted' }, pondN ? (r.from ? `Er staan nog ${pondN} foute vragen van deze paragraaf in je foutenvijver.` : `Er staan nog ${pondN} vragen in je foutenvijver.`) : (r.from ? 'Geen foute vragen meer in deze paragraaf. 🎉' : 'Je foutenvijver is leeg. 🎉'))),
       h('div', { class: 'row' },
         r.from && h('button', { class: 'primary', onclick: () => openTheory(r.from.ch, r.from.sec, r.from.back) }, '← Terug naar de paragraaf'),
         r.from && h('button', { onclick: () => setView(r.from.back === 'theory' ? 'learn' : r.from.back) }, 'Terug naar Leren'),
@@ -1314,13 +1315,14 @@ function showFormulas(chapter) {
   $dlg.showModal();
 }
 
-async function startSectionPractice(chapter, secId, back) {
+async function startSectionPractice(chapter, secId, back, onlyPond) {
   const th = theory.getTheory(chapter);
-  const ids = (th && th.qBySec.get(secId)) || [];
+  let ids = (th && th.qBySec.get(secId)) || [];
+  if (onlyPond) ids = ids.filter(id => store.isPond(id));
   if (!ids.length) { toast('Er zijn geen vragen aan deze paragraaf gekoppeld.'); return; }
   await quiz.loadChapter(chapter);
   const pool = ids.map(id => quiz.QMAP.get(id)).filter(Boolean);
-  S = { mode: 'practice', sid: store.uid(), ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title, from: { ch: chapter, sec: secId, back: back || 'learn' } };
+  S = { mode: 'practice', sid: store.uid(), ids: quiz.practiceOrder(pool, true), idx: 0, answers: {}, start: Date.now(), dur: 0, chapters: [chapter], label: th.bySec.get(secId).title + (onlyPond ? ' · foute vragen' : ''), from: { ch: chapter, sec: secId, back: back || 'learn' } };
   saveSession();
   setView('session');
 }
