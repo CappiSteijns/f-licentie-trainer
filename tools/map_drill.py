@@ -120,6 +120,29 @@ KW = {
   'cond': r'condensator|elco|koppel',
   'bel': r'belastingslijn|werkpunt',
  },
+ 10: {
+  'opinv': r'inverterend|opamp|op-amp',
+  'opnon': r'opamp|op-amp|versterking van de schakeling',
+  'opver': r'opamp|op-amp|verschil',
+  'opsom': r'opamp|op-amp|som',
+  'zrs': r'zener|stabilis',
+  'zpz': r'zener|dissipatie',
+  'vemit': r'siliciumtransistor|zener|stabilis',
+  'fosc': r'oscillator|resonantie',
+  'ovt': r'overtone',
+  'mill': r'miller',
+  'duty': r'schakelende|duty|puls',
+  'opeig': r'opamp|op-amp',
+  'opsch': r'opamp|op-amp|schakeling',
+  'oscs': r'oscillator|hartley|colpitts|clapp',
+  'oscf': r'oscillator|fase',
+  'osce': r'frequentiestabiliteit|drift|oscillator',
+  'xtal': r'kristal|kwarts',
+  'krso': r'kristal|kwarts|overtone',
+  'stab': r'stabilis|zener|voeding',
+  'swit': r'schakelende|step',
+  'lvsv': r'schakelende|rendement',
+ },
  17: {
   'stroom': r'\bma\b|milliamp|hartstilstand|fibrill|spierverstijving',
   'kleur': r'geel|blauw|bruin|kleur',
@@ -151,7 +174,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

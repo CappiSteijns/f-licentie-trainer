@@ -1,0 +1,2398 @@
+{
+ "chapter": 10,
+ "dir": "img/theorie/hs10",
+ "sections": [
+  {
+   "id": "s1",
+   "title": "Wat leer je in dit hoofdstuk?",
+   "lvl": 1,
+   "pages": [
+    "p004"
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Terugkoppeling",
+   "lvl": 1,
+   "pages": [
+    "p004",
+    "p005",
+    "p006",
+    "p007"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Toegepaste tegenkoppeling: de operationele versterker (opamp)",
+   "lvl": 1,
+   "pages": [
+    "p007",
+    "p008",
+    "p009",
+    "p010",
+    "p011",
+    "p012",
+    "p013",
+    "p014",
+    "p015",
+    "p016",
+    "p017"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Opgaven (antwoorden in 10.14 of te bereiken via de gele pijlen)",
+   "lvl": 1,
+   "pages": [
+    "p017",
+    "p018",
+    "p019",
+    "p020",
+    "p021",
+    "p022",
+    "p023"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Toegepaste meekoppeling: oscillatoren",
+   "lvl": 1,
+   "pages": [
+    "p023",
+    "p024",
+    "p025",
+    "p026",
+    "p027",
+    "p028",
+    "p029",
+    "p030",
+    "p031",
+    "p032",
+    "p033",
+    "p034",
+    "p035"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Kristaloscillatoren",
+   "lvl": 1,
+   "pages": [
+    "p035",
+    "p036",
+    "p037",
+    "p038",
+    "p039",
+    "p040",
+    "p041",
+    "p042"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Opgaven (antwoorden in 10.14)",
+   "lvl": 1,
+   "pages": [
+    "p042",
+    "p043",
+    "p044",
+    "p045",
+    "p046"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Parasitaire oscillatoren",
+   "lvl": 1,
+   "pages": [
+    "p046",
+    "p047"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Een ogenschijnlijke versterker die toch een oscillator is",
+   "lvl": 1,
+   "pages": [
+    "p047",
+    "p048"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Faseruis",
+   "lvl": 1,
+   "pages": [
+    "p048",
+    "p049",
+    "p050"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Spanningsstabilisatoren en lineaire voedingsschakelingen",
+   "lvl": 1,
+   "pages": [
+    "p050",
+    "p051",
+    "p052",
+    "p053",
+    "p054",
+    "p055",
+    "p056",
+    "p057"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Schakelende voedingen",
+   "lvl": 1,
+   "pages": [
+    "p057",
+    "p058",
+    "p059",
+    "p060",
+    "p061",
+    "p062",
+    "p063",
+    "p064",
+    "p065",
+    "p066"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Opgaven (antwoorden in 10.14)",
+   "lvl": 1,
+   "pages": [
+    "p066",
+    "p067",
+    "p068",
+    "p069",
+    "p070",
+    "p071"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Antwoorden bij de opgaven",
+   "lvl": 1,
+   "pages": [
+    "p071",
+    "p072",
+    "p073",
+    "p074",
+    "p075",
+    "p076",
+    "p077",
+    "p078",
+    "p079",
+    "p080",
+    "p081",
+    "p082",
+    "p083",
+    "p084"
+   ]
+  }
+ ],
+ "qmap": {
+  "hs10-1": [
+   "s5"
+  ],
+  "hs10-2": [
+   "s3"
+  ],
+  "hs10-3": [
+   "s3"
+  ],
+  "hs10-4": [
+   "s5"
+  ],
+  "hs10-5": [
+   "s5"
+  ],
+  "hs10-6": [
+   "s3"
+  ],
+  "hs10-7": [
+   "s5"
+  ],
+  "hs10-8": [
+   "s11"
+  ],
+  "hs10-9": [
+   "s3"
+  ],
+  "hs10-10": [
+   "s2",
+   "s5"
+  ],
+  "hs10-11": [
+   "s5"
+  ],
+  "hs10-12": [
+   "s5"
+  ],
+  "hs10-13": [
+   "s3"
+  ],
+  "hs10-14": [
+   "s3"
+  ],
+  "hs10-15": [
+   "s6"
+  ],
+  "hs10-16": [
+   "s6"
+  ],
+  "hs10-17": [
+   "s3"
+  ],
+  "hs10-18": [
+   "s3"
+  ],
+  "hs10-19": [
+   "s5"
+  ],
+  "hs10-20": [
+   "s3"
+  ],
+  "hs10-21": [
+   "s6"
+  ],
+  "hs10-22": [
+   "s5",
+   "s6"
+  ],
+  "hs10-23": [
+   "s5",
+   "s6"
+  ],
+  "hs10-24": [
+   "s11"
+  ],
+  "hs10-25": [
+   "s11"
+  ],
+  "hs10-26": [
+   "s6"
+  ],
+  "hs10-27": [
+   "s6"
+  ],
+  "hs10-28": [
+   "s5"
+  ],
+  "hs10-29": [
+   "s11"
+  ],
+  "hs10-30": [
+   "s5",
+   "s6"
+  ],
+  "hs10-31": [
+   "s11"
+  ],
+  "hs10-32": [
+   "s3"
+  ],
+  "hs10-33": [
+   "s3"
+  ],
+  "hs10-34": [
+   "s3"
+  ],
+  "hs10-35": [
+   "s3"
+  ],
+  "hs10-36": [
+   "s3"
+  ],
+  "hs10-37": [
+   "s3"
+  ],
+  "hs10-38": [
+   "s3"
+  ],
+  "hs10-39": [
+   "s3"
+  ],
+  "hs10-40": [
+   "s3"
+  ],
+  "hs10-41": [
+   "s12"
+  ],
+  "hs10-42": [
+   "s12"
+  ],
+  "hs10-43": [
+   "s11"
+  ],
+  "hs10-44": [
+   "s12"
+  ],
+  "hs10-45": [
+   "s12"
+  ],
+  "hs10-46": [
+   "s11"
+  ],
+  "hs10-47": [
+   "s6"
+  ],
+  "hs10-48": [
+   "s11"
+  ],
+  "hs10-49": [
+   "s5"
+  ],
+  "hs10-50": [
+   "s5",
+   "s10"
+  ],
+  "hs10-51": [
+   "s5",
+   "s6"
+  ],
+  "hs10-52": [
+   "s5",
+   "s6"
+  ],
+  "hs10-53": [
+   "s5"
+  ],
+  "hs10-54": [
+   "s6"
+  ],
+  "hs10-55": [
+   "s6"
+  ],
+  "hs10-56": [
+   "s6"
+  ],
+  "hs10-57": [
+   "s6"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Opamp",
+   "items": [
+    {
+     "f": "Au = −R2 / R1",
+     "t": "inverterende opamp"
+    },
+    {
+     "f": "Au = 1 + R2 / R1",
+     "t": "niet-inverterende opamp"
+    },
+    {
+     "f": "Au = 1",
+     "t": "spanningsvolger (opamp met uitgang direct op de − ingang)"
+    },
+    {
+     "f": "Uuit = −(U1/R1 + U2/R2 + U3/R3) · R4",
+     "t": "optelversterker (bij gelijke weerstanden Uuit = −(U1+U2+U3))"
+    },
+    {
+     "f": "Uuit = (R2/R1) · (U2 − U1)",
+     "t": "verschilversterker (bij gelijke weerstanden U2 − U1)"
+    },
+    {
+     "f": "U(−) = U(+)",
+     "t": "bij een tegengekoppelde opamp"
+    }
+   ]
+  },
+  {
+   "title": "Oscillatoren",
+   "items": [
+    {
+     "f": "f = 1 / (2π √(L · C))",
+     "t": "resonantiefrequentie van de LC-kring"
+    },
+    {
+     "f": "rondgaande versterking ≥ 1, terugkoppeling in fase",
+     "t": "voorwaarden voor oscillatie (precies 1 in stationaire toestand)"
+    },
+    {
+     "f": "C_ingang = C · (Au + 1)",
+     "t": "Miller-effect"
+    },
+    {
+     "f": "f_overtone = n · f_grondtoon (n oneven)",
+     "t": "overtone-oscillator, meestal n = 3 of 5"
+    }
+   ]
+  },
+  {
+   "title": "Spanningsstabilisatie",
+   "items": [
+    {
+     "f": "Rs = (Uin − Uz) / (Ibel + Iz)",
+     "t": "serieweerstand van de zenerstabilisator"
+    },
+    {
+     "f": "P = Uz · Iz",
+     "t": "dissipatie van de zenerdiode"
+    },
+    {
+     "f": "Uuit ≈ Uz − 0,6 V",
+     "t": "zener met één emittervolger (Si)"
+    },
+    {
+     "f": "Uuit ≈ Uz − 1,2 V",
+     "t": "zener met Darlington (twee Si-transistoren)"
+    },
+    {
+     "f": "Uin ≥ Uz + 1,5 … 2 V",
+     "t": "minimale ingangsspanning van de tegengekoppelde voeding"
+    }
+   ]
+  },
+  {
+   "title": "Schakelende voeding",
+   "items": [
+    {
+     "f": "D = tp / T",
+     "t": "duty cycle (in %)"
+    },
+    {
+     "f": "Uuit > Uin",
+     "t": "step-up"
+    },
+    {
+     "f": "Uuit < Uin",
+     "t": "step-down"
+    },
+    {
+     "f": "Uuit < 0 bij Uin > 0",
+     "t": "inverter"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s2",
+   "q": "Wat is tegenkoppeling?",
+   "a": "Een deel van het uitgangssignaal komt in tegenfase terug op de ingang. De versterking wordt kleiner, maar de lineariteit beter en de vervorming kleiner."
+  },
+  {
+   "id": "c2",
+   "sec": "s2",
+   "q": "Wat is meekoppeling (positieve terugkoppeling)?",
+   "a": "Een deel van het uitgangssignaal komt in fase terug op de ingang. Dat kan de versterking groter maken, of tot oscillatie leiden."
+  },
+  {
+   "id": "c3",
+   "sec": "s2",
+   "q": "Welke drie voorwaarden gelden voor een oscillator?",
+   "a": "Een versterkend element, terugkoppeling in fase en een rondgaande versterking van minstens 1."
+  },
+  {
+   "id": "c4",
+   "sec": "s2",
+   "q": "Hoe groot is de rondgaande versterking in een stabiel werkende oscillator?",
+   "a": "Precies 1. Aan het begin is hij groter dan 1, tot de amplitude zichzelf begrenst."
+  },
+  {
+   "id": "c5",
+   "sec": "s2",
+   "q": "Hoe komt een oscillator op gang?",
+   "a": "Door ruis: die bevat alle frequenties, ook die van de afgestemde kring. Die wordt versterkt en teruggekoppeld."
+  },
+  {
+   "id": "c6",
+   "sec": "s2",
+   "q": "Hoe begrenst een oscillator zijn eigen amplitude?",
+   "a": "Het element wordt door de groter wordende amplitude in klasse C getrokken (gelijkrichting), waardoor de versterking daalt tot de rondgaande versterking 1 is."
+  },
+  {
+   "id": "c7",
+   "sec": "s3",
+   "q": "Wat zijn de eigenschappen van een ideale opamp?",
+   "a": "Versterking oneindig, ingangsimpedantie oneindig, uitgangsimpedantie 0 en bandbreedte van 0 tot oneindig."
+  },
+  {
+   "id": "c8",
+   "sec": "s3",
+   "q": "Hoe groot is de uitgangsimpedantie van een ideale opamp?",
+   "a": "Nul."
+  },
+  {
+   "id": "c9",
+   "sec": "s3",
+   "q": "Hoe groot is de open-lusversterking van een praktische opamp (741)?",
+   "a": "Bij gelijkspanning en heel lage frequenties ongeveer 10⁵ tot 10⁶; bij 1 kHz ongeveer 1000 en bij 1 MHz ongeveer 1."
+  },
+  {
+   "id": "c10",
+   "sec": "s3",
+   "q": "Wat is bij een opamp vrijwel constant?",
+   "a": "Het product van versterking en bandbreedte."
+  },
+  {
+   "id": "c11",
+   "sec": "s3",
+   "q": "Welke ingangen heeft een opamp?",
+   "a": "Een inverterende (−) en een niet-inverterende (+) ingang. De uitgang is in fase met de + ingang en in tegenfase met de − ingang."
+  },
+  {
+   "id": "c12",
+   "sec": "s3",
+   "q": "Welke voeding heeft een opamp meestal?",
+   "a": "Een symmetrische voeding, bijvoorbeeld +15 V en −15 V. De uitgangsspanning blijft ongeveer 5 V onder de voedingsspanning."
+  },
+  {
+   "id": "c13",
+   "sec": "s3",
+   "q": "Wat geldt voor de spanningen op de ingangen van een tegengekoppelde opamp?",
+   "a": "De spanning op de − ingang is (vrijwel) gelijk aan die op de + ingang."
+  },
+  {
+   "id": "c14",
+   "sec": "s3",
+   "q": "Wat is de versterking van een inverterende opamp?",
+   "a": "Au = −R2 / R1, met R1 in serie met de ingang en R2 als tegenkoppelweerstand."
+  },
+  {
+   "id": "c15",
+   "sec": "s3",
+   "q": "Wat is de versterking van een niet-inverterende opamp?",
+   "a": "Au = 1 + R2 / R1: R2 als tegenkoppelweerstand, R1 van de − ingang naar massa."
+  },
+  {
+   "id": "c16",
+   "sec": "s3",
+   "q": "Wat is een spanningsvolger met een opamp?",
+   "a": "Een opamp met de uitgang direct op de − ingang. Au = 1, ingangsimpedantie zeer hoog, uitgangsimpedantie zeer laag."
+  },
+  {
+   "id": "c17",
+   "sec": "s3",
+   "q": "Waarvoor gebruik je een spanningsvolger?",
+   "a": "Als buffer: een bron met hoge impedantie sturen zonder belasting."
+  },
+  {
+   "id": "c18",
+   "sec": "s3",
+   "q": "Hoe groot is de uitgangsspanning van een optelversterker?",
+   "a": "Uuit = −(U1/R1 + U2/R2 + U3/R3) · R4. Bij gelijke weerstanden Uuit = −(U1 + U2 + U3)."
+  },
+  {
+   "id": "c19",
+   "sec": "s3",
+   "q": "Hoe werkt een verschilversterker?",
+   "a": "Uuit = (R2/R1) · (U2 − U1). Bij vier gelijke weerstanden Uuit = U2 − U1."
+  },
+  {
+   "id": "c20",
+   "sec": "s3",
+   "q": "Wat doet een opamp zonder tegenkoppeling (comparator)?",
+   "a": "Hij vergelijkt Uin met Uref: de uitgang staat op bijna de positieve of negatieve voedingsspanning, afhankelijk van welke ingang hoger is."
+  },
+  {
+   "id": "c21",
+   "sec": "s3",
+   "q": "Wat maakt een opamp met een condensator in de ingangsleiding en weerstand tegenkoppeling?",
+   "a": "Een hoogdoorlaatfilter: lage frequenties worden niet doorgelaten."
+  },
+  {
+   "id": "c22",
+   "sec": "s5",
+   "q": "Wat is een Meissner- of Armstrong-oscillator?",
+   "a": "Een LC-oscillator waarbij de terugkoppeling via een inductieve koppeling (aparte wikkeling) plaatsvindt; de wikkelrichting (stippen) zorgt voor de goede fase."
+  },
+  {
+   "id": "c23",
+   "sec": "s5",
+   "q": "Wat is een Hartley-oscillator?",
+   "a": "Een LC-oscillator waarbij de terugkoppeling via een aftakking op de spoel gaat."
+  },
+  {
+   "id": "c24",
+   "sec": "s5",
+   "q": "Wat is een Colpitts-oscillator?",
+   "a": "Een LC-oscillator waarbij de terugkoppeling via een capacitieve spanningsdeler (aftakking tussen twee condensatoren) gaat."
+  },
+  {
+   "id": "c25",
+   "sec": "s5",
+   "q": "Hoe onthoud je Hartley en Colpitts?",
+   "a": "Colpitts begint met C: condensatoren. Hartley begint met H: de spoel (inductantie)."
+  },
+  {
+   "id": "c26",
+   "sec": "s5",
+   "q": "Wat is een Clapp-oscillator?",
+   "a": "Een Colpitts-oscillator met in serie met de spoel een extra variabele condensator C5. De frequentie wordt vrijwel alleen door L en C5 bepaald."
+  },
+  {
+   "id": "c27",
+   "sec": "s5",
+   "q": "Wat is een Seiler-oscillator?",
+   "a": "Een variant van Clapp waarbij C5 over de hele spoel staat."
+  },
+  {
+   "id": "c28",
+   "sec": "s5",
+   "q": "Welke schakelingen met een transistor zijn in fase en dus als oscillator geschikt?",
+   "a": "Gemeenschappelijke drain, collector en anode (GDS, GCS, GAS) en gemeenschappelijke gate, basis en rooster (GGS, GBS, GRS)."
+  },
+  {
+   "id": "c29",
+   "sec": "s5",
+   "q": "Welke schakelingen draaien de fase 180° en hebben dus extra faseverschuiving nodig?",
+   "a": "GSS, GES en GKS (gemeenschappelijke source, emitter, kathode). Die is te maken met een aftakking op de geaarde kring."
+  },
+  {
+   "id": "c30",
+   "sec": "s5",
+   "q": "Hoe groot is de resonantiefrequentie van een LC-kring?",
+   "a": "f = 1 / (2π √(L·C))."
+  },
+  {
+   "id": "c31",
+   "sec": "s5",
+   "q": "Welke eisen worden aan een HF-oscillator gesteld?",
+   "a": "Constante frequentie en weinig harmonischen."
+  },
+  {
+   "id": "c32",
+   "sec": "s5",
+   "q": "Hoe verbeter je de frequentiestabiliteit van een oscillator?",
+   "a": "Het element los koppelen aan de kring (aftakking), hoge Q, warmteontwikkeling beperken, een stevige mechanische opbouw en een gestabiliseerde voedingsspanning."
+  },
+  {
+   "id": "c33",
+   "sec": "s5",
+   "q": "Wat is een VCO?",
+   "a": "Een spanningsgestuurde oscillator (voltage controlled oscillator). Bijvoorbeeld met een capaciteitsdiode (varicap) in de kring."
+  },
+  {
+   "id": "c34",
+   "sec": "s5",
+   "q": "Hoe verstem je een oscillator elektrisch?",
+   "a": "Met een capaciteitsdiode (varicap): een stuurspanning, via een grote weerstand toegevoerd, verandert zijn capaciteit."
+  },
+  {
+   "id": "c35",
+   "sec": "s5",
+   "q": "Wat is een vrijlopende oscillator?",
+   "a": "Een oscillator waarvan de frequentie door een LC-kring wordt bepaald, zonder kristal."
+  },
+  {
+   "id": "c36",
+   "sec": "s6",
+   "q": "Waarom gedraagt een kwartskristal zich als LC-kring?",
+   "a": "Door het piëzo-elektrisch effect: een wisselspanning laat het kristal mechanisch trillen en omgekeerd."
+  },
+  {
+   "id": "c37",
+   "sec": "s6",
+   "q": "Welke resonanties heeft een kwartskristal?",
+   "a": "Een serieresonantie en een parallelresonantie, dicht bij elkaar."
+  },
+  {
+   "id": "c38",
+   "sec": "s6",
+   "q": "Wanneer is een kristal inductief?",
+   "a": "Tussen serieresonantie en parallelresonantie. Buiten dat gebied is het capacitief."
+  },
+  {
+   "id": "c39",
+   "sec": "s6",
+   "q": "Wat is het vervangingsschema van een kwartskristal?",
+   "a": "Een serieschakeling van L, C en R, met daarnaast de houdercapaciteit parallel."
+  },
+  {
+   "id": "c40",
+   "sec": "s6",
+   "q": "Wat is een Pierce-oscillator?",
+   "a": "Een kristaloscillator met het kristal tussen gate en drain en een trimcondensator voor kleine frequentiecorrectie."
+  },
+  {
+   "id": "c41",
+   "sec": "s6",
+   "q": "Wat is een overtone-oscillator?",
+   "a": "Een kristaloscillator die niet op de grondtoon, maar op een oneven harmonische (meestal 3e of 5e) van het kristal werkt."
+  },
+  {
+   "id": "c42",
+   "sec": "s6",
+   "q": "Hoe dwing je een overtone-oscillator naar de overtone?",
+   "a": "Met een afgestemde kring in het draincircuit die op de overtone is afgestemd."
+  },
+  {
+   "id": "c43",
+   "sec": "s6",
+   "q": "Wat is een Miller-oscillator?",
+   "a": "Een kristal in het gatecircuit en een LC-kring in het draincircuit. De terugkoppeling loopt via de capaciteit tussen gate en drain."
+  },
+  {
+   "id": "c44",
+   "sec": "s6",
+   "q": "Wat is het Miller-effect?",
+   "a": "Een capaciteit tussen uitgang en ingang van een versterker lijkt aan de ingang (Au + 1) keer zo groot."
+  },
+  {
+   "id": "c45",
+   "sec": "s6",
+   "q": "Waarom werkt een Miller-oscillator niet met een dual-gate MOSFET of penthode?",
+   "a": "Het schermrooster (gate 2) blokkeert de capacitieve verbinding tussen drain en gate 1."
+  },
+  {
+   "id": "c46",
+   "sec": "s6",
+   "q": "Wat bepaalt de frequentie in een kristaloscillator?",
+   "a": "Het kristal: de serie- of parallelresonantie, afhankelijk van de schakeling."
+  },
+  {
+   "id": "c47",
+   "sec": "s8",
+   "q": "Wat is een parasitaire oscillator?",
+   "a": "Een onbedoelde oscillatie in een versterkende schakeling, doordat ongewenste terugkoppeling optreedt."
+  },
+  {
+   "id": "c48",
+   "sec": "s8",
+   "q": "Hoe voorkom je parasitaire oscillaties?",
+   "a": "Niet meer versterken dan nodig is (tegenkoppeling), signaalleidingen niet parallel leggen, trappen afschermen en voedingsleidingen ontkoppelen."
+  },
+  {
+   "id": "c49",
+   "sec": "s10",
+   "q": "Wat is faseruis?",
+   "a": "De ene periode van een oscillator is net iets korter of langer dan de volgende: het signaal wiebelt een beetje."
+  },
+  {
+   "id": "c50",
+   "sec": "s10",
+   "q": "Wat zegt veel faseruis over een oscillator?",
+   "a": "Dat hij van mindere kwaliteit is."
+  },
+  {
+   "id": "c51",
+   "sec": "s11",
+   "q": "Hoe stabiliseer je een spanning met een zenerdiode?",
+   "a": "Een serieweerstand Rs en de zenerdiode parallel aan de belasting. De zenerdiode neemt de stroom die de belasting niet gebruikt."
+  },
+  {
+   "id": "c52",
+   "sec": "s11",
+   "q": "Wat is de voorwaarde voor een zenerstabilisatie?",
+   "a": "Iin moet groter zijn dan Iuit, zodat er altijd stroom overblijft voor de zenerdiode, en Uin > Uuit."
+  },
+  {
+   "id": "c53",
+   "sec": "s11",
+   "q": "Hoe bereken je de serieweerstand Rs van een zenerstabilisatie?",
+   "a": "Rs = (Uin − Uz) / (Ibel + Iz), met Iz de minimale zenerstroom."
+  },
+  {
+   "id": "c54",
+   "sec": "s11",
+   "q": "Hoe groot is de dissipatie in de zenerdiode?",
+   "a": "P = Uz · Iz. De maximale dissipatie treedt op als de belasting weinig of niets afneemt."
+  },
+  {
+   "id": "c55",
+   "sec": "s11",
+   "q": "Waarom zet je een emittervolger achter een zenerdiode?",
+   "a": "Zo kan de schakeling veel meer stroom leveren: de uitgangsstroom is hFE keer de stroom uit de zenerdiode."
+  },
+  {
+   "id": "c56",
+   "sec": "s11",
+   "q": "Hoeveel lager is de uitgang van een zenerstabilisator met één emittervolger?",
+   "a": "Ongeveer 0,6 V (één basis-emitterspanning van een siliciumtransistor) lager dan de zenerspanning."
+  },
+  {
+   "id": "c57",
+   "sec": "s11",
+   "q": "Wat is een Darlingtonschakeling?",
+   "a": "Twee transistoren als emittervolger in serie. De stroomversterking is het product van beide; de uitgang is circa 1,2 V lager dan de zenerspanning."
+  },
+  {
+   "id": "c58",
+   "sec": "s11",
+   "q": "Hoe werkt een tegengekoppelde voeding?",
+   "a": "Een spanningsdeler over de uitgang wordt vergeleken met een referentie (zenerdiode). Een afwijking regelt via de tegenkoppellus de basis van de vermogenstransistor bij."
+  },
+  {
+   "id": "c59",
+   "sec": "s11",
+   "q": "Hoeveel hoger moet Uin zijn dan Uuit bij een lineaire voeding?",
+   "a": "Minimaal de zenerspanning plus 1,5 à 2 V voor de transistoren."
+  },
+  {
+   "id": "c60",
+   "sec": "s11",
+   "q": "Hoe maak je een regelbare voeding?",
+   "a": "Met een potentiometer (met weerstanden aan beide kanten) in de spanningsdeler over de uitgang."
+  },
+  {
+   "id": "c61",
+   "sec": "s11",
+   "q": "Hoe groot is het rendement van een lineaire voeding gemiddeld?",
+   "a": "Ongeveer 50%: de rest wordt in de serie-regelaar warmte."
+  },
+  {
+   "id": "c62",
+   "sec": "s11",
+   "q": "Wat betekenen de reeksen 78xx en 79xx?",
+   "a": "Geïntegreerde spanningsstabilisatoren met vaste spanning: 78xx positief, 79xx negatief. xx is de spanning in volt (7812 = +12 V, 7915 = −15 V)."
+  },
+  {
+   "id": "c63",
+   "sec": "s11",
+   "q": "Hoeveel aansluitingen heeft een stabilisator met vaste spanning?",
+   "a": "Drie: in, uit en massa (een ‘driepoot’)."
+  },
+  {
+   "id": "c64",
+   "sec": "s12",
+   "q": "Wat is een schakelende voeding?",
+   "a": "Een voeding waarin de gelijkspanning met een hoogfrequente wisselspanning (10–100 kHz) en een spoel of condensatoren wordt verhoogd, verlaagd of omgekeerd."
+  },
+  {
+   "id": "c65",
+   "sec": "s12",
+   "q": "Welk voordeel heeft een schakelende voeding boven een lineaire?",
+   "a": "Een hoger rendement, dus minder warmte en kleinere onderdelen (door de hoge frequentie)."
+  },
+  {
+   "id": "c66",
+   "sec": "s12",
+   "q": "Welk nadeel heeft een schakelende voeding?",
+   "a": "Storing: de schakelfrequentie en zijn harmonischen komen op de uitgang en kunnen radiostoring geven."
+  },
+  {
+   "id": "c67",
+   "sec": "s12",
+   "q": "Wat is een ladingspomp?",
+   "a": "Een schakeling met dioden en condensatoren en twee klokken in tegenfase die de spanning omhoog pompt, bijvoorbeeld de ladingspomp van Dickson (niet gestabiliseerd)."
+  },
+  {
+   "id": "c68",
+   "sec": "s12",
+   "q": "Wat is duty cycle?",
+   "a": "De verhouding tussen pulsbreedte en periodeduur: D = tp / T, meestal in procenten. Een blokgolf heeft 50%."
+  },
+  {
+   "id": "c69",
+   "sec": "s12",
+   "q": "Wat is een PWM?",
+   "a": "Een pulsbreedtemodulator: de frequentie blijft gelijk, maar de pulsbreedte (duty cycle) wordt door een regelspanning veranderd."
+  },
+  {
+   "id": "c70",
+   "sec": "s12",
+   "q": "Hoe regelt een PWM de uitgangsspanning?",
+   "a": "Een stijgende uitgangsspanning maakt de pulsen smaller (kleinere duty cycle); een dalende spanning maakt ze breder."
+  },
+  {
+   "id": "c71",
+   "sec": "s12",
+   "q": "Welke onderdelen heeft elke PWM-voeding gemeenschappelijk?",
+   "a": "Een spoel, een diode, een schakeltransistor en een condensator over de uitgang."
+  },
+  {
+   "id": "c72",
+   "sec": "s12",
+   "q": "Wat doet de spoel in een schakelende voeding?",
+   "a": "Bij het uitschakelen van de transistor probeert hij de stroom in stand te houden: de opgeslagen magnetische energie geeft een spanningspiek en laadt de condensator op."
+  },
+  {
+   "id": "c73",
+   "sec": "s12",
+   "q": "Wat is een step-up converter?",
+   "a": "Een schakelende voeding waarvan Uuit groter is dan Uin."
+  },
+  {
+   "id": "c74",
+   "sec": "s12",
+   "q": "Wat is een step-down converter?",
+   "a": "Een schakelende voeding waarvan Uuit kleiner is dan Uin."
+  },
+  {
+   "id": "c75",
+   "sec": "s12",
+   "q": "Wat is een inverter (schakelende voeding)?",
+   "a": "Een schakelende voeding die de polariteit omkeert: bij positieve Uin is Uuit negatief."
+  },
+  {
+   "id": "c76",
+   "sec": "s12",
+   "q": "Hoe herken je de inverter in het schema?",
+   "a": "De diode staat zo dat de uitgangsspanning negatief wordt; ook de polariteit van de elco aan de uitgang is omgekeerd."
+  }
+ ],
+ "drill": [
+  {
+   "id": "opinv",
+   "sec": "s3",
+   "name": "Versterking inverterende opamp",
+   "where": "de versterking van de inverterende opamp",
+   "f": "Au = −R2 / R1",
+   "cloze": [
+    {
+     "q": "Au = −R2 / ___",
+     "a": "R1",
+     "w": [
+      "R2",
+      "R1 + R2",
+      "Rin"
+     ]
+    },
+    {
+     "q": "De uitgang is ___ ten opzichte van de ingang",
+     "a": "in tegenfase",
+     "w": [
+      "in fase",
+      "even groot",
+      "nul"
+     ]
+    }
+   ],
+   "gen": "opinv",
+   "rewrite": [
+    {
+     "base": "Au = −R2 / R1",
+     "ask": "R2",
+     "a": "R2 = −Au · R1",
+     "w": [
+      "R2 = Au · R1",
+      "R2 = R1 / −Au",
+      "R2 = −Au / R1"
+     ]
+    },
+    {
+     "base": "Au = −R2 / R1",
+     "ask": "R1",
+     "a": "R1 = −R2 / Au",
+     "w": [
+      "R1 = R2 · Au",
+      "R1 = Au / R2",
+      "R1 = R2 − Au"
+     ]
+    }
+   ],
+   "exam": [
+    "hs10-2",
+    "hs10-3",
+    "hs10-6",
+    "hs10-9",
+    "hs10-12",
+    "hs10-13",
+    "hs10-14",
+    "hs10-17",
+    "hs10-18",
+    "hs10-20",
+    "hs10-32",
+    "hs10-33",
+    "hs10-34",
+    "hs10-35",
+    "hs10-36",
+    "hs10-37",
+    "hs10-38",
+    "hs10-39",
+    "hs10-40",
+    "hs10-44",
+    "hs10-48"
+   ]
+  },
+  {
+   "id": "opnon",
+   "sec": "s3",
+   "name": "Versterking niet-inverterende opamp",
+   "where": "de versterking van de niet-inverterende opamp",
+   "f": "Au = 1 + R2 / R1",
+   "cloze": [
+    {
+     "q": "Au = ___ + R2 / R1",
+     "a": "1",
+     "w": [
+      "0",
+      "−1",
+      "2"
+     ]
+    },
+    {
+     "q": "Een niet-inverterende opamp heeft altijd een versterking van minstens ___",
+     "a": "1",
+     "w": [
+      "0",
+      "2",
+      "10"
+     ]
+    }
+   ],
+   "gen": "opnon",
+   "rewrite": [
+    {
+     "base": "Au = 1 + R2 / R1",
+     "ask": "R2",
+     "a": "R2 = (Au − 1) · R1",
+     "w": [
+      "R2 = Au · R1",
+      "R2 = (Au + 1) · R1",
+      "R2 = (Au − 1) / R1"
+     ]
+    }
+   ],
+   "exam": [
+    "hs10-2",
+    "hs10-3",
+    "hs10-6",
+    "hs10-9",
+    "hs10-12",
+    "hs10-13",
+    "hs10-14",
+    "hs10-17",
+    "hs10-18",
+    "hs10-20",
+    "hs10-32",
+    "hs10-33",
+    "hs10-34",
+    "hs10-35",
+    "hs10-36",
+    "hs10-37",
+    "hs10-38",
+    "hs10-39",
+    "hs10-40",
+    "hs10-48"
+   ]
+  },
+  {
+   "id": "opver",
+   "sec": "s3",
+   "name": "Verschilversterker",
+   "where": "het verschil van twee spanningen",
+   "f": "Uuit = U2 − U1",
+   "cloze": [
+    {
+     "q": "Bij gelijke weerstanden is Uuit = ___",
+     "a": "U2 − U1",
+     "w": [
+      "U1 + U2",
+      "−(U1 + U2)",
+      "U1 · U2"
+     ]
+    }
+   ],
+   "gen": "opver",
+   "exam": [
+    "hs10-1",
+    "hs10-2",
+    "hs10-3",
+    "hs10-6",
+    "hs10-9",
+    "hs10-11",
+    "hs10-12",
+    "hs10-13",
+    "hs10-14",
+    "hs10-17",
+    "hs10-18",
+    "hs10-20",
+    "hs10-29",
+    "hs10-32",
+    "hs10-33",
+    "hs10-34",
+    "hs10-35",
+    "hs10-36",
+    "hs10-37",
+    "hs10-38",
+    "hs10-39",
+    "hs10-40",
+    "hs10-48",
+    "hs10-53"
+   ]
+  },
+  {
+   "id": "opsom",
+   "sec": "s3",
+   "name": "Optelversterker",
+   "where": "de som van ingangsspanningen",
+   "f": "Uuit = −(U1 + U2 + U3)",
+   "cloze": [
+    {
+     "q": "Een optelversterker met gelijke weerstanden geeft een ___ som",
+     "a": "negatieve",
+     "w": [
+      "positieve",
+      "gemiddelde",
+      "nul"
+     ]
+    }
+   ],
+   "gen": "opsom",
+   "exam": [
+    "hs10-2",
+    "hs10-3",
+    "hs10-6",
+    "hs10-7",
+    "hs10-9",
+    "hs10-12",
+    "hs10-13",
+    "hs10-14",
+    "hs10-17",
+    "hs10-18",
+    "hs10-20",
+    "hs10-32",
+    "hs10-33",
+    "hs10-34",
+    "hs10-35",
+    "hs10-36",
+    "hs10-37",
+    "hs10-38",
+    "hs10-39",
+    "hs10-40",
+    "hs10-48"
+   ]
+  },
+  {
+   "id": "zrs",
+   "sec": "s11",
+   "name": "Serieweerstand zenerstabilisator",
+   "where": "de serieweerstand naar de zenerdiode",
+   "f": "Rs = (Uin − Uz) / (Ibel + Iz)",
+   "cloze": [
+    {
+     "q": "Over Rs staat Uin − ___",
+     "a": "Uz",
+     "w": [
+      "Ibel",
+      "Uuit·2",
+      "0 V"
+     ]
+    },
+    {
+     "q": "De stroom door Rs is Ibel + ___",
+     "a": "Iz",
+     "w": [
+      "Uz",
+      "Rs",
+      "Uin"
+     ]
+    }
+   ],
+   "gen": "zrs",
+   "rewrite": [
+    {
+     "base": "Rs = (Uin − Uz) / (Ibel + Iz)",
+     "ask": "Uin",
+     "a": "Uin = Uz + Rs · (Ibel + Iz)",
+     "w": [
+      "Uin = Uz − Rs · (Ibel + Iz)",
+      "Uin = Rs · (Ibel + Iz)",
+      "Uin = Uz + Rs / (Ibel + Iz)"
+     ]
+    }
+   ],
+   "exam": [
+    "hs10-4",
+    "hs10-8",
+    "hs10-11",
+    "hs10-12",
+    "hs10-23",
+    "hs10-24",
+    "hs10-25",
+    "hs10-29",
+    "hs10-31",
+    "hs10-43",
+    "hs10-44",
+    "hs10-46",
+    "hs10-48",
+    "hs10-49",
+    "hs10-50",
+    "hs10-52"
+   ]
+  },
+  {
+   "id": "zpz",
+   "sec": "s11",
+   "name": "Dissipatie zenerdiode",
+   "where": "het vermogen in de zenerdiode",
+   "f": "P = Uz · Iz",
+   "cloze": [
+    {
+     "q": "De dissipatie in de zenerdiode is maximaal als de belasting ___ afneemt",
+     "a": "niets",
+     "w": [
+      "veel",
+      "maximaal",
+      "hf"
+     ]
+    }
+   ],
+   "gen": "zpz",
+   "exam": [
+    "hs10-4",
+    "hs10-8",
+    "hs10-11",
+    "hs10-12",
+    "hs10-23",
+    "hs10-24",
+    "hs10-25",
+    "hs10-29",
+    "hs10-31",
+    "hs10-43",
+    "hs10-46",
+    "hs10-48"
+   ]
+  },
+  {
+   "id": "vemit",
+   "sec": "s11",
+   "name": "Uitgang zener met emittervolger",
+   "where": "de uitgangsspanning achter de transistor(en)",
+   "f": "Uuit ≈ Uz − n · 0,6 V",
+   "cloze": [
+    {
+     "q": "Een Darlington verlaagt de spanning met ongeveer ___",
+     "a": "1,2 V",
+     "w": [
+      "0,6 V",
+      "2,4 V",
+      "0 V"
+     ]
+    }
+   ],
+   "gen": "vemit",
+   "exam": [
+    "hs10-4",
+    "hs10-8",
+    "hs10-11",
+    "hs10-12",
+    "hs10-23",
+    "hs10-24",
+    "hs10-25",
+    "hs10-29",
+    "hs10-31",
+    "hs10-43",
+    "hs10-44",
+    "hs10-46",
+    "hs10-48",
+    "hs10-49",
+    "hs10-50",
+    "hs10-52"
+   ]
+  },
+  {
+   "id": "fosc",
+   "sec": "s5",
+   "name": "Frequentie van de oscillatorkring",
+   "where": "de frequentie van een LC-oscillator",
+   "f": "f = 1 / (2π √(LC))",
+   "cloze": [
+    {
+     "q": "f = 1 / (2π · ___)",
+     "a": "√(L·C)",
+     "w": [
+      "L·C",
+      "√(L/C)",
+      "L+C"
+     ]
+    },
+    {
+     "q": "Een grotere C maakt de frequentie ___",
+     "a": "lager",
+     "w": [
+      "hoger",
+      "gelijk",
+      "negatief"
+     ]
+    }
+   ],
+   "gen": "fosc",
+   "rewrite": [
+    {
+     "base": "f = 1 / (2π √(LC))",
+     "ask": "C",
+     "a": "C = 1 / ((2πf)² · L)",
+     "w": [
+      "C = 1 / (2πf · L)",
+      "C = (2πf)² / L",
+      "C = L / (2πf)²"
+     ]
+    }
+   ],
+   "exam": [
+    "hs10-1",
+    "hs10-4",
+    "hs10-5",
+    "hs10-7",
+    "hs10-10",
+    "hs10-11",
+    "hs10-12",
+    "hs10-15",
+    "hs10-16",
+    "hs10-19",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-28",
+    "hs10-30",
+    "hs10-47",
+    "hs10-49",
+    "hs10-50",
+    "hs10-51",
+    "hs10-52",
+    "hs10-53",
+    "hs10-54",
+    "hs10-55",
+    "hs10-56",
+    "hs10-57"
+   ]
+  },
+  {
+   "id": "ovt",
+   "sec": "s6",
+   "name": "Overtone-oscillator",
+   "where": "de frequentie van een overtone-oscillator",
+   "f": "f = n · f_grondtoon",
+   "cloze": [
+    {
+     "q": "Een overtone-oscillator werkt op een ___ harmonische",
+     "a": "oneven",
+     "w": [
+      "even",
+      "gebroken",
+      "nulde"
+     ]
+    }
+   ],
+   "gen": "ovt",
+   "exam": [
+    "hs10-15",
+    "hs10-16",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-30",
+    "hs10-47",
+    "hs10-51",
+    "hs10-52",
+    "hs10-54",
+    "hs10-55",
+    "hs10-56",
+    "hs10-57"
+   ]
+  },
+  {
+   "id": "mill",
+   "sec": "s6",
+   "name": "Miller-effect",
+   "where": "de ingangscapaciteit door terugwerkingscapaciteit",
+   "f": "C_in = C · (Au + 1)",
+   "cloze": [
+    {
+     "q": "C_in = C · (Au + ___)",
+     "a": "1",
+     "w": [
+      "0",
+      "2",
+      "−1"
+     ]
+    }
+   ],
+   "gen": "mill",
+   "exam": [
+    "hs10-15",
+    "hs10-16",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-30",
+    "hs10-47",
+    "hs10-51",
+    "hs10-52",
+    "hs10-54",
+    "hs10-55",
+    "hs10-56",
+    "hs10-57"
+   ]
+  },
+  {
+   "id": "duty",
+   "sec": "s12",
+   "name": "Duty cycle",
+   "where": "de verhouding tussen pulsbreedte en periodeduur",
+   "f": "D = tp / T",
+   "cloze": [
+    {
+     "q": "Een blokgolf heeft een duty cycle van ___",
+     "a": "50%",
+     "w": [
+      "25%",
+      "100%",
+      "0%"
+     ]
+    },
+    {
+     "q": "Bij een PWM verandert de ___ niet",
+     "a": "frequentie",
+     "w": [
+      "pulsbreedte",
+      "duty cycle",
+      "amplitude"
+     ]
+    }
+   ],
+   "gen": "duty",
+   "rewrite": [
+    {
+     "base": "D = tp / T",
+     "ask": "tp",
+     "a": "tp = D · T",
+     "w": [
+      "tp = D / T",
+      "tp = T / D",
+      "tp = D + T"
+     ]
+    }
+   ],
+   "exam": [
+    "hs10-41",
+    "hs10-42",
+    "hs10-44",
+    "hs10-45"
+   ]
+  },
+  {
+   "id": "opeig",
+   "sec": "s3",
+   "name": "Eigenschappen van de ideale opamp",
+   "where": "ideale en praktische opampwaarden",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de versterking",
+     "a": "oneindig"
+    },
+    {
+     "q": "de ingangsimpedantie",
+     "a": "oneindig"
+    },
+    {
+     "q": "de uitgangsimpedantie",
+     "a": "nul"
+    },
+    {
+     "q": "de bandbreedte",
+     "a": "van 0 tot oneindig"
+    }
+   ],
+   "ask": "Wat geldt bij een ideale opamp voor {x}?",
+   "askRev": "Welke eigenschap van een ideale opamp is dit: {x}?",
+   "exam": [
+    "hs10-2",
+    "hs10-3",
+    "hs10-6",
+    "hs10-9",
+    "hs10-12",
+    "hs10-13",
+    "hs10-14",
+    "hs10-17",
+    "hs10-18",
+    "hs10-20",
+    "hs10-32",
+    "hs10-33",
+    "hs10-34",
+    "hs10-35",
+    "hs10-36",
+    "hs10-37",
+    "hs10-38",
+    "hs10-39",
+    "hs10-40",
+    "hs10-48"
+   ]
+  },
+  {
+   "id": "opsch",
+   "sec": "s3",
+   "name": "Opampschakelingen herkennen",
+   "where": "welke schakeling bij welke eigenschap past",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een spanningsvolger",
+     "a": "Au = 1, hoge ingangs- en lage uitgangsimpedantie"
+    },
+    {
+     "q": "een inverterende versterker",
+     "a": "Au = −R2/R1, uitgang in tegenfase"
+    },
+    {
+     "q": "een niet-inverterende versterker",
+     "a": "Au = 1 + R2/R1, uitgang in fase"
+    },
+    {
+     "q": "een comparator",
+     "a": "geen tegenkoppeling, uitgang op +U of −U"
+    },
+    {
+     "q": "een optelversterker",
+     "a": "negatieve som van de ingangsspanningen"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welke opampschakeling is dit: {x}?",
+   "exam": [
+    "hs10-1",
+    "hs10-2",
+    "hs10-3",
+    "hs10-4",
+    "hs10-5",
+    "hs10-6",
+    "hs10-8",
+    "hs10-9",
+    "hs10-10",
+    "hs10-12",
+    "hs10-13",
+    "hs10-14",
+    "hs10-16",
+    "hs10-17",
+    "hs10-18",
+    "hs10-19",
+    "hs10-20",
+    "hs10-21",
+    "hs10-26",
+    "hs10-27",
+    "hs10-29",
+    "hs10-32",
+    "hs10-33",
+    "hs10-34",
+    "hs10-35",
+    "hs10-36",
+    "hs10-37",
+    "hs10-38",
+    "hs10-39",
+    "hs10-40",
+    "hs10-42",
+    "hs10-43",
+    "hs10-45",
+    "hs10-46",
+    "hs10-48",
+    "hs10-54",
+    "hs10-55"
+   ]
+  },
+  {
+   "id": "oscs",
+   "sec": "s5",
+   "name": "Soorten LC-oscillatoren",
+   "where": "herkennen van oscillatorschakelingen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "Hartley",
+     "a": "terugkoppeling via een aftakking op de spoel"
+    },
+    {
+     "q": "Colpitts",
+     "a": "terugkoppeling via een capacitieve deler"
+    },
+    {
+     "q": "Meissner / Armstrong",
+     "a": "terugkoppeling via een aparte, inductief gekoppelde wikkeling"
+    },
+    {
+     "q": "Clapp",
+     "a": "Colpitts met een variabele condensator in serie met de spoel"
+    },
+    {
+     "q": "Seiler",
+     "a": "variabele condensator over de hele spoel"
+    }
+   ],
+   "ask": "Wat kenmerkt {x}?",
+   "askRev": "Welke oscillator is dit: {x}?",
+   "exam": [
+    "hs10-1",
+    "hs10-4",
+    "hs10-5",
+    "hs10-7",
+    "hs10-10",
+    "hs10-11",
+    "hs10-12",
+    "hs10-19",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-28",
+    "hs10-30",
+    "hs10-47",
+    "hs10-49",
+    "hs10-50",
+    "hs10-51",
+    "hs10-52",
+    "hs10-53",
+    "hs10-55",
+    "hs10-56"
+   ]
+  },
+  {
+   "id": "oscf",
+   "sec": "s5",
+   "name": "Fase van de transistorschakelingen",
+   "where": "welke schakelingen in fase of in tegenfase zijn",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "GDS, GCS, GAS",
+     "a": "in fase, geschikt als oscillatorbasis"
+    },
+    {
+     "q": "GGS, GBS, GRS",
+     "a": "in fase, geschikt als oscillatorbasis"
+    },
+    {
+     "q": "GSS, GES, GKS",
+     "a": "180° fasedraaiing, extra 180° nodig"
+    }
+   ],
+   "ask": "Hoe is de fase bij {x}?",
+   "askRev": "Welke schakeling geeft dit: {x}?",
+   "exam": [
+    "hs10-1",
+    "hs10-4",
+    "hs10-5",
+    "hs10-7",
+    "hs10-10",
+    "hs10-11",
+    "hs10-12",
+    "hs10-19",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-28",
+    "hs10-30",
+    "hs10-47",
+    "hs10-49",
+    "hs10-50",
+    "hs10-51",
+    "hs10-52",
+    "hs10-53",
+    "hs10-55",
+    "hs10-56"
+   ]
+  },
+  {
+   "id": "osce",
+   "sec": "s5",
+   "name": "Stabiele oscillator",
+   "where": "hoe je de frequentiestabiliteit verbetert",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een gestabiliseerde voedingsspanning",
+     "a": "betere frequentiestabiliteit"
+    },
+    {
+     "q": "losse koppeling tussen element en kring",
+     "a": "betere frequentiestabiliteit"
+    },
+    {
+     "q": "een capaciteitsdiode in de kring",
+     "a": "elektrisch verstemmen (VCO)"
+    },
+    {
+     "q": "een kristal",
+     "a": "zeer stabiele frequentie"
+    },
+    {
+     "q": "een stevige constructie",
+     "a": "geen mechanische frequentieverandering"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Waarvoor dient dit: {x}?",
+   "exam": [
+    "hs10-1",
+    "hs10-4",
+    "hs10-5",
+    "hs10-7",
+    "hs10-10",
+    "hs10-11",
+    "hs10-12",
+    "hs10-19",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-28",
+    "hs10-30",
+    "hs10-47",
+    "hs10-49",
+    "hs10-50",
+    "hs10-51",
+    "hs10-52",
+    "hs10-53",
+    "hs10-55",
+    "hs10-56"
+   ]
+  },
+  {
+   "id": "xtal",
+   "sec": "s6",
+   "name": "Kwartskristal",
+   "where": "gedrag van een kwartskristal",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "het kristal tussen serie- en parallelresonantie",
+     "a": "inductief"
+    },
+    {
+     "q": "het kristal buiten dat gebied",
+     "a": "capacitief"
+    },
+    {
+     "q": "het kristal",
+     "a": "piëzo-elektrisch, gedraagt zich als LC-kring"
+    },
+    {
+     "q": "serie- en parallelresonantie",
+     "a": "liggen dicht bij elkaar"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welk gedrag van het kristal is dit: {x}?",
+   "exam": [
+    "hs10-15",
+    "hs10-16",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-30",
+    "hs10-47",
+    "hs10-51",
+    "hs10-52",
+    "hs10-54",
+    "hs10-55",
+    "hs10-56",
+    "hs10-57"
+   ]
+  },
+  {
+   "id": "krso",
+   "sec": "s6",
+   "name": "Kristaloscillatoren",
+   "where": "herkennen van kristaloscillatorschakelingen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "Pierce",
+     "a": "kristal tussen gate en drain, met trimcondensator"
+    },
+    {
+     "q": "Miller",
+     "a": "kristal in de gate, LC-kring in de drain, terugkoppeling via de Miller-capaciteit"
+    },
+    {
+     "q": "overtone",
+     "a": "werkt op een oneven harmonische, afgestemde kring op de overtone"
+    },
+    {
+     "q": "Colpitts met kristal",
+     "a": "geen handeffect"
+    }
+   ],
+   "ask": "Wat kenmerkt {x}?",
+   "askRev": "Welke kristaloscillator is dit: {x}?",
+   "exam": [
+    "hs10-15",
+    "hs10-16",
+    "hs10-21",
+    "hs10-22",
+    "hs10-23",
+    "hs10-26",
+    "hs10-27",
+    "hs10-30",
+    "hs10-47",
+    "hs10-51",
+    "hs10-52",
+    "hs10-54",
+    "hs10-55",
+    "hs10-56",
+    "hs10-57"
+   ]
+  },
+  {
+   "id": "stab",
+   "sec": "s11",
+   "name": "Stabilisatieschakelingen",
+   "where": "welke schakeling welke eigenschap geeft",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een zenerdiode met serieweerstand",
+     "a": "geeft een vrij constante spanning, maar levert slechts enkele tientallen mA"
+    },
+    {
+     "q": "een emittervolger achter de zener",
+     "a": "veel meer stroom, Uuit ≈ Uz − 0,6 V"
+    },
+    {
+     "q": "een Darlington achter de zener",
+     "a": "zeer grote stroom, Uuit ≈ Uz − 1,2 V"
+    },
+    {
+     "q": "een tegengekoppelde voeding",
+     "a": "vrijwel belastingsonafhankelijke spanning"
+    },
+    {
+     "q": "een 78xx of 79xx",
+     "a": "geïntegreerde stabilisator met vaste spanning, positief of negatief"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke schakeling is dit: {x}?",
+   "exam": [
+    "hs10-4",
+    "hs10-8",
+    "hs10-11",
+    "hs10-12",
+    "hs10-21",
+    "hs10-23",
+    "hs10-24",
+    "hs10-25",
+    "hs10-29",
+    "hs10-31",
+    "hs10-41",
+    "hs10-42",
+    "hs10-43",
+    "hs10-44",
+    "hs10-45",
+    "hs10-46",
+    "hs10-48",
+    "hs10-49",
+    "hs10-50",
+    "hs10-51",
+    "hs10-52"
+   ]
+  },
+  {
+   "id": "swit",
+   "sec": "s12",
+   "name": "Schakelende voedingen",
+   "where": "step-up, step-down en inverter",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "step-up",
+     "a": "Uuit groter dan Uin"
+    },
+    {
+     "q": "step-down",
+     "a": "Uuit kleiner dan Uin, positief"
+    },
+    {
+     "q": "inverter",
+     "a": "Uuit negatief bij positieve Uin"
+    },
+    {
+     "q": "alle drie",
+     "a": "spoel, diode, schakeltransistor en uitgangscondensator"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke schakelende voeding is dit: {x}?",
+   "exam": [
+    "hs10-41",
+    "hs10-42",
+    "hs10-44",
+    "hs10-45"
+   ]
+  },
+  {
+   "id": "lvsv",
+   "sec": "s12",
+   "name": "Lineaire versus schakelende voeding",
+   "where": "rendement en storing",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de lineaire voeding",
+     "a": "rendement circa 50%, weinig storing, altijd Uin > Uuit"
+    },
+    {
+     "q": "de schakelende voeding",
+     "a": "hoger rendement, meer storing, Uuit kan ook hoger dan Uin zijn"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke voeding is dit: {x}?",
+   "exam": [
+    "hs10-41",
+    "hs10-42",
+    "hs10-44",
+    "hs10-45"
+   ]
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o10-1",
+   "n": 1,
+   "q": "5 kΩ 2,5 kΩ +5 V                          _ + Uuit De uitgangsspanning Uuit bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "10 V"
+    },
+    {
+     "id": "B",
+     "text": "-10 V"
+    },
+    {
+     "id": "C",
+     "text": "2,5 V"
+    },
+    {
+     "id": "D",
+     "text": "-2,5 V"
+    }
+   ],
+   "answer": "B",
+   "explain": "De spanningsversterking is -5/2,5 is -2. (-2)*(+5 V) =-10 V. Antwoord B.",
+   "pages": [
+    "p018"
+   ],
+   "spages": [
+    "p071"
+   ]
+  },
+  {
+   "id": "o10-2",
+   "n": 2,
+   "q": "1 kΩ 1 kΩ _ +1 V           + Uuit De uitgangsspanning Uuit bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 V"
+    },
+    {
+     "id": "B",
+     "text": "-1 V"
+    },
+    {
+     "id": "C",
+     "text": "2 V"
+    },
+    {
+     "id": "D",
+     "text": "-2 V"
+    }
+   ],
+   "answer": "C",
+   "explain": "De spanningsversterking via de niet-inverterende ingang is 1+1/1=2. 2*(+1 V) =2 V. Antwoord C.",
+   "pages": [
+    "p019"
+   ],
+   "spages": [
+    "p072"
+   ]
+  },
+  {
+   "id": "o10-3",
+   "n": 3,
+   "q": "1 kΩ             1 kΩ -3 V 2 kΩ                _ +4 V + Uuit De uitgangsspanning Uuit bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 V"
+    },
+    {
+     "id": "B",
+     "text": "-1 V"
+    },
+    {
+     "id": "C",
+     "text": "5 V"
+    },
+    {
+     "id": "D",
+     "text": "7 V"
+    }
+   ],
+   "answer": "A",
+   "explain": "In deze optelschakeling wordt de spanning van -3 V -1 maal versterkt. De spanning van +4 V wordt -½ maal versterkt. De uitgangsspanning wordt dan (-3V)*(-1) + 4V*(-½) = 3 V – 2 V = 1 V. Antwoord A.",
+   "pages": [
+    "p020"
+   ],
+   "spages": [
+    "p073"
+   ]
+  },
+  {
+   "id": "o10-4",
+   "n": 4,
+   "q": "1 kΩ 1 kΩ +1 V                           _ 1 kΩ +2 V                           + Uuit 1 kΩ De uitgangsspanning Uuit bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 V"
+    },
+    {
+     "id": "B",
+     "text": "2 V"
+    },
+    {
+     "id": "C",
+     "text": "3 V"
+    },
+    {
+     "id": "D",
+     "text": "-1 V"
+    }
+   ],
+   "answer": "A",
+   "explain": "Bij deze verschilversterker zijn alle weerstanden gelijk. Daarom geldt dat de uitgangsspanning Uuit gelijk is aan de ingangsspanning voor de niet inverterende ingang minus die voor de inverterende ingang. 2V – 1V=1V. Antwoord A.",
+   "pages": [
+    "p021"
+   ],
+   "spages": [
+    "p074"
+   ]
+  },
+  {
+   "id": "o10-5",
+   "n": 5,
+   "q": "_ +3,3 V        + Uuit De uitgangsspanning Uuit is",
+   "options": [
+    {
+     "id": "A",
+     "text": "Niet te berekenen"
+    },
+    {
+     "id": "B",
+     "text": "Bij benadering oneindig"
+    },
+    {
+     "id": "C",
+     "text": "2,7 V"
+    },
+    {
+     "id": "D",
+     "text": "3,3 V"
+    }
+   ],
+   "answer": "D",
+   "explain": "De getoonde schakeling is een spanningsvolger. Dat is te zien aan de directe verbinding tussen uitgang en inverterende ingang. De versterking is daarom +1 en Uuit is gelijk aan de ingangsspanning van +3,3 V. Antwoord D",
+   "pages": [
+    "p022"
+   ],
+   "spages": [
+    "p075"
+   ]
+  },
+  {
+   "id": "o10-6",
+   "n": 6,
+   "q": "+ 18 V 100 pF 100 pF 100 µ             220 kΩ 100 pF 100 pF - De schakeling oscilleert",
+   "options": [
+    {
+     "id": "A",
+     "text": "Niet"
+    },
+    {
+     "id": "B",
+     "text": "Op ongeveer 10 MHz"
+    },
+    {
+     "id": "C",
+     "text": "Op ongeveer 6,28 MHz"
+    },
+    {
+     "id": "D",
+     "text": "Op ongeveer 1,6 MHz"
+    }
+   ],
+   "answer": "D",
+   "explain": "De schakeling is een parallel gevoede Hartley-oscillator. Die hoort te werken, dus antwoord A valt af. De oscillatiefrequentie wordt bepaald door de spoel van 100 µH, dat is 10-4H en de daaraan parallel geschakelde condensator van 100 pF, dat is 10-10 F. Toepassing van de vergelijking van Thomson (Hoofdstuk 5): 𝑓= 2𝜋√𝐿𝐶 leidt tot een frequentie f van iets minder dan 1,6 MHz, antwoord D.",
+   "pages": [
+    "p042"
+   ],
+   "spages": [
+    "p076"
+   ]
+  },
+  {
+   "id": "o10-7",
+   "n": 7,
+   "q": "a                                                     b -12 V                                         -12 V C3                                               C3 L2                                             L2 C1                                            C1 L1                 R1                         sign.    L1         R1                        sign. uit                                           uit C2                                            C2 C4 R2                                               R2 R3             C5                               R3          C4 +                                             + Welke schakeling oscilleert?",
+   "options": [
+    {
+     "id": "A",
+     "text": "Schakeling a"
+    },
+    {
+     "id": "B",
+     "text": "Schakeling b"
+    },
+    {
+     "id": "C",
+     "text": "Geen van beide"
+    },
+    {
+     "id": "D",
+     "text": "Beide"
+    }
+   ],
+   "answer": "A",
+   "explain": "Schakeling a oscilleert door de combinatie van (1) de geaarde middenaftakking op de kring beide uiteinden in tegenfase zijn (het wipwap-effect noemden we dat in de tekst) en (2) omdat de transistor in GES 180º fasedraaiing veroorzaakt. Samen is dat 360º, zodat er een positieve terugkoppeling is en de zaak oscilleert. Bij schakeling b is de middenaftakking in fase met het signaal op de collector en daarmee in tegenfase met dat op de basis van de transistor. Schakeling b kan daarom niet oscilleren en antwoord A is daarom juist.",
+   "pages": [
+    "p043"
+   ],
+   "spages": [
+    "p077"
+   ]
+  },
+  {
+   "id": "o10-8",
+   "n": 8,
+   "q": "Het kristal is gemaakt voor een grondfrequentie van 3 MHz. De schakeling oscilleert als de LC-kring in resonantie is op",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 MHz"
+    },
+    {
+     "id": "B",
+     "text": "4,5 MHz"
+    },
+    {
+     "id": "C",
+     "text": "7 MHz"
+    },
+    {
+     "id": "D",
+     "text": "9 MHz"
+    }
+   ],
+   "answer": "D",
+   "explain": "De LC-kring moet resoneren op de grondfrequentie van het kristal of op een oneven harmonische, zodat het kristal in overtone kan resoneren. De grondfrequentie van 3 MHz staat niet in het lijstje. Een overtone wel, namelijk die van 9 MHz bij antwoord D. Dat is ’m dus.",
+   "pages": [
+    "p044"
+   ],
+   "spages": [
+    "p078"
+   ]
+  },
+  {
+   "id": "o10-9",
+   "n": 9,
+   "q": "+                                        + a                                                b sign.                               sign. uit                                 uit -                                   - Van de getoonde schakelingen oscilleert",
+   "options": [
+    {
+     "id": "A",
+     "text": "Alleen schakeling a"
+    },
+    {
+     "id": "B",
+     "text": "Alleen schakeling b"
+    },
+    {
+     "id": "C",
+     "text": "Schakeling a en b"
+    },
+    {
+     "id": "D",
+     "text": "Geen van beide schakelingen"
+    }
+   ],
+   "answer": "B",
+   "explain": "In schema a ontbreekt de condensator in de basisleiding. Daardoor ligt de basisaansluiting voor gelijkspanning aan 0 V, voert de transistor geen stroom en doet dus niets. In schema b is de condensator wel aanwezig en de schakeling is ook overigens een onberispelijke Hartley-oscillator. Dat betekent antwoord B.",
+   "pages": [
+    "p045"
+   ],
+   "spages": [
+    "p079"
+   ]
+  },
+  {
+   "id": "o10-10",
+   "n": 10,
+   "q": "1kΩ =100 12 V                                  9V 470Ω         Uuit De transistor is een siliciumtype. De spanning Uuit is ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "12 V"
+    },
+    {
+     "id": "B",
+     "text": "9,6 V"
+    },
+    {
+     "id": "C",
+     "text": "9,0 V"
+    },
+    {
+     "id": "D",
+     "text": "8,4 V"
+    }
+   ],
+   "answer": "D",
+   "explain": "Op de basis van de transistor staat de zenerspanning van 9 V. Op de basis-emitterovergang gaat daar ongeveer 0,6 V af. Er blijft dan ongeveer 8,4 V over. Antwoord D.",
+   "pages": [
+    "p066"
+   ],
+   "spages": [
+    "p080"
+   ]
+  },
+  {
+   "id": "o10-11",
+   "n": 11,
+   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "options": [
+    {
+     "id": "A",
+     "text": "18 V"
+    },
+    {
+     "id": "B",
+     "text": "7,5 V"
+    },
+    {
+     "id": "C",
+     "text": "Niet te bepalen op basis van de gegevens"
+    },
+    {
+     "id": "D",
+     "text": "– 7,5 V"
+    }
+   ],
+   "answer": "D",
+   "explain": "Dit is een inverter. Let op de polariteit van de diode! De uitgangsspanning Uuit is daarom negatief. De enige negatieve spanning in het rijtje is antwoord D, dus die moet het zijn. Opmerking Wie naar de elco kijkt, ziet ook dat de spanning op de uitgang negatief moet zijn.",
+   "pages": [
+    "p067"
+   ],
+   "spages": [
+    "p081"
+   ]
+  },
+  {
+   "id": "o10-12",
+   "n": 12,
+   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "options": [
+    {
+     "id": "A",
+     "text": "18 V"
+    },
+    {
+     "id": "B",
+     "text": "7,5 V"
+    },
+    {
+     "id": "C",
+     "text": "Niet te bepalen op basis van de gegevens"
+    },
+    {
+     "id": "D",
+     "text": "– 7,5 V"
+    }
+   ],
+   "answer": "B",
+   "explain": "Dit is een step-down schakeling. De uitgangsspanning Uuit is positief, maar lager dan de ingangsspanning. Er is maar één uitkomst in het rijtje die daaraan voldoet en dat is antwoord B.",
+   "pages": [
+    "p068"
+   ],
+   "spages": [
+    "p082"
+   ]
+  },
+  {
+   "id": "o10-13",
+   "n": 13,
+   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "options": [
+    {
+     "id": "A",
+     "text": "18 V"
+    },
+    {
+     "id": "B",
+     "text": "7,5 V"
+    },
+    {
+     "id": "C",
+     "text": "Niet te bepalen op basis van de gegevens"
+    },
+    {
+     "id": "D",
+     "text": "– 7,5 V"
+    }
+   ],
+   "answer": "A",
+   "explain": "We hebben hier te maken met een step-up schakeling. Uuit moet daarom groter zijn dan de ingangsspanning van 12 V en dat kan alleen maar antwoord A zijn. Bij meer antwoorden > 12 V zou de spanning afhangen van de duty-cycle, maar dat valt buiten de exameneisen.",
+   "pages": [
+    "p069"
+   ],
+   "spages": [
+    "p083"
+   ]
+  },
+  {
+   "id": "o10-14",
+   "n": 14,
+   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "options": [
+    {
+     "id": "A",
+     "text": "18 V"
+    },
+    {
+     "id": "B",
+     "text": "7,5 V"
+    },
+    {
+     "id": "C",
+     "text": "Niet te bepalen op basis van de gegevens"
+    },
+    {
+     "id": "D",
+     "text": "– 7,5 V"
+    }
+   ],
+   "answer": "C",
+   "explain": "Deze schakeling werkt niet, in elk geval niet als spanningsstabilisator. De diode op de ingang blokkeert de stroom en de FET zit ook op een verkeerde plaats. Misschien richt de gate nog wat stuurspanning gelijk. Dit is dus een nepschakeling. Het bijbehorende antwoord is dan ook C.",
+   "pages": [
+    "p070"
+   ],
+   "spages": [
+    "p084"
+   ]
+  }
+ ]
+}

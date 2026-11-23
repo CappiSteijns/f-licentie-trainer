@@ -300,6 +300,50 @@ const GEN = {
     const [R1, R2, b, Re] = pick([[82e3, 33e3, 100, 1e3], [100e3, 47e3, 100, 1e3], [47e3, 22e3, 200, 470], [68e3, 27e3, 150, 680]]), Rx = b * Re, Z = 1 / (1 / R1 + 1 / R2 + 1 / Rx);
     return { q: `Een transistorversterker heeft een spanningsdeler van ${val(R1, 'Ω')} en ${val(R2, 'Ω')}, β = ${b} en R_e = ${val(Re, 'Ω')} (niet ontkoppeld). Hoe groot is de ingangsweerstand ongeveer?`, a: Z, unit: 'Ω', wrong: [R1 + R2 + Rx, 1 / (1 / R1 + 1 / R2), R2, Z * 10], how: `1/Z = 1/${num(R1)} + 1/${num(R2)} + 1/(β·R_e) = 1/${num(R1)} + 1/${num(R2)} + 1/${num(Rx)}` };
   },
+  opinv() {
+    const [R1, R2, U] = pick([[10e3, 100e3, 0.5], [10e3, 47e3, 1], [1e3, 5e3, 0.2], [2e3, 10e3, 0.5], [5e3, 20e3, 0.1], [10e3, 30e3, 1]]), A = -R2 / R1, Uo = A * U;
+    return { q: `Een inverterende opamp heeft R1 = ${val(R1, 'Ω')} (ingang) en tegenkoppelweerstand R2 = ${val(R2, 'Ω')}. De ingangsspanning is +${val(U, 'V')}. Hoe groot is de uitgangsspanning?`, a: Uo, unit: 'V', wrong: [-Uo, U * (1 + R2 / R1), U * R2 / R1 / 10, -U * R1 / R2], how: `Au = −R2/R1 = −${num(R2)}/${num(R1)} = ${num(A)}; Uuit = Au · Uin` };
+  },
+  opnon() {
+    const [R1, R2, U] = pick([[10e3, 90e3, 0.5], [1e3, 9e3, 0.2], [10e3, 47e3, 1], [2e3, 6e3, 0.5], [5e3, 20e3, 0.1], [10e3, 10e3, 1]]), A = 1 + R2 / R1, Uo = A * U;
+    return { q: `Een niet-inverterende opamp heeft R1 = ${val(R1, 'Ω')} (naar massa) en tegenkoppelweerstand R2 = ${val(R2, 'Ω')}. De ingangsspanning is ${val(U, 'V')}. Hoe groot is de uitgangsspanning?`, a: Uo, unit: 'V', wrong: [-R2 / R1 * U, R2 / R1 * U, (1 + R1 / R2) * U, Uo * 10], how: `Au = 1 + R2/R1 = 1 + ${num(R2)}/${num(R1)} = ${num(A)}; Uuit = Au · Uin` };
+  },
+  opver() {
+    const [R, U1, U2] = pick([[10e3, 1, 3], [10e3, 2, 5], [10e3, 0.5, 2], [10e3, 4, 1.5], [10e3, 3, 3.5]]), Uo = U2 - U1;
+    return { q: `Een verschilversterker met vier gelijke weerstanden van ${val(R, 'Ω')} krijgt U1 = ${val(U1, 'V')} (op de inverterende ingang) en U2 = ${val(U2, 'V')} (op de niet-inverterende ingang). Hoe groot is Uuit?`, a: Uo, unit: 'V', wrong: [-Uo, U1 + U2, -(U1 + U2), U2 * U1], how: `Bij gelijke weerstanden: Uuit = U2 − U1 = ${num(U2)} − ${num(U1)}` };
+  },
+  opsom() {
+    const [U1, U2, U3] = pick([[1, 2, 3], [0.5, 1, 1.5], [2, 2, 1], [1, 0.5, 0.5], [3, 1, 1]]), Uo = -(U1 + U2 + U3);
+    return { q: `Een optelversterker met gelijke weerstanden krijgt ingangsspanningen van ${val(U1, 'V')}, ${val(U2, 'V')} en ${val(U3, 'V')}. Hoe groot is de uitgangsspanning?`, a: Uo, unit: 'V', wrong: [-Uo, Uo / 3, (U1 + U2 + U3) / 3, Uo * 2], how: `Uuit = −(U1 + U2 + U3) = −(${num(U1)} + ${num(U2)} + ${num(U3)})` };
+  },
+  zrs() {
+    const [Uin, Uz, Ib, Iz] = pick([[12, 5.1, 20e-3, 10e-3], [15, 9.1, 30e-3, 10e-3], [12, 6.8, 40e-3, 20e-3], [18, 12, 50e-3, 10e-3], [9, 5.6, 10e-3, 5e-3]]), R = (Uin - Uz) / (Ib + Iz);
+    return { q: `Een zenerdiode van ${val(Uz, 'V')} stabiliseert de spanning over een belasting uit ${val(Uin, 'V')}. De belasting neemt ${val(Ib, 'A')} op en door de zenerdiode moet minimaal ${val(Iz, 'A')} blijven lopen. Hoe groot is de serieweerstand Rs ongeveer?`, a: R, unit: 'Ω', wrong: [(Uin - Uz) / Ib, (Uin - Uz) / Iz, Uin / (Ib + Iz), R * 10], how: `Over Rs staat ${num(Uin)} − ${num(Uz)} = ${num(Uin - Uz)} V; de stroom is I_bel + I_z = ${num(Ib)} + ${num(Iz)}; Rs = U / I` };
+  },
+  zpz() {
+    const [Uz, Iz] = pick([[5.1, 40e-3], [9.1, 20e-3], [6.8, 50e-3], [12, 30e-3], [5.6, 100e-3]]), P = Uz * Iz;
+    return { q: `Door een zenerdiode van ${val(Uz, 'V')} loopt ${val(Iz, 'A')}. Hoeveel vermogen dissipeert de zenerdiode?`, a: P, unit: 'W', wrong: [Uz / Iz, Iz / Uz, P * 10, P / 10], how: `P = U_z · I_z = ${num(Uz)} · ${num(Iz)}` };
+  },
+  vemit() {
+    const [Uz, n] = pick([[9, 1], [12, 1], [6.8, 1], [9.1, 2], [12, 2], [15, 2]]), U = Uz - 0.6 * n;
+    return { q: `Een zenerdiode van ${val(Uz, 'V')} stuurt de basis van ${n === 1 ? 'een siliciumtransistor' : 'een Darlington van twee siliciumtransistoren'} als emittervolger. Hoe groot is de uitgangsspanning ongeveer?`, a: U, unit: 'V', wrong: [Uz, Uz + 0.6 * n, Uz - 0.6 * (3 - n), Uz - 0.6 * n * 2], how: `Per basis-emitterovergang gaat circa 0,6 V af: Uuit = ${num(Uz)} − ${n} · 0,6 V` };
+  },
+  fosc() {
+    const [L, C] = pick([[1e-6, 100e-12], [10e-6, 100e-12], [100e-6, 1e-9], [2.2e-6, 220e-12], [4.7e-6, 100e-12], [10e-6, 47e-12]]), f = 1 / (2 * Math.PI * Math.sqrt(L * C));
+    return { q: `De afgestemde kring van een LC-oscillator bestaat uit L = ${val(L, 'H')} en C = ${val(C, 'F')}. Op welke frequentie oscilleert hij ongeveer?`, a: f, unit: 'Hz', wrong: [f * 10, f / 10, f * 2 * Math.PI, f / Math.sqrt(10)], how: `f = 1 / (2π · √(L · C)) = 1 / (2π · √(${num(L)} · ${num(C)}))` };
+  },
+  ovt() {
+    const [f0, n] = pick([[3e6, 3], [7e6, 3], [8e6, 5], [10e6, 3], [12e6, 5], [9e6, 3]]), f = f0 * n;
+    return { q: `Een kristal heeft een grondtoon van ${val(f0, 'Hz')}. In een overtone-oscillator wordt de ${n}e harmonische benut. Op welke frequentie oscilleert de schakeling ongeveer?`, a: f, unit: 'Hz', wrong: [f0 * (n + 1), f0 * (n - 1), f0 / n, f0 * n * 2], how: `Een overtone-oscillator werkt op een oneven harmonische: ${n} × ${num(f0)}` };
+  },
+  mill() {
+    const [C, A] = pick([[5e-12, 20], [10e-12, 10], [2e-12, 50], [4e-12, 25], [3e-12, 30]]), Ce = C * (A + 1);
+    return { q: `Tussen ingang en uitgang van een versterker met spanningsversterking ${A} zit een capaciteit van ${val(C, 'F')}. Hoe groot is de vervangende capaciteit aan de ingang volgens het Miller-effect?`, a: Ce, unit: 'F', wrong: [C * A, C / (A + 1), C * (A - 1), C * A * A], how: `Miller-effect: C · (Au + 1) = ${num(C)} · (${A} + 1)` };
+  },
+  duty() {
+    const [tp, T] = pick([[2e-6, 10e-6], [5e-6, 20e-6], [1e-6, 4e-6], [3e-6, 10e-6], [8e-6, 10e-6]]), D = tp / T * 100;
+    return { q: `Een pulsbreedtemodulator geeft pulsen van ${val(tp, 's')} bij een periodeduur van ${val(T, 's')}. Hoe groot is de duty cycle?`, a: D, unit: '%', wrong: [100 - D, T / tp, D * 10, D / 10], how: `D = tp / T = ${num(tp)} / ${num(T)} (in procenten)` };
+  },
   bw() {
     const [f, Q] = pick([[7e6, 70], [455e3, 100], [10.7e6, 50], [145e6, 100], [3.5e6, 35], [1e6, 20]]), B = f / Q;
     return { q: `Een kring heeft f_res = ${val(f, 'Hz')} en Q = ${Q}. Hoe groot is de bandbreedte?`, a: B, unit: 'Hz', wrong: [f * Q, f / (2 * Q), B * 10, B / 10], how: `B = f_res / Q = ${num(f)} / ${Q}` };

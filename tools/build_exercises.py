@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -18,7 +18,7 @@ def parse(ch, pdf):
     pg = pages(pdf)
     # lijst van (paginanr, regel)
     lines = [(i + 1, l) for i, p in enumerate(pg) for l in p.split('\n')]
-    H = re.compile(rf'^\s*{ch}\.\d+\.\d+\s+(Uitwerking van |Antwoord bij )?Opgave {ch}-(\d+)\.?\s*$')
+    H = re.compile(rf'^\s*(?:{ch}\.\d+\.\d+\s+)?(Uitwerking van |Antwoord bij )?Opgave {ch}-(\d+)\.?\s*$')
     heads = [(k, bool(m.group(1)), int(m.group(2))) for k, (_, l) in enumerate(lines) if (m := H.match(l))]
     def block(idx):
         k = heads[idx][0]; end = heads[idx + 1][0] if idx + 1 < len(heads) else len(lines)
@@ -81,6 +81,8 @@ FIX = {
  'o8-3': {'options': [{'id': 'A', 'text': 'U_D = U_b − I_D · R_D'}, {'id': 'B', 'text': 'U_D = U_b − R_D / I_D'}, {'id': 'C', 'text': 'U_D = U_b − U_GS'}, {'id': 'D', 'text': 'U_D = U_b − I_D · R_S'}], 'pages': ['p029']},
  'o8-4': {'answer': 'A'},
  'o8-20': {'pages': ['p076']},
+ 'o10-10': {'pages': ['p066']},
+ 'o10-14': {'answer': 'C'},
 }
 
 for ch, name in PDFS.items():
