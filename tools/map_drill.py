@@ -143,6 +143,26 @@ KW = {
   'swit': r'schakelende|step',
   'lvsv': r'schakelende|rendement',
  },
+ 11: {
+  'ncomb': r'bits|combinaties',
+  'bin2dec': r'binair|binaire|getal',
+  'dec2bin': r'binair|binaire|getal',
+  'bin2hex': r'hexadecimaal|binair|getal',
+  'binadd': r'opteller|optellen|adder',
+  'fdiv': r'deler|frequentie',
+  'tel': r'teller|flipflop',
+  'gate': r'poort',
+  'p00': r'poort',
+  'poort': r'poort',
+  'blok': r'poort|ingang',
+  'morg': r'morgan|poort|schakeling',
+  'alg': r'poort|schakeling',
+  'flip': r'flipflop',
+  'seq': r'flipflop|geheugen',
+  'mvib': r'flipflop|multivib',
+  'add': r'opteller|adder|optellen',
+  'delr': r'deler|teller|register',
+ },
  17: {
   'stroom': r'\bma\b|milliamp|hartstilstand|fibrill|spierverstijving',
   'kleur': r'geel|blauw|bruin|kleur',
@@ -174,7 +194,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

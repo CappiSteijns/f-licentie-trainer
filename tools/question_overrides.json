@@ -40,9 +40,49 @@
  "hs8-12": "Dit type schakeling heeft een",
  "hs8-38": "Deze karakteristiek heeft betrekking op een:",
  "hs8-60": "De versterkingsfactor van een buis wordt bepaald door:",
- "hs11-12": "De waarheidstabel, waarin Q de uitgang is, hoort bij een:",
+ "hs11-12": {
+  "question": "De waarheidstabel, waarin Q de uitgang is, hoort bij een:",
+  "options": [
+   {
+    "id": "A",
+    "text": "OF-poort (OR)"
+   },
+   {
+    "id": "B",
+    "text": "EN-poort (AND)"
+   },
+   {
+    "id": "C",
+    "text": "NEN-poort (NAND)"
+   },
+   {
+    "id": "D",
+    "text": "NOF-poort (NOR)"
+   }
+  ]
+ },
  "hs11-16": "Voor de uitgang Q geldt:",
- "hs11-19": "Ingang Y kan zowel logisch 1 als logisch 0 zijn. Uitgang Q is:",
+ "hs11-19": {
+  "question": "Ingang Y kan zowel logisch 1 als logisch 0 zijn. Uitgang Q is:",
+  "options": [
+   {
+    "id": "A",
+    "text": "1"
+   },
+   {
+    "id": "B",
+    "text": "Y"
+   },
+   {
+    "id": "C",
+    "text": "0"
+   },
+   {
+    "id": "D",
+    "text": "niet-Y"
+   }
+  ]
+ },
  "hs12-91": "Een specifieke modulatievorm voor digitale signalen is:",
  "hs12-163": "Transistor Q2:",
  "hs14-63": "Welke figuur stelt een eindgevoede halvegolfantenne voor?",
@@ -218,6 +258,47 @@
    {
     "id": "D",
     "text": "0 V"
+   }
+  ]
+ },
+ "hs11-9": "Ingang Y kan zowel logisch 1 als 0 zijn. Uitgang Q is:",
+ "hs11-6": {
+  "options": [
+   {
+    "id": "A",
+    "text": "NIET (NOT) schakeling (inverter)"
+   },
+   {
+    "id": "B",
+    "text": "NEN-poort (NAND)"
+   },
+   {
+    "id": "C",
+    "text": "EN-poort (AND)"
+   },
+   {
+    "id": "D",
+    "text": "OF-poort (OR)"
+   }
+  ]
+ },
+ "hs11-10": {
+  "options": [
+   {
+    "id": "A",
+    "text": "EN-poort (AND)"
+   },
+   {
+    "id": "B",
+    "text": "OF-poort (OR)"
+   },
+   {
+    "id": "C",
+    "text": "NEN-poort (NAND)"
+   },
+   {
+    "id": "D",
+    "text": "NOF-poort (NOR)"
    }
   ]
  }

@@ -65,7 +65,7 @@ def numbered_located(pl, chap):
             ws = sorted(ws, key=lambda w: w['x0'])
             txt = ' '.join(w['text'] for w in ws)
             m = rx.match(txt.strip())
-            if not m or '....' in txt:
+            if not m or '....' in txt or m.group(2)[:1].islower():
                 continue
             num = tuple(int(x) for x in m.group(1).split('.'))
             if num <= last or num[1] > last[1] + 1:
@@ -78,7 +78,8 @@ def numbered_located(pl, chap):
     if len(out) < 5:
         return None
     # opgaven + uitwerkingen samenvoegen tot één afsluitend onderdeel (zoals bij H3)
-    i = next((k for k, e in enumerate(out) if e['lvl'] == 1 and e['title'] == 'Opgaven'), None)
+    out = [e for e in out if not re.match(r'^Opgave \d+-\d+', e['title'])]
+    i = max((k for k, e in enumerate(out) if e['lvl'] == 1 and e['title'] == 'Opgaven'), default=None)
     if i is not None:
         out = out[:i] + [{**out[i], 'title': 'Uitwerkingen van de opgaven'}]
     return out

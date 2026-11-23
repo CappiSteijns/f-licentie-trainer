@@ -1,0 +1,2502 @@
+{
+ "chapter": 11,
+ "dir": "img/theorie/hs11",
+ "sections": [
+  {
+   "id": "s1",
+   "title": "Wat leer je in dit hoofdstuk?",
+   "lvl": 1,
+   "pages": [
+    "p004"
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Inleiding",
+   "lvl": 1,
+   "pages": [
+    "p004"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Een stukje geschiedenis",
+   "lvl": 2,
+   "pages": [
+    "p004",
+    "p005"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Digitaal",
+   "lvl": 2,
+   "pages": [
+    "p005"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Analoog en digitaal",
+   "lvl": 2,
+   "pages": [
+    "p005",
+    "p006"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Binair, decimaal en hexadecimaal",
+   "lvl": 2,
+   "pages": [
+    "p006",
+    "p007",
+    "p008"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Omzetten van decimaal naar binair en omgekeerd",
+   "lvl": 2,
+   "pages": [
+    "p008",
+    "p009"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Rekenen met binaire getallen",
+   "lvl": 2,
+   "pages": [
+    "p009",
+    "p010",
+    "p011"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Logische functies",
+   "lvl": 1,
+   "pages": [
+    "p011"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Tegenstelling en waarheidstabellen",
+   "lvl": 2,
+   "pages": [
+    "p011",
+    "p012"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Poorten en hun logische functies",
+   "lvl": 2,
+   "pages": [
+    "p012"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "De NIET- (NOT-)poort en de buffer",
+   "lvl": 2,
+   "pages": [
+    "p012",
+    "p013",
+    "p014"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "De EN- en de OF-poort",
+   "lvl": 2,
+   "pages": [
+    "p014",
+    "p015",
+    "p016",
+    "p017"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "De NIET-EN- (NEN-) en de NIET-OF- (NOF-)poort",
+   "lvl": 2,
+   "pages": [
+    "p017",
+    "p018",
+    "p019"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "De Exclusieve OF- of EXOF-poort",
+   "lvl": 2,
+   "pages": [
+    "p019",
+    "p020"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "De Exclusieve NOF (EXNOF, XNOF)-poort",
+   "lvl": 2,
+   "pages": [
+    "p020",
+    "p021"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "De poorten samengevat",
+   "lvl": 2,
+   "pages": [
+    "p021",
+    "p022",
+    "p023"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Transistor-transistor logica (TTL) (tot nu toe geen examenstof)",
+   "lvl": 2,
+   "pages": [
+    "p023",
+    "p024"
+   ]
+  },
+  {
+   "id": "s19",
+   "title": "Booleaanse algebra (schakelalgebra)",
+   "lvl": 1,
+   "pages": [
+    "p024"
+   ]
+  },
+  {
+   "id": "s20",
+   "title": "Booleaanse algebra (schakelalgebra): inleiding",
+   "lvl": 2,
+   "pages": [
+    "p024"
+   ]
+  },
+  {
+   "id": "s21",
+   "title": "Regels met 1 of 0",
+   "lvl": 2,
+   "pages": [
+    "p024"
+   ]
+  },
+  {
+   "id": "s22",
+   "title": "Regels met één variabele",
+   "lvl": 2,
+   "pages": [
+    "p024",
+    "p025"
+   ]
+  },
+  {
+   "id": "s23",
+   "title": "Regels met twee of meer variabelen",
+   "lvl": 2,
+   "pages": [
+    "p025",
+    "p026",
+    "p027",
+    "p028",
+    "p029"
+   ]
+  },
+  {
+   "id": "s24",
+   "title": "Poortconversie met De Morgan",
+   "lvl": 2,
+   "pages": [
+    "p029",
+    "p030"
+   ]
+  },
+  {
+   "id": "s25",
+   "title": "Combinatielogica (“combinational logic”)",
+   "lvl": 1,
+   "pages": [
+    "p030"
+   ]
+  },
+  {
+   "id": "s26",
+   "title": "Combinatielogica (“combinational logic”): inleiding",
+   "lvl": 2,
+   "pages": [
+    "p030"
+   ]
+  },
+  {
+   "id": "s27",
+   "title": "Een EN- of OF -poort met n ingangen",
+   "lvl": 2,
+   "pages": [
+    "p030",
+    "p031"
+   ]
+  },
+  {
+   "id": "s28",
+   "title": "EN en OF gecombineerd",
+   "lvl": 2,
+   "pages": [
+    "p031",
+    "p032"
+   ]
+  },
+  {
+   "id": "s29",
+   "title": "Voorbeeld De Morgan met EN-poorten en OF-poort",
+   "lvl": 2,
+   "pages": [
+    "p032"
+   ]
+  },
+  {
+   "id": "s30",
+   "title": "Meer vereenvoudigingen",
+   "lvl": 2,
+   "pages": [
+    "p032",
+    "p033"
+   ]
+  },
+  {
+   "id": "s31",
+   "title": "Meer voorbeelden van combinatielogica; “spelen” met poorten",
+   "lvl": 2,
+   "pages": [
+    "p033",
+    "p034",
+    "p035",
+    "p036"
+   ]
+  },
+  {
+   "id": "s32",
+   "title": "Compacte tekenwijze",
+   "lvl": 2,
+   "pages": [
+    "p036",
+    "p037"
+   ]
+  },
+  {
+   "id": "s33",
+   "title": "De optelschakeling",
+   "lvl": 2,
+   "pages": [
+    "p037",
+    "p038",
+    "p039",
+    "p040"
+   ]
+  },
+  {
+   "id": "s34",
+   "title": "Sequentiële logica: flipflops",
+   "lvl": 1,
+   "pages": [
+    "p049"
+   ]
+  },
+  {
+   "id": "s35",
+   "title": "Sequentiële logica: flipflops: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p049"
+   ]
+  },
+  {
+   "id": "s36",
+   "title": "De flipflop en zijn verwanten",
+   "lvl": 2,
+   "pages": [
+    "p049",
+    "p050",
+    "p051",
+    "p052"
+   ]
+  },
+  {
+   "id": "s37",
+   "title": "De RS-flipflop",
+   "lvl": 2,
+   "pages": [
+    "p052",
+    "p053"
+   ]
+  },
+  {
+   "id": "s38",
+   "title": "De impulsgestuurde (geklokte) RS-flipflop",
+   "lvl": 2,
+   "pages": [
+    "p053",
+    "p054"
+   ]
+  },
+  {
+   "id": "s39",
+   "title": "Het master-slave systeem",
+   "lvl": 2,
+   "pages": [
+    "p054",
+    "p055"
+   ]
+  },
+  {
+   "id": "s40",
+   "title": "De flankgestuurde RS-flipflop",
+   "lvl": 2,
+   "pages": [
+    "p055",
+    "p056"
+   ]
+  },
+  {
+   "id": "s41",
+   "title": "De D-flipflop",
+   "lvl": 2,
+   "pages": [
+    "p056",
+    "p057"
+   ]
+  },
+  {
+   "id": "s42",
+   "title": "De JK-flipflop",
+   "lvl": 2,
+   "pages": [
+    "p057",
+    "p058"
+   ]
+  },
+  {
+   "id": "s43",
+   "title": "De master-slave D-flipflop als frequentiedeler",
+   "lvl": 2,
+   "pages": [
+    "p058",
+    "p059"
+   ]
+  },
+  {
+   "id": "s44",
+   "title": "Samengevat",
+   "lvl": 2,
+   "pages": [
+    "p059",
+    "p060"
+   ]
+  },
+  {
+   "id": "s45",
+   "title": "Frequentiedelers, tellers en registers",
+   "lvl": 1,
+   "pages": [
+    "p060"
+   ]
+  },
+  {
+   "id": "s46",
+   "title": "Frequentiedelers en tellers",
+   "lvl": 2,
+   "pages": [
+    "p060",
+    "p061"
+   ]
+  },
+  {
+   "id": "s47",
+   "title": "Delers en tellers voor andere getallen dan machten van 2",
+   "lvl": 2,
+   "pages": [
+    "p061",
+    "p062"
+   ]
+  },
+  {
+   "id": "s48",
+   "title": "Schuifregisters",
+   "lvl": 2,
+   "pages": [
+    "p062",
+    "p063",
+    "p064",
+    "p065",
+    "p066"
+   ]
+  },
+  {
+   "id": "s49",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
+    "p066",
+    "p067",
+    "p068",
+    "p069",
+    "p070",
+    "p071",
+    "p072",
+    "p073",
+    "p074",
+    "p075",
+    "p076",
+    "p077",
+    "p078",
+    "p079",
+    "p080",
+    "p081",
+    "p082",
+    "p083"
+   ]
+  }
+ ],
+ "qmap": {
+  "hs11-1": [
+   "s12"
+  ],
+  "hs11-2": [
+   "s13",
+   "s14"
+  ],
+  "hs11-3": [
+   "s13",
+   "s14"
+  ],
+  "hs11-4": [
+   "s13"
+  ],
+  "hs11-5": [
+   "s13"
+  ],
+  "hs11-6": [
+   "s12",
+   "s13"
+  ],
+  "hs11-7": [
+   "s14",
+   "s22"
+  ],
+  "hs11-8": [
+   "s14",
+   "s22"
+  ],
+  "hs11-9": [
+   "s14",
+   "s22"
+  ],
+  "hs11-10": [
+   "s14",
+   "s17"
+  ],
+  "hs11-11": [
+   "s13"
+  ],
+  "hs11-12": [
+   "s13"
+  ],
+  "hs11-13": [
+   "s13"
+  ],
+  "hs11-14": [
+   "s14",
+   "s17"
+  ],
+  "hs11-15": [
+   "s14"
+  ],
+  "hs11-16": [
+   "s14",
+   "s22"
+  ],
+  "hs11-17": [
+   "s14",
+   "s22"
+  ],
+  "hs11-18": [
+   "s14",
+   "s22"
+  ],
+  "hs11-19": [
+   "s13",
+   "s22"
+  ],
+  "hs11-20": [
+   "s5",
+   "s36"
+  ],
+  "hs11-21": [
+   "s5",
+   "s36"
+  ],
+  "hs11-22": [
+   "s36",
+   "s44"
+  ],
+  "hs11-23": [
+   "s8",
+   "s33"
+  ],
+  "hs11-24": [
+   "s14",
+   "s22"
+  ],
+  "hs11-25": [
+   "s14",
+   "s22"
+  ],
+  "hs11-26": [
+   "s14",
+   "s37"
+  ],
+  "hs11-27": [
+   "s14",
+   "s37"
+  ],
+  "hs11-28": [
+   "s37",
+   "s38"
+  ],
+  "hs11-29": [
+   "s37"
+  ],
+  "hs11-30": [
+   "s28",
+   "s31"
+  ],
+  "hs11-31": [
+   "s28",
+   "s31"
+  ],
+  "hs11-32": [
+   "s28",
+   "s31"
+  ],
+  "hs11-33": [
+   "s14",
+   "s22"
+  ],
+  "hs11-34": [
+   "s24"
+  ],
+  "hs11-35": [
+   "s24"
+  ],
+  "hs11-36": [
+   "s28",
+   "s31"
+  ],
+  "hs11-37": [
+   "s14",
+   "s17"
+  ],
+  "hs11-38": [
+   "s33"
+  ],
+  "hs11-39": [
+   "s15"
+  ],
+  "hs11-40": [
+   "s6"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Getallen",
+   "items": [
+    {
+     "f": "aantal combinaties = 2ⁿ",
+     "t": "met n bits; de getallen lopen van 0 t/m 2ⁿ − 1"
+    },
+    {
+     "f": "bitwaarden: 1, 2, 4, 8, 16, 32, 64, 128 …",
+     "t": "machten van 2 van rechts naar links"
+    },
+    {
+     "f": "1 hex-cijfer = 4 bits",
+     "t": "A = 10, B = 11, C = 12, D = 13, E = 14, F = 15"
+    },
+    {
+     "f": "1 + 1 = 10",
+     "t": "binair optellen: 0 opschrijven en 1 onthouden (carry)"
+    }
+   ]
+  },
+  {
+   "title": "Poorten",
+   "items": [
+    {
+     "f": "EN: Q = A · B",
+     "t": "1 alleen als alle ingangen 1 zijn"
+    },
+    {
+     "f": "OF: Q = A + B",
+     "t": "1 zodra een ingang 1 is"
+    },
+    {
+     "f": "NEN: Q = niet(A · B)",
+     "t": "0 alleen als alle ingangen 1 zijn"
+    },
+    {
+     "f": "NOF: Q = niet(A + B)",
+     "t": "1 alleen als alle ingangen 0 zijn"
+    },
+    {
+     "f": "EXOF: Q = A ⊕ B",
+     "t": "1 als de ingangen ongelijk zijn"
+    },
+    {
+     "f": "EXNOF: Q = niet(A ⊕ B)",
+     "t": "1 als de ingangen gelijk zijn"
+    },
+    {
+     "f": "NIET: Q = Ā",
+     "t": "keert de waarde om"
+    }
+   ]
+  },
+  {
+   "title": "Booleaanse algebra",
+   "items": [
+    {
+     "f": "A · 1 = A, A · 0 = 0",
+     "t": "regels met 0 en 1"
+    },
+    {
+     "f": "A + 1 = 1, A + 0 = A",
+     "t": "regels met 0 en 1"
+    },
+    {
+     "f": "A + Ā = 1, A · Ā = 0",
+     "t": "tegengestelde variabelen"
+    },
+    {
+     "f": "niet(A · B) = Ā + B̄",
+     "t": "De Morgan 1: NEN is OF met genegeerde ingangen"
+    },
+    {
+     "f": "niet(A + B) = Ā · B̄",
+     "t": "De Morgan 2: NOF is EN met genegeerde ingangen"
+    }
+   ]
+  },
+  {
+   "title": "Optellen en delen",
+   "items": [
+    {
+     "f": "half adder: S = A ⊕ B, C = A · B",
+     "t": "optellen van twee bits"
+    },
+    {
+     "f": "full adder: drie ingangen A, B, Cin; uitgangen S en Cuit",
+     "t": "één bit met carry"
+    },
+    {
+     "f": "f_uit = f_klok / 2ⁿ",
+     "t": "deler met n flipflops"
+    },
+    {
+     "f": "max. tellerstand = 2ⁿ − 1",
+     "t": "teller met n flipflops"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s5",
+   "q": "Wat is het verschil tussen analoog en digitaal?",
+   "a": "Analoog: grootheden kunnen een oneindig aantal waarden hebben. Digitaal: alleen 0 en 1, dus een eindig aantal toestanden."
+  },
+  {
+   "id": "c2",
+   "sec": "s5",
+   "q": "Waarom werkt digitale techniek met twee toestanden?",
+   "a": "Twee toestanden zijn het eenvoudigst en veiligst foutloos te onderscheiden, ook bij miljoenen bewerkingen."
+  },
+  {
+   "id": "c3",
+   "sec": "s6",
+   "q": "Wat is een bit?",
+   "a": "Een binair cijfer: 0 of 1 (binary digit)."
+  },
+  {
+   "id": "c4",
+   "sec": "s6",
+   "q": "Wat is een byte?",
+   "a": "Een groep van 8 bits."
+  },
+  {
+   "id": "c5",
+   "sec": "s6",
+   "q": "Hoeveel combinaties kun je met n bits maken?",
+   "a": "2ⁿ combinaties, de getallen 0 t/m 2ⁿ − 1. Met 8 bits: 256 combinaties (0 t/m 255)."
+  },
+  {
+   "id": "c6",
+   "sec": "s6",
+   "q": "Hoeveel bits heb je nodig voor de getallen 0 t/m 1023?",
+   "a": "10 bits (2¹⁰ = 1024)."
+  },
+  {
+   "id": "c7",
+   "sec": "s6",
+   "q": "Wat is het hexadecimale stelsel?",
+   "a": "Een stelsel met grondtal 16 en de cijfers 0–9 en A–F (A = 10 … F = 15). Eén hexadecimaal cijfer staat voor 4 bits."
+  },
+  {
+   "id": "c8",
+   "sec": "s6",
+   "q": "Hoe zet je een binair getal om naar hexadecimaal?",
+   "a": "Verdeel het getal van rechts naar links in groepen van 4 bits en zet elke groep om: 1010 = A, 1111 = F."
+  },
+  {
+   "id": "c9",
+   "sec": "s6",
+   "q": "Wat zijn de binaire waarden van 8, 4, 2 en 1?",
+   "a": "1000, 0100, 0010 en 0001. De bitwaarden zijn de machten van 2: 1, 2, 4, 8, 16, 32, 64, 128 …"
+  },
+  {
+   "id": "c10",
+   "sec": "s7",
+   "q": "Wat is LSB en MSB?",
+   "a": "LSB: Least Significant Bit, het minst belangrijke bit (uiterst rechts). MSB: Most Significant Bit, het meest belangrijke bit (uiterst links)."
+  },
+  {
+   "id": "c11",
+   "sec": "s7",
+   "q": "Hoe zet je decimaal om naar binair?",
+   "a": "Deel telkens door 2 en noteer de rest (0 of 1) van rechts naar links: de eerste rest is de LSB, de laatste de MSB."
+  },
+  {
+   "id": "c12",
+   "sec": "s7",
+   "q": "Wat is het binaire getal 5?",
+   "a": "101 (4 + 0 + 1)."
+  },
+  {
+   "id": "c13",
+   "sec": "s8",
+   "q": "Hoeveel is 1 + 1 binair?",
+   "a": "10: 0 opschrijven en 1 onthouden (carry)."
+  },
+  {
+   "id": "c14",
+   "sec": "s8",
+   "q": "Wat betekent vermenigvuldigen met 10 (binair)?",
+   "a": "Het getal één kolom naar links schuiven. Delen door 10 is één kolom naar rechts schuiven."
+  },
+  {
+   "id": "c15",
+   "sec": "s10",
+   "q": "Wat betekenen 0 en 1 in de logica?",
+   "a": "Tegenstellingen: onwaar/waar, uit/aan, laag/hoog. Er zit niets tussen."
+  },
+  {
+   "id": "c16",
+   "sec": "s10",
+   "q": "Wat is een waarheidstabel?",
+   "a": "Een tabel met alle combinaties van ingangswaarden en de bijbehorende uitgangswaarde."
+  },
+  {
+   "id": "c17",
+   "sec": "s10",
+   "q": "Hoeveel regels heeft de waarheidstabel van een poort met n ingangen?",
+   "a": "2ⁿ regels: twee ingangen vier, drie ingangen acht regels."
+  },
+  {
+   "id": "c18",
+   "sec": "s11",
+   "q": "Welke spanningen horen bij een logische 1 en 0 in een IC?",
+   "a": "Een 1 is een spanning tussen de halve en de hele positieve voedingsspanning; een 0 een spanning dicht bij 0 V (minder dan ongeveer 0,8 V)."
+  },
+  {
+   "id": "c19",
+   "sec": "s11",
+   "q": "Welke symbolen worden in Europa gebruikt voor poorten?",
+   "a": "De IEC-symbolen (rechthoeken met &, ≥1, =1). De Amerikaanse symbolen heten ‘schoenzolen en strijkijzers’."
+  },
+  {
+   "id": "c20",
+   "sec": "s12",
+   "q": "Wat doet een NIET-poort?",
+   "a": "Hij keert de waarde om: 1 wordt 0 en 0 wordt 1. Q = Ā. Ook: inverter of negator."
+  },
+  {
+   "id": "c21",
+   "sec": "s12",
+   "q": "Wat is een buffer?",
+   "a": "Een poort die niet inverteert (Q = A), maar meer vermogen levert om meer ingangen aan te sturen."
+  },
+  {
+   "id": "c22",
+   "sec": "s12",
+   "q": "Waaruit kan een NIET-poort bestaan?",
+   "a": "Uit één transistor in gemeenschappelijke emitterschakeling die verzadigd wordt (180° fasedraaiing)."
+  },
+  {
+   "id": "c23",
+   "sec": "s12",
+   "q": "Wat is verzadiging van een transistor?",
+   "a": "De basisstroom is zo groot dat de collectorstroom niet meer evenredig toeneemt; de collectorspanning is dan zeer laag (ongeveer 0,4 V voor Si)."
+  },
+  {
+   "id": "c24",
+   "sec": "s12",
+   "q": "Wat betekent het rondje of driehoekje op een poortuitgang of -ingang?",
+   "a": "NIET: een genegeerde uitgang of ingang."
+  },
+  {
+   "id": "c25",
+   "sec": "s13",
+   "q": "Wat is de uitkomst van een EN-poort?",
+   "a": "Q = 1 alleen als alle ingangen 1 zijn. Q = A·B."
+  },
+  {
+   "id": "c26",
+   "sec": "s13",
+   "q": "Wat is de uitkomst van een OF-poort?",
+   "a": "Q = 1 zodra minstens één ingang 1 is. Q = A + B."
+  },
+  {
+   "id": "c27",
+   "sec": "s13",
+   "q": "Welk symbool hoort bij EN en welk bij OF?",
+   "a": "EN: ‘&’, vermenigvuldigpunt of ∧; OF: ‘≥1’, plus of ∨."
+  },
+  {
+   "id": "c28",
+   "sec": "s13",
+   "q": "Hoe werkt een EN-poort met schakelaars?",
+   "a": "Schakelaars in serie: alleen als alle schakelaars dicht zijn, brandt het lampje."
+  },
+  {
+   "id": "c29",
+   "sec": "s13",
+   "q": "Hoe werkt een OF-poort met schakelaars?",
+   "a": "Schakelaars parallel: als een schakelaar dicht is, brandt het lampje."
+  },
+  {
+   "id": "c30",
+   "sec": "s13",
+   "q": "Wat doe je met overtollige ingangen van een EN-poort?",
+   "a": "Verbinden met de 1 (voedingsspanning, via een weerstand) of met een gebruikte ingang."
+  },
+  {
+   "id": "c31",
+   "sec": "s13",
+   "q": "Wat doe je met overtollige ingangen van een OF-poort?",
+   "a": "Verbinden met 0 V."
+  },
+  {
+   "id": "c32",
+   "sec": "s14",
+   "q": "Wat is een NEN-poort (NAND)?",
+   "a": "Een EN-poort met genegeerde uitgang: Q = niet(A·B). Q = 0 alleen als alle ingangen 1 zijn."
+  },
+  {
+   "id": "c33",
+   "sec": "s14",
+   "q": "Wat is een NOF-poort (NOR)?",
+   "a": "Een OF-poort met genegeerde uitgang: Q = niet(A+B). Q = 1 alleen als alle ingangen 0 zijn."
+  },
+  {
+   "id": "c34",
+   "sec": "s14",
+   "q": "Wat doet een NEN-poort als een ingang 0 is?",
+   "a": "De uitgang is altijd 1, ongeacht de andere ingangen."
+  },
+  {
+   "id": "c35",
+   "sec": "s14",
+   "q": "Wat doet een NEN-poort als een ingang 1 is?",
+   "a": "Hij werkt als inverter voor de andere ingang."
+  },
+  {
+   "id": "c36",
+   "sec": "s14",
+   "q": "Wat doet een NOF-poort als een ingang 1 is?",
+   "a": "De uitgang is altijd 0, ongeacht de andere ingangen."
+  },
+  {
+   "id": "c37",
+   "sec": "s14",
+   "q": "Wat doet een NOF-poort als een ingang 0 is?",
+   "a": "Hij werkt als inverter voor de andere ingang."
+  },
+  {
+   "id": "c38",
+   "sec": "s14",
+   "q": "Wat zijn RTL en DTL?",
+   "a": "Oudere logicafamilies: Resistor Transistor Logic en Diode Transistor Logic."
+  },
+  {
+   "id": "c39",
+   "sec": "s15",
+   "q": "Wat is een EXOF-poort (XOR)?",
+   "a": "De uitgang is 1 als de ingangen ongelijk zijn en 0 als ze gelijk zijn. Q = A·B̄ + Ā·B."
+  },
+  {
+   "id": "c40",
+   "sec": "s15",
+   "q": "Wat gebeurt er als je EXOF-poorten in serie zet?",
+   "a": "Een oneven aantal enen op de ingangen geeft Q = 1, een even aantal Q = 0 (bij drie ingangen)."
+  },
+  {
+   "id": "c41",
+   "sec": "s16",
+   "q": "Wat is een EXNOF-poort (XNOR)?",
+   "a": "De uitgang is 1 als beide ingangen gelijk zijn en 0 als ze ongelijk zijn."
+  },
+  {
+   "id": "c42",
+   "sec": "s16",
+   "q": "Hoe vergelijk je twee binaire getallen?",
+   "a": "Bit voor bit met EXNOF-poorten, waarvan de uitgangen op één EN-poort met n ingangen komen: de uitgang is 1 als alle bits gelijk zijn."
+  },
+  {
+   "id": "c43",
+   "sec": "s17",
+   "q": "Welke poort geeft alleen 1 bij 0-0?",
+   "a": "De NOF-poort."
+  },
+  {
+   "id": "c44",
+   "sec": "s17",
+   "q": "Welke poort geeft alleen 0 bij 1-1?",
+   "a": "De NEN-poort."
+  },
+  {
+   "id": "c45",
+   "sec": "s17",
+   "q": "Welke poort geeft alleen 1 bij 1-1?",
+   "a": "De EN-poort."
+  },
+  {
+   "id": "c46",
+   "sec": "s17",
+   "q": "Welke poort geeft alleen 0 bij 0-0?",
+   "a": "De OF-poort. (Ook de EXOF geeft 0 bij 0-0, maar ook bij 1-1.)"
+  },
+  {
+   "id": "c47",
+   "sec": "s17",
+   "q": "Wat is TTL?",
+   "a": "Transistor-Transistor Logica met een multi-emittertransistor en een totem-pole uitgang. Geen examenstof."
+  },
+  {
+   "id": "c48",
+   "sec": "s20",
+   "q": "Waarvoor dient Booleaanse algebra?",
+   "a": "Het bewerken en vereenvoudigen van logische uitdrukkingen en schakelingen."
+  },
+  {
+   "id": "c49",
+   "sec": "s21",
+   "q": "Wat is niet 1 en niet 0?",
+   "a": "1̄ = 0 en 0̄ = 1."
+  },
+  {
+   "id": "c50",
+   "sec": "s21",
+   "q": "Wat is A · 1 en A · 0?",
+   "a": "A · 1 = A en A · 0 = 0."
+  },
+  {
+   "id": "c51",
+   "sec": "s21",
+   "q": "Wat is A + 1 en A + 0?",
+   "a": "A + 1 = 1 en A + 0 = A."
+  },
+  {
+   "id": "c52",
+   "sec": "s22",
+   "q": "Wat is Ā̄ (niet niet A)?",
+   "a": "A zelf: twee negatiestrepen vallen tegen elkaar weg."
+  },
+  {
+   "id": "c53",
+   "sec": "s22",
+   "q": "Wat is A + Ā en A · Ā?",
+   "a": "A + Ā = 1 en A · Ā = 0."
+  },
+  {
+   "id": "c54",
+   "sec": "s22",
+   "q": "Wat is A · A en A + A?",
+   "a": "Allebei A."
+  },
+  {
+   "id": "c55",
+   "sec": "s23",
+   "q": "Wat is commutatief?",
+   "a": "De volgorde van de ingangen maakt niet uit: A·B = B·A en A+B = B+A."
+  },
+  {
+   "id": "c56",
+   "sec": "s23",
+   "q": "Wat zeggen de verbindingswetten?",
+   "a": "A·(B·C) = (A·B)·C en A+(B+C) = (A+B)+C: haakjes maken niets uit bij één soort bewerking."
+  },
+  {
+   "id": "c57",
+   "sec": "s23",
+   "q": "Wat is de verdelingswet?",
+   "a": "A·(B+C) = A·B + A·C en A+(B·C) = (A+B)·(A+C)."
+  },
+  {
+   "id": "c58",
+   "sec": "s23",
+   "q": "Wat is A + A·B?",
+   "a": "A. (absorptie)"
+  },
+  {
+   "id": "c59",
+   "sec": "s24",
+   "q": "Wat zeggen de stellingen van De Morgan?",
+   "a": "niet(A·B) = Ā + B̄ en niet(A+B) = Ā · B̄."
+  },
+  {
+   "id": "c60",
+   "sec": "s24",
+   "q": "Wat is het recept van De Morgan?",
+   "a": "Verander EN in OF en OF in EN, zet een negatiestreep boven elke variabele (en laat dubbele strepen vervallen)."
+  },
+  {
+   "id": "c61",
+   "sec": "s24",
+   "q": "Wat is niet(A·B)?",
+   "a": "Een OF-poort voor Ā en B̄: een NEN is een OF met genegeerde ingangen."
+  },
+  {
+   "id": "c62",
+   "sec": "s24",
+   "q": "Wat is niet(A+B)?",
+   "a": "Een EN-poort voor Ā en B̄: een NOF is een EN met genegeerde ingangen."
+  },
+  {
+   "id": "c63",
+   "sec": "s24",
+   "q": "Is Ā + B̄ gelijk aan niet(A + B)?",
+   "a": "Nee. Ā + B̄ = niet(A·B). Een negatiestreep boven afzonderlijke variabelen is iets anders dan boven het geheel."
+  },
+  {
+   "id": "c64",
+   "sec": "s24",
+   "q": "Hoe maak je van een NEN-poort een inverter?",
+   "a": "De ingangen aan elkaar verbinden (of de niet gebruikte ingangen 1 maken)."
+  },
+  {
+   "id": "c65",
+   "sec": "s24",
+   "q": "Hoe maak je van een NOF-poort een inverter?",
+   "a": "De ingangen aan elkaar verbinden (of de niet gebruikte ingangen 0 maken)."
+  },
+  {
+   "id": "c66",
+   "sec": "s24",
+   "q": "Wat is een NEN-poort met genegeerde ingangen?",
+   "a": "Een OF-poort."
+  },
+  {
+   "id": "c67",
+   "sec": "s24",
+   "q": "Wat is een NOF-poort met genegeerde ingangen?",
+   "a": "Een EN-poort."
+  },
+  {
+   "id": "c68",
+   "sec": "s24",
+   "q": "Wat is een EN-poort met genegeerde ingangen?",
+   "a": "Een NOF-poort."
+  },
+  {
+   "id": "c69",
+   "sec": "s24",
+   "q": "Wat is een OF-poort met genegeerde ingangen?",
+   "a": "Een NEN-poort."
+  },
+  {
+   "id": "c70",
+   "sec": "s26",
+   "q": "Wat is combinatielogica?",
+   "a": "Logica waarin de uitgangen alleen van de huidige ingangen afhangen; er is geen geheugen of tijdsafhankelijkheid."
+  },
+  {
+   "id": "c71",
+   "sec": "s27",
+   "q": "Hoe maak je een EN-poort met veel ingangen?",
+   "a": "Door EN-poorten achter elkaar te zetten. Voor een NEN: een inverter achter de laatste poort, niet alles met NEN-poorten."
+  },
+  {
+   "id": "c72",
+   "sec": "s27",
+   "q": "Hoe maak je een OF-poort met veel ingangen?",
+   "a": "Door OF-poorten achter elkaar te zetten. Voor een NOF een inverter achter de laatste poort."
+  },
+  {
+   "id": "c73",
+   "sec": "s28",
+   "q": "Hoe bepaal je de uitgang van een poortschakeling?",
+   "a": "Werk van de ingangen naar de uitgang: bereken per poort de uitkomst en gebruik die voor de volgende poort."
+  },
+  {
+   "id": "c74",
+   "sec": "s33",
+   "q": "Wat doet een half adder?",
+   "a": "Hij telt twee bits op: de som S met een EXOF-poort en de carry met een EN-poort."
+  },
+  {
+   "id": "c75",
+   "sec": "s33",
+   "q": "Wat is een full adder?",
+   "a": "Een volledige opteller voor één bit met drie ingangen (A, B en Cin) en twee uitgangen (S en Cuit); bestaat uit twee EXOF-poorten, twee EN-poorten en een OF-poort."
+  },
+  {
+   "id": "c76",
+   "sec": "s33",
+   "q": "Wat is de carry?",
+   "a": "De overdrachtsbit (transportbit): 1 + 1 = 10, de 1 wordt één plaats naar links doorgegeven."
+  },
+  {
+   "id": "c77",
+   "sec": "s33",
+   "q": "Hoeveel is 1 + 1 + 1 bij een full adder?",
+   "a": "S = 1 en Cuit = 1 (binair 11, decimaal 3)."
+  },
+  {
+   "id": "c78",
+   "sec": "s33",
+   "q": "Hoe tel je twee getallen van 4 bits op?",
+   "a": "Met vier full adders achter elkaar. De carry-uitgang van elke adder gaat naar de carry-ingang van de volgende, van LSB (rechts) naar MSB (links)."
+  },
+  {
+   "id": "c79",
+   "sec": "s33",
+   "q": "Hoeveel bits heeft de som van twee getallen van 4 bits?",
+   "a": "Maximaal 5 bits: de laatste carry is het vijfde bit S4."
+  },
+  {
+   "id": "c80",
+   "sec": "s36",
+   "q": "Welke vormen heeft de multivibrator?",
+   "a": "Astabiel (oscillator), monostabiel (één stabiele toestand, one shot) en bistabiel (twee stabiele toestanden: de flipflop)."
+  },
+  {
+   "id": "c81",
+   "sec": "s36",
+   "q": "Wat is combinatielogica ten opzichte van sequentiële logica?",
+   "a": "Combinatie: uitgang hangt alleen van de huidige ingangen af. Sequentieel: de uitgang hangt ook van de vorige toestand af; er is geheugen."
+  },
+  {
+   "id": "c82",
+   "sec": "s36",
+   "q": "Wat is een flipflop?",
+   "a": "Een digitale geheugenschakeling (bistabiele multivibrator) die één bit onthoudt."
+  },
+  {
+   "id": "c83",
+   "sec": "s36",
+   "q": "Waaruit bestaat een geheugen voor binaire getallen?",
+   "a": "Uit flipflops: elke flipflop onthoudt één bit."
+  },
+  {
+   "id": "c84",
+   "sec": "s37",
+   "q": "Wat zijn Set en Reset?",
+   "a": "Set: Q wordt 1. Reset: Q wordt 0."
+  },
+  {
+   "id": "c85",
+   "sec": "s37",
+   "q": "Wat doet een RS-flipflop met NOF-poorten bij R = S = 0?",
+   "a": "Hij onthoudt zijn toestand. R = 1, S = 0: reset. R = 0, S = 1: set. R = S = 1: verboden."
+  },
+  {
+   "id": "c86",
+   "sec": "s37",
+   "q": "Wat is de verboden toestand van een RS-flipflop?",
+   "a": "Beide uitgangen zouden gelijk worden (Q = Q̄ = 0 bij NOF), terwijl ze elkaars tegendeel moeten zijn."
+  },
+  {
+   "id": "c87",
+   "sec": "s37",
+   "q": "Hoe verandert de werking bij twee NEN-poorten?",
+   "a": "Alles omgekeerd: onthouden bij R = S = 1, verboden bij R = S = 0."
+  },
+  {
+   "id": "c88",
+   "sec": "s38",
+   "q": "Wat is een geklokte RS-flipflop?",
+   "a": "Een RS-flipflop die alleen op R en S reageert als de klokpuls T = 1 is; dit verkleint de gevoeligheid voor stoorpulsen."
+  },
+  {
+   "id": "c89",
+   "sec": "s39",
+   "q": "Wat is een master-slave flipflop?",
+   "a": "Twee flipflops achter elkaar; de slave neemt de toestand van de master over als de klokpuls terugvalt. Storingen tijdens T = 1 hebben geen invloed op de uitgang."
+  },
+  {
+   "id": "c90",
+   "sec": "s40",
+   "q": "Wat is een flankgestuurde flipflop?",
+   "a": "Een flipflop die alleen op de op- of neergaande flank van de klokpuls reageert (driehoekje op de klokingang)."
+  },
+  {
+   "id": "c91",
+   "sec": "s41",
+   "q": "Wat is een D-flipflop?",
+   "a": "Een RS-flipflop met een inverter tussen R en S: Q neemt de waarde van D over; geen verboden toestand."
+  },
+  {
+   "id": "c92",
+   "sec": "s41",
+   "q": "Wanneer onthoudt een D-flipflop echt?",
+   "a": "Als hij geklokt is: Q neemt D alleen over tijdens (of bij de flank van) de klokpuls."
+  },
+  {
+   "id": "c93",
+   "sec": "s42",
+   "q": "Wat doet een JK-flipflop bij J = K = 1?",
+   "a": "De uitgangen wisselen bij elke klokpuls van toestand (toggle). Er is dus geen verboden toestand en hij is een frequentiedeler."
+  },
+  {
+   "id": "c94",
+   "sec": "s42",
+   "q": "Wat doet een JK-flipflop bij J = 1, K = 0 en bij J = 0, K = 1?",
+   "a": "J = 1, K = 0: set (Q = 1). J = 0, K = 1: reset (Q = 0). J = K = 0: onthouden."
+  },
+  {
+   "id": "c95",
+   "sec": "s43",
+   "q": "Hoe maak je een frequentiedeler met een D-flipflop?",
+   "a": "Verbind de Q̄-uitgang met de D-ingang (master-slave D-flipflop). De uitgangsfrequentie is de helft van de klokfrequentie."
+  },
+  {
+   "id": "c96",
+   "sec": "s44",
+   "q": "Welke flipflop is het meest veelzijdig?",
+   "a": "De master-slave JK-flipflop: twee ingangen zonder verboden toestand, geschikt als geheugen en als frequentiedeler."
+  },
+  {
+   "id": "c97",
+   "sec": "s46",
+   "q": "Hoe deelt een rij flipflops de frequentie?",
+   "a": "Elke flipflop deelt door 2. n flipflops delen door 2ⁿ: f/2, f/4, f/8, f/16 …"
+  },
+  {
+   "id": "c98",
+   "sec": "s46",
+   "q": "Wat is een teller?",
+   "a": "Een rij flipflops waarvan de uitgangen een binair getal vormen dat bij elke klokpuls met 1 toeneemt. Met n flipflops tel je tot 2ⁿ − 1."
+  },
+  {
+   "id": "c99",
+   "sec": "s46",
+   "q": "Hoeveel flipflops heb je nodig om tot 31 te tellen?",
+   "a": "Vijf (2⁵ = 32 toestanden, 0 t/m 31)."
+  },
+  {
+   "id": "c100",
+   "sec": "s46",
+   "q": "Wat betekent asynchroon bij een deler?",
+   "a": "De flipflops veranderen niet gelijktijdig: elke flipflop vertraagt het signaal (ripple through)."
+  },
+  {
+   "id": "c101",
+   "sec": "s47",
+   "q": "Wat is BCD?",
+   "a": "Binary Coded Decimal: elk decimaal cijfer wordt binair gecodeerd; de teller zet zichzelf na 9 terug op 0."
+  },
+  {
+   "id": "c102",
+   "sec": "s48",
+   "q": "Wat is een schuifregister?",
+   "a": "Een rij flipflops (flankgestuurd of master-slave) waarin de data per klokpuls één plaats wordt doorgeschoven: Q van de ene is D van de volgende."
+  }
+ ],
+ "drill": [
+  {
+   "id": "ncomb",
+   "sec": "s6",
+   "name": "Aantal combinaties met n bits",
+   "where": "hoeveel getallen je met n bits kunt maken",
+   "f": "aantal = 2ⁿ",
+   "cloze": [
+    {
+     "q": "Met n bits zijn ___ combinaties mogelijk",
+     "a": "2ⁿ",
+     "w": [
+      "n²",
+      "2n",
+      "n"
+     ]
+    },
+    {
+     "q": "Het hoogste getal met n bits is ___",
+     "a": "2ⁿ − 1",
+     "w": [
+      "2ⁿ",
+      "2n",
+      "n²"
+     ]
+    }
+   ],
+   "gen": "ncomb",
+   "rewrite": [
+    {
+     "base": "aantal = 2ⁿ",
+     "ask": "n",
+     "a": "n = log₂(aantal)",
+     "w": [
+      "n = aantal / 2",
+      "n = 2 · aantal",
+      "n = aantal²"
+     ]
+    }
+   ],
+   "exam": [
+    "hs11-23",
+    "hs11-38",
+    "hs11-40"
+   ]
+  },
+  {
+   "id": "bin2dec",
+   "sec": "s7",
+   "name": "Binair naar decimaal",
+   "where": "de decimale waarde van een binair getal",
+   "f": "som van de bitwaarden",
+   "cloze": [
+    {
+     "q": "De bitwaarden van rechts naar links zijn 1, 2, 4, 8, ___",
+     "a": "16",
+     "w": [
+      "10",
+      "12",
+      "32"
+     ]
+    }
+   ],
+   "gen": "bin2dec",
+   "exam": [
+    "hs11-22",
+    "hs11-23",
+    "hs11-38",
+    "hs11-40"
+   ]
+  },
+  {
+   "id": "dec2bin",
+   "sec": "s7",
+   "name": "Decimaal naar binair",
+   "where": "het binaire getal bij een decimale waarde",
+   "f": "deel telkens door 2",
+   "cloze": [
+    {
+     "q": "De eerste rest bij delen door 2 is het ___",
+     "a": "LSB",
+     "w": [
+      "MSB",
+      "carry",
+      "teken"
+     ]
+    }
+   ],
+   "gen": "dec2bin",
+   "exam": [
+    "hs11-22",
+    "hs11-23",
+    "hs11-38",
+    "hs11-40"
+   ]
+  },
+  {
+   "id": "bin2hex",
+   "sec": "s6",
+   "name": "Binair naar hexadecimaal",
+   "where": "de hexadecimale waarde van een binair getal",
+   "f": "4 bits per hex-cijfer",
+   "cloze": [
+    {
+     "q": "Eén hexadecimaal cijfer staat voor ___ bits",
+     "a": "4",
+     "w": [
+      "2",
+      "8",
+      "16"
+     ]
+    },
+    {
+     "q": "F is decimaal ___",
+     "a": "15",
+     "w": [
+      "16",
+      "14",
+      "10"
+     ]
+    }
+   ],
+   "gen": "bin2hex",
+   "exam": [
+    "hs11-22",
+    "hs11-23",
+    "hs11-38",
+    "hs11-40"
+   ]
+  },
+  {
+   "id": "binadd",
+   "sec": "s8",
+   "name": "Binair optellen",
+   "where": "de som van twee binaire getallen",
+   "f": "1 + 1 = 10",
+   "cloze": [
+    {
+     "q": "1 + 1 = ___ (binair)",
+     "a": "10",
+     "w": [
+      "11",
+      "2",
+      "1"
+     ]
+    }
+   ],
+   "gen": "binadd",
+   "exam": [
+    "hs11-22",
+    "hs11-23",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "fdiv",
+   "sec": "s46",
+   "name": "Frequentiedeler met flipflops",
+   "where": "de uitgangsfrequentie van een deler",
+   "f": "f_uit = f_klok / 2ⁿ",
+   "cloze": [
+    {
+     "q": "Elke flipflop deelt de frequentie door ___",
+     "a": "2",
+     "w": [
+      "4",
+      "10",
+      "n"
+     ]
+    }
+   ],
+   "gen": "fdiv",
+   "rewrite": [
+    {
+     "base": "f_uit = f_klok / 2ⁿ",
+     "ask": "f_klok",
+     "a": "f_klok = f_uit · 2ⁿ",
+     "w": [
+      "f_klok = f_uit / 2ⁿ",
+      "f_klok = f_uit · n",
+      "f_klok = f_uit + 2ⁿ"
+     ]
+    }
+   ],
+   "exam": [
+    "hs11-22",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "tel",
+   "sec": "s46",
+   "name": "Hoogste tellerstand",
+   "where": "tot waar een teller kan tellen",
+   "f": "max = 2ⁿ − 1",
+   "cloze": [
+    {
+     "q": "Een teller met n flipflops telt van 0 t/m ___",
+     "a": "2ⁿ − 1",
+     "w": [
+      "2ⁿ",
+      "n",
+      "2n"
+     ]
+    }
+   ],
+   "gen": "tel",
+   "exam": [
+    "hs11-20",
+    "hs11-21",
+    "hs11-22",
+    "hs11-23",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "gate",
+   "sec": "s17",
+   "name": "Uitgang van een poort",
+   "where": "de uitgang bij gegeven ingangen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een EN-poort",
+     "a": "1"
+    },
+    {
+     "q": "een OF-poort",
+     "a": "1"
+    },
+    {
+     "q": "een NEN-poort",
+     "a": "0"
+    },
+    {
+     "q": "een NOF-poort",
+     "a": "0"
+    },
+    {
+     "q": "een EXOF-poort",
+     "a": "0"
+    },
+    {
+     "q": "een EXNOF-poort",
+     "a": "1"
+    }
+   ],
+   "ask": "Wat is de uitgang van {x} bij 1 en 1?",
+   "askRev": "Welke poort geeft dit: {x}?",
+   "exam": [
+    "hs11-2",
+    "hs11-3",
+    "hs11-4",
+    "hs11-5",
+    "hs11-6",
+    "hs11-7",
+    "hs11-8",
+    "hs11-9",
+    "hs11-10",
+    "hs11-11",
+    "hs11-12",
+    "hs11-13",
+    "hs11-14",
+    "hs11-15",
+    "hs11-16",
+    "hs11-17",
+    "hs11-18",
+    "hs11-19",
+    "hs11-22",
+    "hs11-24",
+    "hs11-26",
+    "hs11-27",
+    "hs11-29",
+    "hs11-30",
+    "hs11-31",
+    "hs11-32",
+    "hs11-33",
+    "hs11-34",
+    "hs11-35",
+    "hs11-36",
+    "hs11-37",
+    "hs11-38",
+    "hs11-39"
+   ]
+  },
+  {
+   "id": "p00",
+   "sec": "s17",
+   "name": "Poorten bij 0 en 0",
+   "where": "de uitgang bij twee nullen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een EN-poort",
+     "a": "0"
+    },
+    {
+     "q": "een OF-poort",
+     "a": "0"
+    },
+    {
+     "q": "een NEN-poort",
+     "a": "1"
+    },
+    {
+     "q": "een NOF-poort",
+     "a": "1"
+    },
+    {
+     "q": "een EXOF-poort",
+     "a": "0"
+    },
+    {
+     "q": "een EXNOF-poort",
+     "a": "1"
+    }
+   ],
+   "ask": "Wat is de uitgang van {x} bij 0 en 0?",
+   "askRev": "Welke poort geeft dit bij 0 en 0: {x}?",
+   "exam": [
+    "hs11-2",
+    "hs11-3",
+    "hs11-4",
+    "hs11-5",
+    "hs11-6",
+    "hs11-7",
+    "hs11-8",
+    "hs11-9",
+    "hs11-10",
+    "hs11-11",
+    "hs11-12",
+    "hs11-13",
+    "hs11-14",
+    "hs11-15",
+    "hs11-16",
+    "hs11-17",
+    "hs11-18",
+    "hs11-19",
+    "hs11-22",
+    "hs11-24",
+    "hs11-26",
+    "hs11-27",
+    "hs11-29",
+    "hs11-30",
+    "hs11-31",
+    "hs11-32",
+    "hs11-33",
+    "hs11-34",
+    "hs11-35",
+    "hs11-36",
+    "hs11-37",
+    "hs11-38",
+    "hs11-39"
+   ]
+  },
+  {
+   "id": "poort",
+   "sec": "s17",
+   "name": "Soorten poorten",
+   "where": "de werking van elke poort",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een EN-poort",
+     "a": "alleen als alle ingangen 1 zijn"
+    },
+    {
+     "q": "een OF-poort",
+     "a": "als minstens één ingang 1 is"
+    },
+    {
+     "q": "een NEN-poort",
+     "a": "als minstens één ingang 0 is"
+    },
+    {
+     "q": "een NOF-poort",
+     "a": "alleen als alle ingangen 0 zijn"
+    },
+    {
+     "q": "een EXOF-poort",
+     "a": "als de ingangen ongelijk zijn"
+    },
+    {
+     "q": "een EXNOF-poort",
+     "a": "als de ingangen gelijk zijn"
+    }
+   ],
+   "ask": "Wanneer is de uitgang van {x} 1?",
+   "askRev": "Welke poort is dit: {x}?",
+   "exam": [
+    "hs11-2",
+    "hs11-3",
+    "hs11-4",
+    "hs11-5",
+    "hs11-6",
+    "hs11-7",
+    "hs11-8",
+    "hs11-9",
+    "hs11-10",
+    "hs11-11",
+    "hs11-12",
+    "hs11-13",
+    "hs11-14",
+    "hs11-15",
+    "hs11-16",
+    "hs11-17",
+    "hs11-18",
+    "hs11-19",
+    "hs11-22",
+    "hs11-24",
+    "hs11-26",
+    "hs11-27",
+    "hs11-29",
+    "hs11-30",
+    "hs11-31",
+    "hs11-32",
+    "hs11-33",
+    "hs11-34",
+    "hs11-35",
+    "hs11-36",
+    "hs11-37",
+    "hs11-38",
+    "hs11-39"
+   ]
+  },
+  {
+   "id": "blok",
+   "sec": "s14",
+   "name": "Een ingang blokkeert of inverteert",
+   "where": "wat een poort doet als één ingang vast staat",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een NEN-poort met een ingang 0",
+     "a": "uitgang altijd 1"
+    },
+    {
+     "q": "een NEN-poort met een ingang 1",
+     "a": "inverteert de andere ingang"
+    },
+    {
+     "q": "een NOF-poort met een ingang 1",
+     "a": "uitgang altijd 0"
+    },
+    {
+     "q": "een NOF-poort met een ingang 0",
+     "a": "inverteert de andere ingang"
+    },
+    {
+     "q": "een EN-poort met een ingang 1",
+     "a": "uitgang volgt de andere ingang"
+    },
+    {
+     "q": "een OF-poort met een ingang 0",
+     "a": "uitgang volgt de andere ingang"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Welke situatie is dit: {x}?",
+   "exam": [
+    "hs11-2",
+    "hs11-3",
+    "hs11-4",
+    "hs11-5",
+    "hs11-6",
+    "hs11-7",
+    "hs11-8",
+    "hs11-9",
+    "hs11-10",
+    "hs11-11",
+    "hs11-12",
+    "hs11-13",
+    "hs11-14",
+    "hs11-15",
+    "hs11-16",
+    "hs11-17",
+    "hs11-18",
+    "hs11-19",
+    "hs11-22",
+    "hs11-24",
+    "hs11-25",
+    "hs11-26",
+    "hs11-27",
+    "hs11-29",
+    "hs11-30",
+    "hs11-31",
+    "hs11-32",
+    "hs11-33",
+    "hs11-34",
+    "hs11-35",
+    "hs11-36",
+    "hs11-37",
+    "hs11-38",
+    "hs11-39"
+   ]
+  },
+  {
+   "id": "morg",
+   "sec": "s24",
+   "name": "Poortconversie met De Morgan",
+   "where": "welke poort een andere poort vervangt",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een NEN-poort met genegeerde ingangen",
+     "a": "een OF-poort"
+    },
+    {
+     "q": "een NOF-poort met genegeerde ingangen",
+     "a": "een EN-poort"
+    },
+    {
+     "q": "een EN-poort met genegeerde ingangen",
+     "a": "een NOF-poort"
+    },
+    {
+     "q": "een OF-poort met genegeerde ingangen",
+     "a": "een NEN-poort"
+    },
+    {
+     "q": "een NEN-poort met verbonden ingangen",
+     "a": "een inverter"
+    },
+    {
+     "q": "een NOF-poort met verbonden ingangen",
+     "a": "een inverter"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welke poort is dit: {x}?",
+   "exam": [
+    "hs11-1",
+    "hs11-2",
+    "hs11-3",
+    "hs11-4",
+    "hs11-5",
+    "hs11-6",
+    "hs11-7",
+    "hs11-8",
+    "hs11-9",
+    "hs11-10",
+    "hs11-11",
+    "hs11-12",
+    "hs11-13",
+    "hs11-14",
+    "hs11-15",
+    "hs11-16",
+    "hs11-17",
+    "hs11-18",
+    "hs11-19",
+    "hs11-20",
+    "hs11-21",
+    "hs11-22",
+    "hs11-24",
+    "hs11-26",
+    "hs11-27",
+    "hs11-29",
+    "hs11-30",
+    "hs11-31",
+    "hs11-32",
+    "hs11-33",
+    "hs11-34",
+    "hs11-35",
+    "hs11-36",
+    "hs11-37",
+    "hs11-38",
+    "hs11-39"
+   ]
+  },
+  {
+   "id": "alg",
+   "sec": "s22",
+   "name": "Regels van de Booleaanse algebra",
+   "where": "vereenvoudigen van uitdrukkingen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "A + Ā",
+     "a": "1"
+    },
+    {
+     "q": "A · Ā",
+     "a": "0"
+    },
+    {
+     "q": "A · 1",
+     "a": "A"
+    },
+    {
+     "q": "A + 0",
+     "a": "A"
+    },
+    {
+     "q": "A + 1",
+     "a": "1"
+    },
+    {
+     "q": "A · 0",
+     "a": "0"
+    },
+    {
+     "q": "A + A · B",
+     "a": "A"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welke uitdrukking heeft deze uitkomst: {x}?",
+   "exam": [
+    "hs11-1",
+    "hs11-2",
+    "hs11-3",
+    "hs11-4",
+    "hs11-5",
+    "hs11-6",
+    "hs11-7",
+    "hs11-8",
+    "hs11-9",
+    "hs11-10",
+    "hs11-11",
+    "hs11-12",
+    "hs11-13",
+    "hs11-14",
+    "hs11-15",
+    "hs11-16",
+    "hs11-17",
+    "hs11-18",
+    "hs11-19",
+    "hs11-20",
+    "hs11-21",
+    "hs11-22",
+    "hs11-24",
+    "hs11-25",
+    "hs11-26",
+    "hs11-27",
+    "hs11-29",
+    "hs11-30",
+    "hs11-31",
+    "hs11-32",
+    "hs11-33",
+    "hs11-34",
+    "hs11-35",
+    "hs11-36",
+    "hs11-37",
+    "hs11-38",
+    "hs11-39"
+   ]
+  },
+  {
+   "id": "flip",
+   "sec": "s36",
+   "name": "Flipflops",
+   "where": "soorten flipflops en hun gedrag",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de RS-flipflop",
+     "a": "set, reset en een verboden toestand"
+    },
+    {
+     "q": "de D-flipflop",
+     "a": "Q neemt D over, geen verboden toestand"
+    },
+    {
+     "q": "de JK-flipflop",
+     "a": "geen verboden toestand; bij J = K = 1 wisselt Q"
+    },
+    {
+     "q": "de geklokte RS-flipflop",
+     "a": "reageert alleen als de klokpuls 1 is"
+    },
+    {
+     "q": "de master-slave flipflop",
+     "a": "slave neemt toestand van master over bij terugvallende klok"
+    },
+    {
+     "q": "de flankgestuurde flipflop",
+     "a": "reageert alleen op een flank van de klok"
+    }
+   ],
+   "ask": "Wat kenmerkt {x}?",
+   "askRev": "Welke flipflop is dit: {x}?",
+   "exam": [
+    "hs11-20",
+    "hs11-21",
+    "hs11-22",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "seq",
+   "sec": "s36",
+   "name": "Combinatielogica en sequentiële logica",
+   "where": "het verschil tussen de twee soorten logica",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "combinatielogica",
+     "a": "uitgang hangt alleen van de huidige ingangen af"
+    },
+    {
+     "q": "sequentiële logica",
+     "a": "uitgang hangt ook af van vorige toestanden (geheugen)"
+    },
+    {
+     "q": "een flipflop",
+     "a": "onthoudt één bit"
+    },
+    {
+     "q": "een geheugen voor binaire getallen",
+     "a": "bestaat uit flipflops"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke logica is dit: {x}?",
+   "exam": [
+    "hs11-20",
+    "hs11-21",
+    "hs11-22",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "mvib",
+   "sec": "s36",
+   "name": "Multivibratoren",
+   "where": "astabiel, monostabiel en bistabiel",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een astabiele multivibrator",
+     "a": "een oscillator die blokspanning maakt"
+    },
+    {
+     "q": "een monostabiele multivibrator",
+     "a": "één stabiele toestand, geeft na een duwtje één puls (one shot)"
+    },
+    {
+     "q": "een bistabiele multivibrator",
+     "a": "twee stabiele toestanden: een flipflop"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welke multivibrator is dit: {x}?",
+   "exam": [
+    "hs11-20",
+    "hs11-21",
+    "hs11-22",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "add",
+   "sec": "s33",
+   "name": "Optelschakeling",
+   "where": "half adder en full adder",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de half adder",
+     "a": "EXOF voor de som en EN voor de carry"
+    },
+    {
+     "q": "de full adder",
+     "a": "drie ingangen: A, B en Cin; uitgangen S en Cuit"
+    },
+    {
+     "q": "de carry",
+     "a": "de overdrachtsbit naar de volgende, hogere positie"
+    },
+    {
+     "q": "een 4-bits opteller",
+     "a": "vier full adders, carry doorgegeven van LSB naar MSB"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke schakeling is dit: {x}?",
+   "exam": [
+    "hs11-22",
+    "hs11-23",
+    "hs11-38"
+   ]
+  },
+  {
+   "id": "delr",
+   "sec": "s46",
+   "name": "Delers, tellers en registers",
+   "where": "toepassingen van flipflops",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een frequentiedeler",
+     "a": "elke flipflop deelt door 2"
+    },
+    {
+     "q": "een teller",
+     "a": "de flipflops vormen een binair getal dat toeneemt per klokpuls"
+    },
+    {
+     "q": "een schuifregister",
+     "a": "de data schuift per klokpuls één flipflop op"
+    },
+    {
+     "q": "BCD",
+     "a": "tweetallig gecodeerd tientallig"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke schakeling is dit: {x}?",
+   "exam": [
+    "hs11-22",
+    "hs11-23",
+    "hs11-38"
+   ]
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o11-1",
+   "n": 1,
+   "q": "Het binaire getal 1011 wordt decimaal geschreven als",
+   "options": [
+    {
+     "id": "A",
+     "text": "111"
+    },
+    {
+     "id": "B",
+     "text": "5"
+    },
+    {
+     "id": "C",
+     "text": "11"
+    },
+    {
+     "id": "D",
+     "text": "17"
+    }
+   ],
+   "answer": "C",
+   "explain": "1011 binair is 1. 23 + 0. 22 + 1. 21 + 1. 20 = 8 + 0 + 2 + 1 = 11. Antwoord C dus.",
+   "pages": [
+    "p041"
+   ],
+   "spages": [
+    "p071"
+   ]
+  },
+  {
+   "id": "o11-2",
+   "n": 2,
+   "q": "Het decimale getal 129 wordt binair geschreven als",
+   "options": [
+    {
+     "id": "A",
+     "text": "1000 0001"
+    },
+    {
+     "id": "B",
+     "text": "1001 0000"
+    },
+    {
+     "id": "C",
+     "text": "1111 1111"
+    },
+    {
+     "id": "D",
+     "text": "0100 0001"
+    }
+   ],
+   "answer": "A",
+   "explain": "Volg het recept van Figuur 11.2-2. We beginnen met het decimale getal 129 Eerst 129: 2 = 64, rest 1. Dat geeft 1 als binair cijfer rechts. Daarmee vervalt antwoord B. Dan 64: 2 = 32, rest 0. Dat geeft 0 als tweede cijfer van rechts Dan 32: 2 = 16, rest 0. Dat geeft 0 als derde cijfer van rechts Dan 16: 2 = 8, rest 0. Dat geeft 0 als vierde cijfer van rechts Dan 8: 2 = 4, rest 0. Dat geeft 0 als vijfde cijfer van rechts Dan 4: 2 = 2, rest 0. Dat geeft 0 als zesde cijfer van rechts Dan 2: 2 = 1, rest 0. Dat geeft 0 als zevende cijfer van rechts Dan 1: 2 = 0, rest 1. Dat geeft 1 als achtste cijfer van rechts Uitkomst: acht cijfers met 1 als eerste en laatste cijfer en de rest nullen: 1000 0001 en dat is antwoord A. Opmerking Je kunt de vier antwoorden ook stuk voor stuk proberen. Omdat je bij A meteen al “raak schiet” is dat een kortere weg, maar dat weet je niet van tevoren.",
+   "pages": [
+    "p042"
+   ],
+   "spages": [
+    "p072"
+   ]
+  },
+  {
+   "id": "o11-3",
+   "n": 3,
+   "q": "De waarheidstabel is van een",
+   "options": [
+    {
+     "id": "A",
+     "text": "OF-poort"
+    },
+    {
+     "id": "B",
+     "text": "NEN-poort"
+    },
+    {
+     "id": "C",
+     "text": "EN-poort"
+    },
+    {
+     "id": "D",
+     "text": "NOF-poort"
+    }
+   ],
+   "answer": "D",
+   "explain": "Als een 0 op beide ingangen een 1 op de uitgang geeft, gaat het in elk geval om een poort met NIET. Daarmee houden we alleen antwoorden A en C over. De waarheidstabel geeft aan dat het niet uitmaakt of er één of twee keer een 1 op de ingangen staat. Dat kan alleen bij een OF en een NOF-poort. De OF was al afgevallen, dus blijft de NOF over. Antwoord D is daarom het goede.",
+   "pages": [
+    "p043"
+   ],
+   "spages": [
+    "p073"
+   ]
+  },
+  {
+   "id": "o11-4",
+   "n": 4,
+   "q": "Bij de uitdrukking Q = niet(Ā + B̄ + C̄) hoort de waarheidstabel van een",
+   "options": [
+    {
+     "id": "A",
+     "text": "NOF-poort"
+    },
+    {
+     "id": "B",
+     "text": "NEN-poort"
+    },
+    {
+     "id": "C",
+     "text": "OF-poort"
+    },
+    {
+     "id": "D",
+     "text": "EN-poort"
+    }
+   ],
+   "answer": "D",
+   "explain": "Vereenvoudiging volgens De Morgan houdt in: OF wisselt met EN en omgekeerd; waar een NIET-streep staat verdwijnt deze; waar geen NIET-streep staat, komt er één. Voor dit laatste is geen “klandizie”, dus alle NIET-strepen verdwijnen. Dat leidt tot A. B. C  ABC. Dat is een EN-poort, antwoord D.",
+   "pages": [
+    "p044"
+   ],
+   "spages": [
+    "p074"
+   ]
+  },
+  {
+   "id": "o11-5",
+   "n": 5,
+   "q": "De waarde van Q is",
+   "options": [
+    {
+     "id": "A",
+     "text": "Altijd 0"
+    },
+    {
+     "id": "B",
+     "text": "1 als A = 0"
+    },
+    {
+     "id": "C",
+     "text": "Altijd 1"
+    },
+    {
+     "id": "D",
+     "text": "Onafhankelijk van A"
+    }
+   ],
+   "answer": "B",
+   "explain": "De figuur toont twee NEN-poorten. De onderste heeft twee ingangen, één is 0, de ander 1. Bij een EN-poort levert dat een 0 op de uitgang. Bij een NEN wordt die 0 een 1. Bij de bovenste NEN-poort staat op de onderste ingang diezelfde 1. Q is daarmee afhankelijk van A. Als A=1, dan geldt Q=0, want ook hier inverteert de uitgang de waarde. Als A=0, dan is om dezelfde reden Q = 1. Dat leidt tot antwoord B. Opmerking Het kan ook algemener. De uitgang van de onderste NEN-poort is in de gegeven situatie 1. Dat betekent dat Q van A afhangt, en wel volgens Q = A̅. Dus Q = 1 als A = 0 en Q = 0 als A = 1.",
+   "pages": [
+    "p045"
+   ],
+   "spages": [
+    "p075"
+   ]
+  },
+  {
+   "id": "o11-6",
+   "n": 6,
+   "q": "Als de 0 in de afbeelding 1 wordt en A blijft onveranderd,",
+   "options": [
+    {
+     "id": "A",
+     "text": "Blijft Q onveranderd"
+    },
+    {
+     "id": "B",
+     "text": "Is Q = 1"
+    },
+    {
+     "id": "C",
+     "text": "Is Q = 0"
+    },
+    {
+     "id": "D",
+     "text": "Is Q = A̅"
+    }
+   ],
+   "answer": "C",
+   "explain": "Bij een NOF-poort is de uitgang 0, zodra 1 of meer ingangen 1 zijn (goed om dit te onthouden). De waarde op andere ingangen doet er dan niet meer toe. Antwoord C is daarom goed. Als A 1 was, was Q al 0, maar dat wordt niet gevraagd. Als de 0 niet verandert, is inderdaad Q = A̅, maar de 0 werd nu juist wèl 1. Datzelfde geldt voor antwoord D dat onder deze omstandigheden ook fout is.",
+   "pages": [
+    "p046"
+   ],
+   "spages": [
+    "p076"
+   ]
+  },
+  {
+   "id": "o11-7",
+   "n": 7,
+   "q": "Als de 1 in de afbeelding 0 wordt en A blijft onveranderd,",
+   "options": [
+    {
+     "id": "A",
+     "text": "Blijft Q onveranderd"
+    },
+    {
+     "id": "B",
+     "text": "Is Q = 1"
+    },
+    {
+     "id": "C",
+     "text": "Is Q = 0"
+    },
+    {
+     "id": "D",
+     "text": "Is Q = A̅"
+    }
+   ],
+   "answer": "B",
+   "explain": "Bij een NEN-poort is de uitgang 1, zodra 1 of meer ingangen 0 zijn (goed om dit te onthouden). De waarde op andere ingangen doet er dan niet meer toe. Als de ingang met 1 in de afbeelding 0 wordt, is Q = 1, ongeacht wat er op de andere ingang staat. Antwoord B is dan ook het enige goede.",
+   "pages": [
+    "p047"
+   ],
+   "spages": [
+    "p077"
+   ]
+  },
+  {
+   "id": "o11-9",
+   "n": 9,
+   "q": "Om een 14-deler te kunnen maken is het minimaal benodigde aantal tweedelers:",
+   "options": [
+    {
+     "id": "A",
+     "text": "2"
+    },
+    {
+     "id": "B",
+     "text": "3"
+    },
+    {
+     "id": "C",
+     "text": "4"
+    },
+    {
+     "id": "D",
+     "text": "7"
+    }
+   ],
+   "answer": "C",
+   "explain": "Het deeltal bepaalt het benodigde aantal delers. Dat aantal is gelijk aan de exponent van de eerste gehele macht van 2 die groter of gelijk is aan het deeltal. Met drie flipflops kun je hoogstens door 23 = 8 delen, met vier stuks hoogstens door 24 = 16. Dat betekent in dit geval een schakeling van 4 flipflops. Die wordt voorzien van een poortschakeling die ervoor zorgt dat na stand 13 de teller weer op 0 komt. Antwoord C is dus goed. Met 7 flipflops werkt het ook, maar dan heb je er meer dan minimaal nodig zijn. Dat laatste staat in de vraag!",
+   "pages": [
+    "p066"
+   ],
+   "spages": [
+    "p079"
+   ]
+  },
+  {
+   "id": "o11-10",
+   "n": 10,
+   "q": "Als een 3-, een 4- en een 5-deler beschikbaar zijn, is de hoogst bereikbare deelfactor",
+   "options": [
+    {
+     "id": "A",
+     "text": "12"
+    },
+    {
+     "id": "B",
+     "text": "60"
+    },
+    {
+     "id": "C",
+     "text": "120"
+    },
+    {
+     "id": "D",
+     "text": "0,01667"
+    }
+   ],
+   "answer": "B",
+   "explain": "Met een 3-, een 4- en een 5-deler kun je maximaal delen door 3 ∗ 4 ∗ 5 = 60. Dat betekent antwoord B.",
+   "pages": [
+    "p067"
+   ],
+   "spages": [
+    "p080"
+   ]
+  },
+  {
+   "id": "o11-11",
+   "n": 11,
+   "q": "Dit is een",
+   "options": [
+    {
+     "id": "A",
+     "text": "Master-slave D-flipflop"
+    },
+    {
+     "id": "B",
+     "text": "Flankgestuurde D-flipflop"
+    },
+    {
+     "id": "C",
+     "text": "RS-flipflop"
+    },
+    {
+     "id": "D",
+     "text": "Poortschakeling met genegeerde en niet-genegeerde uitgang."
+    }
+   ],
+   "answer": "A",
+   "explain": "De ingang 1D verraadt dat dit een D-flipflop is. De ingang C1 geeft aan dat het om een geklokt exemplaar gaat. Omdat bij de C1-ingang het driehoekje ontbreekt, kan het geen flankgestuurde flipflop zijn. Dan blijft antwoord A over. Dat wordt bevestigd door de hoekjes bij de uitgangen die een master-slave flipflop aangeven. Dubbel bewijs voor antwoord A.",
+   "pages": [
+    "p068"
+   ],
+   "spages": [
+    "p081"
+   ]
+  },
+  {
+   "id": "o11-12",
+   "n": 12,
+   "q": "Het getal 18 moet in binaire vorm in een register worden opgeslagen. Voor seriële invoer zijn a klokpulsen nodig en voor parallelinvoer b klokpulsen. Wat is juist?",
+   "options": [
+    {
+     "id": "A",
+     "text": "a = 4, b = 1"
+    },
+    {
+     "id": "B",
+     "text": "a = 1, b = 5"
+    },
+    {
+     "id": "C",
+     "text": "a = 1, b = 4"
+    },
+    {
+     "id": "D",
+     "text": "a = 5, b = 1"
+    }
+   ],
+   "answer": "D",
+   "explain": "18 ligt tussen 24 = 16 en 25 = 32. Dat betekent dat 4 flipflops niet genoeg zijn en er 5 nodig zijn om het getal op te slaan. Dan zijn voor seriële invoer 5 pulsen nodig. Dan geldt dat a = 5. Dat alleen al betekent dat het antwoord D moet zijn. Een slimme examenkandidaat controleert toch nog even of b = 1. Je kunt tenslotte een denkfout hebben gemaakt. Maar voor parallelinvoer heb je inderdaad maar 1 puls nodig, dus b = 1 en antwoord D is met dubbel bewijs goed.",
+   "pages": [
+    "p069"
+   ],
+   "spages": [
+    "p082"
+   ]
+  }
+ ]
+}

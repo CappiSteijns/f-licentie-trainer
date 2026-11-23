@@ -2138,7 +2138,7 @@
     }
    ],
    "answer": "D",
-   "explain": "De schakeling is een parallel gevoede Hartley-oscillator. Die hoort te werken, dus antwoord A valt af. De oscillatiefrequentie wordt bepaald door de spoel van 100 µH, dat is 10-4H en de daaraan parallel geschakelde condensator van 100 pF, dat is 10-10 F. Toepassing van de vergelijking van Thomson (Hoofdstuk 5): 𝑓= 2𝜋√𝐿𝐶 leidt tot een frequentie f van iets minder dan 1,6 MHz, antwoord D.",
+   "explain": "De schakeling is een parallel gevoede Hartley-oscillator. Die hoort te werken, dus antwoord A valt af. De oscillatiefrequentie wordt bepaald door de spoel van 100 µH, dat is 10-4H en de daaraan parallel geschakelde condensator van 100 pF, dat is 10-10 F. Toepassing van de vergelijking van Thomson (Hoofdstuk 5): f= 2π√LC leidt tot een frequentie f van iets minder dan 1,6 MHz, antwoord D.",
    "pages": [
     "p042"
    ],

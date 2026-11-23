@@ -344,6 +344,35 @@ const GEN = {
     const [tp, T] = pick([[2e-6, 10e-6], [5e-6, 20e-6], [1e-6, 4e-6], [3e-6, 10e-6], [8e-6, 10e-6]]), D = tp / T * 100;
     return { q: `Een pulsbreedtemodulator geeft pulsen van ${val(tp, 's')} bij een periodeduur van ${val(T, 's')}. Hoe groot is de duty cycle?`, a: D, unit: '%', wrong: [100 - D, T / tp, D * 10, D / 10], how: `D = tp / T = ${num(tp)} / ${num(T)} (in procenten)` };
   },
+  ncomb() {
+    const n = pick([3, 4, 5, 6, 8, 10, 12]);
+    if (Math.random() < 0.5) return { txt: true, q: `Hoeveel verschillende combinaties kun je maken met ${n} bits?`, a: 2 ** n, wrong: [2 * n, n * n, 2 ** n - 1, 2 ** (n + 1)], how: `2ⁿ = 2^${n}` };
+    return { txt: true, q: `Wat is het hoogste getal (decimaal) dat je met ${n} bits kunt voorstellen, als je bij 0 begint?`, a: 2 ** n - 1, wrong: [2 ** n, 2 * n, 2 ** (n - 1), n * n], how: `2ⁿ − 1 = 2^${n} − 1` };
+  },
+  bin2dec() {
+    const x = pick([5, 6, 9, 11, 13, 14, 18, 21, 25, 37, 45, 52, 77, 100, 142]), b = x.toString(2);
+    return { txt: true, q: `Wat is het binaire getal ${b} in decimale vorm?`, a: x, wrong: [x + 1, x - 1, x * 2, parseInt(b.split('').reverse().join(''), 2)], how: `Tel de bitwaarden (…, 8, 4, 2, 1) op waar een 1 staat in ${b}` };
+  },
+  dec2bin() {
+    const x = pick([5, 6, 9, 11, 13, 14, 18, 21, 25, 37, 45, 52, 77, 100]), b = x.toString(2);
+    return { txt: true, q: `Wat is het decimale getal ${x} in binaire vorm?`, a: b, wrong: [(x + 1).toString(2), (x - 1).toString(2), b.split('').reverse().join(''), (x * 2).toString(2)], how: `Deel telkens door 2 en noteer de resten van rechts naar links` };
+  },
+  bin2hex() {
+    const x = pick([0xA5, 0x3C, 0xF0, 0x1B, 0x7E, 0xC9, 0x2F, 0xD4, 0x96]), b = x.toString(2).padStart(8, '0'), h = x.toString(16).toUpperCase();
+    return { txt: true, q: `Wat is het binaire getal ${b} in hexadecimale vorm?`, a: h, wrong: [((x + 1) & 255).toString(16).toUpperCase(), ((x ^ 0x0F) & 255).toString(16).toUpperCase(), h.split('').reverse().join(''), ((x >> 1)).toString(16).toUpperCase()], how: `Groepen van 4 bits: ${b.slice(0, 4)} ${b.slice(4)}` };
+  },
+  binadd() {
+    const [a, b] = pick([[5, 3], [9, 6], [7, 7], [11, 5], [13, 9], [6, 10], [14, 3], [9, 9]]), s = (a + b).toString(2);
+    return { txt: true, q: `Hoeveel is ${a.toString(2)} + ${b.toString(2)} (binair)?`, a: s, wrong: [(a + b + 1).toString(2), (a + b - 1).toString(2), (a ^ b).toString(2), (a | b).toString(2), (a + b + 2).toString(2), (a + b - 2).toString(2)], how: `Tel op van rechts naar links met carry: ${a} + ${b} = ${a + b}` };
+  },
+  fdiv() {
+    const [f, n] = pick([[1e6, 3], [16e6, 4], [32768, 15], [10e6, 5], [8e3, 3], [1e3, 2], [4e6, 6]]), o = f / 2 ** n;
+    return { q: `Een kloksignaal van ${val(f, 'Hz')} gaat door een deler van ${n} flipflops achter elkaar. Hoe groot is de uitgangsfrequentie?`, a: o, unit: 'Hz', wrong: [f / n, f / 2 ** (n + 1), f / 2 ** (n - 1), f * 2 ** n], how: `f_uit = f_klok / 2ⁿ = ${num(f)} / 2^${n}` };
+  },
+  tel() {
+    const n = pick([3, 4, 5, 6, 8]);
+    return { txt: true, q: `Een binaire teller bestaat uit ${n} flipflops. Tot welk decimaal getal kan hij hoogstens tellen (vanaf 0)?`, a: 2 ** n - 1, wrong: [2 ** n, 2 * n, n * n, 2 ** (n - 1)], how: `2ⁿ − 1 = 2^${n} − 1` };
+  },
   bw() {
     const [f, Q] = pick([[7e6, 70], [455e3, 100], [10.7e6, 50], [145e6, 100], [3.5e6, 35], [1e6, 20]]), B = f / Q;
     return { q: `Een kring heeft f_res = ${val(f, 'Hz')} en Q = ${Q}. Hoe groot is de bandbreedte?`, a: B, unit: 'Hz', wrong: [f * Q, f / (2 * Q), B * 10, B / 10], how: `B = f_res / Q = ${num(f)} / ${Q}` };
@@ -399,6 +428,10 @@ export function makeQuestion(item, all, forceType) {   // forceType: één soort
       explain: `${item.name}: ${item.f}. Uitwerking: ${g.how} = ${val(g.a, g.unit)}` };
   }
   const g = GEN[item.gen]();
+  if (g.txt) {   // antwoord als tekst (binaire en hexadecimale getallen, 0/1)
+    const right = String(g.a);
+    return { type: 'calc', item, prompt: g.q, sub: item.name, options: mk(right, g.wrong.map(String)), explain: `${g.how} = ${right}`, calc: true };
+  }
   const right = val(g.a, g.unit);
   const pad = [g.a * 2, g.a / 2, g.a * 10, g.a * 1.5, g.a / 10];
   return { type: 'calc', item, prompt: g.q, sub: item.name, options: mk(right, g.wrong.concat(pad).filter(Number.isFinite).map(w => val(w, g.unit))), explain: `${g.how} = ${right}`, calc: true };

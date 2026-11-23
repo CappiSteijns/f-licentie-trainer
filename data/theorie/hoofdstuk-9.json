@@ -1555,7 +1555,7 @@
     }
    ],
    "answer": "A",
-   "explain": "Over de basisweerstand van 47 k staat ongeveer 12,5 V-0,6 V=11,9 V. Bij deze weerstand betekent dat ongeveer een basisstroomstroom 𝐼𝑏 = 11,9⁄47 mA ≈ 0,25 mA (let op het trucje: gebruik kΩ en V in de wet van Ohm en je krijgt een uitkomst in mA!). De collectorstroom is dan 20 ∗ 0,25 mA= 5 mA. Over de collectorweerstand van 1k2 staat dan 1,2 ∗ 5 mA = 6 V (gebruik kΩ en mA in de wet van Ohm en je krijgt een uitkomst in V) en voor de collectorspanning blijft -6,5 V over. Antwoord A is daarom goed.",
+   "explain": "Over de basisweerstand van 47 k staat ongeveer 12,5 V-0,6 V=11,9 V. Bij deze weerstand betekent dat ongeveer een basisstroomstroom Ib = 11,9⁄47 mA ≈ 0,25 mA (let op het trucje: gebruik kΩ en V in de wet van Ohm en je krijgt een uitkomst in mA!). De collectorstroom is dan 20 ∗ 0,25 mA= 5 mA. Over de collectorweerstand van 1k2 staat dan 1,2 ∗ 5 mA = 6 V (gebruik kΩ en mA in de wet van Ohm en je krijgt een uitkomst in V) en voor de collectorspanning blijft -6,5 V over. Antwoord A is daarom goed.",
    "pages": [
     "p009"
    ],
@@ -1617,7 +1617,7 @@
     }
    ],
    "answer": "C",
-   "explain": "Kijk in de grafiek waar UDS = 0 V en lees de bijbehorende stroom af. Die is 20 mA. Als UDS = 0 V, dan staat de volle 30 V over de serieschakeling van RD en RS. Dan geldt 𝑅𝐷 + 𝑅𝑆 = 𝑈⁄ = 30V⁄ 𝐼        20mA = 1,5 kΩ = 1500Ω. Dat betekent antwoord C. Opmerking Ook hier is de truc toegepast van: gebruik in de wet van Ohm volts en milliampères en je krijgt kilo-ohms.",
+   "explain": "Kijk in de grafiek waar UDS = 0 V en lees de bijbehorende stroom af. Die is 20 mA. Als UDS = 0 V, dan staat de volle 30 V over de serieschakeling van RD en RS. Dan geldt RD + RS = U⁄ = 30V⁄ I        20mA = 1,5 kΩ = 1500Ω. Dat betekent antwoord C. Opmerking Ook hier is de truc toegepast van: gebruik in de wet van Ohm volts en milliampères en je krijgt kilo-ohms.",
    "pages": [
     "p011"
    ],
@@ -1648,7 +1648,7 @@
     }
    ],
    "answer": "B",
-   "explain": "Als UGS = -2,8V, dan is de spanning over RS 2,8V. Als ID = 9 mA, dan is dat ook de stroom −𝑈GS door RS. Daarmee is RS te berekenen via de wet van Ohm: 𝑅S =          ⁄𝐼 = 2,8V⁄9mA = D 0,311kΩ ≈ 310Ω. Dat is antwoord B.",
+   "explain": "Als UGS = -2,8V, dan is de spanning over RS 2,8V. Als ID = 9 mA, dan is dat ook de stroom −UGS door RS. Daarmee is RS te berekenen via de wet van Ohm: RS =          ⁄I = 2,8V⁄9mA = D 0,311kΩ ≈ 310Ω. Dat is antwoord B.",
    "pages": [
     "p012"
    ],
@@ -1741,7 +1741,7 @@
     }
    ],
    "answer": "C",
-   "explain": "De basisspanning bij beide transistoren bedraagt 12 ∗ 27V⁄(27 + 82) ≈ 3V. De emitterspanning is dan ongeveer 2,3 V en de emitterstroom ongeveer 2,3 mA. Bij 𝛽 = 300 is de basisstroom verwaarloosbaar, dus de collectorstroom is ook ongeveer 2,3 mA Over de collectorweerstand van 2k2 staat dan ongeveer 2,2*2,3 V is ongeveer 5,1 V. 12 V- 5,1 V is 6,9 V, afgerond 7 V (let op het woord “ongeveer” in de vraagstelling).. Antwoord C is daarom het juiste antwoord.",
+   "explain": "De basisspanning bij beide transistoren bedraagt 12 ∗ 27V⁄(27 + 82) ≈ 3V. De emitterspanning is dan ongeveer 2,3 V en de emitterstroom ongeveer 2,3 mA. Bij β = 300 is de basisstroom verwaarloosbaar, dus de collectorstroom is ook ongeveer 2,3 mA Over de collectorweerstand van 2k2 staat dan ongeveer 2,2*2,3 V is ongeveer 5,1 V. 12 V- 5,1 V is 6,9 V, afgerond 7 V (let op het woord “ongeveer” in de vraagstelling).. Antwoord C is daarom het juiste antwoord.",
    "pages": [
     "p028"
    ],
@@ -1772,7 +1772,7 @@
     }
    ],
    "answer": "A",
-   "explain": "Het afknijppunt ligt bij 𝑈GS = −6,5V. Daar snijdt de curve de horizontale as en is 𝐼D = 0. Voor klasse C moet 𝑈GS < −6,5V zijn. Voor klasse B is de eis 𝑈GS = −6,5V. We kijken eerst, welke antwoorden hieraan voldoen. Op het examen kan zo’n werkwijze tijd schelen. Antwoord A blijft staan. Antwoord B ook. Antwoord C vervalt want -5V is te hoog voor klasse B en -6,5 V te hoog voor klasse C. Antwoord D blijft ook staan. Voor klasse A moet 𝑈GS ongeveer midden tussen 0V en -5V liggen. Daaraan voldoet antwoord A met 2,5 V. Met -5,5 V vervalt B, net als antwoord D met 0 V. Antwoord A blijft als enige over. De -5 V voor klasse AB is ook goed. Antwoord A dus.",
+   "explain": "Het afknijppunt ligt bij UGS = −6,5V. Daar snijdt de curve de horizontale as en is ID = 0. Voor klasse C moet UGS < −6,5V zijn. Voor klasse B is de eis UGS = −6,5V. We kijken eerst, welke antwoorden hieraan voldoen. Op het examen kan zo’n werkwijze tijd schelen. Antwoord A blijft staan. Antwoord B ook. Antwoord C vervalt want -5V is te hoog voor klasse B en -6,5 V te hoog voor klasse C. Antwoord D blijft ook staan. Voor klasse A moet UGS ongeveer midden tussen 0V en -5V liggen. Daaraan voldoet antwoord A met 2,5 V. Met -5,5 V vervalt B, net als antwoord D met 0 V. Antwoord A blijft als enige over. De -5 V voor klasse AB is ook goed. Antwoord A dus.",
    "pages": [
     "p038"
    ],

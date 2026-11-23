@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 11: 'THEORIE_HS11_20260912.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -12,7 +12,8 @@ def pages(pdf):
     return t.split('\f')
 
 PUA = {'\uf057': 'Ω', '\uf06d': 'µ'}
-def clean(t): return ''.join(PUA.get(c, c) for c in t)
+import unicodedata
+def clean(t): return ''.join(PUA.get(c, unicodedata.normalize('NFKC', c) if 0x1D400 <= ord(c) <= 0x1D7FF else c) for c in t)
 
 def parse(ch, pdf):
     pg = pages(pdf)
@@ -81,6 +82,13 @@ FIX = {
  'o8-3': {'options': [{'id': 'A', 'text': 'U_D = U_b − I_D · R_D'}, {'id': 'B', 'text': 'U_D = U_b − R_D / I_D'}, {'id': 'C', 'text': 'U_D = U_b − U_GS'}, {'id': 'D', 'text': 'U_D = U_b − I_D · R_S'}], 'pages': ['p029']},
  'o8-4': {'answer': 'A'},
  'o8-20': {'pages': ['p076']},
+ 'o11-3': {'q': 'De waarheidstabel is van een'},
+ 'o11-4': {'q': 'Bij de uitdrukking Q = niet(Ā + B̄ + C̄) hoort de waarheidstabel van een'},
+ 'o11-5': {'q': 'De waarde van Q is', 'pages': ['p045']},
+ 'o11-6': {'q': 'Als de 0 in de afbeelding 1 wordt en A blijft onveranderd,', 'pages': ['p046']},
+ 'o11-7': {'q': 'Als de 1 in de afbeelding 0 wordt en A blijft onveranderd,', 'pages': ['p047']},
+ 'o11-11': {'q': 'Dit is een'},
+ 'o11-12': {'pages': ['p069']},
  'o10-1': {'q': 'De uitgangsspanning Uuit bedraagt'},
  'o10-2': {'q': 'De uitgangsspanning Uuit bedraagt'},
  'o10-3': {'q': 'De uitgangsspanning Uuit bedraagt'},
@@ -106,6 +114,7 @@ for ch, name in PDFS.items():
         e['pages'] = [p for p in e['pages'] if (img / f'{p}.webp').exists()]
         e['spages'] = [p for p in e['spages'] if (img / f'{p}.webp').exists()]
         bad = (len(e['options']) != 4 or not e['answer'])
+        if bad and ch == 11: continue   # open vragen (zonder meerkeuze) niet opnemen
         print(ch, e['id'], 'LET OP' if bad else 'ok', e['answer'], e['pages'], e['spages'], '|', e['q'][:60])
-    d['exercises'] = ex
+    d['exercises'] = [e for e in ex if not (ch == 11 and (len(e['options']) != 4 or not e['answer']))]
     f.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding='utf-8')

@@ -187,15 +187,15 @@
   "options": [
    {
     "id": "A",
-    "text": "NIET (NOT) schakeling (inverter) 1 X Y"
+    "text": "NIET (NOT) schakeling (inverter)"
    },
    {
     "id": "B",
-    "text": "NEN-poort (NAND) X Y 0 1"
+    "text": "NEN-poort (NAND)"
    },
    {
     "id": "C",
-    "text": "EN-poort (AND) 1 0"
+    "text": "EN-poort (AND)"
    },
    {
     "id": "D",
@@ -291,7 +291,7 @@
   "id": "hs11-9",
   "chapter": 11,
   "number": 9,
-  "question": "Ingang Y kan zowel logisch 1 als 0 zijn. 1 & Q Uitgang Q is: Y",
+  "question": "Ingang Y kan zowel logisch 1 als 0 zijn. Uitgang Q is:",
   "options": [
    {
     "id": "A",
@@ -331,19 +331,19 @@
   "options": [
    {
     "id": "A",
-    "text": "EN-poort (AND) X Y Q"
+    "text": "EN-poort (AND)"
    },
    {
     "id": "B",
-    "text": "OF-poort (OR) 0 0 1"
+    "text": "OF-poort (OR)"
    },
    {
     "id": "C",
-    "text": "NEN-poort (NAND) 1 0 1"
+    "text": "NEN-poort (NAND)"
    },
    {
     "id": "D",
-    "text": "NOF-poort (NOR) 0 1 1 1 1 0"
+    "text": "NOF-poort (NOR)"
    }
   ],
   "source": "F-examen najaar 2004, september 2012",
@@ -416,15 +416,15 @@
   "options": [
    {
     "id": "A",
-    "text": "OF-poort (OR) 1 0 1"
+    "text": "OF-poort (OR)"
    },
    {
     "id": "B",
-    "text": "EN-poort (AND) 0 1 1"
+    "text": "EN-poort (AND)"
    },
    {
     "id": "C",
-    "text": "NEN-poort (NAND) 1 1 1"
+    "text": "NEN-poort (NAND)"
    },
    {
     "id": "D",
@@ -672,7 +672,7 @@
    },
    {
     "id": "B",
-    "text": "Y Y"
+    "text": "Y"
    },
    {
     "id": "C",
