@@ -3,7 +3,7 @@
   "id": "hs10-1",
   "chapter": 10,
   "number": 1,
-  "question": "+ R1 R3 C2 uit C1 in R2 R4 C3 De weerstanden R1 en R2 zorgen voor",
+  "question": "De weerstanden R1 en R2 zorgen voor",
   "options": [
    {
     "id": "A",
@@ -39,7 +39,7 @@
   "id": "hs10-2",
   "chapter": 10,
   "number": 2,
-  "question": "- in + uit Dit is een schema van een",
+  "question": "Dit is een schema van een",
   "options": [
    {
     "id": "A",
@@ -75,7 +75,7 @@
   "id": "hs10-3",
   "chapter": 10,
   "number": 3,
-  "question": "10 kΩ 10 kΩ - Uin= +1V Uuit + De uitgangsspanning Uuit is:",
+  "question": "De uitgangsspanning Uuit is:",
   "options": [
    {
     "id": "A",
@@ -145,7 +145,7 @@
   "id": "hs10-5",
   "chapter": 10,
   "number": 5,
-  "question": "+12V +12V 22kΩ 10kΩ 22kΩ 10kΩ 1nF 1nF 100pF 100pF 100µH 100µH 2000pF 2000pF 1µF 2kΩ 1µF 2kΩ 500Ω 500Ω X Y Welke schakeling oscilleert op de resonantiefrequentie van de LC-kring?",
+  "question": "Welke schakeling oscilleert op de resonantiefrequentie van de LC-kring?",
   "options": [
    {
     "id": "A",
@@ -182,7 +182,7 @@
   "id": "hs10-6",
   "chapter": 10,
   "number": 6,
-  "question": "2 kΩ 1 kΩ + 2V - 3 kΩ - - 5V + Uuit + De uitgangsspanning Uuit is ongeveer",
+  "question": "De uitgangsspanning Uuit is ongeveer",
   "options": [
    {
     "id": "A",
@@ -461,7 +461,7 @@
   "id": "hs10-14",
   "chapter": 10,
   "number": 14,
-  "question": "De uitgangsspanning Uuit is 100 kΩ 100 kΩ",
+  "question": "De uitgangsspanning Uuit is",
   "options": [
    {
     "id": "A",
@@ -469,15 +469,15 @@
    },
    {
     "id": "B",
-    "text": "-2 V 100 kΩ"
+    "text": "-2 V"
    },
    {
     "id": "C",
-    "text": "-1 V + + -"
+    "text": "-1 V"
    },
    {
     "id": "D",
-    "text": "+1 V 1V 1V + Uuit"
+    "text": "+1 V"
    }
   ],
   "source": "F-examen najaar 2003, augustus 2009, maart 2013, 10-01-2018",
@@ -569,7 +569,7 @@
   "id": "hs10-17",
   "chapter": 10,
   "number": 17,
-  "question": "47 kΩ 10 kΩ - Uin= +1V Uuit + De uitgangsspanning Uuit is",
+  "question": "De uitgangsspanning Uuit is",
   "options": [
    {
     "id": "A",
@@ -610,11 +610,11 @@
   "options": [
    {
     "id": "A",
-    "text": "+1 V +12 V"
+    "text": "+1 V"
    },
    {
     "id": "B",
-    "text": "-1 V -"
+    "text": "-1 V"
    },
    {
     "id": "C",
@@ -622,7 +622,7 @@
    },
    {
     "id": "D",
-    "text": "0 V + Uuit Uin=1V -12 V"
+    "text": "0 V"
    }
   ],
   "source": "F-examen september 2019",

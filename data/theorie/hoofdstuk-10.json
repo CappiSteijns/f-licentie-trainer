@@ -1963,7 +1963,7 @@
   {
    "id": "o10-1",
    "n": 1,
-   "q": "5 kΩ 2,5 kΩ +5 V                          _ + Uuit De uitgangsspanning Uuit bedraagt",
+   "q": "De uitgangsspanning Uuit bedraagt",
    "options": [
     {
      "id": "A",
@@ -1994,7 +1994,7 @@
   {
    "id": "o10-2",
    "n": 2,
-   "q": "1 kΩ 1 kΩ _ +1 V           + Uuit De uitgangsspanning Uuit bedraagt",
+   "q": "De uitgangsspanning Uuit bedraagt",
    "options": [
     {
      "id": "A",
@@ -2025,7 +2025,7 @@
   {
    "id": "o10-3",
    "n": 3,
-   "q": "1 kΩ             1 kΩ -3 V 2 kΩ                _ +4 V + Uuit De uitgangsspanning Uuit bedraagt",
+   "q": "De uitgangsspanning Uuit bedraagt",
    "options": [
     {
      "id": "A",
@@ -2056,7 +2056,7 @@
   {
    "id": "o10-4",
    "n": 4,
-   "q": "1 kΩ 1 kΩ +1 V                           _ 1 kΩ +2 V                           + Uuit 1 kΩ De uitgangsspanning Uuit bedraagt",
+   "q": "De uitgangsspanning Uuit bedraagt",
    "options": [
     {
      "id": "A",
@@ -2087,7 +2087,7 @@
   {
    "id": "o10-5",
    "n": 5,
-   "q": "_ +3,3 V        + Uuit De uitgangsspanning Uuit is",
+   "q": "De uitgangsspanning Uuit is",
    "options": [
     {
      "id": "A",
@@ -2118,7 +2118,7 @@
   {
    "id": "o10-6",
    "n": 6,
-   "q": "+ 18 V 100 pF 100 pF 100 µ             220 kΩ 100 pF 100 pF - De schakeling oscilleert",
+   "q": "De schakeling oscilleert",
    "options": [
     {
      "id": "A",
@@ -2149,7 +2149,7 @@
   {
    "id": "o10-7",
    "n": 7,
-   "q": "a                                                     b -12 V                                         -12 V C3                                               C3 L2                                             L2 C1                                            C1 L1                 R1                         sign.    L1         R1                        sign. uit                                           uit C2                                            C2 C4 R2                                               R2 R3             C5                               R3          C4 +                                             + Welke schakeling oscilleert?",
+   "q": "Welke schakeling oscilleert?",
    "options": [
     {
      "id": "A",
@@ -2211,7 +2211,7 @@
   {
    "id": "o10-9",
    "n": 9,
-   "q": "+                                        + a                                                b sign.                               sign. uit                                 uit -                                   - Van de getoonde schakelingen oscilleert",
+   "q": "Van de getoonde schakelingen oscilleert",
    "options": [
     {
      "id": "A",
@@ -2242,7 +2242,7 @@
   {
    "id": "o10-10",
    "n": 10,
-   "q": "1kΩ =100 12 V                                  9V 470Ω         Uuit De transistor is een siliciumtype. De spanning Uuit is ongeveer",
+   "q": "De transistor is een siliciumtype. De spanning Uuit is ongeveer",
    "options": [
     {
      "id": "A",
@@ -2273,7 +2273,7 @@
   {
    "id": "o10-11",
    "n": 11,
-   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "q": "In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
    "options": [
     {
      "id": "A",
@@ -2304,7 +2304,7 @@
   {
    "id": "o10-12",
    "n": 12,
-   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "q": "In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
    "options": [
     {
      "id": "A",
@@ -2335,7 +2335,7 @@
   {
    "id": "o10-13",
    "n": 13,
-   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "q": "In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
    "options": [
     {
      "id": "A",
@@ -2366,7 +2366,7 @@
   {
    "id": "o10-14",
    "n": 14,
-   "q": "+ 12 V                                                     Uuit In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
+   "q": "In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is",
    "options": [
     {
      "id": "A",

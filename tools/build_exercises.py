@@ -81,8 +81,19 @@ FIX = {
  'o8-3': {'options': [{'id': 'A', 'text': 'U_D = U_b − I_D · R_D'}, {'id': 'B', 'text': 'U_D = U_b − R_D / I_D'}, {'id': 'C', 'text': 'U_D = U_b − U_GS'}, {'id': 'D', 'text': 'U_D = U_b − I_D · R_S'}], 'pages': ['p029']},
  'o8-4': {'answer': 'A'},
  'o8-20': {'pages': ['p076']},
- 'o10-10': {'pages': ['p066']},
- 'o10-14': {'answer': 'C'},
+ 'o10-1': {'q': 'De uitgangsspanning Uuit bedraagt'},
+ 'o10-2': {'q': 'De uitgangsspanning Uuit bedraagt'},
+ 'o10-3': {'q': 'De uitgangsspanning Uuit bedraagt'},
+ 'o10-4': {'q': 'De uitgangsspanning Uuit bedraagt'},
+ 'o10-5': {'q': 'De uitgangsspanning Uuit is'},
+ 'o10-6': {'q': 'De schakeling oscilleert'},
+ 'o10-7': {'q': 'Welke schakeling oscilleert?'},
+ 'o10-9': {'q': 'Van de getoonde schakelingen oscilleert'},
+ 'o10-10': {'pages': ['p066'], 'q': 'De transistor is een siliciumtype. De spanning Uuit is ongeveer'},
+ 'o10-11': {'q': 'In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is'},
+ 'o10-12': {'q': 'In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is'},
+ 'o10-13': {'q': 'In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is'},
+ 'o10-14': {'answer': 'C', 'q': 'In dit schema is de stabilisatieschakeling niet getekend. Een mogelijke waarde van Uuit is'},
 }
 
 for ch, name in PDFS.items():

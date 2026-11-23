@@ -170,5 +170,55 @@
    }
   ]
  },
- "hs17-1": "De juiste kleuraanduiding van de draden in een netaansluiting is (volgorde: fase – nul – aarde):"
+ "hs17-1": "De juiste kleuraanduiding van de draden in een netaansluiting is (volgorde: fase – nul – aarde):",
+ "hs10-1": "De weerstanden R1 en R2 zorgen voor",
+ "hs10-2": "Dit is een schema van een",
+ "hs10-3": "De uitgangsspanning Uuit is:",
+ "hs10-5": "Welke schakeling oscilleert op de resonantiefrequentie van de LC-kring?",
+ "hs10-6": "De uitgangsspanning Uuit is ongeveer",
+ "hs10-14": {
+  "question": "De uitgangsspanning Uuit is",
+  "options": [
+   {
+    "id": "A",
+    "text": "0 V"
+   },
+   {
+    "id": "B",
+    "text": "-2 V"
+   },
+   {
+    "id": "C",
+    "text": "-1 V"
+   },
+   {
+    "id": "D",
+    "text": "+1 V"
+   }
+  ]
+ },
+ "hs10-17": "De uitgangsspanning Uuit is",
+ "hs8-7": "In deze schakeling wordt in plaats van een transistor met een stroomversterkingsfactor hFE= 100 een transistor toegepast met een hFE= 50. Wat is het gevolg?",
+ "hs8-13": "Voor de transistor geldt Ube = 0,7 V. De basisstroom is verwaarloosbaar klein. Uce is:",
+ "hs8-20": "De collectorstroom is 100 mA. De stroom I is:",
+ "hs10-18": {
+  "options": [
+   {
+    "id": "A",
+    "text": "+1 V"
+   },
+   {
+    "id": "B",
+    "text": "-1 V"
+   },
+   {
+    "id": "C",
+    "text": "+12 V"
+   },
+   {
+    "id": "D",
+    "text": "0 V"
+   }
+  ]
+ }
 }
