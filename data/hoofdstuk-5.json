@@ -602,19 +602,19 @@
   "options": [
    {
     "id": "A",
-    "text": "100Ω Z 200Ω"
+    "text": "100 Ω"
    },
    {
     "id": "B",
-    "text": "50Ω"
+    "text": "50 Ω"
    },
    {
     "id": "C",
-    "text": "400Ω"
+    "text": "400 Ω"
    },
    {
     "id": "D",
-    "text": "800Ω"
+    "text": "800 Ω"
    }
   ],
   "source": "F-examen 17-05-2017, januari 2018",

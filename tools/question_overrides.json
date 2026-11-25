@@ -239,7 +239,27 @@
  },
  "hs10-17": "De uitgangsspanning Uuit is",
  "hs8-7": "In deze schakeling wordt in plaats van een transistor met een stroomversterkingsfactor hFE= 100 een transistor toegepast met een hFE= 50. Wat is het gevolg?",
- "hs8-13": "Voor de transistor geldt Ube = 0,7 V. De basisstroom is verwaarloosbaar klein. Uce is:",
+ "hs8-13": {
+  "question": "Voor de transistor geldt Ube = 0,7 V. De basisstroom is verwaarloosbaar klein. Uce is:",
+  "options": [
+   {
+    "id": "A",
+    "text": "13 V"
+   },
+   {
+    "id": "B",
+    "text": "5,5 V"
+   },
+   {
+    "id": "C",
+    "text": "0,55 V"
+   },
+   {
+    "id": "D",
+    "text": "8,5 V"
+   }
+  ]
+ },
  "hs8-20": "De collectorstroom is 100 mA. De stroom I is:",
  "hs10-18": {
   "options": [
@@ -299,6 +319,46 @@
    {
     "id": "D",
     "text": "NOF-poort (NOR)"
+   }
+  ]
+ },
+ "hs3-41": {
+  "options": [
+   {
+    "id": "A",
+    "text": "6 V"
+   },
+   {
+    "id": "B",
+    "text": "12 V"
+   },
+   {
+    "id": "C",
+    "text": "3 V"
+   },
+   {
+    "id": "D",
+    "text": "0 V"
+   }
+  ]
+ },
+ "hs5-18": {
+  "options": [
+   {
+    "id": "A",
+    "text": "100 Ω"
+   },
+   {
+    "id": "B",
+    "text": "50 Ω"
+   },
+   {
+    "id": "C",
+    "text": "400 Ω"
+   },
+   {
+    "id": "D",
+    "text": "800 Ω"
    }
   ]
  }
