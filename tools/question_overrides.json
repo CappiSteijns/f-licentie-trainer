@@ -361,5 +361,25 @@
     "text": "800 Ω"
    }
   ]
+ },
+ "hs18-10": {
+  "options": [
+   {
+    "id": "A",
+    "text": "Dit is toegestaan"
+   },
+   {
+    "id": "B",
+    "text": "Dit is toegestaan als de vergunning aanwezig is"
+   },
+   {
+    "id": "C",
+    "text": "De vergunninghouder handelt correct als hij aan z’n huisgenoten heeft verteld dat niemand aan het amateurstation mag komen"
+   },
+   {
+    "id": "D",
+    "text": "Dit is in strijd met de voorschriften en beperkingen."
+   }
+  ]
  }
 }
