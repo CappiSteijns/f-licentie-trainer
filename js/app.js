@@ -87,7 +87,7 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['ach', '🏆'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : view === 'review' ? 'stats' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise' || view === 'stel') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : view === 'review' ? 'stats' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : view === 'stel'? 'learn' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, ...(k === 'ach' ? { 'aria-label': 'Prestaties', title: 'Prestaties' } : {}), onclick: () => setView(k === 'setup' && S && view !== 'setup' ? 'session' : k) }, label)));
 }
@@ -340,7 +340,7 @@ function startReview() {
 
 // ---------------------------------------------------------------- stellingen oefenen
 // Vragen als "Stelling 1 … Stelling 2 … Wat is juist?" (en "alleen schakeling 1 / beide / geen") worden hier
-// teruggebracht tot losse beweringen die je elk als juist of onjuist beoordeelt (data/stellingen.json).
+// teruggebracht tot losse beweringen (knop in Leren, per hoofdstuk) die je elk als juist of onjuist beoordeelt (data/stellingen.json).
 let STELDATA = null;        // id -> { kind, pre, items: [{ t, ok }] }
 let ST = null;              // { ch, ids, idx, marks, done, ok, sid, was }
 function loadStel() {
@@ -359,19 +359,12 @@ async function startStel(ch, only) {
   ST = { ch, ids, idx: 0, marks: {}, done: {}, ok: {}, was: {}, sid: store.uid(), total: all.length };
   setView('stel');
 }
-function stelCard() {
-  if (!STELDATA) { loadStel().then(() => view === 'setup' && render()); return null; }
-  const by = stelByChapter(), nums = Object.keys(by).map(Number).sort((a, b) => a - b);
-  if (!nums.length) return null;
-  const rec = store.allRecords();
-  return h('section', { class: 'card stelcard' },
-    h('h2', {}, '🧩 Stellingen oefenen'),
-    h('p', { class: 'muted small' }, 'Vragen met “stelling 1 en 2” of “alleen schakeling 1, beide, geen” hebben vaak steeds dezelfde antwoorden. Hier beoordeel je elke bewering afzonderlijk als juist of onjuist, zodat je niet op het antwoordpatroon kunt gokken. Kies een hoofdstuk; alleen deze vragen komen aan bod.'),
-    h('div', { class: 'stelchips' }, nums.map(n => {
-      const ids = by[n], steady = ids.filter(i => rec[i] && rec[i].a > 0 && store.boxOf(rec[i]) >= STEVIG).length;
-      return h('button', { class: 'stelchip', onclick: () => startStel(n) },
-        h('b', {}, `H${n}`), h('span', { class: 'muted small' }, ` ${chapterTitle(n)}`), h('span', { class: 'badge' }, `${ids.length} vragen`), h('span', { class: 'badge green' }, `${steady}/${ids.length} stevig`));
-    })));
+function stelBtn(n) {
+  if (!STELDATA) { loadStel().then(() => view === 'learn' && render()); return null; }
+  const ids = stelByChapter()[n] || [];
+  if (!ids.length) return null;
+  const rec = store.allRecords(), steady = ids.filter(i => rec[i] && rec[i].a > 0 && store.boxOf(rec[i]) >= STEVIG).length;
+  return h('button', { title: `Stellingen en beweringen uit dit hoofdstuk, elk afzonderlijk beoordelen (${steady}/${ids.length} stevig)`, onclick: () => startStel(n) }, `🧩 Stellingen (${ids.length})`);
 }
 const wnorm = w => w.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
 function diffMarks(text, other) {
@@ -383,7 +376,7 @@ function diffMarks(text, other) {
   return out;
 }
 function viewStel() {
-  if (!ST) return viewSetup();
+  if (!ST) return viewLearn();
   if (ST.idx >= ST.ids.length) {
     const good = ST.ids.filter(i => ST.ok[i]), bad = ST.ids.filter(i => ST.done[i] && !ST.ok[i]);
     return h('div', {},
@@ -394,7 +387,7 @@ function viewStel() {
         h('div', { class: 'actions' },
           bad.length > 0 && h('button', { class: 'primary', onclick: () => startStel(ST.ch, bad) }, `Foute vragen opnieuw (${bad.length})`),
           h('button', { onclick: () => startStel(ST.ch) }, 'Alles opnieuw'),
-          h('button', { class: 'ghost', onclick: () => { ST = null; setView('setup'); } }, 'Terug naar Oefenen'))));
+          h('button', { class: 'ghost', onclick: () => { ST = null; setView('learn'); } }, 'Terug naar Leren'))));
   }
   const id = ST.ids[ST.idx], q = quiz.QMAP.get(id), d = STELDATA[id];
   if (!q || !d) { ST.idx++; return viewStel(); }
@@ -426,7 +419,7 @@ function viewStel() {
   return h('div', {},
     h('div', { class: 'qhead' },
       h('span', { class: 'qmeta' }, `Stellingen H${ST.ch} · vraag ${ST.idx + 1} van ${ST.ids.length} · opgave ${q.chapter}-${q.number}`),
-      h('button', { class: 'ghost small', onclick: () => { ST = null; setView('setup'); } }, 'Stoppen')),
+      h('button', { class: 'ghost small', onclick: () => { ST = null; setView('learn'); } }, 'Stoppen')),
     h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': ST.ids.length, 'aria-valuenow': ST.idx + (done ? 1 : 0) },
       h('i', { style: `width:${pct(ST.idx + (done ? 1 : 0), ST.ids.length)}%` })),
     h('div', { class: 'card stel', style: 'margin-top:1rem' },
@@ -498,7 +491,6 @@ function viewSetup() {
     goalCard(),
     findCard(),
     flaggedCard(),
-    stelCard(),
     h('p', { class: 'muted' }, 'Kies de onderdelen, de modus en start. Je voortgang wordt in deze browser bewaard; via “Synchroniseren” neem je hem mee naar een ander apparaat.'),
 
     h('section', { class: 'card' },
@@ -1926,10 +1918,14 @@ function viewLearn() {
         h('div', { class: 'row' }, stepEl,
           (() => { const cs = cardStats(c.n); return cs.total > 0 && h('button', { onclick: () => cs.due ? startCards(c.n, false) : startCards(c.n, true) }, cs.due ? `Flashcards (${cs.due})` : 'Flashcards herhalen'); })(),
           formulaBtn(c.n),
+          stelBtn(c.n),
           (th.drill && th.drill.length > 0) && h('button', { onclick: () => openFormulaGame(c.n) }, th.drill.some(it => it.f) ? '🎮 Formule-spel' : '🎮 Feitenspel'),
           step.type !== 'exam' && h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')),
         h('details', { class: 'secs', open: LEARN_OPEN.has(c.n), ontoggle: e => { e.target.open ? LEARN_OPEN.add(c.n) : LEARN_OPEN.delete(c.n); } }, h('summary', {}, 'Alle paragrafen'), sectionRows(th, 'learn')));
     }),
+    without.filter(c => stelBtn(c.n)).map(c => h('section', { class: 'card' },
+      h('div', { class: 'row between' }, h('h2', { style: 'margin:0' }, `H${c.n} · ${c.title}`), h('span', { class: 'badge' }, 'nog geen theorie')),
+      h('div', { class: 'row', style: 'margin-top:.6rem' }, stelBtn(c.n), h('button', { class: 'ghost', onclick: () => startChapterExam(c.n) }, 'Hoofdstukexamen')))),
     without.length > 0 && h('p', { class: 'muted small' }, 'Nog geen theorie toegevoegd voor: ' + without.map(c => 'H' + c.n).join(', ') + '. Je kunt deze hoofdstukken wel gewoon oefenen. De theorie voeg je toe met tools/build_theory.py (zie README).'));
 }
 
