@@ -383,3 +383,21 @@ body.has-tools #app { padding-bottom: 7rem; }
   .check { flex-wrap: wrap; }
   .check .badges { flex-basis: 100%; justify-content: flex-start; padding-left: calc(20px + .7rem); }
 }
+
+/* stellingen oefenen */
+.stelchips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.stelchip { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; text-align: left; }
+.stelitem { border: 1px solid var(--border); border-radius: 10px; padding: .75rem .9rem; margin: .7rem 0; }
+.stelitem.ok { border-color: var(--green); }
+.stelitem.no { border-color: var(--red); }
+.stelnum { font-size: .8rem; font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: .03em; }
+.steltxt { margin: .25rem 0 .6rem; font-size: 1.02rem; }
+.steltxt mark { background: rgba(240, 180, 40, .4); color: inherit; border-radius: 3px; padding: 0 .15em; }
+.jn { display: flex; gap: .6rem; }
+.jnbtn { flex: 1; min-height: 2.8rem; font-weight: 600; }
+.jnbtn.on { outline: 3px solid var(--accent, #3b82f6); outline-offset: -1px; }
+.jnbtn.on:disabled { outline: none; }
+.jnbtn.right { background: var(--green-bg); border-color: var(--green); }
+.jnbtn.wrong { background: var(--red-bg); border-color: var(--red); }
+.jnbtn.dim { opacity: .45; }
+.stelres { margin: .5rem 0 0; }

@@ -87,7 +87,7 @@ function setView(v) {
 
 function renderNav() {
   const items = [['setup', 'Oefenen'], ...(chapters.some(c => c.theory) ? [['learn', 'Leren']] : []), ['stats', 'Voortgang'], ['ach', '🏆'], ['account', account.enabled() && account.loggedIn() ? 'Account ✓' : 'Account'], ['sync', 'Meer']];
-  const active = (view === 'session' || view === 'result') ? 'setup' : view === 'review' ? 'stats' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
+  const active = (view === 'session' || view === 'result') ? 'setup' : view === 'review' ? 'stats' : (view === 'privacy' || view === 'recovery') ? 'account' : (view === 'exercise' || view === 'stel') ? 'setup' : (view === 'theory' || view === 'cards' || view === 'fgame') ? 'learn' : view;
   $nav.replaceChildren(...items.map(([k, label]) =>
     h('button', { 'aria-current': active === k ? 'page' : null, ...(k === 'ach' ? { 'aria-label': 'Prestaties', title: 'Prestaties' } : {}), onclick: () => setView(k === 'setup' && S && view !== 'setup' ? 'session' : k) }, label)));
 }
@@ -97,7 +97,7 @@ function render() {
   tools.setToolsVisible(view === 'session' || view === 'fgame');
   tools.setInkKey([view, S && S.idx, FG && FG.n, FG && FG.stage, K && K.idx, T && T.secId, X && X.ex.id, X && X.picked].join('|'));
   renderNav();
-  const fn = { review: viewReview, ach: viewAch, setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
+  const fn = { review: viewReview, ach: viewAch, setup: viewSetup, session: viewSession, result: viewResult, stats: viewStats, learn: viewLearn, theory: viewTheory, cards: viewCards, exercise: viewExercise, stel: viewStel, fgame: viewFGame, sync: viewSync, account: viewAccount, privacy: viewPrivacy, recovery: viewRecovery }[view];
   $app.replaceChildren(fn());
   $app.focus({ preventScroll: true });
   scheduleAch();
@@ -338,6 +338,113 @@ function startReview() {
   startSession();
 }
 
+// ---------------------------------------------------------------- stellingen oefenen
+// Vragen als "Stelling 1 … Stelling 2 … Wat is juist?" (en "alleen schakeling 1 / beide / geen") worden hier
+// teruggebracht tot losse beweringen die je elk als juist of onjuist beoordeelt (data/stellingen.json).
+let STELDATA = null;        // id -> { kind, pre, items: [{ t, ok }] }
+let ST = null;              // { ch, ids, idx, marks, done, ok, sid, was }
+function loadStel() {
+  if (STELDATA) return Promise.resolve(STELDATA);
+  return fetch('data/stellingen.json', { cache: 'no-cache' }).then(r => (r.ok ? r.json() : {})).catch(() => ({})).then(d => (STELDATA = d));
+}
+const stelByChapter = () => {
+  const m = {};
+  for (const id of Object.keys(STELDATA || {})) { const c = quiz.chapterOf(id) ?? +id.replace('hs', '').split('-')[0]; (m[c] = m[c] || []).push(id); }
+  return m;
+};
+async function startStel(ch, only) {
+  const all = stelByChapter()[ch] || [];
+  const ids = quiz.shuffle(only || all);
+  try { await quiz.loadChapter(ch); await ensureTheory([ch]); } catch (e) { toast('Laden mislukt: ' + e.message); return; }
+  ST = { ch, ids, idx: 0, marks: {}, done: {}, ok: {}, was: {}, sid: store.uid(), total: all.length };
+  setView('stel');
+}
+function stelCard() {
+  if (!STELDATA) { loadStel().then(() => view === 'setup' && render()); return null; }
+  const by = stelByChapter(), nums = Object.keys(by).map(Number).sort((a, b) => a - b);
+  if (!nums.length) return null;
+  const rec = store.allRecords();
+  return h('section', { class: 'card stelcard' },
+    h('h2', {}, '🧩 Stellingen oefenen'),
+    h('p', { class: 'muted small' }, 'Vragen met “stelling 1 en 2” of “alleen schakeling 1, beide, geen” hebben vaak steeds dezelfde antwoorden. Hier beoordeel je elke bewering afzonderlijk als juist of onjuist, zodat je niet op het antwoordpatroon kunt gokken. Kies een hoofdstuk; alleen deze vragen komen aan bod.'),
+    h('div', { class: 'stelchips' }, nums.map(n => {
+      const ids = by[n], steady = ids.filter(i => rec[i] && rec[i].a > 0 && store.boxOf(rec[i]) >= STEVIG).length;
+      return h('button', { class: 'stelchip', onclick: () => startStel(n) },
+        h('b', {}, `H${n}`), h('span', { class: 'muted small' }, ` ${chapterTitle(n)}`), h('span', { class: 'badge' }, `${ids.length} vragen`), h('span', { class: 'badge green' }, `${steady}/${ids.length} stevig`));
+    })));
+}
+const wnorm = w => w.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
+function diffMarks(text, other) {
+  const set = new Set(other.split(/\s+/).map(wnorm).filter(Boolean));
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length < 3 || words.filter(w => set.has(wnorm(w))).length / words.length < 0.4) return text;   // te verschillend: niets markeren
+  const out = [];
+  words.forEach((w, i) => { out.push(set.has(wnorm(w)) ? w : h('mark', {}, w), i < words.length - 1 ? ' ' : ''); });
+  return out;
+}
+function viewStel() {
+  if (!ST) return viewSetup();
+  if (ST.idx >= ST.ids.length) {
+    const good = ST.ids.filter(i => ST.ok[i]), bad = ST.ids.filter(i => ST.done[i] && !ST.ok[i]);
+    return h('div', {},
+      h('h1', {}, `Stellingen H${ST.ch}: klaar`),
+      h('div', { class: 'card' },
+        h('p', { class: 'stem' }, `${good.length} van ${ST.ids.length} vragen helemaal goed.`),
+        bad.length ? h('p', { class: 'muted' }, `${bad.length} ${bad.length === 1 ? 'vraag had' : 'vragen hadden'} minstens één verkeerde beoordeling. Die zitten nu in de foutenvijver en komen terug in de herhaling.`) : h('p', {}, 'Alles goed! 🎉'),
+        h('div', { class: 'actions' },
+          bad.length > 0 && h('button', { class: 'primary', onclick: () => startStel(ST.ch, bad) }, `Foute vragen opnieuw (${bad.length})`),
+          h('button', { onclick: () => startStel(ST.ch) }, 'Alles opnieuw'),
+          h('button', { class: 'ghost', onclick: () => { ST = null; setView('setup'); } }, 'Terug naar Oefenen'))));
+  }
+  const id = ST.ids[ST.idx], q = quiz.QMAP.get(id), d = STELDATA[id];
+  if (!q || !d) { ST.idx++; return viewStel(); }
+  const m = ST.marks[id] = ST.marks[id] || [null, null], done = !!ST.done[id], fig = d.kind === 'fig';
+  const [yes, no] = fig ? ['Ja', 'Nee'] : ['Juist', 'Onjuist'];
+  const ready = m[0] !== null && m[1] !== null;
+  const setMark = (k, v) => { if (done) return; m[k] = v; render(); };
+  const check = () => {
+    const ok = d.items.every((it, k) => m[k] === it.ok);
+    const r0 = store.record(id); ST.was[id] = { box: r0 ? store.boxOf(r0) : 0, pond: store.isPond(id) };
+    ST.done[id] = true; ST.ok[id] = ok;
+    store.recordAnswer(id, ok, 'practice', ST.sid);
+    render();
+  };
+  const next = h('button', { class: 'primary', onclick: () => { ST.idx++; render(); window.scrollTo(0, 0); } }, ST.idx === ST.ids.length - 1 ? 'Afronden' : 'Volgende vraag →');
+  if (done) queueMicrotask(() => next.focus({ preventScroll: true }));
+  const rows = d.items.map((it, k) => {
+    const mk = m[k], right = done && mk === it.ok;
+    const btn = (v, label) => h('button', { class: 'jnbtn' + (mk === v ? ' on' : '') + (done ? (v === it.ok ? ' right' : (mk === v ? ' wrong' : ' dim')) : ''), disabled: done, onclick: () => setMark(k, v) }, label);
+    const other = d.items[1 - k].t;
+    return h('div', { class: 'stelitem' + (done ? (right ? ' ok' : ' no') : '') },
+      h('div', { class: 'stelnum' }, fig ? '' : `Stelling ${k + 1}`),
+      h('p', { class: 'steltxt' }, done && !fig ? diffMarks(it.t, other) : it.t),
+      h('div', { class: 'jn' }, btn(true, yes), btn(false, no)),
+      done && h('p', { class: 'muted small stelres' }, right ? '✅ ' : '❌ ', fig ? (it.ok ? 'Hier klopt dit.' : 'Hier klopt dit niet.') : (it.ok ? 'Deze stelling is juist.' : 'Deze stelling is onjuist.')));
+  });
+  const opt = q.options.find(o => o.id === q.answer);
+  const allOk = ST.ok[id];
+  return h('div', {},
+    h('div', { class: 'qhead' },
+      h('span', { class: 'qmeta' }, `Stellingen H${ST.ch} · vraag ${ST.idx + 1} van ${ST.ids.length} · opgave ${q.chapter}-${q.number}`),
+      h('button', { class: 'ghost small', onclick: () => { ST = null; setView('setup'); } }, 'Stoppen')),
+    h('div', { class: 'progress', role: 'progressbar', 'aria-valuemin': 0, 'aria-valuemax': ST.ids.length, 'aria-valuenow': ST.idx + (done ? 1 : 0) },
+      h('i', { style: `width:${pct(ST.idx + (done ? 1 : 0), ST.ids.length)}%` })),
+    h('div', { class: 'card stel', style: 'margin-top:1rem' },
+      !done && h('p', { class: 'muted small qstatus' }, vraagStatus(id)),
+      d.pre && h('p', { class: 'stem' }, d.pre),
+      fig && figures(q),
+      h('p', { class: 'muted small' }, fig ? 'Voor welke van de twee geldt dit? Beoordeel elke optie apart.' : 'Beoordeel elke stelling apart.'),
+      rows,
+      done && h('div', { class: 'banner ' + (allOk ? 'ok' : 'no'), role: 'status' },
+        allOk ? '✅ Beide goed!' : '❌ Niet helemaal goed.', ` In de echte vraag is dat antwoord ${q.answer}: ${opt ? opt.text.replace(/[.;:]+$/, '') : ''}.`,
+        !allOk ? ' Toegevoegd aan de foutenvijver.' : (ST.was[id] && ST.was[id].pond ? ' Uit de foutenvijver gehaald 🎉' : '')),
+      done && ST.was[id] && h('p', { class: 'muted small qstatus' }, statusAfter(id, ST.was[id], allOk)),
+      done && explanation(q, !allOk),
+      done && theoryLinks(q, !allOk),
+      original(q),
+      h('div', { class: 'actions' }, done ? next : h('button', { class: 'primary', disabled: !ready, onclick: check }, ready ? 'Controleren' : 'Beoordeel beide'))));
+}
+
 function viewSetup() {
   const p = store.getPrefs();
   const avail = chapters.filter(c => c.count > 0);
@@ -391,6 +498,7 @@ function viewSetup() {
     goalCard(),
     findCard(),
     flaggedCard(),
+    stelCard(),
     h('p', { class: 'muted' }, 'Kies de onderdelen, de modus en start. Je voortgang wordt in deze browser bewaard; via “Synchroniseren” neem je hem mee naar een ander apparaat.'),
 
     h('section', { class: 'card' },

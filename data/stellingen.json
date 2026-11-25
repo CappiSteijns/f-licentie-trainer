@@ -1,0 +1,562 @@
+{
+ "hs14-46": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "met een antennedraad evenwijdig aan het aardoppervlak wordt een verticaal gepolariseerde golf opgewekt",
+    "ok": false
+   },
+   {
+    "t": "met een antennedraad evenwijdig aan het aardoppervlak wordt een horizontaal gepolariseerde golf opgewekt",
+    "ok": true
+   }
+  ]
+ },
+ "hs14-62": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "de antennewinst van een gevouwen dipool is groter dan die van een enkele",
+    "ok": false
+   },
+   {
+    "t": "de antennewinst van een 12-elements Yagi-antenne is groter dan die van een 6- elements Yagi-antenne.",
+    "ok": true
+   }
+  ]
+ },
+ "hs14-67": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "het aan de voorzijde van een gevouwen dipool uitgezonden vermogen is groter dan het aan de achterzijde uitgezonden vermogen;",
+    "ok": false
+   },
+   {
+    "t": "de voor/achterverhouding van een gevouwen dipool is groter dan die van een Yagi -antenne.",
+    "ok": false
+   }
+  ]
+ },
+ "hs14-82": {
+  "kind": "stelling",
+  "pre": "De antenne is ontworpen voor de 80- en 40-meter amateurband. In de antenne zijn 2 gelijke “traps” opgenomen.",
+  "items": [
+   {
+    "t": "de “traps” gedragen zich op 40 meter als een sperfilter waardoor de eindstukken van de antenne niet meewerken.",
+    "ok": true
+   },
+   {
+    "t": "de “traps” gedragen zich op 80 meter als een capacitieve reactantie, waardoor beide eindstukken worden aangekoppeld.",
+    "ok": false
+   }
+  ]
+ },
+ "hs14-89": {
+  "kind": "stelling",
+  "pre": "Getekend zijn het stralingsdiagram van een enkele dipool en dat van een dipool met parasitaire reflector.",
+  "items": [
+   {
+    "t": "Diagram A is van een dipool met parasitaire reflector. Diagram B is van een enkele dipool.",
+    "ok": true
+   },
+   {
+    "t": "De voor/achterverhouding van de dipool met reflector is groter dan die van de dipool.",
+    "ok": true
+   }
+  ]
+ },
+ "hs14-135": {
+  "kind": "fig",
+  "pre": "De coaxiale kabels hebben een karakteristieke impedantie van 70 Ω. De elektrische lengte is aangegeven. De zenders moeten met 50 Ω worden belast. Aanpassing wordt verkregen:",
+  "items": [
+   {
+    "t": "Opstelling 1",
+    "ok": false
+   },
+   {
+    "t": "Opstelling 2",
+    "ok": true
+   }
+  ]
+ },
+ "hs14-138": {
+  "kind": "fig",
+  "pre": "De staandegolfmeter is gemaakt voor 50 Ω. De antenne-aanpassingseenheid (ATU) wordt zo afgeregeld dat de staandegolfmeter (SGM) 1 aanwijst. Er is nu een staandegolfverhouding van 1 bereikt in",
+  "items": [
+   {
+    "t": "Kabel 1",
+    "ok": false
+   },
+   {
+    "t": "Kabel 2",
+    "ok": true
+   }
+  ]
+ },
+ "hs14-139": {
+  "kind": "fig",
+  "pre": "De staandegolfmeter is gemaakt voor 50 Ω. De antenne-aanpassingseenheid (ATU) wordt zo afgeregeld dat de staandegolfmeter (SGM) 1 aanwijst. Er is nu een staandegolfverhouding van 1 bereikt in",
+  "items": [
+   {
+    "t": "Kabel 1",
+    "ok": true
+   },
+   {
+    "t": "Kabel 2",
+    "ok": true
+   }
+  ]
+ },
+ "hs14-140": {
+  "kind": "fig",
+  "pre": "De staandegolfmeter (SGM) is gemaakt voor 50 ohm. De antenne-aanpassingseenheid (ATU) wordt zo afgeregeld dat de staandegolfmeter 1 aanwijst. In welke kabel is nu een staandegolfverhouding van 1 bereikt?",
+  "items": [
+   {
+    "t": "Kabel 1",
+    "ok": true
+   },
+   {
+    "t": "Kabel 2",
+    "ok": false
+   }
+  ]
+ },
+ "hs14-141": {
+  "kind": "fig",
+  "pre": "De staandegolfmeter (SGM) is gemaakt voor 50 Ω. De antenne-aanpassingseenheid (ATU) wordt zo afgeregeld dat de staandegolfmeter 1 aanwijst. Er is nu een staandegolfverhouding van 1 bereikt in:",
+  "items": [
+   {
+    "t": "Kabel 1",
+    "ok": true
+   },
+   {
+    "t": "Kabel 2",
+    "ok": false
+   }
+  ]
+ },
+ "hs14-184": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "de “MUF” is afhankelijk van het zendvermogen",
+    "ok": false
+   },
+   {
+    "t": "de “MUF” is onafhankelijk van het aantal zonnevlekken",
+    "ok": false
+   }
+  ]
+ },
+ "hs14-185": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "de “MUF” is afhankelijk van jaargetijde en uur van de dag",
+    "ok": true
+   },
+   {
+    "t": "de “MUF” is onafhankelijk van afstand en jaargetijde",
+    "ok": false
+   }
+  ]
+ },
+ "hs6-24": {
+  "kind": "fig",
+  "pre": "De spoelen zijn niet inductief gekoppeld. Een waarde van 200 mH wordt bereikt met:",
+  "items": [
+   {
+    "t": "Schakeling 1",
+    "ok": true
+   },
+   {
+    "t": "Schakeling 2",
+    "ok": false
+   }
+  ]
+ },
+ "hs9-1": {
+  "kind": "stelling",
+  "pre": "In een in klasse A ingestelde LF-penthode geldt:",
+  "items": [
+   {
+    "t": "het schermrooster is positief ten opzichte van de kathode",
+    "ok": true
+   },
+   {
+    "t": "het vangrooster is positief ten opzichte van de kathode",
+    "ok": false
+   }
+  ]
+ },
+ "hs9-10": {
+  "kind": "stelling",
+  "pre": "In een in klasse A ingestelde triode-versterker geldt:",
+  "items": [
+   {
+    "t": "de anode is positief ten opzichte van de kathode",
+    "ok": true
+   },
+   {
+    "t": "het stuurrooster is positief ten opzichte van de kathode",
+    "ok": false
+   }
+  ]
+ },
+ "hs10-27": {
+  "kind": "stelling",
+  "pre": "De schakeling werkt als overtone-oscillator.",
+  "items": [
+   {
+    "t": "de kring is afgestemd op de tweede harmonische van het kristal",
+    "ok": false
+   },
+   {
+    "t": "het kristal werkt in serie-resonantie",
+    "ok": false
+   }
+  ]
+ },
+ "hs7-29": {
+  "kind": "fig",
+  "pre": "In de schakeling zal:",
+  "items": [
+   {
+    "t": "Lamp 1 branden",
+    "ok": true
+   },
+   {
+    "t": "Lamp 2 branden",
+    "ok": false
+   }
+  ]
+ },
+ "hs8-48": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "de drainstroom van een FET is afhankelijk van de gatespanning",
+    "ok": true
+   },
+   {
+    "t": "de drainstroom van een FET is praktisch onafhankelijk van de drainspanning",
+    "ok": true
+   }
+  ]
+ },
+ "hs8-52": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "De anodestroom van een triode is afhankelijk van de roosterspanning.",
+    "ok": true
+   },
+   {
+    "t": "De anodestroom van een triode is afhankelijk van de anodespanning",
+    "ok": true
+   }
+  ]
+ },
+ "hs8-58": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "De anode-roostercapaciteit van een triode is veel kleiner dan van een penthode",
+    "ok": false
+   },
+   {
+    "t": "De elektronenstroom in een triode loopt van het rooster naar de anode.",
+    "ok": false
+   }
+  ]
+ },
+ "hs4-24": {
+  "kind": "fig",
+  "pre": "Een waarde van 340 pF, gemeten tussen de aansluitklemmen, wordt bereikt met:",
+  "items": [
+   {
+    "t": "Schakeling 1",
+    "ok": false
+   },
+   {
+    "t": "Schakeling 2",
+    "ok": false
+   }
+  ]
+ },
+ "hs4-25": {
+  "kind": "fig",
+  "pre": "Een waarde van 200 pF wordt bereikt met:",
+  "items": [
+   {
+    "t": "Schakeling 1",
+    "ok": false
+   },
+   {
+    "t": "Schakeling 2",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-13": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een dubbelzijband-AM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is A1A",
+    "ok": false
+   },
+   {
+    "t": "Een FM-zender wordt gemoduleerd met datasignalen. De klasse van uitzending is F3D.",
+    "ok": false
+   }
+  ]
+ },
+ "hs18-17": {
+  "kind": "stelling",
+  "pre": "Bij overtreding van de “Voorschriften en Beperkingen” is de Minister van Economische Zaken bevoegd:",
+  "items": [
+   {
+    "t": "U een geheel of gedeeltelijk zendverbod op te leggen;",
+    "ok": true
+   },
+   {
+    "t": "Uw zendinstallatie te vernietigen",
+    "ok": false
+   }
+  ]
+ },
+ "hs18-22": {
+  "kind": "stelling",
+  "pre": "Bij onderzoek naar aanleiding van een klacht blijkt dat uw amateurzendapparaat storing veroorzaakt in een mobilofoonkanaal van de politie. De Minister van Economische Zaken is in dit geval bevoegd:",
+  "items": [
+   {
+    "t": "Het amateurzendapparaat in beslag te nemen en op uw kosten te vernietigen",
+    "ok": false
+   },
+   {
+    "t": "Een geheel of gedeeltelijk zendverbod op te leggen.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-41": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een enkelzijband zender met onderdrukte draaggolf wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is J3B.",
+    "ok": false
+   },
+   {
+    "t": "Een FM-zender zendt een telegrafiesignaal uit, bestemd voor automatische ontvangst. De klasse van uitzending is F1B.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-44": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een FM-zender wordt gebruikt voor het uitzenden van een digitaal TV-signaal. De klasse van uitzending is F1D.",
+    "ok": true
+   },
+   {
+    "t": "Een enkelzijbandzender met onderdrukte draaggolf wordt gemoduleerd net een spraaksignaal. De klasse van uitzending is J3E.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-45": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een FM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is F3E.",
+    "ok": true
+   },
+   {
+    "t": "Via een enkelzijbandzender met onderdrukte draaggolf worden met behulp van een hulpdraaggolf met de hand geseinde morsetekens verzonden. De klasse van uitzending is J2A.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-49": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een enkelzijbandzender met onderdrukte draaggolf wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is G3E.",
+    "ok": false
+   },
+   {
+    "t": "Een FM-zender wordt gebruikt voor het uitzenden van een analoog TV-signaal. De klasse van uitzending is F1D",
+    "ok": false
+   }
+  ]
+ },
+ "hs18-52": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een FM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is F3E.",
+    "ok": true
+   },
+   {
+    "t": "Via een enkelzijbandzender met onderdrukte draaggolf worden met behulp van een hulpdraaggolf met de hand geseinde morsetekens verzonden. De klasse van uitzending is J2A.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-55": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een dubbelzijband AM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is F3E.",
+    "ok": false
+   },
+   {
+    "t": "Een FM-zender zendt een telegrafiesignaal uit, bestemd voor automatische ontvangst. De klasse van uitzending is F1B.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-57": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een enkelzijbandzender met onderdrukte draaggolf wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is J3E.",
+    "ok": true
+   },
+   {
+    "t": "Een FM-zender zendt datasignalen uit. De klasse van uitzending is F1D.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-60": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een FM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is F2A",
+    "ok": false
+   },
+   {
+    "t": "Een enkelzijbandzender met onderdrukte draaggolf wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is J2B",
+    "ok": false
+   }
+  ]
+ },
+ "hs18-62": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een dubbelzijband AM-zender zendt een muzieksignaal uit. De klasse van uitzending is A3C.",
+    "ok": false
+   },
+   {
+    "t": "Via een FM-zender worden met de hand geseinde morsesignalen verzonden. De klasse van uitzending is F1E.",
+    "ok": false
+   }
+  ]
+ },
+ "hs18-65": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een dubbelzijband AM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is A3E.",
+    "ok": true
+   },
+   {
+    "t": "In een zender wordt fasemodulatie toegepast voor het uitzenden van een datakanaal. De klasse van uitzending is G3E.",
+    "ok": false
+   }
+  ]
+ },
+ "hs18-73": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "Een dubbelzijband AM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is J3E",
+    "ok": false
+   },
+   {
+    "t": "Een FM-zender wordt gemoduleerd met een spraaksignaal. De klasse van uitzending is F3E.",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-74": {
+  "kind": "stelling",
+  "pre": "De Amateurdienst wordt uitgeoefend door bevoegde personen:",
+  "items": [
+   {
+    "t": "Die geïnteresseerd zijn in de radiotechniek",
+    "ok": true
+   },
+   {
+    "t": "Met uitsluitend een persoonlijk oogmerk en zonder geldelijke interesse",
+    "ok": true
+   }
+  ]
+ },
+ "hs18-75": {
+  "kind": "stelling",
+  "pre": "",
+  "items": [
+   {
+    "t": "In een zender wordt fasemodulatie toegepast voor het uitzenden van een datakanaal. De klasse van uitzending is G3E",
+    "ok": false
+   },
+   {
+    "t": "Via een enkelzijbandzender met onderdrukte draaggolf worden met behulp van een hulpdraaggolf met de hand geseinde morsetekens uitgezonden. De klasse van uitzending is J2A.",
+    "ok": true
+   }
+  ]
+ },
+ "hs5-84": {
+  "kind": "fig",
+  "pre": "Bij welke schakeling is het spanningsverschil tussen X en Y nul?",
+  "items": [
+   {
+    "t": "Schakeling 1",
+    "ok": true
+   },
+   {
+    "t": "Schakeling 2",
+    "ok": true
+   }
+  ]
+ },
+ "hs5-100": {
+  "kind": "fig",
+  "pre": "Bij welke schakeling is de spanning tussen de punten P en Q nul?",
+  "items": [
+   {
+    "t": "Schakeling 1",
+    "ok": true
+   },
+   {
+    "t": "Schakeling 2",
+    "ok": false
+   }
+  ]
+ }
+}
