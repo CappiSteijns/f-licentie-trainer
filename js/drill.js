@@ -440,6 +440,45 @@ const GEN = {
     const F = x => String(+(x / 1e3).toFixed(3)).replace('.', ',') + ' kHz';
     return { txt: true, q: `In een EZB-zender is de draaggolf ${F(fc)} en de modulatiefrequentie ${F(fm)}. Op welke frequentie komt de ${up ? 'hoge' : 'lage'} zijband terecht?`, a: F(up ? fc + fm : fc - fm), wrong: [F(up ? fc - fm : fc + fm), F(fc), F(fm), F(fc + 2 * fm)], how: up ? 'hoge zijband = draaggolf + modulatiefrequentie' : 'lage zijband = draaggolf − modulatiefrequentie' };
   },
+  spiegel() {
+    const mf = pick([455e3, 10.7e6, 9e6, 450e3, 1e6, 5.5e6]), f = pick([3.7e6, 7.1e6, 14.2e6, 21.3e6, 28.5e6, 145.5e6, 1e6, 800e3]);
+    const F = x => String(+(x / 1e6).toFixed(4)).replace('.', ',') + ' MHz';
+    const kind = pick(['osc', 'spiegel']);
+    return { txt: true, q: `Een superheterodyne-ontvanger met een middenfrequentie van ${F(mf)} is afgestemd op ${F(f)}. De oscillator werkt boven de ontvangfrequentie. ${kind === 'osc' ? 'Op welke frequentie werkt de oscillator?' : 'Wat is de spiegelfrequentie?'}`, a: F(kind === 'osc' ? f + mf : f + 2 * mf), wrong: [F(kind === 'osc' ? f - mf : f - 2 * mf), F(kind === 'osc' ? f + 2 * mf : f + mf), F(kind === 'osc' ? f - 2 * mf : f - mf), F(f + mf / 2)], how: kind === 'osc' ? 'f_osc = f_ontvangst + MF' : 'spiegelfrequentie = f_ontvangst + 2 · MF (oscillator boven de ontvangfrequentie)' };
+  },
+  bfo() {
+    const mf = pick([455e3, 465e3, 756e3, 9e6, 10.7e6]), tone = pick([500, 600, 700, 800, 1000]);
+    const F = x => String(+(x / 1e3).toFixed(3)).replace('.', ',') + ' kHz';
+    return { txt: true, q: `Een CW-ontvanger heeft een middenfrequentie van ${F(mf)}. Je wilt een toon van ${tone} Hz horen. Op welke frequentie moet de zwevingsoscillator (BFO) staan (boven de MF)?`, a: F(mf + tone), wrong: [F(mf), F(mf + 2 * tone), F(tone), F(mf + tone * 10)], how: `BFO = MF + toonhoogte; het verschil met de MF is de hoorbare toon` };
+  },
+  smet() {
+    const base = pick([0, 10, 20, -10]), r = pick([[10, 1], [100, 10], [100, 25], [4, 1], [20, 5], [1, 4], [1, 10]]), d = 10 * Math.log10(r[1] / r[0]), res = base + d;
+    const L = x => { const r = Math.round(x); return r === 0 ? 'S9' : r > 0 ? `S9 + ${r} dB` : `S9 − ${-r} dB`; };
+    return { txt: true, q: `Het signaal van een station wordt ontvangen met ${L(base)}. Het station verlaagt zijn zendvermogen van ${r[0]} W naar ${r[1]} W. Wat wijst de S-meter nu ongeveer aan?`, a: L(res), wrong: [L(base - d), L(base), L(base + d * 2), L(base + d / 2)], how: `Δ = 10 · log(${r[1]}/${r[0]}) = ${num(d)} dB; 1 S-punt = 6 dB` };
+  },
+  nyq() {
+    const f = pick([3e3, 3.4e3, 4e3, 5e3, 10e3, 15e3, 20e3]);
+    return { q: `Een signaal met een hoogste frequentie van ${val(f, 'Hz')} wordt bemonsterd. Wat is de minimale bemonsteringsfrequentie volgens Nyquist-Shannon?`, a: 2 * f, unit: 'Hz', wrong: [f, f / 2, 4 * f, f * f / 1e3], how: 'fs ≥ 2 · fmax' };
+  },
+  adcb() {
+    const n = pick([4, 6, 8, 10, 12, 14, 16]);
+    if (Math.random() < 0.5) return { txt: true, q: `Een ADC heeft ${n} bits. Hoeveel verschillende waarden kan hij onderscheiden?`, a: 2 ** n, wrong: [n * n, 2 * n, 2 ** (n - 1), 2 ** n - 1], how: `2ⁿ = 2^${n}` };
+    return { txt: true, q: `Ongeveer hoeveel dB dynamisch bereik heeft een ADC van ${n} bits?`, a: 6 * n, wrong: [3 * n, 10 * n, 20 * n, 2 ** n], how: `ongeveer 6 dB per bit: ${n} · 6 dB` };
+  },
+  pllN() {
+    const fr = pick([5e3, 6.25e3, 10e3, 12.5e3, 25e3]), N = pick([200, 400, 800, 5760, 11600, 12000]), fo = fr * N;
+    const rev = Math.random() < 0.5;
+    return rev ? { q: `Een PLL-synthesizer heeft een referentiefrequentie van ${val(fr, 'Hz')} en een deler van ${N}. Op welke frequentie werkt de VCO bij een gelockte lus?`, a: fo, unit: 'Hz', wrong: [fr / N, fr * N * 2, fr + N, fo / 2], how: 'f_VCO = N · f_ref' }
+      : { q: `De VCO van een PLL moet ${val(fo, 'Hz')} opwekken met een rasterstap van ${val(fr, 'Hz')}. Wat is de deelfactor van de deler?`, a: N, unit: '', wrong: [N * 2, N / 2, N + 1, Math.round(fo / 1e3)], how: 'N = f_VCO / f_ref', txt: true };
+  },
+  bwq() {
+    const f = pick([455e3, 7e6, 14e6, 145e6, 10.7e6]), Q = pick([20, 50, 100, 200]);
+    return { q: `Een afgestemde kring op ${val(f, 'Hz')} heeft een Q van ${Q}. Wat is de −3 dB-bandbreedte?`, a: f / Q, unit: 'Hz', wrong: [f * Q, f / (2 * Q), f / Q / 10, 2 * f / Q], how: `B = f / Q = ${num(f)} / ${Q}` };
+  },
+  ruisg() {
+    const a = pick([30, 40, 20, 25]), d = pick([3, 6, 7, 10, 13]), b = a - d, F = Math.pow(10, d / 10);
+    return { txt: true, q: `De signaal/ruisverhouding aan de ingang van een ontvanger is ${a} dB en aan de uitgang ${b} dB. Hoe groot is het ruisgetal in dB?`, a: d + ' dB', wrong: [(a + b) + ' dB', b + ' dB', a + ' dB', (d * 2) + ' dB'], how: `F (dB) = S/N in − S/N uit = ${a} − ${b}` };
+  },
   ncomb() {
     const n = pick([3, 4, 5, 6, 8, 10, 12]);
     if (Math.random() < 0.5) return { txt: true, q: `Hoeveel verschillende combinaties kun je maken met ${n} bits?`, a: 2 ** n, wrong: [2 * n, n * n, 2 ** n - 1, 2 ** (n + 1)], how: `2ⁿ = 2^${n}` };

@@ -4,7 +4,7 @@
  "sections": [
   {
    "id": "s1",
-   "title": "Wat leer je in dit hoofdstuk?",
+   "title": "Wat leer je in dit hoofdstuk",
    "lvl": 1,
    "pages": [
     "p004",
@@ -24,56 +24,256 @@
    "title": "Antennes en transmissielijnen",
    "lvl": 1,
    "pages": [
+    "p005"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Elektromagnetisch veld",
+   "lvl": 2,
+   "pages": [
     "p005",
+    "p006"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Elektromagnetische golven: voortplantingssnelheid en golflengte",
+   "lvl": 2,
+   "pages": [
     "p006",
     "p007",
+    "p008"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "De halve golf dipoolantenne met voeding in het midden",
+   "lvl": 2,
+   "pages": [
     "p008",
     "p009",
     "p010",
+    "p011"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Vervangingsschema van een dipoolantenne",
+   "lvl": 2,
+   "pages": [
     "p011",
+    "p012"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Transmissielijnen",
+   "lvl": 2,
+   "pages": [
     "p012",
     "p013",
+    "p014"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Symmetrische en asymmetrische transmissielijnen",
+   "lvl": 2,
+   "pages": [
     "p014",
     "p015",
+    "p016"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Koppeling van een symmetrische transmissielijn aan de antenne",
+   "lvl": 2,
+   "pages": [
     "p016",
+    "p017"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "De transmissielijn als afgestemde kring en impedantietransformator",
+   "lvl": 2,
+   "pages": [
     "p017",
+    "p018"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "De halve-golf transmissielijn.",
+   "lvl": 2,
+   "pages": [
     "p018",
+    "p019"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Baluns",
+   "lvl": 2,
+   "pages": [
     "p019",
+    "p020"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Baluns van coaxkabel",
+   "lvl": 2,
+   "pages": [
     "p020",
     "p021",
     "p022",
     "p023",
     "p024",
+    "p025"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "Gewikkelde baluns",
+   "lvl": 2,
+   "pages": [
     "p025",
     "p026",
+    "p027"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "De eindgevoede dipoolantenne (“Zeppelin antenne”)",
+   "lvl": 2,
+   "pages": [
+    "p027"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "Staande-golf-verhouding (“Standing Wave Ratio”, SWR)",
+   "lvl": 2,
+   "pages": [
     "p027",
     "p028",
     "p029",
     "p030",
     "p031",
+    "p032"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Aanpassing van de zender aan transmissielijn en antenne",
+   "lvl": 2,
+   "pages": [
     "p032",
     "p033",
     "p034",
+    "p035"
+   ]
+  },
+  {
+   "id": "s19",
+   "title": "De antenne-aanpassingseenheid of Antenna Tuning Unit (ATU)",
+   "lvl": 2,
+   "pages": [
     "p035",
     "p036",
     "p037",
+    "p038"
+   ]
+  },
+  {
+   "id": "s20",
+   "title": "Leidingverliezen",
+   "lvl": 2,
+   "pages": [
     "p038",
+    "p039"
+   ]
+  },
+  {
+   "id": "s21",
+   "title": "De golfgeleider",
+   "lvl": 2,
+   "pages": [
     "p039",
+    "p040"
+   ]
+  },
+  {
+   "id": "s22",
+   "title": "Theorie en werkelijkheid",
+   "lvl": 2,
+   "pages": [
     "p040",
     "p041"
    ]
   },
   {
-   "id": "s4",
+   "id": "s23",
    "title": "Propagatie van elektromagnetische golven",
    "lvl": 1,
    "pages": [
+    "p041"
+   ]
+  },
+  {
+   "id": "s24",
+   "title": "Propagatie van elektromagnetische golven: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p041"
+   ]
+  },
+  {
+   "id": "s25",
+   "title": "Polarisatierichting van EM-golven",
+   "lvl": 2,
+   "pages": [
+    "p041"
+   ]
+  },
+  {
+   "id": "s26",
+   "title": "Zichtverbindingen",
+   "lvl": 2,
+   "pages": [
     "p041",
     "p042",
+    "p043"
+   ]
+  },
+  {
+   "id": "s27",
+   "title": "Directe golf, grondgolf of bodemgolf en ruimtegolf",
+   "lvl": 2,
+   "pages": [
     "p043",
+    "p044"
+   ]
+  },
+  {
+   "id": "s28",
+   "title": "Propagatie van VHF- en UHF-golven",
+   "lvl": 2,
+   "pages": [
     "p044",
     "p045",
     "p046",
+    "p047"
+   ]
+  },
+  {
+   "id": "s29",
+   "title": "Propagatie via de ionosfeer",
+   "lvl": 2,
+   "pages": [
     "p047",
     "p048",
     "p049",
@@ -83,46 +283,110 @@
    ]
   },
   {
-   "id": "s5",
+   "id": "s30",
    "title": "Antennevariaties",
    "lvl": 1,
+   "pages": [
+    "p052"
+   ]
+  },
+  {
+   "id": "s31",
+   "title": "Antennevariaties: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p052"
+   ]
+  },
+  {
+   "id": "s32",
+   "title": "Afstand en verzwakking",
+   "lvl": 2,
    "pages": [
     "p052",
     "p053",
     "p054",
+    "p055"
+   ]
+  },
+  {
+   "id": "s33",
+   "title": "Verticale antennes (groundplane)",
+   "lvl": 2,
+   "pages": [
     "p055",
     "p056",
+    "p057"
+   ]
+  },
+  {
+   "id": "s34",
+   "title": "De gevouwen dipool",
+   "lvl": 2,
+   "pages": [
+    "p057"
+   ]
+  },
+  {
+   "id": "s35",
+   "title": "Antennes met parasitaire elementen",
+   "lvl": 2,
+   "pages": [
     "p057",
     "p058",
+    "p059"
+   ]
+  },
+  {
+   "id": "s36",
+   "title": "Dipool met sperkringen",
+   "lvl": 2,
+   "pages": [
     "p059",
     "p060",
+    "p061"
+   ]
+  },
+  {
+   "id": "s37",
+   "title": "Apertuur-antennes",
+   "lvl": 2,
+   "pages": [
     "p061",
     "p062",
     "p063",
+    "p064"
+   ]
+  },
+  {
+   "id": "s38",
+   "title": "Horizontale en verticale stralingsdiagrammen",
+   "lvl": 2,
+   "pages": [
     "p064",
     "p065",
     "p066",
     "p067",
     "p068",
+    "p069"
+   ]
+  },
+  {
+   "id": "s39",
+   "title": "De effectief ontvangende oppervlakte van een antenne",
+   "lvl": 2,
+   "pages": [
     "p069",
     "p070",
     "p071"
    ]
   },
   {
-   "id": "s6",
+   "id": "s40",
    "title": "BIJLAGE: FREQUENTIEGEBIEDEN EN AMATEURBANDEN",
    "lvl": 1,
    "pages": [
     "p071",
-    "p072"
-   ]
-  },
-  {
-   "id": "s7",
-   "title": "Uitwerkingen van de opgaven",
-   "lvl": 1,
-   "pages": [
     "p072",
     "p073",
     "p074",
@@ -136,6 +400,14 @@
     "p082",
     "p083",
     "p084",
+    "p085"
+   ]
+  },
+  {
+   "id": "s41",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
     "p085",
     "p086",
     "p087",

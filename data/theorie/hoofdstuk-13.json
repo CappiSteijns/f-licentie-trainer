@@ -4,7 +4,7 @@
  "sections": [
   {
    "id": "s1",
-   "title": "Wat leer je in dit hoofdstuk?",
+   "title": "Wat leer je in dit hoofdstuk",
    "lvl": 1,
    "pages": [
     "p004",
@@ -16,10 +16,50 @@
    "title": "Ontvangers",
    "lvl": 1,
    "pages": [
+    "p005"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Ontvangers: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p005"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "De kristalontvanger: de eenvoudigste",
+   "lvl": 2,
+   "pages": [
     "p005",
     "p006",
+    "p007"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Rechtuitontvangers",
+   "lvl": 2,
+   "pages": [
     "p007",
+    "p008"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "De regeneratieve ontvanger",
+   "lvl": 2,
+   "pages": [
     "p008",
+    "p009"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "De superheterodyne-ontvanger",
+   "lvl": 2,
+   "pages": [
     "p009",
     "p010",
     "p011",
@@ -27,9 +67,33 @@
     "p013",
     "p014",
     "p015",
+    "p016"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Frequentiefilters voor MF",
+   "lvl": 2,
+   "pages": [
     "p016",
     "p017",
+    "p018"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Ongewenste mengproducten in een (dubbel)super",
+   "lvl": 2,
+   "pages": [
     "p018",
+    "p019"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Enkele begrippen en grootheden bij ontvangers op een rij",
+   "lvl": 2,
+   "pages": [
     "p019",
     "p020",
     "p021",
@@ -39,17 +103,73 @@
    ]
   },
   {
-   "id": "s3",
+   "id": "s11",
    "title": "Detectieschakelingen",
    "lvl": 1,
    "pages": [
+    "p024"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Omhullende-detector (AM)",
+   "lvl": 2,
+   "pages": [
+    "p024"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Detectie van DZB",
+   "lvl": 2,
+   "pages": [
     "p024",
+    "p025"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Detectie van EZB",
+   "lvl": 2,
+   "pages": [
     "p025",
     "p026",
+    "p027"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "USB die LSB wordt (en omgekeerd)",
+   "lvl": 2,
+   "pages": [
     "p027",
     "p028",
     "p029",
+    "p030"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "Detectie van CW-signalen",
+   "lvl": 2,
+   "pages": [
+    "p030"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "De ontvanger voor directe conversie (DC-ontvanger)",
+   "lvl": 2,
+   "pages": [
     "p030",
+    "p031"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Detectie van FM-signalen",
+   "lvl": 2,
+   "pages": [
     "p031",
     "p032",
     "p033",
@@ -59,7 +179,7 @@
    ]
   },
   {
-   "id": "s4",
+   "id": "s19",
    "title": "Transceivers (zendontvangers)",
    "lvl": 1,
    "pages": [
@@ -69,7 +189,7 @@
    ]
   },
   {
-   "id": "s5",
+   "id": "s20",
    "title": "De S-meter",
    "lvl": 1,
    "pages": [
@@ -78,58 +198,186 @@
    ]
   },
   {
-   "id": "s6",
+   "id": "s21",
    "title": "Phase Locked Loop (PLL) of fasevergrendelde lus",
    "lvl": 1,
    "pages": [
+    "p039"
+   ]
+  },
+  {
+   "id": "s22",
+   "title": "Het nut van een PLL",
+   "lvl": 2,
+   "pages": [
     "p039",
+    "p040"
+   ]
+  },
+  {
+   "id": "s23",
+   "title": "Werking",
+   "lvl": 2,
+   "pages": [
     "p040",
+    "p041"
+   ]
+  },
+  {
+   "id": "s24",
+   "title": "De VCO",
+   "lvl": 2,
+   "pages": [
     "p041",
+    "p042"
+   ]
+  },
+  {
+   "id": "s25",
+   "title": "De PLL als FM-detector",
+   "lvl": 2,
+   "pages": [
     "p042",
+    "p043"
+   ]
+  },
+  {
+   "id": "s26",
+   "title": "De PLL als frequentiesynthesizer",
+   "lvl": 2,
+   "pages": [
+    "p043"
+   ]
+  },
+  {
+   "id": "s27",
+   "title": "Zenden met een PLL",
+   "lvl": 2,
+   "pages": [
     "p043",
     "p044"
    ]
   },
   {
-   "id": "s7",
+   "id": "s28",
    "title": "Van analoog naar digitaal en terug",
    "lvl": 1,
    "pages": [
+    "p044"
+   ]
+  },
+  {
+   "id": "s29",
+   "title": "Van analoog naar digitaal en terug: inleiding",
+   "lvl": 2,
+   "pages": [
     "p044",
+    "p045"
+   ]
+  },
+  {
+   "id": "s30",
+   "title": "Bemonstering van analoge signalen",
+   "lvl": 2,
+   "pages": [
     "p045",
+    "p046"
+   ]
+  },
+  {
+   "id": "s31",
+   "title": "Complicaties bij signaalbemonstering",
+   "lvl": 2,
+   "pages": [
     "p046",
     "p047",
     "p048",
+    "p049"
+   ]
+  },
+  {
+   "id": "s32",
+   "title": "De regel van Nyquist-Shannon, aliasing",
+   "lvl": 2,
+   "pages": [
     "p049",
+    "p050"
+   ]
+  },
+  {
+   "id": "s33",
+   "title": "Convolutie",
+   "lvl": 2,
+   "pages": [
+    "p050"
+   ]
+  },
+  {
+   "id": "s34",
+   "title": "Anti-aliasfilter",
+   "lvl": 2,
+   "pages": [
+    "p050"
+   ]
+  },
+  {
+   "id": "s35",
+   "title": "Omzetting van analoog naar digitaal, kwantiseringsruis",
+   "lvl": 2,
+   "pages": [
     "p050",
     "p051",
+    "p052"
+   ]
+  },
+  {
+   "id": "s36",
+   "title": "Signaalbewerking 1: FIR en IIR",
+   "lvl": 2,
+   "pages": [
     "p052",
     "p053",
     "p054",
     "p055",
+    "p056"
+   ]
+  },
+  {
+   "id": "s37",
+   "title": "Signaalbewerking 2: Fourier en het frequentiedomein",
+   "lvl": 2,
+   "pages": [
     "p056",
     "p057",
     "p058",
+    "p059"
+   ]
+  },
+  {
+   "id": "s38",
+   "title": "Directe digitale frequentiesynthese (DDS)",
+   "lvl": 2,
+   "pages": [
     "p059",
+    "p060"
+   ]
+  },
+  {
+   "id": "s39",
+   "title": "Samengevat",
+   "lvl": 2,
+   "pages": [
     "p060",
     "p061",
     "p062"
    ]
   },
   {
-   "id": "s8",
+   "id": "s40",
    "title": "BIJLAGE: FREQUENTIEGEBIEDEN EN AMATEURBANDEN",
    "lvl": 1,
    "pages": [
     "p062",
-    "p063"
-   ]
-  },
-  {
-   "id": "s9",
-   "title": "Uitwerkingen van de opgaven",
-   "lvl": 1,
-   "pages": [
     "p063",
     "p064",
     "p065",
@@ -143,6 +391,14 @@
     "p073",
     "p074",
     "p075",
+    "p076"
+   ]
+  },
+  {
+   "id": "s41",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
     "p076",
     "p077",
     "p078",
@@ -159,8 +415,2010 @@
    ]
   }
  ],
- "qmap": {},
- "formulas": [],
- "cards": [],
- "drill": []
+ "qmap": {
+  "hs13-1": [
+   "s24",
+   "s33"
+  ],
+  "hs13-2": [
+   "s13",
+   "s16"
+  ],
+  "hs13-3": [
+   "s14"
+  ],
+  "hs13-4": [
+   "s13",
+   "s18"
+  ],
+  "hs13-5": [
+   "s14",
+   "s10"
+  ],
+  "hs13-6": [
+   "s16"
+  ],
+  "hs13-7": [
+   "s7"
+  ],
+  "hs13-8": [
+   "s20"
+  ],
+  "hs13-9": [
+   "s10"
+  ],
+  "hs13-10": [
+   "s20"
+  ],
+  "hs13-11": [
+   "s20"
+  ],
+  "hs13-12": [
+   "s10",
+   "s7"
+  ],
+  "hs13-13": [
+   "s16",
+   "s10"
+  ],
+  "hs13-14": [
+   "s10",
+   "s18"
+  ],
+  "hs13-15": [
+   "s10"
+  ],
+  "hs13-16": [
+   "s10",
+   "s20"
+  ],
+  "hs13-17": [
+   "s10"
+  ],
+  "hs13-18": [
+   "s10"
+  ],
+  "hs13-19": [
+   "s10"
+  ],
+  "hs13-20": [
+   "s37",
+   "s6"
+  ],
+  "hs13-21": [
+   "s5"
+  ],
+  "hs13-22": [
+   "s7"
+  ],
+  "hs13-23": [
+   "s4"
+  ],
+  "hs13-24": [
+   "s10",
+   "s4"
+  ],
+  "hs13-25": [
+   "s24"
+  ],
+  "hs13-26": [
+   "s24"
+  ],
+  "hs13-27": [
+   "s4",
+   "s16"
+  ],
+  "hs13-28": [
+   "s4",
+   "s23"
+  ],
+  "hs13-29": [
+   "s10",
+   "s7"
+  ],
+  "hs13-30": [
+   "s10",
+   "s7"
+  ],
+  "hs13-31": [
+   "s20"
+  ],
+  "hs13-32": [
+   "s8"
+  ],
+  "hs13-33": [
+   "s8"
+  ],
+  "hs13-34": [
+   "s10",
+   "s8"
+  ],
+  "hs13-35": [
+   "s18"
+  ],
+  "hs13-36": [
+   "s9"
+  ],
+  "hs13-37": [
+   "s9"
+  ],
+  "hs13-38": [
+   "s9"
+  ],
+  "hs13-39": [
+   "s9"
+  ],
+  "hs13-40": [
+   "s7"
+  ],
+  "hs13-41": [
+   "s10",
+   "s5"
+  ],
+  "hs13-42": [
+   "s25"
+  ],
+  "hs13-43": [
+   "s18"
+  ],
+  "hs13-44": [
+   "s12"
+  ],
+  "hs13-46": [
+   "s4",
+   "s15"
+  ],
+  "hs13-47": [
+   "s18"
+  ],
+  "hs13-48": [
+   "s18"
+  ],
+  "hs13-49": [
+   "s18"
+  ],
+  "hs13-50": [
+   "s7",
+   "s18"
+  ],
+  "hs13-51": [
+   "s13",
+   "s14"
+  ],
+  "hs13-52": [
+   "s7"
+  ],
+  "hs13-53": [
+   "s25"
+  ],
+  "hs13-54": [
+   "s14"
+  ],
+  "hs13-55": [
+   "s14",
+   "s7"
+  ],
+  "hs13-56": [
+   "s18"
+  ],
+  "hs13-57": [
+   "s13",
+   "s16"
+  ],
+  "hs13-58": [
+   "s7"
+  ],
+  "hs13-59": [
+   "s18",
+   "s7"
+  ],
+  "hs13-60": [
+   "s7"
+  ],
+  "hs13-61": [
+   "s18"
+  ],
+  "hs13-62": [
+   "s7"
+  ],
+  "hs13-63": [
+   "s18",
+   "s10"
+  ],
+  "hs13-64": [
+   "s18",
+   "s7"
+  ],
+  "hs13-65": [
+   "s17",
+   "s7"
+  ],
+  "hs13-66": [
+   "s7"
+  ],
+  "hs13-67": [
+   "s7"
+  ],
+  "hs13-68": [
+   "s16",
+   "s7"
+  ],
+  "hs13-69": [
+   "s16",
+   "s7"
+  ],
+  "hs13-70": [
+   "s18",
+   "s7"
+  ],
+  "hs13-71": [
+   "s14"
+  ],
+  "hs13-72": [
+   "s9",
+   "s14"
+  ],
+  "hs13-73": [
+   "s7"
+  ],
+  "hs13-74": [
+   "s20",
+   "s18"
+  ],
+  "hs13-75": [
+   "s7"
+  ],
+  "hs13-76": [
+   "s7"
+  ],
+  "hs13-77": [
+   "s20"
+  ],
+  "hs13-78": [
+   "s10"
+  ],
+  "hs13-79": [
+   "s10",
+   "s7"
+  ],
+  "hs13-80": [
+   "s7"
+  ],
+  "hs13-81": [
+   "s7"
+  ],
+  "hs13-82": [
+   "s7",
+   "s5"
+  ],
+  "hs13-83": [
+   "s7",
+   "s10"
+  ],
+  "hs13-84": [
+   "s16",
+   "s17"
+  ],
+  "hs13-85": [
+   "s3",
+   "s22"
+  ],
+  "hs13-86": [
+   "s22"
+  ],
+  "hs13-87": [
+   "s7"
+  ],
+  "hs13-88": [
+   "s7"
+  ],
+  "hs13-89": [
+   "s5",
+   "s7"
+  ],
+  "hs13-90": [
+   "s5",
+   "s7"
+  ],
+  "hs13-91": [
+   "s7"
+  ],
+  "hs13-92": [
+   "s19",
+   "s7"
+  ],
+  "hs13-93": [
+   "s7"
+  ],
+  "hs13-94": [
+   "s10",
+   "s6"
+  ],
+  "hs13-95": [
+   "s17",
+   "s10"
+  ],
+  "hs13-96": [
+   "s7"
+  ],
+  "hs13-97": [
+   "s7",
+   "s10"
+  ],
+  "hs13-98": [
+   "s16",
+   "s10"
+  ],
+  "hs13-99": [
+   "s7"
+  ],
+  "hs13-100": [
+   "s7"
+  ],
+  "hs13-101": [
+   "s34",
+   "s16"
+  ],
+  "hs13-102": [
+   "s7"
+  ],
+  "hs13-103": [
+   "s7"
+  ],
+  "hs13-104": [
+   "s7"
+  ],
+  "hs13-105": [
+   "s7"
+  ],
+  "hs13-106": [
+   "s7"
+  ],
+  "hs13-107": [
+   "s7"
+  ],
+  "hs13-108": [
+   "s7"
+  ],
+  "hs13-109": [
+   "s7"
+  ],
+  "hs13-110": [
+   "s7"
+  ],
+  "hs13-111": [
+   "s14"
+  ],
+  "hs13-112": [
+   "s7"
+  ],
+  "hs13-113": [
+   "s7"
+  ],
+  "hs13-114": [
+   "s18"
+  ],
+  "hs13-115": [
+   "s18"
+  ],
+  "hs13-116": [
+   "s7"
+  ],
+  "hs13-117": [
+   "s16",
+   "s7"
+  ],
+  "hs13-118": [
+   "s7"
+  ],
+  "hs13-119": [
+   "s7"
+  ],
+  "hs13-120": [
+   "s7",
+   "s4"
+  ],
+  "hs13-121": [
+   "s18"
+  ],
+  "hs13-122": [
+   "s7",
+   "s18"
+  ],
+  "hs13-123": [
+   "s7",
+   "s16"
+  ],
+  "hs13-124": [
+   "s7"
+  ],
+  "hs13-125": [
+   "s7",
+   "s16"
+  ],
+  "hs13-126": [
+   "s7",
+   "s13"
+  ],
+  "hs13-127": [
+   "s6"
+  ],
+  "hs13-128": [
+   "s19",
+   "s12"
+  ],
+  "hs13-129": [
+   "s18"
+  ],
+  "hs13-130": [
+   "s6"
+  ],
+  "hs13-131": [
+   "s18"
+  ],
+  "hs13-132": [
+   "s26"
+  ],
+  "hs13-133": [
+   "s18"
+  ],
+  "hs13-134": [
+   "s18"
+  ],
+  "hs13-135": [
+   "s18",
+   "s10"
+  ],
+  "hs13-136": [
+   "s6"
+  ],
+  "hs13-137": [
+   "s1",
+   "s7"
+  ],
+  "hs13-138": [
+   "s19",
+   "s25"
+  ],
+  "hs13-139": [
+   "s25"
+  ],
+  "hs13-140": [
+   "s27"
+  ],
+  "hs13-141": [
+   "s18"
+  ],
+  "hs13-142": [
+   "s18",
+   "s4"
+  ],
+  "hs13-143": [
+   "s18"
+  ],
+  "hs13-144": [
+   "s5"
+  ],
+  "hs13-145": [
+   "s18"
+  ],
+  "hs13-146": [
+   "s4"
+  ],
+  "hs13-147": [
+   "s12"
+  ],
+  "hs13-148": [
+   "s18",
+   "s7"
+  ],
+  "hs13-149": [
+   "s7"
+  ],
+  "hs13-150": [
+   "s7"
+  ],
+  "hs13-151": [
+   "s18"
+  ],
+  "hs13-152": [
+   "s5"
+  ],
+  "hs13-153": [
+   "s7"
+  ],
+  "hs13-154": [
+   "s25"
+  ],
+  "hs13-155": [
+   "s18"
+  ],
+  "hs13-156": [
+   "s18"
+  ],
+  "hs13-157": [
+   "s30"
+  ],
+  "hs13-158": [
+   "s18",
+   "s5"
+  ],
+  "hs13-159": [
+   "s4"
+  ],
+  "hs13-160": [
+   "s19"
+  ],
+  "hs13-161": [
+   "s22",
+   "s14"
+  ],
+  "hs13-162": [
+   "s18"
+  ],
+  "hs13-163": [
+   "s18",
+   "s5"
+  ],
+  "hs13-164": [
+   "s5",
+   "s7"
+  ],
+  "hs13-165": [
+   "s18"
+  ],
+  "hs13-166": [
+   "s4",
+   "s18"
+  ],
+  "hs13-167": [
+   "s18"
+  ],
+  "hs13-168": [
+   "s10",
+   "s7"
+  ],
+  "hs13-169": [
+   "s26"
+  ],
+  "hs13-170": [
+   "s26"
+  ],
+  "hs13-171": [
+   "s26"
+  ],
+  "hs13-172": [
+   "s26"
+  ],
+  "hs13-173": [
+   "s26"
+  ],
+  "hs13-174": [
+   "s26"
+  ],
+  "hs13-175": [
+   "s26"
+  ],
+  "hs13-176": [
+   "s23",
+   "s26"
+  ],
+  "hs13-177": [
+   "s26"
+  ],
+  "hs13-178": [
+   "s26"
+  ],
+  "hs13-179": [
+   "s23"
+  ],
+  "hs13-180": [
+   "s38"
+  ],
+  "hs13-181": [
+   "s39"
+  ],
+  "hs13-182": [
+   "s34",
+   "s39"
+  ],
+  "hs13-183": [
+   "s38"
+  ],
+  "hs13-184": [
+   "s38"
+  ],
+  "hs13-185": [
+   "s39"
+  ],
+  "hs13-186": [
+   "s35"
+  ],
+  "hs13-187": [
+   "s35"
+  ],
+  "hs13-188": [
+   "s29"
+  ],
+  "hs13-189": [
+   "s32"
+  ],
+  "hs13-190": [
+   "s34"
+  ],
+  "hs13-191": [
+   "s35"
+  ],
+  "hs13-192": [
+   "s35",
+   "s30"
+  ],
+  "hs13-193": [
+   "s29"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Ontvangers",
+   "items": [
+    {
+     "f": "MF = |fosc − fontvangst|",
+     "t": "middenfrequentie"
+    },
+    {
+     "f": "fspiegel = fontvangst ± 2 · MF",
+     "t": "aan de andere kant van de oscillator (met oscillator boven: +)"
+    },
+    {
+     "f": "B = f / Q",
+     "t": "−3 dB-bandbreedte van een kring"
+    },
+    {
+     "f": "fBFO = MF ± toon",
+     "t": "BFO voor CW"
+    }
+   ]
+  },
+  {
+   "title": "Ruis en S-meter",
+   "items": [
+    {
+     "f": "F = (Sin/Nin) / (Suit/Nuit)",
+     "t": "ruisgetal; ideaal 1 (0 dB)"
+    },
+    {
+     "f": "F(dB) = SNR_in(dB) − SNR_uit(dB)",
+     "t": "in dB"
+    },
+    {
+     "f": "1 S-punt = 6 dB",
+     "t": "spanning 2×, vermogen 4×"
+    },
+    {
+     "f": "S9 = 50 µV (HF), 5 µV (VHF/UHF)",
+     "t": "aan 50 Ω"
+    }
+   ]
+  },
+  {
+   "title": "PLL en digitaal",
+   "items": [
+    {
+     "f": "fVCO = N · fref",
+     "t": "PLL-synthesizer; rasterstap = fref"
+    },
+    {
+     "f": "fs ≥ 2 · fmax",
+     "t": "Nyquist-Shannon"
+    },
+    {
+     "f": "aantal niveaus = 2ⁿ",
+     "t": "ADC met n bits; ongeveer 6 dB per bit"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s4",
+   "q": "Wat is een kristalontvanger?",
+   "a": "De eenvoudigste ontvanger: een antenne, een afgestemde kring, een diode als AM-detector en een koptelefoon. Geen voeding of versterker nodig."
+  },
+  {
+   "id": "c2",
+   "sec": "s4",
+   "q": "Hoe werkt de omhullende-detector?",
+   "a": "Een diode laat één fasehelft door; een condensator (met belasting) volgt de toppen: de omhullende, dus het LF-signaal."
+  },
+  {
+   "id": "c3",
+   "sec": "s4",
+   "q": "Waarom zit er een dubbele afstemcondensator in een ontvanger?",
+   "a": "Om twee kringen tegelijk af te stemmen (voor antenne en oscillator of HF-trap)."
+  },
+  {
+   "id": "c4",
+   "sec": "s5",
+   "q": "Wat is een rechtuitontvanger?",
+   "a": "Een ontvanger met HF-versterking, detector en LF-versterker. De selectiviteit moet in de HF-trap zitten en is bij hoge frequenties beperkt."
+  },
+  {
+   "id": "c5",
+   "sec": "s6",
+   "q": "Wat is een regeneratieve ontvanger?",
+   "a": "Een detector met positieve terugkoppeling: de versterking en selectiviteit nemen sterk toe tot vlak voor het oscilleren."
+  },
+  {
+   "id": "c6",
+   "sec": "s7",
+   "q": "Wat is een superheterodyne-ontvanger?",
+   "a": "Een ontvanger die het ontvangen signaal omzet naar een vaste middenfrequentie (MF), waarop selectiviteit en versterking plaatsvinden."
+  },
+  {
+   "id": "c7",
+   "sec": "s7",
+   "q": "Welke trappen heeft een superheterodyne-ontvanger?",
+   "a": "HF-trap, mengtrap met oscillator, MF-versterker met filter, detector, LF-versterker en AVR."
+  },
+  {
+   "id": "c8",
+   "sec": "s7",
+   "q": "Wat doet de mengtrap?",
+   "a": "Mengt het ontvangen signaal met het oscillatorsignaal en levert onder meer het verschil: de middenfrequentie."
+  },
+  {
+   "id": "c9",
+   "sec": "s7",
+   "q": "Hoe bereken je de middenfrequentie?",
+   "a": "MF = |foscillator − fontvangst|."
+  },
+  {
+   "id": "c10",
+   "sec": "s7",
+   "q": "Wat is de spiegelfrequentie?",
+   "a": "De ongewenste frequentie die ook op de MF uitkomt: aan de andere kant van de oscillatorfrequentie. Ze ligt 2 × MF van de ontvangfrequentie."
+  },
+  {
+   "id": "c11",
+   "sec": "s7",
+   "q": "Hoe onderdruk je de spiegelfrequentie?",
+   "a": "Met een selectieve HF-trap (voorselectie) of een hogere MF, of met een dubbelsuper."
+  },
+  {
+   "id": "c12",
+   "sec": "s7",
+   "q": "Wat is een dubbelsuper?",
+   "a": "Een superheterodyne-ontvanger met twee menging en twee middenfrequenties: een hoge eerste MF (spiegelonderdrukking) en een lage tweede MF (selectiviteit)."
+  },
+  {
+   "id": "c13",
+   "sec": "s7",
+   "q": "Wat doet de HF-trap in een ontvanger?",
+   "a": "Versterkt zwakke signalen (met weinig ruis), onderdrukt spiegelfrequenties en andere ongewenste signalen (veraf-selectiviteit) en verbetert de gevoeligheid."
+  },
+  {
+   "id": "c14",
+   "sec": "s7",
+   "q": "Wat bepaalt de nabij-selectiviteit?",
+   "a": "De filters in de MF-trap(pen)."
+  },
+  {
+   "id": "c15",
+   "sec": "s7",
+   "q": "Wat is veraf-selectiviteit?",
+   "a": "De onderdrukking van signalen ver van de ontvangfrequentie, vooral de spiegelfrequentie; vooral bepaald door de HF-trap."
+  },
+  {
+   "id": "c16",
+   "sec": "s7",
+   "q": "Wat is de AVR/AGC?",
+   "a": "Automatische versterkingsregeling: regelt de versterking van de HF- en MF-trappen terug bij een sterk signaal, zodat het uitgangsniveau gelijk blijft."
+  },
+  {
+   "id": "c17",
+   "sec": "s7",
+   "q": "Welke trap in een ontvanger levert de meeste ruis?",
+   "a": "De eerste trap (HF-trap of mengtrap): daar is het signaal het zwakst."
+  },
+  {
+   "id": "c18",
+   "sec": "s7",
+   "q": "Waarom een lage ruis-HF-trap?",
+   "a": "Een goed ruisgetal van de eerste trap bepaalt de gevoeligheid van de hele ontvanger."
+  },
+  {
+   "id": "c19",
+   "sec": "s7",
+   "q": "Waarom heeft een ontvanger een HF-trap vóór de mengtrap?",
+   "a": "Om ruis en spiegelonderdrukking te verbeteren."
+  },
+  {
+   "id": "c20",
+   "sec": "s8",
+   "q": "Welke filters gebruikt men in de MF?",
+   "a": "Bandfilters, kristalfilters, keramische en mechanische filters."
+  },
+  {
+   "id": "c21",
+   "sec": "s8",
+   "q": "Wat is een bandfilter?",
+   "a": "Twee gekoppelde kringen: bij kritische koppeling een vlakke top, onderkritisch smal, overkritisch met twee toppen en breder."
+  },
+  {
+   "id": "c22",
+   "sec": "s8",
+   "q": "Wat gebeurt bij overkritische koppeling van een bandfilter?",
+   "a": "De doorlaatkromme krijgt twee toppen (met een dal ertussen) en wordt breder."
+  },
+  {
+   "id": "c23",
+   "sec": "s8",
+   "q": "Wat gebeurt bij onderkritische koppeling?",
+   "a": "De secundaire spanning is lager en de kromme is smaller dan bij kritische koppeling."
+  },
+  {
+   "id": "c24",
+   "sec": "s9",
+   "q": "Wat zijn ongewenste mengproducten in een dubbelsuper?",
+   "a": "Menging met de oscillators geeft ook ongewenste frequenties (zoals spiegelfrequenties van de tweede menging)."
+  },
+  {
+   "id": "c25",
+   "sec": "s10",
+   "q": "Wat is selectiviteit?",
+   "a": "De mate waarin ongewenste frequenties worden onderdrukt ten opzichte van de frequentie waarop de ontvanger is ingesteld."
+  },
+  {
+   "id": "c26",
+   "sec": "s10",
+   "q": "Wat is gevoeligheid?",
+   "a": "Het vermogen (of de spanning) aan de ingang dat nodig is voor een verstaanbaar signaal aan de uitgang."
+  },
+  {
+   "id": "c27",
+   "sec": "s10",
+   "q": "Waar hangt de gevoeligheid vooral van af?",
+   "a": "Van de signaal/ruisverhouding (S/N), dus vooral van de eerste trap, niet van de mate van versterking."
+  },
+  {
+   "id": "c28",
+   "sec": "s10",
+   "q": "Wat is signaal/ruisverhouding?",
+   "a": "SNR = Psignaal / Pruis (vaak in dB)."
+  },
+  {
+   "id": "c29",
+   "sec": "s10",
+   "q": "Helpt meer versterken tegen ruis?",
+   "a": "Nee: signaal en ruis worden even sterk versterkt, de verhouding verandert niet."
+  },
+  {
+   "id": "c30",
+   "sec": "s10",
+   "q": "Hoe ontstaat ruis?",
+   "a": "Door trillende deeltjes in geleiders boven het absolute nulpunt; hoe hoger de temperatuur, hoe meer ruis."
+  },
+  {
+   "id": "c31",
+   "sec": "s10",
+   "q": "Wat is het ruisgetal F?",
+   "a": "F = (Sin/Nin) / (Suit/Nuit); een ideale ontvanger heeft F = 1 (0 dB). In dB: SNR in − SNR uit."
+  },
+  {
+   "id": "c32",
+   "sec": "s10",
+   "q": "Wat is reciproke menging?",
+   "a": "Faseruis van de oscillator mengt een sterk signaal naast het gewenste signaal toch naar de MF-doorlaat."
+  },
+  {
+   "id": "c33",
+   "sec": "s10",
+   "q": "Wat is nodig voor weinig reciproke menging?",
+   "a": "Een oscillator met weinig faseruis."
+  },
+  {
+   "id": "c34",
+   "sec": "s10",
+   "q": "Waarom een HF-verzwakker aan de ingang?",
+   "a": "Om intermodulatie en kruismodulatie door sterke signalen tegen te gaan; de signaal/ruisverhouding verandert nauwelijks."
+  },
+  {
+   "id": "c35",
+   "sec": "s10",
+   "q": "Wat bepaalt de bandbreedte van een kring met Q?",
+   "a": "B = f / Q (−3 dB-punten)."
+  },
+  {
+   "id": "c36",
+   "sec": "s12",
+   "q": "Hoe werkt een AM-detector?",
+   "a": "Een diode met een RC-netwerk (omhullende-detector): gelijkrichten en afvlakken van de HF."
+  },
+  {
+   "id": "c37",
+   "sec": "s13",
+   "q": "Hoe detecteer je DZB?",
+   "a": "Met een productdetector en een oscillator met de frequentie van de (onderdrukte) draaggolf."
+  },
+  {
+   "id": "c38",
+   "sec": "s14",
+   "q": "Hoe detecteer je EZB?",
+   "a": "Met een productdetector (mengtrap) en een BFO met de frequentie van de draaggolf, die bij de ontvangst wordt teruggebracht."
+  },
+  {
+   "id": "c39",
+   "sec": "s14",
+   "q": "Waarom heeft EZB een BFO nodig?",
+   "a": "De draaggolf is onderdrukt en moet in de ontvanger worden toegevoegd, anders is het signaal onverstaanbaar."
+  },
+  {
+   "id": "c40",
+   "sec": "s14",
+   "q": "Wat gebeurt als de BFO-frequentie niet klopt bij EZB?",
+   "a": "De stem klinkt te hoog of te laag (Donald Duck) of onverstaanbaar."
+  },
+  {
+   "id": "c41",
+   "sec": "s15",
+   "q": "Wat gebeurt als je de BFO aan de andere kant van de MF zet?",
+   "a": "USB wordt LSB (en omgekeerd): het zijbandspectrum wordt gespiegeld."
+  },
+  {
+   "id": "c42",
+   "sec": "s16",
+   "q": "Hoe maak je CW hoorbaar?",
+   "a": "Met een BFO of zwevingsoscillator die een paar honderd Hz van de MF afligt; het verschil is een toon."
+  },
+  {
+   "id": "c43",
+   "sec": "s16",
+   "q": "Op welke frequentie staat de BFO voor CW?",
+   "a": "MF ± gewenste toon (bijvoorbeeld 456 kHz bij 455 kHz MF en 1 kHz toon)."
+  },
+  {
+   "id": "c44",
+   "sec": "s17",
+   "q": "Wat is een directe-conversieontvanger?",
+   "a": "Een ontvanger zonder MF: de oscillator staat op de ontvangfrequentie en de mengtrap levert direct het LF-signaal (nul-MF)."
+  },
+  {
+   "id": "c45",
+   "sec": "s17",
+   "q": "Wat is een nadeel van directe conversie?",
+   "a": "Dubbele zijbanden (beide zijbanden worden ontvangen) en gevoeligheid voor brom en LF-ruis."
+  },
+  {
+   "id": "c46",
+   "sec": "s18",
+   "q": "Hoe detecteer je FM?",
+   "a": "Met een FM-detector (discriminator): de frequentieafwijking wordt omgezet in een spanning. Voorbeelden: Foster-Seeley, ratiodetector, PLL en flankdetectie."
+  },
+  {
+   "id": "c47",
+   "sec": "s18",
+   "q": "Wat is flankdetectie?",
+   "a": "Een kring wordt iets naast de draaggolf afgestemd; de frequentieafwijking verandert de amplitude, en die wordt met een AM-detector omgezet. Een bijzondere toepassing van een AM-detector."
+  },
+  {
+   "id": "c48",
+   "sec": "s18",
+   "q": "Wat doet de begrenzer in een FM-ontvanger?",
+   "a": "Hij begrenst de amplitude van het MF-signaal, zodat amplitudevariaties (ruis en storing) wegvallen."
+  },
+  {
+   "id": "c49",
+   "sec": "s18",
+   "q": "Wat is een squelch?",
+   "a": "Een ruisonderdrukker: de LF-versterker wordt gedempt als er geen signaal is (alleen ruis), zodat je geen ruis hoort."
+  },
+  {
+   "id": "c50",
+   "sec": "s18",
+   "q": "Waarop reageert een squelch-schakeling?",
+   "a": "Op de ruis in het LF-signaal (of de ruis boven de spraakfrequenties): bij veel ruis wordt de LF-trap afgesloten."
+  },
+  {
+   "id": "c51",
+   "sec": "s18",
+   "q": "Waarom heeft FM de hoogste MF-bandbreedte?",
+   "a": "De bandbreedte van FM is minstens 3× zo groot als van AM en EZB (regel van Carson)."
+  },
+  {
+   "id": "c52",
+   "sec": "s19",
+   "q": "Wat is een transceiver?",
+   "a": "Een zender en ontvanger in één apparaat, die vaak oscillatoren en filters delen."
+  },
+  {
+   "id": "c53",
+   "sec": "s20",
+   "q": "Wat meet de S-meter?",
+   "a": "De signaalsterkte aan de ingang, aangestuurd door de AVR-spanning, logaritmisch."
+  },
+  {
+   "id": "c54",
+   "sec": "s20",
+   "q": "Hoeveel dB is een S-punt?",
+   "a": "6 dB: spanning twee keer zo groot en vermogen vier keer zo groot."
+  },
+  {
+   "id": "c55",
+   "sec": "s20",
+   "q": "Hoeveel is S9 op HF en op VHF/UHF?",
+   "a": "HF: 50 µV aan 50 Ω; VHF/UHF (boven 30 MHz): 5 µV."
+  },
+  {
+   "id": "c56",
+   "sec": "s20",
+   "q": "Wat is S9 + 20 dB?",
+   "a": "20 dB boven S9: spanning 10 keer en vermogen 100 keer zo groot."
+  },
+  {
+   "id": "c57",
+   "sec": "s20",
+   "q": "Wat gebeurt er met de S-meter als een zender zijn vermogen 4 keer zo laag maakt?",
+   "a": "De aanwijzing daalt 6 dB, dus een S-punt."
+  },
+  {
+   "id": "c58",
+   "sec": "s22",
+   "q": "Wat is een PLL?",
+   "a": "Phase Locked Loop: een regellus die de frequentie van een oscillator vergrendelt op een referentie."
+  },
+  {
+   "id": "c59",
+   "sec": "s23",
+   "q": "Welke onderdelen heeft een PLL?",
+   "a": "Fasevergelijker (fasedetector), lusfilter (laagdoorlaat), VCO en eventueel een deler in de terugkoppeling."
+  },
+  {
+   "id": "c60",
+   "sec": "s23",
+   "q": "Wat doet de fasevergelijker?",
+   "a": "Vergelijkt de fase van de referentie en de VCO en levert een foutspanning evenredig met het faseverschil."
+  },
+  {
+   "id": "c61",
+   "sec": "s23",
+   "q": "Wat is de toestand 'gelocked'?",
+   "a": "De VCO heeft precies de frequentie van de referentie (of een veelvoud via deler) en een vast faseverschil; de foutspanning is stabiel."
+  },
+  {
+   "id": "c62",
+   "sec": "s24",
+   "q": "Wat is een VCO?",
+   "a": "Voltage Controlled Oscillator: de frequentie wordt bepaald door een stuurspanning, bijvoorbeeld via een varicap."
+  },
+  {
+   "id": "c63",
+   "sec": "s24",
+   "q": "Waarvoor dient een varicap?",
+   "a": "Een capaciteitsdiode waarvan de capaciteit met de sperspanning verandert: afstemmen of moduleren van een oscillator."
+  },
+  {
+   "id": "c64",
+   "sec": "s25",
+   "q": "Hoe werkt een PLL als FM-detector?",
+   "a": "De VCO volgt de frequentie van het FM-signaal; de stuurspanning van de VCO is het LF-signaal."
+  },
+  {
+   "id": "c65",
+   "sec": "s26",
+   "q": "Hoe werkt een frequentiesynthesizer met PLL?",
+   "a": "Een deler tussen VCO en fasevergelijker: bij lock geldt fVCO = N × fref, met rasterstappen gelijk aan fref."
+  },
+  {
+   "id": "c66",
+   "sec": "s26",
+   "q": "Hoe stel je de uitgangsfrequentie van een PLL-synthesizer in?",
+   "a": "Door de deelfactor N te veranderen; de stap is gelijk aan de referentiefrequentie."
+  },
+  {
+   "id": "c67",
+   "sec": "s27",
+   "q": "Hoe maak je FM met een PLL?",
+   "a": "Door de LF-modulatie op de VCO te zetten, terwijl de lus de gemiddelde frequentie stabiel houdt."
+  },
+  {
+   "id": "c68",
+   "sec": "s29",
+   "q": "Wat is DSP?",
+   "a": "Digital Signal Processing: een signaal wordt gedigitaliseerd (ADC), digitaal bewerkt en eventueel weer omgezet naar analoog (DAC)."
+  },
+  {
+   "id": "c69",
+   "sec": "s29",
+   "q": "In welke volgorde staan ADC, DSP en DAC?",
+   "a": "Analoog in → ADC → digitale verwerking → DAC → analoog uit."
+  },
+  {
+   "id": "c70",
+   "sec": "s30",
+   "q": "Wat is bemonstering?",
+   "a": "Het met regelmatige tussenpozen meten van de momentele waarde van een analoog signaal."
+  },
+  {
+   "id": "c71",
+   "sec": "s32",
+   "q": "Wat zegt de regel van Nyquist-Shannon?",
+   "a": "De bemonsteringsfrequentie moet minstens 2× de hoogste frequentie in het signaal zijn."
+  },
+  {
+   "id": "c72",
+   "sec": "s32",
+   "q": "Wat is aliasing?",
+   "a": "Een bemonsteringsfrequentie lager dan 2× de hoogste frequentie geeft een ander (alias) signaal met een lagere frequentie."
+  },
+  {
+   "id": "c73",
+   "sec": "s32",
+   "q": "Welke bemonsteringsfrequentie voor spraak tot 3 kHz?",
+   "a": "Minstens 6 kHz, in de praktijk iets meer (bijvoorbeeld 8 kHz)."
+  },
+  {
+   "id": "c74",
+   "sec": "s34",
+   "q": "Wat doet een anti-aliasfilter?",
+   "a": "Een laagdoorlaatfilter vóór de ADC dat frequenties boven de halve bemonsteringsfrequentie verwijdert."
+  },
+  {
+   "id": "c75",
+   "sec": "s35",
+   "q": "Wat is een ADC?",
+   "a": "Analoog-digitaalomzetter: zet een spanning om naar een binair getal."
+  },
+  {
+   "id": "c76",
+   "sec": "s35",
+   "q": "Wat bepaalt de resolutie van een ADC?",
+   "a": "Het aantal bits: n bits geeft 2ⁿ niveaus. 8 bits: 256 niveaus; 16 bits: 65536 niveaus."
+  },
+  {
+   "id": "c77",
+   "sec": "s35",
+   "q": "Wat is kwantiseringsruis?",
+   "a": "Ruis door het afronden van de analoge waarde op de dichtstbijzijnde digitale waarde; kleiner bij meer bits."
+  },
+  {
+   "id": "c78",
+   "sec": "s35",
+   "q": "Hoeveel dB dynamisch bereik per bit?",
+   "a": "Ongeveer 6 dB per bit: 16 bits is circa 96 dB."
+  },
+  {
+   "id": "c79",
+   "sec": "s36",
+   "q": "Wat zijn FIR en IIR?",
+   "a": "Digitale filters: Finite Impulse Response (zonder terugkoppeling) en Infinite Impulse Response (met terugkoppeling)."
+  },
+  {
+   "id": "c80",
+   "sec": "s37",
+   "q": "Wat doet de Fouriertransformatie?",
+   "a": "Zet een signaal om van het tijddomein naar het frequentiedomein (en omgekeerd)."
+  },
+  {
+   "id": "c81",
+   "sec": "s38",
+   "q": "Wat is DDS?",
+   "a": "Direct Digital Synthesis: een digitale signaalgenerator die een sinus opwekt uit opgeslagen waarden (tabel + DAC), met zeer fijne frequentiestappen."
+  },
+  {
+   "id": "c82",
+   "sec": "s38",
+   "q": "Wat is de uitvoer van een DDS?",
+   "a": "Via een DAC een analoog signaal, gevolgd door een reconstructiefilter (laagdoorlaat) om de bemonsteringsresten te verwijderen."
+  },
+  {
+   "id": "c83",
+   "sec": "s39",
+   "q": "Waarvoor dient een reconstructiefilter?",
+   "a": "Een laagdoorlaatfilter na de DAC dat de stapjes in het signaal gladstrijkt."
+  }
+ ],
+ "drill": [
+  {
+   "id": "spiegel",
+   "sec": "s7",
+   "name": "Oscillator- en spiegelfrequentie",
+   "where": "oscillator en spiegelfrequentie bij een superheterodyne",
+   "f": "fosc = f + MF; fspiegel = f + 2 · MF",
+   "cloze": [
+    {
+     "q": "De spiegelfrequentie ligt ___ × MF van de ontvangfrequentie",
+     "a": "2",
+     "w": [
+      "1",
+      "0,5",
+      "4"
+     ]
+    }
+   ],
+   "gen": "spiegel"
+  },
+  {
+   "id": "bfo",
+   "sec": "s16",
+   "name": "BFO-frequentie voor CW",
+   "where": "de frequentie van de zwevingsoscillator",
+   "f": "fBFO = MF ± toon",
+   "cloze": [
+    {
+     "q": "Voor CW staat de BFO op de MF plus of min de ___",
+     "a": "toonhoogte",
+     "w": [
+      "bandbreedte",
+      "oscillatorfrequentie",
+      "spiegelfrequentie"
+     ]
+    }
+   ],
+   "gen": "bfo"
+  },
+  {
+   "id": "smet",
+   "sec": "s20",
+   "name": "S-meter en vermogen",
+   "where": "de aflezing bij een verandering van het zendvermogen",
+   "f": "ΔdB = 10 · log(P₂/P₁), 1 S = 6 dB",
+   "cloze": [
+    {
+     "q": "Een S-punt is ___ dB",
+     "a": "6",
+     "w": [
+      "3",
+      "10",
+      "12"
+     ]
+    }
+   ],
+   "gen": "smet"
+  },
+  {
+   "id": "nyq",
+   "sec": "s32",
+   "name": "Minimale bemonsteringsfrequentie",
+   "where": "de bemonsteringsfrequentie volgens Nyquist-Shannon",
+   "f": "fs ≥ 2 · fmax",
+   "cloze": [
+    {
+     "q": "Bemonsteren onder de Nyquist-frequentie geeft ___",
+     "a": "aliasing",
+     "w": [
+      "ruis",
+      "verzwakking",
+      "modulatie"
+     ]
+    }
+   ],
+   "gen": "nyq",
+   "rewrite": [
+    {
+     "base": "fs ≥ 2 · fmax",
+     "ask": "fmax",
+     "a": "fmax ≤ fs / 2",
+     "w": [
+      "fmax ≤ 2 · fs",
+      "fmax ≤ fs",
+      "fmax ≤ fs / 4"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "adcb",
+   "sec": "s35",
+   "name": "ADC: bits, niveaus en dynamisch bereik",
+   "where": "aantal niveaus en dynamisch bereik",
+   "f": "2ⁿ niveaus; ≈ 6 dB per bit",
+   "cloze": [
+    {
+     "q": "Een 8-bits ADC heeft ___ niveaus",
+     "a": "256",
+     "w": [
+      "8",
+      "64",
+      "128"
+     ]
+    }
+   ],
+   "gen": "adcb"
+  },
+  {
+   "id": "pllN",
+   "sec": "s26",
+   "name": "PLL-synthesizer",
+   "where": "VCO-frequentie en deelfactor",
+   "f": "fVCO = N · fref",
+   "cloze": [
+    {
+     "q": "De rasterstap van een PLL-synthesizer is gelijk aan de ___",
+     "a": "referentiefrequentie",
+     "w": [
+      "VCO-frequentie",
+      "deelfactor",
+      "bandbreedte"
+     ]
+    }
+   ],
+   "gen": "pllN"
+  },
+  {
+   "id": "bwq",
+   "sec": "s10",
+   "name": "Bandbreedte van een kring",
+   "where": "de −3 dB-bandbreedte uit f en Q",
+   "f": "B = f / Q",
+   "cloze": [
+    {
+     "q": "Een hogere Q geeft een ___ bandbreedte",
+     "a": "kleinere",
+     "w": [
+      "grotere",
+      "gelijke",
+      "negatieve"
+     ]
+    }
+   ],
+   "gen": "bwq",
+   "rewrite": [
+    {
+     "base": "B = f / Q",
+     "ask": "Q",
+     "a": "Q = f / B",
+     "w": [
+      "Q = f · B",
+      "Q = B / f",
+      "Q = f + B"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ruisg",
+   "sec": "s10",
+   "name": "Ruisgetal in dB",
+   "where": "het ruisgetal uit de signaal/ruisverhoudingen",
+   "f": "F(dB) = SNR_in − SNR_uit",
+   "cloze": [
+    {
+     "q": "Een ideale ontvanger heeft een ruisgetal van ___ dB",
+     "a": "0",
+     "w": [
+      "1",
+      "3",
+      "10"
+     ]
+    }
+   ],
+   "gen": "ruisg"
+  },
+  {
+   "id": "rcv",
+   "sec": "s7",
+   "name": "Trappen van een superheterodyne",
+   "where": "wat de trappen doen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de HF-trap",
+     "a": "versterkt het signaal en onderdrukt spiegelfrequenties"
+    },
+    {
+     "q": "de mengtrap",
+     "a": "zet de ontvangfrequentie om naar de MF"
+    },
+    {
+     "q": "de MF-versterker",
+     "a": "zorgt voor selectiviteit en het grootste deel van de versterking"
+    },
+    {
+     "q": "de detector",
+     "a": "haalt het LF-signaal uit het MF-signaal"
+    },
+    {
+     "q": "de AVR",
+     "a": "regelt de versterking terug bij sterke signalen"
+    },
+    {
+     "q": "de BFO",
+     "a": "maakt EZB en CW detecteerbaar"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Welke trap is dit: {x}?"
+  },
+  {
+   "id": "sel",
+   "sec": "s10",
+   "name": "Selectiviteit en gevoeligheid",
+   "where": "waar de eigenschappen vandaan komen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de nabij-selectiviteit",
+     "a": "de filters in de MF-trap"
+    },
+    {
+     "q": "de veraf-selectiviteit (spiegelfrequentie)",
+     "a": "de selectiviteit van de HF-trap"
+    },
+    {
+     "q": "de gevoeligheid",
+     "a": "de signaal/ruisverhouding, vooral de eerste trap"
+    },
+    {
+     "q": "de ruis van de ontvanger",
+     "a": "vooral de HF-trap of mengtrap"
+    },
+    {
+     "q": "het ruisgetal",
+     "a": "hoeveel ruis de ontvanger er zelf bijmaakt"
+    }
+   ],
+   "ask": "Wat bepaalt {x}?",
+   "askRev": "Welke eigenschap is dit: {x}?"
+  },
+  {
+   "id": "det",
+   "sec": "s11",
+   "name": "Detectie per modulatievorm",
+   "where": "welke detector bij welk signaal",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "AM",
+     "a": "omhullende-detector (diode en RC)"
+    },
+    {
+     "q": "EZB",
+     "a": "productdetector met BFO"
+    },
+    {
+     "q": "CW",
+     "a": "BFO en detector (toon van een paar honderd Hz)"
+    },
+    {
+     "q": "FM",
+     "a": "FM-detector (discriminator, ratiodetector, PLL)"
+    },
+    {
+     "q": "DZB",
+     "a": "productdetector met oscillator op de draaggolf"
+    }
+   ],
+   "ask": "Welke detector hoort bij {x}?",
+   "askRev": "Welk signaal hoort bij {x}?"
+  },
+  {
+   "id": "fmr",
+   "sec": "s18",
+   "name": "FM-ontvanger",
+   "where": "begrenzer, squelch en detector",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de begrenzer",
+     "a": "begrenst de amplitude (onderdrukt ruis en storing)"
+    },
+    {
+     "q": "de squelch",
+     "a": "onderdrukt het geluid als er geen signaal is"
+    },
+    {
+     "q": "de FM-detector",
+     "a": "zet frequentieafwijking om in LF"
+    },
+    {
+     "q": "flankdetectie",
+     "a": "een afgestemde kring naast de draaggolf plus AM-detector"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Welk onderdeel is dit: {x}?"
+  },
+  {
+   "id": "pll",
+   "sec": "s23",
+   "name": "Onderdelen van een PLL",
+   "where": "wat de onderdelen doen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de fasevergelijker",
+     "a": "levert een spanning evenredig met het faseverschil"
+    },
+    {
+     "q": "het lusfilter",
+     "a": "filtert de foutspanning (laagdoorlaat)"
+    },
+    {
+     "q": "de VCO",
+     "a": "oscillator waarvan de frequentie door een spanning wordt bepaald"
+    },
+    {
+     "q": "de deler",
+     "a": "maakt de VCO-frequentie gelijk aan een veelvoud van de referentie"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Welk onderdeel is dit: {x}?"
+  },
+  {
+   "id": "dsp",
+   "sec": "s29",
+   "name": "Digitale signaalverwerking",
+   "where": "ADC, DAC, filters en DDS",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een ADC",
+     "a": "zet een analoog signaal om in een binair getal"
+    },
+    {
+     "q": "een DAC",
+     "a": "zet een binair getal om in een analoog signaal"
+    },
+    {
+     "q": "een anti-aliasfilter",
+     "a": "laagdoorlaat vóór de ADC"
+    },
+    {
+     "q": "een reconstructiefilter",
+     "a": "laagdoorlaat na de DAC"
+    },
+    {
+     "q": "DDS",
+     "a": "digitale opwekking van een sinus met een tabel en een DAC"
+    },
+    {
+     "q": "kwantiseringsruis",
+     "a": "afrondingsfout van de ADC"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welk begrip is dit: {x}?"
+  },
+  {
+   "id": "smt",
+   "sec": "s20",
+   "name": "S-meter",
+   "where": "de S-waarden",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een S-punt",
+     "a": "6 dB"
+    },
+    {
+     "q": "S9 op HF",
+     "a": "50 µV"
+    },
+    {
+     "q": "S9 op VHF/UHF",
+     "a": "5 µV"
+    },
+    {
+     "q": "S9 + 20 dB",
+     "a": "spanning 10 keer, vermogen 100 keer zo groot als S9"
+    }
+   ],
+   "ask": "Wat geldt voor {x}?",
+   "askRev": "Welke waarde is dit: {x}?"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o13-1",
+   "n": 1,
+   "q": "Een ontvanger (enkel-super) is afgestemd op de frequentie 145,700 MHz. De oscillatorfrequentie bedraagt 135,000 MHz. De spiegelfrequentie is",
+   "options": [
+    {
+     "id": "A",
+     "text": "124,300 MHz"
+    },
+    {
+     "id": "B",
+     "text": "135,000 MHz"
+    },
+    {
+     "id": "C",
+     "text": "156,400 MHz"
+    },
+    {
+     "id": "D",
+     "text": "167,100 MHz"
+    }
+   ],
+   "answer": "A",
+   "explain": "Reken eerst de middenfrequentie uit. Die is 145,700 MHz – 135,000 MHz = 10,700 MHz. (Dat is een gebruikelijke MF waarvoor standaard-kristalfilters worden gemaakt). Omdat hier sprake is van ondermenging, ligt de spiegelfrequentie 10,7 MHz onder de oscillatorfrequentie van 135,000 MHz. 135,000 MHz – 10,700 MHz = 124,300 MHz. Dat betekent antwoord A.",
+   "pages": [
+    "p063"
+   ],
+   "spages": [
+    "p076"
+   ]
+  },
+  {
+   "id": "o13-2",
+   "n": 2,
+   "q": "Een enkel-super is afgestemd op 29,000 MHz. De middenfrequentie bedraagt 9.000 MHz. Er is sprake van bovenmenging. Voor de oscillatorfrequentie en de spiegelfrequentie geldt:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Oscillatorfrequentie = 20,000 MHz, spiegelfrequentie = 38,000 MHz"
+    },
+    {
+     "id": "B",
+     "text": "Oscillatorfrequentie = 20,000 MHz, spiegelfrequentie = 11,000 MHz"
+    },
+    {
+     "id": "C",
+     "text": "Oscillatorfrequentie = 38,000 MHz, spiegelfrequentie = 47,000 MHz"
+    },
+    {
+     "id": "D",
+     "text": "Oscillatorfrequentie = 38,000 MHz, spiegelfrequentie = 20,000 MHz"
+    }
+   ],
+   "answer": "C",
+   "explain": "Bij bovenmenging ligt de frequentie van de oscillator boven die van de signaalfrequentie. Als de signaalfrequentie 29,000 MHz is, moet bij bovenmenging de oscillatorfrequentie 29,000 MHz + 9,000 MHz zijn, dat is 38,000 MHz. Daarmee blijven de antwoorden C en D over. De frequentie waarbij een oscillatorfrequentie van 38,000 MHz een verschilfrequentie levert van 9,000 MHz en die niet gelijk is aan 29,000 MHz is 38,000 MHz + 9,000 MHz = 47,000 MHz. Dat is dus de spiegelfrequentie. Signaalfrequentie + 2x middenfrequentie is ook goed en levert dan ook hetzelfde antwoord, 47,000 MHz (ga dit na).",
+   "pages": [
+    "p064"
+   ],
+   "spages": [
+    "p077"
+   ]
+  },
+  {
+   "id": "o13-3",
+   "n": 3,
+   "q": "Een squelchschakeling dient om",
+   "options": [
+    {
+     "id": "A",
+     "text": "De gevoeligheid van de ontvanger te vergroten"
+    },
+    {
+     "id": "B",
+     "text": "Vonkstoringen te onderdrukken"
+    },
+    {
+     "id": "C",
+     "text": "Ruis te onderdrukken als geen signaal wordt ontvangen"
+    },
+    {
+     "id": "D",
+     "text": "Spiegelfrequentie(s) te onderdrukken"
+    }
+   ],
+   "answer": "C",
+   "explain": "Een squelchschakeling onderdrukt de ruis uit een ontvanger als er geen signaal wordt ontvangen. Antwoord C is dan ook het enig juiste antwoord.",
+   "pages": [
+    "p065"
+   ],
+   "spages": [
+    "p078"
+   ]
+  },
+  {
+   "id": "o13-4",
+   "n": 4,
+   "q": "De Beat Frequency Oscillator (BFO, zwevingsoscillator of CIO, Carrier Injection Oscillator)) van een superheterodyneontvanger is nodig voor demodulatie van",
+   "options": [
+    {
+     "id": "A",
+     "text": "Televisie"
+    },
+    {
+     "id": "B",
+     "text": "Dubbelzijbandtelefonie"
+    },
+    {
+     "id": "C",
+     "text": "FM"
+    },
+    {
+     "id": "D",
+     "text": "Telegrafie (CW)"
+    }
+   ],
+   "answer": "D",
+   "explain": "Een BFO of zwevingsoscillator wordt gebruikt bij de demodulatie van EZB en CW (telegrafie). EZB staat niet in het rijtje antwoorden. Dan blijft CW, antwoord D, over.",
+   "pages": [
+    "p066"
+   ],
+   "spages": [
+    "p079"
+   ]
+  },
+  {
+   "id": "o13-5",
+   "n": 5,
+   "q": "Dit is het schema van",
+   "options": [
+    {
+     "id": "A",
+     "text": "Een dubbelfasige gelijkrichtschakeling"
+    },
+    {
+     "id": "B",
+     "text": "Een FM-detector"
+    },
+    {
+     "id": "C",
+     "text": "Een tweetraps kristalontvanger"
+    },
+    {
+     "id": "D",
+     "text": "Een schakeling die nergens toe dient"
+    }
+   ],
+   "answer": "B",
+   "explain": "Dit is het schema van een verbeterde flankdetector (subparagraaf 13.3.7). Die lijkt wat op een dubbelfasige gelijkrichtschakeling, maar dan zou de aftakking op de secundaire naar buiten moeten zijn uitgevoerd en zou de uitvoer van beide dioden op één uitvoeraansluiting moeten uitkomen. De tweetraps kristalontvanger bestaat alleen in de fantasie van uw schrijver. Een schakeling die nergens toe dient zou een leuk object voor een kunsttentoonstelling kunnen zijn, maar deze schakeling heeft wel degelijk een toepassing en dus nut. Het wordt dus antwoord B.",
+   "pages": [
+    "p067"
+   ],
+   "spages": [
+    "p080"
+   ]
+  },
+  {
+   "id": "o13-6",
+   "n": 6,
+   "q": "Blokje 1 en blokje 2 in het schema stellen voor:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Blokje 1: AGC-generator en blokje 2: 2e MF-versterker"
+    },
+    {
+     "id": "B",
+     "text": "Blokje 1: 2e MF-versterker en blokje 2: carrier injection oscillator (CIO)"
+    },
+    {
+     "id": "C",
+     "text": "Blokje 1: detector en blokje 2: mengschakeling"
+    },
+    {
+     "id": "D",
+     "text": "Blokje 1: detector en blokje 2: carrier injection oscillator (CIO)"
+    }
+   ],
+   "answer": "D",
+   "explain": "Blokje 1 zit tussen MF-versterker en LF-versterker. Het kan dan niet anders of in dit blokje wordt het MF-signaal omgezet naar LF. Dat gebeurt in een detector. Een detector heeft een aanhangsel (blokje 2) als er een hulpfrequentie nodig is voor de detectie van EZB of CW. Dat is de BFO of CIO. Dat wordt dus antwoord D.",
+   "pages": [
+    "p068"
+   ],
+   "spages": [
+    "p081"
+   ]
+  },
+  {
+   "id": "o13-7",
+   "n": 7,
+   "q": "Een ontvanger heeft een middenfrequentie van 9,000 MHz bij een bandbreedte van 3 kHz. Daarbuiten wordt vrijwel niets doorgelaten. Om een bovenzijbandsignaal (USB) goed te kunnen detecteren moet de BFO een frequentie hebben van",
+   "options": [
+    {
+     "id": "A",
+     "text": "9,0030 MHz"
+    },
+    {
+     "id": "B",
+     "text": "9,0015 MHz"
+    },
+    {
+     "id": "C",
+     "text": "8,9985 MHz"
+    },
+    {
+     "id": "D",
+     "text": "8,9970 MHz"
+    }
+   ],
+   "answer": "C",
+   "explain": "Een USB-signaal is de bovenste zijband van een AM-signaal. De frequentie van de bovenste zijband ligt tussen 250 en 3000 Hz boven de oorspronkelijke draaggolffrequentie. De bedoeling van een BFO (of CIO, dat is hetzelfde) is om de oorspronkelijke draaggolf weer aan het signaal toe te voegen. Het MF-signaal van 9 MHz kan bij de gegeven bandbreedte maximaal 9,0015 MHz bedragen. De toe te voegen draaggolffrequentie moet daar 3 kHz onder liggen, dat is 8,9985 MHz. Antwoord C is dan juist. Opmerking: zou het signaal een onderste zijband (LSB) zijn, dan zou antwoord B het juiste zijn, want dan moet de BFO-frequentie 1,5 kHz boven het midden van de doorgelaten frequentieband liggen.",
+   "pages": [
+    "p069"
+   ],
+   "spages": [
+    "p082"
+   ]
+  },
+  {
+   "id": "o13-8",
+   "n": 8,
+   "q": "Een ontvanger heeft aan de ingang een signaal/ruisverhouding van 50 dB. Op de uitgang is dat 40 dB. Het ruisgetal F bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "90 dB"
+    },
+    {
+     "id": "B",
+     "text": "10"
+    },
+    {
+     "id": "C",
+     "text": "20 dB"
+    },
+    {
+     "id": "D",
+     "text": "1,25"
+    }
+   ],
+   "answer": "B",
+   "explain": "Het ruisgetal is de verhouding tussen signaal/ruisverhouding SNR aan de ingang en die aan de uitgang. Dat is in dit geval 50 dB – 40 dB = 10 dB. Die staat niet bij de antwoorden. Maar 10 dB is een vermogensverhouding van 10:1. Die 10 staat er wel bij: antwoord B. Opmerking: denk erom dat deze gelijkheid alleen geldt bij een vermogensverhouding van 10:1, omdat log 10 gelijk is aan 1. Het voorvoegsel “deci” maakt van die 1 een 10. Een verhouding van 2 is 3 dB omdat log 2 vrijwel gelijk is aan 0,3.",
+   "pages": [
+    "p070"
+   ],
+   "spages": [
+    "p083"
+   ]
+  },
+  {
+   "id": "o13-9",
+   "n": 9,
+   "q": "Het blok met het vraagteken is een",
+   "options": [
+    {
+     "id": "A",
+     "text": "BFO"
+    },
+    {
+     "id": "B",
+     "text": "CIO"
+    },
+    {
+     "id": "C",
+     "text": "Frequentiedeler"
+    },
+    {
+     "id": "D",
+     "text": "VCO"
+    }
+   ],
+   "answer": "D",
+   "explain": "De aanwezigheid van een referentie-oscillator links en een laagdoorlaatfilter rechts van de mengschakeling/fasevergelijker duidt op een fasevergrendelde lus (Phase Locked Loop, PLL). Dan kan het blokje met het vraagteken alleen maar een VCO (Voltage Controlled Oscillator) zijn. Dat is antwoord D.",
+   "pages": [
+    "p071"
+   ],
+   "spages": [
+    "p084"
+   ]
+  },
+  {
+   "id": "o13-10",
+   "n": 10,
+   "q": "De regellus is in stabiele toestand (vergrendeld). Welke van de volgende beweringen is juist:",
+   "options": [
+    {
+     "id": "A",
+     "text": "De frequentie op de punten A, B en C zijn aan elkaar gelijk"
+    },
+    {
+     "id": "B",
+     "text": "De frequenties op de punten A en B zijn aan elkaar gelijk"
+    },
+    {
+     "id": "C",
+     "text": "De frequenties op de punten A en B zijn aan elkaar gelijk en die op punt C is lager"
+    },
+    {
+     "id": "D",
+     "text": "De frequenties op de punten B en C zijn aan elkaar gelijk"
+    }
+   ],
+   "answer": "B",
+   "explain": "Het schema is dat van een PLL. De frequentie op B komt uit een frequentiedeler, te herkennen aan het deelteken, in de vorm waarin je het soms in schema’s bij het examen tegenkomt. Maar de plaats in het schema hoort de functie ook te verraden. Daarmee mag duidelijk zijn dat de frequentie op B de frequentie op C gedeeld door een getal van 2 of meer is. Daarmee vervallen de antwoorden A, C en D. Dan blijft antwoord B over. Is dat dan wel juist? Het antwoord is ja, want de mixer/fasevergelijker zal de VCO net zo lang verstemmen tot dit het geval is. De fasen kunnen wel verschillen, maar dat wordt niet gevraagd. Antwoord B dus.",
+   "pages": [
+    "p072"
+   ],
+   "spages": [
+    "p085"
+   ]
+  },
+  {
+   "id": "o13-11",
+   "n": 11,
+   "q": "Een laagdoorlaatfilter na een DAC (digitaal naar analoog-converter) is een",
+   "options": [
+    {
+     "id": "A",
+     "text": "Anti-aliasfilter"
+    },
+    {
+     "id": "B",
+     "text": "Filter om kwantiseringsruis te onderdrukken"
+    },
+    {
+     "id": "C",
+     "text": "Herstel- of reconstructiefilter"
+    },
+    {
+     "id": "D",
+     "text": "Filter om terugkoppeling tussen in- en uitgang tegen te gaan"
+    }
+   ],
+   "answer": "C",
+   "explain": "Een anti-aliasfilter komt vóór de signaalbemonstering. Bij een DAC is het inkomende signaal al digitaal. Dan is een anti-alias niet aan de orde. Kwantiseringsruis zal er een beetje mee worden onderdrukt, maar de werkelijke functie is dat van herstelfilter, waarbij de digitale resten in trapjescurven of omhullenden van pulsen worden gladgestreken. Terugkoppeling is niet aan de orde. Het wordt dus antwoord C.",
+   "pages": [
+    "p073"
+   ],
+   "spages": [
+    "p086"
+   ]
+  },
+  {
+   "id": "o13-12",
+   "n": 12,
+   "q": "In dit schema kan een IIR-filter zitten in",
+   "options": [
+    {
+     "id": "A",
+     "text": "Blok 1"
+    },
+    {
+     "id": "B",
+     "text": "Blok 2"
+    },
+    {
+     "id": "C",
+     "text": "Blok 3"
+    },
+    {
+     "id": "D",
+     "text": "Blok 4"
+    }
+   ],
+   "answer": "C",
+   "explain": "Een IIR-filter wordt toegepast bij digitale signaalbewerking. Het anti-alias- en herstelfilter zijn analoge dingen, dus die vallen meteen af. Bemonstering is in feite ook analoog, want bemonstering gaat vooraf aan ADC (analoog naar digitaal-conversie). Dan blijft er maar één kandidaat over, antwoord C en dat is ook het juiste antwoord.",
+   "pages": [
+    "p074"
+   ],
+   "spages": [
+    "p087"
+   ]
+  },
+  {
+   "id": "o13-13",
+   "n": 13,
+   "q": "Een zendamateur maakt een verbinding met een ander amateurstation. Hij geeft een S- rapport van S9+10 dB. Het tegenstation verlaagt bij wijze van proef zijn vermogen van 10 W naar 1 W. De aflezing van de S-meter bij onze amateur zou nu moeten zijn:",
+   "options": [
+    {
+     "id": "A",
+     "text": "S9"
+    },
+    {
+     "id": "B",
+     "text": "S9+20 dB"
+    },
+    {
+     "id": "C",
+     "text": "S8+10 dB"
+    },
+    {
+     "id": "D",
+     "text": "S9-10 dB"
+    }
+   ],
+   "answer": "A",
+   "explain": "Als een station zijn uitgezonden vermogen met een aantal dB verlaagt, wordt het mini- vermogentje op de antenne bij de ontvanger met evenveel dB’s verlaagd. Uitgedrukt in dB’s volgt de ontvangeringang dus de ontwikkelingen bij de zender. En vermogensvermindering van 10 W naar 1 W is 10 dB. Dat betekent ook 10 dB bij de ontvanger. Van S9+10 dB blijft dan een signaalsterkte van S9 over. Antwoord A dus.",
+   "pages": [
+    "p075"
+   ],
+   "spages": [
+    "p088"
+   ]
+  }
+ ]
 }

@@ -143,6 +143,23 @@ KW = {
   'swit': r'schakelende|step',
   'lvsv': r'schakelende|rendement',
  },
+ 13: {
+  'spiegel': r'spiegel|middenfrequent|oscillatorfrequentie|superheterodyne',
+  'bfo': r'BFO|zwevings|telegrafie|CW|A1A|middenfrequent',
+  'smet': r'S-meter|S9|S-9',
+  'nyq': r'bemonster|Nyquist|aliasing',
+  'adcb': r'ADC|bits|kwantis',
+  'pllN': r'regellus|PLL|synthesizer|VCO|deler',
+  'bwq': r'bandbreedte|Q-factor|kwaliteitsfactor|selectiviteit',
+  'ruisg': r'ruisgetal|ruis',
+  'rcv': r'mengtrap|HF-trap|MF|AVR|detector|oscillator',
+  'sel': r'selectiviteit|gevoeligheid|ruis',
+  'det': r'detect|demodul|BFO|productdetector',
+  'fmr': r'begrenzer|squelch|FM-detector|flank',
+  'pll': r'regellus|PLL|fasevergelijk|VCO',
+  'dsp': r'ADC|DAC|DDS|filter|digitaal|bemonster',
+  'smt': r'S-meter|S9',
+ },
  12: {
   'dbp': r'\bdB\b|decibel|versterking',
   'dbu': r'\bdB\b|decibel|spanning',
@@ -232,7 +249,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

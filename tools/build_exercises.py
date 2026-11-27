@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 12: 'THEORIE_HS12_20260928.pdf', 11: 'THEORIE_HS11_20260912.pdf', 15: 'THEORIE_HS15_20261028.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 12: 'THEORIE_HS12_20260928.pdf', 13: 'THEORIE_HS13_20261006.pdf', 11: 'THEORIE_HS11_20260912.pdf', 15: 'THEORIE_HS15_20261028.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -78,6 +78,13 @@ def parse(ch, pdf):
 
 # handmatige correcties: formules die pdftotext niet goed leest, en een antwoord dat alleen in de uitleg staat
 FIX = {
+ 'o13-2': {'answer': 'C'},
+ 'o13-6': {'q': 'Blokje 1 en blokje 2 in het schema stellen voor:'},
+ 'o13-7': {'pages': ['p069']},
+ 'o13-9': {'q': 'Het blok met het vraagteken is een'},
+ 'o13-10': {'q': 'De regellus is in stabiele toestand (vergrendeld). Welke van de volgende beweringen is juist:'},
+ 'o13-11': {'pages': ['p073']},
+ 'o13-12': {'q': 'In dit schema kan een IIR-filter zitten in'},
  'o12-4': {'q': 'In de oscillatoren X en Y wordt frequentiemodulatie verkregen door eenzelfde LF-signaal. Behalve de aangegeven condensatoren hebben alle overeenkomstige onderdelen dezelfde waarde. Welke bewering is juist:'},
  'o12-9': {'pages': ['p065']},
  'o12-12': {'q': 'Deze schakeling is een'},

@@ -90,6 +90,10 @@ def main(pdf):
     chap = int(re.search(r'HS(\d+)', pdf.name).group(1))
     pl = pdfplumber.open(pdf)
     located = numbered_located(pl, chap)
+    if located is not None:   # kopjes zonder nummers (H13, H14): de inhoudsopgave heeft dan veel meer onderdelen
+        toc_n = sum(1 for _, t in parse_toc(pl) if not SKIP.match(t) and not re.match(r'^(Opgave|Uitwerking van Opgave)', t))
+        if toc_n > len(located) + 8:
+            located = None
     n_pages = len(pl.pages)
     if located is None:
         rows = parse_toc(pl)
@@ -107,6 +111,7 @@ def main(pdf):
             if x == top_x:
                 continue          # hoofdstuktitel
             lvl = 1 if x < 130 else 2
+            t = re.sub(r'^\d+\.\d+\s+', '', t)
             entries.append({'lvl': lvl, 'title': t})
         # zoek elke titel in de tekst (monotoon vooruit)
         n_pages = len(pl.pages)
@@ -129,7 +134,7 @@ def main(pdf):
                 for y, line in page_lines[pi]:
                     if y < 40:
                         continue
-                    if norm(line) == key:
+                    if norm(line) == key or norm(re.sub(r'^\d+\.\d+(\.\d+)?\s+', '', line)) == key:
                         hit = (pi, y); break
                 if hit:
                     break
