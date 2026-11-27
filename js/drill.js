@@ -344,6 +344,21 @@ const GEN = {
     const [tp, T] = pick([[2e-6, 10e-6], [5e-6, 20e-6], [1e-6, 4e-6], [3e-6, 10e-6], [8e-6, 10e-6]]), D = tp / T * 100;
     return { q: `Een pulsbreedtemodulator geeft pulsen van ${val(tp, 's')} bij een periodeduur van ${val(T, 's')}. Hoe groot is de duty cycle?`, a: D, unit: '%', wrong: [100 - D, T / tp, D * 10, D / 10], how: `D = tp / T = ${num(tp)} / ${num(T)} (in procenten)` };
   },
+  imd() {
+    const f1 = pick([144.5, 144.8, 145.2, 145.5, 432.5, 28.1, 21.2, 7.05]), d = pick([0.5, 0.7, 1, 1.5, 2, 0.3]), f2 = +(f1 + d).toFixed(2);
+    const F = x => String(+x.toFixed(2)).replace('.', ',');
+    const lo = f1 - d, hi = f2 + d;
+    return { txt: true, q: `Aan de ingang van een ontvanger zijn sterke signalen aanwezig op ${F(f1)} en ${F(f2)} MHz. Op welke frequenties kunnen intermodulatieproducten (derde orde) ontstaan?`, a: `${F(lo)} en ${F(hi)} MHz`, wrong: [`${F(f1 - 2 * d)} en ${F(f2 + 2 * d)} MHz`, `${F(d)} en ${F(f1 + f2)} MHz`, `${F(f1 - d / 2)} en ${F(f2 + d / 2)} MHz`, `${F(f1 + d)} en ${F(f2 - d)} MHz`], how: `2f₁ − f₂ = 2·${F(f1)} − ${F(f2)} = ${F(lo)} MHz en 2f₂ − f₁ = 2·${F(f2)} − ${F(f1)} = ${F(hi)} MHz` };
+  },
+  harm() {
+    const f = pick([3.5, 7, 14, 21, 28, 50, 144, 29]), n = pick([2, 3, 4]), F = x => String(+x.toFixed(2)).replace('.', ',');
+    const nm = { 2: 'tweede', 3: 'derde', 4: 'vierde' }[n];
+    return { txt: true, q: `Op welke frequentie ligt de ${nm} harmonische van een zender op ${F(f)} MHz?`, a: `${F(f * n)} MHz`, wrong: [`${F(f * (n + 1))} MHz`, `${F(f * (n - 1 || 1) + f)} MHz`, `${F(f / n)} MHz`, `${F(f + n)} MHz`, `${F(f * 2 * n)} MHz`], how: `harmonische = n · f = ${n} · ${F(f)} MHz` };
+  },
+  cdec() {
+    const f = pick([3.7e6, 7.1e6, 14.2e6, 28.5e6, 145e6]), Z = pick([100, 220, 470, 500, 1000, 2200, 10000]), C = 10 / (2 * Math.PI * f * Z);
+    return { q: `Een signaalbron met Zsign = ${val(Z, 'Ω')} wordt ontkoppeld met een condensator. De storende frequentie is ${val(f, 'Hz')}. Bij een factor 10 (XC = Zsign/10) is de capaciteit ongeveer:`, a: C, unit: 'F', wrong: [C * 10, C / 10, C * 2 * Math.PI, C / (2 * Math.PI)], how: `C ≈ 10 / (2π · f · Zsign)` };
+  },
   ncomb() {
     const n = pick([3, 4, 5, 6, 8, 10, 12]);
     if (Math.random() < 0.5) return { txt: true, q: `Hoeveel verschillende combinaties kun je maken met ${n} bits?`, a: 2 ** n, wrong: [2 * n, n * n, 2 ** n - 1, 2 ** (n + 1)], how: `2ⁿ = 2^${n}` };

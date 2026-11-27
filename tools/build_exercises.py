@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 11: 'THEORIE_HS11_20260912.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 11: 'THEORIE_HS11_20260912.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -78,6 +78,8 @@ def parse(ch, pdf):
 
 # handmatige correcties: formules die pdftotext niet goed leest, en een antwoord dat alleen in de uitleg staat
 FIX = {
+ 'o16-4': {'pages': ['p020']},
+ 'o16-5': {'pages': ['p021']},
  'o8-2': {'options': [{'id': 'A', 'text': 'R_S = U_D / I_D'}, {'id': 'B', 'text': 'R_S = U_b / I_D'}, {'id': 'C', 'text': 'R_S = U_GS / I_D'}, {'id': 'D', 'text': 'R_S = U_GS − U_D / I_D'}], 'pages': ['p028']},
  'o8-3': {'options': [{'id': 'A', 'text': 'U_D = U_b − I_D · R_D'}, {'id': 'B', 'text': 'U_D = U_b − R_D / I_D'}, {'id': 'C', 'text': 'U_D = U_b − U_GS'}, {'id': 'D', 'text': 'U_D = U_b − I_D · R_S'}], 'pages': ['p029']},
  'o8-4': {'answer': 'A'},

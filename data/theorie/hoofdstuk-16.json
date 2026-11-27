@@ -1,0 +1,1284 @@
+{
+ "chapter": 16,
+ "dir": "img/theorie/hs16",
+ "sections": [
+  {
+   "id": "s1",
+   "title": "Wat leer je in dit hoofdstuk?",
+   "lvl": 1,
+   "pages": [
+    "p003"
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Soorten storingen in ontvangstapparatuur en LF-versterkers",
+   "lvl": 1,
+   "pages": [
+    "p003"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Blokkering",
+   "lvl": 2,
+   "pages": [
+    "p003",
+    "p004"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Interferentie van gewenst en ongewenst signaal",
+   "lvl": 2,
+   "pages": [
+    "p004"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Intermodulatie en kruismodulatie",
+   "lvl": 2,
+   "pages": [
+    "p004",
+    "p005"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Laagfrequentdetectie (LFD of LF-inpraten)",
+   "lvl": 2,
+   "pages": [
+    "p005"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "Faseruis, chirp en tjoep",
+   "lvl": 2,
+   "pages": [
+    "p005",
+    "p006"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Mogelijke oorzaken van storingen",
+   "lvl": 1,
+   "pages": [
+    "p006"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Veldsterkte",
+   "lvl": 2,
+   "pages": [
+    "p006",
+    "p007"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Ongewenste uitstralingen",
+   "lvl": 2,
+   "pages": [
+    "p007"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Ongewenste beïnvloeding van apparatuur",
+   "lvl": 2,
+   "pages": [
+    "p007",
+    "p008"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Storingen voorkomen en verhelpen",
+   "lvl": 1,
+   "pages": [
+    "p008"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Algemeen",
+   "lvl": 2,
+   "pages": [
+    "p008"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Filteren",
+   "lvl": 2,
+   "pages": [
+    "p008",
+    "p009",
+    "p010"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "Ontkoppelen",
+   "lvl": 2,
+   "pages": [
+    "p010",
+    "p011",
+    "p012",
+    "p013",
+    "p014",
+    "p015"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "Afschermen",
+   "lvl": 2,
+   "pages": [
+    "p015",
+    "p016"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "Oscillator stabiliseren (faseruis, chirp en tjoep)",
+   "lvl": 2,
+   "pages": [
+    "p016",
+    "p017"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
+    "p017",
+    "p018",
+    "p019",
+    "p020",
+    "p021",
+    "p022",
+    "p023",
+    "p024",
+    "p025",
+    "p026",
+    "p027",
+    "p028",
+    "p029",
+    "p030",
+    "p031",
+    "p032"
+   ]
+  }
+ ],
+ "qmap": {
+  "hs16-1": [
+   "s11",
+   "s15"
+  ],
+  "hs16-2": [
+   "s9",
+   "s11"
+  ],
+  "hs16-3": [
+   "s3"
+  ],
+  "hs16-4": [
+   "s3"
+  ],
+  "hs16-5": [
+   "s10"
+  ],
+  "hs16-6": [
+   "s3"
+  ],
+  "hs16-7": [
+   "s3"
+  ],
+  "hs16-8": [
+   "s6"
+  ],
+  "hs16-9": [
+   "s15"
+  ],
+  "hs16-10": [
+   "s6"
+  ],
+  "hs16-11": [
+   "s6",
+   "s15"
+  ],
+  "hs16-12": [
+   "s6"
+  ],
+  "hs16-13": [
+   "s6"
+  ],
+  "hs16-14": [
+   "s15"
+  ],
+  "hs16-15": [
+   "s15"
+  ],
+  "hs16-16": [
+   "s6"
+  ],
+  "hs16-17": [
+   "s6"
+  ],
+  "hs16-18": [
+   "s5"
+  ],
+  "hs16-19": [
+   "s5"
+  ],
+  "hs16-20": [
+   "s5"
+  ],
+  "hs16-21": [
+   "s5"
+  ],
+  "hs16-22": [
+   "s5",
+   "s10"
+  ],
+  "hs16-23": [
+   "s5"
+  ],
+  "hs16-24": [
+   "s6",
+   "s17"
+  ],
+  "hs16-25": [
+   "s10"
+  ],
+  "hs16-26": [
+   "s3",
+   "s11"
+  ],
+  "hs16-27": [
+   "s10"
+  ],
+  "hs16-28": [
+   "s17",
+   "s7"
+  ],
+  "hs16-29": [
+   "s7",
+   "s17"
+  ],
+  "hs16-30": [
+   "s7"
+  ],
+  "hs16-31": [
+   "s10"
+  ],
+  "hs16-32": [
+   "s10"
+  ],
+  "hs16-33": [
+   "s14"
+  ],
+  "hs16-34": [
+   "s10"
+  ],
+  "hs16-35": [
+   "s14"
+  ],
+  "hs16-36": [
+   "s10"
+  ],
+  "hs16-37": [
+   "s10"
+  ],
+  "hs16-38": [
+   "s14"
+  ],
+  "hs16-39": [
+   "s12"
+  ],
+  "hs16-40": [
+   "s10",
+   "s14"
+  ],
+  "hs16-41": [
+   "s4",
+   "s10"
+  ],
+  "hs16-42": [
+   "s12"
+  ],
+  "hs16-43": [
+   "s10"
+  ],
+  "hs16-44": [
+   "s5"
+  ],
+  "hs16-45": [
+   "s7",
+   "s10"
+  ],
+  "hs16-46": [
+   "s17"
+  ],
+  "hs16-47": [
+   "s5"
+  ],
+  "hs16-48": [
+   "s14",
+   "s3"
+  ],
+  "hs16-49": [
+   "s14",
+   "s7"
+  ],
+  "hs16-50": [
+   "s5"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Harmonischen en intermodulatie",
+   "items": [
+    {
+     "f": "n-de harmonische = n · f",
+     "t": "21 MHz × 3 = 63 MHz (TV kanaal 4); 144 MHz × 4 = 576 MHz"
+    },
+    {
+     "f": "IM3: 2·f₁ − f₂ en 2·f₂ − f₁",
+     "t": "derde-orde intermodulatieproducten vlak naast f₁ en f₂"
+    }
+   ]
+  },
+  {
+   "title": "Ontkoppelen",
+   "items": [
+    {
+     "f": "C ≈ 10 / (2π · f · Zsign)",
+     "t": "XC is ongeveer 10 keer kleiner dan de signaalimpedantie (hoogohmige ingang)"
+    },
+    {
+     "f": "XC = 1 / (2π · f · C) ≈ 1 Ω",
+     "t": "bij luidsprekerontkoppeling, C ongeveer 1–10 nF"
+    }
+   ]
+  },
+  {
+   "title": "Veldsterkte",
+   "items": [
+    {
+     "f": "E ~ 1 / afstand",
+     "t": "2× de afstand: halve veldsterkte (V/m en A/m)"
+    },
+    {
+     "f": "S = E · H ~ 1 / afstand²",
+     "t": "vermogensdichtheid in W/m²"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s3",
+   "q": "Wat is blokkering?",
+   "a": "Een sterk storend signaal aan de ingang drukt door gelijkrichting de HF-/MF-versterker dicht: het werkpunt verschuift (gate wordt negatief) en de versterking daalt. Het storende signaal kan op een andere frequentie zitten."
+  },
+  {
+   "id": "c2",
+   "sec": "s3",
+   "q": "Hoe ontstaat het werkpunt-verschuiven bij blokkering?",
+   "a": "Bij een sterk signaal gaat er gatestroom lopen in de positieve helft; in de negatieve helft spert de diode. De gate wordt negatief en de FET wordt (meer of minder) afgeknepen."
+  },
+  {
+   "id": "c3",
+   "sec": "s3",
+   "q": "Wat is oversturing van een ontvanger?",
+   "a": "Te veel inkomend signaal: de ingangstrap of mengtrap wordt overbelast."
+  },
+  {
+   "id": "c4",
+   "sec": "s4",
+   "q": "Hoe ontstaat interferentie?",
+   "a": "Door menging van signalen in een niet-lineaire versterker of door harmonischen van een zender die in de buurt van een andere ontvanger vallen."
+  },
+  {
+   "id": "c5",
+   "sec": "s4",
+   "q": "Welke harmonische van 144 MHz valt in de UHF-TV-band?",
+   "a": "De vierde harmonische: 576 MHz, in kanaal 34 (574–582 MHz)."
+  },
+  {
+   "id": "c6",
+   "sec": "s4",
+   "q": "Een 21 MHz-zender stoort TV op 61–68 MHz. Waarom?",
+   "a": "De derde harmonische van 21 MHz is 63 MHz: die valt in kanaal 4."
+  },
+  {
+   "id": "c7",
+   "sec": "s5",
+   "q": "Wanneer treedt intermodulatie op?",
+   "a": "Als de som- of verschilfrequentie van twee sterke signalen (of hun harmonischen) gelijk is aan de beluisterde frequentie. Het is een gevolg van niet-lineariteit in het ingangscircuit (HF- en mengtrap)."
+  },
+  {
+   "id": "c8",
+   "sec": "s5",
+   "q": "Kun je intermodulatie met een filter verhelpen?",
+   "a": "Nee: onderdrukt het filter de storende frequentie, dan ook de beluisterde. Je moet de niet-lineariteit (oversturing) verminderen."
+  },
+  {
+   "id": "c9",
+   "sec": "s5",
+   "q": "Welke intermodulatieproducten geven twee signalen f1 en f2?",
+   "a": "2·f1 − f2 en 2·f2 − f1 (derde orde), vlak bij de oorspronkelijke frequenties."
+  },
+  {
+   "id": "c10",
+   "sec": "s5",
+   "q": "Wat is kruismodulatie?",
+   "a": "Er ontstaan geen nieuwe frequenties; de modulatie van het sterke storende signaal wordt overgedragen op het (zwakkere) beluisterde signaal."
+  },
+  {
+   "id": "c11",
+   "sec": "s5",
+   "q": "Wat is het verschil tussen intermodulatie en kruismodulatie?",
+   "a": "Intermodulatie levert nieuwe frequenties (som, verschil), kruismodulatie draagt alleen de modulatie van het storende signaal over."
+  },
+  {
+   "id": "c12",
+   "sec": "s5",
+   "q": "Door wat ontstaat intermodulatie in een zender?",
+   "a": "Door niet-lineariteit in de eindtrap."
+  },
+  {
+   "id": "c13",
+   "sec": "s6",
+   "q": "Wat is laagfrequentdetectie (LFD, LF-inpraten)?",
+   "a": "Een HF-signaal wordt in het audiodeel (halfgeleider of buis) gelijkgericht: AM-detectie. Het gebeurt in apparatuur die onvoldoende is afgeschermd."
+  },
+  {
+   "id": "c14",
+   "sec": "s6",
+   "q": "Hoe klinkt LFD van AM, EZB/DZB, CW en FM?",
+   "a": "AM: verstaanbare spraak. EZB/DZB: onverstaanbare, vervormde spraak in het ritme van de stem. CW: plop/onderbrekingen in het seintempo. FM: hooguit geluidsvermindering, zelf geen geluid."
+  },
+  {
+   "id": "c15",
+   "sec": "s6",
+   "q": "Welke modulatievorm geeft de minste storing door LFD?",
+   "a": "Frequentiemodulatie (FM)."
+  },
+  {
+   "id": "c16",
+   "sec": "s6",
+   "q": "Wat doen EZB-signalen bij LFD?",
+   "a": "Ze klinken als onverstaanbare vervormde spraak in het ritme van de stem."
+  },
+  {
+   "id": "c17",
+   "sec": "s6",
+   "q": "Wat betekent het CE-keurmerk voor storing?",
+   "a": "Het apparaat voldoet aan de EMC-richtlijnen (elektromagnetische compatibiliteit) en hoort bij een bepaalde veldsterkte normaal te werken."
+  },
+  {
+   "id": "c18",
+   "sec": "s7",
+   "q": "Wat is faseruis?",
+   "a": "Een onstabiele oscillator in de zender zendt aan weerszijden van de frequentie een breder of smaller frequentiegebied (wolk) aan ruis uit. Het stoort ontvangst naast de zendfrequentie."
+  },
+  {
+   "id": "c19",
+   "sec": "s7",
+   "q": "Wat is chirp?",
+   "a": "Bij CW: tijdelijke parasitaire oscillatie bij het indrukken van de sleutel; het signaal klinkt als een tjirpgeluid."
+  },
+  {
+   "id": "c20",
+   "sec": "s7",
+   "q": "Wat is tjoep?",
+   "a": "De hoorbare frequentieverandering als de oscillator na het indrukken van de sleutel op gang komt."
+  },
+  {
+   "id": "c21",
+   "sec": "s7",
+   "q": "Welke twee oorzaken van chirp zijn er?",
+   "a": "Een onvoldoende gestabiliseerde voedingsspanning van de oscillator en de oscillator die bij elk CW-teken in- en uitgeschakeld wordt."
+  },
+  {
+   "id": "c22",
+   "sec": "s9",
+   "q": "Hoe neemt de veldsterkte af met de afstand?",
+   "a": "Lineair: tweemaal de afstand is tweemaal zo kleine veldsterkte (V/m en A/m). De vermogensdichtheid (W/m²) neemt kwadratisch af."
+  },
+  {
+   "id": "c23",
+   "sec": "s9",
+   "q": "In welke richting is de kans op storing het grootst?",
+   "a": "In de stralingsrichting van de antenne (bijvoorbeeld de hoofdrichting van een Yagi)."
+  },
+  {
+   "id": "c24",
+   "sec": "s9",
+   "q": "Waarom stoort een Yagi in een bepaalde richting wel een CE-gekeurde CD-speler?",
+   "a": "De veldsterkte in de stralingsrichting (ERP) is hoog; de speler wordt door de hoge veldsterkte gestoord."
+  },
+  {
+   "id": "c25",
+   "sec": "s10",
+   "q": "Wat zijn ongewenste (parasitaire) uitstralingen?",
+   "a": "Alles buiten de bandbreedte van de draaggolf en de noodzakelijke modulatieproducten: oscillatorfrequenties, onbedoelde som- en verschilfrequenties, harmonischen en faseruis."
+  },
+  {
+   "id": "c26",
+   "sec": "s10",
+   "q": "In welke eindtrapklasse ontstaan de minste en de meeste harmonischen?",
+   "a": "Het minst in klasse A, het meest in klasse C."
+  },
+  {
+   "id": "c27",
+   "sec": "s10",
+   "q": "Wat is splatter?",
+   "a": "Een te grote bandbreedte van het zendsignaal, bijvoorbeeld door overmodulatie of door oversturen van de eindtrap."
+  },
+  {
+   "id": "c28",
+   "sec": "s10",
+   "q": "Wat gebeurt er bij oversturen van de eindtrap van een EZB-zender?",
+   "a": "De signalen klinken vervormd en nemen meer bandbreedte in beslag."
+  },
+  {
+   "id": "c29",
+   "sec": "s10",
+   "q": "Wat veroorzaakt splatter bij een SSB-zender die niet te ver wordt uitgestuurd?",
+   "a": "Parasitair oscilleren van de eindtrap, of een versterkertrap na het zijbandfilter die wordt overstuurd."
+  },
+  {
+   "id": "c30",
+   "sec": "s10",
+   "q": "Hoe verklein je harmonische uitstraling?",
+   "a": "Minder uitsturen, een eindtrap in klasse A, en een laagdoorlaatfilter tussen zender en antenne."
+  },
+  {
+   "id": "c31",
+   "sec": "s11",
+   "q": "Via welke wegen komt HF in andere apparatuur?",
+   "a": "Antennes en antenneleidingen, netsnoeren, CD-/DVD-/gramofoonaansluitingen, luidsprekersnoeren en instraling op de printplaat."
+  },
+  {
+   "id": "c32",
+   "sec": "s11",
+   "q": "Wat veroorzaakt stoorsignalen via de antenne en via de overige wegen?",
+   "a": "Via de antenne: interferentie, intermodulatie of blokkering. Via de andere vier wegen: meestal laagfrequentdetectie."
+  },
+  {
+   "id": "c33",
+   "sec": "s12",
+   "q": "Algemene regels om storing te voorkomen?",
+   "a": "Beperk het zendvermogen, zorg voor goede aanpassing, gebruik een balun om mantelstromen te voorkomen en een symmetrische aansluiting bij een eindgevoede antenne; een midden gevoede antenne geeft minder problemen."
+  },
+  {
+   "id": "c34",
+   "sec": "s12",
+   "q": "Waarvoor dient een kunstantenne (dummyload)?",
+   "a": "Om een zender te belasten zonder signalen uit te stralen, bijvoorbeeld bij afstellen of testen."
+  },
+  {
+   "id": "c35",
+   "sec": "s12",
+   "q": "Wat doe je als je zender te sterke harmonischen uitstraalt en je buurman last heeft?",
+   "a": "Op die band niet zenden tot de storing is verholpen."
+  },
+  {
+   "id": "c36",
+   "sec": "s14",
+   "q": "Welk filter achter de zender onderdrukt harmonischen?",
+   "a": "Een laagdoorlaatfilter (pi- of T-filter) zo dicht mogelijk bij de zenderuitgang."
+  },
+  {
+   "id": "c37",
+   "sec": "s14",
+   "q": "Wat is het goede T-filter voor het onderdrukken van harmonischen?",
+   "a": "Twee spoelen in de signaalweg met een condensator als middenaftakking naar massa (LCL)."
+  },
+  {
+   "id": "c38",
+   "sec": "s14",
+   "q": "Wat doet een ferrietklem op een coaxkabel?",
+   "a": "Door de hoge permeabiliteit verhoogt hij de zelfinductie van de mantel en onderdrukt zo mantelstromen."
+  },
+  {
+   "id": "c39",
+   "sec": "s14",
+   "q": "Wat is het verschil tussen een zuigkring en een sperkring?",
+   "a": "Zuigkring: LC-serieschakeling tussen antenne-ingang en aarde. Sperkring: LC-parallelkring in de signaalleiding. Beide afgestemd op de storende frequentie."
+  },
+  {
+   "id": "c40",
+   "sec": "s14",
+   "q": "Welk filter gebruik je als de storende frequentie hoger is dan de gewenste?",
+   "a": "Een laagdoorlaatfilter tussen antenne en ontvanger. Is de storing lager in frequentie: een hoogdoorlaatfilter."
+  },
+  {
+   "id": "c41",
+   "sec": "s14",
+   "q": "Een HF-zender stoort alle TV-kanalen via een breedband-antenneversterker. Wat helpt?",
+   "a": "Een hoogdoorlaatfilter vóór de versterker (de HF-zender zit lager in frequentie dan TV)."
+  },
+  {
+   "id": "c42",
+   "sec": "s14",
+   "q": "Waarom is een filter voor een FM-relais op de ontvangeringang en de zenderuitgang nodig?",
+   "a": "Ingang: voorkomt blokkering door de eigen zenderdraaggolf. Uitgang: voorkomt ontvangststoring door faseruis van de zender (duplexfilter)."
+  },
+  {
+   "id": "c43",
+   "sec": "s15",
+   "q": "Hoe ontkoppel je het lichtnet?",
+   "a": "Met een netfilter: een platte keramische condensator van 1–10 nF (≥ 1 kV) over de netaansluiting, eventueel een ferrietringkern met het snoer erdoor gewikkeld."
+  },
+  {
+   "id": "c44",
+   "sec": "s15",
+   "q": "Hoe ontkoppel je luidsprekerleidingen tegen LFD?",
+   "a": "Met een condensator van ongeveer 1–10 nF (plat keramisch) tussen de twee aders, dicht bij de aansluiting. XC bij de storende frequentie ongeveer 1 Ω of minder."
+  },
+  {
+   "id": "c45",
+   "sec": "s15",
+   "q": "Hoe merk je dat de storing via de luidsprekerleiding binnenkomt?",
+   "a": "Het volume van de storing reageert niet op de volumeregelaar."
+  },
+  {
+   "id": "c46",
+   "sec": "s15",
+   "q": "Hoe merk je dat de storing via een signaalleiding binnenkomt?",
+   "a": "Het geluidsvolume van de storing reageert op de volumeregelaar."
+  },
+  {
+   "id": "c47",
+   "sec": "s15",
+   "q": "Waar ontstaat de LFD in een versterker?",
+   "a": "In het eerste versterkende element: de emitter-basisdiode, de gate-sourcediode of stuurrooster/kathode."
+  },
+  {
+   "id": "c48",
+   "sec": "s15",
+   "q": "Hoe groot is de ontkoppelcondensator bij een hoogohmige ingang?",
+   "a": "XC voor de storende frequentie ongeveer 10 keer lager dan Zsign: C ≈ 10 / (2π · f · Zsign)."
+  },
+  {
+   "id": "c49",
+   "sec": "s15",
+   "q": "Welke condensator werkt bij een bipolaire transistor (laagohmige ingang)?",
+   "a": "Een platte keramische van ongeveer 3–10 nF, maar kleiner als hoge audiofrequenties worden gedempt."
+  },
+  {
+   "id": "c50",
+   "sec": "s15",
+   "q": "Wat doe je naast de ontkoppel-C in de signaalleiding?",
+   "a": "Een ferrietkraal of een weerstand van enkele honderden ohm in de signaalleiding, of een HF-smoorspoel in de emitter-, source- of kathodeleiding."
+  },
+  {
+   "id": "c51",
+   "sec": "s16",
+   "q": "Wat is afschermen (inblikken)?",
+   "a": "Het EM-veld binnen een apparaat beperken (zender afschermen) of een veld van buitenaf buiten houden (bijvoorbeeld de kast van binnen met geaarde aluminiumfolie)."
+  },
+  {
+   "id": "c52",
+   "sec": "s16",
+   "q": "Wat is een doorvoercondensator?",
+   "a": "Een condensator waarvan de buitenkant een elektrode is (aan de wand) en de doorgevoerde leiding de andere; voor voedingsleidingen door een afscherming."
+  },
+  {
+   "id": "c53",
+   "sec": "s17",
+   "q": "Hoe voorkom je chirp en tjoep?",
+   "a": "De voedingsspanning van de oscillator stabiliseren, de oscillator mechanisch solide bouwen en afschermen, en de oscillator continu laten lopen met de sleutel op een buffer-/schakeltrap erna."
+  },
+  {
+   "id": "c54",
+   "sec": "s17",
+   "q": "Hoe voorkom je sleutelklikken?",
+   "a": "Het HF-signaal geleidelijk laten in- en uitschakelen (afgeronde flanken), en niet in de oscillator keyen."
+  }
+ ],
+ "drill": [
+  {
+   "id": "imd",
+   "sec": "s5",
+   "name": "Intermodulatieproducten",
+   "where": "de frequenties van intermodulatie van twee sterke signalen",
+   "f": "2·f₁ − f₂ en 2·f₂ − f₁",
+   "cloze": [
+    {
+     "q": "Intermodulatie van de derde orde geeft producten op 2·f₁ − f₂ en ___",
+     "a": "2·f₂ − f₁",
+     "w": [
+      "f₁ + f₂",
+      "f₂ − f₁",
+      "3·f₁"
+     ]
+    }
+   ],
+   "gen": "imd"
+  },
+  {
+   "id": "harm",
+   "sec": "s4",
+   "name": "Harmonischen van een zender",
+   "where": "de frequentie van de n-de harmonische",
+   "f": "n · f",
+   "cloze": [
+    {
+     "q": "De derde harmonische van 21 MHz ligt op ___ MHz",
+     "a": "63",
+     "w": [
+      "42",
+      "7",
+      "84"
+     ]
+    }
+   ],
+   "gen": "harm"
+  },
+  {
+   "id": "cdec",
+   "sec": "s15",
+   "name": "Ontkoppelcondensator tegen LFD",
+   "where": "de waarde van de ontkoppelcondensator bij de signaalingang",
+   "f": "C ≈ 10 / (2π · f · Zsign)",
+   "cloze": [
+    {
+     "q": "Bij hoogohmige ingangen moet XC ongeveer ___ keer kleiner zijn dan Zsign",
+     "a": "10",
+     "w": [
+      "2",
+      "100",
+      "1"
+     ]
+    }
+   ],
+   "gen": "cdec",
+   "rewrite": [
+    {
+     "base": "C ≈ 10 / (2π · f · Zsign)",
+     "ask": "Zsign",
+     "a": "Zsign ≈ 10 / (2π · f · C)",
+     "w": [
+      "Zsign ≈ 2π · f · C / 10",
+      "Zsign ≈ 10 · 2π · f · C",
+      "Zsign ≈ C / (10 · 2π · f)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lfd",
+   "sec": "s6",
+   "name": "LFD per modulatievorm",
+   "where": "hoe laagfrequentdetectie klinkt per soort zender",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "AM",
+     "a": "verstaanbare spraak"
+    },
+    {
+     "q": "EZB of DZB",
+     "a": "vervormde, onverstaanbare spraak in het ritme van de stem"
+    },
+    {
+     "q": "CW",
+     "a": "plop/onderbrekingen in het seintempo"
+    },
+    {
+     "q": "FM",
+     "a": "nauwelijks hoorbaar (minste storing)"
+    }
+   ],
+   "ask": "Hoe klinkt LFD bij {x}?",
+   "askRev": "Welke modulatievorm geeft dit bij LFD: {x}?"
+  },
+  {
+   "id": "soort",
+   "sec": "s3",
+   "name": "Soorten storing",
+   "where": "het verschil tussen blokkering, intermodulatie en andere storing",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "blokkering",
+     "a": "een sterk signaal drukt de versterker dicht en verschuift het werkpunt"
+    },
+    {
+     "q": "intermodulatie",
+     "a": "som- of verschilfrequenties van sterke signalen vallen op de beluisterde frequentie"
+    },
+    {
+     "q": "kruismodulatie",
+     "a": "de modulatie van het sterke signaal wordt overgedragen op het zwakke signaal"
+    },
+    {
+     "q": "laagfrequentdetectie",
+     "a": "gelijkrichting van HF in het audiodeel"
+    },
+    {
+     "q": "faseruis",
+     "a": "een ruiswolk naast de zendfrequentie door een onstabiele oscillator"
+    },
+    {
+     "q": "chirp",
+     "a": "tijdelijke parasitaire oscillatie bij het indrukken van de sleutel"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welke storing is dit: {x}?"
+  },
+  {
+   "id": "maat",
+   "sec": "s14",
+   "name": "Maatregel tegen storing",
+   "where": "welk filter of welke maatregel bij welke storing",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "harmonischen van de zender",
+     "a": "een laagdoorlaatfilter tussen zender en antenne"
+    },
+    {
+     "q": "een storende zender lager in frequentie dan de TV",
+     "a": "een hoogdoorlaatfilter in de antenneleiding"
+    },
+    {
+     "q": "LFD via de luidsprekerleiding",
+     "a": "een condensator van 1–10 nF over de leiding"
+    },
+    {
+     "q": "LFD via het lichtnet",
+     "a": "een netfilter met condensator en ferriet"
+    },
+    {
+     "q": "mantelstromen op de coax",
+     "a": "een ferrietklem of balun"
+    },
+    {
+     "q": "chirp",
+     "a": "de voedingsspanning van de oscillator stabiliseren"
+    },
+    {
+     "q": "sleutelklikken",
+     "a": "het HF-signaal geleidelijk laten in- en uitschakelen"
+    },
+    {
+     "q": "storing door een te sterk signaal op de ingang",
+     "a": "een zuigkring, sperkring of ander filter vóór de ingang"
+    }
+   ],
+   "ask": "Wat helpt tegen {x}?",
+   "askRev": "Waartegen helpt dit: {x}?"
+  },
+  {
+   "id": "ontk",
+   "sec": "s15",
+   "name": "Ontkoppelen van leidingen",
+   "where": "de ontkoppelmiddelen per leiding",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "het lichtnet",
+     "a": "platte keramische condensator van 1–10 nF (≥ 1 kV) en een ferrietring"
+    },
+    {
+     "q": "de luidsprekerleiding",
+     "a": "een condensator van circa 1–10 nF tussen de aders"
+    },
+    {
+     "q": "een audio-signaalleiding",
+     "a": "een condensator, ferrietkraal of weerstand in de leiding"
+    },
+    {
+     "q": "de ingang van een transistor",
+     "a": "een condensator van 3–10 nF"
+    },
+    {
+     "q": "de ingang van een FET of buis",
+     "a": "een condensator van ongeveer 10 / (2π f Zsign)"
+    }
+   ],
+   "ask": "Waarmee ontkoppel je {x}?",
+   "askRev": "Welke leiding is dit: {x}?"
+  },
+  {
+   "id": "uitstr",
+   "sec": "s10",
+   "name": "Ongewenste uitstralingen",
+   "where": "de oorzaken van parasitaire uitstraling",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "splatter",
+     "a": "overmodulatie of oversturing van de eindtrap"
+    },
+    {
+     "q": "harmonischen",
+     "a": "niet-lineariteit van de eindtrap, het meest in klasse C"
+    },
+    {
+     "q": "de minste harmonischen",
+     "a": "een eindtrap in klasse A"
+    },
+    {
+     "q": "bandbreedte groter dan de zijbandfilterbreedte",
+     "a": "een versterkertrap na het zijbandfilter wordt overstuurd"
+    },
+    {
+     "q": "oscillatorfrequenties",
+     "a": "onvoldoende filtering of afscherming in de zender"
+    }
+   ],
+   "ask": "Wat veroorzaakt {x}?",
+   "askRev": "Waardoor ontstaat dit: {x}?"
+  },
+  {
+   "id": "chirp",
+   "sec": "s7",
+   "name": "Chirp, tjoep en klikken",
+   "where": "maatregelen tegen de CW-storingen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "chirp",
+     "a": "oscillator slecht gestabiliseerd of in-/uitgeschakeld met de sleutel"
+    },
+    {
+     "q": "tjoep",
+     "a": "hoorbare frequentieverandering na het indrukken van de sleutel"
+    },
+    {
+     "q": "sleutelklikken",
+     "a": "te abrupt in- en uitschakelen van het HF-signaal"
+    },
+    {
+     "q": "voorkomen van chirp",
+     "a": "de oscillator continu laten lopen en de sleutel op een buffertrap laten werken"
+    }
+   ],
+   "ask": "Wat hoort bij {x}?",
+   "askRev": "Welk verschijnsel is dit: {x}?"
+  },
+  {
+   "id": "afsch",
+   "sec": "s16",
+   "name": "Afschermen",
+   "where": "hoe je een EM-veld binnen of buiten houdt",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "inblikken",
+     "a": "oscillatoren en andere HF-delen afschermen met een metalen doosje"
+    },
+    {
+     "q": "een doorvoercondensator",
+     "a": "voedingsleiding door de wand voeren zonder HF te laten passeren"
+    },
+    {
+     "q": "afgeschermde kabel",
+     "a": "voor signaalleidingen, de afscherming wordt aan het schotje gesoldeerd"
+    },
+    {
+     "q": "aluminiumfolie in de kast",
+     "a": "aan de binnenkant geaard, houdt instraling van buiten tegen"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welk middel is dit: {x}?"
+  },
+  {
+   "id": "veld",
+   "sec": "s9",
+   "name": "Veldsterkte en afstand",
+   "where": "hoe de veldsterkte afneemt",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de elektrische veldsterkte (V/m)",
+     "a": "wordt twee keer zo klein"
+    },
+    {
+     "q": "de magnetische veldsterkte (A/m)",
+     "a": "wordt twee keer zo klein"
+    },
+    {
+     "q": "de vermogensdichtheid (W/m²)",
+     "a": "wordt vier keer zo klein"
+    }
+   ],
+   "ask": "Wat gebeurt er met {x} bij een dubbele afstand?",
+   "askRev": "Welke grootheid is dit: {x}?"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o16-1",
+   "n": 1,
+   "q": "Een amateurzender die uitzendt in de 21 MHz-band veroorzaakt storingen in de TV- ontvangst op de frequentie 61-68 MHz. De storing kan het best worden opgeheven door:",
+   "options": [
+    {
+     "id": "A",
+     "text": "In de modulatortrap een laagdoorlatend filter toe te passen"
+    },
+    {
+     "id": "B",
+     "text": "De eindtrap van de zender in klasse C in te stellen"
+    },
+    {
+     "id": "C",
+     "text": "Een laagdoorlatend filter in de antennekabel van de zender toe te passen"
+    },
+    {
+     "id": "D",
+     "text": "Een hoogdoorlatend filter in de antennekabel van de zender toe te passen"
+    }
+   ],
+   "answer": "C",
+   "explain": "Vermenigvuldig 21 MHz met 3 en je vindt 63 MHz, de frequentie van de derde harmonische. Die valt binnen de TV-frequentie en is daarmee verdachte. Met een laagdoorlaatfilter in de antennekabel (direct achter de zender!) wordt die harmonische onderdrukt en de frequentie van 21 MHz doorgelaten. Antwoord C. Opmerkingen Een laagdoorlatend filter in de modulatortrap zal weinig zin hebben, omdat na de modulator een aantal versterkertrappen volgt, waarin harmonischen weer kunnen ontstaan. Een laagdoorlaatfilter na de eindtrap is daarom de beste oplossing. Een eindtrap in klasse C zetten heeft een averechts effect. Een hoogdoorlaatfilter doet in dit geval niets nuttigs.",
+   "pages": [
+    "p017"
+   ],
+   "spages": [
+    "p025"
+   ]
+  },
+  {
+   "id": "o16-2",
+   "n": 2,
+   "q": "Een 10-meter zender veroorzaakt laagfrequentdetectie in een geluidsinstallatie. Om de storingen op te heffen, worden de laagohmige luidsprekeruitgangen ontkoppeld door middel van condensatoren, parallel aan de uitgangen. De meest geschikte capaciteitswaarde is:",
+   "options": [
+    {
+     "id": "A",
+     "text": "10 pF"
+    },
+    {
+     "id": "B",
+     "text": "10 nF"
+    },
+    {
+     "id": "C",
+     "text": "10 µF"
+    },
+    {
+     "id": "D",
+     "text": "10 mF"
+    }
+   ],
+   "answer": "B",
+   "explain": "Om effectief te zijn, moet de reactantie van de ontkoppelcondensator (flink) lager zijn dan de impedantie van de in- of uitgang die moet worden ontkoppeld. Voor audiofrequenties is die laatste meestal 4 of 8 ohm. Voor HF kan de werkelijke impedantie hoger zijn, omdat dan ook zelfinducties in leidingen binnen en buiten de versterker een rol gaan spelen. Vuistregeltje (en niet meer dan dat): als de reactantie van de ontkoppelcondensator lager is dan grofweg 1 of 2 ohm, werkt de ontkoppeling van luidsprekerleidingen meestal goed. Om een idee te krijgen, kunnen we voor de 10-meterband (28 MHz) de reactantie XC van een condensator van 10 nF uitrekenen. 28 MHz = 2,8.107 Hz en 10 nF = 10--8 F. Dan geldt voor XC: 1         1Ω XC =       =                    ≈ 0,55 Ω 2πfC 2π. 2,8. 107 . 10−8 Voor 10 meter zou dat volgens het vuistregeltje genoeg moeten zijn. Antwoord B Opmerkingen Om dit soort storingen op te heffen, zijn condensatoren in het nF-bereik, parallel aan de luidsprekeruitgangen vaak het meest geschikt. 10 nF geeft voor de wat hogere HF- frequenties meestal voldoende resultaat, maar experimenteren met waarden tussen 1 en 100 nF kan zin hebben. De 10 µF van antwoord C, om nog maar niet te spreken over de 10 mF =10 000 µF van antwoord D, zal vrijwel altijd een elektrolytische condensator zijn. Die zijn alleen geschikt voor veel lagere frequenties en dus totaal ongeschikt om een ongewenste frequentie van 28 MHz de kop in te drukken.",
+   "pages": [
+    "p018"
+   ],
+   "spages": [
+    "p026"
+   ]
+  },
+  {
+   "id": "o16-3",
+   "n": 3,
+   "q": "De modulatievorm die de minste storing door laagfrequentdetectie veroorzaakt, is:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Amplitudemodulatie"
+    },
+    {
+     "id": "B",
+     "text": "Frequentiemodulatie"
+    },
+    {
+     "id": "C",
+     "text": "Enkelzijbandmodulatie"
+    },
+    {
+     "id": "D",
+     "text": "Morsetelegrafie"
+    }
+   ],
+   "answer": "B",
+   "explain": "Alle leden van de AM-familie, AM, DZB, EZB en CW hebben een variërende amplitude. LFD ontstaat door gelijkrichting, waarna de omhullende als wisselspanning/stroom overblijft, net als bij een kristalontvanger. Die hoor je als geluid. Frequentiemodulatie (FM) heeft een constante amplitude. Een FM-signaal bevat daardoor geen AM-achtige componenten. Resten van een FM-signaal hoor je na gelijkrichting dus ook niet. Antwoord B. Opmerking Voor fasemodulatie (PM) geldt hetzelfde als voor FM.",
+   "pages": [
+    "p019"
+   ],
+   "spages": [
+    "p027"
+   ]
+  },
+  {
+   "id": "o16-4",
+   "n": 4,
+   "q": "Een zendamateur heeft zijn zelfgebouwde telegrafiezender met dummyload, verzwakker en oscilloscoop uitgeprobeerd en gaat nu verbindingen maken. Van enkele tegenstations hoort hij dat er chirp op het signaal zit. Wat kan hij het beste doen?",
+   "options": [
+    {
+     "id": "A",
+     "text": "Een laagdoorlaatfilter tussen zender en antenne opnemen"
+    },
+    {
+     "id": "B",
+     "text": "De voedingsspanning van de oscillator stabiliseren"
+    },
+    {
+     "id": "C",
+     "text": "De staandegolfverhouding aanpassen"
+    },
+    {
+     "id": "D",
+     "text": "Een hoogdoorlaatfilter tussen zender en antenne opnemen"
+    }
+   ],
+   "answer": "B",
+   "explain": "Chirp is een gevolg van een korte parasitaire oscillatie bij het op gang komen van de oscillator na indrukken van de seinsleutel. Er zijn dan enkele mogelijkheden om daar wat aan te doen: •   De voedingsspanning van de oscillator zo stabiliseren dat die onmiddellijk op spanning is als de seinsleutel wordt ingedrukt •   De oscillator via een buffertrap verbinden met de rest van de zender, zodat de belasting van de oscillator door het indrukken van de seinsleutel niet verandert •   De oscillator permanent laten doorlopen en de voor CW noodzakelijke onderbrekingen van het signaal tussen oscillator en zender elders in de schakeling realiseren. Van deze mogelijkheden staat er maar één in het rijtje antwoorden en dat is antwoord B.",
+   "pages": [
+    "p020"
+   ],
+   "spages": [
+    "p028"
+   ]
+  },
+  {
+   "id": "o16-5",
+   "n": 5,
+   "q": "Een EZB-zender in de 2-meterband (144-146 MHz) veroorzaakt LFD in een muziekversterker met bipolaire transistoren. De storing verdwijnt bij het dichtdraaien van de volumeregelaar van de versterker. De meest kansrijke maatregel om de storing te verhelpen is:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Het aanbrengen van een weerstand van 220 ohm in de basisleiding van de ingangstransistor met een condensator van 100 pF tussen basis en emitter"
+    },
+    {
+     "id": "B",
+     "text": "Het aanbrengen van een weerstand van 220 ohm in de basisleiding van de ingangstransistor met condensator van 100 pF tussen basis en collector"
+    },
+    {
+     "id": "C",
+     "text": "De luidsprekeruitgang overbruggen met een condensator van 10 nF"
+    },
+    {
+     "id": "D",
+     "text": "Een deel van de luidsprekerleiding om een ferrietringkern wikkelen."
+    }
+   ],
+   "answer": "A",
+   "explain": "Als de geluidssterkte reageert op de stand van de volumeregelaar zoals beschreven, is de kans het grootst dat de storing binnenkomt via de signaalleiding en de ingangstrap van de versterker. Het heeft dan waarschijnlijk weinig zijn, om aan de uitgangskant iets te doen. Daarmee vervallen de antwoorden C en D en blijven A A                                 B            en B over. Die zetten we allebei in een stukje schema. Schema A zal de basis- emitterovergang waar gelijkrichting plaatsvindt, ontkoppelen. Schema B zal hoogstens de weergave van hoge tonen verzwakken (frequentie-afhankelijke tegenkoppeling). Dat betekent dat antwoord A goed is. Opmerking De waarden van 220 ohm en 100 pF zijn niet kritisch.",
+   "pages": [
+    "p021"
+   ],
+   "spages": [
+    "p029"
+   ]
+  },
+  {
+   "id": "o16-6",
+   "n": 6,
+   "q": "Aan een amateurband grenst een omroepband. Een radioluisteraar merkt dat met tussenpozen op de hele omroepband een onverstaanbaar signaal in spraakritme te horen is. Een straat verderop woont een zendamateur. Als onze luisteraar met de zendamateur contact opneemt, blijkt dat deze inderdaad radioverbindingen aan het maken was. De modulatiesoort en het soort storing waren:",
+   "options": [
+    {
+     "id": "A",
+     "text": "FM en blokkering"
+    },
+    {
+     "id": "B",
+     "text": "AM en laagfrequentdetectie"
+    },
+    {
+     "id": "C",
+     "text": "AM en blokkering"
+    },
+    {
+     "id": "D",
+     "text": "EZB en laagfrequentdetectie"
+    }
+   ],
+   "answer": "D",
+   "explain": "Een storing die over een hele omroepband te horen is, kan niets met de ingestelde ontvangstfrequentie te maken hebben. Omdat er aan de storing ook geluid te pas komt, kan het geen blokkering zijn, maar LFD (laagfrequentdetectie). Daarmee vervallen de antwoorden A en C. Als dat vastgesteld is, vervallen ze ook op grond van de modulatiesoort, samen met B, want FM geeft geen hoorbaar audio en AM geeft verstaanbare taal en geen onverstaanbaar gebrabbel. De enige modulatiesoort in het rijtje die met LFD onverstaanbaar gebrabbel geeft, is EZB (SSB). Dat betekent dat antwoord D juist is.",
+   "pages": [
+    "p022"
+   ],
+   "spages": [
+    "p030"
+   ]
+  },
+  {
+   "id": "o16-7",
+   "n": 7,
+   "q": "Twee amateurzenders werken op respectievelijk 144,2 MHz en 144,5 MHz. Ze worden door een luisteramateur allebei tegelijk gehoord op 144,8 MHz. Dit is een geval van",
+   "options": [
+    {
+     "id": "A",
+     "text": "Laagfrequentdetectie"
+    },
+    {
+     "id": "B",
+     "text": "Intermodulatie"
+    },
+    {
+     "id": "C",
+     "text": "Overmodulatie"
+    },
+    {
+     "id": "D",
+     "text": "Faseruis"
+    }
+   ],
+   "answer": "B",
+   "explain": "Dit lijkt een geval van intermodulatie van de tweede harmonische van de ene frequentie en de grondfrequentie van de andere. Een rekensommetje bevestigt dit: 2 ∗ 144,5 MHz − 144,2 MHz = 144,8 MHz Dat betekent dat antwoord B goed is. Opmerkingen Tussen de twee werkfrequenties zit 300 kHz. 144,8 MHz is ook 300 kHz meer dan de hoogste van de twee werkfrequenties. Zou de frequentie van 139,9 MHz, dat is 300 kHz onder de laagste liggen? Dat rekenen we uit: 2 ∗ 144,2 MHz − 144,5 MHz = 139.9 MHz Dat klopt en het brengt ons tot twee meer algemene conclusies: 1. De frequentie van een intermodulatieproduct ligt nooit tussen de grondfrequenties waarvan de intermodulatiefrequentie is afgeleid, maar is altijd hoger dan de hoogste of lager dan de laagste frequentie van die twee. Noem de verschilfrequentie van de beide werkfrequenties fverschil (in dit geval 300 kHz). 2. Zijn de intermodulatiefrequenties verschilfrequenties van de grondfrequentie van de ene en de tweede harmonische van de andere frequentie, dan is: a. De frequentie van het kleinste intermodulatieproduct fverschil lager dan de frequentie van de laagste werkfrequentie b. De frequentie van het grootste intermodulatieproduct fverschil hoger dan de frequentie van de hoogste werkfrequentie Voor intermodulatieproducten met tweede, respectievelijk derde harmonischen gelden vergelijkbare wetmatigheden, maar dan met 2fverschil. Somfrequenties liggen zover van de oorspronkelijke frequenties af dat ze bij intermodulatie eigenlijk nooit aan de orde zijn",
+   "pages": [
+    "p023"
+   ],
+   "spages": [
+    "p031"
+   ]
+  },
+  {
+   "id": "o16-8",
+   "n": 8,
+   "q": "Een amateurstation zendt uit in de 2-meter amateurband met frequentiemodulatie (FM). Het station blijkt ook zwak te ontvangen in een bandje van ongeveer 100 kHz aan weerskanten van de gebruikte frequentie. De meest waarschijnlijke oorzaak van dit verschijnsel is::",
+   "options": [
+    {
+     "id": "A",
+     "text": "Intermodulatie"
+    },
+    {
+     "id": "B",
+     "text": "Niet-lineariteit van de eindversterker van de zender"
+    },
+    {
+     "id": "C",
+     "text": "Faseruis in de oscillator van de zender"
+    },
+    {
+     "id": "D",
+     "text": "Een slechte staandegolfverhouding"
+    }
+   ],
+   "answer": "C",
+   "explain": "Dit type ongewenste uitstraling wordt zeer waarschijnlijk veroorzaakt door faseruis in de oscillator van de zender. Antwoord C dus. Opmerking Remedie: oscillator stabieler maken. Eerste verdachte: de voedingsspanning. Verder moet de oscillator van binnen stevig in elkaar zitten zonder wiebelende draden, te los gewikkelde spoelen of andere gammele constructie-elementen.",
+   "pages": [
+    "p024"
+   ],
+   "spages": [
+    "p032"
+   ]
+  }
+ ]
+}

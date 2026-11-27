@@ -143,6 +143,18 @@ KW = {
   'swit': r'schakelende|step',
   'lvsv': r'schakelende|rendement',
  },
+ 16: {
+  'imd': r'intermodulatie',
+  'harm': r'harmonisch',
+  'cdec': r'ontkoppel|laagfrequent|luidspreker|condensator',
+  'lfd': r'laagfrequent|lfd|inpraten',
+  'soort': r'blokkering|kruismodulatie|intermodulatie|chirp|faseruis',
+  'maat': r'filter|ontkoppel|afscherm|stabiliseer',
+  'filt': r'filter|harmonisch',
+  'ontk': r'ontkoppel|luidspreker|netfilter|ferriet',
+  'uitstr': r'harmonisch|splatter|parasitair|overmodulatie|klasse',
+  'chirp': r'chirp|tjoep',
+ },
  11: {
   'ncomb': r'bits|combinaties',
   'bin2dec': r'binair|binaire|getal',
@@ -194,7 +206,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))
