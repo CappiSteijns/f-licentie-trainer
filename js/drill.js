@@ -393,6 +393,53 @@ const GEN = {
     const err = fx / fk * df;
     return { q: `In een frequentieteller bepaalt een kristal van ${val(fk, 'Hz')} de meettijd. Het kristal wijkt ${val(df, 'Hz')} af. Wat is de meetfout bij een signaal van ${val(fx, 'Hz')}?`, a: err, unit: 'Hz', wrong: [err * 10, err / 10, df, fx / fk], how: `relatieve fout = Δf / f_kristal = ${num(df)} / ${num(fk)}; meetfout = f · relatieve fout` };
   },
+  dbp() {
+    const g = pick([1, 2, 3, 4, 5, 10, 20, 25, 50, 100, 200, 1000]), dB = 10 * Math.log10(g);
+    return { q: `Een versterker maakt van een vermogen een ${g} keer zo groot vermogen. Hoeveel dB is de versterking?`, a: dB, unit: 'dB', wrong: [20 * Math.log10(g), g, dB / 2, 10 * g], how: `dB = 10 · log(P₂/P₁) = 10 · log(${g})` };
+  },
+  dbu() {
+    const g = pick([2, 3, 5, 10, 20, 50, 100]), dB = 20 * Math.log10(g);
+    return { q: `De uitgangsspanning is ${g} keer zo groot als de ingangsspanning (zelfde impedantie). Hoeveel dB is de versterking?`, a: dB, unit: 'dB', wrong: [10 * Math.log10(g), g, 2 * g, dB * 2], how: `dB = 20 · log(U₂/U₁) = 20 · log(${g})` };
+  },
+  dbf() {
+    const dB = pick([3, 6, 9, 10, 13, 16, 20, 23, 26, 30, 40]), f = Math.pow(10, dB / 10);
+    const F = x => String(+x.toPrecision(3)).replace('.', ',');
+    return { txt: true, q: `Een versterker heeft een vermogensversterking van ${dB} dB. Hoeveel keer is het vermogen groter?`, a: F(f), wrong: [F(dB), F(Math.pow(10, dB / 20)), F(dB * 2), F(f * 10)], how: `P₂/P₁ = 10^(dB/10) = 10^(${dB}/10)` };
+  },
+  dbs() {
+    const a = pick([3, 6, 10, 12, 20]), b = pick([-3, -6, 10, -10, 13, -13, 20]), c = pick([-3, 3, 6, -6, 10]), P = pick([1, 2, 5, 10, 50, 100]);
+    const t = a + b + c, Pu = P * Math.pow(10, t / 10);
+    const sg = x => (x > 0 ? '+' : '−') + Math.abs(x);
+    return { q: `Een signaal van ${val(P, 'W')} gaat door drie trappen met ${sg(a)} dB, ${sg(b)} dB en ${sg(c)} dB. Wat is het uitgangsvermogen?`, a: Pu, unit: 'W', wrong: [P * Math.pow(10, t / 20), P * t, P * Math.pow(10, (a + Math.abs(b) + Math.abs(c)) / 10), P * Math.pow(10, -t / 10)], how: `Totaal ${t} dB: P = ${num(P)} · 10^(${t}/10)` };
+  },
+  ampep() {
+    const Pc = pick([10, 25, 50, 100, 200]), M = pick([0.5, 0.8, 1]), pep = Pc * (1 + M) ** 2, tot = Pc * (1 + M * M / 2);
+    const k = Math.random() < 0.5;
+    return { q: `Een AM-zender heeft een draaggolfvermogen van ${val(Pc, 'W')} en een modulatiediepte van ${Math.round(M * 100)}%. ${k ? 'Wat is de PEP?' : 'Wat is het gemiddelde totale vermogen?'}`, a: k ? pep : tot, unit: 'W', wrong: k ? [Pc * (1 + M * M / 2), Pc * 2, Pc * (1 + M), Pc * 4 * 2] : [pep, Pc * (1 + M), Pc * (1 + M * M), Pc * 1.25], how: k ? 'PEP = Pdraaggolf · (1 + M)²  (M = 1: 4 · Pdraaggolf)' : 'Ptotaal = Pdraaggolf · (1 + M²/2)  (M = 1: 1,5 · Pdraaggolf)' };
+  },
+  carson() {
+    const df = pick([2.5e3, 3e3, 5e3, 7.5e3, 12e3]), fm = pick([1e3, 2e3, 3e3]);
+    return { q: `Een FM-zender heeft een frequentiezwaai van ${val(df, 'Hz')} en wordt gemoduleerd met ${val(fm, 'Hz')}. Wat is de bandbreedte volgens de regel van Carson?`, a: 2 * (df + fm), unit: 'Hz', wrong: [2 * fm, 2 * df, df + fm, 2 * (df - fm)], how: `B ≈ 2 · (Δf + fm) = 2 · (${num(df)} + ${num(fm)})` };
+  },
+  mindex() {
+    const df = pick([1e3, 2e3, 3e3, 5e3, 6e3, 12e3]), fm = pick([500, 1e3, 1.5e3, 2e3, 3e3]), m = df / fm;
+    return { txt: true, q: `Een FM-zender heeft een frequentiezwaai van ${val(df, 'Hz')} en wordt gemoduleerd met ${val(fm, 'Hz')}. Hoe groot is de modulatie-index?`, a: String(+m.toPrecision(3)).replace('.', ','), wrong: [String(+(fm / df).toPrecision(3)).replace('.', ','), String(+(df * fm / 1e6).toPrecision(3)).replace('.', ','), String(+(m * 2).toPrecision(3)).replace('.', ','), String(+(m / 2).toPrecision(3)).replace('.', ',')], how: `m = Δf / fm = ${num(df)} / ${num(fm)}` };
+  },
+  baud() {
+    const k = pick([['QPSK/4-QAM', 4], ['16-QAM', 16], ['64-QAM', 64], ['BPSK', 2], ['8-PSK', 8]]), bps = pick([2400, 4800, 9600, 14400, 19200]), bits = Math.log2(k[1]), bd = bps / bits;
+    return { q: `Een bitstroom van ${bps} bit/s wordt gemoduleerd met ${k[0]} (${k[1]} toestanden per symbool). Wat is de symboolsnelheid?`, a: bd, unit: 'Bd', wrong: [bps, bps * bits, bps / k[1], bps / (bits + 1)], how: `${k[1]} toestanden = ${bits} bit per symbool; baud = bit/s ÷ ${bits}` };
+  },
+  fmult() {
+    const n = pick([2, 3, 4, 6, 8, 12, 16]), fo = pick([6, 8, 9, 12, 18]), dfo = pick([125, 250, 300, 400, 500, 750]);
+    const back = Math.random() < 0.5;
+    return back ? { q: `De oscillator van een FM-zender werkt op ${fo} MHz met een frequentiezwaai van ${val(dfo, 'Hz')}. Daarna volgt een totale vermenigvuldiging met ${n}. Wat is de frequentiezwaai van het uitgangssignaal?`, a: dfo * n, unit: 'Hz', wrong: [dfo, dfo / n, dfo * n * n, dfo * (n + 1)], how: `Zwaai en frequentie worden samen vermenigvuldigd: Δf = ${num(dfo)} · ${n}` }
+      : { q: `Een FM-zender heeft na een totale vermenigvuldiging met ${n} een frequentiezwaai van ${val(dfo * n, 'Hz')}. Wat is de zwaai van de oscillator?`, a: dfo, unit: 'Hz', wrong: [dfo * n * n, dfo * n, dfo / n, dfo * (n - 1)], how: `Δf_osc = Δf_uit / ${n}` };
+  },
+  ezbf() {
+    const fc = pick([455e3, 1e6, 3.5e6, 9e6, 10.7e6]), fm = pick([300, 1000, 2500, 2700, 3000]), up = Math.random() < 0.5;
+    const F = x => String(+(x / 1e3).toFixed(3)).replace('.', ',') + ' kHz';
+    return { txt: true, q: `In een EZB-zender is de draaggolf ${F(fc)} en de modulatiefrequentie ${F(fm)}. Op welke frequentie komt de ${up ? 'hoge' : 'lage'} zijband terecht?`, a: F(up ? fc + fm : fc - fm), wrong: [F(up ? fc - fm : fc + fm), F(fc), F(fm), F(fc + 2 * fm)], how: up ? 'hoge zijband = draaggolf + modulatiefrequentie' : 'lage zijband = draaggolf − modulatiefrequentie' };
+  },
   ncomb() {
     const n = pick([3, 4, 5, 6, 8, 10, 12]);
     if (Math.random() < 0.5) return { txt: true, q: `Hoeveel verschillende combinaties kun je maken met ${n} bits?`, a: 2 ** n, wrong: [2 * n, n * n, 2 ** n - 1, 2 ** (n + 1)], how: `2ⁿ = 2^${n}` };

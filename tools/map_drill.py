@@ -143,6 +143,23 @@ KW = {
   'swit': r'schakelende|step',
   'lvsv': r'schakelende|rendement',
  },
+ 12: {
+  'dbp': r'\bdB\b|decibel|versterking',
+  'dbu': r'\bdB\b|decibel|spanning',
+  'dbf': r'\bdB\b|decibel',
+  'dbs': r'\bdB\b|decibel|trappen|verzwakker',
+  'ampep': r'PEP|vermogen|modulatiediepte|draaggolf',
+  'carson': r'bandbreedte|frequentiezwaai|zwaai',
+  'mindex': r'modulatie-?index|zwaai',
+  'baud': r'baud|bit|QAM|PSK|symbool',
+  'fmult': r'zwaai|vermenigvuldig',
+  'ezbf': r'zijband|EZB|enkelzijband|draaggolf',
+  'mod': r'modulatie',
+  'bwv': r'bandbreedte',
+  'klas': r'klasse|lineair',
+  'dig': r'QAM|FSK|PSK|ASK|digitaal',
+  'zijb': r'balansmodulator|zijbandfilter|EZB',
+ },
  15: {
   'shunt': r'shunt|parallel|ampèremeter|milliampère',
   'rvoor': r'voorschakel|serieweerstand|voltmeter|meetbereik',
@@ -215,7 +232,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

@@ -70,19 +70,19 @@
    "n": 12,
    "title": "Radio: modulatie en zenders",
    "count": 182,
-   "theory": false
+   "theory": true
   },
   {
    "n": 13,
    "title": "Radio: ontvangers, fasevergrendelde lus, digitale radio",
    "count": 192,
-   "theory": false
+   "theory": true
   },
   {
    "n": 14,
    "title": "Antennes, transmissielijnen en voortplanting van elektromagnetische golven",
    "count": 244,
-   "theory": false
+   "theory": true
   },
   {
    "n": 15,

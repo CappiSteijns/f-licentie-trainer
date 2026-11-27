@@ -1,0 +1,2360 @@
+{
+ "chapter": 12,
+ "dir": "img/theorie/hs12",
+ "sections": [
+  {
+   "id": "s1",
+   "title": "Wat leer je in dit hoofdstuk?",
+   "lvl": 1,
+   "pages": [
+    "p004"
+   ]
+  },
+  {
+   "id": "s2",
+   "title": "Analoge modulatie",
+   "lvl": 1,
+   "pages": [
+    "p004"
+   ]
+  },
+  {
+   "id": "s3",
+   "title": "Wat is modulatie en waartoe dient het?",
+   "lvl": 2,
+   "pages": [
+    "p004",
+    "p005"
+   ]
+  },
+  {
+   "id": "s4",
+   "title": "Modulatiemethoden",
+   "lvl": 2,
+   "pages": [
+    "p005"
+   ]
+  },
+  {
+   "id": "s5",
+   "title": "Amplitudemodulatie (AM)",
+   "lvl": 2,
+   "pages": [
+    "p005",
+    "p006",
+    "p007",
+    "p008",
+    "p009"
+   ]
+  },
+  {
+   "id": "s6",
+   "title": "Het frequentiespectrum van AM",
+   "lvl": 2,
+   "pages": [
+    "p009"
+   ]
+  },
+  {
+   "id": "s7",
+   "title": "De bandbreedte van een AM-signaal",
+   "lvl": 2,
+   "pages": [
+    "p009",
+    "p010"
+   ]
+  },
+  {
+   "id": "s8",
+   "title": "Het vermogen van een AM-signaal; Peak Envelope Power (PEP)",
+   "lvl": 2,
+   "pages": [
+    "p010",
+    "p011",
+    "p012"
+   ]
+  },
+  {
+   "id": "s9",
+   "title": "Informatie en vermogen in een AM-signaal",
+   "lvl": 2,
+   "pages": [
+    "p012"
+   ]
+  },
+  {
+   "id": "s10",
+   "title": "Dubbelzijbandmodulatie (DZB)",
+   "lvl": 2,
+   "pages": [
+    "p012",
+    "p013",
+    "p014",
+    "p015",
+    "p016"
+   ]
+  },
+  {
+   "id": "s11",
+   "title": "Enkelzijbandmodulatie (EZB)",
+   "lvl": 2,
+   "pages": [
+    "p016",
+    "p017"
+   ]
+  },
+  {
+   "id": "s12",
+   "title": "Morse-telegrafie (CW)",
+   "lvl": 2,
+   "pages": [
+    "p017",
+    "p018"
+   ]
+  },
+  {
+   "id": "s13",
+   "title": "Frequentiemodulatie (FM)",
+   "lvl": 2,
+   "pages": [
+    "p018",
+    "p019",
+    "p020",
+    "p021",
+    "p022",
+    "p023",
+    "p024"
+   ]
+  },
+  {
+   "id": "s14",
+   "title": "Fasemodulatie (PM)",
+   "lvl": 2,
+   "pages": [
+    "p024",
+    "p025"
+   ]
+  },
+  {
+   "id": "s15",
+   "title": "Digitale modulatie",
+   "lvl": 1,
+   "pages": [
+    "p025"
+   ]
+  },
+  {
+   "id": "s16",
+   "title": "Digitale modulatie: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p025"
+   ]
+  },
+  {
+   "id": "s17",
+   "title": "Transmissiesnelheid: meten met de twee maten bps en Bd",
+   "lvl": 2,
+   "pages": [
+    "p025",
+    "p026",
+    "p027"
+   ]
+  },
+  {
+   "id": "s18",
+   "title": "Amplitude Shift Keying (ASK)",
+   "lvl": 2,
+   "pages": [
+    "p027",
+    "p028"
+   ]
+  },
+  {
+   "id": "s19",
+   "title": "Frequency Shift Keying (FSK)",
+   "lvl": 2,
+   "pages": [
+    "p028",
+    "p029"
+   ]
+  },
+  {
+   "id": "s20",
+   "title": "Phase Shift Keying (PSK)",
+   "lvl": 2,
+   "pages": [
+    "p029",
+    "p030",
+    "p031"
+   ]
+  },
+  {
+   "id": "s21",
+   "title": "Quadrature Amplitude Modulation (QAM)",
+   "lvl": 2,
+   "pages": [
+    "p031",
+    "p032"
+   ]
+  },
+  {
+   "id": "s22",
+   "title": "Enkele andere vormen van digitale modulatie in het amateurverkeer",
+   "lvl": 2,
+   "pages": [
+    "p032",
+    "p033",
+    "p034",
+    "p035",
+    "p036"
+   ]
+  },
+  {
+   "id": "s23",
+   "title": "Pariteit: nog een manier van foutcontrole",
+   "lvl": 2,
+   "pages": [
+    "p036",
+    "p037"
+   ]
+  },
+  {
+   "id": "s24",
+   "title": "Zenders en modulatoren",
+   "lvl": 1,
+   "pages": [
+    "p037"
+   ]
+  },
+  {
+   "id": "s25",
+   "title": "Zenders en modulatoren: inleiding",
+   "lvl": 2,
+   "pages": [
+    "p037"
+   ]
+  },
+  {
+   "id": "s26",
+   "title": "Een zender zonder modulator",
+   "lvl": 2,
+   "pages": [
+    "p037",
+    "p038"
+   ]
+  },
+  {
+   "id": "s27",
+   "title": "Mengschakelingen en het maken van AM, DZB en EZB",
+   "lvl": 2,
+   "pages": [
+    "p038",
+    "p039",
+    "p040",
+    "p041",
+    "p042",
+    "p043",
+    "p044",
+    "p045",
+    "p046",
+    "p047",
+    "p048",
+    "p049"
+   ]
+  },
+  {
+   "id": "s28",
+   "title": "Schakelingen voor CW",
+   "lvl": 2,
+   "pages": [
+    "p049",
+    "p050",
+    "p051"
+   ]
+  },
+  {
+   "id": "s29",
+   "title": "Schakelingen voor FM",
+   "lvl": 2,
+   "pages": [
+    "p051",
+    "p052"
+   ]
+  },
+  {
+   "id": "s30",
+   "title": "Schakelingen voor PM",
+   "lvl": 2,
+   "pages": [
+    "p052"
+   ]
+  },
+  {
+   "id": "s31",
+   "title": "De decibel en zenders",
+   "lvl": 1,
+   "pages": [
+    "p052"
+   ]
+  },
+  {
+   "id": "s32",
+   "title": "Basisstof",
+   "lvl": 2,
+   "pages": [
+    "p052",
+    "p053"
+   ]
+  },
+  {
+   "id": "s33",
+   "title": "Rekenen met dB",
+   "lvl": 2,
+   "pages": [
+    "p053",
+    "p054",
+    "p055"
+   ]
+  },
+  {
+   "id": "s34",
+   "title": "Toepassing van dB bij spanningen en stromen in plaats van vermogens.",
+   "lvl": 2,
+   "pages": [
+    "p055",
+    "p056",
+    "p057"
+   ]
+  },
+  {
+   "id": "s35",
+   "title": "Uitwerkingen van de opgaven",
+   "lvl": 1,
+   "pages": [
+    "p057",
+    "p058",
+    "p059",
+    "p060",
+    "p061",
+    "p062",
+    "p063",
+    "p064",
+    "p065",
+    "p066",
+    "p067",
+    "p068",
+    "p069",
+    "p070",
+    "p071",
+    "p072",
+    "p073",
+    "p074",
+    "p075",
+    "p076",
+    "p077",
+    "p078",
+    "p079",
+    "p080",
+    "p081",
+    "p082",
+    "p083",
+    "p084"
+   ]
+  }
+ ],
+ "qmap": {
+  "hs12-1": [
+   "s8"
+  ],
+  "hs12-2": [
+   "s8"
+  ],
+  "hs12-3": [
+   "s12"
+  ],
+  "hs12-4": [
+   "s20",
+   "s12"
+  ],
+  "hs12-5": [
+   "s14",
+   "s9"
+  ],
+  "hs12-6": [
+   "s14"
+  ],
+  "hs12-7": [
+   "s6"
+  ],
+  "hs12-8": [
+   "s6",
+   "s13"
+  ],
+  "hs12-9": [
+   "s14"
+  ],
+  "hs12-10": [
+   "s4"
+  ],
+  "hs12-11": [
+   "s27",
+   "s13"
+  ],
+  "hs12-12": [
+   "s14",
+   "s8"
+  ],
+  "hs12-13": [
+   "s6"
+  ],
+  "hs12-14": [
+   "s14"
+  ],
+  "hs12-15": [
+   "s7"
+  ],
+  "hs12-16": [
+   "s27"
+  ],
+  "hs12-17": [
+   "s27"
+  ],
+  "hs12-18": [
+   "s27",
+   "s7"
+  ],
+  "hs12-19": [
+   "s14",
+   "s27"
+  ],
+  "hs12-20": [
+   "s13",
+   "s10"
+  ],
+  "hs12-21": [
+   "s14",
+   "s27"
+  ],
+  "hs12-22": [
+   "s27"
+  ],
+  "hs12-23": [
+   "s10"
+  ],
+  "hs12-24": [
+   "s14"
+  ],
+  "hs12-25": [
+   "s10",
+   "s5"
+  ],
+  "hs12-26": [
+   "s10"
+  ],
+  "hs12-27": [
+   "s3"
+  ],
+  "hs12-28": [
+   "s7",
+   "s13"
+  ],
+  "hs12-29": [
+   "s16"
+  ],
+  "hs12-30": [
+   "s13"
+  ],
+  "hs12-31": [
+   "s13",
+   "s7"
+  ],
+  "hs12-32": [
+   "s14"
+  ],
+  "hs12-33": [
+   "s13"
+  ],
+  "hs12-34": [
+   "s13",
+   "s8"
+  ],
+  "hs12-35": [
+   "s14",
+   "s30"
+  ],
+  "hs12-36": [
+   "s5",
+   "s13"
+  ],
+  "hs12-37": [
+   "s30"
+  ],
+  "hs12-38": [
+   "s13"
+  ],
+  "hs12-39": [
+   "s13"
+  ],
+  "hs12-40": [
+   "s11",
+   "s13"
+  ],
+  "hs12-41": [
+   "s8",
+   "s27"
+  ],
+  "hs12-42": [
+   "s13"
+  ],
+  "hs12-43": [
+   "s13"
+  ],
+  "hs12-44": [
+   "s8"
+  ],
+  "hs12-45": [
+   "s8"
+  ],
+  "hs12-46": [
+   "s32"
+  ],
+  "hs12-47": [
+   "s8"
+  ],
+  "hs12-48": [
+   "s8"
+  ],
+  "hs12-49": [
+   "s8"
+  ],
+  "hs12-50": [
+   "s8"
+  ],
+  "hs12-51": [
+   "s34"
+  ],
+  "hs12-52": [
+   "s8"
+  ],
+  "hs12-53": [
+   "s8"
+  ],
+  "hs12-54": [
+   "s8"
+  ],
+  "hs12-55": [
+   "s8"
+  ],
+  "hs12-56": [
+   "s33"
+  ],
+  "hs12-57": [
+   "s9"
+  ],
+  "hs12-58": [
+   "s33"
+  ],
+  "hs12-59": [
+   "s32"
+  ],
+  "hs12-60": [
+   "s27"
+  ],
+  "hs12-61": [
+   "s27"
+  ],
+  "hs12-62": [
+   "s33"
+  ],
+  "hs12-63": [
+   "s6",
+   "s9"
+  ],
+  "hs12-64": [
+   "s33"
+  ],
+  "hs12-65": [
+   "s33"
+  ],
+  "hs12-66": [
+   "s33",
+   "s3"
+  ],
+  "hs12-67": [
+   "s9"
+  ],
+  "hs12-68": [
+   "s33"
+  ],
+  "hs12-69": [
+   "s33",
+   "s32"
+  ],
+  "hs12-70": [
+   "s28"
+  ],
+  "hs12-71": [
+   "s26"
+  ],
+  "hs12-72": [
+   "s13"
+  ],
+  "hs12-73": [
+   "s27",
+   "s8"
+  ],
+  "hs12-74": [
+   "s27",
+   "s28"
+  ],
+  "hs12-75": [
+   "s27"
+  ],
+  "hs12-76": [
+   "s27"
+  ],
+  "hs12-77": [
+   "s27"
+  ],
+  "hs12-78": [
+   "s29"
+  ],
+  "hs12-79": [
+   "s3",
+   "s16"
+  ],
+  "hs12-80": [
+   "s26"
+  ],
+  "hs12-81": [
+   "s27"
+  ],
+  "hs12-82": [
+   "s28",
+   "s27"
+  ],
+  "hs12-83": [
+   "s27"
+  ],
+  "hs12-84": [
+   "s27"
+  ],
+  "hs12-85": [
+   "s28",
+   "s27"
+  ],
+  "hs12-86": [
+   "s28",
+   "s8"
+  ],
+  "hs12-87": [
+   "s28",
+   "s8"
+  ],
+  "hs12-88": [
+   "s9"
+  ],
+  "hs12-89": [
+   "s26",
+   "s34"
+  ],
+  "hs12-90": [
+   "s9",
+   "s27"
+  ],
+  "hs12-91": [
+   "s16",
+   "s20"
+  ],
+  "hs12-92": [
+   "s19"
+  ],
+  "hs12-93": [
+   "s21",
+   "s17"
+  ],
+  "hs12-94": [
+   "s14",
+   "s18"
+  ],
+  "hs12-95": [
+   "s21"
+  ],
+  "hs12-96": [
+   "s21"
+  ],
+  "hs12-97": [
+   "s17"
+  ],
+  "hs12-98": [
+   "s13",
+   "s12"
+  ],
+  "hs12-99": [
+   "s21",
+   "s19"
+  ],
+  "hs12-100": [
+   "s22"
+  ],
+  "hs12-101": [
+   "s22"
+  ],
+  "hs12-102": [
+   "s20"
+  ],
+  "hs12-103": [
+   "s26"
+  ],
+  "hs12-104": [
+   "s26"
+  ],
+  "hs12-105": [
+   "s26"
+  ],
+  "hs12-106": [
+   "s26"
+  ],
+  "hs12-107": [
+   "s26"
+  ],
+  "hs12-108": [
+   "s27",
+   "s28"
+  ],
+  "hs12-109": [
+   "s26"
+  ],
+  "hs12-110": [
+   "s26",
+   "s28"
+  ],
+  "hs12-111": [
+   "s28"
+  ],
+  "hs12-112": [
+   "s13",
+   "s7"
+  ],
+  "hs12-113": [
+   "s26",
+   "s29"
+  ],
+  "hs12-114": [
+   "s11"
+  ],
+  "hs12-115": [
+   "s6"
+  ],
+  "hs12-116": [
+   "s26"
+  ],
+  "hs12-117": [
+   "s13",
+   "s28"
+  ],
+  "hs12-118": [
+   "s27",
+   "s6"
+  ],
+  "hs12-119": [
+   "s13",
+   "s28"
+  ],
+  "hs12-120": [
+   "s19",
+   "s13"
+  ],
+  "hs12-121": [
+   "s13",
+   "s28"
+  ],
+  "hs12-122": [
+   "s13",
+   "s28"
+  ],
+  "hs12-123": [
+   "s27",
+   "s26"
+  ],
+  "hs12-124": [
+   "s29",
+   "s26"
+  ],
+  "hs12-125": [
+   "s27"
+  ],
+  "hs12-126": [
+   "s27"
+  ],
+  "hs12-127": [
+   "s12"
+  ],
+  "hs12-128": [
+   "s27"
+  ],
+  "hs12-129": [
+   "s9"
+  ],
+  "hs12-130": [
+   "s27"
+  ],
+  "hs12-131": [
+   "s27"
+  ],
+  "hs12-132": [
+   "s27"
+  ],
+  "hs12-133": [
+   "s27"
+  ],
+  "hs12-134": [
+   "s27"
+  ],
+  "hs12-135": [
+   "s27"
+  ],
+  "hs12-136": [
+   "s27",
+   "s8"
+  ],
+  "hs12-137": [
+   "s6"
+  ],
+  "hs12-138": [
+   "s10",
+   "s13"
+  ],
+  "hs12-139": [
+   "s6"
+  ],
+  "hs12-140": [
+   "s7",
+   "s13"
+  ],
+  "hs12-141": [
+   "s10",
+   "s6"
+  ],
+  "hs12-142": [
+   "s6"
+  ],
+  "hs12-143": [
+   "s27",
+   "s28"
+  ],
+  "hs12-144": [
+   "s9"
+  ],
+  "hs12-145": [
+   "s27"
+  ],
+  "hs12-146": [
+   "s27",
+   "s7"
+  ],
+  "hs12-147": [
+   "s27",
+   "s28"
+  ],
+  "hs12-148": [
+   "s29"
+  ],
+  "hs12-149": [
+   "s29"
+  ],
+  "hs12-150": [
+   "s29"
+  ],
+  "hs12-151": [
+   "s29"
+  ],
+  "hs12-152": [
+   "s27",
+   "s28"
+  ],
+  "hs12-153": [
+   "s27",
+   "s29"
+  ],
+  "hs12-154": [
+   "s27",
+   "s28"
+  ],
+  "hs12-155": [
+   "s28"
+  ],
+  "hs12-156": [
+   "s28",
+   "s29"
+  ],
+  "hs12-157": [
+   "s27"
+  ],
+  "hs12-158": [
+   "s27",
+   "s28"
+  ],
+  "hs12-159": [
+   "s27"
+  ],
+  "hs12-160": [
+   "s28",
+   "s26"
+  ],
+  "hs12-161": [
+   "s28",
+   "s29"
+  ],
+  "hs12-162": [
+   "s28"
+  ],
+  "hs12-163": [
+   "s27"
+  ],
+  "hs12-164": [
+   "s28"
+  ],
+  "hs12-165": [
+   "s27"
+  ],
+  "hs12-166": [
+   "s27",
+   "s28"
+  ],
+  "hs12-167": [
+   "s28",
+   "s29"
+  ],
+  "hs12-168": [
+   "s28"
+  ],
+  "hs12-169": [
+   "s27"
+  ],
+  "hs12-170": [
+   "s28",
+   "s29"
+  ],
+  "hs12-171": [
+   "s29"
+  ],
+  "hs12-172": [
+   "s29"
+  ],
+  "hs12-173": [
+   "s26"
+  ],
+  "hs12-174": [
+   "s29"
+  ],
+  "hs12-175": [
+   "s28",
+   "s30"
+  ],
+  "hs12-176": [
+   "s13",
+   "s28"
+  ],
+  "hs12-177": [
+   "s26"
+  ],
+  "hs12-178": [
+   "s26"
+  ],
+  "hs12-179": [
+   "s29"
+  ],
+  "hs12-180": [
+   "s28"
+  ],
+  "hs12-181": [
+   "s29"
+  ],
+  "hs12-182": [
+   "s26",
+   "s28"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Amplitudemodulatie",
+   "items": [
+    {
+     "f": "M = Umod / Udraaggolf",
+     "t": "modulatiediepte, 1 = 100%"
+    },
+    {
+     "f": "B = 2 · fmod",
+     "t": "bandbreedte van AM en DZB; EZB: B ≈ fmod"
+    },
+    {
+     "f": "PEP = Pdraaggolf · (1 + M)²",
+     "t": "bij M = 1: 4 · Pdraaggolf"
+    },
+    {
+     "f": "Ptotaal = Pdraaggolf · (1 + M²/2)",
+     "t": "bij M = 1: 1,5 · Pdraaggolf"
+    },
+    {
+     "f": "zijbanden : draaggolf : zijband = 1 : 4 : 1",
+     "t": "vermogens bij M = 100%"
+    }
+   ]
+  },
+  {
+   "title": "Frequentiemodulatie",
+   "items": [
+    {
+     "f": "m = Δf / fmod",
+     "t": "modulatie-index"
+    },
+    {
+     "f": "B ≈ 2 · (Δf + fmod)",
+     "t": "regel van Carson"
+    },
+    {
+     "f": "Δf ∝ Umod",
+     "t": "FM: zwaai is evenredig met amplitude; PM ook met de modulatiefrequentie"
+    },
+    {
+     "f": "fuit = n · fosc en Δfuit = n · Δfosc",
+     "t": "vermenigvuldigtrappen"
+    }
+   ]
+  },
+  {
+   "title": "Digitaal",
+   "items": [
+    {
+     "f": "bps = baud · bit per symbool",
+     "t": "16-QAM: 4 bit per symbool"
+    },
+    {
+     "f": "B ≈ 2 · (1,6 · fS + Δf)",
+     "t": "bandbreedte FSK"
+    },
+    {
+     "f": "shift = fmax − fmin = 2 · Δf",
+     "t": "FSK, in de praktijk 170 Hz"
+    }
+   ]
+  },
+  {
+   "title": "Decibel",
+   "items": [
+    {
+     "f": "dB = 10 · log(P₂/P₁)",
+     "t": "vermogen"
+    },
+    {
+     "f": "dB = 20 · log(U₂/U₁)",
+     "t": "spanning of stroom (gelijke impedantie)"
+    },
+    {
+     "f": "P₂/P₁ = 10^(dB/10)",
+     "t": "terugrekenen"
+    },
+    {
+     "f": "3 dB = ×2, 6 dB = ×4, 10 dB = ×10, 20 dB = ×100",
+     "t": "vermogen; spanning: 6 dB = ×2, 20 dB = ×10"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s3",
+   "q": "Wat is modulatie?",
+   "a": "Het veranderen van een eigenschap (amplitude, frequentie of fase) van een hoogfrequente draaggolf in het ritme van het te verzenden signaal (informatie)."
+  },
+  {
+   "id": "c2",
+   "sec": "s3",
+   "q": "Waarom moduleer je?",
+   "a": "Een laagfrequent signaal is niet efficiënt uit te stralen; een HF-draaggolf draagt de informatie wel over grote afstand en laat meerdere stations naast elkaar werken."
+  },
+  {
+   "id": "c3",
+   "sec": "s4",
+   "q": "Welke drie eigenschappen van de draaggolf kun je moduleren?",
+   "a": "Amplitude (AM), frequentie (FM) en fase (PM)."
+  },
+  {
+   "id": "c4",
+   "sec": "s5",
+   "q": "Wat is amplitudemodulatie (AM)?",
+   "a": "De amplitude van de draaggolf varieert met de momentele waarde van het modulerende signaal. De frequentie van de draaggolf blijft gelijk."
+  },
+  {
+   "id": "c5",
+   "sec": "s5",
+   "q": "Wat is de modulatiediepte M?",
+   "a": "De verhouding tussen de amplitude van het modulerende signaal en de amplitude van de draaggolf. M = 1 is 100%."
+  },
+  {
+   "id": "c6",
+   "sec": "s5",
+   "q": "Wat is overmodulatie?",
+   "a": "De amplitude van het modulerende signaal is groter dan die van de draaggolf (M > 1): vervorming en een te grote bandbreedte (splatter)."
+  },
+  {
+   "id": "c7",
+   "sec": "s5",
+   "q": "Wat is de omhullende van een AM-signaal?",
+   "a": "De lijn door de toppen van het AM-signaal. De vorm is gelijk aan die van het modulerende signaal."
+  },
+  {
+   "id": "c8",
+   "sec": "s6",
+   "q": "Uit welke frequenties bestaat een AM-signaal met één toon?",
+   "a": "De draaggolf, de som (bovenzijband) en het verschil (onderzijband) van draaggolf- en modulatiefrequentie."
+  },
+  {
+   "id": "c9",
+   "sec": "s6",
+   "q": "Hoe groot zijn de zijbanden bij M = 100%?",
+   "a": "Elke zijband heeft een amplitude die de helft is van die van de draaggolf (vermogensverhouding 1 : 4 : 1)."
+  },
+  {
+   "id": "c10",
+   "sec": "s7",
+   "q": "Hoe groot is de bandbreedte van een AM-signaal?",
+   "a": "Twee keer de hoogste modulatiefrequentie: B = 2 · fmod."
+  },
+  {
+   "id": "c11",
+   "sec": "s7",
+   "q": "Welke bandbreedte heeft een AM-omroepzender?",
+   "a": "9 kHz (hoogste modulatiefrequentie 4,5 kHz)."
+  },
+  {
+   "id": "c12",
+   "sec": "s8",
+   "q": "Wat is PEP?",
+   "a": "Peak Envelope Power: het gemiddelde vermogen over één periode van de draaggolf bij de hoogste waarde van de omhullende."
+  },
+  {
+   "id": "c13",
+   "sec": "s8",
+   "q": "Hoe groot is PEP bij 100% AM ten opzichte van het draaggolfvermogen?",
+   "a": "4 keer het draaggolfvermogen. Algemeen: PEP = Pdraaggolf · (1 + M)²."
+  },
+  {
+   "id": "c14",
+   "sec": "s8",
+   "q": "Hoe groot is het gemiddelde vermogen bij 100% AM?",
+   "a": "1,5 keer het draaggolfvermogen: Ptotaal = Pdraaggolf · (1 + M²/2)."
+  },
+  {
+   "id": "c15",
+   "sec": "s9",
+   "q": "Hoeveel van het vermogen van een 100% AM-signaal zit in de informatie?",
+   "a": "Een derde: draaggolf 100 W en zijbanden 2 × 25 W: 150 W totaal, 50 W zijbanden (en die bevatten dezelfde informatie dubbel)."
+  },
+  {
+   "id": "c16",
+   "sec": "s10",
+   "q": "Wat is dubbelzijbandmodulatie (DZB)?",
+   "a": "AM zonder draaggolf: alleen de twee zijbanden. Er is geen vermogen verspild aan de draaggolf; PEP is ¼ van die van de AM-zender met dezelfde draaggolf."
+  },
+  {
+   "id": "c17",
+   "sec": "s10",
+   "q": "Wat is de omhullende van een DZB-signaal?",
+   "a": "Het DZB-signaal heeft geen draaggolf: de omhullende heeft twee keer zoveel maxima en minima als die van AM met dezelfde modulatiefrequentie."
+  },
+  {
+   "id": "c18",
+   "sec": "s11",
+   "q": "Wat is enkelzijbandmodulatie (EZB, SSB)?",
+   "a": "Eén zijband en geen draaggolf. De zijbanden bevatten dezelfde informatie, dus één is genoeg."
+  },
+  {
+   "id": "c19",
+   "sec": "s11",
+   "q": "Welke voordelen heeft EZB boven AM?",
+   "a": "Veel minder vermogen nodig (ongeveer 9 dB winst), halve bandbreedte (dus meer stations en minder ruis in het signaal)."
+  },
+  {
+   "id": "c20",
+   "sec": "s11",
+   "q": "Welke zijband gebruik je boven 10 MHz en welke eronder?",
+   "a": "Boven 10 MHz bovenzijband (USB), eronder onderzijband (LSB)."
+  },
+  {
+   "id": "c21",
+   "sec": "s11",
+   "q": "Hoe groot is de bandbreedte van EZB-telefonie?",
+   "a": "Ongeveer de hoogste modulatiefrequentie: 2,4–3 kHz."
+  },
+  {
+   "id": "c22",
+   "sec": "s12",
+   "q": "Hoe maak je CW (morse)?",
+   "a": "Door de draaggolf met de sleutel in en uit te schakelen (A1A). Het signaal heeft de kleinste bandbreedte (200–500 Hz)."
+  },
+  {
+   "id": "c23",
+   "sec": "s12",
+   "q": "Waarom moet CW afgevlakte flanken hebben?",
+   "a": "Om sleutelklikken (te grote bandbreedte) te voorkomen."
+  },
+  {
+   "id": "c24",
+   "sec": "s13",
+   "q": "Wat is frequentiemodulatie (FM)?",
+   "a": "De frequentie van de draaggolf varieert met de momentele waarde van het modulerende signaal; de amplitude blijft constant."
+  },
+  {
+   "id": "c25",
+   "sec": "s13",
+   "q": "Wat is de frequentiezwaai Δf?",
+   "a": "De maximale afwijking van de draaggolffrequentie. Hij hangt af van de amplitude van het modulerende signaal."
+  },
+  {
+   "id": "c26",
+   "sec": "s13",
+   "q": "Hoe hangt de zwaai af van de modulatiefrequentie en amplitude bij FM?",
+   "a": "De zwaai is evenredig met de amplitude van het modulerende signaal en onafhankelijk van de modulatiefrequentie."
+  },
+  {
+   "id": "c27",
+   "sec": "s13",
+   "q": "Wat is de modulatie-index m?",
+   "a": "m = Δf / fmod: de verhouding van de frequentiezwaai en de modulerende frequentie."
+  },
+  {
+   "id": "c28",
+   "sec": "s13",
+   "q": "Wat zegt de regel van Carson?",
+   "a": "De bandbreedte van een FM-signaal is ongeveer B ≈ 2 · (Δf + fmod) = 2 · fmod · (m + 1)."
+  },
+  {
+   "id": "c29",
+   "sec": "s13",
+   "q": "Hoe verandert de bandbreedte als je de zwaai vergroot?",
+   "a": "De bandbreedte neemt toe; het zendvermogen blijft gelijk (de amplitude is constant)."
+  },
+  {
+   "id": "c30",
+   "sec": "s13",
+   "q": "Waarom is FM minder geschikt voor drukke amateurbanden?",
+   "a": "De bandbreedte is minstens 3× zo groot als van AM/EZB."
+  },
+  {
+   "id": "c31",
+   "sec": "s13",
+   "q": "Wat zijn voordelen van FM?",
+   "a": "Weinig gevoelig voor ruis en storing (amplitudevariaties), eenvoudige zender (klasse C) en goede kwaliteit."
+  },
+  {
+   "id": "c32",
+   "sec": "s13",
+   "q": "Wat is de bandbreedte voor 3 kHz modulatie en 3 kHz zwaai?",
+   "a": "B ≈ 2 · (3 + 3) = 12 kHz."
+  },
+  {
+   "id": "c33",
+   "sec": "s13",
+   "q": "Wat gebeurt er als de bandbreedte van het FM-signaal te groot is voor de ontvanger?",
+   "a": "Het signaal wordt vervormd."
+  },
+  {
+   "id": "c34",
+   "sec": "s14",
+   "q": "Wat is fasemodulatie (PM)?",
+   "a": "De fase van de draaggolf varieert met het modulerende signaal. De zwaai is evenredig met de amplitude én de frequentie van het modulerende signaal."
+  },
+  {
+   "id": "c35",
+   "sec": "s14",
+   "q": "Hoe maak je PM met een FM-modulator?",
+   "a": "Zet een filter in het LF-deel dat 6 dB per octaaf toeneemt: de zwaai neemt dan toe met de modulatiefrequentie."
+  },
+  {
+   "id": "c36",
+   "sec": "s14",
+   "q": "Wat is het verschil in de zwaai bij FM en PM?",
+   "a": "FM: zwaai onafhankelijk van de modulatiefrequentie. PM: zwaai neemt toe met de modulatiefrequentie."
+  },
+  {
+   "id": "c37",
+   "sec": "s16",
+   "q": "Wat is digitale modulatie?",
+   "a": "Het moduleren van een draaggolf met een digitaal signaal (bits): ASK, FSK, PSK of QAM."
+  },
+  {
+   "id": "c38",
+   "sec": "s17",
+   "q": "Wat is het verschil tussen bps en baud?",
+   "a": "bps (bit/s) telt bits per seconde. Baud (Bd) telt symbolen per seconde; bij meer bits per symbool is baud lager dan bps."
+  },
+  {
+   "id": "c39",
+   "sec": "s17",
+   "q": "Hoe reken je baud om naar bps?",
+   "a": "bps = baud × aantal bits per symbool. Bij 16 toestanden: 4 bit per symbool."
+  },
+  {
+   "id": "c40",
+   "sec": "s18",
+   "q": "Wat is ASK?",
+   "a": "Amplitude Shift Keying: het digitale signaal bepaalt de amplitude van de draaggolf (bijvoorbeeld uit/aan: OOK, CW)."
+  },
+  {
+   "id": "c41",
+   "sec": "s19",
+   "q": "Wat is FSK?",
+   "a": "Frequency Shift Keying: twee frequenties, de hoge voor de 1 en de lage voor de 0."
+  },
+  {
+   "id": "c42",
+   "sec": "s19",
+   "q": "Wat is de shift bij FSK?",
+   "a": "Het verschil tussen de twee frequenties: fmax − fmin (in de amateurpraktijk 170 Hz). De shift is twee keer de zwaai."
+  },
+  {
+   "id": "c43",
+   "sec": "s19",
+   "q": "Wat is AFSK?",
+   "a": "Audio FSK: twee audiotonen (bijvoorbeeld 2125 en 2295 Hz) die een FM- of EZB-zender moduleren."
+  },
+  {
+   "id": "c44",
+   "sec": "s20",
+   "q": "Wat is PSK?",
+   "a": "Phase Shift Keying: de fase van de draaggolf bepaalt de bit (BPSK: 0° of 180°)."
+  },
+  {
+   "id": "c45",
+   "sec": "s20",
+   "q": "Hoeveel bits draagt een QPSK-symbool?",
+   "a": "Twee bits (vier fasen)."
+  },
+  {
+   "id": "c46",
+   "sec": "s20",
+   "q": "Wat is PSK31?",
+   "a": "Een smalbandige PSK-modus voor tekst met ongeveer 31 baud en een bandbreedte van circa 65 Hz."
+  },
+  {
+   "id": "c47",
+   "sec": "s21",
+   "q": "Wat is QAM?",
+   "a": "Quadrature Amplitude Modulation: combinatie van amplitude- en fasemodulatie. Bij 16-QAM zijn er 16 toestanden en dus 4 bit per symbool."
+  },
+  {
+   "id": "c48",
+   "sec": "s22",
+   "q": "Welke andere digitale modi gebruikt men op amateurbanden?",
+   "a": "Onder andere RTTY, PSK31, FT8 en Hellschreiber."
+  },
+  {
+   "id": "c49",
+   "sec": "s23",
+   "q": "Wat is pariteit?",
+   "a": "Een extra bit voor foutcontrole zodat het aantal enen even (of oneven) blijft; een enkele bitfout wordt gesignaleerd."
+  },
+  {
+   "id": "c50",
+   "sec": "s26",
+   "q": "Hoe ziet een zender zonder modulator eruit?",
+   "a": "Oscillator (kristal), buffertrap, vermenigvuldigers, eindtrap en filter; geschikt voor CW."
+  },
+  {
+   "id": "c51",
+   "sec": "s26",
+   "q": "Waarom een buffertrap na de oscillator?",
+   "a": "Om terugwerking van de volgende trappen op de oscillatorfrequentie te voorkomen."
+  },
+  {
+   "id": "c52",
+   "sec": "s26",
+   "q": "Wat doet een frequentievermenigvuldiger?",
+   "a": "Een niet-lineaire trap (bijvoorbeeld klasse C) met een afgestemde kring op de n-de harmonische. De frequentie wordt n keer zo groot."
+  },
+  {
+   "id": "c53",
+   "sec": "s26",
+   "q": "Hoe reageert een kristaloscillator die verloopt?",
+   "a": "Een afwijking wordt met het vermenigvuldigingsgetal vermenigvuldigd: 1 kHz bij 18 MHz is 8 kHz bij 144 MHz."
+  },
+  {
+   "id": "c54",
+   "sec": "s27",
+   "q": "Hoe maak je AM?",
+   "a": "Door een versterkertrap te moduleren: collector-/anodemodulatie of bij laag vermogen met een modulator voor de eindtrap. Daarna alleen lineaire versterking (klasse A of B)."
+  },
+  {
+   "id": "c55",
+   "sec": "s27",
+   "q": "In welke klasse versterk je een AM- of EZB-signaal?",
+   "a": "Lineair: klasse A of B (AB). Klasse C vervormt de amplitude."
+  },
+  {
+   "id": "c56",
+   "sec": "s27",
+   "q": "Wat doet een balansmodulator?",
+   "a": "Hij onderdrukt de draaggolf en laat de twee zijbanden over (DZB)."
+  },
+  {
+   "id": "c57",
+   "sec": "s27",
+   "q": "Hoe maak je EZB met de filtermethode?",
+   "a": "Balansmodulator (DZB), daarna een zijbandfilter dat één zijband en de rest van de draaggolf wegfiltert."
+  },
+  {
+   "id": "c58",
+   "sec": "s27",
+   "q": "Waar zit het zijbandfilter in een EZB-zender?",
+   "a": "Tussen de balansmodulator en de lineaire versterkertrappen."
+  },
+  {
+   "id": "c59",
+   "sec": "s27",
+   "q": "Wat geldt voor de trappen na de balansmodulator in een EZB-zender?",
+   "a": "Ze moeten lineair zijn (klasse A of B), anders ontstaat vervorming en splatter."
+  },
+  {
+   "id": "c60",
+   "sec": "s27",
+   "q": "Waarom werken veel EZB-zenders op een lage frequentie voor het filter?",
+   "a": "Een smalbandig filter (kristal-/mechanisch filter) is bij lage frequentie gemakkelijker te maken; daarna wordt het signaal gemengd naar de zendfrequentie."
+  },
+  {
+   "id": "c61",
+   "sec": "s27",
+   "q": "Hoe bereken je de zendfrequentie van een EZB-zender met menging?",
+   "a": "fzend = fosc ± (f1 + modulatie); bij menging ontstaan som en verschil, het ongewenste product wordt weggefilterd."
+  },
+  {
+   "id": "c62",
+   "sec": "s28",
+   "q": "Welke eindtrapklasse gebruik je voor CW?",
+   "a": "Klasse C: hoog rendement, alle trappen mogen in klasse C."
+  },
+  {
+   "id": "c63",
+   "sec": "s28",
+   "q": "Hoe sleutel je een CW-zender?",
+   "a": "Door een trap (bijvoorbeeld de buffer of vermenigvuldiger) te sleutelen, met afgevlakte flanken (R-C-netwerk) om klikken te voorkomen."
+  },
+  {
+   "id": "c64",
+   "sec": "s29",
+   "q": "Hoe maak je FM?",
+   "a": "Door de frequentie van een oscillator te variëren, bijvoorbeeld met een varicap (capaciteitsdiode) in de kring van de oscillator."
+  },
+  {
+   "id": "c65",
+   "sec": "s29",
+   "q": "In welke klasse werken de trappen van een FM-zender?",
+   "a": "Klasse C is mogelijk voor alle trappen: de amplitude is constant."
+  },
+  {
+   "id": "c66",
+   "sec": "s29",
+   "q": "Hoe verandert de zwaai bij frequentievermenigvuldiging?",
+   "a": "De zwaai wordt met hetzelfde getal vermenigvuldigd als de frequentie."
+  },
+  {
+   "id": "c67",
+   "sec": "s29",
+   "q": "Waarom vergroot je de zwaai door vermenigvuldigen?",
+   "a": "De oscillator kan de gewenste zwaai bij hoge frequentie niet direct maken; zwaai en frequentie worden samen vermenigvuldigd."
+  },
+  {
+   "id": "c68",
+   "sec": "s30",
+   "q": "Hoe maak je PM?",
+   "a": "Met een fasemodulator of een FM-modulator met een filter dat 6 dB per octaaf stijgt."
+  },
+  {
+   "id": "c69",
+   "sec": "s32",
+   "q": "Wat is de decibel?",
+   "a": "Een logaritmische maat voor een verhouding: 1 B = log(10) = 10 dB. 10 dB is een factor 10 in vermogen."
+  },
+  {
+   "id": "c70",
+   "sec": "s32",
+   "q": "Hoe reken je een vermogensverhouding om naar dB?",
+   "a": "dB = 10 · log(P₂/P₁)."
+  },
+  {
+   "id": "c71",
+   "sec": "s33",
+   "q": "Welke dB-waarden moet je kennen?",
+   "a": "3 dB: factor 2 in vermogen; 6 dB: factor 4; 10 dB: factor 10; 20 dB: factor 100; 30 dB: factor 1000. Negatief is verzwakking."
+  },
+  {
+   "id": "c72",
+   "sec": "s33",
+   "q": "Hoe tel je versterkingen en verzwakkingen in dB op?",
+   "a": "Gewoon optellen en aftrekken: dB-waarden van trappen in serie worden opgeteld."
+  },
+  {
+   "id": "c73",
+   "sec": "s33",
+   "q": "Wat is een verzwakking van 10 dB?",
+   "a": "Het vermogen wordt tien keer zo klein."
+  },
+  {
+   "id": "c74",
+   "sec": "s34",
+   "q": "Hoe reken je spanningsverhoudingen om in dB?",
+   "a": "dB = 20 · log(U₂/U₁) (bij gelijke impedantie), dus 6 dB is een factor 2 in spanning of stroom."
+  },
+  {
+   "id": "c75",
+   "sec": "s34",
+   "q": "Wat is 6 dB in spanning en 3 dB in vermogen?",
+   "a": "6 dB: spanning (en stroom) × 2, vermogen × 4. 3 dB: vermogen × 2, spanning × 1,41."
+  },
+  {
+   "id": "c76",
+   "sec": "s34",
+   "q": "Hoeveel dB is het verschil tussen 20 W en 5 W?",
+   "a": "6 dB (factor 4 in vermogen)."
+  },
+  {
+   "id": "c77",
+   "sec": "s34",
+   "q": "Waarom is een factor 1000 in vermogen 30 dB?",
+   "a": "10 · log(1000) = 10 · 3 = 30 dB."
+  }
+ ],
+ "drill": [
+  {
+   "id": "dbp",
+   "sec": "s32",
+   "name": "Vermogensversterking in dB",
+   "where": "dB bij een vermogensverhouding",
+   "f": "dB = 10 · log(P₂/P₁)",
+   "cloze": [
+    {
+     "q": "Een factor 2 in vermogen is ongeveer ___ dB",
+     "a": "3",
+     "w": [
+      "6",
+      "10",
+      "2"
+     ]
+    },
+    {
+     "q": "Een factor 100 in vermogen is ___ dB",
+     "a": "20",
+     "w": [
+      "10",
+      "100",
+      "40"
+     ]
+    }
+   ],
+   "gen": "dbp"
+  },
+  {
+   "id": "dbu",
+   "sec": "s34",
+   "name": "Spanningsversterking in dB",
+   "where": "dB bij een spanningsverhouding",
+   "f": "dB = 20 · log(U₂/U₁)",
+   "cloze": [
+    {
+     "q": "Een factor 2 in spanning is ongeveer ___ dB",
+     "a": "6",
+     "w": [
+      "3",
+      "10",
+      "2"
+     ]
+    },
+    {
+     "q": "Een factor 10 in spanning is ___ dB",
+     "a": "20",
+     "w": [
+      "10",
+      "100",
+      "40"
+     ]
+    }
+   ],
+   "gen": "dbu"
+  },
+  {
+   "id": "dbf",
+   "sec": "s33",
+   "name": "Van dB naar een factor",
+   "where": "hoeveel keer het vermogen groter is",
+   "f": "P₂/P₁ = 10^(dB/10)",
+   "cloze": [
+    {
+     "q": "20 dB is een factor ___ in vermogen",
+     "a": "100",
+     "w": [
+      "20",
+      "200",
+      "10"
+     ]
+    }
+   ],
+   "gen": "dbf",
+   "rewrite": [
+    {
+     "base": "P₂/P₁ = 10^(dB/10)",
+     "ask": "dB",
+     "a": "dB = 10 · log(P₂/P₁)",
+     "w": [
+      "dB = log(P₂/P₁)",
+      "dB = 20 · log(P₂/P₁)",
+      "dB = 10 · ln(P₂/P₁)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dbs",
+   "sec": "s33",
+   "name": "Trappen in serie",
+   "where": "dB's optellen en het uitgangsvermogen",
+   "f": "P_uit = P_in · 10^(totaal dB/10)",
+   "cloze": [
+    {
+     "q": "dB-waarden van trappen in serie worden ___",
+     "a": "opgeteld",
+     "w": [
+      "vermenigvuldigd",
+      "gemiddeld",
+      "afgetrokken"
+     ]
+    }
+   ],
+   "gen": "dbs"
+  },
+  {
+   "id": "ampep",
+   "sec": "s8",
+   "name": "PEP en vermogen van AM",
+   "where": "PEP en totaal vermogen uit draaggolfvermogen en M",
+   "f": "PEP = Pdraaggolf · (1 + M)²",
+   "cloze": [
+    {
+     "q": "PEP bij 100% AM is ___ keer het draaggolfvermogen",
+     "a": "4",
+     "w": [
+      "2",
+      "1,5",
+      "8"
+     ]
+    }
+   ],
+   "gen": "ampep"
+  },
+  {
+   "id": "carson",
+   "sec": "s13",
+   "name": "Bandbreedte van FM",
+   "where": "de bandbreedte volgens Carson",
+   "f": "B ≈ 2 · (Δf + fmod)",
+   "cloze": [
+    {
+     "q": "De bandbreedte van FM wordt gegeven door de regel van ___",
+     "a": "Carson",
+     "w": [
+      "Ohm",
+      "Thomson",
+      "Nyquist"
+     ]
+    }
+   ],
+   "gen": "carson",
+   "rewrite": [
+    {
+     "base": "B ≈ 2 · (Δf + fmod)",
+     "ask": "Δf",
+     "a": "Δf ≈ B/2 − fmod",
+     "w": [
+      "Δf ≈ B · 2 − fmod",
+      "Δf ≈ B/2 + fmod",
+      "Δf ≈ B − 2 · fmod"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mindex",
+   "sec": "s13",
+   "name": "Modulatie-index",
+   "where": "modulatie-index uit zwaai en modulatiefrequentie",
+   "f": "m = Δf / fmod",
+   "cloze": [
+    {
+     "q": "De modulatie-index is de zwaai gedeeld door de ___",
+     "a": "modulatiefrequentie",
+     "w": [
+      "draaggolffrequentie",
+      "amplitude",
+      "bandbreedte"
+     ]
+    }
+   ],
+   "gen": "mindex",
+   "rewrite": [
+    {
+     "base": "m = Δf / fmod",
+     "ask": "Δf",
+     "a": "Δf = m · fmod",
+     "w": [
+      "Δf = m / fmod",
+      "Δf = fmod / m",
+      "Δf = m + fmod"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "baud",
+   "sec": "s17",
+   "name": "Symboolsnelheid",
+   "where": "baud uit bit/s en het aantal toestanden",
+   "f": "baud = bps / bit per symbool",
+   "cloze": [
+    {
+     "q": "Een 16-QAM-symbool draagt ___ bit",
+     "a": "4",
+     "w": [
+      "2",
+      "8",
+      "16"
+     ]
+    }
+   ],
+   "gen": "baud"
+  },
+  {
+   "id": "fmult",
+   "sec": "s29",
+   "name": "Zwaai bij vermenigvuldigen",
+   "where": "zwaai van oscillator en uitgang",
+   "f": "Δf_uit = n · Δf_osc",
+   "cloze": [
+    {
+     "q": "Bij vermenigvuldigen met n wordt de zwaai ___",
+     "a": "n keer zo groot",
+     "w": [
+      "n keer zo klein",
+      "gelijk",
+      "n² keer zo groot"
+     ]
+    }
+   ],
+   "gen": "fmult"
+  },
+  {
+   "id": "ezbf",
+   "sec": "s11",
+   "name": "Zijbandfrequentie bij EZB",
+   "where": "de frequentie van de hoge of lage zijband",
+   "f": "fUSB = fc + fmod, fLSB = fc − fmod",
+   "cloze": [
+    {
+     "q": "De hoge zijband ligt ___ de draaggolf",
+     "a": "boven",
+     "w": [
+      "onder",
+      "op",
+      "naast"
+     ]
+    }
+   ],
+   "gen": "ezbf"
+  },
+  {
+   "id": "mod",
+   "sec": "s4",
+   "name": "Modulatievormen",
+   "where": "wat bij welke modulatie hoort",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "AM",
+     "a": "draaggolf en twee zijbanden, bandbreedte 2 · fmod"
+    },
+    {
+     "q": "DZB",
+     "a": "twee zijbanden, geen draaggolf"
+    },
+    {
+     "q": "EZB",
+     "a": "één zijband, geen draaggolf, kleinste bandbreedte voor spraak"
+    },
+    {
+     "q": "CW",
+     "a": "aan/uit-sleuteling, kleinste bandbreedte"
+    },
+    {
+     "q": "FM",
+     "a": "frequentie varieert, amplitude constant"
+    },
+    {
+     "q": "PM",
+     "a": "fase varieert, zwaai neemt toe met de modulatiefrequentie"
+    }
+   ],
+   "ask": "Wat hoort bij {x}?",
+   "askRev": "Welke modulatie is dit: {x}?"
+  },
+  {
+   "id": "bwv",
+   "sec": "s7",
+   "name": "Bandbreedten vergelijken",
+   "where": "de volgorde van bandbreedte",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "CW",
+     "a": "het kleinst (200–500 Hz)"
+    },
+    {
+     "q": "EZB-telefonie",
+     "a": "ongeveer 2,4–3 kHz"
+    },
+    {
+     "q": "AM-telefonie",
+     "a": "ongeveer 6 kHz (2 × 3 kHz)"
+    },
+    {
+     "q": "FM-telefonie",
+     "a": "het grootst (12 kHz of meer)"
+    }
+   ],
+   "ask": "Hoe is de bandbreedte van {x}?",
+   "askRev": "Welke modulatie heeft deze bandbreedte: {x}?"
+  },
+  {
+   "id": "klas",
+   "sec": "s27",
+   "name": "Klasse van de trappen",
+   "where": "lineair of klasse C",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een AM-zender",
+     "a": "lineair: klasse A of B"
+    },
+    {
+     "q": "een EZB-zender",
+     "a": "lineair: klasse A of B"
+    },
+    {
+     "q": "een CW-zender",
+     "a": "klasse C is mogelijk"
+    },
+    {
+     "q": "een FM-zender",
+     "a": "klasse C is mogelijk"
+    }
+   ],
+   "ask": "In welke klasse werken de trappen na de modulator van {x}?",
+   "askRev": "Welke zender is dit: {x}?"
+  },
+  {
+   "id": "dig",
+   "sec": "s16",
+   "name": "Digitale modulatie",
+   "where": "ASK, FSK, PSK en QAM",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "ASK",
+     "a": "de amplitude van de draaggolf"
+    },
+    {
+     "q": "FSK",
+     "a": "de frequentie (twee frequenties)"
+    },
+    {
+     "q": "PSK",
+     "a": "de fase van de draaggolf"
+    },
+    {
+     "q": "QAM",
+     "a": "amplitude en fase samen"
+    }
+   ],
+   "ask": "Wat verandert bij {x}?",
+   "askRev": "Welke digitale modulatie is dit: {x}?"
+  },
+  {
+   "id": "zijb",
+   "sec": "s27",
+   "name": "Onderdelen van een EZB-zender",
+   "where": "wat balansmodulator en zijbandfilter doen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de balansmodulator",
+     "a": "onderdrukt de draaggolf (levert DZB)"
+    },
+    {
+     "q": "het zijbandfilter",
+     "a": "laat één zijband door en onderdrukt de andere"
+    },
+    {
+     "q": "de lineaire eindtrap",
+     "a": "versterkt zonder de amplitude te vervormen"
+    },
+    {
+     "q": "de menger",
+     "a": "verschuift het signaal naar de zendfrequentie"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Welk onderdeel is dit: {x}?"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o12-1",
+   "n": 1,
+   "q": "Een AM-zender wordt gemoduleerd met spraak. De bandbreedte van het HF-signaal is ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 kHz"
+    },
+    {
+     "id": "B",
+     "text": "3 kHz"
+    },
+    {
+     "id": "C",
+     "text": "6 kHz"
+    },
+    {
+     "id": "D",
+     "text": "10 kHz"
+    }
+   ],
+   "answer": "C",
+   "explain": "Bij amplitudemodulatie zit de modulatie in beide zijbanden. Goed verstaanbare spraak omvat frequenties tot ongeveer 3 kHz (300-3000 Hz). Dan loopt de frequentie van het gemoduleerde AM-signaal van draaggolffrequentie minus 3 kHz tot draaggolffrequentie plus 3 kHz. Tussen hoogste en laagste frequentie zit 2 maal 3 kHz is 6 kHz. Antwoord C is dus goed. Opmerking Soms kom je voor spraakfrequenties ook het bereik 300-2700 Hz tegen. Dan wordt de uitkomst 5,5 kHz.",
+   "pages": [
+    "p057"
+   ],
+   "spages": [
+    "p071"
+   ]
+  },
+  {
+   "id": "o12-2",
+   "n": 2,
+   "q": "Een FM-zender voor 145 MHz wordt gemoduleerd met spraak. De zwaai is 3 kHz en de modulatie-index 1. De bandbreedte van het HF-signaal is ongeveer:",
+   "options": [
+    {
+     "id": "A",
+     "text": "1 kHz"
+    },
+    {
+     "id": "B",
+     "text": "3 kHz"
+    },
+    {
+     "id": "C",
+     "text": "6 kHz"
+    },
+    {
+     "id": "D",
+     "text": "12 kHz"
+    }
+   ],
+   "answer": "D",
+   "explain": "De bandbreedte van een gemoduleerd FM-signaal is altijd groter dan die van het modulerende signaal. Dat sluit antwoorden A en B uit. Onder de bandbreedte van een FM-signaal wordt de frequentieband verstaan waarbinnen 99% van het uitgezonden vermogen valt. Die wordt bij een modulatie-index m = 1 bij benadering berekend met de vuistregel volgens vergelijking ( 12.2-7): ∆f B ≈ 2fi (1 +        ) = 2fi (1 + m) fi Daarin is fi de bandbreedte van het modulerende signaal en f de zwaai. Beide zijn 3 kHz, want m = 1, zodat B  12 kHz; antwoord D.",
+   "pages": [
+    "p058"
+   ],
+   "spages": [
+    "p072"
+   ]
+  },
+  {
+   "id": "o12-3",
+   "n": 3,
+   "q": "In een enkelzijbandzender kiest men bij voorkeur voor een balansmodulator, omdat hiermee:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Minder harmonischen ontstaan"
+    },
+    {
+     "id": "B",
+     "text": "Modulatieoversturing van de eindtrap wordt voorkomen"
+    },
+    {
+     "id": "C",
+     "text": "Het zendvermogen (PEP) van het uitgezonden signaal wordt verminderd"
+    },
+    {
+     "id": "D",
+     "text": "De draaggolf wordt onderdrukt"
+    }
+   ],
+   "answer": "D",
+   "explain": "In een balansmodulator wordt de draaggolf onderdrukt, zodat daarna alleen nog één zijband via een (kristal)filter hoeft te worden onderdrukt. Antwoord D.",
+   "pages": [
+    "p059"
+   ],
+   "spages": [
+    "p073"
+   ]
+  },
+  {
+   "id": "o12-4",
+   "n": 4,
+   "q": "In de oscillatoren X en Y wordt frequentiemodulatie verkregen door eenzelfde LF-signaal. Behalve de aangegeven condensatoren hebben alle overeenkomstige onderdelen dezelfde waarde. Welke bewering is juist:",
+   "options": [
+    {
+     "id": "A",
+     "text": "X geeft een kleinere frequentiezwaai dan Y en de oscillatorfrequentie van X is lager dan die van Y"
+    },
+    {
+     "id": "B",
+     "text": "X geeft een grotere frequentiezwaai dan Y en de oscillatorfrequentie van X is lager dan die van Y"
+    },
+    {
+     "id": "C",
+     "text": "X geeft een kleinere frequentiezwaai dan Y en de oscillatorfrequentie van X is hoger dan die van Y"
+    },
+    {
+     "id": "D",
+     "text": "X geeft een grotere frequentiezwaai dan Y en de oscillatorfrequentie van X is hoger dan die van Y"
+    }
+   ],
+   "answer": "A",
+   "explain": "Schakeling X heeft een 2x zo grote vaste capaciteit in de LC-kring als schakeling Y. Dat betekent dat de frequentie van X lager is dan die van Y. Daarmee vallen de antwoorden C en D af. De capaciteitsdiode geeft bij gelijke LF-aansturing een gelijke capaciteitsverandering. Ten opzichte van 2C is die echter kleiner dan ten opzichte van C. Daarmee is de frequentiezwaai bij X kleiner dan bij Y. Dan blijft antwoord A over.",
+   "pages": [
+    "p060"
+   ],
+   "spages": [
+    "p074"
+   ]
+  },
+  {
+   "id": "o12-5",
+   "n": 5,
+   "q": "De eindtrap van een zender staat ingesteld in klasse C. De eindtrap is geschikt voor:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Alle modulatiesoorten"
+    },
+    {
+     "id": "B",
+     "text": "FM en PM"
+    },
+    {
+     "id": "C",
+     "text": "AM"
+    },
+    {
+     "id": "D",
+     "text": "EZB"
+    }
+   ],
+   "answer": "B",
+   "explain": "Een eindtrap in klasse C snijdt een deel van het signaal weg. Daarbij blijft de frequentie onaangetast, maar de amplitude niet. Alles waarbij de informatie in een veranderende amplitude zit, wordt dan ook (ernstig) vervormd. Een eindtrap in klasse C is dus alleen geschikt voor modulatiesoorten waarbij de informatie niet afhangt van de amplitude. Dat zijn hier frequentie- en fasemodulatie. Antwoord B. Opmerking Een eindtrap in klasse C is ook geschikt voor CW, maar dat wordt hier niet gevraagd.",
+   "pages": [
+    "p061"
+   ],
+   "spages": [
+    "p075"
+   ]
+  },
+  {
+   "id": "o12-6",
+   "n": 6,
+   "q": "Bij een uitzending in 2-PSK is de bitsnelheid 30 bps. De baudsnelheid is:",
+   "options": [
+    {
+     "id": "A",
+     "text": "60 Bd"
+    },
+    {
+     "id": "B",
+     "text": "30 Bd"
+    },
+    {
+     "id": "C",
+     "text": "15 Bd"
+    },
+    {
+     "id": "D",
+     "text": "7,5 Bd"
+    }
+   ],
+   "answer": "B",
+   "explain": "Bij 2-PSK (=BPSK) wordt per fase 1 bit gemaakt. Daarmee is de bitsnelheid gelijk aan de baudsnelheid. Die laatste geeft symbolen (tekens) per seconde en als 1 bit 1 symbool is, is de baudsnelheid gelijk aan de bitsnelheid. Antwoord B dus.",
+   "pages": [
+    "p062"
+   ],
+   "spages": [
+    "p076"
+   ]
+  },
+  {
+   "id": "o12-7",
+   "n": 7,
+   "q": "Van een zender die Morsecode (CW) uitzendt, moet de eindtrap staan in",
+   "options": [
+    {
+     "id": "A",
+     "text": "Klasse A"
+    },
+    {
+     "id": "B",
+     "text": "Klasse B"
+    },
+    {
+     "id": "C",
+     "text": "Klasse C"
+    },
+    {
+     "id": "D",
+     "text": "Eén van de klassen A, AB, B of C"
+    }
+   ],
+   "answer": "D",
+   "explain": "CW kan in alle klassen van instelling worden uitgezonden. De zender zendt of zendt niet. Daarin zit de informatie (wel of geen draaggolf). Elke klasse van uitzending werkt daarom: antwoord D.",
+   "pages": [
+    "p063"
+   ],
+   "spages": [
+    "p077"
+   ]
+  },
+  {
+   "id": "o12-8",
+   "n": 8,
+   "q": "Een bitstoom van 1200 bps wordt gemoduleerd in 4-PSK. De symboolsnelheid is dan",
+   "options": [
+    {
+     "id": "A",
+     "text": "300 Bd"
+    },
+    {
+     "id": "B",
+     "text": "600 Bd"
+    },
+    {
+     "id": "C",
+     "text": "1200 Bd"
+    },
+    {
+     "id": "D",
+     "text": "2400 Bd"
+    }
+   ],
+   "answer": "B",
+   "explain": "In 4-PSK zijn er vier fasemogelijkheden op afstanden van 90º. Daarmee is een symbool 2 bits (vergelijk: met 2-PSK is een symbool 1 bit, met 8 PSK 3 bits, enz). Dan is de symboolsnelheid de helft van de bitsnelheid. 1200/2 is 600. Antwoord B.",
+   "pages": [
+    "p064"
+   ],
+   "spages": [
+    "p078"
+   ]
+  },
+  {
+   "id": "o12-9",
+   "n": 9,
+   "q": "Een bitstroom van 9600 bps wordt gemoduleerd in 16-QAM. De symboolsnelheid is",
+   "options": [
+    {
+     "id": "A",
+     "text": "38400 Bd"
+    },
+    {
+     "id": "B",
+     "text": "1200 Bd"
+    },
+    {
+     "id": "C",
+     "text": "4800 Bd"
+    },
+    {
+     "id": "D",
+     "text": "2400 Bd"
+    }
+   ],
+   "answer": "D",
+   "explain": "De mode 16-QAM heeft 4 bits per symbool (16 = 24 ). Dan is de symboolsnelheid (baud rate) ¼ van de bitsnelheid van 9600 bps is 2400 Bd. Antwoord D.",
+   "pages": [
+    "p065"
+   ],
+   "spages": [
+    "p079"
+   ]
+  },
+  {
+   "id": "o12-10",
+   "n": 10,
+   "q": "Een audiosignaal varieert van 300 tot 3000 Hz. Het wordt gemoduleerd in DZB. De bandbreedte van het zo verkregen signaal is",
+   "options": [
+    {
+     "id": "A",
+     "text": "6000 Hz"
+    },
+    {
+     "id": "B",
+     "text": "5400 Hz"
+    },
+    {
+     "id": "C",
+     "text": "600 Hz"
+    },
+    {
+     "id": "D",
+     "text": "3000 Hz"
+    }
+   ],
+   "answer": "A",
+   "explain": "De bandbreedte van elk signaal in de AM-familie (DZB is AM zonder draaggolf) wordt bepaald door de hoogste te moduleren frequentie, in dit geval 3000 Hz. Er zijn twee zijbanden. Elke zijband is 3000 Hz – 300 Hz = 2700 Hz breed. Dat lijkt te leiden naar antwoord B. Maar de twee zijbanden liggen ook nog eens 2 x 300 Hz = 600 Hz uit elkaar. Met de 2 x 2700 Hz = 5400 Hz van de beide zijbanden samen, draait dat uit op een totale bandbreedte van 6000 Hz. Antwoord A.",
+   "pages": [
+    "p066"
+   ],
+   "spages": [
+    "p080"
+   ]
+  },
+  {
+   "id": "o12-11",
+   "n": 11,
+   "q": "Aan de modulator van een zender wordt een bitstroom toegevoerd. Als een bit de waarde 1 heeft, wordt een bepaalde frequentie opgewekt, als het bit de waarde 0 heeft, een andere frequentie. Deze vorm van moduleren heet:",
+   "options": [
+    {
+     "id": "A",
+     "text": "FSK"
+    },
+    {
+     "id": "B",
+     "text": "FM"
+    },
+    {
+     "id": "C",
+     "text": "2-PSK"
+    },
+    {
+     "id": "D",
+     "text": "4-PSK"
+    }
+   ],
+   "answer": "A",
+   "explain": "Een frequentiesprong bij een overgang 1→0- of 0→1 heet Frequency Shift Keying, FSK. FM is een analoge modulatievorm en de PSK’s zijn vormen van digitale fasemodulatie. Antwoord A.",
+   "pages": [
+    "p067"
+   ],
+   "spages": [
+    "p081"
+   ]
+  },
+  {
+   "id": "o12-12",
+   "n": 12,
+   "q": "Deze schakeling is een",
+   "options": [
+    {
+     "id": "A",
+     "text": "Dubbelfasige gelijkrichter"
+    },
+    {
+     "id": "B",
+     "text": "Balansmodulator (ringmodulator)"
+    },
+    {
+     "id": "C",
+     "text": "Frequentieverdubbelaar"
+    },
+    {
+     "id": "D",
+     "text": "Spanningsverdubbelaar"
+    }
+   ],
+   "answer": "B",
+   "explain": "Dat het hier gaat om een balans- of ringmodulator is snel af te leiden uit het patroon van de vier dioden: start in doorlaatrichting vanaf een willekeurige diode en je kunt een geleidend pad trekken van diode naar diode zonder in de trafo’s terecht te komen (dit is een soort ezelsbrug). Bij een tweefasige gelijkrichter lukt dat niet. De frequentie- en spanningsverdubbelaar zijn onzin-antwoorden, dus het juiste antwoord is B. Je ziet dat ook aan het symbool rechts: er komt DZB uit. Opmerking Nog een manier om te zien dat je met een modulator te maken hebt: er gaat tegelijk LF en HF in.",
+   "pages": [
+    "p068"
+   ],
+   "spages": [
+    "p082"
+   ]
+  },
+  {
+   "id": "o12-13",
+   "n": 13,
+   "q": "Dit is het spectrum van",
+   "options": [
+    {
+     "id": "A",
+     "text": "Een AM-signaal, gemoduleerd met een enkele frequentie van 2 kHz en een modulatiediepte van 100%"
+    },
+    {
+     "id": "B",
+     "text": "Een AM-signaal, gemoduleeerd met een enkele frequentie van 2 kHz en een modulatiediepte van 50%"
+    },
+    {
+     "id": "C",
+     "text": "Een AM-signaal, gemoduleeerd met spraak van 2 kHz bandbreedte en een modulatiediepte van 100%"
+    },
+    {
+     "id": "D",
+     "text": "Een AM-signaal, gemoduleeerd met spraak van 2 kHz bandbreedte en een modulatiediepte van 50%"
+    }
+   ],
+   "answer": "D",
+   "explain": "AM heeft een draaggolf en twee zijbanden. Bij modulatie met één frequentie en 100% modulatiediepte hebben de zijbanden elk de halve amplitude van de draaggolf. De modulatiediepte in de figuur is daarom 100 %, want beide zijbanden reiken tot de helft van de amplitude van de draaggolf. Daarmee vallen de antwoorden B en D af, want dan zou de amplitude van de zijbanden 25% van die van de draaggolf zijn. Aan weerskanten van de draaggolffrequentie zien we op afstanden van 2 kHz één frequentie. Dat kan geen spraak zijn, want dat is een mengelmoes van frequenties en amplitudes. Daarmee valt ook antwoord D af en blijft A als enig juist antwoord over.",
+   "pages": [
+    "p069"
+   ],
+   "spages": [
+    "p083"
+   ]
+  },
+  {
+   "id": "o12-14",
+   "n": 14,
+   "q": "Een zender heeft na de modulator een stuurtrap en een eindtrap. De stuurtrap ontvangt uit de modulatieschakeling een vermogen van 100 mW. De stuurtrap levert aan de eindtrap 2 W. De eindtrap levert vervolgens 20 W aan de antennekabel. Deze kabel is 50 m lang en heeft een verlies van 6 dB per 100 m. Stuurtrap            Eindtrap Antenne 100 mW            2W                  20 W De totale versterking tot aan de antenne bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "13 dB"
+    },
+    {
+     "id": "B",
+     "text": "23 dB"
+    },
+    {
+     "id": "C",
+     "text": "20 dB"
+    },
+    {
+     "id": "D",
+     "text": "30 dB"
+    }
+   ],
+   "answer": "C",
+   "explain": "De stuurtrap ontvangt 100 mW is 0,1 W en levert 2 W. Dat is een vermogensversterking van 20x, 10dB + 3 dB=13 dB. De eindtrap versterkt van 2 naar 20 W, is 10 dB. Samen 23 dB. Maar de kabel naar de antenne levert verlies op. -6 dB per 100 m. Voor 50 m kabel is dat - -3 dB. Die moet worden verrekend met de al gevonden 23 dB. Het resultaat is 20 dB. Antwoord C.",
+   "pages": [
+    "p070"
+   ],
+   "spages": [
+    "p084"
+   ]
+  }
+ ]
+}
