@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Flashcards, naslag en feiten-/formulespel voor H15 (meten). Gebruik: python tools/cards_h15.py"""
+import json
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent.parent
+src = Path(__file__).with_name('cards_h1718.py').read_text(encoding='utf-8')
+exec(src[src.index('def build('):src.index('build(17, C17')])
+
+C15 = [
+("s2","Welk effect heeft elke meting op de te meten grootheid?","De meting beïnvloedt de grootheid altijd een beetje. De meetfout moet klein genoeg zijn om de conclusies niet te beïnvloeden."),
+("s2","Hoe teken je een niet-ideale spanningsbron?","Een ideale bron (EMK) met de inwendige weerstand RB in serie."),
+("s2","Hoe teken je een niet-ideale voltmeter?","Een ideale voltmeter met de inwendige weerstand RM parallel."),
+("s2","Waarom meet een voltmeter nooit de volledige EMK?","RB en RM vormen een spanningsdeler: de meter wijst U·RM/(RM+RB) aan, dus altijd iets te weinig."),
+("s2","Hoeveel meet je als RM = RB, RM = 10·RB en RM = 100·RB?","50%, bijna 91% en 99,1% van de EMK."),
+("s2","Waaraan moet een goede voltmeter voldoen?","Een zo hoge mogelijke inwendige weerstand, zodat de te meten spanning zo weinig mogelijk wordt beïnvloed."),
+("s2","Waaraan moet een goede ampèremeter voldoen?","Een zo laag mogelijke inwendige weerstand, want hij komt in serie met de schakeling."),
+("s2","Hoe meet je spanning en hoe meet je stroom?","Spanning meet je parallel over een component (de schakeling blijft intact). Stroom meet je in serie, dus de verbinding wordt onderbroken en de meter ervoor in de plaats gezet."),
+("s2","Hoe meet je het zendervermogen aan de ingang van de eindtrap nauwkeurig?","Met een ampèremeter met lage weerstand en een voltmeter met hoge weerstand."),
+("s3","Waarvoor dient een universeelmeter?","Voor het meten van spanning, stroom en weerstand (multimeter)."),
+("s5","Hoe werkt een draaispoelmeter?","Een draaibare spoel in het veld van een permanente magneet. De stroom door de spoel veroorzaakt de Lorentzkracht, een spiraalveer levert de tegenkracht. De uitslag is evenredig met de stroom."),
+("s5","Welke grootheid meet een draaispoelmeter?","Stroom. Het is een stroommeter voor gelijkstroom."),
+("s5","Wat bepaalt de sterkte van het magnetische veld rond een geleider?","De stroom door de geleider."),
+("s6","Waarom staan er twee tegengesteld parallelle dioden over een meter?","Ze beperken de spanning over de meter tot de drempelspanning (Ge ongeveer 0,2–0,3 V): bescherming tegen overspanning."),
+("s7","Hoe maak je van een draaispoelmeter een ampèremeter met groter bereik?","Met een parallelweerstand (shunt). Rshunt = Ri·Imeter / (I − Imeter)."),
+("s7","Hoe maak je van een draaispoelmeter een voltmeter?","Met een serieweerstand: R = U/Imeter − Ri, zodat bij het hoogste bereik precies de stroom voor volle uitslag loopt."),
+("s7","Wat is de gevoeligheid van een voltmeter?","De inwendige weerstand per volt bereik, in kΩ/V. Een meter voor 50 µA heeft 20 kΩ/V, een meter voor 100 µA 10 kΩ/V, een meter voor 1 mA 1 kΩ/V."),
+("s7","Hoe bereken je de inwendige weerstand van een voltmeter?","Gevoeligheid × meetbereik (niet de gemeten spanning). 20 kΩ/V op het 10 V-bereik: 200 kΩ."),
+("s7","Waarom kies je soms een hoger meetbereik?","De meetfout wordt kleiner doordat de inwendige weerstand van de meter groter wordt; de afleesfout wordt groter."),
+("s7","Waarom is de gevoeligheid voor wisselspanning ongeveer 2× kleiner dan voor gelijkspanning?","De serieweerstanden moeten voor Ueff ongeveer 2,2 keer kleiner zijn (gelijkgerichte gemiddelde waarde is 0,45 · Ueff)."),
+("s7","Hoe meet een analoge meter weerstand?","Met een batterij in de meter: zet een spanning over de weerstand en meet de stroom. Voor het meten stel je met een regelbare weerstand het nulpunt in (meetpunten kortgesloten: volle uitslag = 0 Ω)."),
+("s7","Hoe loopt de weerstandsschaal?","Omgekeerd: van oneindig (geen stroom, links) naar nul (maximale stroom, rechts)."),
+("s7","Wat meet een draaispoelmeter van een zuivere wisselspanning?","0 V: de gemiddelde waarde. De wijzer is te traag voor de wisseling, dus je moet eerst gelijkrichten."),
+("s7","Wat is de gemiddelde waarde van een gelijkgerichte sinus ten opzichte van Ueff?","Dubbelfasig (brug): Ugem ≈ 0,9 · Ueff (= 2A/π). Enkelfasig (één diode): Ugem ≈ 0,45 · Ueff."),
+("s7","Wat is het verband tussen amplitude en effectieve waarde van een sinus?","Ueff = Umax/√2 ≈ 0,7 · Umax. Een meter geijkt op Ueff wijst bij 10 V effectief ongeveer 14,1 V maximaal."),
+("s7","Op welke golfvorm is de wisselspanningsschaal van een meter gebaseerd?","Op de sinus."),
+("s7","Welke diode wordt in analoge wisselspanningsmeters gebruikt?","Meestal germanium (drempel ongeveer 0,2 V, lager dan Si 0,6–0,7 V)."),
+("s8","Waarom gebruik je een FET of buis in een voltmeter?","Voor een hoge ingangsweerstand (2 MΩ of meer). Een bipolaire transistor is een stroomversterker en minder geschikt."),
+("s9","Waarop is een digitale universeelmeter gebaseerd?","Op een ADC (analoog-digitaalomzetter); hij heeft een batterij nodig en een zeer hoge ingangsweerstand bij spanningsmeting."),
+("s9","Wat is resolutie en waarin verschilt ze van nauwkeurigheid?","Resolutie is het aantal weergegeven cijfers/punten, nauwkeurigheid hoe dicht de waarde bij de werkelijkheid ligt. Een hoge resolutie kan een onnauwkeurige meting tonen."),
+("s11","Welke onderdelen heeft een analoge oscilloscoop?","Een kathodestraalbuis met elektronenoptiek, afbuigplaten, een Y-versterker en een tijdbasis."),
+("s11","Welke spanning stuurt de horizontale afbuiging aan?","Een zaagtandspanning van de tijdbasis: de straal gaat met constante snelheid naar rechts en springt dan terug."),
+("s11","Wat laat een oscilloscoop zien?","Het verloop van een spanning in de tijd (tijddomein)."),
+("s12","Wat is het verschil tussen een digitale en een analoge scoop?","Digitaal heeft een plat LCD-scherm (of computerscherm) in plaats van een kathodestraalbuis, en kan vaak meer functies zoals een logic analyzer."),
+("s13","Wat laat een spectrumanalyzer zien?","De samenstelling van een signaal in het frequentiedomein: frequenties (horizontaal) en amplitudes (verticaal), inclusief harmonischen."),
+("s13","Hoe werkt een spectrumanalyzer?","Als een razendsnel verstemde ontvanger: variabele oscillator, mengtrap, filter en gelijkrichter sturen de verticale afbuiging."),
+("s14","Wat meet een dipmeter?","De resonantiefrequentie van een LC-kring, ook van een niet aangesloten kring."),
+("s14","Hoe werkt een dipmeter?","Het is een LC-oscillator met naar buiten gevoerde spoel. Absorbeert een afgestemde kring energie, dan treedt een dip op in de meteraanwijzing."),
+("s14","Hoe koppel je een dipmeter voor de nauwkeurigste meting?","Inductief aan de spoel van de kring, met een zeer losse koppeling (zo ver weg dat de dip net zichtbaar is)."),
+("s14","Hoe bepaal je met een dipmeter de zelfinductie van een spoel?","Parallel aan de spoel een bekende condensator, meet f en bereken L = 1/(4π²f²C)."),
+("s14","Waarom is een dipmeter geen precisie-instrument?","De te meten kring beïnvloedt de oscillatiefrequentie van de dipper."),
+("s15","Hoe werkt een absorptie-frequentiemeter (golfmeter)?","Een gekalibreerde afstembare kring met gelijkrichter en voltmeter: een stralende bron geeft HF-energie af aan de kring, die op resonantie de grootste uitslag geeft. Weinig nauwkeurig."),
+("s15","Waarmee meet je een frequentie het nauwkeurigst?","Met een frequentieteller."),
+("s15","Hoe werkt een frequentieteller?","De poort staat tijdens de door de tijdbasis ingestelde tijd (0,01–10 s) open en de teller telt de perioden van de pulsvormige ingang."),
+("s15","Wat bepaalt de nauwkeurigheid van een frequentieteller?","De kristaloscillator in de tijdbasis."),
+("s15","Hoe bereken je de meetfout door de kristalafwijking?","Relatieve fout = Δf kristal / f kristal; meetfout = relatieve fout × gemeten frequentie. 1 Hz op 100 kHz bij 145 MHz: 1,45 kHz."),
+("s16","Wat is het belangrijkste kenmerk van een HF-signaalgenerator voor ontvangermetingen?","Een nauwkeurig instelbare verzwakker (een goede amplitudeinstelling)."),
+("s16","Waarvoor gebruik je een signaalgenerator?","Voor het testen van versterkers en ontvangers: ingangsgevoeligheid, spiegelonderdrukking, kring afstemmen, met een oscilloscoop."),
+("s17","Wat meet een staandegolfmeter?","De amplitudeverhouding van voorwaartse en gereflecteerde golf (SWR), dus de kwaliteit van de aanpassing van zender, lijn en antenne."),
+("s17","Hoe meet je de SWR?","Schakelaar op FWD, potmeter tot volle uitslag, schakelaar op REF en lees de SWR af. Bij voorkeur eerst op laag vermogen."),
+("s17","Wat betekent een SWR van 20:1 op een 50 Ω-systeem?","De antenne is zeer slecht aangepast."),
+("s17","Geeft een SWR-meter voor 3–30 MHz betrouwbare waarden op UHF?","Nee: aflezing en nauwkeurigheid zijn geheel niet betrouwbaar."),
+("s17","Wat meet een SWR-meter met twee wijzers?","Voorwaarts en gereflecteerd vermogen; de SWR lees je af op het snijpunt van de wijzers."),
+("s18","Waarvoor dient een kunstantenne (dummy load)?","Als niet-inductieve weerstand van 50 Ω waarmee je het zendervermogen nauwkeurig meet zonder uit te stralen; hij dissipeert het vermogen en beschermt zo de eindtrap."),
+("s18","Waaruit bestaat een kunstantenne?","Uit een weerstand (capaciteits- en inductievrij), bijvoorbeeld parallelle koolweerstanden; een zware weerstand voor het vermogen."),
+("s18","Hoe meet je PEP met een kunstantenne?","Meet de maximale spanning Umax over de kunstantenne (met een gelijkrichter en grote tijdconstante): PEP = Umax² / (2·Z)."),
+("s18","Wat is de grootte van de condensator in de PEP-meting?","Groot genoeg (ongeveer 2 µF) voor een tijdconstante van enkele seconden, zodat de aanwijzing onafhankelijk is van de golfvorm."),
+("s18","Hoe bereken je het draaggolfvermogen over de kunstantenne?","P = Ueff² / Z, met Ueff = Umax/√2."),
+]
+
+F15 = [
+{"title":"Meetinstrumenten","items":[
+ {"f":"Rshunt = Ri · Im / (I − Im)","t":"parallelweerstand voor een groter stroombereik"},
+ {"f":"Rserie = U / Im − Ri","t":"serieweerstand voor een voltmeter met bereik U"},
+ {"f":"Ri,voltmeter = gevoeligheid · bereik","t":"gevoeligheid in Ω/V, bereik in V"},
+ {"f":"gevoeligheid = 1 / Im","t":"50 µA is 20 kΩ/V, 100 µA is 10 kΩ/V"},
+ {"f":"Umeter = E · RM / (RM + RB)","t":"meetfout door de spanningsdeler met de meterweerstand"}]},
+{"title":"Wisselspanning meten","items":[
+ {"f":"Ueff = Umax / √2 ≈ 0,7 · Umax","t":"sinus"},
+ {"f":"Ugem = 0,9 · Ueff","t":"dubbelfasige gelijkrichting (brug)"},
+ {"f":"Ugem = 0,45 · Ueff","t":"enkelfasige gelijkrichting (één diode)"}]},
+{"title":"Frequentie en vermogen","items":[
+ {"f":"L = 1 / (4π² · f² · C)","t":"zelfinductie uit dipmeter-resonantie met een bekende C"},
+ {"f":"meetfout = Δf_kristal / f_kristal · f_gemeten","t":"frequentieteller"},
+ {"f":"PEP = Umax² / (2 · Z)","t":"met een kunstantenne"},
+ {"f":"P = Ueff² / Z","t":"draaggolfvermogen over de kunstantenne"}]},
+]
+
+DR15 = [
+{"id":"shunt","sec":"s7","name":"Shuntweerstand","where":"de parallelweerstand voor een groter stroombereik","f":"Rshunt = Ri · Im / (I − Im)",
+ "cloze":[("De shunt staat ___ aan de draaispoelmeter","parallel",["in serie","over de batterij","in de voeding"])],"gen":"shunt"},
+{"id":"rvoor","sec":"s7","name":"Serieweerstand voor een voltmeter","where":"de voorschakelweerstand voor een meetbereik","f":"Rserie = U / Im − Ri",
+ "cloze":[("Een voorschakelweerstand staat ___ met de draaispoelmeter","in serie",["parallel","over de bron","in de wijzer"])],"gen":"rvoor"},
+{"id":"rmeter","sec":"s7","name":"Inwendige weerstand van een voltmeter","where":"de meterweerstand uit gevoeligheid en bereik","f":"Ri = gevoeligheid · bereik",
+ "cloze":[("Gevoeligheid wordt uitgedrukt in ___","kΩ/V",["V/kΩ","mA/V","Ω/m"])],"gen":"rmeter"},
+{"id":"meetfout","sec":"s2","name":"Meetfout door de meterweerstand","where":"wat de voltmeter aanwijst bij een bron met inwendige weerstand","f":"Umeter = E · RM / (RM + RB)",
+ "cloze":[("Een voltmeter hoort een ___ inwendige weerstand te hebben","hoge",["lage","gelijke","negatieve"])],"gen":"meetfout"},
+{"id":"ugem","sec":"s7","name":"Wisselspanning met een draaispoelmeter","where":"wat de meter aanwijst na gelijkrichting","f":"Ugem = 0,9 · Ueff (brug) of 0,45 · Ueff (één diode)",
+ "cloze":[("Een draaispoelmeter reageert op de ___ waarde","gemiddelde",["effectieve","maximale","piek-piek"])],"gen":"ugem"},
+{"id":"pepm","sec":"s18","name":"PEP met een kunstantenne","where":"het PEP-vermogen uit Umax en de impedantie","f":"PEP = Umax² / (2 · Z)",
+ "cloze":[("De kunstantenne is een ___ weerstand","niet-inductieve",["inductieve","capacitieve","variabele"])],"gen":"pepm"},
+{"id":"tellerfout","sec":"s15","name":"Meetfout van een frequentieteller","where":"de fout door de afwijking van het kristal","f":"fout = Δf / f_kristal · f_gemeten",
+ "cloze":[("De nauwkeurigheid van een teller wordt bepaald door de ___","tijdbasis (kristal)",["poort","teller","versterker"])],"gen":"tellerfout"},
+{"id":"inst","sec":"s3","name":"Welk instrument meet wat","where":"de juiste meetinstrumenten per grootheid","f":None,
+ "ask":"Waarvoor gebruik je {x}?","askRev":"Welk instrument is dit: {x}?",
+ "pairs":[["een dipmeter","de resonantiefrequentie van een kring"],["een frequentieteller","een frequentie, het nauwkeurigst"],["een absorptie-frequentiemeter","een frequentie, onnauwkeurig"],["een staandegolfmeter","de aanpassing (SWR) van de antenne"],["een spectrumanalyzer","de frequentiesamenstelling van een signaal"],["een oscilloscoop","het verloop van een spanning in de tijd"],["een kunstantenne","het zendervermogen meten zonder uitstraling"],["een signaalgenerator","testsignalen aan ontvangers en versterkers leveren"]],"rev":True},
+{"id":"verb","sec":"s2","name":"Aansluiten van meters","where":"parallel of in serie, hoge of lage weerstand","f":None,
+ "ask":"Hoe sluit je {x} aan en wat is de gewenste inwendige weerstand?","askRev":"Welke meter is dit: {x}?",
+ "pairs":[["een voltmeter","parallel, zo hoog mogelijke weerstand"],["een ampèremeter","in serie, zo laag mogelijke weerstand"],["een shunt","parallel aan de draaispoelmeter"],["een voorschakelweerstand","in serie met de draaispoelmeter"]],"rev":True},
+{"id":"dip","sec":"s14","name":"Gebruik van de dipmeter","where":"hoe je een dipmeter koppelt en wat hij meet","f":None,
+ "ask":"Wat geldt voor {x}?","askRev":"Welke eigenschap is dit: {x}?",
+ "pairs":[["het koppelen van een dipmeter","inductief met de spoel, met zeer losse koppeling"],["de meting met een dipmeter","de resonantiefrequentie van een kring, ook zonder aansluiting"],["een dip in de meteraanwijzing","de kring neemt energie op uit de dipper"],["een dipmeter","bevat een LC-oscillator met naar buiten gevoerde spoel"]],"rev":True},
+{"id":"scoop","sec":"s11","name":"Oscilloscoop en spectrumanalyzer","where":"tijddomein en frequentiedomein","f":None,
+ "ask":"Wat is {x}?","askRev":"Welk begrip is dit: {x}?",
+ "pairs":[["de tijdbasis van een scoop","een zaagtandspanning voor de horizontale afbuiging"],["het tijddomein","wat een oscilloscoop toont: spanning tegen tijd"],["het frequentiedomein","wat een spectrumanalyzer toont: amplitude tegen frequentie"],["de Y-versterker","versterkt het te meten signaal voor de verticale afbuiging"]],"rev":True},
+{"id":"swr","sec":"s17","name":"Staandegolfmeter","where":"de werking en het gebruik van de SWR-meter","f":None,
+ "ask":"Wat geldt voor {x}?","askRev":"Welk begrip is dit: {x}?",
+ "pairs":[["een SWR-meter","meet de verhouding van voorwaartse en gereflecteerde golf"],["een SWR-meter voor 3–30 MHz op UHF","onbetrouwbare aflezing"],["SWR 20:1","zeer slecht aangepaste antenne"],["de stand FWD","heengaand signaal, eerst op volle uitslag instellen"],["de stand REF","gereflecteerd signaal, dan de SWR aflezen"]],"rev":True},
+]
+
+RW15 = {
+"rmeter":[("Ri = gevoeligheid · bereik","bereik","bereik = Ri / gevoeligheid",["bereik = Ri · gevoeligheid","bereik = gevoeligheid / Ri","bereik = Ri + gevoeligheid"])],
+"pepm":[("PEP = Umax² / (2 · Z)","Umax","Umax = √(2 · PEP · Z)",["Umax = 2 · PEP · Z","Umax = √(PEP · Z / 2)","Umax = PEP / (2 · Z)"])],
+}
+
+build(15, C15, F15, DR15, RW15)

@@ -359,6 +359,40 @@ const GEN = {
     const f = pick([3.7e6, 7.1e6, 14.2e6, 28.5e6, 145e6]), Z = pick([100, 220, 470, 500, 1000, 2200, 10000]), C = 10 / (2 * Math.PI * f * Z);
     return { q: `Een signaalbron met Zsign = ${val(Z, 'Ω')} wordt ontkoppeld met een condensator. De storende frequentie is ${val(f, 'Hz')}. Bij een factor 10 (XC = Zsign/10) is de capaciteit ongeveer:`, a: C, unit: 'F', wrong: [C * 10, C / 10, C * 2 * Math.PI, C / (2 * Math.PI)], how: `C ≈ 10 / (2π · f · Zsign)` };
   },
+  shunt() {
+    const Ri = pick([50, 100, 200, 500, 1000]), Im = pick([50e-6, 100e-6, 0.5e-3, 1e-3]), n = pick([2, 5, 10, 20, 100]), I = Im * n;
+    const R = Ri * Im / (I - Im);
+    return { q: `Een draaispoelmeter met inwendige weerstand ${val(Ri, 'Ω')} geeft volle uitslag bij ${val(Im, 'A')}. Hij wordt een ampèremeter voor ${val(I, 'A')}. Hoe groot is de parallelweerstand (shunt)?`, a: R, unit: 'Ω', wrong: [R * n, Ri * (n - 1), Ri / n, R / n], how: `Rshunt = Ri · Imeter / (I − Imeter) = ${num(Ri)} · ${num(Im)} / ${num(I - Im)}` };
+  },
+  rvoor() {
+    const Ri = pick([50, 100, 200, 1000]), Im = pick([50e-6, 100e-6, 1e-3]), U = pick([1, 3, 10, 30, 100, 300]);
+    const R = U / Im - Ri;
+    return { q: `Een draaispoelmeter met inwendige weerstand ${val(Ri, 'Ω')} geeft volle uitslag bij ${val(Im, 'A')}. Hij wordt een voltmeter voor ${val(U, 'V')}. Hoe groot is de serieweerstand?`, a: R, unit: 'Ω', wrong: [U / Im + Ri, U / Im, U * Im, (U / Im - Ri) / 10], how: `R = U / Imeter − Ri = ${num(U)} / ${num(Im)} − ${num(Ri)}` };
+  },
+  rmeter() {
+    const g = pick([1e3, 2e3, 5e3, 10e3, 20e3, 50e3]), U = pick([1, 3, 10, 30, 100, 300]);
+    const R = g * U;
+    return { q: `Een voltmeter heeft een gevoeligheid van ${val(g, 'Ω')}/V. Hij staat op het ${val(U, 'V')}-bereik. Wat is zijn inwendige weerstand?`, a: R, unit: 'Ω', wrong: [g / U, R * 10, R / 10, g + U], how: `Ri = gevoeligheid · bereik = ${num(g)} · ${num(U)}` };
+  },
+  meetfout() {
+    const g = pick([10e3, 20e3, 50e3]), U = pick([3, 10, 30]), RM = g * U, RB = pick([RM / 10, RM / 2, RM, RM * 2]), E = pick([6, 10, 12, 20]);
+    const Um = E * RM / (RM + RB);
+    return { q: `Een bron met EMK ${val(E, 'V')} en inwendige weerstand ${val(RB, 'Ω')} wordt gemeten met een voltmeter van ${val(g, 'Ω')}/V op het ${val(U, 'V')}-bereik. Wat wijst de meter aan?`, a: Um, unit: 'V', wrong: [E, E * RB / (RM + RB), E / 2, E * RM / (RM + RB) * 1.25], how: `RM = ${num(g)} · ${num(U)} = ${num(RM)} Ω. Spanningsdeler: U = E · RM / (RM + RB)` };
+  },
+  ugem() {
+    const U = pick([5, 10, 12, 20, 24, 50]), two = Math.random() < 0.5;
+    const a = two ? 0.9 * U : 0.45 * U;
+    return { q: `Een voor gelijkspanning geijkte draaispoelmeter meet een sinusvormige wisselspanning van ${val(U, 'V')} effectief via ${two ? 'een brugschakeling (dubbelfasige gelijkrichting)' : 'één diode (enkelfasige gelijkrichting)'}. Wat wijst hij aan?`, a, unit: 'V', wrong: [two ? 0.45 * U : 0.9 * U, U * Math.SQRT2, U, U / Math.SQRT2], how: two ? 'Ugem ≈ 0,9 · Ueff bij dubbelfasige gelijkrichting' : 'Ugem ≈ 0,45 · Ueff bij enkelfasige gelijkrichting' };
+  },
+  pepm() {
+    const Z = pick([50, 50, 75]), Um = pick([20, 30, 40, 60, 80, 100]), P = Um * Um / (2 * Z);
+    return { q: `Over een kunstantenne van ${val(Z, 'Ω')} wordt een maximale spanning (Umax) van ${val(Um, 'V')} gemeten. Wat is het PEP-vermogen?`, a: P, unit: 'W', wrong: [Um * Um / Z, Um * Um / (4 * Z), Um / (2 * Z), Um * Um / (2 * Z) * Math.SQRT2], how: `PEP = Umax² / (2 · Z) = ${num(Um)}² / (2 · ${num(Z)})` };
+  },
+  tellerfout() {
+    const fx = pick([14.2e6, 28.5e6, 145e6, 433e6]), fk = pick([100e3, 1e6, 10e6]), df = pick([0.5, 1, 2, 5]);
+    const err = fx / fk * df;
+    return { q: `In een frequentieteller bepaalt een kristal van ${val(fk, 'Hz')} de meettijd. Het kristal wijkt ${val(df, 'Hz')} af. Wat is de meetfout bij een signaal van ${val(fx, 'Hz')}?`, a: err, unit: 'Hz', wrong: [err * 10, err / 10, df, fx / fk], how: `relatieve fout = Δf / f_kristal = ${num(df)} / ${num(fk)}; meetfout = f · relatieve fout` };
+  },
   ncomb() {
     const n = pick([3, 4, 5, 6, 8, 10, 12]);
     if (Math.random() < 0.5) return { txt: true, q: `Hoeveel verschillende combinaties kun je maken met ${n} bits?`, a: 2 ** n, wrong: [2 * n, n * n, 2 ** n - 1, 2 ** (n + 1)], how: `2ⁿ = 2^${n}` };

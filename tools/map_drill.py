@@ -143,6 +143,15 @@ KW = {
   'swit': r'schakelende|step',
   'lvsv': r'schakelende|rendement',
  },
+ 15: {
+  'shunt': r'shunt|parallel|ampèremeter|milliampère',
+  'rvoor': r'voorschakel|serieweerstand|voltmeter|meetbereik',
+  'rmeter': r'gevoeligheid|kΩ/V|kilo-ohm per volt|inwendige weerstand',
+  'meetfout': r'meetfout|voltmeter|wijst|aan',
+  'ugem': r'gelijkricht|draaispoel|wisselspanning|diodebrug',
+  'pepm': r'PEP|kunstbelasting|dummy|kunstantenne|vermogen',
+  'tellerfout': r'frequentieteller|kristal|meetfout|tijdbasis',
+ },
  16: {
   'imd': r'intermodulatie',
   'harm': r'harmonisch',
@@ -206,7 +215,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

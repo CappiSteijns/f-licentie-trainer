@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 11: 'THEORIE_HS11_20260912.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 11: 'THEORIE_HS11_20260912.pdf', 15: 'THEORIE_HS15_20261028.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -78,6 +78,12 @@ def parse(ch, pdf):
 
 # handmatige correcties: formules die pdftotext niet goed leest, en een antwoord dat alleen in de uitleg staat
 FIX = {
+ 'o15-4': {'q': 'In de schakeling wordt de collectorspanning van de transistor gemeten. De afwijking van de meter mag worden verwaarloosd. Welke meter veroorzaakt de kleinste meetfout?', 'opts': {'D': 'Een meter met een inwendige weerstand van 1,5 MΩ'}},
+ 'o15-5': {'answer': 'C'},
+ 'o15-7': {'pages': ['p040']},
+ 'o15-8': {'q': 'De inwendige weerstand van een ampèremeter is 10 Ω. Parallel aan de meter wordt een weerstand van 2 Ω geschakeld. Met die schakeling is het meetbereik 12 mA. Het meetbereik van de meter zonder parallelweerstand is:'},
+ 'o15-13': {'pages': ['p046'], 'opts': {'B': '7,1 V'}},
+ 'o15-14': {'pages': ['p047'], 'opts': {'B': '6,37 V', 'D': '10 V'}},
  'o16-4': {'pages': ['p020']},
  'o16-5': {'pages': ['p021']},
  'o8-2': {'options': [{'id': 'A', 'text': 'R_S = U_D / I_D'}, {'id': 'B', 'text': 'R_S = U_b / I_D'}, {'id': 'C', 'text': 'R_S = U_GS / I_D'}, {'id': 'D', 'text': 'R_S = U_GS − U_D / I_D'}], 'pages': ['p028']},
@@ -112,7 +118,10 @@ for ch, name in PDFS.items():
     d = json.loads(f.read_text(encoding='utf-8'))
     img = ROOT / 'img' / 'theorie' / f'hs{ch}'
     for e in ex:
-        e.update(FIX.get(e['id'], {}))
+        fx = dict(FIX.get(e['id'], {})); ov = fx.pop('opts', {})
+        e.update(fx)
+        for o in e['options']:
+            if o['id'] in ov: o['text'] = ov[o['id']]
         e['pages'] = [p for p in e['pages'] if (img / f'{p}.webp').exists()]
         e['spages'] = [p for p in e['spages'] if (img / f'{p}.webp').exists()]
         bad = (len(e['options']) != 4 or not e['answer'])

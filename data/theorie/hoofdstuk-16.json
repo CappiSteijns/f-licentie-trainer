@@ -726,7 +726,22 @@
      ]
     }
    ],
-   "gen": "imd"
+   "gen": "imd",
+   "exam": [
+    "hs16-3",
+    "hs16-7",
+    "hs16-18",
+    "hs16-19",
+    "hs16-20",
+    "hs16-21",
+    "hs16-22",
+    "hs16-23",
+    "hs16-32",
+    "hs16-44",
+    "hs16-45",
+    "hs16-47",
+    "hs16-50"
+   ]
   },
   {
    "id": "harm",
@@ -745,7 +760,31 @@
      ]
     }
    ],
-   "gen": "harm"
+   "gen": "harm",
+   "exam": [
+    "hs16-1",
+    "hs16-2",
+    "hs16-3",
+    "hs16-6",
+    "hs16-8",
+    "hs16-12",
+    "hs16-18",
+    "hs16-19",
+    "hs16-22",
+    "hs16-24",
+    "hs16-25",
+    "hs16-26",
+    "hs16-31",
+    "hs16-33",
+    "hs16-34",
+    "hs16-38",
+    "hs16-40",
+    "hs16-41",
+    "hs16-42",
+    "hs16-43",
+    "hs16-45",
+    "hs16-49"
+   ]
   },
   {
    "id": "cdec",
@@ -776,6 +815,24 @@
       "Zsign ≈ C / (10 · 2π · f)"
      ]
     }
+   ],
+   "exam": [
+    "hs16-1",
+    "hs16-2",
+    "hs16-8",
+    "hs16-9",
+    "hs16-10",
+    "hs16-11",
+    "hs16-12",
+    "hs16-13",
+    "hs16-14",
+    "hs16-15",
+    "hs16-16",
+    "hs16-17",
+    "hs16-19",
+    "hs16-20",
+    "hs16-28",
+    "hs16-37"
    ]
   },
   {
@@ -804,7 +861,29 @@
     }
    ],
    "ask": "Hoe klinkt LFD bij {x}?",
-   "askRev": "Welke modulatievorm geeft dit bij LFD: {x}?"
+   "askRev": "Welke modulatievorm geeft dit bij LFD: {x}?",
+   "exam": [
+    "hs16-1",
+    "hs16-2",
+    "hs16-6",
+    "hs16-8",
+    "hs16-9",
+    "hs16-10",
+    "hs16-11",
+    "hs16-12",
+    "hs16-13",
+    "hs16-14",
+    "hs16-16",
+    "hs16-17",
+    "hs16-19",
+    "hs16-20",
+    "hs16-24",
+    "hs16-25",
+    "hs16-29",
+    "hs16-30",
+    "hs16-37",
+    "hs16-40"
+   ]
   },
   {
    "id": "soort",
@@ -840,7 +919,32 @@
     }
    ],
    "ask": "Wat is {x}?",
-   "askRev": "Welke storing is dit: {x}?"
+   "askRev": "Welke storing is dit: {x}?",
+   "exam": [
+    "hs16-3",
+    "hs16-4",
+    "hs16-6",
+    "hs16-7",
+    "hs16-18",
+    "hs16-19",
+    "hs16-20",
+    "hs16-21",
+    "hs16-22",
+    "hs16-23",
+    "hs16-26",
+    "hs16-28",
+    "hs16-29",
+    "hs16-30",
+    "hs16-32",
+    "hs16-35",
+    "hs16-44",
+    "hs16-45",
+    "hs16-46",
+    "hs16-47",
+    "hs16-48",
+    "hs16-49",
+    "hs16-50"
+   ]
   },
   {
    "id": "maat",
@@ -884,7 +988,32 @@
     }
    ],
    "ask": "Wat helpt tegen {x}?",
-   "askRev": "Waartegen helpt dit: {x}?"
+   "askRev": "Waartegen helpt dit: {x}?",
+   "exam": [
+    "hs16-1",
+    "hs16-9",
+    "hs16-14",
+    "hs16-15",
+    "hs16-23",
+    "hs16-24",
+    "hs16-26",
+    "hs16-29",
+    "hs16-32",
+    "hs16-33",
+    "hs16-34",
+    "hs16-35",
+    "hs16-36",
+    "hs16-37",
+    "hs16-38",
+    "hs16-40",
+    "hs16-41",
+    "hs16-42",
+    "hs16-43",
+    "hs16-46",
+    "hs16-47",
+    "hs16-48",
+    "hs16-49"
+   ]
   },
   {
    "id": "ontk",
@@ -916,7 +1045,14 @@
     }
    ],
    "ask": "Waarmee ontkoppel je {x}?",
-   "askRev": "Welke leiding is dit: {x}?"
+   "askRev": "Welke leiding is dit: {x}?",
+   "exam": [
+    "hs16-1",
+    "hs16-9",
+    "hs16-11",
+    "hs16-14",
+    "hs16-15"
+   ]
   },
   {
    "id": "uitstr",
@@ -948,7 +1084,41 @@
     }
    ],
    "ask": "Wat veroorzaakt {x}?",
-   "askRev": "Waardoor ontstaat dit: {x}?"
+   "askRev": "Waardoor ontstaat dit: {x}?",
+   "exam": [
+    "hs16-1",
+    "hs16-2",
+    "hs16-3",
+    "hs16-5",
+    "hs16-6",
+    "hs16-8",
+    "hs16-12",
+    "hs16-14",
+    "hs16-18",
+    "hs16-19",
+    "hs16-20",
+    "hs16-22",
+    "hs16-24",
+    "hs16-25",
+    "hs16-26",
+    "hs16-27",
+    "hs16-28",
+    "hs16-29",
+    "hs16-31",
+    "hs16-32",
+    "hs16-33",
+    "hs16-34",
+    "hs16-36",
+    "hs16-37",
+    "hs16-38",
+    "hs16-40",
+    "hs16-41",
+    "hs16-42",
+    "hs16-43",
+    "hs16-45",
+    "hs16-46",
+    "hs16-49"
+   ]
   },
   {
    "id": "chirp",
@@ -976,7 +1146,15 @@
     }
    ],
    "ask": "Wat hoort bij {x}?",
-   "askRev": "Welk verschijnsel is dit: {x}?"
+   "askRev": "Welk verschijnsel is dit: {x}?",
+   "exam": [
+    "hs16-28",
+    "hs16-29",
+    "hs16-30",
+    "hs16-45",
+    "hs16-46",
+    "hs16-49"
+   ]
   },
   {
    "id": "afsch",
@@ -1004,7 +1182,8 @@
     }
    ],
    "ask": "Wat is {x}?",
-   "askRev": "Welk middel is dit: {x}?"
+   "askRev": "Welk middel is dit: {x}?",
+   "exam": []
   },
   {
    "id": "veld",
@@ -1028,7 +1207,10 @@
     }
    ],
    "ask": "Wat gebeurt er met {x} bij een dubbele afstand?",
-   "askRev": "Welke grootheid is dit: {x}?"
+   "askRev": "Welke grootheid is dit: {x}?",
+   "exam": [
+    "hs16-2"
+   ]
   }
  ],
  "exercises": [
