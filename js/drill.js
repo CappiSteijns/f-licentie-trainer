@@ -479,6 +479,52 @@ const GEN = {
     const a = pick([30, 40, 20, 25]), d = pick([3, 6, 7, 10, 13]), b = a - d, F = Math.pow(10, d / 10);
     return { txt: true, q: `De signaal/ruisverhouding aan de ingang van een ontvanger is ${a} dB en aan de uitgang ${b} dB. Hoe groot is het ruisgetal in dB?`, a: d + ' dB', wrong: [(a + b) + ' dB', b + ' dB', a + ' dB', (d * 2) + ' dB'], how: `F (dB) = S/N in − S/N uit = ${a} − ${b}` };
   },
+  lam() {
+    const f = pick([1.8e6, 3.7e6, 7.1e6, 14.2e6, 21.3e6, 28.5e6, 50e6, 145e6, 433e6]), rev = Math.random() < 0.3;
+    const lam = 3e8 / f;
+    return rev ? { q: `Een radiogolf heeft een golflengte van ${val(lam, 'm')}. Wat is de frequentie?`, a: f, unit: 'Hz', wrong: [f * 2, f / 2, f * 10, 3e8 * lam], how: 'f = c / λ = 300 000 000 / λ' }
+      : { q: `Wat is de golflengte van een signaal van ${val(f, 'Hz')}?`, a: lam, unit: 'm', wrong: [lam * 2, lam / 2, lam * 10, 3e6 / f], how: 'λ = c / f = 300 000 000 / f' };
+  },
+  dipl() {
+    const f = pick([3.65e6, 7.1e6, 10.1e6, 14.2e6, 21.2e6, 28.5e6, 50.2e6, 145e6]), L = 0.95 * 150e6 / f;
+    return { q: `Hoe lang is een halvegolf-dipool voor ${val(f, 'Hz')} (verkortingsfactor 0,95)?`, a: L, unit: 'm', wrong: [L / 0.95, L * 2, L / 2, L * 0.66 / 0.95], how: 'L = 0,95 · λ/2 = 0,95 · 150 / f(MHz)' };
+  },
+  kabl() {
+    const d = pick([6, 8, 12, 16, 20, 25]), L = pick([10, 20, 25, 30, 50, 100]), P = pick([10, 30, 50, 100, 200]), dB = d * L / 100, Pu = P * Math.pow(10, -dB / 10);
+    const lost = Math.random() < 0.5;
+    return { q: `Een coaxkabel heeft een demping van ${d} dB/100 m en is ${L} m lang. De zender levert ${val(P, 'W')}. ${lost ? 'Hoeveel vermogen gaat in de kabel verloren?' : 'Hoeveel vermogen komt aan het einde van de kabel aan?'}`, a: lost ? P - Pu : Pu, unit: 'W', wrong: lost ? [Pu, P * dB / 10, P / 2, P * dB / 100] : [P - Pu, P / 2, P * Math.pow(10, dB / 10), P / dB], how: `Verlies = ${d} · ${L}/100 = ${num(dB)} dB; P_uit = P · 10^(−dB/10)` };
+  },
+  erpc() {
+    const P = pick([10, 20, 30, 50, 100]), kab = pick([1, 2, 3, 4, 6]), bal = pick([0, 0.5, 1]), G = pick([6, 8, 10, 12, 14.5]), net = G - kab - bal;
+    return { q: `Een zender levert ${val(P, 'W')} aan een kabel met ${kab} dB verlies. Daarna volgt een balun met ${bal} dB verlies en een antenne met ${G} dB winst (t.o.v. de dipool). Wat is de ERP?`, a: P * Math.pow(10, net / 10), unit: 'W', wrong: [P * Math.pow(10, (G + kab + bal) / 10), P * Math.pow(10, G / 10), P * Math.pow(10, (G - kab) / 10) * 2, P * net], how: `Netto ${num(net)} dB (winst − kabel − balun); ERP = P · 10^(dB/10)` };
+  },
+  zkw() {
+    const z1 = pick([50, 50, 75, 50]), z2 = pick([72, 100, 150, 200, 300, 450, 12.5, 25]), Z = Math.sqrt(z1 * z2);
+    return { q: `Een ${val(z1, 'Ω')}-kabel moet met een kwartgolf-transformator worden aangepast aan een antenne van ${val(z2, 'Ω')}. Welke karakteristieke impedantie moet het kwartgolfstuk hebben?`, a: Z, unit: 'Ω', wrong: [(z1 + z2) / 2, z1 * z2, z2 - z1, Z * Math.SQRT2], how: 'Zk = √(Z₁ · Z₂)' };
+  },
+  swrz() {
+    const z = pick([50, 50, 75]), za = pick([25, 75, 100, 150, 200, 300, 12.5]), s = Math.max(z, za) / Math.min(z, za);
+    return { txt: true, q: `Een ${val(z, 'Ω')}-lijn wordt afgesloten met een antenne van ${val(za, 'Ω')}. Hoe groot is de staandegolfverhouding?`, a: String(+s.toPrecision(3)).replace('.', ',') + ' : 1', wrong: [String(+(s * 2).toPrecision(3)).replace('.', ',') + ' : 1', String(+((s + 1) / 2).toPrecision(3)).replace('.', ',') + ' : 1', String(+(Math.abs(z - za) / z).toPrecision(3)).replace('.', ',') + ' : 1', String(+(s * s).toPrecision(3)).replace('.', ',') + ' : 1'], how: 's = Zmax / Zmin' };
+  },
+  horiz() {
+    const h1 = pick([4, 9, 16, 25, 36, 49, 100]), h2 = pick([0, 1, 4, 9, 16, 25]);
+    const d = 3.57 * (Math.sqrt(h1) + Math.sqrt(h2));
+    return { q: `Een zendantenne zit op ${val(h1, 'm')} hoogte en de ontvanger op ${val(h2 || 1, 'm')}. Hoe groot is de afstand tot de radiohorizon (vuistregel)?`, a: 3.57 * (Math.sqrt(h1) + Math.sqrt(h2 || 1)), unit: 'km', wrong: [7.14 * Math.sqrt(h1), 3.57 * (h1 + (h2 || 1)), Math.sqrt(h1 + (h2 || 1)) * 3.57, 3.57 * (Math.sqrt(h1) + Math.sqrt(h2 || 1)) * 2], how: 'afstand ≈ 3,57 · (√h₁ + √h₂) km' };
+  },
+  vfl() {
+    const f = pick([14.2e6, 28.5e6, 50.2e6, 145e6, 433e6]), vf = pick([0.66, 0.8, 0.95]), q4 = Math.random() < 0.5, k = q4 ? 0.25 : 0.5;
+    const L = k * 3e8 / f * vf;
+    return { q: `Hoe lang is een ${q4 ? 'kwartgolf' : 'halvegolf'}-stuk coaxkabel (verkortingsfactor ${String(vf).replace('.', ',')}) voor ${val(f, 'Hz')}?`, a: L, unit: 'm', wrong: [k * 3e8 / f, L / vf / vf, L / vf * 2, k * 3e8 / f * (1 + vf)], how: `L = ${q4 ? '¼' : '½'} · λ · verkortingsfactor = ${q4 ? '¼' : '½'} · 300/f(MHz) · ${vf}` };
+  },
+  fbv() {
+    const P = pick([10, 25, 50, 100, 200, 400]), dB = pick([10, 15, 20, 6, 3]), Pa = P * Math.pow(10, -dB / 10);
+    return { q: `Een Yagi heeft een voor-achterverhouding van ${dB} dB. Het effectief naar voren uitgestraalde vermogen is ${val(P, 'W')}. Hoeveel gaat er naar achteren?`, a: Pa, unit: 'W', wrong: [P * dB / 100, P - Pa, P / dB, P * Math.pow(10, -dB / 20)], how: `P_achter = P_voor / 10^(dB/10)` };
+  },
+  aeff() {
+    const f = pick([14.2e6, 28.5e6, 50.2e6, 145e6, 433e6, 1296e6]), lam = 3e8 / f, A = 0.13 * lam * lam;
+    const F = x => String(+x.toPrecision(3)).replace('.', ',') + ' m²';
+    return { txt: true, q: `Hoe groot is de effectief ontvangende oppervlakte van een halvegolf-dipool voor ${val(f, 'Hz')}? (A ≈ 0,13 · λ²)`, a: F(A), wrong: [F(A * 10), F(A / 10), F(0.13 * lam), F(A * 4)], how: 'A ≈ 0,13 · λ² met λ = 300/f(MHz)' };
+  },
   ncomb() {
     const n = pick([3, 4, 5, 6, 8, 10, 12]);
     if (Math.random() < 0.5) return { txt: true, q: `Hoeveel verschillende combinaties kun je maken met ${n} bits?`, a: 2 ** n, wrong: [2 * n, n * n, 2 ** n - 1, 2 ** (n + 1)], how: `2ⁿ = 2^${n}` };

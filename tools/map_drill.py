@@ -143,6 +143,24 @@ KW = {
   'swit': r'schakelende|step',
   'lvsv': r'schakelende|rendement',
  },
+ 14: {
+  'lam': r'golflengte|frequentie',
+  'dipl': r'dipool|halvegolf|lengte',
+  'kabl': r'demping|dB/100|verlies|kabel',
+  'erpc': r'ERP|EIRP|antennewinst|effectief uitgestraald',
+  'zkw': r'kwartgolf|karakteristieke impedantie|transformator',
+  'swrz': r'staandegolf|SWR|SGV',
+  'horiz': r'horizon|reikwijdte|antennehoogte',
+  'vfl': r'verkortingsfactor|coax|elektrische lengte',
+  'fbv': r'voor-?achter|Yagi',
+  'aeff': r'opvangende|oppervlakte|apertuur',
+  'pol': r'polarisatie',
+  'imp': r'impedantie|dipool|groundplane',
+  'lijn': r'kwartgolf|halvegolf|kortgesloten|open',
+  'ion': r'ionosfeer|MUF|kritische|skip|dode zone',
+  'vhf': r'troposfeer|inversie|aurora|sporadisch',
+  'ant': r'Yagi|groundplane|gevouwen|traps|parabool',
+ },
  13: {
   'spiegel': r'spiegel|middenfrequent|oscillatorfrequentie|superheterodyne',
   'bfo': r'BFO|zwevings|telegrafie|CW|A1A|middenfrequent',
@@ -249,7 +267,7 @@ KW = {
 def norm(q): return ' '.join([q['question']] + [o['text'] for o in q['options']] + [q.get('explanation') or '']).lower()
 
 def main():
-    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18):
+    for ch in (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18):
         qs = json.load(open(ROOT / f'data/hoofdstuk-{ch}.json'))
         p = ROOT / f'data/theorie/hoofdstuk-{ch}.json'
         th = json.load(open(p))

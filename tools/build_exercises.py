@@ -4,7 +4,7 @@ in data/theorie/hoofdstuk-N.json. Gebruik: python tools/build_exercises.py"""
 import json, re, subprocess
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 12: 'THEORIE_HS12_20260928.pdf', 13: 'THEORIE_HS13_20261006.pdf', 11: 'THEORIE_HS11_20260912.pdf', 15: 'THEORIE_HS15_20261028.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
+PDFS = {4: 'THEORIE_HS4_20260502.pdf', 5: 'THEORIE_HS5_20260526.pdf', 6: 'THEORIE_HS6_20260619.pdf', 7: 'THEORIE_HS7_20260628.pdf', 8: 'THEORIE_HS8_20260903.pdf', 9: 'THEORIE_HS9_20260725.pdf', 10: 'THEORIE_HS10_20260819.pdf', 12: 'THEORIE_HS12_20260928.pdf', 13: 'THEORIE_HS13_20261006.pdf', 14: 'THEORIE_HS14_20261012.pdf', 11: 'THEORIE_HS11_20260912.pdf', 15: 'THEORIE_HS15_20261028.pdf', 16: 'THEORIE_HS16_20261110.pdf', 17: 'THEORIE_HS17_20260407.pdf', 18: 'THEORIE_HS18_20250330.pdf'}
 FOOT = re.compile(r'^\s*(©.*|VRZA-cursus.*|\d+|\d+-\d+)\s*$')
 
 def pages(pdf):
@@ -79,6 +79,11 @@ def parse(ch, pdf):
 # handmatige correcties: formules die pdftotext niet goed leest, en een antwoord dat alleen in de uitleg staat
 FIX = {
  'o13-2': {'answer': 'C'},
+ 'o14-4': {'pages': ['p075']},
+ 'o14-5': {'q': 'Een halvegolfstuk coaxkabel met een karakteristieke impedantie van 75 ohm wordt aan één uiteinde verbonden met een coaxkabel met een karakteristieke impedantie van 50 ohm. De impedantie aan het andere uiteinde van het 75 ohm-stuk bedraagt'},
+ 'o14-10': {'q': 'Een antenne is ontworpen voor de 40- en 80-meter amateurband. In de antenne zijn twee gelijke traps opgenomen. Stelling 1. De traps gedragen zich op 40 m als sperfilter, waardoor de eindstukken van de antenne niet meedoen. Stelling 2. De traps gedragen zich op 80 meter als een capacitieve reactantie, waardoor beide eindstukken worden aangekoppeld. Wat is juist:', 'pages': ['p081']},
+ 'o14-11': {'q': 'Een antenne is ontworpen voor de 40- en 80-meter amateurband. In de antenne zijn twee gelijke traps opgenomen. Stelling 1. De traps gedragen zich op 40 meter als een capacitieve reactantie waardoor met de eindstukken een halvegolf-dipool ontstaat. Stelling 2. De traps gedragen zich op 80 meter als een inductieve reactantie, waardoor met de eindstukken een halvegolf-dipool ontstaat. Wat is juist:'},
+ 'o14-13': {'pages': ['p084']},
  'o13-6': {'q': 'Blokje 1 en blokje 2 in het schema stellen voor:'},
  'o13-7': {'pages': ['p069']},
  'o13-9': {'q': 'Het blok met het vraagteken is een'},

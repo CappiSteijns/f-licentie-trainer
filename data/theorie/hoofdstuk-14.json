@@ -424,8 +424,2215 @@
    ]
   }
  ],
- "qmap": {},
- "formulas": [],
- "cards": [],
- "drill": []
+ "qmap": {
+  "hs14-1": [
+   "s25"
+  ],
+  "hs14-2": [
+   "s25"
+  ],
+  "hs14-3": [
+   "s25"
+  ],
+  "hs14-4": [
+   "s25"
+  ],
+  "hs14-5": [
+   "s25"
+  ],
+  "hs14-6": [
+   "s5"
+  ],
+  "hs14-7": [
+   "s2",
+   "s5"
+  ],
+  "hs14-8": [
+   "s5"
+  ],
+  "hs14-9": [
+   "s5"
+  ],
+  "hs14-10": [
+   "s5"
+  ],
+  "hs14-11": [
+   "s5"
+  ],
+  "hs14-12": [
+   "s5",
+   "s40"
+  ],
+  "hs14-13": [
+   "s14",
+   "s22"
+  ],
+  "hs14-14": [
+   "s29"
+  ],
+  "hs14-15": [
+   "s29"
+  ],
+  "hs14-16": [
+   "s29"
+  ],
+  "hs14-17": [
+   "s20",
+   "s39"
+  ],
+  "hs14-18": [
+   "s20",
+   "s39"
+  ],
+  "hs14-19": [
+   "s20"
+  ],
+  "hs14-20": [
+   "s39",
+   "s35"
+  ],
+  "hs14-21": [
+   "s39",
+   "s32"
+  ],
+  "hs14-22": [
+   "s32"
+  ],
+  "hs14-23": [
+   "s35"
+  ],
+  "hs14-24": [
+   "s39"
+  ],
+  "hs14-25": [
+   "s29",
+   "s20"
+  ],
+  "hs14-26": [
+   "s39",
+   "s20"
+  ],
+  "hs14-27": [
+   "s39"
+  ],
+  "hs14-28": [
+   "s39"
+  ],
+  "hs14-29": [
+   "s35",
+   "s39"
+  ],
+  "hs14-30": [
+   "s13"
+  ],
+  "hs14-31": [
+   "s18"
+  ],
+  "hs14-32": [
+   "s11"
+  ],
+  "hs14-33": [
+   "s18"
+  ],
+  "hs14-34": [
+   "s18"
+  ],
+  "hs14-35": [
+   "s18"
+  ],
+  "hs14-36": [
+   "s18"
+  ],
+  "hs14-37": [
+   "s18"
+  ],
+  "hs14-38": [
+   "s18"
+  ],
+  "hs14-39": [
+   "s18"
+  ],
+  "hs14-40": [
+   "s7",
+   "s40"
+  ],
+  "hs14-41": [
+   "s18"
+  ],
+  "hs14-42": [
+   "s18"
+  ],
+  "hs14-43": [
+   "s11",
+   "s17"
+  ],
+  "hs14-44": [
+   "s25"
+  ],
+  "hs14-45": [
+   "s37"
+  ],
+  "hs14-46": [
+   "s25"
+  ],
+  "hs14-47": [
+   "s6"
+  ],
+  "hs14-48": [
+   "s5",
+   "s6"
+  ],
+  "hs14-49": [
+   "s16"
+  ],
+  "hs14-50": [
+   "s34",
+   "s6"
+  ],
+  "hs14-51": [
+   "s12",
+   "s6"
+  ],
+  "hs14-52": [
+   "s12",
+   "s39"
+  ],
+  "hs14-53": [
+   "s39"
+  ],
+  "hs14-54": [
+   "s3"
+  ],
+  "hs14-55": [
+   "s11",
+   "s12"
+  ],
+  "hs14-56": [
+   "s35",
+   "s16"
+  ],
+  "hs14-57": [
+   "s7"
+  ],
+  "hs14-58": [
+   "s34"
+  ],
+  "hs14-59": [
+   "s34"
+  ],
+  "hs14-60": [
+   "s7"
+  ],
+  "hs14-61": [
+   "s6",
+   "s13"
+  ],
+  "hs14-62": [
+   "s34",
+   "s39"
+  ],
+  "hs14-63": [
+   "s16"
+  ],
+  "hs14-64": [
+   "s16",
+   "s14"
+  ],
+  "hs14-65": [
+   "s6",
+   "s11"
+  ],
+  "hs14-66": [
+   "s38"
+  ],
+  "hs14-67": [
+   "s34"
+  ],
+  "hs14-68": [
+   "s16"
+  ],
+  "hs14-69": [
+   "s38"
+  ],
+  "hs14-70": [
+   "s38"
+  ],
+  "hs14-71": [
+   "s39",
+   "s32"
+  ],
+  "hs14-72": [
+   "s38",
+   "s33"
+  ],
+  "hs14-73": [
+   "s33"
+  ],
+  "hs14-74": [
+   "s33"
+  ],
+  "hs14-75": [
+   "s33"
+  ],
+  "hs14-76": [
+   "s33",
+   "s38"
+  ],
+  "hs14-77": [
+   "s33",
+   "s13"
+  ],
+  "hs14-78": [
+   "s33"
+  ],
+  "hs14-79": [
+   "s36"
+  ],
+  "hs14-80": [
+   "s36"
+  ],
+  "hs14-81": [
+   "s36"
+  ],
+  "hs14-82": [
+   "s40"
+  ],
+  "hs14-83": [
+   "s35"
+  ],
+  "hs14-84": [
+   "s35"
+  ],
+  "hs14-85": [
+   "s35"
+  ],
+  "hs14-86": [
+   "s39"
+  ],
+  "hs14-87": [
+   "s2"
+  ],
+  "hs14-88": [
+   "s35"
+  ],
+  "hs14-89": [
+   "s35",
+   "s38"
+  ],
+  "hs14-90": [
+   "s40"
+  ],
+  "hs14-91": [
+   "s27",
+   "s40"
+  ],
+  "hs14-92": [
+   "s37"
+  ],
+  "hs14-93": [
+   "s39"
+  ],
+  "hs14-94": [
+   "s37"
+  ],
+  "hs14-95": [
+   "s37"
+  ],
+  "hs14-96": [
+   "s28"
+  ],
+  "hs14-97": [
+   "s35"
+  ],
+  "hs14-98": [
+   "s19"
+  ],
+  "hs14-99": [
+   "s8",
+   "s16"
+  ],
+  "hs14-100": [
+   "s8"
+  ],
+  "hs14-101": [
+   "s34"
+  ],
+  "hs14-102": [
+   "s16",
+   "s18"
+  ],
+  "hs14-103": [
+   "s16",
+   "s14"
+  ],
+  "hs14-104": [
+   "s34"
+  ],
+  "hs14-105": [
+   "s17"
+  ],
+  "hs14-106": [
+   "s17",
+   "s18"
+  ],
+  "hs14-107": [
+   "s18",
+   "s19"
+  ],
+  "hs14-108": [
+   "s19"
+  ],
+  "hs14-109": [
+   "s19",
+   "s17"
+  ],
+  "hs14-110": [
+   "s16"
+  ],
+  "hs14-111": [
+   "s8",
+   "s13"
+  ],
+  "hs14-112": [
+   "s9"
+  ],
+  "hs14-113": [
+   "s9",
+   "s14"
+  ],
+  "hs14-114": [
+   "s14"
+  ],
+  "hs14-115": [
+   "s14"
+  ],
+  "hs14-116": [
+   "s20"
+  ],
+  "hs14-117": [
+   "s20"
+  ],
+  "hs14-118": [
+   "s6",
+   "s14"
+  ],
+  "hs14-119": [
+   "s9"
+  ],
+  "hs14-120": [
+   "s9",
+   "s13"
+  ],
+  "hs14-121": [
+   "s20"
+  ],
+  "hs14-122": [
+   "s13"
+  ],
+  "hs14-123": [
+   "s13",
+   "s9"
+  ],
+  "hs14-124": [
+   "s12",
+   "s13"
+  ],
+  "hs14-125": [
+   "s34"
+  ],
+  "hs14-126": [
+   "s14",
+   "s28"
+  ],
+  "hs14-127": [
+   "s5",
+   "s14"
+  ],
+  "hs14-128": [
+   "s11",
+   "s14"
+  ],
+  "hs14-129": [
+   "s11",
+   "s14"
+  ],
+  "hs14-130": [
+   "s16"
+  ],
+  "hs14-131": [
+   "s11"
+  ],
+  "hs14-132": [
+   "s11"
+  ],
+  "hs14-133": [
+   "s12",
+   "s13"
+  ],
+  "hs14-134": [
+   "s11",
+   "s14"
+  ],
+  "hs14-135": [
+   "s14",
+   "s13"
+  ],
+  "hs14-136": [
+   "s34",
+   "s11"
+  ],
+  "hs14-137": [
+   "s11"
+  ],
+  "hs14-138": [
+   "s19"
+  ],
+  "hs14-139": [
+   "s19"
+  ],
+  "hs14-140": [
+   "s19"
+  ],
+  "hs14-141": [
+   "s19"
+  ],
+  "hs14-142": [
+   "s14",
+   "s17"
+  ],
+  "hs14-143": [
+   "s12"
+  ],
+  "hs14-144": [
+   "s17"
+  ],
+  "hs14-145": [
+   "s19"
+  ],
+  "hs14-146": [
+   "s12",
+   "s13"
+  ],
+  "hs14-147": [
+   "s11",
+   "s14"
+  ],
+  "hs14-148": [
+   "s16"
+  ],
+  "hs14-149": [
+   "s11",
+   "s14"
+  ],
+  "hs14-150": [
+   "s17",
+   "s11"
+  ],
+  "hs14-151": [
+   "s19"
+  ],
+  "hs14-152": [
+   "s19"
+  ],
+  "hs14-153": [
+   "s17",
+   "s11"
+  ],
+  "hs14-154": [
+   "s14",
+   "s17"
+  ],
+  "hs14-155": [
+   "s20"
+  ],
+  "hs14-156": [
+   "s11",
+   "s12"
+  ],
+  "hs14-157": [
+   "s14",
+   "s34"
+  ],
+  "hs14-158": [
+   "s12"
+  ],
+  "hs14-159": [
+   "s14",
+   "s13"
+  ],
+  "hs14-160": [
+   "s14"
+  ],
+  "hs14-161": [
+   "s13",
+   "s14"
+  ],
+  "hs14-162": [
+   "s14"
+  ],
+  "hs14-163": [
+   "s19"
+  ],
+  "hs14-164": [
+   "s13"
+  ],
+  "hs14-165": [
+   "s13"
+  ],
+  "hs14-166": [
+   "s13"
+  ],
+  "hs14-167": [
+   "s34"
+  ],
+  "hs14-168": [
+   "s21"
+  ],
+  "hs14-169": [
+   "s21"
+  ],
+  "hs14-170": [
+   "s21"
+  ],
+  "hs14-171": [
+   "s18"
+  ],
+  "hs14-172": [
+   "s11",
+   "s13"
+  ],
+  "hs14-173": [
+   "s25"
+  ],
+  "hs14-174": [
+   "s25"
+  ],
+  "hs14-175": [
+   "s29"
+  ],
+  "hs14-176": [
+   "s29"
+  ],
+  "hs14-177": [
+   "s29",
+   "s27"
+  ],
+  "hs14-178": [
+   "s29"
+  ],
+  "hs14-179": [
+   "s29"
+  ],
+  "hs14-180": [
+   "s29"
+  ],
+  "hs14-181": [
+   "s29"
+  ],
+  "hs14-182": [
+   "s29"
+  ],
+  "hs14-183": [
+   "s29",
+   "s5"
+  ],
+  "hs14-184": [
+   "s29"
+  ],
+  "hs14-185": [
+   "s29"
+  ],
+  "hs14-186": [
+   "s27"
+  ],
+  "hs14-187": [
+   "s25"
+  ],
+  "hs14-188": [
+   "s29"
+  ],
+  "hs14-189": [
+   "s29",
+   "s13"
+  ],
+  "hs14-190": [
+   "s29"
+  ],
+  "hs14-191": [
+   "s29",
+   "s27"
+  ],
+  "hs14-192": [
+   "s29"
+  ],
+  "hs14-193": [
+   "s27"
+  ],
+  "hs14-194": [
+   "s27"
+  ],
+  "hs14-195": [
+   "s27"
+  ],
+  "hs14-196": [
+   "s29"
+  ],
+  "hs14-197": [
+   "s29"
+  ],
+  "hs14-198": [
+   "s5",
+   "s29"
+  ],
+  "hs14-199": [
+   "s27",
+   "s33"
+  ],
+  "hs14-200": [
+   "s27"
+  ],
+  "hs14-201": [
+   "s29"
+  ],
+  "hs14-202": [
+   "s29"
+  ],
+  "hs14-203": [
+   "s29"
+  ],
+  "hs14-204": [
+   "s29"
+  ],
+  "hs14-205": [
+   "s29"
+  ],
+  "hs14-206": [
+   "s29"
+  ],
+  "hs14-207": [
+   "s29"
+  ],
+  "hs14-208": [
+   "s29"
+  ],
+  "hs14-209": [
+   "s29"
+  ],
+  "hs14-210": [
+   "s29"
+  ],
+  "hs14-211": [
+   "s29"
+  ],
+  "hs14-212": [
+   "s29"
+  ],
+  "hs14-213": [
+   "s29"
+  ],
+  "hs14-214": [
+   "s29"
+  ],
+  "hs14-215": [
+   "s29"
+  ],
+  "hs14-216": [
+   "s29"
+  ],
+  "hs14-217": [
+   "s29"
+  ],
+  "hs14-218": [
+   "s29"
+  ],
+  "hs14-219": [
+   "s29"
+  ],
+  "hs14-220": [
+   "s29"
+  ],
+  "hs14-221": [
+   "s29"
+  ],
+  "hs14-222": [
+   "s29"
+  ],
+  "hs14-223": [
+   "s29"
+  ],
+  "hs14-224": [
+   "s25"
+  ],
+  "hs14-225": [
+   "s29",
+   "s24"
+  ],
+  "hs14-226": [
+   "s29"
+  ],
+  "hs14-227": [
+   "s29"
+  ],
+  "hs14-228": [
+   "s29"
+  ],
+  "hs14-229": [
+   "s29"
+  ],
+  "hs14-230": [
+   "s28"
+  ],
+  "hs14-231": [
+   "s28"
+  ],
+  "hs14-232": [
+   "s27",
+   "s28"
+  ],
+  "hs14-233": [
+   "s27",
+   "s28"
+  ],
+  "hs14-234": [
+   "s34"
+  ],
+  "hs14-235": [
+   "s29",
+   "s28"
+  ],
+  "hs14-236": [
+   "s26"
+  ],
+  "hs14-237": [
+   "s25",
+   "s36"
+  ],
+  "hs14-238": [
+   "s26"
+  ],
+  "hs14-239": [
+   "s29"
+  ],
+  "hs14-240": [
+   "s27"
+  ],
+  "hs14-241": [
+   "s26"
+  ],
+  "hs14-242": [
+   "s26"
+  ],
+  "hs14-243": [
+   "s40"
+  ],
+  "hs14-244": [
+   "s26"
+  ]
+ },
+ "formulas": [
+  {
+   "title": "Golven en antennes",
+   "items": [
+    {
+     "f": "λ = c / f = 300 / f(MHz)",
+     "t": "golflengte in meter"
+    },
+    {
+     "f": "L_dipool ≈ 0,95 · λ / 2",
+     "t": "halve-golf dipool met verkortingsfactor 0,95"
+    },
+    {
+     "f": "L_coax = λ/4 · vf",
+     "t": "vf is de verkortingsfactor van de kabel (ongeveer 0,66)"
+    },
+    {
+     "f": "A ≈ 0,13 · λ²",
+     "t": "effectieve oppervlakte van een halve-golfdipool"
+    }
+   ]
+  },
+  {
+   "title": "Transmissielijnen",
+   "items": [
+    {
+     "f": "Zk = √(Zin · Zuit)",
+     "t": "kwartgolf-transformator"
+    },
+    {
+     "f": "s = (uF + uR)/(uF − uR) = Zmax/Zmin",
+     "t": "staandegolfverhouding"
+    },
+    {
+     "f": "verlies (dB) = dB/100 m × lengte / 100",
+     "t": "kabelverlies; 3 dB is de helft van het vermogen"
+    }
+   ]
+  },
+  {
+   "title": "Winst en bereik",
+   "items": [
+    {
+     "f": "G(dBi) = G(dBd) + 2,15",
+     "t": "antennewinst"
+    },
+    {
+     "f": "P_ERP = P_zender · ηkabel · G_antenne",
+     "t": "in dB: optellen en aftrekken"
+    },
+    {
+     "f": "afstand ≈ 3,57 · (√h₁ + √h₂) km",
+     "t": "radiohorizon, h in m"
+    }
+   ]
+  }
+ ],
+ "cards": [
+  {
+   "id": "c1",
+   "sec": "s4",
+   "q": "Wat is een elektromagnetisch veld?",
+   "a": "Een samenhangend elektrisch (E) en magnetisch (H) veld dat zich als golf voortplant; E en H staan loodrecht op elkaar en op de voortplantingsrichting."
+  },
+  {
+   "id": "c2",
+   "sec": "s5",
+   "q": "Hoe snel planten radiogolven zich voort in vacuüm?",
+   "a": "Met de lichtsnelheid: ongeveer 300 000 km/s (3·10⁸ m/s). In een materiaal langzamer."
+  },
+  {
+   "id": "c3",
+   "sec": "s5",
+   "q": "Hoe bereken je de golflengte?",
+   "a": "λ = c / f = 300 / f(MHz) meter."
+  },
+  {
+   "id": "c4",
+   "sec": "s5",
+   "q": "Wat is de golflengte van 10 MHz en van 3 GHz?",
+   "a": "30 m en 10 cm."
+  },
+  {
+   "id": "c5",
+   "sec": "s5",
+   "q": "Welke grootheden bepalen de golflengte?",
+   "a": "De frequentie en de voortplantingssnelheid in het medium."
+  },
+  {
+   "id": "c6",
+   "sec": "s5",
+   "q": "Welke golfbanden bestaan er?",
+   "a": "LF 30–300 kHz, MF 300 kHz–3 MHz, HF 3–30 MHz, VHF 30–300 MHz, UHF 300 MHz–3 GHz, SHF 3–30 GHz, EHF 30–300 GHz."
+  },
+  {
+   "id": "c7",
+   "sec": "s6",
+   "q": "Hoe lang is een halve-golfdipool?",
+   "a": "Ongeveer 0,95 · λ/2: de verkortingsfactor van een draad in de praktijk is 0,95. Voor 7 MHz is dat ongeveer 20,4 m."
+  },
+  {
+   "id": "c8",
+   "sec": "s6",
+   "q": "Wat is de impedantie in het midden van een halve-golfdipool?",
+   "a": "Ongeveer 73 Ω (in de vrije ruimte, hoog genoeg opgehangen)."
+  },
+  {
+   "id": "c9",
+   "sec": "s6",
+   "q": "Hoe zijn stroom en spanning verdeeld op een dipool?",
+   "a": "Stroom: maximaal in het midden, nul aan de einden. Spanning: nul in het midden, maximaal aan de einden."
+  },
+  {
+   "id": "c10",
+   "sec": "s6",
+   "q": "Wat gebeurt met de voetpuntimpedantie als je een 7 MHz-dipool op 14 MHz gebruikt?",
+   "a": "Het is dan een hele-golfantenne: de impedantie in het voedingspunt is veel hoger."
+  },
+  {
+   "id": "c11",
+   "sec": "s6",
+   "q": "Hoe verander je de resonantiefrequentie van een antenne?",
+   "a": "Korter maken (of een condensator) geeft een hogere frequentie; langer maken of seriespoelen geeft een lagere frequentie."
+  },
+  {
+   "id": "c12",
+   "sec": "s7",
+   "q": "Hoe ziet het vervangingsschema van een dipool eruit?",
+   "a": "Een serieschakeling van stralingsweerstand, verliesweerstand en een L-C-kring; in resonantie blijft de weerstand over."
+  },
+  {
+   "id": "c13",
+   "sec": "s8",
+   "q": "Wat is een transmissielijn?",
+   "a": "Een lijn (coax, open lijn) die HF-energie van zender naar antenne brengt met zo min mogelijk verlies en straling."
+  },
+  {
+   "id": "c14",
+   "sec": "s8",
+   "q": "Wat is de karakteristieke impedantie Zk?",
+   "a": "De impedantie die een oneindig lange lijn vertoont; ze hangt af van de afmetingen en het diëlektricum, niet van de lengte of frequentie."
+  },
+  {
+   "id": "c15",
+   "sec": "s8",
+   "q": "Wat is de impedantie van een open voedingslijn?",
+   "a": "Typisch 300–600 Ω; hij moet zo weinig mogelijk uitstralen."
+  },
+  {
+   "id": "c16",
+   "sec": "s9",
+   "q": "Wat is het verschil tussen symmetrische en asymmetrische lijnen?",
+   "a": "Symmetrisch (open lijn, lintlijn): twee gelijke geleiders. Asymmetrisch (coax): binnenader en afscherming (aarde)."
+  },
+  {
+   "id": "c17",
+   "sec": "s9",
+   "q": "Wat zijn typische waarden voor coaxkabel?",
+   "a": "Zk 50 of 75 Ω; verkortingsfactor ongeveer 0,66 (met PE) tot 0,8."
+  },
+  {
+   "id": "c18",
+   "sec": "s9",
+   "q": "Waarvan hangt de karakteristieke impedantie van een coaxkabel af?",
+   "a": "Van de diameters van binnenader en afscherming en het diëlektricum; niet van de lengte, frequentie of belasting."
+  },
+  {
+   "id": "c19",
+   "sec": "s10",
+   "q": "Hoe sluit je een symmetrische lijn aan op een dipool?",
+   "a": "Direct: beide aders aan een helft van de dipool; bij coax is een balun nodig."
+  },
+  {
+   "id": "c20",
+   "sec": "s11",
+   "q": "Hoe gedraagt een kwartgolf-lijn zich als transformator?",
+   "a": "Zk = √(Zin · Zuit): hij transformeert de impedantie. Een 50 Ω-lijn op 72 Ω vraagt een kwartgolfstuk van 60 Ω."
+  },
+  {
+   "id": "c21",
+   "sec": "s11",
+   "q": "Wat is de ingangsimpedantie van een kwartgolf-lijn die aan het einde kortgesloten is?",
+   "a": "Zeer hoog (parallelkring)."
+  },
+  {
+   "id": "c22",
+   "sec": "s11",
+   "q": "Wat is de ingangsimpedantie van een open kwartgolf-lijn?",
+   "a": "Zeer laag (seriekring)."
+  },
+  {
+   "id": "c23",
+   "sec": "s11",
+   "q": "Hoe kun je een open stuk coax gebruiken?",
+   "a": "Een open kwartgolfstuk werkt als seriekring (kortsluiting voor een harmonische) en onderdrukt frequenties, bijvoorbeeld als filter."
+  },
+  {
+   "id": "c24",
+   "sec": "s12",
+   "q": "Wat is de eigenschap van een halve-golf lijn?",
+   "a": "De ingangsimpedantie is gelijk aan de belastingsimpedantie, ongeacht de Zk (herhaalt zich per halve golf)."
+  },
+  {
+   "id": "c25",
+   "sec": "s13",
+   "q": "Wat is een balun?",
+   "a": "Een transformator tussen symmetrisch en asymmetrisch (balanced-unbalanced), vaak met impedantietransformatie (1:1 of 1:4)."
+  },
+  {
+   "id": "c26",
+   "sec": "s13",
+   "q": "Waarvoor dient een balun?",
+   "a": "Om een asymmetrische coax aan een symmetrische antenne te koppelen en mantelstromen te voorkomen."
+  },
+  {
+   "id": "c27",
+   "sec": "s13",
+   "q": "Waarvoor dient een 1:4-balun?",
+   "a": "Om bijvoorbeeld een gevouwen dipool (ongeveer 300 Ω) aan een 75 Ω-coaxkabel aan te passen."
+  },
+  {
+   "id": "c28",
+   "sec": "s14",
+   "q": "Hoe maak je een balun van coax?",
+   "a": "Met een halve golf stuk coax (verkorting) of een kwartgolf-sperkring: een stuk coax dat mantelstromen onderdrukt."
+  },
+  {
+   "id": "c29",
+   "sec": "s15",
+   "q": "Waarvan zijn gewikkelde baluns gemaakt?",
+   "a": "Van coax of draad om een ferrietring of staaf (stroombalun, spanningsbalun)."
+  },
+  {
+   "id": "c30",
+   "sec": "s16",
+   "q": "Wat is een eindgevoede antenne?",
+   "a": "Een antenne die aan het einde wordt gevoed (bijvoorbeeld de Zeppelin); de impedantie is zeer hoog en een tuner is nodig."
+  },
+  {
+   "id": "c31",
+   "sec": "s17",
+   "q": "Wat is de staandegolfverhouding (SWR)?",
+   "a": "s = (uF + uR)/(uF − uR) = Zmax/Zmin; 1 is ideale aanpassing, oneindig bij kortsluiting of open einde."
+  },
+  {
+   "id": "c32",
+   "sec": "s17",
+   "q": "Hoe groot is s bij een antenne van 100 Ω op een 70 Ω-lijn?",
+   "a": "1,43 (verhouding van de impedanties)."
+  },
+  {
+   "id": "c33",
+   "sec": "s17",
+   "q": "Tot welke SWR blijft zender en antenne redelijk werken?",
+   "a": "Tot ongeveer 2."
+  },
+  {
+   "id": "c34",
+   "sec": "s17",
+   "q": "Wat zegt de SWR over het vermogen?",
+   "a": "Hij zegt hoeveel energie wordt teruggekaatst; bij s = 3 gaat ongeveer 25% van het vermogen terug."
+  },
+  {
+   "id": "c35",
+   "sec": "s17",
+   "q": "Waar kun je de SWR meten?",
+   "a": "Overal langs de kabel met een staandegolfmeter; verliezen in de kabel maken de SWR bij de zender kleiner dan bij de antenne."
+  },
+  {
+   "id": "c36",
+   "sec": "s18",
+   "q": "Wat is een pi-filter?",
+   "a": "Een L en twee C's (laagdoorlaat) als impedantietransformator tussen eindtrap en antenne; onderdrukt ook harmonischen."
+  },
+  {
+   "id": "c37",
+   "sec": "s18",
+   "q": "Waarvoor dient een pi-filter in een zender?",
+   "a": "Aanpassen van de eindtrap aan de antenne (impedantietransformatie) en onderdrukken van harmonischen."
+  },
+  {
+   "id": "c38",
+   "sec": "s18",
+   "q": "Wat is een T-filter?",
+   "a": "Twee spoelen en een condensator (LCL) naar aarde: ook laagdoorlaat."
+  },
+  {
+   "id": "c39",
+   "sec": "s19",
+   "q": "Wat is een ATU (antenne-aanpassingseenheid)?",
+   "a": "Een afstembare impedantietransformator tussen zender en antennekabel om de zender 50 Ω te laten zien (lage SWR aan de zender)."
+  },
+  {
+   "id": "c40",
+   "sec": "s19",
+   "q": "Wat doet een ATU niet?",
+   "a": "De SWR op de kabel tussen ATU en antenne verandert niet; hij past alleen de zender aan."
+  },
+  {
+   "id": "c41",
+   "sec": "s19",
+   "q": "Hoe stel je een ATU in?",
+   "a": "Afstemmen op minimale gereflecteerde energie (minimum SWR) met een staandegolfmeter."
+  },
+  {
+   "id": "c42",
+   "sec": "s20",
+   "q": "Wat zijn leidingverliezen?",
+   "a": "Koper-, straling- en diëlektrische verliezen; ze nemen toe met de frequentie en lengte en worden in dB/100 m opgegeven."
+  },
+  {
+   "id": "c43",
+   "sec": "s20",
+   "q": "Hoeveel vermogen blijft er over bij 3 dB verlies?",
+   "a": "De helft."
+  },
+  {
+   "id": "c44",
+   "sec": "s20",
+   "q": "Hoe reken je kabelverlies om?",
+   "a": "dB = (dB/100 m) × lengte / 100; vermogen uit = P · 10^(−dB/10)."
+  },
+  {
+   "id": "c45",
+   "sec": "s20",
+   "q": "Waarom moet een 2-metercoax zo kort mogelijk zijn?",
+   "a": "De verliezen nemen toe met de frequentie."
+  },
+  {
+   "id": "c46",
+   "sec": "s21",
+   "q": "Wat is een golfgeleider (golfpijp)?",
+   "a": "Een metalen buis die microgolven geleidt; alleen golven met een golflengte kleiner dan de afsnijgolflengte (ongeveer 2 × diameter) kunnen erdoor."
+  },
+  {
+   "id": "c47",
+   "sec": "s25",
+   "q": "Wat is de polarisatie van een radiogolf?",
+   "a": "De richting van de elektrische (E-)component."
+  },
+  {
+   "id": "c48",
+   "sec": "s25",
+   "q": "Hoe is de polarisatie van een horizontale dipool?",
+   "a": "Horizontaal; van een verticale antenne verticaal."
+  },
+  {
+   "id": "c49",
+   "sec": "s25",
+   "q": "Waarom moeten zender en ontvanger dezelfde polarisatie hebben?",
+   "a": "Anders is het ontvangen signaal zwakker (tot veel dB verlies)."
+  },
+  {
+   "id": "c50",
+   "sec": "s26",
+   "q": "Wat is een zichtverbinding?",
+   "a": "Een verbinding via de directe golf; werkt tot de radiohorizon."
+  },
+  {
+   "id": "c51",
+   "sec": "s26",
+   "q": "Hoe bereken je de afstand tot de radiohorizon?",
+   "a": "AB ≈ 3,57 · (√h₁ + √h₂) km, met h in meter."
+  },
+  {
+   "id": "c52",
+   "sec": "s26",
+   "q": "Wat is het effect van verdubbeling van de antennehoogte op de horizon?",
+   "a": "Het bereik neemt toe met een factor 1,41 (√2), dus minder dan 2."
+  },
+  {
+   "id": "c53",
+   "sec": "s27",
+   "q": "Wat is de grondgolf?",
+   "a": "Een golf die de aardkromming volgt; vooral bij lage frequenties (LF/MF) groot bereik."
+  },
+  {
+   "id": "c54",
+   "sec": "s27",
+   "q": "Wat is de ruimtegolf?",
+   "a": "De golf die schuin omhoog gaat (ionosfeer) of de directe golf; bij HF belangrijk."
+  },
+  {
+   "id": "c55",
+   "sec": "s27",
+   "q": "Wanneer is de reikwijdte van de grondgolf groter?",
+   "a": "Bij een lagere frequentie, een geleidende bodem en verticale polarisatie."
+  },
+  {
+   "id": "c56",
+   "sec": "s28",
+   "q": "Hoe komen VHF/UHF-verbindingen over grote afstand tot stand?",
+   "a": "Via de troposfeer (temperatuurinversie, ducting), sporadische E-laag, aurora, tropo-scatter en meteoren."
+  },
+  {
+   "id": "c57",
+   "sec": "s28",
+   "q": "Wat is een temperatuurinversie?",
+   "a": "Een warmere luchtlaag boven een koelere: golven buigen af en bereiken verder dan de horizon."
+  },
+  {
+   "id": "c58",
+   "sec": "s29",
+   "q": "Welke ionosfeerlagen bestaan er?",
+   "a": "D-laag (70–80 km, absorbeert overdag, verdwijnt 's nachts), E-laag (110 km) en F-laag (250–400 km, overdag F1/F2)."
+  },
+  {
+   "id": "c59",
+   "sec": "s29",
+   "q": "Wat is de kritische frequentie?",
+   "a": "De hoogste frequentie die bij loodrechte opstraling nog door de ionosfeer wordt teruggekaatst."
+  },
+  {
+   "id": "c60",
+   "sec": "s29",
+   "q": "Wat is de MUF?",
+   "a": "Maximum Usable Frequency: de hoogste frequentie die bij een bepaalde verbinding via de ionosfeer kan worden gebruikt; hij hangt af van de afstand, het uur, het seizoen en de zonneactiviteit, niet van het zendvermogen."
+  },
+  {
+   "id": "c61",
+   "sec": "s29",
+   "q": "Wat is de sprongafstand (skip distance)?",
+   "a": "De kleinste afstand vanaf de zender waarop een via de ionosfeer teruggekaatste golf aankomt."
+  },
+  {
+   "id": "c62",
+   "sec": "s29",
+   "q": "Wat is de dode zone?",
+   "a": "Het gebied tussen het einde van de grondgolf en de sprongafstand waar het signaal niet ontvangen wordt."
+  },
+  {
+   "id": "c63",
+   "sec": "s29",
+   "q": "Wanneer is de sprongafstand nul?",
+   "a": "Als de zendfrequentie lager is dan of gelijk is aan de kritische frequentie (loodrecht teruggekaatst)."
+  },
+  {
+   "id": "c64",
+   "sec": "s29",
+   "q": "Hoe bereik je de grootste afstand met een HF-verbinding?",
+   "a": "Met een kleine opstralingshoek (vlak straling) en een frequentie dicht onder de MUF."
+  },
+  {
+   "id": "c65",
+   "sec": "s29",
+   "q": "Welke invloed hebben zonnevlekken?",
+   "a": "Meer zonnevlekken geven meer ionisatie en een hogere MUF: hogere banden (28 MHz) zijn dan open voor DX. Een cyclus duurt ongeveer 11 jaar."
+  },
+  {
+   "id": "c66",
+   "sec": "s29",
+   "q": "Wat is aurora-propagatie?",
+   "a": "Reflectie tegen het poollicht (aurora) op VHF/UHF door geladen deeltjes; het signaal klinkt vervormd (CW is het beste)."
+  },
+  {
+   "id": "c67",
+   "sec": "s29",
+   "q": "Wat is fading?",
+   "a": "Zwakker en sterker worden van een signaal door interferentie van golven via verschillende paden (bijvoorbeeld E- en F-laag) of ionosfeervariatie."
+  },
+  {
+   "id": "c68",
+   "sec": "s29",
+   "q": "Waarom is de 80 m-band 's avonds beter dan overdag?",
+   "a": "De D-laag absorbeert overdag (en lost 's nachts op), zodat de ionosfeer bereikt wordt."
+  },
+  {
+   "id": "c69",
+   "sec": "s32",
+   "q": "Hoe neemt de veldsterkte af met de afstand?",
+   "a": "De elektrische veldsterkte neemt af als 1/r, het vermogen per oppervlak als 1/r²."
+  },
+  {
+   "id": "c70",
+   "sec": "s32",
+   "q": "Wat is een isotrope straler?",
+   "a": "Een theoretische puntbron die in alle richtingen even sterk uitstraalt; referentie voor antennewinst (dBi)."
+  },
+  {
+   "id": "c71",
+   "sec": "s32",
+   "q": "Wat is het verband tussen dBi en dBd?",
+   "a": "Winst t.o.v. isotroop is 2,15 dB hoger dan winst t.o.v. een halve-golfdipool: dBi = dBd + 2,15."
+  },
+  {
+   "id": "c72",
+   "sec": "s32",
+   "q": "Wat is ERP en wat is EIRP?",
+   "a": "ERP: effectief uitgestraald vermogen ten opzichte van een halve-golfdipool; EIRP ten opzichte van een isotrope straler (factor 1,64 groter)."
+  },
+  {
+   "id": "c73",
+   "sec": "s32",
+   "q": "Hoe bereken je ERP?",
+   "a": "ERP = P_zender × kabelrendement × antennewinst; in dB: zendvermogen − kabelverlies − balunverlies + winst."
+  },
+  {
+   "id": "c74",
+   "sec": "s33",
+   "q": "Wat is een groundplane-antenne?",
+   "a": "Een verticale kwartgolfantenne met radialen als kunstmatige aarde; straalt in het horizontale vlak rondom gelijkmatig."
+  },
+  {
+   "id": "c75",
+   "sec": "s33",
+   "q": "Hoe groot is de voetpuntimpedantie van een kwartgolf verticaal met horizontale radialen?",
+   "a": "Ongeveer 36 Ω; met naar beneden gebogen radialen (ongeveer 135°) stijgt hij tot circa 50 Ω."
+  },
+  {
+   "id": "c76",
+   "sec": "s34",
+   "q": "Wat is een gevouwen dipool?",
+   "a": "Een dipool met een extra parallelle draad; impedantie ongeveer 300 Ω (4× die van de open dipool) en breedbandiger."
+  },
+  {
+   "id": "c77",
+   "sec": "s34",
+   "q": "Wat is de winst van een gevouwen dipool ten opzichte van een open dipool?",
+   "a": "Gelijk; de gevouwen dipool heeft dezelfde winst maar een hogere impedantie en grotere bandbreedte."
+  },
+  {
+   "id": "c78",
+   "sec": "s35",
+   "q": "Wat zijn parasitaire elementen?",
+   "a": "Elementen zonder directe voeding: reflector (langer, achter) en directors (korter, voor) die de straling bundelen."
+  },
+  {
+   "id": "c79",
+   "sec": "s35",
+   "q": "Wat is een Yagi?",
+   "a": "Een antenne met één gevoed element (dipool), een reflector en één of meer directors; richtwerking en winst."
+  },
+  {
+   "id": "c80",
+   "sec": "s35",
+   "q": "Hoe zijn de lengtes in een Yagi?",
+   "a": "Reflector langer dan de dipool, directors korter."
+  },
+  {
+   "id": "c81",
+   "sec": "s35",
+   "q": "Wat is de voor-achterverhouding?",
+   "a": "De verhouding in dB tussen het vermogen naar voren en naar achteren. 10 dB betekent 10× zo weinig naar achteren."
+  },
+  {
+   "id": "c82",
+   "sec": "s36",
+   "q": "Wat is een antenne met traps?",
+   "a": "Een dipool met sperkringen (LC-parallelkringen) die op bepaalde banden de uiteinden afkoppelen, zodat één antenne op meerdere banden resoneert."
+  },
+  {
+   "id": "c83",
+   "sec": "s36",
+   "q": "Wat is het nadeel van traps?",
+   "a": "Kleinere bandbreedte en meer verlies; de antenne is korter dan een volledige dipool."
+  },
+  {
+   "id": "c84",
+   "sec": "s37",
+   "q": "Wat is een apertuur-antenne?",
+   "a": "Een antenne waarvan de winst door de grootte van het stralende oppervlak bepaald wordt, zoals een paraboolantenne."
+  },
+  {
+   "id": "c85",
+   "sec": "s37",
+   "q": "Waarvoor gebruikt men paraboolantennes?",
+   "a": "Voor UHF/SHF/microgolf (bijvoorbeeld 10 GHz en satellieten), waar de schotel groot is ten opzichte van de golflengte."
+  },
+  {
+   "id": "c86",
+   "sec": "s37",
+   "q": "Waarvan hangt de winst van een parabool af?",
+   "a": "Van de diameter (oppervlak) in golflengten: groter oppervlak of hogere frequentie geeft meer winst."
+  },
+  {
+   "id": "c87",
+   "sec": "s38",
+   "q": "Wat is een stralingsdiagram?",
+   "a": "Een grafiek van de relatieve veldsterkte of het vermogen in alle richtingen (horizontaal en verticaal)."
+  },
+  {
+   "id": "c88",
+   "sec": "s38",
+   "q": "Wat is het horizontale stralingsdiagram van een dipool?",
+   "a": "Een achtvorm; de straling is maximaal loodrecht op de draad en nul in de lengterichting."
+  },
+  {
+   "id": "c89",
+   "sec": "s39",
+   "q": "Wat is de effectief ontvangende oppervlakte?",
+   "a": "Het oppervlak waarmee een antenne vermogen uit een golf opvangt: A = G²·λ²/4π ... voor een halve-golfdipool ongeveer 0,13 · λ²."
+  }
+ ],
+ "drill": [
+  {
+   "id": "lam",
+   "sec": "s5",
+   "name": "Golflengte en frequentie",
+   "where": "golflengte uit frequentie en omgekeerd",
+   "f": "λ = c / f",
+   "cloze": [
+    {
+     "q": "De golflengte in meter is 300 gedeeld door de frequentie in ___",
+     "a": "MHz",
+     "w": [
+      "kHz",
+      "GHz",
+      "Hz"
+     ]
+    }
+   ],
+   "gen": "lam",
+   "rewrite": [
+    {
+     "base": "λ = c / f",
+     "ask": "f",
+     "a": "f = c / λ",
+     "w": [
+      "f = c · λ",
+      "f = λ / c",
+      "f = c + λ"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dipl",
+   "sec": "s6",
+   "name": "Lengte van een halve-golfdipool",
+   "where": "de lengte van een halve-golfdipool",
+   "f": "L = 0,95 · λ/2",
+   "cloze": [
+    {
+     "q": "De verkortingsfactor van een dipool-draad is ongeveer ___",
+     "a": "0,95",
+     "w": [
+      "0,66",
+      "1,5",
+      "0,5"
+     ]
+    }
+   ],
+   "gen": "dipl"
+  },
+  {
+   "id": "kabl",
+   "sec": "s20",
+   "name": "Kabelverlies",
+   "where": "verlies en vermogen aan het einde van de kabel",
+   "f": "dB = dB/100 m · L / 100",
+   "cloze": [
+    {
+     "q": "Bij 3 dB verlies blijft ___ van het vermogen over",
+     "a": "de helft",
+     "w": [
+      "een kwart",
+      "tweederde",
+      "een tiende"
+     ]
+    }
+   ],
+   "gen": "kabl"
+  },
+  {
+   "id": "erpc",
+   "sec": "s32",
+   "name": "ERP met verlies en winst",
+   "where": "het effectief uitgestraald vermogen",
+   "f": "ERP = P · 10^(winst − verlies)/10",
+   "cloze": [
+    {
+     "q": "ERP is gerekend ten opzichte van een ___",
+     "a": "halve-golfdipool",
+     "w": [
+      "isotrope straler",
+      "kwartgolf",
+      "parabool"
+     ]
+    }
+   ],
+   "gen": "erpc"
+  },
+  {
+   "id": "zkw",
+   "sec": "s11",
+   "name": "Kwartgolf-transformator",
+   "where": "de karakteristieke impedantie van het kwartgolfstuk",
+   "f": "Zk = √(Z₁ · Z₂)",
+   "cloze": [
+    {
+     "q": "Een kwartgolf-transformator heeft een Zk gelijk aan het ___ gemiddelde",
+     "a": "geometrische",
+     "w": [
+      "rekenkundige",
+      "kwadratische",
+      "harmonische"
+     ]
+    }
+   ],
+   "gen": "zkw",
+   "rewrite": [
+    {
+     "base": "Zk = √(Z₁ · Z₂)",
+     "ask": "Z₂",
+     "a": "Z₂ = Zk² / Z₁",
+     "w": [
+      "Z₂ = Zk · Z₁",
+      "Z₂ = √(Zk / Z₁)",
+      "Z₂ = Zk / Z₁"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "swrz",
+   "sec": "s17",
+   "name": "Staandegolfverhouding",
+   "where": "SWR uit twee impedanties",
+   "f": "s = Zmax / Zmin",
+   "cloze": [
+    {
+     "q": "Bij ideale aanpassing is de SWR ___",
+     "a": "1",
+     "w": [
+      "0",
+      "2",
+      "oneindig"
+     ]
+    }
+   ],
+   "gen": "swrz"
+  },
+  {
+   "id": "horiz",
+   "sec": "s26",
+   "name": "Radiohorizon",
+   "where": "de afstand tot de horizon uit de antennehoogten",
+   "f": "afstand ≈ 3,57 · (√h₁ + √h₂) km",
+   "cloze": [
+    {
+     "q": "De radiohorizon groeit met de ___ van de hoogte",
+     "a": "wortel",
+     "w": [
+      "kwadraat",
+      "derde macht",
+      "logaritme"
+     ]
+    }
+   ],
+   "gen": "horiz"
+  },
+  {
+   "id": "vfl",
+   "sec": "s9",
+   "name": "Lengte van een coaxstuk",
+   "where": "de lengte van een kwartgolf- of halvegolfstuk coax",
+   "f": "L = k · λ · vf",
+   "cloze": [
+    {
+     "q": "De verkortingsfactor van gangbare coax is ongeveer ___",
+     "a": "0,66",
+     "w": [
+      "0,95",
+      "1,5",
+      "0,1"
+     ]
+    }
+   ],
+   "gen": "vfl"
+  },
+  {
+   "id": "fbv",
+   "sec": "s35",
+   "name": "Voor-achterverhouding",
+   "where": "het vermogen naar achteren bij een gegeven verhouding",
+   "f": "P_achter = P_voor / 10^(dB/10)",
+   "cloze": [
+    {
+     "q": "10 dB voor-achterverhouding is een vermogensverhouding van ___",
+     "a": "10 : 1",
+     "w": [
+      "2 : 1",
+      "20 : 1",
+      "100 : 1"
+     ]
+    }
+   ],
+   "gen": "fbv"
+  },
+  {
+   "id": "aeff",
+   "sec": "s39",
+   "name": "Effectieve oppervlakte",
+   "where": "de oppervlakte van een halve-golfdipool",
+   "f": "A ≈ 0,13 · λ²",
+   "cloze": [
+    {
+     "q": "De effectieve oppervlakte is evenredig met het ___ van de golflengte",
+     "a": "kwadraat",
+     "w": [
+      "wortel",
+      "omgekeerde",
+      "derde macht"
+     ]
+    }
+   ],
+   "gen": "aeff"
+  },
+  {
+   "id": "pol",
+   "sec": "s25",
+   "name": "Polarisatie",
+   "where": "de polarisatie van antennes",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een horizontale dipool",
+     "a": "horizontaal"
+    },
+    {
+     "q": "een verticale groundplane",
+     "a": "verticaal"
+    },
+    {
+     "q": "een Yagi met horizontale elementen",
+     "a": "horizontaal"
+    },
+    {
+     "q": "een verticale Yagi",
+     "a": "verticaal"
+    }
+   ],
+   "ask": "Wat is de polarisatie van {x}?",
+   "askRev": "Welke antenne heeft deze polarisatie: {x}?"
+  },
+  {
+   "id": "imp",
+   "sec": "s6",
+   "name": "Impedanties van antennes en lijnen",
+   "where": "typische impedanties",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een halve-golfdipool",
+     "a": "ongeveer 73 Ω"
+    },
+    {
+     "q": "een gevouwen dipool",
+     "a": "ongeveer 300 Ω"
+    },
+    {
+     "q": "een groundplane met radialen in een vlak",
+     "a": "ongeveer 36 Ω"
+    },
+    {
+     "q": "een groundplane met radialen onder 135°",
+     "a": "ongeveer 50 Ω"
+    },
+    {
+     "q": "gangbare coax voor zenders",
+     "a": "50 Ω"
+    },
+    {
+     "q": "een open voedingslijn",
+     "a": "300–600 Ω"
+    }
+   ],
+   "ask": "Hoe groot is de impedantie van {x}?",
+   "askRev": "Welke antenne of lijn heeft deze impedantie: {x}?"
+  },
+  {
+   "id": "lijn",
+   "sec": "s11",
+   "name": "Lijnstukken van ¼ en ½ golflengte",
+   "where": "hoe lijnstukken zich gedragen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een kwartgolf-lijn",
+     "a": "transformeert de impedantie: Zk = √(Z₁·Z₂)"
+    },
+    {
+     "q": "een halvegolf-lijn",
+     "a": "herhaalt de impedantie van de belasting aan de ingang"
+    },
+    {
+     "q": "een kortgesloten kwartgolf-lijn",
+     "a": "ingang: zeer hoge impedantie (parallelkring)"
+    },
+    {
+     "q": "een open kwartgolf-lijn",
+     "a": "ingang: zeer lage impedantie (seriekring)"
+    }
+   ],
+   "ask": "Wat doet {x}?",
+   "askRev": "Welk lijnstuk is dit: {x}?"
+  },
+  {
+   "id": "ion",
+   "sec": "s29",
+   "name": "Ionosfeer en propagatie",
+   "where": "lagen en begrippen",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de D-laag",
+     "a": "absorbeert overdag; verdwijnt 's nachts"
+    },
+    {
+     "q": "de E-laag",
+     "a": "ongeveer 110 km, sporadische E mogelijk"
+    },
+    {
+     "q": "de F-laag",
+     "a": "de hoogste laag, reflecteert HF over grote afstand"
+    },
+    {
+     "q": "de MUF",
+     "a": "de hoogste bruikbare frequentie voor een verbinding"
+    },
+    {
+     "q": "de sprongafstand",
+     "a": "de kortste afstand waar de teruggekaatste golf aankomt"
+    },
+    {
+     "q": "de dode zone",
+     "a": "gebied tussen grondgolf en sprongafstand zonder ontvangst"
+    },
+    {
+     "q": "de kritische frequentie",
+     "a": "hoogste frequentie die bij loodrechte opstraling nog terugkaatst"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welk begrip is dit: {x}?"
+  },
+  {
+   "id": "vhf",
+   "sec": "s28",
+   "name": "VHF/UHF-propagatie",
+   "where": "hoe grote afstanden mogelijk zijn",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "een temperatuurinversie",
+     "a": "golven buigen af, bereik buiten de horizon"
+    },
+    {
+     "q": "sporadische E",
+     "a": "reflectie via de E-laag, soms op 144 MHz"
+    },
+    {
+     "q": "aurora",
+     "a": "reflectie tegen het poollicht, vervormd signaal"
+    },
+    {
+     "q": "tropo-scatter",
+     "a": "verstrooiing in de troposfeer"
+    }
+   ],
+   "ask": "Wat is {x}?",
+   "askRev": "Welk verschijnsel is dit: {x}?"
+  },
+  {
+   "id": "ant",
+   "sec": "s35",
+   "name": "Soorten antennes",
+   "where": "kenmerken van antennes",
+   "f": null,
+   "cloze": [],
+   "pairs": [
+    {
+     "q": "de Yagi",
+     "a": "parasitaire elementen: reflector en directors, richtwerking"
+    },
+    {
+     "q": "de groundplane",
+     "a": "verticaal, rondom gelijkmatig in het horizontale vlak"
+    },
+    {
+     "q": "de gevouwen dipool",
+     "a": "300 Ω en breedbandiger"
+    },
+    {
+     "q": "de trap-dipool",
+     "a": "meerbands via sperkringen"
+    },
+    {
+     "q": "de paraboolantenne",
+     "a": "hoge winst voor UHF/SHF met een schotel"
+    }
+   ],
+   "ask": "Wat kenmerkt {x}?",
+   "askRev": "Welke antenne is dit: {x}?"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "o14-1",
+   "n": 1,
+   "q": "Opgave Een zendstation zendt uit op 2 MHz. De golflengte bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "2000 m"
+    },
+    {
+     "id": "B",
+     "text": "200 m"
+    },
+    {
+     "id": "C",
+     "text": "150 m"
+    },
+    {
+     "id": "D",
+     "text": "667 m"
+    }
+   ],
+   "answer": "C",
+   "explain": "De golflengte  is te berekenen door de lichtsnelheid c te delen door de frequentie f : c = f De lichtsnelheid c bedraagt 300 000 km⁄s. Omdat de uitkomst in m wordt gegeven, moet de lichtsnelheid worden omgezet naar m/s, dus c = 300. 106 m⁄s. f = 2 MHz = 2. 106 Hz. Dan is c 300. 106     300 =      =       6 m=     m = 150 m f   2. 10       2 Antwoord C.",
+   "pages": [
+    "p072"
+   ],
+   "spages": [
+    "p085"
+   ]
+  },
+  {
+   "id": "o14-2",
+   "n": 2,
+   "q": "De opgave Een symmetrische dipoolantenne heeft op zijn aansluiting een karakteristieke impedantie van 73 ohm. De coaxiale voedingskabel naar de antenne heeft een karakteristieke impedantie van 50 ohm. De verbinding tussen beide kan het best worden gemaakt via",
+   "options": [
+    {
+     "id": "A",
+     "text": "Een kwartgolf stuk coax van 60 ohm en een 1:1 balun"
+    },
+    {
+     "id": "B",
+     "text": "Een balun"
+    },
+    {
+     "id": "C",
+     "text": "Een halvegolf stuk coax van 75 ohm en een 1:4 balun"
+    },
+    {
+     "id": "D",
+     "text": "Een kwartgolf stuk coax van 60 ohm"
+    }
+   ],
+   "answer": "A",
+   "explain": "Het gaat om het aansluiten van asymmetrische coax op een symmetrische antenne. Daar is een balun voor nodig. Daarmee valt antwoord D meteen af. Een halvegolf stuk coax heeft aan begin en eind dezelfde impedantie, dus C valt ook af. Dat begint te rieken naar antwoord A, maar dat controleren we. De karakteristieke impedantie van het tussenstuk is √73.50 ohm ≈ 60 ohm. Dat stuk levert dus 50 ohm aan zijn uitgang en daarmee moet de balun inderdaad een 1:1 type zijn: antwoord A.",
+   "pages": [
+    "p073"
+   ],
+   "spages": [
+    "p086"
+   ]
+  },
+  {
+   "id": "o14-3",
+   "n": 3,
+   "q": "In het EM-veld van een halvegolf-dipool is/zijn vlak bij de antenne",
+   "options": [
+    {
+     "id": "A",
+     "text": "Het elektrische veld het sterkst in het midden en het magnetische veld bij de uiteinden"
+    },
+    {
+     "id": "B",
+     "text": "Beide velden het sterkst rond het midden van de antenne"
+    },
+    {
+     "id": "C",
+     "text": "Het magnetische veld het sterkst in het midden en het elektrische veld bij de uiteinden"
+    },
+    {
+     "id": "D",
+     "text": "Beide velden het sterkst bij de uiteinden van de antenne"
+    }
+   ],
+   "answer": "C",
+   "explain": "In het midden van een halvegolf-dipoolantenne loopt de meeste stroom; tussen de uiteinden staat de hoogste spanning. Waar de grootste stroom loopt, is het magnetische veld het sterkst; waar de hoogste spanning zich tussen twee puntladingen bevindt, is het elektrische veld op zijn sterkst: antwoord C. Opmerking Op grotere afstand van de antenne zijn magnetische en elektrische veldsterkte alleen nog afhankelijk van de afstand tot de antenne. Het verschil in afstand tot het midden en tot de uiteinden van de antenne wordt dan verwaarloosbaar.",
+   "pages": [
+    "p074"
+   ],
+   "spages": [
+    "p087"
+   ]
+  },
+  {
+   "id": "o14-4",
+   "n": 4,
+   "q": "Een coaxiale kabel heeft een verkortingsfactor van 0,7. Van deze kabel moet een halvegolf-stuk worden afgesneden voor een frequentie van 150 MHz. De lengte van het stuk moet zijn:",
+   "options": [
+    {
+     "id": "A",
+     "text": "1,42 meter"
+    },
+    {
+     "id": "B",
+     "text": "2 meter"
+    },
+    {
+     "id": "C",
+     "text": "1 meter"
+    },
+    {
+     "id": "D",
+     "text": "0,70 meter"
+    }
+   ],
+   "answer": "D",
+   "explain": "Begin met het uitrekenen van de golflengte λ. Die is lichtsnelheid gedeeld door frequentie: 300. 106 λ=            m = 2m 150, 106 Een halve golf is dan 1 meter. Met een verkortingsfactor van 0,7 wordt dat 0,70 meter: Antwoord D.",
+   "pages": [
+    "p075"
+   ],
+   "spages": [
+    "p088"
+   ]
+  },
+  {
+   "id": "o14-5",
+   "n": 5,
+   "q": "Een halvegolfstuk coaxkabel met een karakteristieke impedantie van 75 ohm wordt aan één uiteinde verbonden met een coaxkabel met een karakteristieke impedantie van 50 ohm. De impedantie aan het andere uiteinde van het 75 ohm-stuk bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "61 ohm"
+    },
+    {
+     "id": "B",
+     "text": "50 ohm"
+    },
+    {
+     "id": "C",
+     "text": "112,5 ohm"
+    },
+    {
+     "id": "D",
+     "text": "75 ohm"
+    }
+   ],
+   "answer": "B",
+   "explain": "Deze opgave vraagt een beetje nauwkeurig lezen. Het gaat hier om een halvegolfstuk, niet om een kwart. Een halvegolfstuk heeft aan de uitgangskant dezelfde impedantie als aan de ingangskant. Antwoord B dus. Wie met een kwartgolfstuk aan het rekenen is geweest, moet als hij/zij goed gerekend heeft, antwoord C hebben gevonden, maar het juiste antwoord is en blijft B.",
+   "pages": [
+    "p076"
+   ],
+   "spages": [
+    "p089"
+   ]
+  },
+  {
+   "id": "o14-6",
+   "n": 6,
+   "q": "Bij een Yagi-antenne is",
+   "options": [
+    {
+     "id": "A",
+     "text": "De reflector even lang als de straler"
+    },
+    {
+     "id": "B",
+     "text": "Een director langer dan de straler"
+    },
+    {
+     "id": "C",
+     "text": "De reflector langer dan de straler"
+    },
+    {
+     "id": "D",
+     "text": "De reflector korter dan de straler"
+    }
+   ],
+   "answer": "C",
+   "explain": "De reflector is langer dan de straler en een director is korter dan de straler. Antwoord C. Zie sub-paragraaf 14.5.6.",
+   "pages": [
+    "p077"
+   ],
+   "spages": [
+    "p090"
+   ]
+  },
+  {
+   "id": "o14-7",
+   "n": 7,
+   "q": "Een zender levert aan zijn uitgang 60 W aan vermogen. Voor de verbinding naar de antenne wordt 50 meter coax gebruikt met een verlies van 6 dB per 100 meter. Het vermogen dat aan de antenne wordt geleverd, bedraagt:",
+   "options": [
+    {
+     "id": "A",
+     "text": "60 W"
+    },
+    {
+     "id": "B",
+     "text": "16,7 W"
+    },
+    {
+     "id": "C",
+     "text": "15 W"
+    },
+    {
+     "id": "D",
+     "text": "30 W"
+    }
+   ],
+   "answer": "D",
+   "explain": "50 meter coax geeft een verlies van 0,5 ∗ 6 dB = 3 dB. Het vermogen aan de antenne is dan de helft van 60 W is 30 W. Antwoord D.",
+   "pages": [
+    "p078"
+   ],
+   "spages": [
+    "p091"
+   ]
+  },
+  {
+   "id": "o14-8",
+   "n": 8,
+   "q": "De eindtrap van een zender ontvangt uit de stuurtrap 2 watt aan vermogen. De versterking van de eindtrap bedraagt 12 dB. De antennekabel is 25 meter lang en heeft een verliesfactor van 8 dB per 100 meter. Het vermogen dat de antenne bereikt, is:",
+   "options": [
+    {
+     "id": "A",
+     "text": "32 watt"
+    },
+    {
+     "id": "B",
+     "text": "20 watt"
+    },
+    {
+     "id": "C",
+     "text": "16 watt"
+    },
+    {
+     "id": "D",
+     "text": "8 watt"
+    }
+   ],
+   "answer": "B",
+   "explain": "Het is in dit soort opgaven meestal het handigst, eerst de dB’s te verrekenen. Dan is 2 W gelijk aan 0 dB. Daar komt in de eindtrap 12 dB bij en in de antenneleiding gaat daar 25/100 maal 8 dB is 2 dB vanaf. Er blijft dan 10 dB over en de antenne ontvangt 10 dB meer dan 2 W is 20 W. Antwoord B.",
+   "pages": [
+    "p079"
+   ],
+   "spages": [
+    "p092"
+   ]
+  },
+  {
+   "id": "o14-9",
+   "n": 9,
+   "q": "SWR Zender Een 50 ohm staande-golf-meter is met coaxiale kabels van 50 ohm opgenomen in de leiding tussen zender en antenne. De meter wijst 10 aan. Dit betekent dat",
+   "options": [
+    {
+     "id": "A",
+     "text": "De antenne juist is aangepast"
+    },
+    {
+     "id": "B",
+     "text": "De zender juist is aangepast"
+    },
+    {
+     "id": "C",
+     "text": "De zender veel vermogen levert"
+    },
+    {
+     "id": "D",
+     "text": "De antenne zeer slecht is aangepast"
+    }
+   ],
+   "answer": "D",
+   "explain": "Een staande-golf-verhouding s = 10 betekent dat bijna alle vermogen wordt gereflecteerd en de antenne dus nauwelijks vermogen opneemt. Een goede aanpassing zou een SGV van 1 tot 1,5) moeten hebben. Het goede antwoord is dus antwoord D. De drie andere antwoorden zijn onzin. Lees eventueel subparagraaf 14.3.14 nog eens door.",
+   "pages": [
+    "p080"
+   ],
+   "spages": [
+    "p093"
+   ]
+  },
+  {
+   "id": "o14-10",
+   "n": 10,
+   "q": "Een antenne is ontworpen voor de 40- en 80-meter amateurband. In de antenne zijn twee gelijke traps opgenomen. Stelling 1. De traps gedragen zich op 40 m als sperfilter, waardoor de eindstukken van de antenne niet meedoen. Stelling 2. De traps gedragen zich op 80 meter als een capacitieve reactantie, waardoor beide eindstukken worden aangekoppeld. Wat is juist:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Stelling 1 en 2"
+    },
+    {
+     "id": "B",
+     "text": "Alleen stelling 1"
+    },
+    {
+     "id": "C",
+     "text": "Alleen stelling 2"
+    },
+    {
+     "id": "D",
+     "text": "Geen van beide stellingen"
+    }
+   ],
+   "answer": "B",
+   "explain": "Een trap in een tweeband-antenne is voor de hoogste frequentie (met de kortste golflengte) een sperfilter (parallelle LC-kring in resonantie). Stelling 1 klopt dus en daarmee valt antwoord D af. De frequentie bij een golflengte van ongeveer 80 m is de helft van die bij 40 m. Een parallelle LC-kring is voor frequenties onder de resonantiefrequentie inductief en niet capacitief, zoals Stelling 2 beweert. Stelling 2 deugt dus niet, zodat alleen Stelling 1 als juist overblijft. Dat betekent dat antwoord B goed is.",
+   "pages": [
+    "p081"
+   ],
+   "spages": [
+    "p094"
+   ]
+  },
+  {
+   "id": "o14-11",
+   "n": 11,
+   "q": "Een antenne is ontworpen voor de 40- en 80-meter amateurband. In de antenne zijn twee gelijke traps opgenomen. Stelling 1. De traps gedragen zich op 40 meter als een capacitieve reactantie waardoor met de eindstukken een halvegolf-dipool ontstaat. Stelling 2. De traps gedragen zich op 80 meter als een inductieve reactantie, waardoor met de eindstukken een halvegolf-dipool ontstaat. Wat is juist:",
+   "options": [
+    {
+     "id": "A",
+     "text": "Stelling 1 en 2"
+    },
+    {
+     "id": "B",
+     "text": "Alleen stelling 1"
+    },
+    {
+     "id": "C",
+     "text": "Alleen stelling 2"
+    },
+    {
+     "id": "D",
+     "text": "Geen van beide stellingen"
+    }
+   ],
+   "answer": "C",
+   "explain": "Deze lijkt op Opgave 14-11. Voor de hoogste frequentie, in dit geval de 40 meter-band, zijn de traps een sperkring in de vorm van een resonerende LC-parallelkring. Dat is niet wat Stelling 1 beweert, want die spreekt over een capacitieve reactantie. De antwoorden A en B vallen hiermee af. Nu Stelling 2. Die klopt, want een LC-parallelkring gedraagt zich bij een frequentie lager dan de resonantiefrequentie inductief. Conclusie: alleen Stelling 2 deugt. Antwoord C dus.",
+   "pages": [
+    "p082"
+   ],
+   "spages": [
+    "p095"
+   ]
+  },
+  {
+   "id": "o14-12",
+   "n": 12,
+   "q": "De effectief ontvangende oppervlakte van een halvegolf-dipool voor 50 MHz is ongeveer",
+   "options": [
+    {
+     "id": "A",
+     "text": "1,2 m2"
+    },
+    {
+     "id": "B",
+     "text": "2,4 m2"
+    },
+    {
+     "id": "C",
+     "text": "3,5 m2"
+    },
+    {
+     "id": "D",
+     "text": "4,7 m2"
+    }
+   ],
+   "answer": "D",
+   "explain": "Om te beginnen hebben we hier niet de frequentie, maar de golflengte  nodig. Die is lichtsnelheid gedeeld door frequentie: 300. 106 =            m = 6m 50. 106 Voor de gevraagde oppervlakte A geldt: G 2 A= 4π Die is te vereenvoudigen tot A ≈ 0,13 2 (zie subpar. 14.5.10) Dan vinden we voor A: 0,13 ∗ 62 m2 = 4,68 m2 . Dat wordt antwoord D.",
+   "pages": [
+    "p083"
+   ],
+   "spages": [
+    "p096"
+   ]
+  },
+  {
+   "id": "o14-13",
+   "n": 13,
+   "q": "Een antenne geeft een antennewinst van 9 dBd en wordt gevoed met een vermogen van 10 watt. De ERP bedraagt",
+   "options": [
+    {
+     "id": "A",
+     "text": "80 watt"
+    },
+    {
+     "id": "B",
+     "text": "90 watt"
+    },
+    {
+     "id": "C",
+     "text": "28 watt"
+    },
+    {
+     "id": "D",
+     "text": "110 watt"
+    }
+   ],
+   "answer": "A",
+   "explain": "9 dB is 3*3 dB, dat betekent in getalvorm een factor 23 = 8. De 10 W moet daarom worden vermenigvuldigd met 8 om de ERP te vinden. Dat levert 8*10 watt is 80 watt. Antwoord A.",
+   "pages": [
+    "p084"
+   ],
+   "spages": [
+    "p097"
+   ]
+  }
+ ]
 }
