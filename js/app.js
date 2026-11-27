@@ -860,6 +860,28 @@ async function deleteHistoryUI(it) {
   toast(`Verwijderd (${n} ${n === 1 ? 'vraag' : 'vragen'} aangepast).`);
   render();
 }
+
+/** Hoofdstukken als kort label: 'Alle hoofdstukken', 'H3–H5, H8'. */
+function chLabel(nums) {
+  const u = [...new Set(nums || [])].filter(n => n != null && !Number.isNaN(n)).sort((a, b) => a - b);
+  if (!u.length) return '';
+  const all = chapters.filter(c => c.count).map(c => c.n);
+  if (all.length > 1 && all.length === u.length && all.every((n, i) => n === u[i])) return 'Alle hoofdstukken';
+  const out = []; let i = 0;
+  while (i < u.length) { let j = i; while (j + 1 < u.length && u[j + 1] === u[j] + 1) j++; out.push(j - i >= 2 ? `H${u[i]}–H${u[j]}` : u.slice(i, j + 1).map(n => 'H' + n).join(', ')); i = j + 1; }
+  return out.join(', ');
+}
+/** Hoofdstukken van een examen: uit het examen zelf, anders uit de vragen van de gekoppelde ronde. */
+function examChapters(e) {
+  if (e.chapters && e.chapters.length) return e.chapters;
+  const sess = store.getHistory().find(x => x.kind === 'session' && x.exam && x.exam.id === e.id);
+  return sess ? histChapters(sess.id) : [];
+}
+function histChapters(sid) {
+  const ss = store.getSession(sid);
+  return ss ? [...new Set(ss.a.map(([id]) => quiz.chapterOf(id)))] : [];
+}
+
 function historyCard() {
   const all = store.getHistory();
   if (!all.length) return null;
@@ -867,10 +889,11 @@ function historyCard() {
   return h('section', { class: 'card' },
     h('h2', {}, 'Geschiedenis'),
     h('p', { class: 'muted small', style: 'margin:.2rem 0 .6rem' }, 'Elke oefenronde en elk examen. Per ongeluk iets gedaan? Verwijder het hier, dan telt het niet meer mee in je voortgang.'),
-    h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Wanneer'), h('th', {}, 'Soort'), h('th', {}, 'Goed'), h('th', {}, ''))),
+    h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Wanneer'), h('th', {}, 'Soort'), h('th', {}, 'Hoofdstukken'), h('th', {}, 'Goed'), h('th', {}, ''))),
       h('tbody', {}, list.map(it => h('tr', {},
         h('td', {}, fmtDate(it.t)),
         h('td', {}, it.mode === 'exam' ? (it.exam ? `📝 Examen · ${it.exam.pass ? 'geslaagd' : 'gezakt'}` : '📝 Examen') : '📖 Oefenen'),
+        h('td', { class: 'small' }, chLabel(it.kind === 'session' ? (it.exam && it.exam.chapters && it.exam.chapters.length ? it.exam.chapters : histChapters(it.id)) : examChapters(it.exam)) || '–'),
         h('td', {}, `${it.ok}/${it.n}` + (it.n ? ` (${pct(it.ok, it.n)}%)` : '')),
         h('td', {}, it.kind === 'session' && h('button', { class: 'ghost small', onclick: () => { REVIEW = { sid: it.id, f: 'all' }; setView('review'); } }, 'Bekijken'), ' ', h('button', { class: 'ghost small', 'aria-label': `Verwijder de ${it.mode === 'exam' ? 'examen' : 'oefenronde'} van ${fmtDate(it.t)}`, onclick: () => deleteHistoryUI(it) }, 'Verwijderen')))))),
     all.length > 8 && h('p', { style: 'margin:.6rem 0 0' }, h('button', { class: 'ghost small', onclick: () => { histAll = !histAll; render(); } }, histAll ? 'Minder tonen' : `Alles tonen (${all.length})`)));
@@ -1010,9 +1033,9 @@ function viewStats() {
     h('section', { class: 'card' },
       h('h2', {}, 'Laatste examens'),
       exams.length === 0 ? h('p', { class: 'muted' }, 'Nog geen examens gemaakt.') :
-        h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Datum'), h('th', {}, 'Score'), h('th', {}, 'Uitslag'), h('th', {}, 'Tijd'))),
+        h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Datum'), h('th', {}, 'Score'), h('th', {}, 'Uitslag'), h('th', {}, 'Tijd'), h('th', {}, 'Hoofdstukken'))),
           h('tbody', {}, exams.map(e => h('tr', {}, h('td', {}, fmtDate(e.t)), h('td', {}, `${e.score}/${e.total}`),
-            h('td', { class: e.pass ? 'correct' : 'yours' }, e.pass ? 'Geslaagd' : 'Gezakt'), h('td', {}, quiz.fmtTime(e.secs || 0))))))),
+            h('td', { class: e.pass ? 'correct' : 'yours' }, e.pass ? 'Geslaagd' : 'Gezakt'), h('td', {}, quiz.fmtTime(e.secs || 0)), h('td', { class: 'small' }, chLabel(examChapters(e)) || '–')))))),
 
     historyCard(),
 

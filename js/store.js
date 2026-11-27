@@ -387,7 +387,7 @@ function pack(d) {
   return {
     v: 1, r: d.resetAt || 0,
     q: Object.fromEntries(Object.entries(d.q).map(([id, r]) => [id, [r.a, r.ok, r.t, r.l, r.p, r.b ?? null, r.d ?? null]])),
-    e: (d.exams || []).map(e => [e.id, e.t, e.score, e.total, e.pass ? 1 : 0, e.secs || 0, e.del ? 1 : 0]),
+    e: (d.exams || []).map(e => [e.id, e.t, e.score, e.total, e.pass ? 1 : 0, e.secs || 0, e.del ? 1 : 0, e.chapters || null]),
     g: Object.entries(d.rd || {}).map(([k, v]) => [k, v.t, v.r]),
     k: Object.entries(d.c || {}).map(([k, r]) => [k, r.a, r.ok, r.t, r.b, r.d]),
     n: d.days || {},
@@ -406,7 +406,7 @@ function unpack(p) {
     tr: Object.fromEntries((p.s || []).map(a => [a[0], [a[1], a[2]]])),
     fl: Object.fromEntries((p.m || []).map(a => [a[0], [a[1], a[2]]])),
     ac: Object.fromEntries(p.z || []),
-    exams: (p.e || []).map(a => ({ id: a[0], t: a[1], score: a[2], total: a[3], pass: !!a[4], secs: a[5], ...(a[6] ? { del: 1 } : {}) })),
+    exams: (p.e || []).map(a => ({ id: a[0], t: a[1], score: a[2], total: a[3], pass: !!a[4], secs: a[5], ...(a[6] ? { del: 1 } : {}), ...(a[7] ? { chapters: a[7] } : {}) })),
   };
 }
 
